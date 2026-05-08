@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proto 4 — Bold Editorial · countdowns.site</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #FFFFFF;
+  color: #0A0A0A;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 54px;
+  background: #0A0A0A;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -.01em;
+}
+.logo em { font-style: normal; color: var(--brand-color, #FF4D4D); }
+
+.header-right { display: flex; align-items: center; gap: 20px; }
+.lang-tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.lang-tabs button {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,.4);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  border-right: 1px solid rgba(255,255,255,.15);
+  transition: all .12s;
+}
+.lang-tabs button:last-child { border-right: none; }
+.lang-tabs button.active { background: rgba(255,255,255,.12); color: #fff; }
+
+/* ── HERO ── */
+.hero {
+  background: #0A0A0A;
+  padding: 60px 28px 52px;
+  border-bottom: 3px solid #FF4D4D;
+}
+.hero-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: end;
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(38px, 6.5vw, 76px);
+  font-weight: 800;
+  color: #fff;
+  line-height: .96;
+  letter-spacing: -.02em;
+}
+.hero h1 span { color: #FF4D4D; }
+.hero-side { text-align: right; }
+.hero-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 56px;
+  font-weight: 800;
+  color: #FF4D4D;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.hero-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,.4);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+.hero-next {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,.35);
+}
+.hero-next strong { color: rgba(255,255,255,.7); font-weight: 600; }
+
+/* ── BODY ── */
+.body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+/* ── SECTION ── */
+.section { }
+.section-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--cat-bg, #0A0A0A);
+  border-left: 5px solid var(--cat-color, #FF4D4D);
+  margin: 0 0 0;
+}
+.section-hdr-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.01em;
+}
+.section-hdr-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,.35);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+/* ── CARDS ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 1px;
+  background: #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+}
+.card {
+  background: #fff;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: #0A0A0A;
+  display: flex;
+  flex-direction: column;
+  min-height: 108px;
+  transition: background .12s;
+  position: relative;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20px; right: 20px;
+  height: 2px;
+  background: var(--cat-color, #FF4D4D);
+  transform: scaleX(0);
+  transition: transform .15s;
+  transform-origin: left;
+}
+.card:hover { background: #FAFAFA; }
+.card:hover::before { transform: scaleX(1); }
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.card-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  line-height: 1.3;
+  flex: 1;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.card-ico { font-size: 18px; flex-shrink: 0; }
+
+.card-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--cat-color, #FF4D4D);
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin-top: auto;
+}
+.card-num-default { color: #0A0A0A; }
+.card-lbl {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #C0C0C0;
+  margin-top: 3px;
+}
+.card-unknown {
+  font-size: 11px;
+  color: #C0C0C0;
+  margin-top: auto;
+  font-style: italic;
+}
+
+/* Category color palettes */
+.cat-red    { --cat-bg:#1A0000; --cat-color:#FF4D4D; }
+.cat-blue   { --cat-bg:#00091A; --cat-color:#3B82F6; }
+.cat-emerald{ --cat-bg:#001A0A; --cat-color:#10B981; }
+.cat-amber  { --cat-bg:#1A1000; --cat-color:#F59E0B; }
+.cat-violet { --cat-bg:#0F0018; --cat-color:#A855F7; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0A0A0A;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: rgba(255,255,255,.3);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+}
+.footer-logo em { font-style: normal; color: #FF4D4D; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">countdowns<em>.site</em></a>
+  <div class="header-right">
+    <div class="lang-tabs">
+      <button class="active">EN</button>
+      <button>ES</button>
+      <button>PT</button>
+      <button>FR</button>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Every<br>countdown<br>that <span>matters</span></h1>
+    <div class="hero-side">
+      <div class="hero-stat-num">38</div>
+      <div class="hero-stat-label">Live<br>countdowns</div>
+      <div class="hero-next">Next up: <strong>F1 Monaco · 16 days</strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="section cat-violet">
+    <div class="section-hdr"><span class="section-hdr-label">🎮 Releases</span><span class="section-hdr-count">3 events</span></div>
+    <div class="cards">
+      <a href="#" class="card cat-violet">
+        <div class="card-top"><span class="card-name">GTA VI</span><span class="card-ico">🎮</span></div>
+        <div class="card-num">195</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card cat-violet">
+        <div class="card-top"><span class="card-name">Next iPhone</span><span class="card-ico">📱</span></div>
+        <div class="card-num">124</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card cat-violet">
+        <div class="card-top"><span class="card-name">PlayStation 6</span><span class="card-ico">🕹️</span></div>
+        <div class="card-unknown">Date TBA</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section cat-red">
+    <div class="section-hdr"><span class="section-hdr-label">🏆 Sports</span><span class="section-hdr-count">5 events</span></div>
+    <div class="cards">
+      <a href="#" class="card cat-red">
+        <div class="card-top"><span class="card-name">F1 Monaco GP</span><span class="card-ico">🏎️</span></div>
+        <div class="card-num">16</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card cat-red">
+        <div class="card-top"><span class="card-name">Champions Final</span><span class="card-ico">⚽</span></div>
+        <div class="card-num">22</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card cat-red">
+        <div class="card-top"><span class="card-name">NBA Finals</span><span class="card-ico">🏀</span></div>
+        <div class="card-unknown">Date TBA</div>
+      </a>
+      <a href="#" class="card cat-red">
+        <div class="card-top"><span class="card-name">Super Bowl LXI</span><span class="card-ico">🏈</span></div>
+        <div class="card-num">276</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card cat-red">
+        <div class="card-top"><span class="card-name">24h Le Mans</span><span class="card-ico">🚗</span></div>
+        <div class="card-num">36</div><div class="card-lbl">days</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section cat-emerald">
+    <div class="section-hdr"><span class="section-hdr-label">🎄 Holidays</span><span class="section-hdr-count">5 events</span></div>
+    <div class="cards">
+      <a href="#" class="card cat-emerald">
+        <div class="card-top"><span class="card-name">Halloween</span><span class="card-ico">🎃</span></div>
+        <div class="card-num">176</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card cat-emerald">
+        <div class="card-top"><span class="card-name">Christmas</span><span class="card-ico">🎄</span></div>
+        <div class="card-num">231</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card cat-emerald">
+        <div class="card-top"><span class="card-name">New Year 2027</span><span class="card-ico">🎉</span></div>
+        <div class="card-num">238</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card cat-emerald">
+        <div class="card-top"><span class="card-name">Valentine's Day</span><span class="card-ico">💝</span></div>
+        <div class="card-num">281</div><div class="card-lbl">days</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section cat-blue">
+    <div class="section-hdr"><span class="section-hdr-label">🛍️ Sales</span><span class="section-hdr-count">2 events</span></div>
+    <div class="cards">
+      <a href="#" class="card cat-blue">
+        <div class="card-top"><span class="card-name">Black Friday</span><span class="card-ico">🛒</span></div>
+        <div class="card-num">203</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card cat-blue">
+        <div class="card-top"><span class="card-name">Cyber Monday</span><span class="card-ico">💻</span></div>
+        <div class="card-num">206</div><div class="card-lbl">days</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section cat-amber">
+    <div class="section-hdr"><span class="section-hdr-label">🎬 Entertainment</span><span class="section-hdr-count">3 events</span></div>
+    <div class="cards">
+      <a href="#" class="card cat-amber">
+        <div class="card-top"><span class="card-name">Oscars</span><span class="card-ico">🏆</span></div>
+        <div class="card-num">296</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card cat-amber">
+        <div class="card-top"><span class="card-name">Grammy Awards</span><span class="card-ico">🎵</span></div>
+        <div class="card-unknown">Date TBA</div>
+      </a>
+      <a href="#" class="card cat-amber">
+        <div class="card-top"><span class="card-name">Met Gala</span><span class="card-ico">👗</span></div>
+        <div class="card-num">359</div><div class="card-lbl">days</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">countdowns<em>.site</em></div>
+  <span>Real-time · Updated daily</span>
+</footer>
+
+</body>
+</html>

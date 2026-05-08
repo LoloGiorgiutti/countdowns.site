@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proto 5 — Deep Space Glass · countdowns.site</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #05050F;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── BACKGROUND ORBS ── */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .45;
+}
+.orb-1 { width: 600px; height: 400px; background: radial-gradient(circle, #3B1F8C 0%, transparent 70%); top: -100px; left: -100px; }
+.orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #0F2D6B 0%, transparent 70%); top: 0; right: -100px; }
+.orb-3 { width: 400px; height: 300px; background: radial-gradient(circle, #1A0A3D 0%, transparent 70%); bottom: 30%; left: 30%; }
+
+/* ── HEADER ── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 56px;
+  background: rgba(5,5,15,.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.logo {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -.02em;
+}
+.logo-tld {
+  background: linear-gradient(135deg, #A78BFA, #60A5FA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lang-seg {
+  display: flex;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+.lang-seg button {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,.35);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .15s;
+  letter-spacing: .03em;
+}
+.lang-seg button.active {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  padding: 88px 28px 72px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(167,139,250,.1);
+  border: 1px solid rgba(167,139,250,.2);
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #A78BFA;
+  margin-bottom: 28px;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #A78BFA;
+  box-shadow: 0 0 8px #A78BFA;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(.8); }
+}
+
+.hero h1 {
+  font-size: clamp(34px, 6vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  margin-bottom: 18px;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,.55) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, #A78BFA 0%, #60A5FA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.38);
+  line-height: 1.7;
+  max-width: 380px;
+  margin: 0 auto 40px;
+}
+
+/* Ticker row */
+.hero-tickers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ticker-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,.7);
+}
+.ticker-chip-ico { font-size: 16px; }
+.ticker-chip-days {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -.02em;
+}
+.ticker-chip-lbl { font-size: 10px; color: rgba(255,255,255,.3); text-transform: uppercase; letter-spacing: .06em; }
+
+/* ── BODY ── */
+.body {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 20px 20px 100px;
+}
+
+/* ── SECTION ── */
+.section { margin-bottom: 40px; }
+.section-hdr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 0 2px;
+}
+.section-hdr-ico-wrap {
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.section-hdr-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+.section-hdr::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,.06);
+}
+
+/* ── CARDS ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: 8px;
+}
+.card {
+  background: rgba(255,255,255,.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 16px;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 105px;
+  transition: all .2s;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+}
+.card:hover {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.14);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.4);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.card-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,.45);
+  line-height: 1.4;
+  flex: 1;
+  letter-spacing: .01em;
+}
+.card-ico { font-size: 16px; opacity: .55; flex-shrink: 0; }
+
+.card-num {
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.03em;
+  margin-top: auto;
+  background: linear-gradient(135deg, #fff 30%, rgba(255,255,255,.65) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+/* Hot variant — colored number */
+.card-num.violet {
+  background: linear-gradient(135deg, #C084FC, #818CF8);
+  -webkit-background-clip: text; background-clip: text;
+}
+.card-num.orange {
+  background: linear-gradient(135deg, #FB923C, #FBBF24);
+  -webkit-background-clip: text; background-clip: text;
+}
+.card-num.green {
+  background: linear-gradient(135deg, #4ADE80, #22D3EE);
+  -webkit-background-clip: text; background-clip: text;
+}
+.card-num.sky {
+  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  -webkit-background-clip: text; background-clip: text;
+}
+
+.card-lbl {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.18);
+  margin-top: 3px;
+}
+.card-unknown {
+  font-size: 11px;
+  color: rgba(255,255,255,.2);
+  margin-top: auto;
+  font-style: italic;
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 24px 28px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.18);
+}
+.footer-logo {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 4px;
+}
+.footer-logo .tld {
+  background: linear-gradient(135deg, #A78BFA, #60A5FA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<header>
+  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
+  <div class="lang-seg">
+    <button class="active">EN</button>
+    <button>ES</button>
+    <button>PT</button>
+    <button>FR</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    Live · Updated in real-time
+  </div>
+  <h1>Every countdown<br>that <span>matters</span></h1>
+  <p class="hero-sub">Sports, game releases, holidays, sales. All the moments the world is counting down to.</p>
+  <div class="hero-tickers">
+    <div class="ticker-chip">
+      <span class="ticker-chip-ico">🏎️</span>
+      <div>
+        <div class="ticker-chip-days">16</div>
+        <div class="ticker-chip-lbl">F1 Monaco</div>
+      </div>
+    </div>
+    <div class="ticker-chip">
+      <span class="ticker-chip-ico">⚽</span>
+      <div>
+        <div class="ticker-chip-days">22</div>
+        <div class="ticker-chip-lbl">UCL Final</div>
+      </div>
+    </div>
+    <div class="ticker-chip">
+      <span class="ticker-chip-ico">📱</span>
+      <div>
+        <div class="ticker-chip-days">124</div>
+        <div class="ticker-chip-lbl">iPhone</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="section">
+    <div class="section-hdr">
+      <div class="section-hdr-ico-wrap">🎮</div>
+      <span class="section-hdr-label">Releases</span>
+    </div>
+    <div class="cards">
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">GTA VI</span><span class="card-ico">🎮</span></div>
+        <div class="card-num violet">195</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Next iPhone</span><span class="card-ico">📱</span></div>
+        <div class="card-num sky">124</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">PlayStation 6</span><span class="card-ico">🕹️</span></div>
+        <div class="card-unknown">Date TBA</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-hdr">
+      <div class="section-hdr-ico-wrap">🏆</div>
+      <span class="section-hdr-label">Sports</span>
+    </div>
+    <div class="cards">
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">F1 Monaco GP</span><span class="card-ico">🏎️</span></div>
+        <div class="card-num orange">16</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Champions Final</span><span class="card-ico">⚽</span></div>
+        <div class="card-num orange">22</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">NBA Finals</span><span class="card-ico">🏀</span></div>
+        <div class="card-unknown">Date TBA</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Super Bowl LXI</span><span class="card-ico">🏈</span></div>
+        <div class="card-num">276</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">24h Le Mans</span><span class="card-ico">🚗</span></div>
+        <div class="card-num orange">36</div><div class="card-lbl">days</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-hdr">
+      <div class="section-hdr-ico-wrap">🎄</div>
+      <span class="section-hdr-label">Holidays</span>
+    </div>
+    <div class="cards">
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Halloween</span><span class="card-ico">🎃</span></div>
+        <div class="card-num green">176</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Christmas</span><span class="card-ico">🎄</span></div>
+        <div class="card-num green">231</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">New Year 2027</span><span class="card-ico">🎉</span></div>
+        <div class="card-num">238</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Valentine's Day</span><span class="card-ico">💝</span></div>
+        <div class="card-num">281</div><div class="card-lbl">days</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-hdr">
+      <div class="section-hdr-ico-wrap">🎬</div>
+      <span class="section-hdr-label">Entertainment</span>
+    </div>
+    <div class="cards">
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Oscars</span><span class="card-ico">🏆</span></div>
+        <div class="card-num">296</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Grammy Awards</span><span class="card-ico">🎵</span></div>
+        <div class="card-unknown">Date TBA</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Met Gala</span><span class="card-ico">👗</span></div>
+        <div class="card-num">359</div><div class="card-lbl">days</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-hdr">
+      <div class="section-hdr-ico-wrap">🛍️</div>
+      <span class="section-hdr-label">Sales</span>
+    </div>
+    <div class="cards">
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Black Friday</span><span class="card-ico">🛒</span></div>
+        <div class="card-num sky">203</div><div class="card-lbl">days</div>
+      </a>
+      <a href="#" class="card">
+        <div class="card-top"><span class="card-name">Cyber Monday</span><span class="card-ico">💻</span></div>
+        <div class="card-num sky">206</div><div class="card-lbl">days</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">countdowns<span class="tld">.site</span></div>
+  Real-time countdowns for every event that matters
+</footer>
+
+</body>
+</html>
