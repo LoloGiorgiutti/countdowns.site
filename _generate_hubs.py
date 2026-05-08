@@ -3,7 +3,12 @@
 Generate language hub pages: /es/, /pt/, /fr/
 Run from repo root: python3 _generate_hubs.py
 """
-import os
+import os, sys
+# Import translated slug map so hub cards link to /{lang}/countdown/{slug}/ when available
+try:
+    from _generate import SLUG_LANGS
+except Exception:
+    SLUG_LANGS = {}
 
 BASE_URL = "https://countdowns.site"
 
@@ -74,6 +79,8 @@ LANGS = [
       'milan-fw':          'Semana Moda Milán',
       'bafweek':           'BAFWeek Buenos Aires',
       'elecciones-ar':     'Elecciones Argentina 2027',
+      '25-de-mayo':        '25 de Mayo — Día de la Patria',
+      'dia-del-nino':      'Día del Niño',
     },
     json_ld_name="Countdowns en Español",
     json_ld_desc="Contadores en tiempo real para cada evento que importa",
@@ -131,6 +138,7 @@ LANGS = [
       'full-moon':      'Próxima Lua Cheia',
       'eclipse':        'Eclipse Solar',
       'rock-in-rio':    'Rock in Rio Lisboa',
+      'dia-del-nino':   'Dia das Crianças',
       'nyfw':           'Semana de Moda NY',
       'paris-fw':       'Semana de Moda Paris',
       'milan-fw':       'Semana de Moda Milão',
@@ -194,6 +202,7 @@ LANGS = [
       'nyfw':           'Semaine Mode NY',
       'paris-fw':       'Semaine Mode Paris',
       'milan-fw':       'Semaine Mode Milan',
+      'dia-del-nino':   'Journée des Enfants',
     },
     json_ld_name="Countdowns en Français",
     json_ld_desc="Comptes à rebours en temps réel pour chaque événement qui compte",
@@ -249,7 +258,11 @@ EVENTS_JS = """    /* ── Releases ── */
     { slug:'milan-fw',  name:'Milan Fashion Week',             type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/milan-fw/'   },
     { slug:'bafweek',   name:'Buenos Aires Fashion Week',      type:'variable', regions:['es'],     cat:'Fashion',       url:'/countdown/bafweek/'    },
     /* ── Politics ── */
-    { slug:'elecciones-ar', name:'Argentine Elections',        type:'auto',     regions:['es'],     cat:'Politics',      url:'/countdown/elecciones-ar/' },"""
+    { slug:'elecciones-ar', name:'Argentine Elections',        type:'auto',     regions:['es'],     cat:'Politics',      url:'/countdown/elecciones-ar/' },
+    /* ── ES-only Holidays ── */
+    { slug:'25-de-mayo',   name:'25 de Mayo',                 type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/25-de-mayo/'    },
+    /* ── Children's Day – global ── */
+    { slug:'dia-del-nino', name:"Children's Day",             type:'fixed',    regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },"""
 
 
 def generate_hub(lang):
@@ -257,6 +270,12 @@ def generate_hub(lang):
     names_js = "{\n" + "".join(
         f"      '{k}': '{v}',\n" for k, v in lang["names"].items()
     ) + "    }"
+    # Build LANG_URLS: slug -> /{lang}/countdown/{slug}/ for slugs with translated pages
+    lang_urls_items = ""
+    for slug, langs in SLUG_LANGS.items():
+        if c in langs:
+            lang_urls_items += f"      '{slug}': '/{c}/countdown/{slug}/',\n"
+    lang_urls_js = "{\n" + lang_urls_items + "    }"
 
     return f'''<!DOCTYPE html>
 <html lang="{lang['html_lang']}">
@@ -350,6 +369,7 @@ def generate_hub(lang):
   function cc(cat) {{ return CAT_COLOR[cat] || {{ color:'#818CF8', glow:'rgba(129,140,248,.2)' }}; }}
 
   var NAMES = {names_js};
+  var LANG_URLS = {lang_urls_js};
 
   var EVENTS = [
 {EVENTS_JS}
@@ -400,7 +420,8 @@ def generate_hub(lang):
               '<div class="cd-card-num">' + data.days + '</div>' +
               '<div class="cd-card-lbl">{lang['card_days']}</div>';
     }}
-    return '<a href="' + ev.url + '" class="cd-card" ' + style + '>' + inner + '</a>';
+    var cardUrl = LANG_URLS[ev.slug] || ev.url;
+    return '<a href="' + cardUrl + '" class="cd-card" ' + style + '>' + inner + '</a>';
   }}
 
   function renderHub(results) {{

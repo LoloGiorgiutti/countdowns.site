@@ -14,6 +14,9 @@
 <meta property="og:description" content="Real-time countdown to GTA VI release date. Days, hours, minutes and seconds until Grand Theft Auto 6 launches on PS5 and Xbox Series X/S on November 19, 2026.">
 <link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/gta6/">
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/gta6/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/countdown/gta6/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/countdown/gta6/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/countdown/gta6/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{--cat-color:#C084FC;--cat-glow:rgba(192,132,252,.25);--cat-soft:rgba(192,132,252,.1);}</style>
@@ -65,10 +68,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/gta6/'">ES</button><button class="lang-btn" onclick="location.href='/pt/countdown/gta6/'">PT</button><button class="lang-btn" onclick="location.href='/fr/countdown/gta6/'">FR</button>
     </div>
   </div>
 </header>
@@ -90,7 +90,7 @@ CountdownEngine.render('root', {
   category: "Releases",
   description: "Real-time countdown to the release of Grand Theft Auto VI."
 });
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');

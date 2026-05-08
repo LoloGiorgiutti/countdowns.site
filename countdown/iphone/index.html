@@ -14,6 +14,9 @@
 <meta property="og:description" content="Live countdown to the next iPhone release. Apple typically unveils new iPhones in September. Track the exact days until iPhone 18 launch.">
 <link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/iphone/">
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/iphone/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/countdown/iphone/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/countdown/iphone/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/countdown/iphone/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{--cat-color:#C084FC;--cat-glow:rgba(192,132,252,.25);--cat-soft:rgba(192,132,252,.1);}</style>
@@ -60,10 +63,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/iphone/'">ES</button><button class="lang-btn" onclick="location.href='/pt/countdown/iphone/'">PT</button><button class="lang-btn" onclick="location.href='/fr/countdown/iphone/'">FR</button>
     </div>
   </div>
 </header>
@@ -85,7 +85,7 @@ CountdownEngine.render('root', {
   category: "Releases",
   description: "Live countdown to Apple's next iPhone announcement and release."
 });
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');

@@ -14,6 +14,9 @@
 <meta property="og:description" content="Live countdown to Father's Day. Select your country — date varies by region. US, Australia, Germany, Brazil and more.">
 <link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/fathers-day/">
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/fathers-day/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/countdown/fathers-day/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/countdown/fathers-day/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/countdown/fathers-day/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{--cat-color:#4ADE80;--cat-glow:rgba(74,222,128,.2);--cat-soft:rgba(74,222,128,.08);}</style>
@@ -70,10 +73,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/fathers-day/'">ES</button><button class="lang-btn" onclick="location.href='/pt/countdown/fathers-day/'">PT</button><button class="lang-btn" onclick="location.href='/fr/countdown/fathers-day/'">FR</button>
     </div>
   </div>
 </header>
@@ -92,7 +92,8 @@
 <script src="/countdown-engine.js"></script>
 <script>
 (function() {
-  var VARIANTS = [{"code": "us", "label": "US, Canada, UK & Mexico", "dates": ["2026-06-21", "2027-06-20"]}, {"code": "au", "label": "Australia & New Zealand", "dates": ["2026-09-06", "2027-09-05"]}, {"code": "de", "label": "Germany & Austria", "dates": ["2026-05-14", "2027-05-06"]}, {"code": "br", "label": "Brazil", "dates": ["2026-08-09", "2027-08-08"]}];
+  var VARIANTS = [{"code": "us", "label": "US, Canada, UK & Mexico", "dates": ["2026-06-21", "2027-06-20"]}, {"code": "au", "label": "Australia & New Zealand", "dates": ["2026-09-06", "2027-09-05"]}, {"code": "de", "label": "Germany & Austria", "dates": ["2026-05-14", "2027-05-06"]}, {"code": "br", "label": "Brasil / Brazil", "dates": ["2026-08-09", "2027-08-08"]}, {"code": "fr", "label": "France", "dates": ["2026-06-21", "2027-06-20"]}];
+  var DEFAULT_IDX = 0;
   var _cfg = {
     slug: "fathers-day",
     type: 'fixed',
@@ -110,7 +111,7 @@
   var grid = document.getElementById('cd-cpicker-grid');
   VARIANTS.forEach(function(v, idx) {
     var btn = document.createElement('button');
-    btn.className = 'cd-cpicker-btn' + (idx === 0 ? ' active' : '');
+    btn.className = 'cd-cpicker-btn' + (idx === DEFAULT_IDX ? ' active' : '');
     btn.textContent = v.label;
     btn.onclick = function() {
       document.querySelectorAll('.cd-cpicker-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -119,9 +120,9 @@
     };
     grid.appendChild(btn);
   });
-  CountdownEngine.render('root', Object.assign({}, _cfg, { date: nextDate(VARIANTS[0].dates) }));
+  CountdownEngine.render('root', Object.assign({}, _cfg, { date: nextDate(VARIANTS[DEFAULT_IDX].dates) }));
 })();
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');

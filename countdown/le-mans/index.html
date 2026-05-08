@@ -14,6 +14,9 @@
 <meta property="og:description" content="Live countdown to the 24 Hours of Le Mans 2026. The world's most prestigious endurance race starts June 13, 2026 at Circuit de la Sarthe.">
 <link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/le-mans/">
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/le-mans/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/countdown/le-mans/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/countdown/le-mans/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/countdown/le-mans/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{--cat-color:#FB923C;--cat-glow:rgba(251,146,60,.25);--cat-soft:rgba(251,146,60,.1);}</style>
@@ -60,10 +63,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/le-mans/'">ES</button><button class="lang-btn" onclick="location.href='/pt/countdown/le-mans/'">PT</button><button class="lang-btn" onclick="location.href='/fr/countdown/le-mans/'">FR</button>
     </div>
   </div>
 </header>
@@ -85,7 +85,7 @@ CountdownEngine.render('root', {
   category: "Sports",
   description: "Countdown to the 2026 24 Hours of Le Mans."
 });
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');

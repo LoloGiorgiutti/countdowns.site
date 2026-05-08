@@ -14,6 +14,7 @@
 <meta property="og:description" content="Live countdown to Día de los Muertos 2026, celebrated November 1–2 in Mexico and Latin America.">
 <link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/dia-de-los-muertos/">
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/dia-de-los-muertos/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/countdown/dia-de-los-muertos/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{--cat-color:#4ADE80;--cat-glow:rgba(74,222,128,.2);--cat-soft:rgba(74,222,128,.08);}</style>
@@ -70,10 +71,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/dia-de-los-muertos/'">ES</button><button class="lang-btn" onclick="location.href='/pt/'">PT</button><button class="lang-btn" onclick="location.href='/fr/'">FR</button>
     </div>
   </div>
 </header>
@@ -95,7 +93,7 @@ CountdownEngine.render('root', {
   category: "Holidays",
   description: "Countdown to D\u00eda de los Muertos \u2014 November 1."
 });
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');

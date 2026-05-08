@@ -70,10 +70,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/'">ES</button><button class="lang-btn" onclick="location.href='/pt/'">PT</button><button class="lang-btn" onclick="location.href='/fr/'">FR</button>
     </div>
   </div>
 </header>
@@ -95,7 +92,7 @@ CountdownEngine.render('root', {
   category: "Holidays",
   description: "Countdown to Memorial Day \u2014 last Monday of May."
 });
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');

@@ -129,6 +129,54 @@
       'milan-fw': 'Semana Moda Milán',
       'bafweek': 'BAFWeek Buenos Aires',
       'elecciones-ar': 'Elecciones Argentina 2027',
+      '25-de-mayo': '25 de Mayo — Día de la Patria',
+      'dia-del-nino': 'Día del Niño',
+    };
+  var LANG_URLS = {
+      'gta6': '/es/countdown/gta6/',
+      'iphone': '/es/countdown/iphone/',
+      'f1': '/es/countdown/f1/',
+      'world-cup': '/es/countdown/world-cup/',
+      'ucl-final': '/es/countdown/ucl-final/',
+      'nba-finals': '/es/countdown/nba-finals/',
+      'le-mans': '/es/countdown/le-mans/',
+      'wimbledon': '/es/countdown/wimbledon/',
+      'tour-de-france': '/es/countdown/tour-de-france/',
+      'olympics-2028': '/es/countdown/olympics-2028/',
+      'copa-libertadores': '/es/countdown/copa-libertadores/',
+      'christmas': '/es/countdown/christmas/',
+      'new-year': '/es/countdown/new-year/',
+      'halloween': '/es/countdown/halloween/',
+      'valentines': '/es/countdown/valentines/',
+      'easter': '/es/countdown/easter/',
+      'mothers-day': '/es/countdown/mothers-day/',
+      'fathers-day': '/es/countdown/fathers-day/',
+      'st-patricks': '/es/countdown/st-patricks/',
+      'dia-de-los-muertos': '/es/countdown/dia-de-los-muertos/',
+      'cinco-de-mayo': '/es/countdown/cinco-de-mayo/',
+      '25-de-mayo': '/es/countdown/25-de-mayo/',
+      'fiestas-patrias': '/es/countdown/fiestas-patrias/',
+      'oktoberfest': '/es/countdown/oktoberfest/',
+      'dia-del-nino': '/es/countdown/dia-del-nino/',
+      'oscars': '/es/countdown/oscars/',
+      'grammys': '/es/countdown/grammys/',
+      'met-gala': '/es/countdown/met-gala/',
+      'eurovision': '/es/countdown/eurovision/',
+      'cannes': '/es/countdown/cannes/',
+      'coachella': '/es/countdown/coachella/',
+      'black-friday': '/es/countdown/black-friday/',
+      'cyber-monday': '/es/countdown/cyber-monday/',
+      'hot-sale': '/es/countdown/hot-sale/',
+      'full-moon': '/es/countdown/full-moon/',
+      'eclipse': '/es/countdown/eclipse/',
+      'lollapalooza-ar': '/es/countdown/lollapalooza-ar/',
+      'lollapalooza-cl': '/es/countdown/lollapalooza-cl/',
+      'cosquin-rock': '/es/countdown/cosquin-rock/',
+      'nyfw': '/es/countdown/nyfw/',
+      'paris-fw': '/es/countdown/paris-fw/',
+      'milan-fw': '/es/countdown/milan-fw/',
+      'bafweek': '/es/countdown/bafweek/',
+      'elecciones-ar': '/es/countdown/elecciones-ar/',
     };
 
   var EVENTS = [
@@ -182,6 +230,10 @@
     { slug:'bafweek',   name:'Buenos Aires Fashion Week',      type:'variable', regions:['es'],     cat:'Fashion',       url:'/countdown/bafweek/'    },
     /* ── Politics ── */
     { slug:'elecciones-ar', name:'Argentine Elections',        type:'auto',     regions:['es'],     cat:'Politics',      url:'/countdown/elecciones-ar/' },
+    /* ── ES-only Holidays ── */
+    { slug:'25-de-mayo',   name:'25 de Mayo',                 type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/25-de-mayo/'    },
+    /* ── Children's Day – global ── */
+    { slug:'dia-del-nino', name:"Children's Day",             type:'fixed',    regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },
   ];
 
   var currentLang = 'es';
@@ -229,7 +281,8 @@
               '<div class="cd-card-num">' + data.days + '</div>' +
               '<div class="cd-card-lbl">días</div>';
     }
-    return '<a href="' + ev.url + '" class="cd-card" ' + style + '>' + inner + '</a>';
+    var cardUrl = LANG_URLS[ev.slug] || ev.url;
+    return '<a href="' + cardUrl + '" class="cd-card" ' + style + '>' + inner + '</a>';
   }
 
   function renderHub(results) {

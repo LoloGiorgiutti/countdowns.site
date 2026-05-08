@@ -14,6 +14,9 @@
 <meta property="og:description" content="Live countdown to New York Fashion Week September 2026 (Spring/Summer 2027 collections).">
 <link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/nyfw/">
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/nyfw/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/countdown/nyfw/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/countdown/nyfw/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/countdown/nyfw/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{--cat-color:#FDA4AF;--cat-glow:rgba(253,164,175,.2);--cat-soft:rgba(253,164,175,.08);}</style>
@@ -65,10 +68,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/nyfw/'">ES</button><button class="lang-btn" onclick="location.href='/pt/countdown/nyfw/'">PT</button><button class="lang-btn" onclick="location.href='/fr/countdown/nyfw/'">FR</button>
     </div>
   </div>
 </header>
@@ -90,7 +90,7 @@ CountdownEngine.render('root', {
   category: "Fashion",
   description: "Countdown to New York Fashion Week \u2014 September 2026."
 });
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');

@@ -14,6 +14,9 @@
 <meta property="og:description" content="Live countdown to Mother's Day. Select your country — date varies by region. US, UK, Mexico, Argentina, France and more.">
 <link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/mothers-day/">
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/mothers-day/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/countdown/mothers-day/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/countdown/mothers-day/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/countdown/mothers-day/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{--cat-color:#4ADE80;--cat-glow:rgba(74,222,128,.2);--cat-soft:rgba(74,222,128,.08);}</style>
@@ -70,10 +73,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/mothers-day/'">ES</button><button class="lang-btn" onclick="location.href='/pt/countdown/mothers-day/'">PT</button><button class="lang-btn" onclick="location.href='/fr/countdown/mothers-day/'">FR</button>
     </div>
   </div>
 </header>
@@ -92,7 +92,8 @@
 <script src="/countdown-engine.js"></script>
 <script>
 (function() {
-  var VARIANTS = [{"code": "us", "label": "US, Canada & Australia", "dates": ["2026-05-10", "2027-05-09"]}, {"code": "uk", "label": "United Kingdom", "dates": ["2026-03-15", "2027-03-07"]}, {"code": "mx", "label": "Mexico", "dates": ["2026-05-10", "2027-05-10"]}, {"code": "ar", "label": "Argentina", "dates": ["2026-10-18", "2027-10-17"]}, {"code": "fr", "label": "France", "dates": ["2026-05-31", "2027-05-30"]}, {"code": "br", "label": "Brazil", "dates": ["2026-05-10", "2027-05-09"]}];
+  var VARIANTS = [{"code": "us", "label": "US, Canada & Australia", "dates": ["2026-05-10", "2027-05-09"]}, {"code": "uk", "label": "United Kingdom", "dates": ["2026-03-15", "2027-03-07"]}, {"code": "mx", "label": "M\u00e9xico", "dates": ["2026-05-10", "2027-05-10"]}, {"code": "ar", "label": "Argentina", "dates": ["2026-10-18", "2027-10-17"]}, {"code": "fr", "label": "France", "dates": ["2026-05-31", "2027-05-30"]}, {"code": "br", "label": "Brasil / Brazil", "dates": ["2026-05-10", "2027-05-09"]}];
+  var DEFAULT_IDX = 0;
   var _cfg = {
     slug: "mothers-day",
     type: 'fixed',
@@ -110,7 +111,7 @@
   var grid = document.getElementById('cd-cpicker-grid');
   VARIANTS.forEach(function(v, idx) {
     var btn = document.createElement('button');
-    btn.className = 'cd-cpicker-btn' + (idx === 0 ? ' active' : '');
+    btn.className = 'cd-cpicker-btn' + (idx === DEFAULT_IDX ? ' active' : '');
     btn.textContent = v.label;
     btn.onclick = function() {
       document.querySelectorAll('.cd-cpicker-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -119,9 +120,9 @@
     };
     grid.appendChild(btn);
   });
-  CountdownEngine.render('root', Object.assign({}, _cfg, { date: nextDate(VARIANTS[0].dates) }));
+  CountdownEngine.render('root', Object.assign({}, _cfg, { date: nextDate(VARIANTS[DEFAULT_IDX].dates) }));
 })();
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');

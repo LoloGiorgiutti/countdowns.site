@@ -2,15 +2,19 @@
 """
 Generate individual countdown pages for countdowns.site
 Run from repo root: python3 _generate.py
+Generates /countdown/{slug}/ (EN) + /{lang}/countdown/{slug}/ for translated langs.
 """
 import os, json
+from _translations import TRANSLATIONS
 
 BASE_URL = "https://countdowns.site"
 
+# ─── Events ───────────────────────────────────────────────────────────────────
 EVENTS = [
-  # ── Releases ──────────────────────────────────────────────────────────
+  # ── Releases ──────────────────────────────────────────────────────────────
   dict(
     slug="gta6", name="GTA VI", type="variable", category="Releases",
+    regions=["global"],
     seo_title="GTA 6 Countdown — Days Until GTA VI Release 2026",
     meta_desc="Real-time countdown to GTA VI release date. Days, hours, minutes and seconds until Grand Theft Auto 6 launches on PS5 and Xbox Series X/S on November 19, 2026.",
     hero_desc="Real-time countdown to the release of Grand Theft Auto VI.",
@@ -24,6 +28,7 @@ EVENTS = [
   ),
   dict(
     slug="iphone", name="Next iPhone", type="variable", category="Releases",
+    regions=["global"],
     seo_title="Next iPhone Countdown — Days Until iPhone 18 Release 2026",
     meta_desc="Live countdown to the next iPhone release. Apple typically unveils new iPhones in September. Track the exact days until iPhone 18 launch.",
     hero_desc="Live countdown to Apple's next iPhone announcement and release.",
@@ -35,9 +40,10 @@ EVENTS = [
     ]
   ),
 
-  # ── Sports – Global ────────────────────────────────────────────────────
+  # ── Sports – Global ────────────────────────────────────────────────────────
   dict(
     slug="f1", name="F1 Next Race", type="variable", category="Sports",
+    regions=["global"],
     seo_title="F1 Countdown — Days Until the Next Formula 1 Race",
     meta_desc="Real-time countdown to the next Formula 1 Grand Prix. See exactly how many days, hours and minutes until the next F1 race weekend.",
     hero_desc="Live countdown to the next Formula 1 Grand Prix.",
@@ -50,6 +56,7 @@ EVENTS = [
   ),
   dict(
     slug="world-cup", name="2026 FIFA World Cup", type="variable", category="Sports",
+    regions=["global"],
     seo_title="2026 FIFA World Cup Countdown — Days Until the World Cup",
     meta_desc="Live countdown to the 2026 FIFA World Cup opening match. The tournament is jointly hosted by the USA, Canada and Mexico starting June 11, 2026.",
     hero_desc="Countdown to the 2026 FIFA World Cup — USA, Canada & Mexico.",
@@ -63,6 +70,7 @@ EVENTS = [
   ),
   dict(
     slug="ucl-final", name="Champions League Final", type="variable", category="Sports",
+    regions=["global"],
     seo_title="Champions League Final Countdown 2026 — Days Until UCL Final",
     meta_desc="Live countdown to the UEFA Champions League 2025–26 Final at Puskás Aréna, Budapest on May 30, 2026.",
     hero_desc="Countdown to the 2026 UEFA Champions League Final.",
@@ -75,6 +83,7 @@ EVENTS = [
   ),
   dict(
     slug="nba-finals", name="NBA Finals", type="variable", category="Sports",
+    regions=["global"],
     seo_title="NBA Finals Countdown 2026 — Days Until the NBA Championship",
     meta_desc="Real-time countdown to the 2026 NBA Finals. Track the days until basketball's biggest series begins.",
     hero_desc="Countdown to the 2026 NBA Finals.",
@@ -87,6 +96,7 @@ EVENTS = [
   ),
   dict(
     slug="le-mans", name="24 Hours of Le Mans", type="variable", category="Sports",
+    regions=["global"],
     seo_title="Le Mans 24h Countdown 2026 — Days Until the 24 Hours of Le Mans",
     meta_desc="Live countdown to the 24 Hours of Le Mans 2026. The world's most prestigious endurance race starts June 13, 2026 at Circuit de la Sarthe.",
     hero_desc="Countdown to the 2026 24 Hours of Le Mans.",
@@ -99,6 +109,7 @@ EVENTS = [
   ),
   dict(
     slug="wimbledon", name="Wimbledon", type="variable", category="Sports",
+    regions=["global"],
     seo_title="Wimbledon 2026 Countdown — Days Until Wimbledon Tennis",
     meta_desc="Live countdown to Wimbledon 2026, the world's oldest and most prestigious tennis Grand Slam, starting June 29, 2026 at the All England Club.",
     hero_desc="Countdown to The Championships, Wimbledon 2026.",
@@ -111,6 +122,7 @@ EVENTS = [
   ),
   dict(
     slug="tour-de-france", name="Tour de France", type="variable", category="Sports",
+    regions=["global"],
     seo_title="Tour de France 2026 Countdown — Days Until the Tour de France",
     meta_desc="Live countdown to the Tour de France 2026. The world's most famous cycling race starts in late June 2026 with 21 stages over three weeks.",
     hero_desc="Countdown to the 2026 Tour de France.",
@@ -123,6 +135,7 @@ EVENTS = [
   ),
   dict(
     slug="olympics-2028", name="LA 2028 Olympics", type="auto", category="Sports",
+    regions=["global"],
     seo_title="2028 Olympics Countdown — Days Until the Los Angeles Olympics",
     meta_desc="Live countdown to the 2028 Summer Olympic Games in Los Angeles. The Opening Ceremony is on July 14, 2028 at the LA Memorial Coliseum.",
     hero_desc="Countdown to the Los Angeles 2028 Summer Olympic Games.",
@@ -136,6 +149,7 @@ EVENTS = [
   ),
   dict(
     slug="super-bowl", name="Super Bowl", type="auto", category="Sports",
+    regions=["en"],
     seo_title="Super Bowl Countdown — Days Until Super Bowl LXI 2027",
     meta_desc="Live countdown to Super Bowl LXI in 2027. The NFL championship game is played on the second Sunday of February each year.",
     hero_desc="Countdown to Super Bowl LXI — the NFL Championship.",
@@ -149,6 +163,7 @@ EVENTS = [
   ),
   dict(
     slug="copa-libertadores", name="Copa Libertadores Final", type="variable", category="Sports",
+    regions=["es", "pt"],
     seo_title="Copa Libertadores Final 2026 Countdown — Days Until the Final",
     meta_desc="Live countdown to the 2026 Copa Libertadores Final, South America's biggest club football match. Date and venue TBD by CONMEBOL.",
     hero_desc="Countdown to the 2026 Copa Libertadores Final.",
@@ -161,9 +176,10 @@ EVENTS = [
     ]
   ),
 
-  # ── Holidays – Global ──────────────────────────────────────────────────
+  # ── Holidays – Global ──────────────────────────────────────────────────────
   dict(
     slug="christmas", name="Christmas", type="auto", category="Holidays",
+    regions=["global"],
     seo_title="Christmas Countdown 2026 — Days Until Christmas",
     meta_desc="How many days until Christmas 2026? Live countdown showing exact days, hours, minutes and seconds until December 25.",
     hero_desc="How many days until Christmas?",
@@ -178,6 +194,7 @@ EVENTS = [
   ),
   dict(
     slug="new-year", name="New Year", type="auto", category="Holidays",
+    regions=["global"],
     seo_title="New Year Countdown 2027 — Days Until New Year's Eve",
     meta_desc="Live countdown to New Year 2027. How many days, hours and seconds until January 1, 2027? Watch the real-time counter.",
     hero_desc="Countdown to New Year 2027.",
@@ -192,6 +209,7 @@ EVENTS = [
   ),
   dict(
     slug="halloween", name="Halloween", type="auto", category="Holidays",
+    regions=["global"],
     seo_title="Halloween Countdown 2026 — Days Until Halloween",
     meta_desc="How many days until Halloween 2026? Live countdown to October 31. Watch the exact hours, minutes and seconds tick down.",
     hero_desc="How many days until Halloween?",
@@ -206,6 +224,7 @@ EVENTS = [
   ),
   dict(
     slug="valentines", name="Valentine's Day", type="auto", category="Holidays",
+    regions=["global"],
     seo_title="Valentine's Day Countdown 2027 — Days Until Valentine's Day",
     meta_desc="Live countdown to Valentine's Day 2027. How many days until February 14? Watch the exact hours and minutes remaining.",
     hero_desc="Countdown to Valentine's Day, February 14.",
@@ -220,6 +239,7 @@ EVENTS = [
   ),
   dict(
     slug="easter", name="Easter", type="auto", category="Holidays",
+    regions=["global"],
     seo_title="Easter 2027 Countdown — How Many Days Until Easter Sunday",
     meta_desc="Live countdown to Easter 2027. Easter Sunday is a moveable feast — the countdown updates automatically each year.",
     hero_desc="Countdown to Easter Sunday.",
@@ -234,6 +254,7 @@ EVENTS = [
   ),
   dict(
     slug="mothers-day", name="Mother's Day", type="auto", category="Holidays",
+    regions=["global"],
     seo_title="Mother's Day Countdown 2027 — Days Until Mother's Day",
     meta_desc="Live countdown to Mother's Day. Select your country — date varies by region. US, UK, Mexico, Argentina, France and more.",
     hero_desc="Countdown to Mother's Day. Date varies by country.",
@@ -248,14 +269,16 @@ EVENTS = [
     country_variants=[
       {"code": "us",  "label": "US, Canada & Australia", "dates": ["2026-05-10", "2027-05-09"]},
       {"code": "uk",  "label": "United Kingdom",         "dates": ["2026-03-15", "2027-03-07"]},
-      {"code": "mx",  "label": "Mexico",                 "dates": ["2026-05-10", "2027-05-10"]},
+      {"code": "mx",  "label": "México",                 "dates": ["2026-05-10", "2027-05-10"]},
       {"code": "ar",  "label": "Argentina",              "dates": ["2026-10-18", "2027-10-17"]},
       {"code": "fr",  "label": "France",                 "dates": ["2026-05-31", "2027-05-30"]},
-      {"code": "br",  "label": "Brazil",                 "dates": ["2026-05-10", "2027-05-09"]},
-    ]
+      {"code": "br",  "label": "Brasil / Brazil",        "dates": ["2026-05-10", "2027-05-09"]},
+    ],
+    default_variant_by_lang={"en": 0, "es": 2, "pt": 5, "fr": 4},
   ),
   dict(
     slug="fathers-day", name="Father's Day", type="auto", category="Holidays",
+    regions=["global"],
     seo_title="Father's Day Countdown 2026 — Days Until Father's Day",
     meta_desc="Live countdown to Father's Day. Select your country — date varies by region. US, Australia, Germany, Brazil and more.",
     hero_desc="Countdown to Father's Day. Date varies by country.",
@@ -271,11 +294,14 @@ EVENTS = [
       {"code": "us",  "label": "US, Canada, UK & Mexico", "dates": ["2026-06-21", "2027-06-20"]},
       {"code": "au",  "label": "Australia & New Zealand",  "dates": ["2026-09-06", "2027-09-05"]},
       {"code": "de",  "label": "Germany & Austria",        "dates": ["2026-05-14", "2027-05-06"]},
-      {"code": "br",  "label": "Brazil",                   "dates": ["2026-08-09", "2027-08-08"]},
-    ]
+      {"code": "br",  "label": "Brasil / Brazil",          "dates": ["2026-08-09", "2027-08-08"]},
+      {"code": "fr",  "label": "France",                   "dates": ["2026-06-21", "2027-06-20"]},
+    ],
+    default_variant_by_lang={"en": 0, "es": 0, "pt": 3, "fr": 4},
   ),
   dict(
     slug="thanksgiving", name="Thanksgiving", type="auto", category="Holidays",
+    regions=["en"],
     seo_title="Thanksgiving Countdown 2026 — Days Until Thanksgiving",
     meta_desc="Live countdown to Thanksgiving 2026. US Thanksgiving falls on the fourth Thursday of November.",
     hero_desc="Countdown to Thanksgiving — fourth Thursday of November.",
@@ -290,6 +316,7 @@ EVENTS = [
   ),
   dict(
     slug="independence-day", name="Independence Day", type="auto", category="Holidays",
+    regions=["en"],
     seo_title="Independence Day Countdown 2026 — Days Until July 4th",
     meta_desc="Live countdown to US Independence Day 2026, July 4. How many days until the 4th of July fireworks?",
     hero_desc="Countdown to US Independence Day — July 4.",
@@ -302,6 +329,7 @@ EVENTS = [
   ),
   dict(
     slug="memorial-day", name="Memorial Day", type="auto", category="Holidays",
+    regions=["en"],
     seo_title="Memorial Day Countdown 2027 — Days Until Memorial Day",
     meta_desc="Live countdown to Memorial Day 2027. Memorial Day is the last Monday of May and marks the unofficial start of summer in the US.",
     hero_desc="Countdown to Memorial Day — last Monday of May.",
@@ -316,6 +344,7 @@ EVENTS = [
   ),
   dict(
     slug="labor-day", name="Labor Day", type="auto", category="Holidays",
+    regions=["en"],
     seo_title="Labor Day Countdown 2026 — Days Until Labor Day",
     meta_desc="Live countdown to Labor Day 2026. US Labor Day is the first Monday of September, marking the end of summer.",
     hero_desc="Countdown to US Labor Day — first Monday of September.",
@@ -329,6 +358,7 @@ EVENTS = [
   ),
   dict(
     slug="st-patricks", name="St. Patrick's Day", type="auto", category="Holidays",
+    regions=["global"],
     seo_title="St. Patrick's Day Countdown 2027 — Days Until March 17",
     meta_desc="Live countdown to St. Patrick's Day 2027, March 17. The Irish cultural holiday celebrated worldwide with parades, green beer and festivities.",
     hero_desc="Countdown to St. Patrick's Day — March 17.",
@@ -343,6 +373,7 @@ EVENTS = [
   ),
   dict(
     slug="dia-de-los-muertos", name="Día de los Muertos", type="auto", category="Holidays",
+    regions=["es"],
     seo_title="Día de los Muertos Countdown 2026 — Days Until Day of the Dead",
     meta_desc="Live countdown to Día de los Muertos 2026, celebrated November 1–2 in Mexico and Latin America.",
     hero_desc="Countdown to Día de los Muertos — November 1.",
@@ -357,6 +388,7 @@ EVENTS = [
   ),
   dict(
     slug="cinco-de-mayo", name="Cinco de Mayo", type="auto", category="Holidays",
+    regions=["es"],
     seo_title="Cinco de Mayo Countdown 2027 — Days Until May 5",
     meta_desc="Live countdown to Cinco de Mayo 2027. The Mexican holiday celebrated on May 5 commemorating the Battle of Puebla in 1862.",
     hero_desc="Countdown to Cinco de Mayo — May 5.",
@@ -369,7 +401,23 @@ EVENTS = [
     ]
   ),
   dict(
+    slug="25-de-mayo", name="25 de Mayo — Día de la Patria", type="auto", category="Holidays",
+    regions=["es"],
+    seo_title="25 de Mayo 2027 — Cuenta Regresiva Día de la Patria Argentina",
+    meta_desc="Cuenta regresiva en vivo para el 25 de mayo, Día de la Patria Argentina. La Revolución de Mayo de 1810 que dio origen a la nación.",
+    hero_desc="Cuenta regresiva al 25 de Mayo — Día de la Patria Argentina.",
+    content="El 25 de Mayo conmemora la Revolución de Mayo de 1810, cuando se estableció la Primera Junta de Gobierno en Buenos Aires, marcando el inicio del camino hacia la independencia argentina. Es uno de los feriados patrios más importantes de la Argentina, celebrado con actos escolares, desfiles y el tradicional locro.",
+    faqs=[
+      ("¿Qué se celebra el 25 de mayo en Argentina?", "Se conmemora la Revolución de Mayo de 1810, cuando se formó la Primera Junta de Gobierno en Buenos Aires, reemplazando al virrey español."),
+      ("¿Es el 25 de mayo la Independencia Argentina?", "No exactamente. La Independencia argentina se declaró el 9 de julio de 1816. El 25 de mayo celebra la Revolución de Mayo de 1810, el primer paso hacia la independencia."),
+      ("¿Qué día cae el 25 de mayo 2027?", "El 25 de mayo de 2027 cae en martes y es feriado nacional inamovible en Argentina."),
+      ("¿Qué se come el 25 de mayo?", "La comida tradicional del 25 de mayo es el locro, un guiso de maíz, porotos, zapallo y carne, típico de las regiones andinas argentinas."),
+      ("¿Cuándo es el otro feriado patrio argentino?", "El otro gran feriado patrio es el 9 de julio, que conmemora la Declaración de la Independencia Argentina de 1816."),
+    ]
+  ),
+  dict(
     slug="fiestas-patrias", name="Fiestas Patrias Chile", type="auto", category="Holidays",
+    regions=["es"],
     seo_title="Fiestas Patrias Chile 2026 Countdown — Days Until September 18",
     meta_desc="Cuenta regresiva en vivo para las Fiestas Patrias de Chile 2026, celebradas el 18 y 19 de septiembre.",
     hero_desc="Countdown to Chilean Independence Day — September 18.",
@@ -384,6 +432,7 @@ EVENTS = [
   ),
   dict(
     slug="bastille-day", name="Bastille Day", type="auto", category="Holidays",
+    regions=["fr"],
     seo_title="Bastille Day Countdown 2026 — Days Until July 14 (Fête Nationale)",
     meta_desc="Live countdown to Bastille Day 2026. The French national holiday on July 14 marks the storming of the Bastille in 1789.",
     hero_desc="Countdown to Bastille Day — French National Holiday, July 14.",
@@ -398,6 +447,7 @@ EVENTS = [
   ),
   dict(
     slug="oktoberfest", name="Oktoberfest", type="auto", category="Holidays",
+    regions=["global"],
     seo_title="Oktoberfest 2026 Countdown — Days Until Munich Oktoberfest",
     meta_desc="Live countdown to Oktoberfest 2026 in Munich. The world's largest beer festival runs from late September through early October.",
     hero_desc="Countdown to Oktoberfest 2026 — Munich.",
@@ -411,9 +461,34 @@ EVENTS = [
     ]
   ),
 
-  # ── Entertainment – Global ─────────────────────────────────────────────
+  # ── Children's Day ────────────────────────────────────────────────────────
+  dict(
+    slug="dia-del-nino", name="Children's Day", type="fixed", category="Holidays",
+    regions=["global", "es", "pt"],
+    seo_title="Children's Day Countdown 2026 — Days Until Children's Day",
+    meta_desc="Live countdown to Children's Day. Date varies by country — Mexico April 30, Argentina 2nd Sunday of August, Brazil October 12.",
+    hero_desc="Countdown to Children's Day. Date varies by country.",
+    content="Children's Day is celebrated on different dates around the world. Mexico observes it on April 30. Argentina celebrates on the second Sunday of August. Brazil marks it on October 12 (also a religious holiday, Nossa Senhora Aparecida). The United Nations' Universal Children's Day is November 20. Select your country below to see your local countdown.",
+    faqs=[
+      ("When is Children's Day in Mexico?", "Mexico celebrates Children's Day (Día del Niño) on April 30 every year."),
+      ("When is Children's Day in Argentina?", "Argentina celebrates Children's Day (Día del Niño) on the second Sunday of August. In 2026 that is August 9; in 2027, August 8."),
+      ("When is Children's Day in Brazil?", "Brazil celebrates Children's Day (Dia das Crianças) on October 12, which coincides with the national holiday for Nossa Senhora Aparecida."),
+      ("When is International Children's Day?", "The United Nations' Universal Children's Day is November 20, marking the anniversary of the 1989 Convention on the Rights of the Child."),
+      ("Is Children's Day a public holiday?", "It depends on the country. In Brazil, October 12 is a national public holiday. In Mexico and Argentina it is a cultural observance, not a public holiday."),
+    ],
+    country_variants=[
+      {"code": "mx", "label": "México (30 de abril)",                 "dates": ["2026-04-30", "2027-04-30"]},
+      {"code": "ar", "label": "Argentina (2.° dom. de agosto)",       "dates": ["2026-08-09", "2027-08-08"]},
+      {"code": "br", "label": "Brasil / Brazil (12 de outubro)",      "dates": ["2026-10-12", "2027-10-12"]},
+      {"code": "un", "label": "International / Nov 20",               "dates": ["2026-11-20", "2027-11-20"]},
+    ],
+    default_variant_by_lang={"en": 3, "es": 0, "pt": 2, "fr": 3},
+  ),
+
+  # ── Entertainment – Global ─────────────────────────────────────────────────
   dict(
     slug="oscars", name="Oscars", type="auto", category="Entertainment",
+    regions=["global"],
     seo_title="Oscars 2027 Countdown — Days Until the Academy Awards",
     meta_desc="Live countdown to the 2027 Academy Awards (Oscars). The ceremony is held on the last Sunday of February at the Dolby Theatre, Hollywood.",
     hero_desc="Countdown to the 2027 Academy Awards.",
@@ -426,6 +501,7 @@ EVENTS = [
   ),
   dict(
     slug="grammys", name="Grammy Awards", type="variable", category="Entertainment",
+    regions=["global"],
     seo_title="Grammy Awards 2027 Countdown — Days Until the Grammys",
     meta_desc="Live countdown to the Grammy Awards 2027. Music's biggest night — date TBA, usually held in January or February.",
     hero_desc="Countdown to the 2027 Grammy Awards.",
@@ -439,6 +515,7 @@ EVENTS = [
   ),
   dict(
     slug="met-gala", name="Met Gala", type="auto", category="Entertainment",
+    regions=["global"],
     seo_title="Met Gala 2027 Countdown — Days Until the Met Gala",
     meta_desc="Live countdown to the Met Gala 2027. Fashion's biggest night is held on the first Monday of May at the Metropolitan Museum of Art.",
     hero_desc="Countdown to the Met Gala — first Monday of May.",
@@ -451,6 +528,7 @@ EVENTS = [
   ),
   dict(
     slug="eurovision", name="Eurovision Song Contest", type="variable", category="Entertainment",
+    regions=["global", "fr"],
     seo_title="Eurovision 2027 Countdown — Days Until the Eurovision Song Contest",
     meta_desc="Live countdown to Eurovision Song Contest 2027. The Grand Final is held in May each year and is watched by over 160 million viewers.",
     hero_desc="Countdown to the Eurovision Song Contest 2027.",
@@ -463,6 +541,7 @@ EVENTS = [
   ),
   dict(
     slug="cannes", name="Cannes Film Festival", type="variable", category="Entertainment",
+    regions=["global", "fr"],
     seo_title="Cannes Film Festival 2026 Countdown — Days Until Cannes",
     meta_desc="Live countdown to the 2026 Cannes Film Festival. The Palme d'Or competition opens May 13, 2026 on the French Riviera.",
     hero_desc="Countdown to the 2026 Cannes Film Festival.",
@@ -475,6 +554,7 @@ EVENTS = [
   ),
   dict(
     slug="coachella", name="Coachella", type="variable", category="Entertainment",
+    regions=["global"],
     seo_title="Coachella 2027 Countdown — Days Until Coachella Valley Music Festival",
     meta_desc="Live countdown to Coachella 2027. The world's most famous music festival takes place in the California desert each April.",
     hero_desc="Countdown to Coachella 2027.",
@@ -486,9 +566,10 @@ EVENTS = [
     ]
   ),
 
-  # ── Sales ──────────────────────────────────────────────────────────────
+  # ── Sales ──────────────────────────────────────────────────────────────────
   dict(
     slug="black-friday", name="Black Friday", type="auto", category="Sales",
+    regions=["global"],
     seo_title="Black Friday 2026 Countdown — Days Until Black Friday",
     meta_desc="How many days until Black Friday 2026? Live countdown to the biggest shopping day of the year, the fourth Friday of November.",
     hero_desc="Countdown to Black Friday — fourth Friday of November.",
@@ -503,6 +584,7 @@ EVENTS = [
   ),
   dict(
     slug="cyber-monday", name="Cyber Monday", type="auto", category="Sales",
+    regions=["global"],
     seo_title="Cyber Monday 2026 Countdown — Days Until Cyber Monday",
     meta_desc="Live countdown to Cyber Monday 2026. The biggest online shopping day of the year falls on the Monday after Black Friday.",
     hero_desc="Countdown to Cyber Monday — the biggest online shopping day.",
@@ -516,6 +598,7 @@ EVENTS = [
   ),
   dict(
     slug="hot-sale", name="Hot Sale", type="variable", category="Sales",
+    regions=["es"],
     seo_title="Hot Sale Argentina 2027 Countdown — Cuántos días faltan para el Hot Sale",
     meta_desc="Cuenta regresiva en vivo para el Hot Sale Argentina 2027. El evento de descuentos online más grande del país.",
     hero_desc="Countdown to Hot Sale Argentina — Argentina's biggest online sale event.",
@@ -528,9 +611,10 @@ EVENTS = [
     ]
   ),
 
-  # ── Nature ─────────────────────────────────────────────────────────────
+  # ── Nature ─────────────────────────────────────────────────────────────────
   dict(
     slug="full-moon", name="Next Full Moon", type="auto", category="Nature",
+    regions=["global"],
     seo_title="Full Moon Countdown — Days Until the Next Full Moon",
     meta_desc="Live countdown to the next full moon. Exact days, hours and seconds until the full moon, updated in real time.",
     hero_desc="Countdown to the next full moon.",
@@ -544,6 +628,7 @@ EVENTS = [
   ),
   dict(
     slug="eclipse", name="Solar Eclipse", type="variable", category="Nature",
+    regions=["global"],
     seo_title="Solar Eclipse 2026 Countdown — Days Until the Total Solar Eclipse",
     meta_desc="Live countdown to the total solar eclipse on August 12, 2026. Visible from Spain, North Africa and parts of South America.",
     hero_desc="Countdown to the 2026 total solar eclipse.",
@@ -556,9 +641,10 @@ EVENTS = [
     ]
   ),
 
-  # ── Music – ES ────────────────────────────────────────────────────────
+  # ── Music ─────────────────────────────────────────────────────────────────
   dict(
     slug="lollapalooza-ar", name="Lollapalooza Argentina", type="variable", category="Music",
+    regions=["es"],
     seo_title="Lollapalooza Argentina 2027 Countdown — Cuántos días faltan",
     meta_desc="Cuenta regresiva en vivo para el Lollapalooza Argentina 2027 en el Hipódromo de San Isidro, Buenos Aires.",
     hero_desc="Countdown to Lollapalooza Argentina 2027.",
@@ -572,6 +658,7 @@ EVENTS = [
   ),
   dict(
     slug="lollapalooza-cl", name="Lollapalooza Chile", type="variable", category="Music",
+    regions=["es"],
     seo_title="Lollapalooza Chile 2027 Countdown — Cuántos días faltan",
     meta_desc="Cuenta regresiva en vivo para el Lollapalooza Chile 2027 en el Parque Bicentenario Cerrillos, Santiago.",
     hero_desc="Countdown to Lollapalooza Chile 2027.",
@@ -585,6 +672,7 @@ EVENTS = [
   ),
   dict(
     slug="cosquin-rock", name="Cosquín Rock", type="variable", category="Music",
+    regions=["es"],
     seo_title="Cosquín Rock 2027 Countdown — Cuántos días faltan",
     meta_desc="Cuenta regresiva en vivo para el Cosquín Rock 2027 en Santa María de Punilla, Córdoba.",
     hero_desc="Countdown to Cosquín Rock 2027.",
@@ -598,6 +686,7 @@ EVENTS = [
   ),
   dict(
     slug="rock-in-rio", name="Rock in Rio Lisboa", type="variable", category="Music",
+    regions=["pt"],
     seo_title="Rock in Rio Lisboa 2026 Countdown — Days Until Rock in Rio",
     meta_desc="Live countdown to Rock in Rio Lisboa 2026 at Parque da Bela Vista, Lisbon. Starts September 18, 2026.",
     hero_desc="Countdown to Rock in Rio Lisboa 2026.",
@@ -610,9 +699,10 @@ EVENTS = [
     ]
   ),
 
-  # ── Fashion ───────────────────────────────────────────────────────────
+  # ── Fashion ────────────────────────────────────────────────────────────────
   dict(
     slug="nyfw", name="New York Fashion Week", type="variable", category="Fashion",
+    regions=["global"],
     seo_title="New York Fashion Week 2026 Countdown — Days Until NYFW",
     meta_desc="Live countdown to New York Fashion Week September 2026 (Spring/Summer 2027 collections).",
     hero_desc="Countdown to New York Fashion Week — September 2026.",
@@ -626,6 +716,7 @@ EVENTS = [
   ),
   dict(
     slug="paris-fw", name="Paris Fashion Week", type="variable", category="Fashion",
+    regions=["global", "fr"],
     seo_title="Paris Fashion Week 2026 Countdown — Days Until PFW",
     meta_desc="Live countdown to Paris Fashion Week September 2026 — the final and most glamorous of the Big Four fashion weeks.",
     hero_desc="Countdown to Paris Fashion Week — September 2026.",
@@ -639,6 +730,7 @@ EVENTS = [
   ),
   dict(
     slug="milan-fw", name="Milan Fashion Week", type="variable", category="Fashion",
+    regions=["global"],
     seo_title="Milan Fashion Week 2026 Countdown — Days Until MFW",
     meta_desc="Live countdown to Milan Fashion Week September 2026, featuring Prada, Gucci, Versace, Armani and more.",
     hero_desc="Countdown to Milan Fashion Week — September 2026.",
@@ -652,6 +744,7 @@ EVENTS = [
   ),
   dict(
     slug="bafweek", name="Buenos Aires Fashion Week", type="variable", category="Fashion",
+    regions=["es"],
     seo_title="Buenos Aires Fashion Week 2026 Countdown — Cuántos días faltan",
     meta_desc="Cuenta regresiva en vivo para el Buenos Aires Fashion Week 2026, la semana de la moda más importante de Argentina.",
     hero_desc="Countdown to Buenos Aires Fashion Week 2026.",
@@ -664,9 +757,10 @@ EVENTS = [
     ]
   ),
 
-  # ── Politics ──────────────────────────────────────────────────────────
+  # ── Politics ───────────────────────────────────────────────────────────────
   dict(
     slug="elecciones-ar", name="Argentine Elections 2027", type="auto", category="Politics",
+    regions=["es"],
     seo_title="Argentine Elections 2027 Countdown — Días para las Elecciones",
     meta_desc="Cuenta regresiva para las Elecciones Generales Argentina 2027, estimadas para el 26 de octubre de 2027.",
     hero_desc="Countdown to the Argentine General Elections 2027.",
@@ -680,30 +774,7 @@ EVENTS = [
   ),
 ]
 
-# ─── HTML template ─────────────────────────────────────────────────────────
-
-def faq_json_ld(slug, name, faqs):
-    items = []
-    for q, a in faqs:
-        items.append(f'''    {{
-      "@type": "Question",
-      "name": "{q.replace('"', '&quot;')}",
-      "acceptedAnswer": {{ "@type": "Answer", "text": "{a.replace('"', '&quot;')}" }}
-    }}''')
-    return "[\n" + ",\n".join(items) + "\n  ]"
-
-def faq_html(faqs):
-    if not faqs:
-        return ""
-    items = "".join(
-        f'<div class="cd-faq-item"><h3 class="cd-faq-q">{q}</h3><p class="cd-faq-a">{a}</p></div>'
-        for q, a in faqs
-    )
-    return f'''<div class="cd-article">
-  <p class="cd-article-body">{{}}</p>
-  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2>{items}</div>
-</div>'''
-
+# ─── Category colours ──────────────────────────────────────────────────────────
 CAT_COLORS = {
   'Releases':      ('#C084FC', 'rgba(192,132,252,.25)', 'rgba(192,132,252,.1)'),
   'Sports':        ('#FB923C', 'rgba(251,146,60,.25)',  'rgba(251,146,60,.1)'),
@@ -717,39 +788,119 @@ CAT_COLORS = {
   'Technology':    ('#34D399', 'rgba(52,211,153,.2)',   'rgba(52,211,153,.08)'),
 }
 
-def generate_page(ev):
-    slug       = ev["slug"]
-    name       = ev["name"]
-    ev_type    = ev["type"]
-    category   = ev["category"]
-    seo_title  = ev["seo_title"]
-    meta_desc  = ev["meta_desc"]
-    hero_desc  = ev["hero_desc"]
-    content    = ev.get("content", "")
-    faqs       = ev.get("faqs", [])
-    cat_color, cat_glow, cat_soft = CAT_COLORS.get(category, ('#818CF8','rgba(129,140,248,.2)','rgba(129,140,248,.08)'))
+# ─── Pre-compute which (lang, slug) pages to generate ─────────────────────────
+def compute_lang_pages():
+    pages = {}  # slug -> set of langs
+    for ev in EVENTS:
+        slug = ev["slug"]
+        langs = {"en"}
+        for region in ev.get("regions", ["global"]):
+            if region == "global":
+                for lang in ["es", "pt", "fr"]:
+                    if slug in TRANSLATIONS.get(lang, {}).get("events", {}):
+                        langs.add(lang)
+            elif region in ("es", "pt", "fr"):
+                if slug in TRANSLATIONS.get(region, {}).get("events", {}):
+                    langs.add(region)
+        pages[slug] = langs
+    return pages
 
+SLUG_LANGS = compute_lang_pages()
+
+# ─── Helpers ───────────────────────────────────────────────────────────────────
+def faq_json_ld(slug, name, faqs):
+    items = []
+    for q, a in faqs:
+        items.append(f'''    {{
+      "@type": "Question",
+      "name": "{q.replace('"', '&quot;')}",
+      "acceptedAnswer": {{ "@type": "Answer", "text": "{a.replace('"', '&quot;')}" }}
+    }}''')
+    return "[\n" + ",\n".join(items) + "\n  ]"
+
+# ─── Page generator ────────────────────────────────────────────────────────────
+def generate_page(ev, lang="en"):
+    slug      = ev["slug"]
+    category  = ev["category"]
+    ev_type   = ev["type"]
+    cat_color, cat_glow, cat_soft = CAT_COLORS.get(
+        category, ('#818CF8', 'rgba(129,140,248,.2)', 'rgba(129,140,248,.08)')
+    )
+
+    # Translation lookup
+    t         = TRANSLATIONS.get(lang, {}).get("events", {}).get(slug, {}) if lang != "en" else {}
+    html_lang = TRANSLATIONS.get(lang, {}).get("html_lang", "en") if lang != "en" else "en"
+    faq_title = TRANSLATIONS.get(lang, {}).get("faq_title", "Frequently Asked Questions")
+
+    name      = t.get("name",      ev["name"])
+    seo_title = t.get("seo_title", ev["seo_title"])
+    meta_desc = t.get("meta_desc", ev["meta_desc"])
+    hero_desc = t.get("hero_desc", ev["hero_desc"])
+    content   = t.get("content",   ev.get("content", ""))
+    faqs      = t.get("faqs",      ev.get("faqs", []))
+
+    # URLs
+    en_url   = f"{BASE_URL}/countdown/{slug}/"
+    page_url = en_url if lang == "en" else f"{BASE_URL}/{lang}/countdown/{slug}/"
+
+    # Language button links
+    def lang_href(btn_lang):
+        if btn_lang == "en":
+            return f"/countdown/{slug}/"
+        elif btn_lang in SLUG_LANGS.get(slug, set()):
+            return f"/{btn_lang}/countdown/{slug}/"
+        else:
+            return f"/{btn_lang}/"
+
+    def lang_btn(btn_lang, label):
+        active = ' active' if btn_lang == lang else ''
+        if btn_lang == lang:
+            return f'<button class="lang-btn{active}">{label}</button>'
+        return f'<button class="lang-btn{active}" onclick="location.href=\'{lang_href(btn_lang)}\'">{label}</button>'
+
+    lang_buttons = (
+        lang_btn("en", "EN") +
+        lang_btn("es", "ES") +
+        lang_btn("pt", "PT") +
+        lang_btn("fr", "FR")
+    )
+
+    # hreflang tags
+    hreflang = f'<link rel="alternate" hreflang="en" href="{en_url}">\n'
+    hreflang += f'<link rel="alternate" hreflang="x-default" href="{en_url}">\n'
+    for alt_lang, alt_hl in [("es","es"), ("pt","pt-BR"), ("fr","fr")]:
+        if alt_lang in SLUG_LANGS.get(slug, set()):
+            hreflang += f'<link rel="alternate" hreflang="{alt_hl}" href="{BASE_URL}/{alt_lang}/countdown/{slug}/">\n'
+
+    # FAQ HTML
     faq_items_html = "".join(
         f'<div class="cd-faq-item"><h3 class="cd-faq-q">{q}</h3><p class="cd-faq-a">{a}</p></div>'
         for q, a in faqs
     )
     faq_section = f'''<div class="cd-article">
   <p class="cd-article-body">{content}</p>
-  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2>{faq_items_html}</div>
+  <div class="cd-faq"><h2 class="cd-faq-title">{faq_title}</h2>{faq_items_html}</div>
 </div>''' if (content or faqs) else ""
 
     faq_json = faq_json_ld(slug, name, faqs) if faqs else "[]"
-    country_variants = ev.get("country_variants", [])
 
-    # ── country picker HTML + render script ───────────────────────
+    # Country picker
+    country_variants = ev.get("country_variants", [])
+    default_variant_by_lang = ev.get("default_variant_by_lang", {})
+
     if country_variants:
-        cv_js = json.dumps([{"code": v["code"], "label": v["label"], "dates": v["dates"]} for v in country_variants])
+        default_idx = default_variant_by_lang.get(lang, 0)
+        cv_js = json.dumps([
+            {"code": v["code"], "label": v["label"], "dates": v["dates"]}
+            for v in country_variants
+        ])
         country_picker_html = f'''<div class="cd-country-picker">
   <p class="cd-cpicker-label">Date varies by country — select yours:</p>
   <div class="cd-cpicker-grid" id="cd-cpicker-grid"></div>
 </div>'''
         render_script = f'''(function() {{
   var VARIANTS = {cv_js};
+  var DEFAULT_IDX = {default_idx};
   var _cfg = {{
     slug: {json.dumps(slug)},
     type: 'fixed',
@@ -767,7 +918,7 @@ def generate_page(ev):
   var grid = document.getElementById('cd-cpicker-grid');
   VARIANTS.forEach(function(v, idx) {{
     var btn = document.createElement('button');
-    btn.className = 'cd-cpicker-btn' + (idx === 0 ? ' active' : '');
+    btn.className = 'cd-cpicker-btn' + (idx === DEFAULT_IDX ? ' active' : '');
     btn.textContent = v.label;
     btn.onclick = function() {{
       document.querySelectorAll('.cd-cpicker-btn').forEach(function(b) {{ b.classList.remove('active'); }});
@@ -776,7 +927,7 @@ def generate_page(ev):
     }};
     grid.appendChild(btn);
   }});
-  CountdownEngine.render('root', Object.assign({{}}, _cfg, {{ date: nextDate(VARIANTS[0].dates) }}));
+  CountdownEngine.render('root', Object.assign({{}}, _cfg, {{ date: nextDate(VARIANTS[DEFAULT_IDX].dates) }}));
 }})();'''
     else:
         country_picker_html = ""
@@ -789,22 +940,20 @@ def generate_page(ev):
 }});'''
 
     return f'''<!DOCTYPE html>
-<html lang="en">
+<html lang="{html_lang}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{seo_title} | countdowns.site</title>
 <meta name="description" content="{meta_desc}">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="{BASE_URL}/countdown/{slug}/">
+<link rel="canonical" href="{en_url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:url" content="{BASE_URL}/countdown/{slug}/">
+<meta property="og:url" content="{page_url}">
 <meta property="og:title" content="{seo_title}">
 <meta property="og:description" content="{meta_desc}">
-<link rel="alternate" hreflang="en" href="{BASE_URL}/countdown/{slug}/">
-<link rel="alternate" hreflang="x-default" href="{BASE_URL}/countdown/{slug}/">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+{hreflang}<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{{--cat-color:{cat_color};--cat-glow:{cat_glow};--cat-soft:{cat_soft};}}</style>
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
@@ -814,11 +963,11 @@ def generate_page(ev):
   "@graph": [
     {{
       "@type": "WebPage",
-      "@id": "{BASE_URL}/countdown/{slug}/#webpage",
-      "url": "{BASE_URL}/countdown/{slug}/",
+      "@id": "{page_url}#webpage",
+      "url": "{page_url}",
       "name": "{seo_title}",
       "description": "{meta_desc}",
-      "inLanguage": "en"
+      "inLanguage": "{html_lang}"
     }},
     {{
       "@type": "FAQPage",
@@ -834,10 +983,7 @@ def generate_page(ev):
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      {lang_buttons}
     </div>
   </div>
 </header>
@@ -850,7 +996,7 @@ def generate_page(ev):
 <script src="/countdown-engine.js"></script>
 <script>
 {render_script}
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {{
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');
@@ -872,17 +1018,28 @@ def generate_page(ev):
 </body>
 </html>'''
 
-# ─── Generate files ────────────────────────────────────────────────────────
-
+# ─── Generate all pages ────────────────────────────────────────────────────────
 generated = 0
 for ev in EVENTS:
     slug = ev["slug"]
-    out_dir = os.path.join("countdown", slug)
-    os.makedirs(out_dir, exist_ok=True)
-    out_path = os.path.join(out_dir, "index.html")
-    with open(out_path, "w", encoding="utf-8") as f:
-        f.write(generate_page(ev))
-    generated += 1
+    langs_for_slug = SLUG_LANGS[slug]
+
+    # EN page → /countdown/{slug}/
+    en_dir = os.path.join("countdown", slug)
+    os.makedirs(en_dir, exist_ok=True)
+    with open(os.path.join(en_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(generate_page(ev, "en"))
     print(f"  ✓  /countdown/{slug}/")
+    generated += 1
+
+    # Translated pages → /{lang}/countdown/{slug}/
+    for lang in ["es", "pt", "fr"]:
+        if lang in langs_for_slug:
+            out_dir = os.path.join(lang, "countdown", slug)
+            os.makedirs(out_dir, exist_ok=True)
+            with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
+                f.write(generate_page(ev, lang))
+            print(f"  ✓  /{lang}/countdown/{slug}/")
+            generated += 1
 
 print(f"\nGenerated {generated} pages.")

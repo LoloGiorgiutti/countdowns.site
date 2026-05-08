@@ -14,6 +14,9 @@
 <meta property="og:description" content="How many days until Christmas 2026? Live countdown showing exact days, hours, minutes and seconds until December 25.">
 <link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/christmas/">
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/christmas/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/countdown/christmas/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/countdown/christmas/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/countdown/christmas/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{--cat-color:#4ADE80;--cat-glow:rgba(74,222,128,.2);--cat-soft:rgba(74,222,128,.08);}</style>
@@ -70,10 +73,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/christmas/'">ES</button><button class="lang-btn" onclick="location.href='/pt/countdown/christmas/'">PT</button><button class="lang-btn" onclick="location.href='/fr/countdown/christmas/'">FR</button>
     </div>
   </div>
 </header>
@@ -95,7 +95,7 @@ CountdownEngine.render('root', {
   category: "Holidays",
   description: "How many days until Christmas?"
 });
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');

@@ -14,6 +14,8 @@
 <meta property="og:description" content="Live countdown to the 2026 Copa Libertadores Final, South America's biggest club football match. Date and venue TBD by CONMEBOL.">
 <link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/copa-libertadores/">
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/copa-libertadores/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/countdown/copa-libertadores/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/countdown/copa-libertadores/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{--cat-color:#FB923C;--cat-glow:rgba(251,146,60,.25);--cat-soft:rgba(251,146,60,.1);}</style>
@@ -65,10 +67,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button>
-      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/copa-libertadores/'">ES</button><button class="lang-btn" onclick="location.href='/pt/countdown/copa-libertadores/'">PT</button><button class="lang-btn" onclick="location.href='/fr/'">FR</button>
     </div>
   </div>
 </header>
@@ -90,7 +89,7 @@ CountdownEngine.render('root', {
   category: "Sports",
   description: "Countdown to the 2026 Copa Libertadores Final."
 });
-// ── Theme toggle ──────────────────────────────────────────────
+// ── Theme toggle ──────────────────────────────────────────────────────
 (function() {
   var btn = document.getElementById('theme-toggle');
   var saved = localStorage.getItem('cd_theme');

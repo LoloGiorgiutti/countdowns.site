@@ -120,6 +120,39 @@
       'nyfw': 'Semaine Mode NY',
       'paris-fw': 'Semaine Mode Paris',
       'milan-fw': 'Semaine Mode Milan',
+      'dia-del-nino': 'Journée des Enfants',
+    };
+  var LANG_URLS = {
+      'gta6': '/fr/countdown/gta6/',
+      'iphone': '/fr/countdown/iphone/',
+      'f1': '/fr/countdown/f1/',
+      'world-cup': '/fr/countdown/world-cup/',
+      'ucl-final': '/fr/countdown/ucl-final/',
+      'nba-finals': '/fr/countdown/nba-finals/',
+      'le-mans': '/fr/countdown/le-mans/',
+      'wimbledon': '/fr/countdown/wimbledon/',
+      'tour-de-france': '/fr/countdown/tour-de-france/',
+      'olympics-2028': '/fr/countdown/olympics-2028/',
+      'christmas': '/fr/countdown/christmas/',
+      'new-year': '/fr/countdown/new-year/',
+      'halloween': '/fr/countdown/halloween/',
+      'valentines': '/fr/countdown/valentines/',
+      'easter': '/fr/countdown/easter/',
+      'mothers-day': '/fr/countdown/mothers-day/',
+      'fathers-day': '/fr/countdown/fathers-day/',
+      'bastille-day': '/fr/countdown/bastille-day/',
+      'oscars': '/fr/countdown/oscars/',
+      'grammys': '/fr/countdown/grammys/',
+      'met-gala': '/fr/countdown/met-gala/',
+      'eurovision': '/fr/countdown/eurovision/',
+      'cannes': '/fr/countdown/cannes/',
+      'black-friday': '/fr/countdown/black-friday/',
+      'cyber-monday': '/fr/countdown/cyber-monday/',
+      'full-moon': '/fr/countdown/full-moon/',
+      'eclipse': '/fr/countdown/eclipse/',
+      'nyfw': '/fr/countdown/nyfw/',
+      'paris-fw': '/fr/countdown/paris-fw/',
+      'milan-fw': '/fr/countdown/milan-fw/',
     };
 
   var EVENTS = [
@@ -173,6 +206,10 @@
     { slug:'bafweek',   name:'Buenos Aires Fashion Week',      type:'variable', regions:['es'],     cat:'Fashion',       url:'/countdown/bafweek/'    },
     /* ── Politics ── */
     { slug:'elecciones-ar', name:'Argentine Elections',        type:'auto',     regions:['es'],     cat:'Politics',      url:'/countdown/elecciones-ar/' },
+    /* ── ES-only Holidays ── */
+    { slug:'25-de-mayo',   name:'25 de Mayo',                 type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/25-de-mayo/'    },
+    /* ── Children's Day – global ── */
+    { slug:'dia-del-nino', name:"Children's Day",             type:'fixed',    regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },
   ];
 
   var currentLang = 'fr';
@@ -220,7 +257,8 @@
               '<div class="cd-card-num">' + data.days + '</div>' +
               '<div class="cd-card-lbl">jours</div>';
     }
-    return '<a href="' + ev.url + '" class="cd-card" ' + style + '>' + inner + '</a>';
+    var cardUrl = LANG_URLS[ev.slug] || ev.url;
+    return '<a href="' + cardUrl + '" class="cd-card" ' + style + '>' + inner + '</a>';
   }
 
   function renderHub(results) {
