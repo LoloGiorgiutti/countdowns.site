@@ -807,6 +807,7 @@ def generate_page(ev):
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{{--cat-color:{cat_color};--cat-glow:{cat_glow};--cat-soft:{cat_soft};}}</style>
+<script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <script type="application/ld+json">
 {{
   "@context": "https://schema.org",
@@ -830,22 +831,43 @@ def generate_page(ev):
 <body>
 <header class="site-header">
   <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
-  <div class="lang-seg" role="group" aria-label="Language">
-    <button class="lang-btn active">EN</button>
-    <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-    <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-    <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+  <div class="header-right">
+    <button class="theme-btn" id="theme-toggle">Light</button>
+    <div class="lang-seg" role="group" aria-label="Language">
+      <button class="lang-btn active">EN</button>
+      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
+      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
+      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+    </div>
   </div>
 </header>
 <div id="root"><div style="min-height:100vh;background:#080812"></div></div>
 {country_picker_html}
 {faq_section}
 <footer class="site-footer">
-  countdowns<span style="color:rgba(255,255,255,.25)">.site</span>
+  countdowns<span class="logo-tld">.site</span>
 </footer>
 <script src="/countdown-engine.js"></script>
 <script>
 {render_script}
+// ── Theme toggle ──────────────────────────────────────────────
+(function() {{
+  var btn = document.getElementById('theme-toggle');
+  var saved = localStorage.getItem('cd_theme');
+  if (saved === 'light') {{ document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }}
+  btn.addEventListener('click', function() {{
+    var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {{
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('cd_theme', 'dark');
+      btn.textContent = 'Light';
+    }} else {{
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('cd_theme', 'light');
+      btn.textContent = 'Dark';
+    }}
+  }});
+}})();
 </script>
 </body>
 </html>'''

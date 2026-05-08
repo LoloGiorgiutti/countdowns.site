@@ -156,7 +156,10 @@
   }
 
   /* ─── TICKER ────────────────────────────────────────────────── */
+  var _tickerHandle = null;
+
   function startTicker(targetDate) {
+    if (_tickerHandle) { clearInterval(_tickerHandle); _tickerHandle = null; }
     function tick() {
       var diff = targetDate - new Date();
       if (diff <= 0) { location.reload(); return; }
@@ -174,7 +177,7 @@
       if (sEl) sEl.textContent = pad(secs);
     }
     tick();
-    setInterval(tick, 1000);
+    _tickerHandle = setInterval(tick, 1000);
   }
 
   /* ─── CATEGORY COLORS ───────────────────────────────────────── */

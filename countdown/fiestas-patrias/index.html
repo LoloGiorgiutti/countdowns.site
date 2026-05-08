@@ -17,6 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{--cat-color:#4ADE80;--cat-glow:rgba(74,222,128,.2);--cat-soft:rgba(74,222,128,.08);}</style>
+<script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -66,11 +67,14 @@
 <body>
 <header class="site-header">
   <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
-  <div class="lang-seg" role="group" aria-label="Language">
-    <button class="lang-btn active">EN</button>
-    <button class="lang-btn" onclick="location.href='/es/'">ES</button>
-    <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
-    <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+  <div class="header-right">
+    <button class="theme-btn" id="theme-toggle">Light</button>
+    <div class="lang-seg" role="group" aria-label="Language">
+      <button class="lang-btn active">EN</button>
+      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
+      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
+      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+    </div>
   </div>
 </header>
 <div id="root"><div style="min-height:100vh;background:#080812"></div></div>
@@ -80,7 +84,7 @@
   <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">¿Cuándo son las Fiestas Patrias Chile 2026?</h3><p class="cd-faq-a">Las Fiestas Patrias son el 18 y 19 de septiembre de 2026.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">¿Qué se celebra el 18 de septiembre?</h3><p class="cd-faq-a">Se conmemora la Primera Junta Nacional de Gobierno de Chile, formada el 18 de septiembre de 1810.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">¿Qué se celebra el 19 de septiembre?</h3><p class="cd-faq-a">El 19 de septiembre es el Día de las Glorias del Ejército, que conmemora la primera batalla del Ejército de Chile.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">¿Qué es una fonda?</h3><p class="cd-faq-a">Las fondas son carpas o locales festivos donde se baila cueca, se comen empanadas y anticuchos, y se celebra con chicha y vino durante las Fiestas Patrias.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">When is Chilean Independence Day?</h3><p class="cd-faq-a">Chile's national holiday (Fiestas Patrias) is on September 18–19 each year. The key date is September 18, commemorating the First National Government of 1810.</p></div></div>
 </div>
 <footer class="site-footer">
-  countdowns<span style="color:rgba(255,255,255,.25)">.site</span>
+  countdowns<span class="logo-tld">.site</span>
 </footer>
 <script src="/countdown-engine.js"></script>
 <script>
@@ -91,6 +95,24 @@ CountdownEngine.render('root', {
   category: "Holidays",
   description: "Countdown to Chilean Independence Day \u2014 September 18."
 });
+// ── Theme toggle ──────────────────────────────────────────────
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  var saved = localStorage.getItem('cd_theme');
+  if (saved === 'light') { document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }
+  btn.addEventListener('click', function() {
+    var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('cd_theme', 'dark');
+      btn.textContent = 'Light';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('cd_theme', 'light');
+      btn.textContent = 'Dark';
+    }
+  });
+})();
 </script>
 </body>
 </html>
