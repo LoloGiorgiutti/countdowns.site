@@ -1,0 +1,536 @@
+#!/usr/bin/env python3
+"""
+Generate language hub pages: /es/, /pt/, /fr/
+Run from repo root: python3 _generate_hubs.py
+"""
+import os
+
+BASE_URL = "https://countdowns.site"
+
+LANGS = [
+  dict(
+    code="es", html_lang="es",
+    dir="es",
+    canonical=f"{BASE_URL}/es/",
+    og_locale="es_ES",
+    title="Countdowns — Cada cuenta regresiva que importa",
+    meta_desc="Contadores en tiempo real para deportes, lanzamientos, feriados, ventas y más. Gratis, en vivo, sin anuncios.",
+    og_title="Countdowns — Cada cuenta regresiva que importa",
+    og_desc="Contadores en tiempo real para todos los eventos que el mundo está esperando.",
+    hero_label="En vivo · actualizado en tiempo real",
+    h1="Cada cuenta regresiva<br>que <em>importa</em>",
+    hero_sub="Deportes, lanzamientos, feriados, ventas — cada evento del mundo.",
+    sort_chrono="Más próximos",
+    sort_cat="Por categoría",
+    bucket_today="Hoy",
+    bucket_week="Esta semana",
+    bucket_month="Este mes",
+    bucket_soon="Muy pronto",
+    bucket_year="Este año",
+    bucket_future="Año próximo +",
+    bucket_tba="Fecha por confirmar",
+    card_tba="Fecha TBA",
+    card_today="Hoy",
+    card_days="días",
+    lang_btn_active="ES",
+    # Translated event names (override)
+    names={
+      'gta6':              'GTA VI',
+      'iphone':            'Próximo iPhone',
+      'f1':                'Próxima Carrera F1',
+      'world-cup':         'Copa del Mundo 2026',
+      'ucl-final':         'Final Champions League',
+      'nba-finals':        'Finales NBA',
+      'le-mans':           '24h de Le Mans',
+      'wimbledon':         'Wimbledon',
+      'tour-de-france':    'Tour de France',
+      'olympics-2028':     'Olimpiadas LA 2028',
+      'copa-libertadores': 'Final Copa Libertadores',
+      'christmas':         'Navidad',
+      'new-year':          'Año Nuevo',
+      'halloween':         'Halloween',
+      'valentines':        'Día de San Valentín',
+      'easter':            'Pascua',
+      'mothers-day':       'Día de la Madre',
+      'fathers-day':       'Día del Padre',
+      'dia-de-los-muertos':'Día de los Muertos',
+      'cinco-de-mayo':     'Cinco de Mayo',
+      'fiestas-patrias':   'Fiestas Patrias Chile',
+      'oscars':            'Premios Oscar',
+      'grammys':           'Grammy Awards',
+      'met-gala':          'Met Gala',
+      'eurovision':        'Eurovisión',
+      'cannes':            'Festival de Cannes',
+      'black-friday':      'Black Friday',
+      'cyber-monday':      'Cyber Monday',
+      'hot-sale':          'Hot Sale Argentina',
+      'full-moon':         'Próxima Luna Llena',
+      'eclipse':           'Eclipse Solar',
+      'lollapalooza-ar':   'Lollapalooza Argentina',
+      'lollapalooza-cl':   'Lollapalooza Chile',
+      'cosquin-rock':      'Cosquín Rock',
+      'nyfw':              'Semana Moda NY',
+      'paris-fw':          'Semana Moda París',
+      'milan-fw':          'Semana Moda Milán',
+      'bafweek':           'BAFWeek Buenos Aires',
+      'elecciones-ar':     'Elecciones Argentina 2027',
+    },
+    json_ld_name="Countdowns en Español",
+    json_ld_desc="Contadores en tiempo real para cada evento que importa",
+  ),
+  dict(
+    code="pt", html_lang="pt-BR",
+    dir="pt",
+    canonical=f"{BASE_URL}/pt/",
+    og_locale="pt_BR",
+    title="Countdowns — Cada contagem regressiva que importa",
+    meta_desc="Contagens regressivas em tempo real para esportes, lançamentos, feriados, promoções e mais. Grátis, ao vivo, sem anúncios.",
+    og_title="Countdowns — Cada contagem regressiva que importa",
+    og_desc="Contagens regressivas em tempo real para todos os eventos que o mundo está esperando.",
+    hero_label="Ao vivo · atualizado em tempo real",
+    h1="Cada contagem regressiva<br>que <em>importa</em>",
+    hero_sub="Esportes, lançamentos, feriados, promoções — cada evento do mundo.",
+    sort_chrono="Mais próximos",
+    sort_cat="Por categoria",
+    bucket_today="Hoje",
+    bucket_week="Esta semana",
+    bucket_month="Este mês",
+    bucket_soon="Em breve",
+    bucket_year="Este ano",
+    bucket_future="Próximo ano +",
+    bucket_tba="Data a confirmar",
+    card_tba="Data TBA",
+    card_today="Hoje",
+    card_days="dias",
+    lang_btn_active="PT",
+    names={
+      'gta6':           'GTA VI',
+      'iphone':         'Próximo iPhone',
+      'f1':             'Próxima Corrida F1',
+      'world-cup':      'Copa do Mundo 2026',
+      'ucl-final':      'Final da Champions',
+      'nba-finals':     'Finais da NBA',
+      'le-mans':        '24h de Le Mans',
+      'wimbledon':      'Wimbledon',
+      'tour-de-france': 'Tour de France',
+      'olympics-2028':  'Olimpíadas LA 2028',
+      'christmas':      'Natal',
+      'new-year':       'Ano Novo',
+      'halloween':      'Halloween',
+      'valentines':     'Dia dos Namorados',
+      'easter':         'Páscoa',
+      'mothers-day':    'Dia das Mães',
+      'fathers-day':    'Dia dos Pais',
+      'oscars':         'Oscar',
+      'grammys':        'Grammy Awards',
+      'met-gala':       'Met Gala',
+      'eurovision':     'Eurovision',
+      'cannes':         'Festival de Cannes',
+      'black-friday':   'Black Friday',
+      'cyber-monday':   'Cyber Monday',
+      'full-moon':      'Próxima Lua Cheia',
+      'eclipse':        'Eclipse Solar',
+      'rock-in-rio':    'Rock in Rio Lisboa',
+      'nyfw':           'Semana de Moda NY',
+      'paris-fw':       'Semana de Moda Paris',
+      'milan-fw':       'Semana de Moda Milão',
+    },
+    json_ld_name="Countdowns em Português",
+    json_ld_desc="Contagens regressivas em tempo real para cada evento que importa",
+  ),
+  dict(
+    code="fr", html_lang="fr",
+    dir="fr",
+    canonical=f"{BASE_URL}/fr/",
+    og_locale="fr_FR",
+    title="Countdowns — Chaque compte à rebours qui compte",
+    meta_desc="Comptes à rebours en temps réel pour le sport, les sorties, les fêtes, les soldes et plus. Gratuit, en direct, sans publicités.",
+    og_title="Countdowns — Chaque compte à rebours qui compte",
+    og_desc="Comptes à rebours en temps réel pour tous les événements que le monde attend.",
+    hero_label="En direct · mis à jour en temps réel",
+    h1="Chaque compte à rebours<br>qui <em>compte</em>",
+    hero_sub="Sport, sorties, fêtes, soldes — chaque événement que le monde attend.",
+    sort_chrono="Les plus proches",
+    sort_cat="Par catégorie",
+    bucket_today="Aujourd'hui",
+    bucket_week="Cette semaine",
+    bucket_month="Ce mois-ci",
+    bucket_soon="Bientôt",
+    bucket_year="Plus tard cette année",
+    bucket_future="L'année prochaine +",
+    bucket_tba="Date à confirmer",
+    card_tba="Date TBA",
+    card_today="Aujourd'hui",
+    card_days="jours",
+    lang_btn_active="FR",
+    names={
+      'gta6':           'GTA VI',
+      'iphone':         'Prochain iPhone',
+      'f1':             'Prochain Grand Prix F1',
+      'world-cup':      'Coupe du Monde 2026',
+      'ucl-final':      'Finale Champions League',
+      'nba-finals':     'Finales NBA',
+      'le-mans':        '24h du Mans',
+      'wimbledon':      'Wimbledon',
+      'tour-de-france': 'Tour de France',
+      'olympics-2028':  'JO Los Angeles 2028',
+      'christmas':      'Noël',
+      'new-year':       'Nouvel An',
+      'halloween':      'Halloween',
+      'valentines':     'Saint-Valentin',
+      'easter':         'Pâques',
+      'mothers-day':    'Fête des Mères',
+      'fathers-day':    'Fête des Pères',
+      'bastille-day':   'Fête Nationale (14 Juillet)',
+      'oscars':         'Oscars',
+      'grammys':        'Grammy Awards',
+      'met-gala':       'Met Gala',
+      'eurovision':     'Eurovision',
+      'cannes':         'Festival de Cannes',
+      'black-friday':   'Black Friday',
+      'cyber-monday':   'Cyber Monday',
+      'full-moon':      'Prochaine Pleine Lune',
+      'eclipse':        'Éclipse Solaire',
+      'nyfw':           'Semaine Mode NY',
+      'paris-fw':       'Semaine Mode Paris',
+      'milan-fw':       'Semaine Mode Milan',
+    },
+    json_ld_name="Countdowns en Français",
+    json_ld_desc="Comptes à rebours en temps réel pour chaque événement qui compte",
+  ),
+]
+
+EVENTS_JS = """    /* ── Releases ── */
+    { slug:'gta6',       name:'GTA VI',                        type:'variable', regions:['global'], cat:'Releases',      url:'/countdown/gta6/'       },
+    { slug:'iphone',     name:'Next iPhone',                   type:'variable', regions:['global'], cat:'Releases',      url:'/countdown/iphone/'     },
+    /* ── Sports – Global ── */
+    { slug:'f1',         name:'F1 Next Race',                  type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/f1/'         },
+    { slug:'world-cup',  name:'2026 FIFA World Cup',           type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/world-cup/'  },
+    { slug:'ucl-final',  name:'Champions League Final',        type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/ucl-final/'  },
+    { slug:'nba-finals', name:'NBA Finals',                    type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/nba-finals/' },
+    { slug:'le-mans',    name:'24h Le Mans',                   type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/le-mans/'    },
+    { slug:'wimbledon',  name:'Wimbledon',                     type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/wimbledon/'  },
+    { slug:'tour-de-france', name:'Tour de France',            type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/tour-de-france/' },
+    { slug:'olympics-2028',  name:'LA 2028 Olympics',          type:'auto',     regions:['global'], cat:'Sports',        url:'/countdown/olympics-2028/'  },
+    { slug:'copa-libertadores', name:'Copa Libertadores Final',type:'variable', regions:['es'],     cat:'Sports',        url:'/countdown/copa-libertadores/' },
+    /* ── Holidays – Global ── */
+    { slug:'christmas',   name:'Christmas',                    type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/christmas/'   },
+    { slug:'new-year',    name:'New Year',                     type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/new-year/'    },
+    { slug:'halloween',   name:'Halloween',                    type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/halloween/'   },
+    { slug:'valentines',  name:"Valentine's Day",              type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/valentines/'  },
+    { slug:'easter',      name:'Easter',                       type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/easter/'      },
+    { slug:'mothers-day', name:"Mother's Day",                 type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/mothers-day/' },
+    { slug:'fathers-day', name:"Father's Day",                 type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/fathers-day/' },
+    { slug:'dia-de-los-muertos', name:'Día de los Muertos',    type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/dia-de-los-muertos/' },
+    { slug:'cinco-de-mayo',   name:'Cinco de Mayo',            type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/cinco-de-mayo/'    },
+    { slug:'fiestas-patrias', name:'Fiestas Patrias Chile',    type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/fiestas-patrias/'  },
+    { slug:'bastille-day',    name:'Bastille Day',             type:'auto',     regions:['fr'],     cat:'Holidays',      url:'/countdown/bastille-day/'     },
+    /* ── Entertainment – Global ── */
+    { slug:'oscars',     name:'Oscars',                        type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/oscars/'     },
+    { slug:'grammys',    name:'Grammy Awards',                 type:'variable', regions:['global'], cat:'Entertainment', url:'/countdown/grammys/'    },
+    { slug:'met-gala',   name:'Met Gala',                      type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/met-gala/'   },
+    { slug:'eurovision', name:'Eurovision',                    type:'variable', regions:['global','fr'], cat:'Entertainment', url:'/countdown/eurovision/' },
+    { slug:'cannes',     name:'Cannes Film Festival',          type:'variable', regions:['global'], cat:'Entertainment', url:'/countdown/cannes/'     },
+    /* ── Sales – Global ── */
+    { slug:'black-friday', name:'Black Friday',                type:'auto',     regions:['global'], cat:'Sales',         url:'/countdown/black-friday/' },
+    { slug:'cyber-monday', name:'Cyber Monday',                type:'auto',     regions:['global'], cat:'Sales',         url:'/countdown/cyber-monday/' },
+    { slug:'hot-sale',     name:'Hot Sale',                    type:'variable', regions:['es'],     cat:'Sales',         url:'/countdown/hot-sale/'     },
+    /* ── Nature – Global ── */
+    { slug:'full-moon',  name:'Next Full Moon',                type:'auto',     regions:['global'], cat:'Nature',        url:'/countdown/full-moon/'  },
+    { slug:'eclipse',    name:'Solar Eclipse',                 type:'variable', regions:['global'], cat:'Nature',        url:'/countdown/eclipse/'    },
+    /* ── Music ── */
+    { slug:'lollapalooza-ar', name:'Lollapalooza Argentina',   type:'variable', regions:['es'],     cat:'Music',         url:'/countdown/lollapalooza-ar/' },
+    { slug:'lollapalooza-cl', name:'Lollapalooza Chile',       type:'variable', regions:['es'],     cat:'Music',         url:'/countdown/lollapalooza-cl/' },
+    { slug:'cosquin-rock',    name:'Cosquín Rock',             type:'variable', regions:['es'],     cat:'Music',         url:'/countdown/cosquin-rock/'    },
+    { slug:'rock-in-rio',     name:'Rock in Rio',              type:'variable', regions:['pt'],     cat:'Music',         url:'/countdown/rock-in-rio/'     },
+    /* ── Fashion – Global ── */
+    { slug:'nyfw',      name:'New York Fashion Week',          type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/nyfw/'       },
+    { slug:'paris-fw',  name:'Paris Fashion Week',             type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/paris-fw/'   },
+    { slug:'milan-fw',  name:'Milan Fashion Week',             type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/milan-fw/'   },
+    { slug:'bafweek',   name:'Buenos Aires Fashion Week',      type:'variable', regions:['es'],     cat:'Fashion',       url:'/countdown/bafweek/'    },
+    /* ── Politics ── */
+    { slug:'elecciones-ar', name:'Argentine Elections',        type:'auto',     regions:['es'],     cat:'Politics',      url:'/countdown/elecciones-ar/' },"""
+
+
+def generate_hub(lang):
+    c = lang["code"]
+    names_js = "{\n" + "".join(
+        f"      '{k}': '{v}',\n" for k, v in lang["names"].items()
+    ) + "    }"
+
+    return f'''<!DOCTYPE html>
+<html lang="{lang['html_lang']}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{lang['title']}</title>
+<meta name="description" content="{lang['meta_desc']}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{lang['canonical']}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="{lang['canonical']}">
+<meta property="og:title" content="{lang['og_title']}">
+<meta property="og:description" content="{lang['og_desc']}">
+<meta property="og:locale" content="{lang['og_locale']}">
+
+<link rel="alternate" hreflang="en" href="https://countdowns.site/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/">
+<link rel="alternate" hreflang="pt" href="https://countdowns.site/pt/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/">
+<link rel="alternate" hreflang="x-default" href="https://countdowns.site/">
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/countdown.css">
+<script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "{lang['canonical']}#website",
+  "url": "{lang['canonical']}",
+  "name": "{lang['json_ld_name']}",
+  "description": "{lang['json_ld_desc']}",
+  "inLanguage": "{lang['html_lang']}"
+}}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
+  <div class="header-right">
+    <button class="theme-btn" id="theme-toggle">Light</button>
+    <div class="lang-seg" role="group" aria-label="Language">
+      <button class="lang-btn" onclick="location.href='/'">EN</button>
+      <button class="lang-btn{' active' if c == 'es' else ''}" onclick="location.href='/es/'">ES</button>
+      <button class="lang-btn{' active' if c == 'pt' else ''}" onclick="location.href='/pt/'">PT</button>
+      <button class="lang-btn{' active' if c == 'fr' else ''}" onclick="location.href='/fr/'">FR</button>
+    </div>
+  </div>
+</header>
+
+<div class="hub-hero">
+  <div class="hub-hero-label"><span></span>{lang['hero_label']}</div>
+  <h1>{lang['h1']}</h1>
+  <p class="hub-hero-sub">{lang['hero_sub']}</p>
+  <div class="sort-toggle" role="group" aria-label="Sort order">
+    <button class="sort-btn active" data-sort="chrono">{lang['sort_chrono']}</button>
+    <button class="sort-btn" data-sort="category">{lang['sort_cat']}</button>
+  </div>
+</div>
+
+<main class="hub-body" id="hub-body">
+  <div id="hub-content"></div>
+</main>
+
+<footer class="site-footer">
+  countdowns<span class="logo-tld">.site</span>
+</footer>
+
+<script src="/countdown-engine.js"></script>
+<script>
+(function () {{
+  'use strict';
+
+  var CAT_COLOR = {{
+    'Releases':      {{ color:'#C084FC', glow:'rgba(192,132,252,.25)' }},
+    'Sports':        {{ color:'#FB923C', glow:'rgba(251,146,60,.25)'  }},
+    'Holidays':      {{ color:'#4ADE80', glow:'rgba(74,222,128,.2)'   }},
+    'Entertainment': {{ color:'#FBBF24', glow:'rgba(251,191,36,.2)'   }},
+    'Sales':         {{ color:'#60A5FA', glow:'rgba(96,165,250,.2)'   }},
+    'Nature':        {{ color:'#22D3EE', glow:'rgba(34,211,238,.2)'   }},
+    'Music':         {{ color:'#F472B6', glow:'rgba(244,114,182,.2)'  }},
+    'Politics':      {{ color:'#94A3B8', glow:'rgba(148,163,184,.2)'  }},
+    'Fashion':       {{ color:'#FDA4AF', glow:'rgba(253,164,175,.2)'  }},
+    'Technology':    {{ color:'#34D399', glow:'rgba(52,211,153,.2)'   }},
+  }};
+  function cc(cat) {{ return CAT_COLOR[cat] || {{ color:'#818CF8', glow:'rgba(129,140,248,.2)' }}; }}
+
+  var NAMES = {names_js};
+
+  var EVENTS = [
+{EVENTS_JS}
+  ];
+
+  var currentLang = '{c}';
+  var currentSort = 'chrono';
+
+  function filteredEvents() {{
+    return EVENTS.filter(function (e) {{
+      return e.regions.indexOf('global') >= 0 || e.regions.indexOf(currentLang) >= 0;
+    }});
+  }}
+
+  var BUCKETS = [
+    {{ key:'today',  label:'{lang['bucket_today']}',  test: function(d){{ return d<=0; }} }},
+    {{ key:'week',   label:'{lang['bucket_week']}',   test: function(d){{ return d<=7; }} }},
+    {{ key:'month',  label:'{lang['bucket_month']}',  test: function(d){{ return d<=30; }} }},
+    {{ key:'soon',   label:'{lang['bucket_soon']}',   test: function(d){{ return d<=90; }} }},
+    {{ key:'year',   label:'{lang['bucket_year']}',   test: function(d){{ return d<=365; }} }},
+    {{ key:'future', label:'{lang['bucket_future']}', test: function(d){{ return d>365; }} }},
+  ];
+
+  function bucket(days) {{
+    for (var i = 0; i < BUCKETS.length; i++) {{
+      if (BUCKETS[i].test(days)) return BUCKETS[i].key;
+    }}
+    return 'future';
+  }}
+
+  function displayName(ev) {{
+    return NAMES[ev.slug] || ev.name;
+  }}
+
+  function cardHTML(ev, data) {{
+    var c = cc(ev.cat);
+    var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
+    var n = displayName(ev);
+    var inner = '';
+    if (data.state === 'unknown') {{
+      inner = '<div class="cd-card-name">' + n + '</div>' +
+              '<div class="cd-card-unknown">{lang['card_tba']}</div>';
+    }} else if (data.state === 'today') {{
+      inner = '<div class="cd-card-name">' + n + '</div>' +
+              '<div class="cd-card-today">{lang['card_today']}</div>';
+    }} else {{
+      inner = '<div class="cd-card-name">' + n + '</div>' +
+              '<div class="cd-card-num">' + data.days + '</div>' +
+              '<div class="cd-card-lbl">{lang['card_days']}</div>';
+    }}
+    return '<a href="' + ev.url + '" class="cd-card" ' + style + '>' + inner + '</a>';
+  }}
+
+  function renderHub(results) {{
+    var container = document.getElementById('hub-content');
+    if (!container) return;
+    var html = '';
+
+    if (currentSort === 'chrono') {{
+      results.sort(function (a, b) {{
+        function rank(r) {{
+          if (r.data.state === 'today')   return -1;
+          if (r.data.state === 'future')  return r.data.days;
+          if (r.data.state === 'unknown') return 99999;
+          return 99998;
+        }}
+        return rank(a) - rank(b);
+      }});
+
+      var lastBucket = null;
+      results.forEach(function (r) {{
+        if (r.data.state === 'future' || r.data.state === 'today') {{
+          var b = bucket(r.data.state === 'today' ? 0 : r.data.days);
+          if (b !== lastBucket) {{
+            if (lastBucket !== null) html += '</div>';
+            var label = BUCKETS.filter(function(x){{ return x.key===b; }})[0].label;
+            html += '<div class="time-bucket-hdr">' + label + '</div>';
+            html += '<div class="cards-grid">';
+            lastBucket = b;
+          }}
+          html += cardHTML(r.ev, r.data);
+        }}
+      }});
+      if (lastBucket !== null) html += '</div>';
+
+      var tba = results.filter(function (r) {{ return r.data.state === 'unknown'; }});
+      if (tba.length) {{
+        html += '<div class="time-bucket-hdr">{lang['bucket_tba']}</div>';
+        html += '<div class="cards-grid">';
+        tba.forEach(function (r) {{ html += cardHTML(r.ev, r.data); }});
+        html += '</div>';
+      }}
+    }} else {{
+      var grouped = {{}}, catOrder = [];
+      results.forEach(function (r) {{
+        var cat = r.ev.cat;
+        if (!grouped[cat]) {{ grouped[cat] = []; catOrder.push(cat); }}
+        grouped[cat].push(r);
+      }});
+      catOrder.forEach(function (cat) {{
+        var c = cc(cat);
+        html += '<div class="hub-section">';
+        html += '<div class="section-hdr" style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '">';
+        html += '<span class="section-hdr-label">' + cat + '</span></div>';
+        html += '<div class="cards-grid">';
+        grouped[cat].forEach(function (r) {{ html += cardHTML(r.ev, r.data); }});
+        html += '</div></div>';
+      }});
+    }}
+
+    container.innerHTML = html;
+  }}
+
+  function loadHub() {{
+    var container = document.getElementById('hub-content');
+    var evs = filteredEvents();
+    var skeletons = '';
+    for (var s = 0; s < Math.min(evs.length, 12); s++) {{
+      skeletons += '<div class="cd-card-skeleton"></div>';
+    }}
+    container.innerHTML = '<div class="cards-grid">' + skeletons + '</div>';
+
+    var results = new Array(evs.length);
+    var loaded = 0;
+    evs.forEach(function (ev, i) {{
+      CountdownEngine.getCardData({{ slug: ev.slug, type: ev.type }}, function (data) {{
+        results[i] = {{ ev: ev, data: data }};
+        loaded++;
+        if (loaded === evs.length) renderHub(results);
+      }});
+    }});
+  }}
+
+  document.querySelectorAll('.sort-btn').forEach(function (btn) {{
+    btn.addEventListener('click', function () {{
+      document.querySelectorAll('.sort-btn').forEach(function (b) {{ b.classList.remove('active'); }});
+      btn.classList.add('active');
+      currentSort = btn.dataset.sort;
+      renderHub(window._hubResults || []);
+    }});
+  }});
+
+  loadHub();
+
+  var _origRender = renderHub;
+  renderHub = function (results) {{
+    window._hubResults = results;
+    _origRender(results);
+  }};
+
+  // Theme toggle
+  (function () {{
+    var btn = document.getElementById('theme-toggle');
+    var saved = localStorage.getItem('cd_theme');
+    if (saved === 'light') {{ document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }}
+    btn.addEventListener('click', function () {{
+      var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      if (isLight) {{
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('cd_theme', 'dark');
+        btn.textContent = 'Light';
+      }} else {{
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('cd_theme', 'light');
+        btn.textContent = 'Dark';
+      }}
+    }});
+  }})();
+
+}})();
+</script>
+</body>
+</html>'''
+
+
+for lang in LANGS:
+    out_dir = lang["dir"]
+    os.makedirs(out_dir, exist_ok=True)
+    out_path = os.path.join(out_dir, "index.html")
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(generate_hub(lang))
+    print(f"  ✓  /{out_dir}/")
+
+print(f"\nGenerated {len(LANGS)} hub pages.")
