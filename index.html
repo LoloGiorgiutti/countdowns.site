@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdowns — Every countdown that matters</title>
+<meta name="description" content="Real-time countdowns to sports, game releases, holidays, sales, and every event the world is waiting for. Free, live, no ads.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://countdowns.site/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://countdowns.site/">
+<meta property="og:title" content="Countdowns — Every countdown that matters">
+<meta property="og:description" content="Real-time countdowns to sports, releases, holidays and more. Free and live.">
+<meta property="og:locale" content="en_US">
+
+<link rel="alternate" hreflang="en" href="https://countdowns.site/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/">
+<link rel="alternate" hreflang="pt" href="https://countdowns.site/pt/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/">
+<link rel="alternate" hreflang="x-default" href="https://countdowns.site/">
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/countdown.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://countdowns.site/#website",
+  "url": "https://countdowns.site/",
+  "name": "Countdowns.site",
+  "description": "Real-time countdowns to every event that matters",
+  "inLanguage": "en",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://countdowns.site/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="site-header">
+  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
+  <div class="lang-seg" role="group" aria-label="Language">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="pt">PT</button>
+    <button class="lang-btn" data-lang="fr">FR</button>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<div class="hub-hero">
+  <div class="hub-hero-label"><span></span>Live · updated in real time</div>
+  <h1>Every countdown<br>that <em>matters</em></h1>
+  <p class="hub-hero-sub">Sports, releases, holidays, sales — every event the world is waiting for.</p>
+  <div class="sort-toggle" role="group" aria-label="Sort order">
+    <button class="sort-btn active" data-sort="chrono">Soonest first</button>
+    <button class="sort-btn" data-sort="category">By category</button>
+  </div>
+</div>
+
+<!-- ── HUB BODY ── -->
+<main class="hub-body" id="hub-body">
+  <!-- JS renders cards here -->
+  <div id="hub-content"></div>
+</main>
+
+<footer class="site-footer">
+  countdowns<span style="color:rgba(255,255,255,.25)">.site</span>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script src="/countdown-engine.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Category colors (must match engine) ── */
+  var CAT_COLOR = {
+    'Releases':      { color:'#C084FC', glow:'rgba(192,132,252,.25)' },
+    'Sports':        { color:'#FB923C', glow:'rgba(251,146,60,.25)'  },
+    'Holidays':      { color:'#4ADE80', glow:'rgba(74,222,128,.2)'   },
+    'Entertainment': { color:'#FBBF24', glow:'rgba(251,191,36,.2)'   },
+    'Sales':         { color:'#60A5FA', glow:'rgba(96,165,250,.2)'   },
+    'Nature':        { color:'#22D3EE', glow:'rgba(34,211,238,.2)'   },
+    'Music':         { color:'#F472B6', glow:'rgba(244,114,182,.2)'  },
+    'Politics':      { color:'#94A3B8', glow:'rgba(148,163,184,.2)'  },
+    'Fashion':       { color:'#FDA4AF', glow:'rgba(253,164,175,.2)'  },
+    'Technology':    { color:'#34D399', glow:'rgba(52,211,153,.2)'   },
+  };
+  function cc(cat) { return CAT_COLOR[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' }; }
+
+  /* ── Events master list ──────────────────────────────────────
+     regions: 'global' | 'en' | 'es' | 'pt' | 'fr'
+     url:     /countdown/[slug]/   (will be created later)
+  ─────────────────────────────────────────────────────────── */
+  var EVENTS = [
+    /* ── Releases ── */
+    { slug:'gta6',       name:'GTA VI',              type:'variable', regions:['global'], cat:'Releases',      url:'/countdown/gta6/'       },
+    { slug:'iphone',     name:'Next iPhone',          type:'variable', regions:['global'], cat:'Releases',      url:'/countdown/iphone/'     },
+
+    /* ── Sports – Global ── */
+    { slug:'f1',         name:'F1 Next Race',         type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/f1/'         },
+    { slug:'world-cup',  name:'2026 FIFA World Cup',  type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/world-cup/'  },
+    { slug:'ucl-final',  name:'Champions League Final',type:'variable',regions:['global'], cat:'Sports',        url:'/countdown/ucl-final/'  },
+    { slug:'nba-finals', name:'NBA Finals',           type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/nba-finals/' },
+    { slug:'le-mans',    name:'24h Le Mans',          type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/le-mans/'    },
+    { slug:'wimbledon',  name:'Wimbledon',            type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/wimbledon/'  },
+    { slug:'tour-de-france', name:'Tour de France',   type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/tour-de-france/' },
+    { slug:'olympics-2028',  name:'LA 2028 Olympics', type:'auto',     regions:['global'], cat:'Sports',        url:'/countdown/olympics-2028/'  },
+    /* ── Sports – EN ── */
+    { slug:'super-bowl', name:'Super Bowl',           type:'auto',     regions:['en'],     cat:'Sports',        url:'/countdown/super-bowl/' },
+    /* ── Sports – ES ── */
+    { slug:'copa-libertadores', name:'Copa Libertadores Final', type:'variable', regions:['es'], cat:'Sports', url:'/countdown/copa-libertadores/' },
+
+    /* ── Holidays – Global ── */
+    { slug:'christmas',   name:'Christmas',           type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/christmas/'   },
+    { slug:'new-year',    name:'New Year',            type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/new-year/'    },
+    { slug:'halloween',   name:'Halloween',           type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/halloween/'   },
+    { slug:'valentines',  name:"Valentine's Day",     type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/valentines/'  },
+    { slug:'easter',      name:'Easter',              type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/easter/'      },
+    { slug:'mothers-day', name:"Mother's Day",        type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/mothers-day/' },
+    { slug:'fathers-day', name:"Father's Day",        type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/fathers-day/' },
+    /* ── Holidays – EN ── */
+    { slug:'thanksgiving',    name:'Thanksgiving',    type:'auto',     regions:['en'],     cat:'Holidays',      url:'/countdown/thanksgiving/'     },
+    { slug:'independence-day',name:'Independence Day',type:'auto',     regions:['en'],     cat:'Holidays',      url:'/countdown/independence-day/' },
+    { slug:'memorial-day',    name:'Memorial Day',    type:'auto',     regions:['en'],     cat:'Holidays',      url:'/countdown/memorial-day/'     },
+    { slug:'labor-day',       name:'Labor Day',       type:'auto',     regions:['en'],     cat:'Holidays',      url:'/countdown/labor-day/'        },
+    { slug:'st-patricks',     name:"St. Patrick's Day",type:'auto',    regions:['en'],     cat:'Holidays',      url:'/countdown/st-patricks/'      },
+    /* ── Holidays – ES ── */
+    { slug:'dia-de-los-muertos', name:'Día de los Muertos', type:'auto', regions:['es'],  cat:'Holidays',      url:'/countdown/dia-de-los-muertos/' },
+    { slug:'cinco-de-mayo',   name:'Cinco de Mayo',   type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/cinco-de-mayo/'    },
+    { slug:'fiestas-patrias', name:'Fiestas Patrias Chile', type:'auto',regions:['es'],    cat:'Holidays',      url:'/countdown/fiestas-patrias/'  },
+    /* ── Holidays – FR ── */
+    { slug:'bastille-day',    name:'Bastille Day',    type:'auto',     regions:['fr'],     cat:'Holidays',      url:'/countdown/bastille-day/'     },
+    /* ── Holidays – DE (future) ── */
+    { slug:'oktoberfest',     name:'Oktoberfest',     type:'auto',     regions:['de'],     cat:'Holidays',      url:'/countdown/oktoberfest/'      },
+
+    /* ── Entertainment – Global ── */
+    { slug:'oscars',     name:'Oscars',               type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/oscars/'     },
+    { slug:'grammys',    name:'Grammy Awards',        type:'variable', regions:['global'], cat:'Entertainment', url:'/countdown/grammys/'    },
+    { slug:'met-gala',   name:'Met Gala',             type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/met-gala/'   },
+    { slug:'eurovision', name:'Eurovision',           type:'variable', regions:['global','fr'], cat:'Entertainment', url:'/countdown/eurovision/' },
+    { slug:'cannes',     name:'Cannes Film Festival', type:'variable', regions:['global'], cat:'Entertainment', url:'/countdown/cannes/'     },
+    /* ── Entertainment – EN ── */
+    { slug:'coachella',  name:'Coachella',            type:'variable', regions:['en'],     cat:'Entertainment', url:'/countdown/coachella/'  },
+
+    /* ── Sales – Global ── */
+    { slug:'black-friday', name:'Black Friday',       type:'auto',     regions:['global'], cat:'Sales',         url:'/countdown/black-friday/' },
+    { slug:'cyber-monday', name:'Cyber Monday',       type:'auto',     regions:['global'], cat:'Sales',         url:'/countdown/cyber-monday/' },
+    /* ── Sales – ES ── */
+    { slug:'hot-sale',     name:'Hot Sale',           type:'variable', regions:['es'],     cat:'Sales',         url:'/countdown/hot-sale/'     },
+
+    /* ── Nature – Global ── */
+    { slug:'full-moon',  name:'Next Full Moon',       type:'auto',     regions:['global'], cat:'Nature',        url:'/countdown/full-moon/'  },
+    { slug:'eclipse',    name:'Solar Eclipse',        type:'variable', regions:['global'], cat:'Nature',        url:'/countdown/eclipse/'    },
+
+    /* ── Music – ES ── */
+    { slug:'lollapalooza-ar', name:'Lollapalooza Argentina', type:'variable', regions:['es'], cat:'Music',     url:'/countdown/lollapalooza-ar/' },
+    { slug:'lollapalooza-cl', name:'Lollapalooza Chile',     type:'variable', regions:['es'], cat:'Music',     url:'/countdown/lollapalooza-cl/' },
+    { slug:'cosquin-rock',    name:'Cosquín Rock',           type:'variable', regions:['es'], cat:'Music',     url:'/countdown/cosquin-rock/'    },
+    /* ── Music – PT ── */
+    { slug:'rock-in-rio', name:'Rock in Rio',          type:'variable', regions:['pt'],    cat:'Music',         url:'/countdown/rock-in-rio/'     },
+
+    /* ── Fashion – Global ── */
+    { slug:'nyfw',      name:'New York Fashion Week', type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/nyfw/'       },
+    { slug:'paris-fw',  name:'Paris Fashion Week',    type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/paris-fw/'   },
+    { slug:'milan-fw',  name:'Milan Fashion Week',    type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/milan-fw/'   },
+    /* ── Fashion – ES ── */
+    { slug:'bafweek',   name:'Buenos Aires Fashion Week', type:'variable', regions:['es'], cat:'Fashion',       url:'/countdown/bafweek/'    },
+
+    /* ── Politics – ES ── */
+    { slug:'elecciones-ar', name:'Argentine Elections', type:'auto',  regions:['es'],     cat:'Politics',      url:'/countdown/elecciones-ar/' },
+  ];
+
+  /* ── State ───────────────────────────────────────────────── */
+  var currentLang = 'en';
+  var currentSort = 'chrono';
+
+  /* ── Language links ── */
+  var LANG_URLS = { en: '/', es: '/es/', pt: '/pt/', fr: '/fr/' };
+
+  /* ── Filter events by language ── */
+  function filteredEvents() {
+    return EVENTS.filter(function (e) {
+      return e.regions.indexOf('global') >= 0 || e.regions.indexOf(currentLang) >= 0;
+    });
+  }
+
+  /* ── Time bucket labels ── */
+  var BUCKETS = [
+    { key: 'today',    label: 'Today',         test: function (d) { return d <= 0; } },
+    { key: 'week',     label: 'This week',      test: function (d) { return d <= 7; } },
+    { key: 'month',    label: 'This month',     test: function (d) { return d <= 30; } },
+    { key: 'soon',     label: 'Coming soon',    test: function (d) { return d <= 90; } },
+    { key: 'year',     label: 'Later this year',test: function (d) { return d <= 365; } },
+    { key: 'future',   label: 'Next year +',    test: function (d) { return d > 365; } },
+  ];
+
+  function bucket(days) {
+    for (var i = 0; i < BUCKETS.length; i++) {
+      if (BUCKETS[i].test(days)) return BUCKETS[i].key;
+    }
+    return 'future';
+  }
+
+  /* ── Render a single card ── */
+  function cardHTML(ev, data) {
+    var c = cc(ev.cat);
+    var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
+    var inner = '';
+
+    if (data.state === 'unknown') {
+      inner = '<div class="cd-card-name">' + ev.name + '</div>' +
+              '<div class="cd-card-unknown">Date TBA</div>';
+    } else if (data.state === 'today') {
+      inner = '<div class="cd-card-name">' + ev.name + '</div>' +
+              '<div class="cd-card-today">Today</div>';
+    } else {
+      inner = '<div class="cd-card-name">' + ev.name + '</div>' +
+              '<div class="cd-card-num">' + data.days + '</div>' +
+              '<div class="cd-card-lbl">days</div>';
+    }
+
+    return '<a href="' + ev.url + '" class="cd-card" ' + style + '>' + inner + '</a>';
+  }
+
+  /* ── Render hub (called once all card data loaded) ── */
+  function renderHub(results) {
+    var container = document.getElementById('hub-content');
+    if (!container) return;
+    var html = '';
+
+    if (currentSort === 'chrono') {
+      /* Sort: today first, then ascending days, unknown/past last */
+      results.sort(function (a, b) {
+        function rank(r) {
+          if (r.data.state === 'today')   return -1;
+          if (r.data.state === 'future')  return r.data.days;
+          if (r.data.state === 'unknown') return 99999;
+          return 99998; /* past */
+        }
+        return rank(a) - rank(b);
+      });
+
+      var lastBucket = null;
+      results.forEach(function (r) {
+        if (r.data.state === 'future' || r.data.state === 'today') {
+          var b = bucket(r.data.state === 'today' ? 0 : r.data.days);
+          if (b !== lastBucket) {
+            if (lastBucket !== null) html += '</div>'; /* close prev grid */
+            var label = BUCKETS.filter(function (x) { return x.key === b; })[0].label;
+            html += '<div class="time-bucket-hdr">' + label + '</div>';
+            html += '<div class="cards-grid">';
+            lastBucket = b;
+          }
+          html += cardHTML(r.ev, r.data);
+        }
+      });
+      if (lastBucket !== null) html += '</div>'; /* close last grid */
+
+      /* Append TBA at the bottom */
+      var tba = results.filter(function (r) { return r.data.state === 'unknown'; });
+      if (tba.length) {
+        html += '<div class="time-bucket-hdr">Date TBA</div>';
+        html += '<div class="cards-grid">';
+        tba.forEach(function (r) { html += cardHTML(r.ev, r.data); });
+        html += '</div>';
+      }
+
+    } else {
+      /* ── Category mode ── */
+      var grouped = {};
+      var catOrder = [];
+      results.forEach(function (r) {
+        var cat = r.ev.cat;
+        if (!grouped[cat]) { grouped[cat] = []; catOrder.push(cat); }
+        grouped[cat].push(r);
+      });
+      catOrder.forEach(function (cat) {
+        var c = cc(cat);
+        html += '<div class="hub-section">';
+        html += '<div class="section-hdr" style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '">';
+        html += '<span class="section-hdr-label">' + cat + '</span></div>';
+        html += '<div class="cards-grid">';
+        grouped[cat].forEach(function (r) { html += cardHTML(r.ev, r.data); });
+        html += '</div></div>';
+      });
+    }
+
+    container.innerHTML = html;
+  }
+
+  /* ── Load all card data then render ── */
+  function loadHub() {
+    var container = document.getElementById('hub-content');
+    var evs = filteredEvents();
+
+    /* Skeleton placeholders */
+    var skeletons = '';
+    for (var s = 0; s < Math.min(evs.length, 12); s++) {
+      skeletons += '<div class="cd-card-skeleton"></div>';
+    }
+    container.innerHTML = '<div class="cards-grid">' + skeletons + '</div>';
+
+    var results = new Array(evs.length);
+    var loaded  = 0;
+
+    evs.forEach(function (ev, i) {
+      CountdownEngine.getCardData({ slug: ev.slug, type: ev.type }, function (data) {
+        results[i] = { ev: ev, data: data };
+        loaded++;
+        if (loaded === evs.length) renderHub(results);
+      });
+    });
+  }
+
+  /* ── Language switcher ── */
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var lang = btn.dataset.lang;
+      if (LANG_URLS[lang] && lang !== currentLang) {
+        window.location.href = LANG_URLS[lang];
+      }
+    });
+  });
+
+  /* ── Sort toggle ── */
+  document.querySelectorAll('.sort-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.sort-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentSort = btn.dataset.sort;
+      renderHub(window._hubResults || []);
+    });
+  });
+
+  /* ── Boot ── */
+  loadHub();
+
+  /* Cache results for re-sort without re-fetch */
+  var _origRender = renderHub;
+  renderHub = function (results) {
+    window._hubResults = results;
+    _origRender(results);
+  };
+
+})();
+</script>
+
+</body>
+</html>

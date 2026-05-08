@@ -1,75 +1,103 @@
 {
-  "updated": "2026-05-07",
+  "updated": "2026-05-08",
   "events": {
     "gta6": {
       "date": "2026-11-19T00:00:00-05:00",
-      "note": "Lanzamiento en PS5 y Xbox Series X/S. Sin fecha confirmada para PC aún."
+      "note": "Launching on PS5 and Xbox Series X/S. PC release date not yet confirmed."
     },
     "iphone": {
       "date": "2026-09-09T10:00:00-07:00",
-      "note": "Fecha estimada basada en el patrón de años anteriores. Apple suele anunciar en septiembre."
-    },
-    "eclipse": {
-      "date": "2026-08-12T19:29:00+02:00",
-      "note": "Eclipse total de sol visible desde el sur de España y el norte de África. Parcial en partes de Argentina."
-    },
-    "lollapalooza": {
-      "date": null,
-      "note": "Las fechas del Lollapalooza Argentina 2027 aún no fueron anunciadas. Se realiza en el Hipódromo de San Isidro."
-    },
-    "cosquin-rock": {
-      "date": null,
-      "note": "Las fechas del Cosquín Rock 2027 aún no fueron anunciadas. Suele realizarse en febrero."
-    },
-    "grammys": {
-      "date": null,
-      "note": "Las fechas de los Grammy 2027 aún no fueron anunciadas. Suele celebrarse en enero o febrero."
-    },
-    "bafweek": {
-      "date": "2026-10-13T10:00:00-03:00",
-      "note": "Fecha estimada. Buenos Aires Fashion Week edición primavera-verano 2026."
-    },
-    "nyfw": {
-      "date": "2026-09-08T09:00:00-05:00",
-      "note": "New York Fashion Week edición primavera-verano 2027 (desfiles de septiembre 2026)."
-    },
-    "milan-fw": {
-      "date": "2026-09-16T09:00:00+02:00",
-      "note": "Semana de la Moda de Milán, edición primavera-verano 2027."
-    },
-    "paris-fw": {
-      "date": "2026-09-28T09:00:00+02:00",
-      "note": "Semana de la Moda de París, edición primavera-verano 2027."
-    },
-    "miami-fw": {
-      "date": "2026-07-14T10:00:00-05:00",
-      "note": "Miami Fashion Week 2026. Fechas aproximadas."
+      "note": "Estimated date based on Apple's historical release pattern. Usually announced in September."
     },
     "f1": {
       "date": "2026-05-24T15:00:00+02:00",
-      "note": "Gran Premio de Mónaco 2026 · Circuit de Monaco",
-      "raceName": "Gran Premio de Mónaco",
-      "circuit": "Circuit de Monaco, Monte Carlo"
+      "raceName": "Monaco Grand Prix",
+      "circuit": "Circuit de Monaco, Monte Carlo",
+      "note": "Formula 1 Monaco Grand Prix 2026 — Circuit de Monaco."
+    },
+    "world-cup": {
+      "date": "2026-06-11T20:00:00-05:00",
+      "note": "2026 FIFA World Cup opening match. Hosted jointly by USA, Canada and Mexico."
+    },
+    "ucl-final": {
+      "date": "2026-05-30T21:00:00+02:00",
+      "note": "UEFA Champions League 2025–26 Final · Puskás Aréna, Budapest."
+    },
+    "nba-finals": {
+      "date": null,
+      "note": "The 2026 NBA Finals date will be confirmed after the conference finals. Usually begins in June."
     },
     "le-mans": {
       "date": "2026-06-13T16:00:00+02:00",
-      "note": "Las 24 Horas de Le Mans 2026 comienzan el 13 de junio a las 16:00 hs (hora local)."
+      "note": "24 Hours of Le Mans 2026 — start: Saturday June 13 at 16:00 local time."
     },
-    "final-champions": {
-      "date": "2026-05-30T21:00:00+02:00",
-      "note": "Final de la UEFA Champions League 2025-26 · Puskás Aréna, Budapest."
+    "wimbledon": {
+      "date": "2026-06-29T11:00:00+01:00",
+      "note": "The Championships, Wimbledon 2026 — first day of play."
     },
-    "final-nba": {
-      "date": null,
-      "note": "Las Finales de la NBA 2026 se confirmarán al terminar las semifinales. Suele comenzar en junio."
+    "tour-de-france": {
+      "date": "2026-06-27T12:00:00+02:00",
+      "note": "Tour de France 2026 — Grand Départ. Exact start city TBC."
     },
     "copa-libertadores": {
       "date": null,
-      "note": "La fecha de la Final de la Copa Libertadores 2026 será anunciada por CONMEBOL. Suele ser en noviembre."
+      "note": "The 2026 Copa Libertadores Final date will be announced by CONMEBOL. Usually held in November."
+    },
+    "grammys": {
+      "date": null,
+      "note": "Grammy Awards 2027 dates have not been announced yet. Usually held in January or February."
+    },
+    "eurovision": {
+      "date": "2027-05-15T21:00:00+02:00",
+      "note": "Eurovision Song Contest 2027 — Grand Final. Estimated date, location TBC."
+    },
+    "coachella": {
+      "date": "2027-04-09T16:00:00-07:00",
+      "note": "Coachella Valley Music and Arts Festival 2027 — Weekend 1. Estimated date."
+    },
+    "cannes": {
+      "date": "2026-05-13T19:00:00+02:00",
+      "note": "Cannes Film Festival 2026 — Opening Ceremony."
+    },
+    "eclipse": {
+      "date": "2026-08-12T19:29:00+02:00",
+      "note": "Total solar eclipse visible from southern Spain and northern Africa. Partial in parts of South America."
     },
     "hot-sale": {
-      "date": "2026-05-18T00:00:00-03:00",
-      "note": "Hot Sale Argentina 2026 · Del 18 al 20 de mayo."
+      "date": "2027-05-17T00:00:00-03:00",
+      "note": "Hot Sale Argentina 2027 — estimated dates based on previous years."
+    },
+    "lollapalooza-ar": {
+      "date": null,
+      "note": "Lollapalooza Argentina 2027 dates have not been announced. Usually held at Hipódromo de San Isidro."
+    },
+    "lollapalooza-cl": {
+      "date": null,
+      "note": "Lollapalooza Chile 2027 dates have not been announced. Usually held at Parque Bicentenario, Santiago."
+    },
+    "cosquin-rock": {
+      "date": null,
+      "note": "Cosquín Rock 2027 dates have not been announced. Usually held in February in Santa María de Punilla."
+    },
+    "rock-in-rio": {
+      "date": "2026-09-18T16:00:00+01:00",
+      "note": "Rock in Rio Lisboa 2026 — first day. Parque da Bela Vista, Lisbon."
+    },
+    "nyfw": {
+      "date": "2026-09-08T09:00:00-05:00",
+      "note": "New York Fashion Week — Spring/Summer 2027 edition (September 2026 shows)."
+    },
+    "milan-fw": {
+      "date": "2026-09-16T09:00:00+02:00",
+      "note": "Milan Fashion Week — Spring/Summer 2027 edition."
+    },
+    "paris-fw": {
+      "date": "2026-09-28T09:00:00+02:00",
+      "note": "Paris Fashion Week — Spring/Summer 2027 edition."
+    },
+    "bafweek": {
+      "date": "2026-10-13T10:00:00-03:00",
+      "note": "Buenos Aires Fashion Week — Spring/Summer 2026 edition. Estimated dates."
     }
   }
 }
