@@ -1,0 +1,75 @@
+{
+  "updated": "2026-05-07",
+  "events": {
+    "gta6": {
+      "date": "2026-11-19T00:00:00-05:00",
+      "note": "Lanzamiento en PS5 y Xbox Series X/S. Sin fecha confirmada para PC aún."
+    },
+    "iphone": {
+      "date": "2026-09-09T10:00:00-07:00",
+      "note": "Fecha estimada basada en el patrón de años anteriores. Apple suele anunciar en septiembre."
+    },
+    "eclipse": {
+      "date": "2026-08-12T19:29:00+02:00",
+      "note": "Eclipse total de sol visible desde el sur de España y el norte de África. Parcial en partes de Argentina."
+    },
+    "lollapalooza": {
+      "date": null,
+      "note": "Las fechas del Lollapalooza Argentina 2027 aún no fueron anunciadas. Se realiza en el Hipódromo de San Isidro."
+    },
+    "cosquin-rock": {
+      "date": null,
+      "note": "Las fechas del Cosquín Rock 2027 aún no fueron anunciadas. Suele realizarse en febrero."
+    },
+    "grammys": {
+      "date": null,
+      "note": "Las fechas de los Grammy 2027 aún no fueron anunciadas. Suele celebrarse en enero o febrero."
+    },
+    "bafweek": {
+      "date": "2026-10-13T10:00:00-03:00",
+      "note": "Fecha estimada. Buenos Aires Fashion Week edición primavera-verano 2026."
+    },
+    "nyfw": {
+      "date": "2026-09-08T09:00:00-05:00",
+      "note": "New York Fashion Week edición primavera-verano 2027 (desfiles de septiembre 2026)."
+    },
+    "milan-fw": {
+      "date": "2026-09-16T09:00:00+02:00",
+      "note": "Semana de la Moda de Milán, edición primavera-verano 2027."
+    },
+    "paris-fw": {
+      "date": "2026-09-28T09:00:00+02:00",
+      "note": "Semana de la Moda de París, edición primavera-verano 2027."
+    },
+    "miami-fw": {
+      "date": "2026-07-14T10:00:00-05:00",
+      "note": "Miami Fashion Week 2026. Fechas aproximadas."
+    },
+    "f1": {
+      "date": "2026-05-24T15:00:00+02:00",
+      "note": "Gran Premio de Mónaco 2026 · Circuit de Monaco",
+      "raceName": "Gran Premio de Mónaco",
+      "circuit": "Circuit de Monaco, Monte Carlo"
+    },
+    "le-mans": {
+      "date": "2026-06-13T16:00:00+02:00",
+      "note": "Las 24 Horas de Le Mans 2026 comienzan el 13 de junio a las 16:00 hs (hora local)."
+    },
+    "final-champions": {
+      "date": "2026-05-30T21:00:00+02:00",
+      "note": "Final de la UEFA Champions League 2025-26 · Puskás Aréna, Budapest."
+    },
+    "final-nba": {
+      "date": null,
+      "note": "Las Finales de la NBA 2026 se confirmarán al terminar las semifinales. Suele comenzar en junio."
+    },
+    "copa-libertadores": {
+      "date": null,
+      "note": "La fecha de la Final de la Copa Libertadores 2026 será anunciada por CONMEBOL. Suele ser en noviembre."
+    },
+    "hot-sale": {
+      "date": "2026-05-18T00:00:00-03:00",
+      "note": "Hot Sale Argentina 2026 · Del 18 al 20 de mayo."
+    }
+  }
+}

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Cuentas Regresivas | Calculadora.live</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/countdowns/countdown.css">
+<style>
+  :root{--bg:#F7F8FA;--surface:#FFF;--ink:#080A12;--ink-light:#60647A;--ink-faint:#B4B8CC;--hi:#1A5FE8;--hi-soft:#EEF3FD;--border:#D4D8E6;--radius:16px;--radius-sm:10px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+
+  /* Login overlay */
+  .login-overlay{
+    position:fixed;inset:0;background:#080D1C;
+    display:flex;align-items:center;justify-content:center;z-index:999;
+  }
+  .login-box{
+    background:#141929;border:1.5px solid #1F2438;border-radius:18px;
+    padding:36px 32px;width:min(380px,90vw);text-align:center;
+  }
+  .login-logo{font-size:24px;font-weight:700;color:#fff;letter-spacing:-.02em;margin-bottom:6px;}
+  .login-logo span{color:#4F6BFF;}
+  .login-sub{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:28px;}
+  .login-label{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px;text-align:left;}
+  .login-input{
+    width:100%;padding:12px 14px;background:rgba(255,255,255,.06);
+    border:1.5px solid rgba(255,255,255,.12);border-radius:10px;
+    font-family:'DM Sans',sans-serif;font-size:15px;color:#fff;outline:none;
+    margin-bottom:16px;transition:border-color .15s;
+  }
+  .login-input:focus{border-color:#4F6BFF;}
+  .login-btn{
+    width:100%;padding:12px;background:#4F6BFF;border:none;border-radius:10px;
+    font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:#fff;
+    cursor:pointer;transition:opacity .15s;
+  }
+  .login-btn:hover{opacity:.9;}
+  .login-err{font-size:13px;color:#F87171;margin-top:10px;display:none;}
+
+  /* Saved badge */
+  .saved-badge{
+    display:none;align-items:center;gap:6px;
+    background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);
+    border-radius:99px;padding:5px 14px;font-size:12px;font-weight:700;color:#10B981;
+    position:fixed;bottom:24px;right:24px;z-index:200;
+  }
+  .saved-badge.show{display:flex;}
+</style>
+</head>
+<body>
+
+<!-- Login overlay -->
+<div class="login-overlay" id="login-overlay">
+  <div class="login-box">
+    <div class="login-logo">Calculadora<span>.live</span></div>
+    <div class="login-sub">Panel de administración — Cuentas Regresivas</div>
+    <label class="login-label">Contraseña</label>
+    <input type="password" class="login-input" id="pwd-input" placeholder="••••••••" autocomplete="current-password">
+    <div class="login-err" id="login-err">Contraseña incorrecta.</div>
+    <button class="login-btn" id="login-btn">Ingresar</button>
+    <div style="margin-top:20px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;">
+      <div class="login-label" style="margin-bottom:6px;">GitHub Personal Access Token</div>
+      <input type="password" class="login-input" id="gh-token-input" placeholder="ghp_..." autocomplete="off">
+      <div style="font-size:11px;color:rgba(255,255,255,.3);text-align:left;line-height:1.5;">
+        Necesario para guardar cambios. Token con permiso <code style="background:rgba(255,255,255,.08);padding:1px 5px;border-radius:4px;">repo</code>. Se guarda solo en este navegador.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Saved badge -->
+<div class="saved-badge" id="saved-badge">✓ Guardado en GitHub</div>
+
+<!-- Main content (hidden until login) -->
+<div id="admin-main" style="display:none">
+
+<div class="cd-admin-page">
+  <h1 class="cd-admin-title">⏱ Admin — Cuentas Regresivas</h1>
+  <p class="cd-admin-sub">Editá las fechas de los eventos variables. Los cambios se guardan directamente en <code>countdowns-data.json</code> vía GitHub.</p>
+
+  <!-- GitHub config -->
+  <div class="cd-admin-config">
+    <div class="cd-admin-label">Repositorio GitHub</div>
+    <input type="text" class="cd-admin-input" id="gh-repo" placeholder="usuario/repositorio (ej: lorenzog/calculadora-live)">
+    <div style="font-size:12px;color:var(--ink-light)">Ej: <code>miusuario/mi-repo</code>. Se guarda en este navegador.</div>
+  </div>
+
+  <div id="events-form"></div>
+
+  <button class="cd-admin-btn" id="save-btn" onclick="saveAll()">
+    💾 Guardar todos los cambios en GitHub
+  </button>
+  <div class="cd-admin-status" id="save-status"></div>
+</div>
+
+</div><!-- /admin-main -->
+
+<script>
+/* ── CONFIG ──────────────────────────────────────────────────── */
+var ADMIN_PASSWORD = 'calculadora2026'; /* change this! */
+
+var VARIABLE_EVENTS = [
+  { slug:'gta6',            name:'GTA VI',                     emoji:'🎮', note:'Fecha de lanzamiento.' },
+  { slug:'iphone',          name:'Próximo iPhone',             emoji:'📱', note:'Fecha de presentación de Apple.' },
+  { slug:'eclipse',         name:'Próximo Eclipse',            emoji:'🌑', note:'Eclipse solar o lunar.' },
+  { slug:'lollapalooza',    name:'Lollapalooza Argentina',     emoji:'🎸', note:'Día de inicio del festival.' },
+  { slug:'cosquin-rock',    name:'Cosquín Rock',               emoji:'🤘', note:'Día de inicio del festival.' },
+  { slug:'grammys',         name:'Premios Grammy',             emoji:'🎵', note:'Fecha de la ceremonia.' },
+  { slug:'bafweek',         name:'BA Fashion Week',            emoji:'👠', note:'Día de inicio.' },
+  { slug:'nyfw',            name:'New York Fashion Week',      emoji:'🗽', note:'Día de inicio.' },
+  { slug:'milan-fw',        name:'Milán Fashion Week',         emoji:'🇮🇹', note:'Día de inicio.' },
+  { slug:'paris-fw',        name:'París Fashion Week',         emoji:'🗼', note:'Día de inicio.' },
+  { slug:'miami-fw',        name:'Miami Fashion Week',         emoji:'🌴', note:'Día de inicio.' },
+  { slug:'f1',              name:'Próxima Carrera F1',         emoji:'🏎️', note:'Fecha del Gran Premio.' },
+  { slug:'le-mans',         name:'24 Horas de Le Mans',        emoji:'🏁', note:'Hora de largada.' },
+  { slug:'final-champions', name:'Final Champions League',     emoji:'⚽', note:'Fecha de la final.' },
+  { slug:'final-nba',       name:'Finales NBA',                emoji:'🏀', note:'Fecha del primer partido.' },
+  { slug:'copa-libertadores',name:'Final Copa Libertadores',   emoji:'🏆', note:'Fecha de la final.' },
+  { slug:'hot-sale',        name:'Hot Sale Argentina',         emoji:'🔥', note:'Fecha de inicio.' },
+];
+
+/* ── LOGIN ───────────────────────────────────────────────────── */
+var _ghToken = localStorage.getItem('cd_admin_gh_token') || '';
+var _ghRepo  = localStorage.getItem('cd_admin_gh_repo') || '';
+var _currentData = {};
+
+document.getElementById('gh-token-input').value = _ghToken;
+document.getElementById('gh-repo').value = _ghRepo;
+
+document.getElementById('gh-repo').addEventListener('input', function() {
+  localStorage.setItem('cd_admin_gh_repo', this.value.trim());
+});
+
+document.getElementById('login-btn').addEventListener('click', tryLogin);
+document.getElementById('pwd-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') tryLogin();
+});
+
+function tryLogin() {
+  var pwd = document.getElementById('pwd-input').value;
+  _ghToken = document.getElementById('gh-token-input').value.trim();
+  _ghRepo  = document.getElementById('gh-repo').value.trim();
+  if (pwd !== ADMIN_PASSWORD) {
+    document.getElementById('login-err').style.display = 'block';
+    return;
+  }
+  localStorage.setItem('cd_admin_gh_token', _ghToken);
+  localStorage.setItem('cd_admin_gh_repo', _ghRepo);
+  document.getElementById('login-overlay').style.display = 'none';
+  document.getElementById('admin-main').style.display = 'block';
+  loadCurrentData();
+}
+
+/* ── LOAD CURRENT JSON ───────────────────────────────────────── */
+function loadCurrentData() {
+  fetch('/countdowns-data.json?_=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      _currentData = d;
+      buildForm(d.events || {});
+    })
+    .catch(function() {
+      _currentData = { events: {} };
+      buildForm({});
+    });
+}
+
+/* ── BUILD FORM ──────────────────────────────────────────────── */
+function buildForm(events) {
+  var html = '';
+  /* Group by category section */
+  var sections = [
+    { label: '🚀 Lanzamientos', slugs: ['gta6','iphone','eclipse'] },
+    { label: '🎤 Eventos', slugs: ['lollapalooza','cosquin-rock','grammys','bafweek','nyfw','milan-fw','paris-fw','miami-fw','f1','le-mans','final-champions','final-nba','copa-libertadores'] },
+    { label: '🛍️ Descuentos', slugs: ['hot-sale'] },
+  ];
+
+  sections.forEach(function(section) {
+    html += '<div class="cd-admin-section-title">' + section.label + '</div>';
+    section.slugs.forEach(function(slug) {
+      var ev = VARIABLE_EVENTS.find(function(e) { return e.slug === slug; });
+      if (!ev) return;
+      var evData = events[slug] || {};
+      var dateVal = evData.date ? isoToLocal(evData.date) : '';
+      var noteVal = evData.note || '';
+      html += [
+        '<div class="cd-admin-card" id="card-' + slug + '">',
+        '  <div class="cd-admin-card-title">' + ev.emoji + ' ' + ev.name + '</div>',
+        '  <div class="cd-admin-card-desc">' + ev.note + '</div>',
+        '  <label class="cd-admin-label">Fecha y hora (local del dispositivo)</label>',
+        '  <input type="datetime-local" class="cd-admin-input" id="date-' + slug + '" value="' + dateVal + '">',
+        '  <label class="cd-admin-label">Nota / aclaración</label>',
+        '  <textarea class="cd-admin-note-input" id="note-' + slug + '">' + noteVal + '</textarea>',
+        '</div>',
+      ].join('\n');
+    });
+  });
+
+  document.getElementById('events-form').innerHTML = html;
+}
+
+/* ── DATE HELPERS ────────────────────────────────────────────── */
+function isoToLocal(isoStr) {
+  /* Convert ISO string to datetime-local value (YYYY-MM-DDTHH:MM) */
+  try {
+    var d = new Date(isoStr);
+    var pad = function(n) { return n < 10 ? '0' + n : n; };
+    return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate())
+         + 'T' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+  } catch(e) { return ''; }
+}
+
+function localToISO(localStr) {
+  /* datetime-local value → ISO string (local time, no TZ offset stored) */
+  if (!localStr) return null;
+  return new Date(localStr).toISOString();
+}
+
+/* ── SAVE ALL ────────────────────────────────────────────────── */
+function saveAll() {
+  var repo = document.getElementById('gh-repo').value.trim();
+  var token = _ghToken;
+  if (!repo || !token) {
+    showStatus('err', 'Configurá el repositorio y el token de GitHub antes de guardar.');
+    return;
+  }
+
+  /* Build new events object */
+  var newEvents = JSON.parse(JSON.stringify((_currentData.events || {})));
+  VARIABLE_EVENTS.forEach(function(ev) {
+    var dateInput = document.getElementById('date-' + ev.slug);
+    var noteInput = document.getElementById('note-' + ev.slug);
+    if (!dateInput) return;
+    var dateVal = dateInput.value;
+    var noteVal = noteInput ? noteInput.value.trim() : '';
+    if (!newEvents[ev.slug]) newEvents[ev.slug] = {};
+    newEvents[ev.slug].date = dateVal ? localToISO(dateVal) : null;
+    newEvents[ev.slug].note = noteVal || null;
+  });
+
+  var newData = Object.assign({}, _currentData, {
+    events: newEvents,
+    updated: new Date().toISOString().slice(0, 10),
+  });
+
+  var content = JSON.stringify(newData, null, 2);
+  var btn = document.getElementById('save-btn');
+  btn.disabled = true;
+  btn.textContent = 'Guardando…';
+
+  /* Get current SHA of the file (needed for GitHub API PUT) */
+  fetch('https://api.github.com/repos/' + repo + '/contents/countdowns-data.json', {
+    headers: {
+      'Authorization': 'Bearer ' + token,
+      'Accept': 'application/vnd.github.v3+json',
+    }
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(meta) {
+    var sha = meta.sha;
+    return fetch('https://api.github.com/repos/' + repo + '/contents/countdowns-data.json', {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: 'chore: actualizar countdowns-data.json ' + new Date().toISOString().slice(0,10) + ' [skip ci]',
+        content: btoa(unescape(encodeURIComponent(content))),
+        sha: sha,
+        branch: 'main',
+      })
+    });
+  })
+  .then(function(r) {
+    if (!r.ok) return r.json().then(function(e) { throw new Error(e.message); });
+    return r.json();
+  })
+  .then(function() {
+    _currentData.events = newEvents;
+    btn.disabled = false;
+    btn.textContent = '💾 Guardar todos los cambios en GitHub';
+    showStatus('ok', '✓ countdowns-data.json actualizado correctamente en GitHub. GitHub Pages tardará ~2 minutos en publicar los cambios.');
+    showSavedBadge();
+  })
+  .catch(function(err) {
+    btn.disabled = false;
+    btn.textContent = '💾 Guardar todos los cambios en GitHub';
+    showStatus('err', '✗ Error al guardar: ' + err.message);
+  });
+}
+
+function showStatus(type, msg) {
+  var el = document.getElementById('save-status');
+  el.className = 'cd-admin-status ' + type;
+  el.textContent = msg;
+  el.style.display = 'block';
+  setTimeout(function() { el.style.display = 'none'; }, 8000);
+}
+
+function showSavedBadge() {
+  var badge = document.getElementById('saved-badge');
+  badge.classList.add('show');
+  setTimeout(function() { badge.classList.remove('show'); }, 3000);
+}
+</script>
+<script src="/nav.js"></script>
+</body>
+</html>
