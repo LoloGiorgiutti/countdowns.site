@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — countdowns.site</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/countdown.css">
+<style>
+/* ── Login overlay ── */
+.login-overlay {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999;
+}
+.login-box {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  padding: 36px 32px;
+  width: min(380px, 92vw);
+  text-align: center;
+}
+.login-logo {
+  font-size: 20px; font-weight: 700;
+  color: #fff; letter-spacing: -.02em; margin-bottom: 4px;
+}
+.login-logo span { color: rgba(255,255,255,.3); }
+.login-sub { font-size: 12px; color: rgba(255,255,255,.3); margin-bottom: 28px; }
+.login-label {
+  display: block; font-size: 10px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.35); margin-bottom: 7px; text-align: left;
+}
+.login-input {
+  width: 100%; padding: 11px 14px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 14px;
+  color: #fff; outline: none; margin-bottom: 14px;
+  transition: border-color .15s;
+}
+.login-input:focus { border-color: rgba(255,255,255,.28); }
+.login-btn {
+  width: 100%; padding: 12px;
+  background: rgba(129,140,248,.18);
+  border: 1px solid rgba(129,140,248,.35);
+  border-radius: 10px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 14px;
+  font-weight: 700; color: #A78BFA; cursor: pointer;
+  transition: all .15s;
+}
+.login-btn:hover { background: rgba(129,140,248,.28); }
+.login-err { font-size: 12px; color: #F87171; margin-top: 10px; display: none; }
+.login-divider {
+  margin: 20px 0 0;
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 18px;
+}
+
+/* ── Saved toast ── */
+.saved-toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: rgba(74,222,128,.12);
+  border: 1px solid rgba(74,222,128,.3);
+  border-radius: 99px; padding: 7px 18px;
+  font-size: 12px; font-weight: 700; color: #4ADE80;
+  z-index: 500; display: none;
+}
+.saved-toast.show { display: block; }
+
+/* ── Admin layout ── */
+.admin-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 32px 20px 100px;
+}
+.admin-page-title {
+  font-size: 22px; font-weight: 700; letter-spacing: -.02em;
+  color: var(--ink); margin-bottom: 4px;
+}
+.admin-page-sub {
+  font-size: 13px; color: var(--ink-faint); margin-bottom: 32px;
+}
+
+/* ── Config card ── */
+.config-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 28px;
+}
+.config-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+@media (max-width: 600px) { .config-row { grid-template-columns: 1fr; } }
+
+/* ── Section header ── */
+.admin-section-hdr {
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ink-ghost);
+  margin: 28px 0 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.admin-section-hdr::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* ── Event card ── */
+.ev-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 8px;
+}
+.ev-card-hdr {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 12px; margin-bottom: 14px;
+}
+.ev-card-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+.ev-cat-badge {
+  font-size: 9px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; padding: 3px 9px;
+  border-radius: 99px;
+  border: 1px solid var(--cat-color, var(--border));
+  color: var(--cat-color, var(--ink-faint));
+  text-shadow: 0 0 8px var(--cat-glow, transparent);
+}
+.ev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px) { .ev-grid { grid-template-columns: 1fr; } }
+
+.admin-label {
+  display: block; font-size: 10px; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--ink-faint); margin-bottom: 6px;
+}
+.admin-input {
+  width: 100%; padding: 9px 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+  color: var(--ink); outline: none; transition: border-color .15s;
+}
+.admin-input:focus { border-color: rgba(255,255,255,.22); }
+.admin-textarea {
+  width: 100%; padding: 9px 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+  color: var(--ink); outline: none; resize: vertical; min-height: 52px;
+  transition: border-color .15s;
+}
+.admin-textarea:focus { border-color: rgba(255,255,255,.22); }
+
+/* ── Region chips ── */
+.regions-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--ink-faint);
+  margin: 12px 0 7px; display: block;
+}
+.region-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.region-chip {
+  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--ink-faint);
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 10px;
+  cursor: pointer; transition: all .12s; user-select: none;
+}
+.region-chip:hover { background: rgba(255,255,255,.07); }
+.region-chip.on {
+  color: var(--ink); background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.2);
+}
+
+/* ── Save button ── */
+.save-wrap { margin-top: 28px; }
+.save-btn {
+  width: 100%; padding: 13px 20px;
+  background: rgba(129,140,248,.15);
+  border: 1px solid rgba(129,140,248,.3);
+  border-radius: var(--radius-sm);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px; font-weight: 700; color: #A78BFA;
+  cursor: pointer; transition: all .15s;
+}
+.save-btn:hover { background: rgba(129,140,248,.25); }
+.save-btn:disabled { opacity: .45; cursor: not-allowed; }
+.save-status {
+  margin-top: 12px; padding: 10px 14px;
+  border-radius: var(--radius-xs); font-size: 12px;
+  display: none;
+}
+.save-status.ok  { background: rgba(74,222,128,.08); color: #4ADE80; border: 1px solid rgba(74,222,128,.2); }
+.save-status.err { background: rgba(248,113,113,.08); color: #F87171; border: 1px solid rgba(248,113,113,.2); }
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div class="login-overlay" id="login-overlay">
+  <div class="login-box">
+    <div class="login-logo">countdowns<span>.site</span></div>
+    <div class="login-sub">Admin panel</div>
+    <label class="login-label">Password</label>
+    <input type="password" class="login-input" id="pwd-input" placeholder="••••••••" autocomplete="current-password">
+    <div class="login-err" id="login-err">Incorrect password.</div>
+    <button class="login-btn" id="login-btn">Sign in</button>
+    <div class="login-divider">
+      <label class="login-label">GitHub Personal Access Token</label>
+      <input type="password" class="login-input" id="gh-token-input" placeholder="ghp_..." autocomplete="off" style="margin-bottom:6px">
+      <div style="font-size:11px;color:rgba(255,255,255,.25);text-align:left;line-height:1.55;">
+        Required to save changes. Token needs <code style="background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px">repo</code> scope. Stored only in this browser.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="saved-toast" id="saved-toast">Saved to GitHub</div>
+
+<div id="admin-main" style="display:none">
+<header class="site-header">
+  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
+  <span style="font-size:11px;color:rgba(255,255,255,.25);font-weight:600;letter-spacing:.07em;text-transform:uppercase;">Admin</span>
+</header>
+
+<div class="admin-wrap">
+  <h1 class="admin-page-title">Admin Panel</h1>
+  <p class="admin-page-sub">Edit dates, notes and regions for all variable events. Changes are saved directly to <code style="font-size:12px;color:rgba(255,255,255,.4)">countdowns-data.json</code> via the GitHub API.</p>
+
+  <div class="config-card">
+    <div class="config-row">
+      <div>
+        <label class="admin-label">GitHub Repository</label>
+        <input type="text" class="admin-input" id="gh-repo" value="LoloGiorgiutti/countdowns.site" placeholder="user/repo">
+      </div>
+      <div>
+        <label class="admin-label">Branch</label>
+        <input type="text" class="admin-input" id="gh-branch" value="main">
+      </div>
+    </div>
+  </div>
+
+  <div id="events-form"></div>
+
+  <div class="save-wrap">
+    <button class="save-btn" id="save-btn" onclick="saveAll()">Save all changes to GitHub</button>
+    <div class="save-status" id="save-status"></div>
+  </div>
+</div>
+</div>
+
+<script>
+/* ── Config ── */
+var ADMIN_PASSWORD = 'countdowns2026';
+
+var CAT_COLORS = {
+  'Releases':      { color:'#C084FC', glow:'rgba(192,132,252,.25)' },
+  'Sports':        { color:'#FB923C', glow:'rgba(251,146,60,.25)'  },
+  'Entertainment': { color:'#FBBF24', glow:'rgba(251,191,36,.2)'   },
+  'Sales':         { color:'#60A5FA', glow:'rgba(96,165,250,.2)'   },
+  'Music':         { color:'#F472B6', glow:'rgba(244,114,182,.2)'  },
+  'Fashion':       { color:'#FDA4AF', glow:'rgba(253,164,175,.2)'  },
+};
+
+var VARIABLE_EVENTS = [
+  /* Releases */
+  { slug:'gta6',           name:'GTA VI',                    cat:'Releases',      defaultRegions:['global'] },
+  { slug:'iphone',         name:'Next iPhone',               cat:'Releases',      defaultRegions:['global'] },
+  /* Sports */
+  { slug:'f1',             name:'F1 Next Race',              cat:'Sports',        defaultRegions:['global'] },
+  { slug:'world-cup',      name:'2026 FIFA World Cup',       cat:'Sports',        defaultRegions:['global'] },
+  { slug:'ucl-final',      name:'Champions League Final',    cat:'Sports',        defaultRegions:['global'] },
+  { slug:'nba-finals',     name:'NBA Finals',                cat:'Sports',        defaultRegions:['global'] },
+  { slug:'le-mans',        name:'24h Le Mans',               cat:'Sports',        defaultRegions:['global'] },
+  { slug:'wimbledon',      name:'Wimbledon',                 cat:'Sports',        defaultRegions:['global'] },
+  { slug:'tour-de-france', name:'Tour de France',            cat:'Sports',        defaultRegions:['global'] },
+  { slug:'copa-libertadores',name:'Copa Libertadores Final', cat:'Sports',        defaultRegions:['es']     },
+  /* Entertainment */
+  { slug:'grammys',        name:'Grammy Awards',             cat:'Entertainment', defaultRegions:['global'] },
+  { slug:'eurovision',     name:'Eurovision Song Contest',   cat:'Entertainment', defaultRegions:['global','fr'] },
+  { slug:'cannes',         name:'Cannes Film Festival',      cat:'Entertainment', defaultRegions:['global'] },
+  { slug:'coachella',      name:'Coachella',                 cat:'Entertainment', defaultRegions:['en']     },
+  /* Sales */
+  { slug:'hot-sale',       name:'Hot Sale Argentina',        cat:'Sales',         defaultRegions:['es']     },
+  /* Nature */
+  { slug:'eclipse',        name:'Solar Eclipse',             cat:'Releases',      defaultRegions:['global'] },
+  /* Music */
+  { slug:'lollapalooza-ar',name:'Lollapalooza Argentina',    cat:'Music',         defaultRegions:['es']     },
+  { slug:'lollapalooza-cl',name:'Lollapalooza Chile',        cat:'Music',         defaultRegions:['es']     },
+  { slug:'cosquin-rock',   name:'Cosquín Rock',              cat:'Music',         defaultRegions:['es']     },
+  { slug:'rock-in-rio',    name:'Rock in Rio Lisboa',        cat:'Music',         defaultRegions:['pt']     },
+  /* Fashion */
+  { slug:'nyfw',           name:'New York Fashion Week',     cat:'Fashion',       defaultRegions:['global'] },
+  { slug:'paris-fw',       name:'Paris Fashion Week',        cat:'Fashion',       defaultRegions:['global'] },
+  { slug:'milan-fw',       name:'Milan Fashion Week',        cat:'Fashion',       defaultRegions:['global'] },
+  { slug:'bafweek',        name:'Buenos Aires Fashion Week', cat:'Fashion',       defaultRegions:['es']     },
+];
+
+var ALL_REGIONS = ['global','en','es','pt','fr','de'];
+
+/* ── State ── */
+var _ghToken    = localStorage.getItem('cd_gh_token') || '';
+var _currentData = {};
+
+document.getElementById('gh-token-input').value = _ghToken;
+
+/* ── Login ── */
+document.getElementById('login-btn').addEventListener('click', tryLogin);
+document.getElementById('pwd-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') tryLogin();
+});
+
+function tryLogin() {
+  var pwd = document.getElementById('pwd-input').value;
+  _ghToken = document.getElementById('gh-token-input').value.trim();
+  if (pwd !== ADMIN_PASSWORD) {
+    document.getElementById('login-err').style.display = 'block';
+    return;
+  }
+  localStorage.setItem('cd_gh_token', _ghToken);
+  document.getElementById('login-overlay').style.display = 'none';
+  document.getElementById('admin-main').style.display = 'block';
+  loadData();
+}
+
+/* ── Load JSON ── */
+function loadData() {
+  fetch('/countdowns-data.json?_=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(d) { _currentData = d; buildForm(d.events || {}); })
+    .catch(function()  { _currentData = { events:{} }; buildForm({}); });
+}
+
+/* ── Build form ── */
+function buildForm(events) {
+  var cats = {};
+  VARIABLE_EVENTS.forEach(function(ev) {
+    if (!cats[ev.cat]) cats[ev.cat] = [];
+    cats[ev.cat].push(ev);
+  });
+
+  var html = '';
+  Object.keys(cats).forEach(function(cat) {
+    var cc = CAT_COLORS[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' };
+    html += '<div class="admin-section-hdr" style="--cat-color:' + cc.color + '">' + cat + '</div>';
+    cats[cat].forEach(function(ev) {
+      var data     = events[ev.slug] || {};
+      var dateVal  = data.date ? isoToLocal(data.date) : '';
+      var noteVal  = (data.note || '').replace(/"/g, '&quot;');
+      var regions  = data.regions || ev.defaultRegions || ['global'];
+
+      var regionChips = ALL_REGIONS.map(function(r) {
+        var on = regions.indexOf(r) >= 0 ? ' on' : '';
+        return '<span class="region-chip' + on + '" data-slug="' + ev.slug + '" data-region="' + r + '" onclick="toggleRegion(this)">' + r + '</span>';
+      }).join('');
+
+      html += [
+        '<div class="ev-card" id="card-' + ev.slug + '">',
+        '  <div class="ev-card-hdr">',
+        '    <span class="ev-card-name">' + ev.name + '</span>',
+        '    <span class="ev-cat-badge" style="--cat-color:' + cc.color + ';--cat-glow:' + cc.glow + '">' + cat + '</span>',
+        '  </div>',
+        '  <div class="ev-grid">',
+        '    <div>',
+        '      <label class="admin-label">Date & time (your local time)</label>',
+        '      <input type="datetime-local" class="admin-input" id="date-' + ev.slug + '" value="' + dateVal + '">',
+        '    </div>',
+        '    <div>',
+        '      <label class="admin-label">Note</label>',
+        '      <textarea class="admin-textarea" id="note-' + ev.slug + '">' + (data.note || '') + '</textarea>',
+        '    </div>',
+        '  </div>',
+        '  <span class="regions-label">Regions</span>',
+        '  <div class="region-chips" id="regions-' + ev.slug + '">' + regionChips + '</div>',
+        '</div>',
+      ].join('\n');
+    });
+  });
+
+  document.getElementById('events-form').innerHTML = html;
+}
+
+/* ── Region toggle ── */
+function toggleRegion(chip) {
+  chip.classList.toggle('on');
+}
+
+function getRegions(slug) {
+  var chips = document.querySelectorAll('[data-slug="' + slug + '"].region-chip');
+  var result = [];
+  chips.forEach(function(c) { if (c.classList.contains('on')) result.push(c.dataset.region); });
+  return result;
+}
+
+/* ── Date helpers ── */
+function isoToLocal(iso) {
+  try {
+    var d = new Date(iso);
+    var p = function(n) { return n < 10 ? '0' + n : n; };
+    return d.getFullYear() + '-' + p(d.getMonth()+1) + '-' + p(d.getDate()) + 'T' + p(d.getHours()) + ':' + p(d.getMinutes());
+  } catch(e) { return ''; }
+}
+
+/* ── Save all ── */
+function saveAll() {
+  var repo  = document.getElementById('gh-repo').value.trim();
+  var branch = document.getElementById('gh-branch').value.trim() || 'main';
+  if (!repo || !_ghToken) {
+    showStatus('err', 'GitHub repo and token are required.');
+    return;
+  }
+
+  var newEvents = JSON.parse(JSON.stringify(_currentData.events || {}));
+  VARIABLE_EVENTS.forEach(function(ev) {
+    var dateEl = document.getElementById('date-' + ev.slug);
+    var noteEl = document.getElementById('note-' + ev.slug);
+    if (!dateEl) return;
+    if (!newEvents[ev.slug]) newEvents[ev.slug] = {};
+    newEvents[ev.slug].date    = dateEl.value ? new Date(dateEl.value).toISOString() : null;
+    newEvents[ev.slug].note    = noteEl ? noteEl.value.trim() || null : null;
+    newEvents[ev.slug].regions = getRegions(ev.slug);
+  });
+
+  var payload = JSON.stringify(
+    Object.assign({}, _currentData, {
+      events:  newEvents,
+      updated: new Date().toISOString().slice(0, 10),
+    }), null, 2);
+
+  var btn = document.getElementById('save-btn');
+  btn.disabled = true; btn.textContent = 'Saving…';
+
+  var apiBase = 'https://api.github.com/repos/' + repo + '/contents/countdowns-data.json';
+  var headers = {
+    'Authorization': 'Bearer ' + _ghToken,
+    'Accept': 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json',
+  };
+
+  fetch(apiBase, { headers: headers })
+    .then(function(r) { return r.json(); })
+    .then(function(meta) {
+      return fetch(apiBase, {
+        method: 'PUT',
+        headers: headers,
+        body: JSON.stringify({
+          message: 'chore: update countdowns-data.json ' + new Date().toISOString().slice(0,10),
+          content: btoa(unescape(encodeURIComponent(payload))),
+          sha: meta.sha,
+          branch: branch,
+        })
+      });
+    })
+    .then(function(r) {
+      if (!r.ok) return r.json().then(function(e) { throw new Error(e.message); });
+      return r.json();
+    })
+    .then(function() {
+      _currentData.events = newEvents;
+      btn.disabled = false; btn.textContent = 'Save all changes to GitHub';
+      showStatus('ok', 'Saved. GitHub Pages will rebuild in ~60 seconds.');
+      document.getElementById('saved-toast').classList.add('show');
+      setTimeout(function() { document.getElementById('saved-toast').classList.remove('show'); }, 3000);
+    })
+    .catch(function(err) {
+      btn.disabled = false; btn.textContent = 'Save all changes to GitHub';
+      showStatus('err', 'Error: ' + err.message);
+    });
+}
+
+function showStatus(type, msg) {
+  var el = document.getElementById('save-status');
+  el.className = 'save-status ' + type;
+  el.textContent = msg;
+  el.style.display = 'block';
+  setTimeout(function() { el.style.display = 'none'; }, 9000);
+}
+</script>
+</body>
+</html>
