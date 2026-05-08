@@ -652,6 +652,47 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   COUNTRY PICKER
+═══════════════════════════════════════════════════════════════ */
+.cd-country-picker {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 24px 0;
+}
+.cd-cpicker-label {
+  font-size: 13px;
+  color: var(--ink-dim);
+  margin: 0 0 12px;
+  text-align: center;
+}
+.cd-cpicker-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.cd-cpicker-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink-dim);
+  border-radius: var(--radius-xs);
+  padding: 7px 16px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+.cd-cpicker-btn:hover {
+  border-color: var(--border-hi);
+  color: var(--ink);
+}
+.cd-cpicker-btn.active {
+  border-color: var(--cat-color, #818cf8);
+  color: var(--cat-color, #818cf8);
+  background: var(--cat-soft, rgba(129,140,248,.08));
+}
+
+/* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {

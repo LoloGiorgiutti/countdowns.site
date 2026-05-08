@@ -155,7 +155,9 @@ EVENTS = [
     content="The Copa Libertadores is South America's premier club football competition, organized by CONMEBOL. The annual final is one of the most watched football matches in the Americas. The 2026 final date and host city will be announced by CONMEBOL.",
     faqs=[
       ("When is the Copa Libertadores Final 2026?", "The 2026 final date has not been confirmed yet. CONMEBOL usually holds the final in November."),
-      ("Where is the Copa Libertadores Final held?", "CONMEBOL selects a neutral venue for the final, often in a major South American city."),
+      ("Where is the Copa Libertadores Final held?", "CONMEBOL selects a neutral venue for the final, often in a major South American city such as Buenos Aires, Lima, Montevideo or Asunción."),
+      ("Which teams have won the most Copa Libertadores titles?", "Independiente (Argentina) is the most successful club with 7 titles. Boca Juniors (Argentina) and Estudiantes (Argentina) are also among the top winners."),
+      ("How many teams participate in the Copa Libertadores?", "The Copa Libertadores features 47 clubs from CONMEBOL's 10 member nations, competing across multiple knockout and group stage rounds."),
     ]
   ),
 
@@ -168,9 +170,10 @@ EVENTS = [
     content="Christmas is celebrated on December 25 each year across the world. As a public holiday in over 160 countries, it marks the culmination of the Advent season and is celebrated with gift-giving, family gatherings, and festive traditions.",
     faqs=[
       ("How many days until Christmas?", "The live counter above shows the exact days, hours, minutes and seconds until December 25."),
-      ("What day is Christmas 2026?", "Christmas 2026 falls on a Friday."),
-      ("How many weeks until Christmas?", "Divide the number of days shown above by 7 to get the weeks remaining."),
-      ("When is Christmas Eve?", "Christmas Eve is always December 24, the day before Christmas."),
+      ("What day is Christmas 2026?", "Christmas 2026 falls on a Friday, December 25."),
+      ("How many weeks until Christmas?", "Divide the number of days shown above by 7 to get the weeks remaining until Christmas."),
+      ("When is Christmas Eve?", "Christmas Eve is always December 24, the day before Christmas Day."),
+      ("Is Christmas a public holiday?", "Christmas is a public holiday in over 160 countries, making it the most widely observed holiday in the world."),
     ]
   ),
   dict(
@@ -183,6 +186,8 @@ EVENTS = [
       ("How many days until New Year 2027?", "The live counter above shows the exact time remaining until January 1, 2027."),
       ("What day is New Year's Day 2027?", "New Year's Day 2027 falls on a Friday, January 1."),
       ("Where are the best New Year fireworks?", "Famous New Year fireworks displays include Sydney Harbour Bridge, Dubai, London's Thames, and New York's Times Square."),
+      ("What time zone does New Year start first?", "New Year arrives first in Kiribati (UTC+14) and last in the Baker Island (UTC-12), about 26 hours apart."),
+      ("When is New Year's Eve?", "New Year's Eve is December 31, the last day of the year, the night before January 1."),
     ]
   ),
   dict(
@@ -194,7 +199,9 @@ EVENTS = [
     faqs=[
       ("How many days until Halloween?", "The live countdown above shows the exact time until October 31."),
       ("What day is Halloween 2026?", "Halloween 2026 falls on a Saturday."),
-      ("When did Halloween originate?", "Halloween has roots in the ancient Celtic festival of Samhain, later influenced by the Christian feast of All Hallows' Eve."),
+      ("When did Halloween originate?", "Halloween has roots in the ancient Celtic festival of Samhain, later influenced by the Christian feast of All Hallows' Eve on October 31."),
+      ("What are popular Halloween costumes?", "Popular Halloween costumes include witches, vampires, skeletons, superheroes, and characters from current pop culture and movies."),
+      ("Is Halloween celebrated outside the US?", "Yes. Halloween is widely celebrated in Canada, Ireland, the UK, Australia, and increasingly in many European and Latin American countries."),
     ]
   ),
   dict(
@@ -207,6 +214,8 @@ EVENTS = [
       ("How many days until Valentine's Day?", "The live counter above shows the exact time until February 14."),
       ("What day is Valentine's Day 2027?", "Valentine's Day 2027 falls on a Sunday, February 14."),
       ("What are popular Valentine's Day gifts?", "Classic gifts include roses, chocolates, jewelry, perfume and personalised cards."),
+      ("Is Valentine's Day a public holiday?", "Valentine's Day is not a public holiday in most countries. It is a cultural observance celebrated with gifts and gestures of affection."),
+      ("Who was Saint Valentine?", "Saint Valentine was a Christian martyr in ancient Rome. His association with romantic love developed in the Middle Ages, popularised by Geoffrey Chaucer and others."),
     ]
   ),
   dict(
@@ -217,30 +226,52 @@ EVENTS = [
     content="Easter is a Christian holiday celebrating the resurrection of Jesus Christ. Easter Sunday falls on the first Sunday after the first full moon following the spring equinox (March 21), making it a moveable feast between March 22 and April 25.",
     faqs=[
       ("When is Easter 2027?", "Easter 2027 falls on Sunday, March 28, 2027."),
-      ("How is the date of Easter calculated?", "Easter falls on the first Sunday after the first full moon on or after March 21 (the ecclesiastical spring equinox)."),
+      ("When is Easter 2026?", "Easter 2026 falls on Sunday, April 5, 2026."),
+      ("How is the date of Easter calculated?", "Easter falls on the first Sunday after the first full moon on or after March 21 (the ecclesiastical spring equinox). This is known as the computus."),
       ("What is Good Friday?", "Good Friday falls two days before Easter Sunday and marks the crucifixion of Jesus Christ. It is a public holiday in many countries."),
+      ("What is Holy Week?", "Holy Week is the week leading up to Easter Sunday, beginning with Palm Sunday and including Maundy Thursday, Good Friday, and Holy Saturday."),
     ]
   ),
   dict(
     slug="mothers-day", name="Mother's Day", type="auto", category="Holidays",
     seo_title="Mother's Day Countdown 2027 — Days Until Mother's Day",
-    meta_desc="Live countdown to Mother's Day 2027. In the US, Mother's Day is the second Sunday of May.",
-    hero_desc="Countdown to Mother's Day — second Sunday of May.",
-    content="Mother's Day in the United States, Canada and Australia is celebrated on the second Sunday of May. Other countries celebrate on different dates — the UK observes Mothering Sunday in March. It is one of the most celebrated holidays of the year.",
+    meta_desc="Live countdown to Mother's Day. Select your country — date varies by region. US, UK, Mexico, Argentina, France and more.",
+    hero_desc="Countdown to Mother's Day. Date varies by country.",
+    content="Mother's Day is celebrated on different dates around the world. The US, Canada, Australia and Brazil observe it on the second Sunday of May. The UK celebrates Mothering Sunday on the fourth Sunday of Lent (usually in March). Mexico always celebrates on May 10. Argentina marks it on the third Sunday of October. France holds it on the last Sunday of May. Use the selector below to find the date for your country.",
     faqs=[
-      ("When is Mother's Day 2027?", "Mother's Day 2027 (US/Canada) falls on Sunday, May 9, 2027."),
-      ("Is Mother's Day the same date everywhere?", "No. The US, Canada and Australia celebrate on the second Sunday of May. The UK observes Mothering Sunday on the fourth Sunday of Lent (in March)."),
+      ("When is Mother's Day 2027 in the US?", "Mother's Day 2027 in the US, Canada and Australia falls on Sunday, May 9, 2027 (second Sunday of May)."),
+      ("When is Mother's Day in Mexico?", "Mexico always celebrates Mother's Day on May 10, regardless of the day of the week."),
+      ("When is Mother's Day in Argentina?", "Argentina celebrates Mother's Day on the third Sunday of October. In 2026 it falls on October 18; in 2027 on October 17."),
+      ("When is Mothering Sunday in the UK?", "The UK observes Mothering Sunday on the fourth Sunday of Lent, which varies each year. In 2027 it falls on March 7."),
+      ("Why is Mother's Day on different dates in different countries?", "Each country independently adopted the holiday at different times and chose a date tied to local tradition, religious calendars, or historic events."),
+    ],
+    country_variants=[
+      {"code": "us",  "label": "US, Canada & Australia", "dates": ["2026-05-10", "2027-05-09"]},
+      {"code": "uk",  "label": "United Kingdom",         "dates": ["2026-03-15", "2027-03-07"]},
+      {"code": "mx",  "label": "Mexico",                 "dates": ["2026-05-10", "2027-05-10"]},
+      {"code": "ar",  "label": "Argentina",              "dates": ["2026-10-18", "2027-10-17"]},
+      {"code": "fr",  "label": "France",                 "dates": ["2026-05-31", "2027-05-30"]},
+      {"code": "br",  "label": "Brazil",                 "dates": ["2026-05-10", "2027-05-09"]},
     ]
   ),
   dict(
     slug="fathers-day", name="Father's Day", type="auto", category="Holidays",
     seo_title="Father's Day Countdown 2026 — Days Until Father's Day",
-    meta_desc="Live countdown to Father's Day 2026. In the US, Father's Day is the third Sunday of June.",
-    hero_desc="Countdown to Father's Day — third Sunday of June.",
-    content="Father's Day in the United States, the United Kingdom and Canada is celebrated on the third Sunday of June. It is a day to honour fathers and father figures with gifts, meals and quality time.",
+    meta_desc="Live countdown to Father's Day. Select your country — date varies by region. US, Australia, Germany, Brazil and more.",
+    hero_desc="Countdown to Father's Day. Date varies by country.",
+    content="Father's Day is celebrated on different dates around the world. The US, Canada, UK and Mexico observe it on the third Sunday of June. Australia and New Zealand celebrate on the first Sunday of September. Germany and Austria mark it on Ascension Thursday (39 days after Easter). Brazil celebrates on the second Sunday of August. Select your country below to see the countdown for your region.",
     faqs=[
-      ("When is Father's Day 2026?", "Father's Day 2026 (US/UK/Canada) falls on Sunday, June 21, 2026."),
-      ("Is Father's Day in June or August?", "In most countries including the US, UK and Canada, Father's Day is in June (third Sunday). Australia and New Zealand celebrate in September."),
+      ("When is Father's Day 2026 in the US?", "Father's Day 2026 in the US, Canada, UK and Mexico falls on Sunday, June 21, 2026 (third Sunday of June)."),
+      ("When is Father's Day in Australia?", "Australia and New Zealand celebrate Father's Day on the first Sunday of September. In 2026 that is September 6."),
+      ("When is Father's Day in Germany?", "Germany and Austria celebrate Father's Day on Ascension Thursday, 39 days after Easter. In 2026 that falls on May 14."),
+      ("When is Father's Day in Brazil?", "Brazil celebrates Father's Day on the second Sunday of August. In 2026 that is August 9."),
+      ("Why is Father's Day on different dates?", "Countries independently adopted the holiday and chose dates tied to local traditions. The US date (3rd Sunday of June) is the most widely followed internationally."),
+    ],
+    country_variants=[
+      {"code": "us",  "label": "US, Canada, UK & Mexico", "dates": ["2026-06-21", "2027-06-20"]},
+      {"code": "au",  "label": "Australia & New Zealand",  "dates": ["2026-09-06", "2027-09-05"]},
+      {"code": "de",  "label": "Germany & Austria",        "dates": ["2026-05-14", "2027-05-06"]},
+      {"code": "br",  "label": "Brazil",                   "dates": ["2026-08-09", "2027-08-08"]},
     ]
   ),
   dict(
@@ -252,7 +283,9 @@ EVENTS = [
     faqs=[
       ("When is Thanksgiving 2026?", "Thanksgiving 2026 falls on Thursday, November 26, 2026."),
       ("When is Black Friday 2026?", "Black Friday always falls the day after Thanksgiving — November 27, 2026."),
-      ("Is Thanksgiving a national holiday?", "Yes, Thanksgiving is a federal holiday in the United States. Canada also celebrates Thanksgiving on the second Monday of October."),
+      ("Is Thanksgiving a national holiday?", "Yes, Thanksgiving is a federal holiday in the United States. Canada also celebrates Thanksgiving, but on the second Monday of October."),
+      ("When is Canadian Thanksgiving 2026?", "Canadian Thanksgiving 2026 falls on Monday, October 12, 2026 (second Monday of October)."),
+      ("What is the traditional Thanksgiving meal?", "The traditional US Thanksgiving meal typically includes roast turkey, stuffing, mashed potatoes, cranberry sauce, green bean casserole, and pumpkin pie."),
     ]
   ),
   dict(
@@ -275,7 +308,10 @@ EVENTS = [
     content="Memorial Day is a United States federal holiday observed on the last Monday of May. It honours military personnel who have died in service. It is also widely regarded as the unofficial start of the summer season.",
     faqs=[
       ("When is Memorial Day 2027?", "Memorial Day 2027 falls on Monday, May 31, 2027."),
+      ("When is Memorial Day 2026?", "Memorial Day 2026 falls on Monday, May 25, 2026 (last Monday of May)."),
       ("Is Memorial Day a federal holiday?", "Yes, Memorial Day is a federal holiday in the US. Banks, government offices and many businesses are closed."),
+      ("What is the difference between Memorial Day and Veterans Day?", "Memorial Day (last Monday of May) honours military personnel who died in service. Veterans Day (November 11) honours all military veterans, living and deceased."),
+      ("Does Memorial Day mark the start of summer?", "Yes. Memorial Day weekend is widely considered the unofficial start of summer in the United States, with many people opening pools and taking road trips."),
     ]
   ),
   dict(
@@ -287,6 +323,8 @@ EVENTS = [
     faqs=[
       ("When is Labor Day 2026?", "Labor Day 2026 falls on Monday, September 7, 2026."),
       ("Is Labor Day the same as International Workers' Day?", "No. International Workers' Day (May Day) is May 1. US/Canada Labor Day is the first Monday of September."),
+      ("Is Labor Day a federal holiday?", "Yes, Labor Day is a federal holiday in both the United States and Canada. Most businesses, schools and government offices are closed."),
+      ("Does Labor Day mark the end of summer?", "Yes. Labor Day weekend is considered the unofficial end of summer in the US, and many schools resume in the days following it."),
     ]
   ),
   dict(
@@ -297,7 +335,10 @@ EVENTS = [
     content="St. Patrick's Day is a cultural and religious celebration held on March 17, the traditional death date of Saint Patrick, the patron saint of Ireland. It is a public holiday in Ireland and celebrated worldwide with parades, wearing of green, and Irish music and food.",
     faqs=[
       ("When is St. Patrick's Day 2027?", "St. Patrick's Day 2027 falls on Wednesday, March 17, 2027."),
-      ("Where is the biggest St. Patrick's Day parade?", "New York City hosts one of the world's largest St. Patrick's Day parades, drawing millions of spectators along Fifth Avenue."),
+      ("When is St. Patrick's Day 2026?", "St. Patrick's Day 2026 falls on Tuesday, March 17, 2026."),
+      ("Where is the biggest St. Patrick's Day parade?", "New York City hosts one of the world's largest St. Patrick's Day parades, drawing millions of spectators along Fifth Avenue. Dublin also holds a major parade."),
+      ("Is St. Patrick's Day a public holiday?", "St. Patrick's Day is a public holiday in the Republic of Ireland and Northern Ireland. It is a cultural observance (not a public holiday) in the US, Canada and Australia."),
+      ("What colour is associated with St. Patrick's Day?", "Green is the iconic colour, symbolising Ireland's lush landscape. People around the world wear green and buildings are illuminated in green light on March 17."),
     ]
   ),
   dict(
@@ -308,7 +349,10 @@ EVENTS = [
     content="Día de los Muertos (Day of the Dead) is a Mexican and Latin American holiday celebrated on November 1–2, coinciding with the Catholic holy days of All Saints' Day and All Souls' Day. It honours deceased loved ones with colourful altars, marigolds, skull imagery and celebrations.",
     faqs=[
       ("When is Día de los Muertos 2026?", "Día de los Muertos is celebrated November 1–2, 2026."),
-      ("Is Día de los Muertos the same as Halloween?", "No. While they fall close together, Día de los Muertos is a distinct Mexican tradition honouring deceased loved ones, not a horror celebration."),
+      ("Is Día de los Muertos the same as Halloween?", "No. While they fall close together, Día de los Muertos is a distinct Mexican tradition honouring deceased loved ones through colour, food and altars — not a horror celebration."),
+      ("What is an ofrenda?", "An ofrenda is a colourful altar built during Día de los Muertos to honour deceased loved ones. It typically holds photos, marigolds, candles, food and personal mementos."),
+      ("Why are marigolds associated with Día de los Muertos?", "Marigolds (cempasúchil) are believed to guide the spirits of the dead back to the living world with their bright colour and strong scent."),
+      ("Is Día de los Muertos celebrated outside Mexico?", "Yes. The holiday is celebrated in many Latin American countries and has grown in popularity worldwide, especially in the US and Central America."),
     ]
   ),
   dict(
@@ -319,7 +363,9 @@ EVENTS = [
     content="Cinco de Mayo commemorates the Mexican army's victory over French forces at the Battle of Puebla on May 5, 1862. While it is a minor holiday in Mexico, it is widely celebrated in the United States as a celebration of Mexican-American culture.",
     faqs=[
       ("When is Cinco de Mayo 2027?", "Cinco de Mayo 2027 falls on Tuesday, May 5, 2027."),
-      ("Is Cinco de Mayo Mexican Independence Day?", "No. Mexican Independence Day is September 16. Cinco de Mayo commemorates the 1862 Battle of Puebla."),
+      ("Is Cinco de Mayo Mexican Independence Day?", "No. Mexican Independence Day is September 16. Cinco de Mayo commemorates the Mexican army's victory at the Battle of Puebla on May 5, 1862."),
+      ("Is Cinco de Mayo a national holiday in Mexico?", "Cinco de Mayo is a regional holiday mainly observed in the state of Puebla, Mexico. It is not a federal public holiday. It is much more widely celebrated in the United States."),
+      ("Why is Cinco de Mayo celebrated in the US?", "Cinco de Mayo became a celebration of Mexican-American culture and heritage in the US, popularised from the 1960s onward, particularly in states with large Mexican-American communities."),
     ]
   ),
   dict(
@@ -331,6 +377,9 @@ EVENTS = [
     faqs=[
       ("¿Cuándo son las Fiestas Patrias Chile 2026?", "Las Fiestas Patrias son el 18 y 19 de septiembre de 2026."),
       ("¿Qué se celebra el 18 de septiembre?", "Se conmemora la Primera Junta Nacional de Gobierno de Chile, formada el 18 de septiembre de 1810."),
+      ("¿Qué se celebra el 19 de septiembre?", "El 19 de septiembre es el Día de las Glorias del Ejército, que conmemora la primera batalla del Ejército de Chile."),
+      ("¿Qué es una fonda?", "Las fondas son carpas o locales festivos donde se baila cueca, se comen empanadas y anticuchos, y se celebra con chicha y vino durante las Fiestas Patrias."),
+      ("When is Chilean Independence Day?", "Chile's national holiday (Fiestas Patrias) is on September 18–19 each year. The key date is September 18, commemorating the First National Government of 1810."),
     ]
   ),
   dict(
@@ -341,7 +390,10 @@ EVENTS = [
     content="Bastille Day (La Fête Nationale) is France's national holiday, celebrated on July 14 to commemorate the Storming of the Bastille on July 14, 1789, a pivotal moment in the French Revolution. Celebrations include the military parade on the Champs-Élysées and a fireworks display at the Eiffel Tower.",
     faqs=[
       ("When is Bastille Day 2026?", "Bastille Day 2026 falls on Tuesday, July 14, 2026."),
-      ("What happens on Bastille Day?", "France celebrates with a military parade on the Champs-Élysées in Paris, fireworks at the Eiffel Tower, and celebrations across the country."),
+      ("What happens on Bastille Day?", "France celebrates with a military parade on the Champs-Élysées in Paris, a fireworks display at the Eiffel Tower, and balls and celebrations across the country."),
+      ("What is the Storming of the Bastille?", "On July 14, 1789, Parisian revolutionaries stormed the Bastille prison, a symbol of royal tyranny. The event marked a turning point in the French Revolution."),
+      ("Is Bastille Day a public holiday?", "Yes. July 14 is a national public holiday in France. Businesses, schools and government offices are closed."),
+      ("Why is Bastille Day important outside France?", "Bastille Day is seen globally as a symbol of the ideals of the French Revolution — liberty, equality and fraternity — making it one of the most recognised national holidays in the world."),
     ]
   ),
   dict(
@@ -352,7 +404,10 @@ EVENTS = [
     content="Oktoberfest is the world's largest folk festival, held annually in Munich, Bavaria. The festival begins on a Saturday in late September and runs for 16–18 days, ending on the first Sunday of October. It attracts around 6 million visitors each year.",
     faqs=[
       ("When is Oktoberfest 2026?", "Oktoberfest 2026 begins on Saturday, September 19, 2026, and runs until October 4, 2026."),
-      ("Where is Oktoberfest held?", "Oktoberfest takes place at the Theresienwiese fairgrounds in Munich, Germany."),
+      ("Where is Oktoberfest held?", "Oktoberfest takes place at the Theresienwiese fairgrounds (known as the Wiesn) in Munich, Bavaria, Germany."),
+      ("How many people attend Oktoberfest?", "Oktoberfest draws around 6 million visitors each year, making it the world's largest beer festival and folk event."),
+      ("What is the most popular Oktoberfest tent?", "The Hofbräu-Festzelt (Hofbräu tent) is among the most famous. There are 17 large tents and 21 smaller ones, each run by a different Munich brewery."),
+      ("Do I need reservations for Oktoberfest?", "Reservations are strongly recommended for the beer tents, especially on weekends. Many tables are booked months in advance by corporate groups and tour operators."),
     ]
   ),
 
@@ -377,7 +432,9 @@ EVENTS = [
     content="The Grammy Awards are the most prestigious honours in the music industry, presented annually by the Recording Academy. The ceremony typically takes place in January or February and is broadcast live on CBS.",
     faqs=[
       ("When are the Grammys 2027?", "The 2027 Grammy dates have not yet been announced. The Grammys typically take place in January or February."),
-      ("Where are the Grammys held?", "The Grammys have been held at various venues including Madison Square Garden (New York) and Crypto.com Arena (Los Angeles)."),
+      ("Where are the Grammys held?", "The Grammys rotate between venues in New York and Los Angeles, including Madison Square Garden and Crypto.com Arena."),
+      ("How many Grammy categories are there?", "The Recording Academy presents awards in over 90 categories spanning all major genres of music, from pop and rock to classical and jazz."),
+      ("Who has won the most Grammys?", "Beyoncé holds the record for the most Grammy wins in history with over 32 awards as of 2024."),
     ]
   ),
   dict(
@@ -438,8 +495,10 @@ EVENTS = [
     content="Black Friday is the Friday after Thanksgiving in the United States and has become the unofficial start of the Christmas shopping season. Retailers offer steep discounts, and the day has expanded globally with online deals that now extend over an entire week.",
     faqs=[
       ("When is Black Friday 2026?", "Black Friday 2026 falls on Friday, November 27, 2026."),
-      ("When does Black Friday start?", "Many retailers now start Black Friday deals a week early online. The main in-store event is the Friday after US Thanksgiving."),
+      ("When does Black Friday start?", "Many retailers now start Black Friday deals a week early online. The main in-store event is always the Friday after US Thanksgiving."),
       ("When is Cyber Monday 2026?", "Cyber Monday 2026 is on Monday, November 30, 2026 — three days after Black Friday."),
+      ("Is Black Friday only in the US?", "No. Black Friday has spread globally and is now a major shopping event in the UK, Canada, Australia, Brazil, and most of Europe."),
+      ("What are the best Black Friday deals?", "Electronics, appliances, clothing, toys and travel tend to offer the deepest discounts on Black Friday, both in-store and online."),
     ]
   ),
   dict(
@@ -450,7 +509,9 @@ EVENTS = [
     content="Cyber Monday is an online shopping holiday created by retailers in 2005 to encourage people to shop online. It falls on the Monday after US Thanksgiving (three days after Black Friday) and has grown into the biggest online shopping day of the year globally.",
     faqs=[
       ("When is Cyber Monday 2026?", "Cyber Monday 2026 is on Monday, November 30, 2026."),
-      ("Is Cyber Monday better than Black Friday?", "Both offer major deals, but Cyber Monday focuses on online shopping and tech deals, while Black Friday traditionally focuses on in-store offers."),
+      ("Is Cyber Monday better than Black Friday?", "Both offer major deals. Cyber Monday focuses on online shopping and tech, while Black Friday traditionally includes both in-store and online offers. Many retailers now offer deals across the full Cyber Week."),
+      ("What are the best Cyber Monday deals?", "Electronics, software, streaming services, laptops, and gaming gear typically see the deepest Cyber Monday discounts."),
+      ("Is Cyber Monday only in the US?", "Originally a US event, Cyber Monday is now observed globally in the UK, Canada, Australia, and Latin America."),
     ]
   ),
   dict(
@@ -461,7 +522,9 @@ EVENTS = [
     content="El Hot Sale es el evento de comercio electrónico más importante de Argentina, organizado por la Cámara Argentina de Comercio Electrónico (CACE). Se realiza anualmente en mayo y reúne a cientos de marcas con ofertas y descuentos exclusivos online.",
     faqs=[
       ("¿Cuándo es el Hot Sale 2027?", "Las fechas del Hot Sale Argentina 2027 aún no fueron confirmadas. Suele realizarse en mayo, alrededor del 18 al 20."),
-      ("¿Qué marcas participan en el Hot Sale?", "Participan cientos de marcas incluyendo supermercados, electrónica, indumentaria, viajes y más. La lista se publica en hotsal.com.ar."),
+      ("¿Qué marcas participan en el Hot Sale?", "Participan cientos de marcas incluyendo supermercados, electrónica, indumentaria, viajes y más. La lista se publica en hotsal.com.ar antes del evento."),
+      ("¿Cómo aprovechar el Hot Sale?", "Conviene armar una lista de productos antes del evento, comparar precios con anterioridad y tener cuenta creada en las tiendas para poder comprar rápido."),
+      ("¿El Hot Sale tiene descuentos en cuotas?", "Sí, muchas marcas ofrecen cuotas sin interés a través de tarjetas de crédito durante el Hot Sale, además de descuentos directos en el precio."),
     ]
   ),
 
@@ -501,8 +564,10 @@ EVENTS = [
     hero_desc="Countdown to Lollapalooza Argentina 2027.",
     content="Lollapalooza Argentina is one of the biggest music festivals in South America, held annually at the Hipódromo de San Isidro in Buenos Aires. The 2027 dates and lineup have not yet been announced.",
     faqs=[
-      ("¿Cuándo es el Lollapalooza Argentina 2027?", "Las fechas aún no fueron anunciadas. El festival suele realizarse en marzo en el Hipódromo de San Isidro."),
-      ("¿Dónde se hace el Lollapalooza Argentina?", "En el Hipódromo de San Isidro, Buenos Aires, Argentina."),
+      ("¿Cuándo es el Lollapalooza Argentina 2027?", "Las fechas aún no fueron anunciadas. El festival suele realizarse en marzo en el Hipódromo de San Isidro, Buenos Aires."),
+      ("¿Dónde se hace el Lollapalooza Argentina?", "En el Hipódromo de San Isidro, ubicado en San Isidro, provincia de Buenos Aires, Argentina."),
+      ("¿Cuántos días dura el Lollapalooza Argentina?", "El festival suele durar 3 días, con múltiples escenarios y artistas nacionales e internacionales en cada jornada."),
+      ("¿Cómo comprar entradas para Lollapalooza Argentina?", "Las entradas se adquieren a través de la web oficial de Lollapalooza Argentina y plataformas como Ticketek. Los abonos suelen agotarse rápidamente."),
     ]
   ),
   dict(
@@ -512,8 +577,10 @@ EVENTS = [
     hero_desc="Countdown to Lollapalooza Chile 2027.",
     content="Lollapalooza Chile is held annually at Parque Bicentenario Cerrillos in Santiago. It is one of the most important music festivals in Latin America, typically held in March. The 2027 lineup and dates are pending announcement.",
     faqs=[
-      ("¿Cuándo es el Lollapalooza Chile 2027?", "Las fechas aún no fueron anunciadas. Suele realizarse en marzo en Santiago."),
-      ("¿Dónde se hace el Lollapalooza Chile?", "En el Parque Bicentenario Cerrillos, Santiago de Chile."),
+      ("¿Cuándo es el Lollapalooza Chile 2027?", "Las fechas aún no fueron anunciadas. Suele realizarse en marzo en el Parque Bicentenario Cerrillos, Santiago."),
+      ("¿Dónde se hace el Lollapalooza Chile?", "En el Parque Bicentenario Cerrillos, en la comuna de Cerrillos, Santiago de Chile."),
+      ("¿Cuántos días dura el Lollapalooza Chile?", "El festival dura 3 días, con múltiples escenarios. Suele coincidir en fechas similares al Lollapalooza Argentina."),
+      ("¿Cómo comprar entradas para Lollapalooza Chile?", "Las entradas se venden a través de Puntoticket y la web oficial del festival. Los abonos full pass suelen ser los primeros en agotarse."),
     ]
   ),
   dict(
@@ -524,7 +591,9 @@ EVENTS = [
     content="El Cosquín Rock es uno de los festivales de rock más importantes de Argentina y América Latina, realizado en Santa María de Punilla, Córdoba. Suele celebrarse en febrero y reúne a artistas nacionales e internacionales. Las fechas de 2027 aún no fueron anunciadas.",
     faqs=[
       ("¿Cuándo es el Cosquín Rock 2027?", "Las fechas aún no fueron anunciadas. Suele realizarse en febrero en Santa María de Punilla, Córdoba."),
-      ("¿Cómo comprar entradas para Cosquín Rock?", "Las entradas se venden a través de Ticketek Argentina y en la web oficial del festival."),
+      ("¿Dónde se hace el Cosquín Rock?", "El festival se realiza en Santa María de Punilla, a pocos kilómetros de Cosquín, en las Sierras de Córdoba, Argentina."),
+      ("¿Cómo comprar entradas para Cosquín Rock?", "Las entradas se venden a través de Ticketek Argentina y en la web oficial del festival. Se recomienda comprar con anticipación."),
+      ("¿Cuántos escenarios tiene el Cosquín Rock?", "El festival cuenta con varios escenarios de diferentes tamaños, incluyendo el escenario principal y escenarios alternativos para bandas emergentes."),
     ]
   ),
   dict(
@@ -535,7 +604,9 @@ EVENTS = [
     content="Rock in Rio Lisboa is one of the world's largest music festivals, held at Parque da Bela Vista in Lisbon, Portugal. The 2026 edition starts on September 18 and features international headliners across multiple stages.",
     faqs=[
       ("When is Rock in Rio Lisboa 2026?", "Rock in Rio Lisboa 2026 starts on September 18, 2026 at Parque da Bela Vista, Lisbon."),
-      ("How do I get Rock in Rio tickets?", "Tickets are available at rockinriolisboa.sapo.pt. Passport tickets (all-access) sell out quickly."),
+      ("How do I get Rock in Rio Lisboa tickets?", "Tickets (called Passports) are available at the official Rock in Rio Lisboa website. They often sell out within hours of going on sale."),
+      ("How many days does Rock in Rio Lisboa last?", "Rock in Rio Lisboa typically runs over two consecutive weekends — 4 days of concerts spread across 8 days."),
+      ("What stages does Rock in Rio Lisboa have?", "The main stage is the Palco Mundo (World Stage). Other stages include the Palco NOS and several smaller themed stages throughout the Cidade do Rock."),
     ]
   ),
 
@@ -548,7 +619,9 @@ EVENTS = [
     content="New York Fashion Week (NYFW) is held twice a year in New York City — in February (for Fall/Winter collections) and September (for Spring/Summer collections). It is the first of the four major fashion weeks, followed by London, Milan and Paris.",
     faqs=[
       ("When is New York Fashion Week 2026?", "NYFW September 2026 starts on September 8, 2026 (Spring/Summer 2027 collections)."),
-      ("Can I attend NYFW?", "NYFW shows are primarily industry-only events (buyers, press, stylists). Some designers hold open events — check nyfw.com for public programming."),
+      ("Can I attend NYFW?", "NYFW shows are primarily industry-only events (buyers, press, stylists). Some designers hold open presentations or pop-up events — check nyfw.com for public programming."),
+      ("How long does New York Fashion Week last?", "NYFW typically runs for about 7–9 days. It is held twice a year: February (Fall/Winter) and September (Spring/Summer)."),
+      ("What is the order of the Big Four fashion weeks?", "The Big Four run in order: New York → London → Milan → Paris. The September season typically starts in early September and ends in late October."),
     ]
   ),
   dict(
@@ -558,8 +631,10 @@ EVENTS = [
     hero_desc="Countdown to Paris Fashion Week — September 2026.",
     content="Paris Fashion Week closes the Big Four fashion weeks season. The September edition (Spring/Summer 2027 collections) features shows from Chanel, Dior, Louis Vuitton, Saint Laurent and more iconic French and international houses.",
     faqs=[
-      ("When is Paris Fashion Week 2026?", "Paris Fashion Week September 2026 starts on September 28, 2026."),
-      ("What is the order of Fashion Weeks?", "The Big Four run in order: New York (Sep 8) → London → Milan (Sep 16) → Paris (Sep 28)."),
+      ("When is Paris Fashion Week 2026?", "Paris Fashion Week September 2026 starts on September 28, 2026 (Spring/Summer 2027 collections)."),
+      ("What is the order of the Big Four Fashion Weeks?", "The Big Four run in order: New York (Sep 8) → London → Milan (Sep 16) → Paris (Sep 28)."),
+      ("What brands show at Paris Fashion Week?", "Paris Fashion Week features shows from Chanel, Dior, Louis Vuitton, Balenciaga, Givenchy, Saint Laurent, Valentino and many other iconic houses."),
+      ("Is Paris Fashion Week open to the public?", "Most runway shows are strictly invitation-only. However, some brands hold exhibitions, presentations and pop-up events open to a wider audience."),
     ]
   ),
   dict(
@@ -569,7 +644,10 @@ EVENTS = [
     hero_desc="Countdown to Milan Fashion Week — September 2026.",
     content="Milan Fashion Week is the third of the Big Four fashion weeks, held in September for Spring/Summer collections and February for Fall/Winter. The September 2026 edition features runway shows from Prada, Gucci, Versace, Bottega Veneta and many other iconic Italian houses.",
     faqs=[
-      ("When is Milan Fashion Week 2026?", "Milan Fashion Week September 2026 starts on September 16, 2026."),
+      ("When is Milan Fashion Week 2026?", "Milan Fashion Week September 2026 starts on September 16, 2026 (Spring/Summer 2027 collections)."),
+      ("What brands show at Milan Fashion Week?", "Milan Fashion Week features shows from Prada, Gucci, Versace, Armani, Dolce & Gabbana, Bottega Veneta, Fendi and many other Italian and international houses."),
+      ("How long does Milan Fashion Week last?", "Milan Fashion Week typically runs for about 7–8 days, with multiple shows each day across the city."),
+      ("Is Milan Fashion Week open to the public?", "Most runway shows are invitation-only for buyers, press and VIPs. Some brands also hold open exhibitions or public events during the week."),
     ]
   ),
   dict(
@@ -580,6 +658,9 @@ EVENTS = [
     content="Buenos Aires Fashion Week (BAFWeek) is Argentina's premier fashion week, held twice a year showcasing the best of Argentine and Latin American fashion design. The Spring/Summer edition takes place in October at various venues across Buenos Aires.",
     faqs=[
       ("¿Cuándo es el BAFWeek 2026?", "El Buenos Aires Fashion Week edición primavera-verano 2026 está estimado para octubre de 2026."),
+      ("¿Dónde se realiza el BAFWeek?", "El BAFWeek se realiza en distintas sedes de Buenos Aires, incluyendo el Centro Metropolitano de Diseño y otros espacios culturales de la ciudad."),
+      ("¿Se puede asistir al BAFWeek sin invitación?", "Algunos desfiles y presentaciones del BAFWeek son abiertos al público. Consultá la web oficial y las redes del evento para acceder a entradas o acreditaciones."),
+      ("¿Quiénes participan en el BAFWeek?", "Participan los principales diseñadores y marcas de moda argentina, además de marcas regionales latinoamericanas invitadas."),
     ]
   ),
 
@@ -592,7 +673,9 @@ EVENTS = [
     content="Argentina celebrará elecciones generales en octubre de 2027, cuando se renovará la composición del Congreso Nacional y se elegirá al próximo presidente y vicepresidente de la Nación para el período 2027–2031.",
     faqs=[
       ("¿Cuándo son las elecciones en Argentina 2027?", "Las elecciones generales Argentina 2027 están estimadas para el 26 de octubre de 2027."),
-      ("¿Qué se vota en las elecciones 2027?", "Se elige presidente, vicepresidente, y se renuevan cargos legislativos nacionales (diputados y senadores)."),
+      ("¿Qué se vota en las elecciones 2027?", "Se elige presidente, vicepresidente, y se renuevan parcialmente los cargos legislativos nacionales (diputados y senadores)."),
+      ("¿Habrá PASO en 2027?", "Las Primarias Abiertas Simultáneas y Obligatorias (PASO) suelen celebrarse aproximadamente dos meses antes de las elecciones generales, en agosto de 2027."),
+      ("¿Quiénes pueden votar en Argentina?", "Pueden votar los ciudadanos argentinos nativos o naturalizados mayores de 16 años. El voto es obligatorio para los mayores de 18 y optativo para los de 16 y 17 años."),
     ]
   ),
 ]
@@ -621,6 +704,19 @@ def faq_html(faqs):
   <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2>{items}</div>
 </div>'''
 
+CAT_COLORS = {
+  'Releases':      ('#C084FC', 'rgba(192,132,252,.25)', 'rgba(192,132,252,.1)'),
+  'Sports':        ('#FB923C', 'rgba(251,146,60,.25)',  'rgba(251,146,60,.1)'),
+  'Holidays':      ('#4ADE80', 'rgba(74,222,128,.2)',   'rgba(74,222,128,.08)'),
+  'Entertainment': ('#FBBF24', 'rgba(251,191,36,.2)',   'rgba(251,191,36,.08)'),
+  'Sales':         ('#60A5FA', 'rgba(96,165,250,.2)',   'rgba(96,165,250,.08)'),
+  'Nature':        ('#22D3EE', 'rgba(34,211,238,.2)',   'rgba(34,211,238,.08)'),
+  'Music':         ('#F472B6', 'rgba(244,114,182,.2)',  'rgba(244,114,182,.08)'),
+  'Politics':      ('#94A3B8', 'rgba(148,163,184,.2)',  'rgba(148,163,184,.08)'),
+  'Fashion':       ('#FDA4AF', 'rgba(253,164,175,.2)',  'rgba(253,164,175,.08)'),
+  'Technology':    ('#34D399', 'rgba(52,211,153,.2)',   'rgba(52,211,153,.08)'),
+}
+
 def generate_page(ev):
     slug       = ev["slug"]
     name       = ev["name"]
@@ -631,6 +727,7 @@ def generate_page(ev):
     hero_desc  = ev["hero_desc"]
     content    = ev.get("content", "")
     faqs       = ev.get("faqs", [])
+    cat_color, cat_glow, cat_soft = CAT_COLORS.get(category, ('#818CF8','rgba(129,140,248,.2)','rgba(129,140,248,.08)'))
 
     faq_items_html = "".join(
         f'<div class="cd-faq-item"><h3 class="cd-faq-q">{q}</h3><p class="cd-faq-a">{a}</p></div>'
@@ -641,12 +738,55 @@ def generate_page(ev):
   <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2>{faq_items_html}</div>
 </div>''' if (content or faqs) else ""
 
-    faqs_js = "[\n" + ",\n".join(
-        f'  {{ q: {json.dumps(q)}, a: {json.dumps(a)} }}'
-        for q, a in faqs
-    ) + "\n]"
-
     faq_json = faq_json_ld(slug, name, faqs) if faqs else "[]"
+    country_variants = ev.get("country_variants", [])
+
+    # ── country picker HTML + render script ───────────────────────
+    if country_variants:
+        cv_js = json.dumps([{"code": v["code"], "label": v["label"], "dates": v["dates"]} for v in country_variants])
+        country_picker_html = f'''<div class="cd-country-picker">
+  <p class="cd-cpicker-label">Date varies by country — select yours:</p>
+  <div class="cd-cpicker-grid" id="cd-cpicker-grid"></div>
+</div>'''
+        render_script = f'''(function() {{
+  var VARIANTS = {cv_js};
+  var _cfg = {{
+    slug: {json.dumps(slug)},
+    type: 'fixed',
+    name: {json.dumps(name)},
+    category: {json.dumps(category)},
+    description: {json.dumps(hero_desc)}
+  }};
+  function nextDate(dates) {{
+    var now = new Date();
+    for (var i = 0; i < dates.length; i++) {{
+      if (new Date(dates[i]) > now) return new Date(dates[i]);
+    }}
+    return new Date(dates[dates.length - 1]);
+  }}
+  var grid = document.getElementById('cd-cpicker-grid');
+  VARIANTS.forEach(function(v, idx) {{
+    var btn = document.createElement('button');
+    btn.className = 'cd-cpicker-btn' + (idx === 0 ? ' active' : '');
+    btn.textContent = v.label;
+    btn.onclick = function() {{
+      document.querySelectorAll('.cd-cpicker-btn').forEach(function(b) {{ b.classList.remove('active'); }});
+      btn.classList.add('active');
+      CountdownEngine.render('root', Object.assign({{}}, _cfg, {{ date: nextDate(v.dates) }}));
+    }};
+    grid.appendChild(btn);
+  }});
+  CountdownEngine.render('root', Object.assign({{}}, _cfg, {{ date: nextDate(VARIANTS[0].dates) }}));
+}})();'''
+    else:
+        country_picker_html = ""
+        render_script = f'''CountdownEngine.render('root', {{
+  slug: {json.dumps(slug)},
+  type: {json.dumps(ev_type)},
+  name: {json.dumps(name)},
+  category: {json.dumps(category)},
+  description: {json.dumps(hero_desc)}
+}});'''
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -666,6 +806,7 @@ def generate_page(ev):
 <link rel="alternate" hreflang="x-default" href="{BASE_URL}/countdown/{slug}/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
+<style>:root{{--cat-color:{cat_color};--cat-glow:{cat_glow};--cat-soft:{cat_soft};}}</style>
 <script type="application/ld+json">
 {{
   "@context": "https://schema.org",
@@ -697,20 +838,14 @@ def generate_page(ev):
   </div>
 </header>
 <div id="root"><div style="min-height:100vh;background:#080812"></div></div>
+{country_picker_html}
 {faq_section}
 <footer class="site-footer">
   countdowns<span style="color:rgba(255,255,255,.25)">.site</span>
 </footer>
 <script src="/countdown-engine.js"></script>
 <script>
-CountdownEngine.render('root', {{
-  slug: {json.dumps(slug)},
-  type: {json.dumps(ev_type)},
-  name: {json.dumps(name)},
-  category: {json.dumps(category)},
-  description: {json.dumps(hero_desc)},
-  faqs: {faqs_js}
-}});
+{render_script}
 </script>
 </body>
 </html>'''

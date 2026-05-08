@@ -16,6 +16,7 @@
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/nyfw/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
+<style>:root{--cat-color:#FDA4AF;--cat-glow:rgba(253,164,175,.2);--cat-soft:rgba(253,164,175,.08);}</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,7 +40,17 @@
     {
       "@type": "Question",
       "name": "Can I attend NYFW?",
-      "acceptedAnswer": { "@type": "Answer", "text": "NYFW shows are primarily industry-only events (buyers, press, stylists). Some designers hold open events — check nyfw.com for public programming." }
+      "acceptedAnswer": { "@type": "Answer", "text": "NYFW shows are primarily industry-only events (buyers, press, stylists). Some designers hold open presentations or pop-up events — check nyfw.com for public programming." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does New York Fashion Week last?",
+      "acceptedAnswer": { "@type": "Answer", "text": "NYFW typically runs for about 7–9 days. It is held twice a year: February (Fall/Winter) and September (Spring/Summer)." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the order of the Big Four fashion weeks?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The Big Four run in order: New York → London → Milan → Paris. The September season typically starts in early September and ends in late October." }
     }
   ]
     }
@@ -58,9 +69,10 @@
   </div>
 </header>
 <div id="root"><div style="min-height:100vh;background:#080812"></div></div>
+
 <div class="cd-article">
   <p class="cd-article-body">New York Fashion Week (NYFW) is held twice a year in New York City — in February (for Fall/Winter collections) and September (for Spring/Summer collections). It is the first of the four major fashion weeks, followed by London, Milan and Paris.</p>
-  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">When is New York Fashion Week 2026?</h3><p class="cd-faq-a">NYFW September 2026 starts on September 8, 2026 (Spring/Summer 2027 collections).</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Can I attend NYFW?</h3><p class="cd-faq-a">NYFW shows are primarily industry-only events (buyers, press, stylists). Some designers hold open events — check nyfw.com for public programming.</p></div></div>
+  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">When is New York Fashion Week 2026?</h3><p class="cd-faq-a">NYFW September 2026 starts on September 8, 2026 (Spring/Summer 2027 collections).</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Can I attend NYFW?</h3><p class="cd-faq-a">NYFW shows are primarily industry-only events (buyers, press, stylists). Some designers hold open presentations or pop-up events — check nyfw.com for public programming.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">How long does New York Fashion Week last?</h3><p class="cd-faq-a">NYFW typically runs for about 7–9 days. It is held twice a year: February (Fall/Winter) and September (Spring/Summer).</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What is the order of the Big Four fashion weeks?</h3><p class="cd-faq-a">The Big Four run in order: New York → London → Milan → Paris. The September season typically starts in early September and ends in late October.</p></div></div>
 </div>
 <footer class="site-footer">
   countdowns<span style="color:rgba(255,255,255,.25)">.site</span>
@@ -72,11 +84,7 @@ CountdownEngine.render('root', {
   type: "variable",
   name: "New York Fashion Week",
   category: "Fashion",
-  description: "Countdown to New York Fashion Week \u2014 September 2026.",
-  faqs: [
-  { q: "When is New York Fashion Week 2026?", a: "NYFW September 2026 starts on September 8, 2026 (Spring/Summer 2027 collections)." },
-  { q: "Can I attend NYFW?", a: "NYFW shows are primarily industry-only events (buyers, press, stylists). Some designers hold open events \u2014 check nyfw.com for public programming." }
-]
+  description: "Countdown to New York Fashion Week \u2014 September 2026."
 });
 </script>
 </body>

@@ -272,7 +272,9 @@
         if (!isPast && !isUnknown) startTicker(targetDate);
       }
 
-      if (config.type === 'auto') {
+      if (config.type === 'fixed') {
+        init(config.date || null, {});
+      } else if (config.type === 'auto') {
         var getter = AUTO[config.slug];
         if (!getter) { root.textContent = '[Engine] No auto getter for: ' + config.slug; return; }
         var res = getter();

@@ -16,6 +16,7 @@
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/halloween/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
+<style>:root{--cat-color:#4ADE80;--cat-glow:rgba(74,222,128,.2);--cat-soft:rgba(74,222,128,.08);}</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -44,7 +45,17 @@
     {
       "@type": "Question",
       "name": "When did Halloween originate?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Halloween has roots in the ancient Celtic festival of Samhain, later influenced by the Christian feast of All Hallows' Eve." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Halloween has roots in the ancient Celtic festival of Samhain, later influenced by the Christian feast of All Hallows' Eve on October 31." }
+    },
+    {
+      "@type": "Question",
+      "name": "What are popular Halloween costumes?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Popular Halloween costumes include witches, vampires, skeletons, superheroes, and characters from current pop culture and movies." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Halloween celebrated outside the US?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Halloween is widely celebrated in Canada, Ireland, the UK, Australia, and increasingly in many European and Latin American countries." }
     }
   ]
     }
@@ -63,9 +74,10 @@
   </div>
 </header>
 <div id="root"><div style="min-height:100vh;background:#080812"></div></div>
+
 <div class="cd-article">
   <p class="cd-article-body">Halloween is celebrated annually on October 31, primarily in the United States, Canada, the United Kingdom, Ireland and Australia. Traditions include trick-or-treating, costume parties, pumpkin carving and haunted house visits.</p>
-  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">How many days until Halloween?</h3><p class="cd-faq-a">The live countdown above shows the exact time until October 31.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What day is Halloween 2026?</h3><p class="cd-faq-a">Halloween 2026 falls on a Saturday.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">When did Halloween originate?</h3><p class="cd-faq-a">Halloween has roots in the ancient Celtic festival of Samhain, later influenced by the Christian feast of All Hallows' Eve.</p></div></div>
+  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">How many days until Halloween?</h3><p class="cd-faq-a">The live countdown above shows the exact time until October 31.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What day is Halloween 2026?</h3><p class="cd-faq-a">Halloween 2026 falls on a Saturday.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">When did Halloween originate?</h3><p class="cd-faq-a">Halloween has roots in the ancient Celtic festival of Samhain, later influenced by the Christian feast of All Hallows' Eve on October 31.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What are popular Halloween costumes?</h3><p class="cd-faq-a">Popular Halloween costumes include witches, vampires, skeletons, superheroes, and characters from current pop culture and movies.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Is Halloween celebrated outside the US?</h3><p class="cd-faq-a">Yes. Halloween is widely celebrated in Canada, Ireland, the UK, Australia, and increasingly in many European and Latin American countries.</p></div></div>
 </div>
 <footer class="site-footer">
   countdowns<span style="color:rgba(255,255,255,.25)">.site</span>
@@ -77,12 +89,7 @@ CountdownEngine.render('root', {
   type: "auto",
   name: "Halloween",
   category: "Holidays",
-  description: "How many days until Halloween?",
-  faqs: [
-  { q: "How many days until Halloween?", a: "The live countdown above shows the exact time until October 31." },
-  { q: "What day is Halloween 2026?", a: "Halloween 2026 falls on a Saturday." },
-  { q: "When did Halloween originate?", a: "Halloween has roots in the ancient Celtic festival of Samhain, later influenced by the Christian feast of All Hallows' Eve." }
-]
+  description: "How many days until Halloween?"
 });
 </script>
 </body>

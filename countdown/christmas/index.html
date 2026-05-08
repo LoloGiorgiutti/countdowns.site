@@ -16,6 +16,7 @@
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/christmas/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
+<style>:root{--cat-color:#4ADE80;--cat-glow:rgba(74,222,128,.2);--cat-soft:rgba(74,222,128,.08);}</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,17 +40,22 @@
     {
       "@type": "Question",
       "name": "What day is Christmas 2026?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Christmas 2026 falls on a Friday." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Christmas 2026 falls on a Friday, December 25." }
     },
     {
       "@type": "Question",
       "name": "How many weeks until Christmas?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Divide the number of days shown above by 7 to get the weeks remaining." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Divide the number of days shown above by 7 to get the weeks remaining until Christmas." }
     },
     {
       "@type": "Question",
       "name": "When is Christmas Eve?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Christmas Eve is always December 24, the day before Christmas." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Christmas Eve is always December 24, the day before Christmas Day." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Christmas a public holiday?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Christmas is a public holiday in over 160 countries, making it the most widely observed holiday in the world." }
     }
   ]
     }
@@ -68,9 +74,10 @@
   </div>
 </header>
 <div id="root"><div style="min-height:100vh;background:#080812"></div></div>
+
 <div class="cd-article">
   <p class="cd-article-body">Christmas is celebrated on December 25 each year across the world. As a public holiday in over 160 countries, it marks the culmination of the Advent season and is celebrated with gift-giving, family gatherings, and festive traditions.</p>
-  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">How many days until Christmas?</h3><p class="cd-faq-a">The live counter above shows the exact days, hours, minutes and seconds until December 25.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What day is Christmas 2026?</h3><p class="cd-faq-a">Christmas 2026 falls on a Friday.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">How many weeks until Christmas?</h3><p class="cd-faq-a">Divide the number of days shown above by 7 to get the weeks remaining.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">When is Christmas Eve?</h3><p class="cd-faq-a">Christmas Eve is always December 24, the day before Christmas.</p></div></div>
+  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">How many days until Christmas?</h3><p class="cd-faq-a">The live counter above shows the exact days, hours, minutes and seconds until December 25.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What day is Christmas 2026?</h3><p class="cd-faq-a">Christmas 2026 falls on a Friday, December 25.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">How many weeks until Christmas?</h3><p class="cd-faq-a">Divide the number of days shown above by 7 to get the weeks remaining until Christmas.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">When is Christmas Eve?</h3><p class="cd-faq-a">Christmas Eve is always December 24, the day before Christmas Day.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Is Christmas a public holiday?</h3><p class="cd-faq-a">Christmas is a public holiday in over 160 countries, making it the most widely observed holiday in the world.</p></div></div>
 </div>
 <footer class="site-footer">
   countdowns<span style="color:rgba(255,255,255,.25)">.site</span>
@@ -82,13 +89,7 @@ CountdownEngine.render('root', {
   type: "auto",
   name: "Christmas",
   category: "Holidays",
-  description: "How many days until Christmas?",
-  faqs: [
-  { q: "How many days until Christmas?", a: "The live counter above shows the exact days, hours, minutes and seconds until December 25." },
-  { q: "What day is Christmas 2026?", a: "Christmas 2026 falls on a Friday." },
-  { q: "How many weeks until Christmas?", a: "Divide the number of days shown above by 7 to get the weeks remaining." },
-  { q: "When is Christmas Eve?", a: "Christmas Eve is always December 24, the day before Christmas." }
-]
+  description: "How many days until Christmas?"
 });
 </script>
 </body>
