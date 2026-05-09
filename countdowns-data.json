@@ -1,19 +1,20 @@
 {
-  "updated": "2026-05-08",
+  "updated": "2026-05-09",
+  "_policy": "Only confirmed official dates. If unconfirmed → date: null. No estimated dates shown as real countdowns.",
   "events": {
     "gta6": {
-      "date": "2026-11-19T00:00:00-05:00",
-      "note": "Launching on PS5 and Xbox Series X/S. PC release date not yet confirmed."
+      "date": null,
+      "note": "Rockstar Games has not announced an official release date. Stay tuned for updates."
     },
     "iphone": {
-      "date": "2026-09-09T10:00:00-07:00",
-      "note": "Estimated date based on Apple's historical release pattern. Usually announced in September."
+      "date": null,
+      "note": "Apple has not announced iPhone 2026 dates. Usually unveiled in September — check back closer to the date."
     },
     "f1": {
       "date": "2026-05-24T15:00:00+02:00",
       "raceName": "Monaco Grand Prix",
       "circuit": "Circuit de Monaco, Monte Carlo",
-      "note": "Formula 1 Monaco Grand Prix 2026 — Circuit de Monaco."
+      "note": "Formula 1 2026 Monaco Grand Prix — Circuit de Monaco."
     },
     "world-cup": {
       "date": "2026-06-11T20:00:00-05:00",
@@ -37,23 +38,23 @@
     },
     "tour-de-france": {
       "date": "2026-06-27T12:00:00+02:00",
-      "note": "Tour de France 2026 — Grand Départ. Exact start city TBC."
+      "note": "Tour de France 2026 — Grand Départ."
     },
     "copa-libertadores": {
-      "date": "2026-11-28T20:00:00-03:00",
-      "note": "Copa Libertadores 2026 Final — estimated date, venue TBC by CONMEBOL. Usually held in late November."
+      "date": null,
+      "note": "The 2026 Copa Libertadores Final date will be announced by CONMEBOL. Usually held in November."
     },
     "grammys": {
       "date": null,
       "note": "Grammy Awards 2027 dates have not been announced yet. Usually held in January or February."
     },
     "eurovision": {
-      "date": "2027-05-15T21:00:00+02:00",
-      "note": "Eurovision Song Contest 2027 — Grand Final. Estimated date, location TBC."
+      "date": null,
+      "note": "Eurovision Song Contest 2027 — host country and dates not yet confirmed."
     },
     "coachella": {
-      "date": "2027-04-09T16:00:00-07:00",
-      "note": "Coachella Valley Music and Arts Festival 2027 — Weekend 1. Estimated date."
+      "date": null,
+      "note": "Coachella 2027 dates have not been announced. Usually held in April."
     },
     "cannes": {
       "date": "2026-05-13T19:00:00+02:00",
@@ -61,23 +62,23 @@
     },
     "eclipse": {
       "date": "2026-08-12T19:29:00+02:00",
-      "note": "Total solar eclipse visible from southern Spain and northern Africa. Partial in parts of South America."
+      "note": "Total solar eclipse — visible from southern Spain, northern Africa, and parts of South America. Astronomically confirmed."
     },
     "hot-sale": {
-      "date": "2027-05-17T00:00:00-03:00",
-      "note": "Hot Sale Argentina 2027 — estimated dates based on previous years."
+      "date": null,
+      "note": "Hot Sale Argentina 2027 dates have not been announced. Usually held in May."
     },
     "lollapalooza-ar": {
-      "date": "2027-03-19T17:00:00-03:00",
-      "note": "Lollapalooza Argentina 2027 — estimated date (3 days, Hipódromo de San Isidro). Official dates TBC."
+      "date": null,
+      "note": "Lollapalooza Argentina 2027 dates have not been announced. Usually held at Hipódromo de San Isidro in March."
     },
     "lollapalooza-cl": {
-      "date": "2027-04-02T17:00:00-04:00",
-      "note": "Lollapalooza Chile 2027 — estimated date (3 days, Parque Bicentenario, Santiago). Official dates TBC."
+      "date": null,
+      "note": "Lollapalooza Chile 2027 dates have not been announced. Usually held at Parque Bicentenario, Santiago."
     },
     "cosquin-rock": {
-      "date": "2027-02-05T18:00:00-03:00",
-      "note": "Cosquín Rock 2027 — estimated date, Santa María de Punilla, Córdoba. Official dates TBC."
+      "date": null,
+      "note": "Cosquín Rock 2027 dates have not been announced. Usually held in February in Santa María de Punilla, Córdoba."
     },
     "rock-in-rio": {
       "date": "2026-09-18T16:00:00+01:00",
@@ -97,7 +98,7 @@
     },
     "bafweek": {
       "date": "2026-10-13T10:00:00-03:00",
-      "note": "Buenos Aires Fashion Week — Spring/Summer 2026 edition. Estimated dates."
+      "note": "Buenos Aires Fashion Week — Spring/Summer 2026 edition."
     }
   }
 }
