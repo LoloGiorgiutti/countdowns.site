@@ -262,7 +262,7 @@ EVENTS_JS = """    /* ── Releases ── */
     /* ── ES-only Holidays ── */
     { slug:'25-de-mayo',   name:'25 de Mayo',                 type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/25-de-mayo/'    },
     /* ── Children's Day – global ── */
-    { slug:'dia-del-nino', name:"Children's Day",             type:'fixed',    regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },"""
+    { slug:'dia-del-nino', name:"Children's Day",             type:'auto',     regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },"""
 
 
 def generate_hub(lang):

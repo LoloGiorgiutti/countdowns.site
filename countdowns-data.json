@@ -40,8 +40,8 @@
       "note": "Tour de France 2026 — Grand Départ. Exact start city TBC."
     },
     "copa-libertadores": {
-      "date": null,
-      "note": "The 2026 Copa Libertadores Final date will be announced by CONMEBOL. Usually held in November."
+      "date": "2026-11-28T20:00:00-03:00",
+      "note": "Copa Libertadores 2026 Final — estimated date, venue TBC by CONMEBOL. Usually held in late November."
     },
     "grammys": {
       "date": null,
@@ -68,16 +68,16 @@
       "note": "Hot Sale Argentina 2027 — estimated dates based on previous years."
     },
     "lollapalooza-ar": {
-      "date": null,
-      "note": "Lollapalooza Argentina 2027 dates have not been announced. Usually held at Hipódromo de San Isidro."
+      "date": "2027-03-19T17:00:00-03:00",
+      "note": "Lollapalooza Argentina 2027 — estimated date (3 days, Hipódromo de San Isidro). Official dates TBC."
     },
     "lollapalooza-cl": {
-      "date": null,
-      "note": "Lollapalooza Chile 2027 dates have not been announced. Usually held at Parque Bicentenario, Santiago."
+      "date": "2027-04-02T17:00:00-04:00",
+      "note": "Lollapalooza Chile 2027 — estimated date (3 days, Parque Bicentenario, Santiago). Official dates TBC."
     },
     "cosquin-rock": {
-      "date": null,
-      "note": "Cosquín Rock 2027 dates have not been announced. Usually held in February in Santa María de Punilla."
+      "date": "2027-02-05T18:00:00-03:00",
+      "note": "Cosquín Rock 2027 — estimated date, Santa María de Punilla, Córdoba. Official dates TBC."
     },
     "rock-in-rio": {
       "date": "2026-09-18T16:00:00+01:00",

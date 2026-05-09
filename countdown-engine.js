@@ -82,8 +82,32 @@
     'independence-day': function () { return { date: nextOccurrence(function (y) { return new Date(y, 6, 4); }) }; },
     'memorial-day':     function () { return { date: nextOccurrence(function (y) { return lastWeekday(y, 4, 1); }) }; },
     'labor-day':        function () { return { date: nextOccurrence(function (y) { return nthWeekday(y, 8, 1, 1); }) }; },
-    'mothers-day':      function () { return { date: nextOccurrence(function (y) { return nthWeekday(y, 4, 2, 0); }) }; },
-    'fathers-day':      function () { return { date: nextOccurrence(function (y) { return nthWeekday(y, 5, 3, 0); }) }; },
+    'mothers-day': function () {
+      var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+      var getDate;
+      if (country === 'AR' || country === 'UY') {
+        getDate = function (y) { return nthWeekday(y, 9, 3, 0); };   /* 3rd Sun Oct */
+      } else if (['MX','DO','GT','HN','SV','NI','CO','EC','PE','VE','BO','CU','PR'].indexOf(country) >= 0) {
+        getDate = function (y) { return new Date(y, 4, 10); };        /* May 10 */
+      } else if (country === 'FR') {
+        getDate = function (y) { return lastWeekday(y, 4, 0); };      /* Last Sun May */
+      } else {
+        getDate = function (y) { return nthWeekday(y, 4, 2, 0); };   /* 2nd Sun May (US/UK/CA/AU) */
+      }
+      return { date: nextOccurrence(getDate) };
+    },
+    'fathers-day': function () {
+      var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+      var getDate;
+      if (country === 'ES') {
+        getDate = function (y) { return new Date(y, 2, 19); };         /* March 19 (San José) */
+      } else if (country === 'BR') {
+        getDate = function (y) { return nthWeekday(y, 7, 2, 0); };    /* 2nd Sun Aug */
+      } else {
+        getDate = function (y) { return nthWeekday(y, 5, 3, 0); };    /* 3rd Sun Jun */
+      }
+      return { date: nextOccurrence(getDate) };
+    },
 
     /* ── Sports (recurring) ── */
     'super-bowl':       function () { return { date: nextOccurrence(function (y) { return nthWeekday(y, 1, 2, 0); }), note: '2nd Sunday of February' }; },
@@ -112,6 +136,18 @@
       var d = new Date(now);
       d.setDate(d.getDate() + dts); d.setHours(0, 0, 0, 0);
       return { date: d };
+    },
+
+    /* ── Latin American Holidays ── */
+    '25-de-mayo':       function () { return { date: nextOccurrence(function (y) { return new Date(y, 4, 25); }) }; },
+    'dia-del-nino': function () {
+      var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+      var m, d;
+      if      (country === 'MX') { m = 3;  d = 30; }  /* Apr 30 */
+      else if (country === 'AR') { m = 7;  d = 9;  }  /* Aug 9  */
+      else if (country === 'BR') { m = 9;  d = 12; }  /* Oct 12 */
+      else                       { m = 10; d = 20; }  /* Nov 20 (UN) */
+      return { date: nextOccurrence(function (y) { return new Date(y, m, d); }) };
     },
 
     /* ── One-time political ── */

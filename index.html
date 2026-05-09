@@ -24,6 +24,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<style>
+/* ── Country selector ───────────────────────────────── */
+.country-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:9999;padding:1rem}
+.country-overlay.hidden{display:none}
+.country-modal{background:var(--card-bg,#0E0E1C);border:1px solid rgba(129,140,248,.3);border-radius:20px;padding:2rem 1.75rem;max-width:500px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 0 80px rgba(129,140,248,.18)}
+.country-modal h2{font-size:1.35rem;font-weight:700;margin:0 0 .4rem;color:var(--text,#F1F5F9)}
+.country-modal p{font-size:.875rem;color:var(--muted,#94A3B8);margin:0 0 1.4rem;line-height:1.5}
+.country-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.45rem;margin-bottom:1rem}
+@media(min-width:400px){.country-grid{grid-template-columns:repeat(4,1fr)}}
+.country-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.6rem .3rem;cursor:pointer;text-align:center;transition:all .15s;color:var(--text,#F1F5F9);font-size:.78rem;font-weight:500;font-family:inherit}
+.country-item .ci-flag{font-size:1.6rem;display:block;margin-bottom:.2rem}
+.country-item:hover{background:rgba(129,140,248,.15);border-color:rgba(129,140,248,.35)}
+.country-item.selected{background:rgba(129,140,248,.22);border-color:#818CF8;box-shadow:0 0 14px rgba(129,140,248,.28)}
+.country-skip{width:100%;background:transparent;border:none;color:var(--muted,#64748B);font-size:.82rem;cursor:pointer;padding:.6rem;margin-top:.25rem;text-decoration:underline;font-family:inherit}
+.country-skip:hover{color:var(--text,#F1F5F9)}
+.country-detected{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted,#64748B);margin-bottom:1rem}
+.country-detected-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;flex-shrink:0}
+/* Header country flag button */
+.country-flag-btn{font-size:1.25rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:8px;cursor:pointer;padding:.2rem .4rem;line-height:1;transition:all .15s;margin-left:.25rem}
+.country-flag-btn:hover{border-color:rgba(129,140,248,.5);transform:scale(1.08)}
+</style>
 
 <script type="application/ld+json">
 {
@@ -55,6 +76,7 @@
       <button class="lang-btn" data-lang="pt">PT</button>
       <button class="lang-btn" data-lang="fr">FR</button>
     </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select your country" aria-label="Select country">🌍</button>
   </div>
 </header>
 
@@ -78,6 +100,17 @@
 <footer class="site-footer">
   countdowns<span class="logo-tld">.site</span>
 </footer>
+
+<!-- ── COUNTRY MODAL ── -->
+<div id="country-overlay" class="country-overlay hidden" role="dialog" aria-modal="true" aria-label="Select your country">
+  <div class="country-modal">
+    <h2>Where are you from?</h2>
+    <p>We'll show you the most relevant countdowns for your country and language.</p>
+    <div id="country-detected" class="country-detected hidden"></div>
+    <div id="country-grid" class="country-grid"></div>
+    <button id="country-skip" class="country-skip">Skip — show everything</button>
+  </div>
+</div>
 
 <!-- ── SCRIPTS ── -->
 <script src="/countdown-engine.js"></script>
@@ -181,6 +214,10 @@
 
     /* ── Politics – ES ── */
     { slug:'elecciones-ar', name:'Argentine Elections', type:'auto',  regions:['es'],     cat:'Politics',      url:'/countdown/elecciones-ar/' },
+
+    /* ── Holidays – ES (Latin America) ── */
+    { slug:'25-de-mayo',    name:'25 de Mayo — Día de la Patria', type:'auto', regions:['es'], cat:'Holidays', url:'/countdown/25-de-mayo/' },
+    { slug:'dia-del-nino',  name:"Children's Day / Día del Niño", type:'auto', regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },
   ];
 
   /* ── State ───────────────────────────────────────────────── */
@@ -345,10 +382,7 @@
     });
   });
 
-  /* ── Boot ── */
-  loadHub();
-
-  /* Cache results for re-sort without re-fetch */
+  /* ── Cache results for re-sort without re-fetch ── */
   var _origRender = renderHub;
   renderHub = function (results) {
     window._hubResults = results;
@@ -372,6 +406,135 @@
         btn.textContent = 'Dark';
       }
     });
+  })();
+
+  /* ── Country selector ─────────────────────────────────────── */
+  (function () {
+    var COUNTRY_LANG = {
+      US:'en', GB:'en', AU:'en', CA:'en', NZ:'en', IE:'en', ZA:'en', IN:'en', PH:'en', SG:'en',
+      AR:'es', MX:'es', CL:'es', CO:'es', PE:'es', UY:'es', VE:'es', BO:'es', PY:'es',
+      EC:'es', DO:'es', CR:'es', PA:'es', GT:'es', SV:'es', HN:'es', NI:'es', CU:'es', ES:'es',
+      BR:'pt', PT:'pt', AO:'pt', MZ:'pt',
+      FR:'fr', BE:'fr', CH:'fr', LU:'fr', MC:'fr',
+    };
+
+    var COUNTRY_LIST = [
+      { code:'global', flag:'🌍', name:'Global'        },
+      { code:'US',     flag:'🇺🇸', name:'USA'           },
+      { code:'GB',     flag:'🇬🇧', name:'UK'            },
+      { code:'CA',     flag:'🇨🇦', name:'Canada'        },
+      { code:'AU',     flag:'🇦🇺', name:'Australia'     },
+      { code:'IE',     flag:'🇮🇪', name:'Ireland'       },
+      { code:'AR',     flag:'🇦🇷', name:'Argentina'     },
+      { code:'MX',     flag:'🇲🇽', name:'México'        },
+      { code:'CL',     flag:'🇨🇱', name:'Chile'         },
+      { code:'CO',     flag:'🇨🇴', name:'Colombia'      },
+      { code:'PE',     flag:'🇵🇪', name:'Perú'          },
+      { code:'UY',     flag:'🇺🇾', name:'Uruguay'       },
+      { code:'VE',     flag:'🇻🇪', name:'Venezuela'     },
+      { code:'ES',     flag:'🇪🇸', name:'España'        },
+      { code:'BR',     flag:'🇧🇷', name:'Brasil'        },
+      { code:'PT',     flag:'🇵🇹', name:'Portugal'      },
+      { code:'FR',     flag:'🇫🇷', name:'France'        },
+      { code:'BE',     flag:'🇧🇪', name:'Belgique'      },
+    ];
+
+    var FLAG_MAP = {};
+    COUNTRY_LIST.forEach(function (c) { FLAG_MAP[c.code] = c.flag; });
+
+    function countryToLang(code) { return COUNTRY_LANG[code] || 'en'; }
+
+    function applyCountry(code, skipReload) {
+      localStorage.setItem('cd_country', code);
+      var lang = countryToLang(code);
+      currentLang = lang;
+      /* Update lang buttons */
+      document.querySelectorAll('.lang-btn').forEach(function (b) {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+      /* Update flag button */
+      var fb = document.getElementById('country-flag-btn');
+      if (fb) fb.textContent = FLAG_MAP[code] || '🌍';
+      if (!skipReload) loadHub();
+    }
+
+    function openModal(preselectedCode) {
+      var overlay = document.getElementById('country-overlay');
+      var grid    = document.getElementById('country-grid');
+      var det     = document.getElementById('country-detected');
+      if (!grid) return;
+
+      /* Detected badge */
+      if (preselectedCode && preselectedCode !== 'global') {
+        var f = FLAG_MAP[preselectedCode] || '📍';
+        det.innerHTML = '<span class="country-detected-dot"></span>Auto-detected: ' + f + ' ' + preselectedCode;
+        det.classList.remove('hidden');
+      } else {
+        det.classList.add('hidden');
+      }
+
+      grid.innerHTML = COUNTRY_LIST.map(function (c) {
+        var sel = c.code === preselectedCode ? ' selected' : '';
+        return '<button class="country-item' + sel + '" data-code="' + c.code + '">' +
+               '<span class="ci-flag">' + c.flag + '</span>' + c.name + '</button>';
+      }).join('');
+
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      grid.querySelectorAll('.country-item').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          grid.querySelectorAll('.country-item').forEach(function (b) { b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          applyCountry(btn.dataset.code);
+          overlay.classList.add('hidden');
+          document.body.style.overflow = '';
+        });
+      });
+
+      document.getElementById('country-skip').onclick = function () {
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+        localStorage.setItem('cd_country', 'global');
+        var fb = document.getElementById('country-flag-btn');
+        if (fb) fb.textContent = '🌍';
+      };
+
+      /* Close on backdrop click */
+      overlay.onclick = function (e) {
+        if (e.target === overlay) {
+          overlay.classList.add('hidden');
+          document.body.style.overflow = '';
+          if (!localStorage.getItem('cd_country')) localStorage.setItem('cd_country', 'global');
+        }
+      };
+    }
+
+    /* Header flag button always opens modal */
+    var flagBtn = document.getElementById('country-flag-btn');
+    if (flagBtn) {
+      flagBtn.addEventListener('click', function () {
+        openModal(localStorage.getItem('cd_country') || 'global');
+      });
+    }
+
+    /* Boot: apply saved country or detect */
+    var saved = localStorage.getItem('cd_country');
+    if (saved) {
+      applyCountry(saved, true);   /* apply before loadHub() below */
+    } else {
+      /* First visit: detect via IP then show modal */
+      fetch('https://ipapi.co/json/?fields=country_code')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var code = ((data && data.country_code) || 'global').toUpperCase();
+          openModal(code);
+        })
+        .catch(function () { openModal('global'); });
+    }
+
+    /* Boot hub (after potential applyCountry which set currentLang) */
+    loadHub();
   })();
 
 })();
