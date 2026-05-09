@@ -105,7 +105,7 @@ body {
   color: var(--ink-faint);
   margin-bottom: 18px;
 }
-.hub-hero-label span {
+.hub-hero-label span:first-child {
   display: inline-block;
   width: 6px;
   height: 6px;
