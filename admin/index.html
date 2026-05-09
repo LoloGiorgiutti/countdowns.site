@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Not linked from the site — access by direct URL only: /admin/ -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,114 +8,235 @@
 <meta name="robots" content="noindex, nofollow">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #080812; --surface: #0f0f1a; --surface-hi: #161625;
-    --border: rgba(255,255,255,.08); --ink: #e2e8f0; --ink-dim: #94a3b8;
-    --ink-ghost: #475569; --accent: #818CF8; --accent-soft: rgba(129,140,248,.15);
-    --green: #4ADE80; --red: #F87171; --yellow: #FBBF24;
-  }
-  body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
-  header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
-  .logo { font-size: 1.1rem; font-weight: 700; color: var(--ink); text-decoration: none; }
-  .logo span { color: var(--accent); }
-  .header-note { font-size: .8rem; color: var(--yellow); background: rgba(251,191,36,.1); border: 1px solid rgba(251,191,36,.2); padding: 4px 10px; border-radius: 6px; }
-  .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
-  h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
-  .sub { color: var(--ink-dim); font-size: .9rem; margin-bottom: 32px; }
-  .tabs { display: flex; gap: 4px; margin-bottom: 28px; border-bottom: 1px solid var(--border); }
-  .tab { padding: 10px 20px; border: none; background: none; color: var(--ink-dim); font-family: inherit; font-size: .9rem; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all .15s; }
-  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-  .tab:hover:not(.active) { color: var(--ink); }
-  .panel { display: none; }
-  .panel.active { display: block; }
-  .search-bar { width: 100%; padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--ink); font-family: inherit; font-size: .9rem; margin-bottom: 16px; outline: none; }
-  .search-bar:focus { border-color: var(--accent); }
-  .event-table { width: 100%; border-collapse: collapse; }
-  .event-table th { text-align: left; padding: 10px 14px; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-ghost); border-bottom: 1px solid var(--border); }
-  .event-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,.04); font-size: .88rem; vertical-align: middle; }
-  .event-table tr:hover td { background: var(--surface-hi); }
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: .72rem; font-weight: 600; margin-right: 2px; }
-  .badge-global { background: rgba(74,222,128,.12); color: var(--green); }
-  .badge-es { background: rgba(251,146,60,.12); color: #FB923C; }
-  .badge-pt { background: rgba(96,165,250,.12); color: #60A5FA; }
-  .badge-fr { background: rgba(129,140,248,.12); color: var(--accent); }
-  .badge-en { background: rgba(148,163,184,.12); color: #94A3B8; }
-  .lang-dots { display: flex; gap: 3px; flex-wrap: wrap; }
-  .lang-dot { width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: .65rem; font-weight: 700; }
-  .lang-dot.has { background: var(--accent-soft); color: var(--accent); }
-  .lang-dot.none { background: rgba(255,255,255,.04); color: var(--ink-ghost); }
-  .view-link { color: var(--accent); text-decoration: none; font-size: .82rem; margin-right: 4px; }
-  .view-link:hover { text-decoration: underline; }
-  .cat-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: middle; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group.full { grid-column: 1/-1; }
-  label { font-size: .82rem; font-weight: 500; color: var(--ink-dim); }
-  input, select, textarea { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--ink); font-family: inherit; font-size: .9rem; padding: 10px 12px; outline: none; width: 100%; transition: border-color .15s; }
-  input:focus, select:focus, textarea:focus { border-color: var(--accent); }
-  textarea { min-height: 90px; resize: vertical; }
-  select option { background: var(--surface); }
-  .faq-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: end; margin-bottom: 10px; }
-  .btn { padding: 9px 18px; border-radius: 8px; font-family: inherit; font-size: .88rem; font-weight: 600; cursor: pointer; border: none; transition: all .15s; }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: #6366f1; }
-  .btn-secondary { background: var(--surface-hi); color: var(--ink); border: 1px solid var(--border); }
-  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-  .btn-danger { background: rgba(248,113,113,.1); color: var(--red); border: 1px solid rgba(248,113,113,.2); padding: 8px 12px; font-size: .82rem; }
-  .btn-danger:hover { background: rgba(248,113,113,.2); }
-  .section-title { font-size: .85rem; font-weight: 600; color: var(--ink-dim); margin-bottom: 12px; margin-top: 28px; text-transform: uppercase; letter-spacing: .05em; border-top: 1px solid var(--border); padding-top: 20px; }
-  .output-box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 24px; display: none; }
-  .output-box.visible { display: block; }
-  .output-box h3 { font-size: .9rem; font-weight: 600; color: var(--green); margin-bottom: 12px; }
-  pre { background: rgba(0,0,0,.4); border-radius: 8px; padding: 16px; overflow-x: auto; font-size: .8rem; line-height: 1.7; white-space: pre-wrap; word-break: break-all; color: #e2e8f0; font-family: 'Fira Code', 'Courier New', monospace; }
-  .copy-btn { margin-top: 12px; }
-  .copied { background: rgba(74,222,128,.1) !important; color: var(--green) !important; border-color: rgba(74,222,128,.3) !important; }
-  .form-row { display: flex; gap: 12px; align-items: center; margin-top: 24px; }
-  .note { font-size: .8rem; color: var(--ink-ghost); margin-top: 4px; line-height: 1.5; }
-  code { background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 4px; font-size: .85em; }
-  .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 28px; }
-  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
-  .stat-num { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; }
-  .stat-lbl { font-size: .8rem; color: var(--ink-ghost); margin-top: 4px; }
-  .cat-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
-  .cat-row { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; }
-  .cat-bar { height: 6px; border-radius: 3px; flex: 1; background: rgba(255,255,255,.06); position: relative; overflow: hidden; }
-  .cat-fill { height: 100%; border-radius: 3px; }
-  .cat-name { font-size: .85rem; font-weight: 500; min-width: 90px; }
-  .cat-count { font-size: .82rem; color: var(--ink-dim); min-width: 24px; text-align: right; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #080812; --card: #0E0E1C; --surface: #0f0f1a; --surface-hi: #161625;
+  --border: rgba(255,255,255,.08); --ink: #e2e8f0; --ink-dim: #94a3b8;
+  --ink-ghost: #475569; --accent: #818CF8; --accent-soft: rgba(129,140,248,.15);
+  --green: #4ADE80; --red: #F87171; --yellow: #FBBF24;
+}
+body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
+
+/* ── Password overlay ── */
+#auth-overlay {
+  position: fixed; inset: 0; background: var(--bg); z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+}
+.auth-box {
+  background: var(--card); border: 1px solid rgba(129,140,248,.3);
+  border-radius: 20px; padding: 2.5rem 2rem; max-width: 380px; width: 100%;
+  box-shadow: 0 0 80px rgba(129,140,248,.15);
+}
+.auth-box h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: .4rem; }
+.auth-box p { font-size: .85rem; color: var(--ink-dim); margin-bottom: 1.5rem; }
+.auth-input { width: 100%; padding: 12px 14px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--ink); font-family: inherit; font-size: 1rem; outline: none; margin-bottom: 10px; }
+.auth-input:focus { border-color: var(--accent); }
+.auth-btn { width: 100%; padding: 12px; background: var(--accent); color: #fff;
+  border: none; border-radius: 10px; font-family: inherit; font-size: 1rem; font-weight: 600;
+  cursor: pointer; transition: background .15s; }
+.auth-btn:hover { background: #6366f1; }
+.auth-error { color: var(--red); font-size: .83rem; margin-top: 8px; min-height: 1.2em; }
+
+/* ── Layout ── */
+#app { display: none; }
+header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; flex-wrap: wrap; gap: 10px; }
+.logo { font-size: 1.1rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+.logo span { color: var(--accent); }
+.logo-sub { font-weight: 400; color: var(--ink-ghost); }
+.header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.token-bar { display: flex; align-items: center; gap: 6px; }
+.token-input { background: var(--surface-hi); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--ink-dim); font-family: inherit; font-size: .8rem; padding: 6px 10px; outline: none; width: 220px; }
+.token-input:focus { border-color: var(--accent); color: var(--ink); }
+.token-save-btn { padding: 6px 12px; background: var(--accent-soft); border: 1px solid var(--accent);
+  color: var(--accent); border-radius: 8px; font-family: inherit; font-size: .8rem; font-weight: 600; cursor: pointer; }
+.token-save-btn:hover { background: var(--accent); color: #fff; }
+.token-status { font-size: .75rem; }
+.deploy-note { font-size: .78rem; color: var(--yellow); background: rgba(251,191,36,.1);
+  border: 1px solid rgba(251,191,36,.2); padding: 4px 10px; border-radius: 6px; }
+
+.main { max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; }
+h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+.sub { color: var(--ink-dim); font-size: .9rem; margin-bottom: 28px; }
+
+/* ── Tabs ── */
+.tabs { display: flex; gap: 4px; margin-bottom: 28px; border-bottom: 1px solid var(--border); }
+.tab { padding: 10px 20px; border: none; background: none; color: var(--ink-dim); font-family: inherit;
+  font-size: .9rem; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all .15s; }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab:hover:not(.active) { color: var(--ink); }
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── Events table ── */
+.search-bar { width: 100%; padding: 10px 14px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--ink); font-family: inherit; font-size: .9rem; margin-bottom: 16px; outline: none; }
+.search-bar:focus { border-color: var(--accent); }
+.event-table { width: 100%; border-collapse: collapse; }
+.event-table th { text-align: left; padding: 10px 14px; font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--ink-ghost); border-bottom: 1px solid var(--border); white-space: nowrap; }
+.event-table td { padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,.04); font-size: .88rem; vertical-align: middle; }
+.event-table tr:hover td { background: var(--surface-hi); }
+.cat-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; flex-shrink: 0; }
+.date-ok { color: var(--green); font-size: .82rem; }
+.date-tba { color: var(--yellow); font-size: .82rem; }
+.type-badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: .7rem; font-weight: 600; }
+.type-variable { background: rgba(129,140,248,.12); color: var(--accent); }
+.type-auto { background: rgba(74,222,128,.12); color: var(--green); }
+.type-fixed { background: rgba(96,165,250,.12); color: #60A5FA; }
+.flag-cell { font-size: 1rem; letter-spacing: .08em; }
+.edit-btn { padding: 5px 12px; background: var(--accent-soft); border: 1px solid rgba(129,140,248,.3);
+  color: var(--accent); border-radius: 6px; font-family: inherit; font-size: .8rem; font-weight: 600; cursor: pointer; }
+.edit-btn:hover { background: var(--accent); color: #fff; }
+
+/* ── Modal ── */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; }
+.modal-overlay.hidden { display: none; }
+.modal { background: var(--card); border: 1px solid rgba(129,140,248,.25); border-radius: 16px;
+  padding: 0; max-width: 560px; width: 100%; max-height: 90vh; overflow-y: auto;
+  box-shadow: 0 0 60px rgba(129,140,248,.15); }
+.modal-header { padding: 1.5rem 1.75rem 1rem; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.modal-title { font-size: 1.1rem; font-weight: 700; }
+.modal-close { background: none; border: none; color: var(--ink-dim); font-size: 1.3rem;
+  cursor: pointer; line-height: 1; padding: 4px; border-radius: 6px; }
+.modal-close:hover { color: var(--ink); background: rgba(255,255,255,.06); }
+.modal-body { padding: 1.5rem 1.75rem; }
+.modal-footer { padding: 1rem 1.75rem 1.5rem; border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+.section-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--ink-ghost); margin-bottom: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+.section-label:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+label { font-size: .82rem; font-weight: 500; color: var(--ink-dim); }
+input[type="datetime-local"], input[type="text"], select, textarea {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--ink); font-family: inherit; font-size: .9rem; padding: 10px 12px; outline: none;
+  width: 100%; transition: border-color .15s; }
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+select option { background: var(--surface); }
+textarea { min-height: 80px; resize: vertical; }
+
+/* ── Country checkboxes ── */
+.country-checks { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px; }
+.country-check-item { display: flex; align-items: center; gap: 5px; background: var(--surface-hi);
+  border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; cursor: pointer;
+  font-size: .82rem; transition: all .12s; user-select: none; }
+.country-check-item:hover { border-color: rgba(129,140,248,.4); }
+.country-check-item.checked { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.country-check-item input { display: none; }
+
+/* ── Buttons ── */
+.btn { padding: 9px 18px; border-radius: 8px; font-family: inherit; font-size: .88rem; font-weight: 600;
+  cursor: pointer; border: none; transition: all .15s; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: #6366f1; }
+.btn-secondary { background: var(--surface-hi); color: var(--ink); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-danger { background: rgba(248,113,113,.1); color: var(--red); border: 1px solid rgba(248,113,113,.2); padding: 8px 12px; font-size: .82rem; }
+.btn-danger:hover { background: rgba(248,113,113,.2); }
+.save-status { font-size: .85rem; padding: 8px 14px; border-radius: 8px; display: none; }
+.save-status.ok { display: block; background: rgba(74,222,128,.12); color: var(--green); border: 1px solid rgba(74,222,128,.2); }
+.save-status.err { display: block; background: rgba(248,113,113,.12); color: var(--red); border: 1px solid rgba(248,113,113,.2); }
+.save-status.loading { display: block; background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(129,140,248,.2); }
+
+/* ── Add event tab ── */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group.full { grid-column: 1/-1; }
+.faq-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: end; margin-bottom: 10px; }
+.output-box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 24px; display: none; }
+.output-box.visible { display: block; }
+.output-box h3 { font-size: .9rem; font-weight: 600; color: var(--green); margin-bottom: 12px; }
+pre { background: rgba(0,0,0,.4); border-radius: 8px; padding: 16px; overflow-x: auto; font-size: .8rem;
+  line-height: 1.7; white-space: pre-wrap; word-break: break-all; color: #e2e8f0;
+  font-family: 'Fira Code', 'Courier New', monospace; }
+.form-row { display: flex; gap: 12px; align-items: center; margin-top: 24px; }
+.note { font-size: .8rem; color: var(--ink-ghost); margin-top: 4px; line-height: 1.5; }
+code { background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 4px; font-size: .85em; }
+.copy-btn { margin-top: 12px; }
+.copied { background: rgba(74,222,128,.1) !important; color: var(--green) !important; border-color: rgba(74,222,128,.3) !important; }
+
+/* ── Health tab ── */
+.health-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 28px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.stat-num { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; }
+.stat-num.green { color: var(--green); }
+.stat-num.yellow { color: var(--yellow); }
+.stat-lbl { font-size: .8rem; color: var(--ink-ghost); margin-top: 4px; }
+.section-title { font-size: .85rem; font-weight: 600; color: var(--ink-dim); margin-bottom: 12px;
+  margin-top: 28px; text-transform: uppercase; letter-spacing: .05em; border-top: 1px solid var(--border); padding-top: 20px; }
+.health-event-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 6px; }
+.he-name { flex: 1; font-size: .88rem; }
+.he-date { font-size: .82rem; }
+.cat-tba-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 12px; }
+.cat-tba-row { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; }
+.cat-name { font-size: .85rem; font-weight: 500; min-width: 100px; }
+.tba-count { font-size: .82rem; color: var(--yellow); }
+.last-updated { font-size: .82rem; color: var(--ink-ghost); margin-top: 20px; padding: 10px 14px; background: var(--surface); border-radius: 8px; border: 1px solid var(--border); }
 </style>
 </head>
 <body>
+
+<!-- ── AUTH OVERLAY ── -->
+<div id="auth-overlay">
+  <div class="auth-box">
+    <h2>countdowns<span style="color:var(--accent)">.site</span></h2>
+    <p>Admin panel — enter password to continue.</p>
+    <input class="auth-input" type="password" id="auth-pw" placeholder="Password" autocomplete="current-password">
+    <button class="auth-btn" onclick="checkAuth()">Sign in</button>
+    <div class="auth-error" id="auth-error"></div>
+  </div>
+</div>
+
+<!-- ── MAIN APP ── -->
+<div id="app">
+
 <header>
-  <a href="/" class="logo">countdowns<span>.site</span> <span style="font-weight:400;color:var(--ink-ghost)">/ Admin</span></a>
-  <span class="header-note">⚠ Run <code style="background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px">python3 _generate.py</code> after adding events</span>
+  <a href="/" class="logo">countdowns<span>.site</span> <span class="logo-sub">/ Admin</span></a>
+  <div class="header-right">
+    <div class="token-bar">
+      <input class="token-input" type="password" id="gh-token-input" placeholder="GitHub token (ghp_…)" autocomplete="off">
+      <button class="token-save-btn" onclick="saveToken()">Save</button>
+      <span class="token-status" id="token-status"></span>
+    </div>
+    <span class="deploy-note">Cloudflare auto-deploys on push (~1 min)</span>
+  </div>
 </header>
 
 <div class="main">
   <h1>Event Manager</h1>
-  <p class="sub">View all 51 live events, check language coverage, and generate Python code for new events to add to <code>_generate.py</code>.</p>
+  <p class="sub">Edit event dates, countries, and categories. Changes commit to GitHub and auto-deploy.</p>
 
   <div class="tabs">
-    <button class="tab active" onclick="switchTab('events',this)">All Events</button>
-    <button class="tab" onclick="switchTab('add',this)">+ Add Event</button>
-    <button class="tab" onclick="switchTab('stats',this)">Stats</button>
+    <button class="tab active" data-tab="events">Events</button>
+    <button class="tab" data-tab="add">+ Add Event</button>
+    <button class="tab" data-tab="health">Data Health</button>
   </div>
 
-  <!-- EVENTS LIST -->
+  <!-- ── Tab: Events ── -->
   <div class="panel active" id="panel-events">
-    <input class="search-bar" type="search" placeholder="Search by name, category, slug or region…" id="event-search" oninput="filterEvents()">
+    <input class="search-bar" type="search" id="event-search" placeholder="Search by name, slug, category…">
     <table class="event-table">
       <thead>
         <tr>
-          <th>Name</th><th>Slug</th><th>Category</th><th>Type</th><th>Regions</th><th>Pages</th><th>Links</th>
+          <th>Name</th>
+          <th>Slug</th>
+          <th>Type</th>
+          <th>Date Status</th>
+          <th>Countries</th>
+          <th>Edit</th>
         </tr>
       </thead>
       <tbody id="event-tbody"></tbody>
     </table>
   </div>
 
-  <!-- ADD EVENT -->
+  <!-- ── Tab: Add Event ── -->
   <div class="panel" id="panel-add">
     <div class="form-grid">
       <div class="form-group">
@@ -137,7 +259,7 @@
         <label>Type</label>
         <select id="f-type">
           <option value="auto">auto — recurring calculated date</option>
-          <option value="variable">variable — date TBA</option>
+          <option value="variable">variable — date TBA / fetched</option>
           <option value="fixed">fixed — specific date</option>
         </select>
       </div>
@@ -163,28 +285,25 @@
       </div>
       <div class="form-group full">
         <label>Meta Description (~150 chars)</label>
-        <textarea id="f-meta-desc" placeholder="Live countdown to Coachella 2027. The world's most famous music festival takes place in the California desert each April."></textarea>
+        <textarea id="f-meta-desc" placeholder="Live countdown to Coachella 2027. The world's most famous music festival…"></textarea>
       </div>
       <div class="form-group full">
-        <label>Hero Description (shown under countdown title)</label>
+        <label>Hero Description</label>
         <input type="text" id="f-hero-desc" placeholder="e.g. Countdown to Coachella 2027.">
       </div>
       <div class="form-group full">
-        <label>Content body (descriptive paragraph)</label>
+        <label>Content body</label>
         <textarea id="f-content" style="min-height:110px;" placeholder="2-4 sentences about the event, history, location, etc."></textarea>
       </div>
     </div>
-
-    <div class="section-title">FAQs</div>
+    <div class="section-title" style="margin-top:24px;border-top:1px solid var(--border);padding-top:20px">FAQs</div>
     <div id="faq-container"></div>
     <button class="btn btn-secondary" onclick="addFAQ()" style="margin-top:8px">+ Add FAQ</button>
-
     <div class="form-row">
       <button class="btn btn-primary" onclick="generateCode()">Generate Python Code</button>
       <button class="btn btn-secondary" onclick="resetForm()">Reset</button>
     </div>
-    <p class="note" style="margin-top:12px">Copy the generated <code>dict(...)</code> block, paste it inside the <code>EVENTS = [...]</code> list in <code>_generate.py</code>, then run <code>python3 _generate.py &amp;&amp; python3 _generate_hubs.py</code> and commit.</p>
-
+    <p class="note" style="margin-top:12px">Copy the generated <code>dict(...)</code> block into the <code>EVENTS</code> list in <code>_generate.py</code>, then run and commit.</p>
     <div class="output-box" id="output-box">
       <h3>✓ Python code ready — copy into EVENTS list in _generate.py</h3>
       <pre id="output-pre"></pre>
@@ -192,67 +311,195 @@
     </div>
   </div>
 
-  <!-- STATS -->
-  <div class="panel" id="panel-stats">
-    <div class="stats-grid" id="stats-grid"></div>
-    <div class="section-title" style="border-top:none;padding-top:0;margin-top:0">Events by Category</div>
-    <div class="cat-breakdown" id="cat-breakdown"></div>
+  <!-- ── Tab: Data Health ── -->
+  <div class="panel" id="panel-health">
+    <div class="health-grid" id="health-stats"></div>
+    <div class="section-title" style="border-top:none;padding-top:0;margin-top:0">TBA by Category</div>
+    <div class="cat-tba-grid" id="cat-tba-grid"></div>
+    <div class="section-title">Variable Events — Date Status</div>
+    <div id="health-event-list"></div>
+    <div class="last-updated" id="last-updated-row"></div>
+  </div>
+
+</div><!-- .main -->
+</div><!-- #app -->
+
+<!-- ── EDIT MODAL ── -->
+<div class="modal-overlay hidden" id="edit-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title">Edit Event</span>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <!-- Date section (variable only) -->
+      <div id="modal-date-section">
+        <div class="section-label">Date</div>
+        <div class="form-group">
+          <label>Date &amp; Time (local timezone of event)</label>
+          <input type="datetime-local" id="modal-date">
+        </div>
+        <div class="form-group">
+          <label>Note</label>
+          <textarea id="modal-note" placeholder="Short description, venue, context…"></textarea>
+        </div>
+        <button class="btn btn-danger" onclick="clearDate()" style="margin-bottom:8px">Clear Date (set to TBA)</button>
+      </div>
+      <!-- Metadata section -->
+      <div class="section-label">Metadata</div>
+      <div class="form-group">
+        <label>Countries</label>
+        <div class="country-checks" id="modal-country-checks"></div>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select id="modal-cat">
+          <option>Releases</option><option>Sports</option><option>Holidays</option>
+          <option>Entertainment</option><option>Sales</option><option>Nature</option>
+          <option>Music</option><option>Politics</option><option>Fashion</option><option>Technology</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="save-status" id="save-status"></div>
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveChanges()">Save Changes</button>
+    </div>
   </div>
 </div>
 
 <script>
+'use strict';
+
+/* ════════════════════════════════════════════
+   AUTH
+   ════════════════════════════════════════════ */
+var ADMIN_PASSWORD = 'countdowns2026'; // change this
+
+function checkAuth() {
+  var pw = document.getElementById('auth-pw').value;
+  if (pw === ADMIN_PASSWORD) {
+    sessionStorage.setItem('admin_ok', '1');
+    document.getElementById('auth-overlay').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    initApp();
+  } else {
+    document.getElementById('auth-error').textContent = 'Incorrect password.';
+    document.getElementById('auth-pw').value = '';
+    document.getElementById('auth-pw').focus();
+  }
+}
+document.getElementById('auth-pw').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkAuth();
+});
+
+if (sessionStorage.getItem('admin_ok') === '1') {
+  document.getElementById('auth-overlay').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+}
+
+/* ════════════════════════════════════════════
+   GITHUB TOKEN
+   ════════════════════════════════════════════ */
+function saveToken() {
+  var val = document.getElementById('gh-token-input').value.trim();
+  if (val) {
+    localStorage.setItem('admin_gh_token', val);
+    document.getElementById('token-status').textContent = '✓ Saved';
+    document.getElementById('token-status').style.color = 'var(--green)';
+  }
+}
+(function() {
+  var t = localStorage.getItem('admin_gh_token');
+  if (t) {
+    document.getElementById('gh-token-input').placeholder = '••••••••••••••••••••';
+    document.getElementById('token-status').textContent = '✓ Token set';
+    document.getElementById('token-status').style.color = 'var(--green)';
+  }
+})();
+
+/* ════════════════════════════════════════════
+   GITHUB API
+   ════════════════════════════════════════════ */
+async function ghGet(path) {
+  var token = localStorage.getItem('admin_gh_token');
+  var r = await fetch('https://api.github.com/repos/LoloGiorgiutti/countdowns.site/contents/' + path, {
+    headers: token ? { 'Authorization': 'token ' + token } : {}
+  });
+  return r.json();
+}
+
+async function ghPut(path, content, message, sha) {
+  var token = localStorage.getItem('admin_gh_token');
+  var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
+  var r = await fetch('https://api.github.com/repos/LoloGiorgiutti/countdowns.site/contents/' + path, {
+    method: 'PUT',
+    headers: {
+      'Authorization': 'token ' + token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ message: message, content: encoded, sha: sha })
+  });
+  return r.json();
+}
+
+/* ════════════════════════════════════════════
+   DATA
+   ════════════════════════════════════════════ */
+var LATAM = ['AR','BR','CL','CO','PE','UY','VE','BO','PY','EC','CR','PA','GT','SV','HN','NI','DO','CU','MX'];
+
 var EVENTS = [
-  {name:"GTA VI",slug:"gta6",cat:"Releases",type:"variable",regions:["global"]},
-  {name:"Next iPhone",slug:"iphone",cat:"Releases",type:"variable",regions:["global"]},
-  {name:"F1 Next Race",slug:"f1",cat:"Sports",type:"variable",regions:["global"]},
-  {name:"2026 FIFA World Cup",slug:"world-cup",cat:"Sports",type:"variable",regions:["global"]},
-  {name:"Champions League Final",slug:"ucl-final",cat:"Sports",type:"variable",regions:["global"]},
-  {name:"NBA Finals",slug:"nba-finals",cat:"Sports",type:"variable",regions:["global"]},
-  {name:"24 Hours of Le Mans",slug:"le-mans",cat:"Sports",type:"variable",regions:["global"]},
-  {name:"Wimbledon",slug:"wimbledon",cat:"Sports",type:"variable",regions:["global"]},
-  {name:"Tour de France",slug:"tour-de-france",cat:"Sports",type:"variable",regions:["global"]},
-  {name:"LA 2028 Olympics",slug:"olympics-2028",cat:"Sports",type:"auto",regions:["global"]},
-  {name:"Super Bowl",slug:"super-bowl",cat:"Sports",type:"auto",regions:["en"]},
-  {name:"Copa Libertadores Final",slug:"copa-libertadores",cat:"Sports",type:"variable",regions:["es","pt"]},
-  {name:"Christmas",slug:"christmas",cat:"Holidays",type:"auto",regions:["global"]},
-  {name:"New Year",slug:"new-year",cat:"Holidays",type:"auto",regions:["global"]},
-  {name:"Halloween",slug:"halloween",cat:"Holidays",type:"auto",regions:["global"]},
-  {name:"Valentine's Day",slug:"valentines",cat:"Holidays",type:"auto",regions:["global"]},
-  {name:"Easter",slug:"easter",cat:"Holidays",type:"auto",regions:["global"]},
-  {name:"Mother's Day",slug:"mothers-day",cat:"Holidays",type:"auto",regions:["global"]},
-  {name:"Father's Day",slug:"fathers-day",cat:"Holidays",type:"auto",regions:["global"]},
-  {name:"Thanksgiving",slug:"thanksgiving",cat:"Holidays",type:"auto",regions:["en"]},
-  {name:"Independence Day",slug:"independence-day",cat:"Holidays",type:"auto",regions:["en"]},
-  {name:"Memorial Day",slug:"memorial-day",cat:"Holidays",type:"auto",regions:["en"]},
-  {name:"Labor Day",slug:"labor-day",cat:"Holidays",type:"auto",regions:["en"]},
-  {name:"St. Patrick's Day",slug:"st-patricks",cat:"Holidays",type:"auto",regions:["global"]},
-  {name:"Día de los Muertos",slug:"dia-de-los-muertos",cat:"Holidays",type:"auto",regions:["es"]},
-  {name:"Cinco de Mayo",slug:"cinco-de-mayo",cat:"Holidays",type:"auto",regions:["es"]},
-  {name:"25 de Mayo — Día de la Patria",slug:"25-de-mayo",cat:"Holidays",type:"auto",regions:["es"]},
-  {name:"Fiestas Patrias Chile",slug:"fiestas-patrias",cat:"Holidays",type:"auto",regions:["es"]},
-  {name:"Bastille Day",slug:"bastille-day",cat:"Holidays",type:"auto",regions:["fr"]},
-  {name:"Oktoberfest",slug:"oktoberfest",cat:"Holidays",type:"auto",regions:["global"]},
-  {name:"Children's Day",slug:"dia-del-nino",cat:"Holidays",type:"fixed",regions:["global","es","pt"]},
-  {name:"Oscars",slug:"oscars",cat:"Entertainment",type:"auto",regions:["global"]},
-  {name:"Grammy Awards",slug:"grammys",cat:"Entertainment",type:"variable",regions:["global"]},
-  {name:"Met Gala",slug:"met-gala",cat:"Entertainment",type:"auto",regions:["global"]},
-  {name:"Eurovision Song Contest",slug:"eurovision",cat:"Entertainment",type:"variable",regions:["global","fr"]},
-  {name:"Cannes Film Festival",slug:"cannes",cat:"Entertainment",type:"variable",regions:["global","fr"]},
-  {name:"Coachella",slug:"coachella",cat:"Entertainment",type:"variable",regions:["global"]},
-  {name:"Black Friday",slug:"black-friday",cat:"Sales",type:"auto",regions:["global"]},
-  {name:"Cyber Monday",slug:"cyber-monday",cat:"Sales",type:"auto",regions:["global"]},
-  {name:"Hot Sale",slug:"hot-sale",cat:"Sales",type:"variable",regions:["es"]},
-  {name:"Next Full Moon",slug:"full-moon",cat:"Nature",type:"auto",regions:["global"]},
-  {name:"Solar Eclipse",slug:"eclipse",cat:"Nature",type:"variable",regions:["global"]},
-  {name:"Lollapalooza Argentina",slug:"lollapalooza-ar",cat:"Music",type:"variable",regions:["es"]},
-  {name:"Lollapalooza Chile",slug:"lollapalooza-cl",cat:"Music",type:"variable",regions:["es"]},
-  {name:"Cosquín Rock",slug:"cosquin-rock",cat:"Music",type:"variable",regions:["es"]},
-  {name:"Rock in Rio Lisboa",slug:"rock-in-rio",cat:"Music",type:"variable",regions:["pt"]},
-  {name:"New York Fashion Week",slug:"nyfw",cat:"Fashion",type:"variable",regions:["global"]},
-  {name:"Paris Fashion Week",slug:"paris-fw",cat:"Fashion",type:"variable",regions:["global","fr"]},
-  {name:"Milan Fashion Week",slug:"milan-fw",cat:"Fashion",type:"variable",regions:["global"]},
-  {name:"Buenos Aires Fashion Week",slug:"bafweek",cat:"Fashion",type:"variable",regions:["es"]},
-  {name:"Argentine Elections 2027",slug:"elecciones-ar",cat:"Politics",type:"auto",regions:["es"]},
+  { slug:'gta6',               name:'GTA VI',                         type:'variable', countries:['global'], cat:'Releases'      },
+  { slug:'iphone',             name:'Next iPhone',                    type:'variable', countries:['global'], cat:'Releases'      },
+  { slug:'f1',                 name:'F1 Next Race',                   type:'variable', countries:['global'], cat:'Sports'        },
+  { slug:'world-cup',          name:'2026 FIFA World Cup',            type:'variable', countries:['global'], cat:'Sports'        },
+  { slug:'ucl-final',          name:'Champions League Final',         type:'variable', countries:['global'], cat:'Sports'        },
+  { slug:'nba-finals',         name:'NBA Finals',                     type:'variable', countries:['global'], cat:'Sports'        },
+  { slug:'le-mans',            name:'24h Le Mans',                    type:'variable', countries:['global'], cat:'Sports'        },
+  { slug:'wimbledon',          name:'Wimbledon',                      type:'variable', countries:['global'], cat:'Sports'        },
+  { slug:'tour-de-france',     name:'Tour de France',                 type:'variable', countries:['global'], cat:'Sports'        },
+  { slug:'olympics-2028',      name:'LA 2028 Olympics',               type:'auto',     countries:['global'], cat:'Sports'        },
+  { slug:'super-bowl',         name:'Super Bowl',                     type:'auto',     countries:['US','CA','MX','GB','AU'], cat:'Sports' },
+  { slug:'copa-libertadores',  name:'Copa Libertadores Final',        type:'variable', countries:LATAM,      cat:'Sports'        },
+  { slug:'christmas',          name:'Christmas',                      type:'auto',     countries:['global'], cat:'Holidays'      },
+  { slug:'new-year',           name:'New Year',                       type:'auto',     countries:['global'], cat:'Holidays'      },
+  { slug:'halloween',          name:'Halloween',                      type:'auto',     countries:['US','CA','GB','AU','IE','MX','AR','CL','CO','PE','UY','BR','FR','ES','PT','DE','BE','NZ'], cat:'Holidays' },
+  { slug:'valentines',         name:"Valentine's Day",                type:'auto',     countries:['global'], cat:'Holidays'      },
+  { slug:'easter',             name:'Easter',                         type:'auto',     countries:['global'], cat:'Holidays'      },
+  { slug:'mothers-day',        name:"Mother's Day",                   type:'auto',     countries:['global'], cat:'Holidays'      },
+  { slug:'fathers-day',        name:"Father's Day",                   type:'auto',     countries:['global'], cat:'Holidays'      },
+  { slug:'thanksgiving',       name:'Thanksgiving',                   type:'auto',     countries:['US','CA'], cat:'Holidays'     },
+  { slug:'independence-day',   name:'Independence Day',               type:'auto',     countries:['US'],     cat:'Holidays'      },
+  { slug:'memorial-day',       name:'Memorial Day',                   type:'auto',     countries:['US'],     cat:'Holidays'      },
+  { slug:'labor-day',          name:'Labor Day',                      type:'auto',     countries:['US','CA'], cat:'Holidays'     },
+  { slug:'st-patricks',        name:"St. Patrick's Day",              type:'auto',     countries:['US','IE','GB','AU','CA','AR','MX'], cat:'Holidays' },
+  { slug:'dia-de-los-muertos', name:'Día de los Muertos',             type:'auto',     countries:['MX','GT','SV','HN','NI','CR','CO','AR','CL','PE','UY'], cat:'Holidays' },
+  { slug:'cinco-de-mayo',      name:'Cinco de Mayo',                  type:'auto',     countries:['MX','US'], cat:'Holidays'    },
+  { slug:'fiestas-patrias',    name:'Fiestas Patrias Chile',          type:'auto',     countries:['CL'],     cat:'Holidays'      },
+  { slug:'bastille-day',       name:'Bastille Day',                   type:'auto',     countries:['FR','BE','CH','LU'], cat:'Holidays' },
+  { slug:'oktoberfest',        name:'Oktoberfest',                    type:'auto',     countries:['DE','AT','CH','US','CA','AU','BR'], cat:'Holidays' },
+  { slug:'25-de-mayo',         name:'25 de Mayo — Día de la Patria',  type:'auto',     countries:['AR'],     cat:'Holidays'      },
+  { slug:'dia-del-nino',       name:"Children's Day / Día del Niño",  type:'auto',     countries:['MX','AR','BR','CO','CL','PE','UY','VE','BO','EC','CR','PA','GT','SV','DO','PY'], cat:'Holidays' },
+  { slug:'oscars',             name:'Oscars',                         type:'auto',     countries:['global'], cat:'Entertainment' },
+  { slug:'grammys',            name:'Grammy Awards',                  type:'variable', countries:['global'], cat:'Entertainment' },
+  { slug:'met-gala',           name:'Met Gala',                       type:'auto',     countries:['global'], cat:'Entertainment' },
+  { slug:'cannes',             name:'Cannes Film Festival',           type:'variable', countries:['global'], cat:'Entertainment' },
+  { slug:'eurovision',         name:'Eurovision',                     type:'variable', countries:['FR','BE','CH','ES','PT','GB','IE','AU','DE','AT','SE','NO','FI','NL','IT','GR'], cat:'Entertainment' },
+  { slug:'coachella',          name:'Coachella',                      type:'variable', countries:['US','MX','CA','GB'], cat:'Entertainment' },
+  { slug:'black-friday',       name:'Black Friday',                   type:'auto',     countries:['global'], cat:'Sales'         },
+  { slug:'cyber-monday',       name:'Cyber Monday',                   type:'auto',     countries:['global'], cat:'Sales'         },
+  { slug:'hot-sale',           name:'Hot Sale',                       type:'variable', countries:['AR','MX'], cat:'Sales'        },
+  { slug:'full-moon',          name:'Next Full Moon',                 type:'auto',     countries:['global'], cat:'Nature'        },
+  { slug:'eclipse',            name:'Solar Eclipse',                  type:'variable', countries:['global'], cat:'Nature'        },
+  { slug:'lollapalooza-ar',    name:'Lollapalooza Argentina',         type:'variable', countries:['AR','UY'], cat:'Music'        },
+  { slug:'cosquin-rock',       name:'Cosquín Rock',                   type:'variable', countries:['AR'],     cat:'Music'         },
+  { slug:'lollapalooza-cl',    name:'Lollapalooza Chile',             type:'variable', countries:['CL','AR'], cat:'Music'        },
+  { slug:'rock-in-rio',        name:'Rock in Rio',                    type:'variable', countries:['BR','PT'], cat:'Music'        },
+  { slug:'nyfw',               name:'New York Fashion Week',          type:'variable', countries:['global'], cat:'Fashion'       },
+  { slug:'paris-fw',           name:'Paris Fashion Week',             type:'variable', countries:['global'], cat:'Fashion'       },
+  { slug:'milan-fw',           name:'Milan Fashion Week',             type:'variable', countries:['global'], cat:'Fashion'       },
+  { slug:'bafweek',            name:'Buenos Aires Fashion Week',      type:'variable', countries:['AR'],     cat:'Fashion'       },
+  { slug:'elecciones-ar',      name:'Argentine Elections',            type:'auto',     countries:['AR'],     cat:'Politics'      },
 ];
 
 var CAT_COLORS = {
@@ -261,108 +508,370 @@ var CAT_COLORS = {
   Music:'#F472B6', Politics:'#94A3B8', Fashion:'#FDA4AF', Technology:'#34D399'
 };
 
-// Pre-compute which langs each slug has a page for
-// (mirrors TRANSLATIONS keys: global→all, es/pt/fr→that lang if in TRANSLATIONS)
-// For simplicity we approximate based on regions:
-var KNOWN_TRANSLATED = {
-  // ES translations exist for:
-  es: ['gta6','iphone','f1','world-cup','ucl-final','nba-finals','le-mans','wimbledon','tour-de-france','olympics-2028','super-bowl','copa-libertadores','christmas','new-year','halloween','valentines','easter','mothers-day','fathers-day','thanksgiving','independence-day','memorial-day','labor-day','st-patricks','dia-de-los-muertos','cinco-de-mayo','25-de-mayo','fiestas-patrias','bastille-day','oktoberfest','dia-del-nino','oscars','grammys','met-gala','eurovision','cannes','coachella','black-friday','cyber-monday','hot-sale','full-moon','eclipse','lollapalooza-ar','lollapalooza-cl','cosquin-rock','rock-in-rio','nyfw','paris-fw','milan-fw','bafweek','elecciones-ar'],
-  pt: ['gta6','iphone','f1','world-cup','ucl-final','nba-finals','le-mans','wimbledon','tour-de-france','olympics-2028','copa-libertadores','christmas','new-year','halloween','valentines','easter','mothers-day','fathers-day','oscars','grammys','met-gala','black-friday','cyber-monday','full-moon','eclipse','rock-in-rio','nyfw','paris-fw','milan-fw','dia-del-nino'],
-  fr: ['gta6','iphone','f1','world-cup','ucl-final','nba-finals','le-mans','wimbledon','tour-de-france','olympics-2028','christmas','new-year','halloween','valentines','easter','mothers-day','fathers-day','bastille-day','oscars','grammys','met-gala','eurovision','cannes','black-friday','cyber-monday','full-moon','eclipse','nyfw','paris-fw','milan-fw','dia-del-nino'],
-};
+var ALL_COUNTRIES = [
+  { code:'global', flag:'🌍' }, { code:'AR', flag:'🇦🇷' }, { code:'BR', flag:'🇧🇷' },
+  { code:'CL', flag:'🇨🇱' }, { code:'CO', flag:'🇨🇴' }, { code:'MX', flag:'🇲🇽' },
+  { code:'PE', flag:'🇵🇪' }, { code:'UY', flag:'🇺🇾' }, { code:'US', flag:'🇺🇸' },
+  { code:'GB', flag:'🇬🇧' }, { code:'CA', flag:'🇨🇦' }, { code:'AU', flag:'🇦🇺' },
+  { code:'IE', flag:'🇮🇪' }, { code:'ES', flag:'🇪🇸' }, { code:'FR', flag:'🇫🇷' },
+  { code:'BE', flag:'🇧🇪' }, { code:'DE', flag:'🇩🇪' }, { code:'PT', flag:'🇵🇹' },
+  { code:'IT', flag:'🇮🇹' }, { code:'NL', flag:'🇳🇱' }, { code:'CH', flag:'🇨🇭' },
+  { code:'AT', flag:'🇦🇹' }, { code:'SE', flag:'🇸🇪' }, { code:'NO', flag:'🇳🇴' },
+  { code:'FI', flag:'🇫🇮' }, { code:'GR', flag:'🇬🇷' }, { code:'NZ', flag:'🇳🇿' },
+];
 
-function hasLang(slug, lang) {
-  if (lang === 'en') return true;
-  return (KNOWN_TRANSLATED[lang]||[]).indexOf(slug) >= 0;
+/* cached countdowns-data.json for health tab */
+var countdownsData = null;
+/* cached events-meta.json for saves */
+var metaData = null;
+
+/* ════════════════════════════════════════════
+   INIT
+   ════════════════════════════════════════════ */
+function initApp() {
+  /* merge events-meta.json overrides into EVENTS array */
+  fetch('/events-meta.json?_=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(meta) {
+      metaData = meta;
+      if (meta && meta.events) {
+        EVENTS.forEach(function(ev) {
+          var m = meta.events[ev.slug];
+          if (m) {
+            if (m.countries) ev.countries = m.countries;
+            if (m.cat) ev.cat = m.cat;
+          }
+        });
+      }
+      renderEventTable();
+    })
+    .catch(function() { renderEventTable(); });
+
+  /* tabs */
+  document.querySelectorAll('.tab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var t = btn.dataset.tab;
+      document.querySelectorAll('.tab').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('panel-' + t).classList.add('active');
+      if (t === 'health') renderHealth();
+    });
+  });
+
+  /* search */
+  document.getElementById('event-search').addEventListener('input', function() {
+    renderEventTable(this.value);
+  });
+
+  /* modal close on overlay click */
+  document.getElementById('edit-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  /* add event tab FAQs */
+  addFAQ(); addFAQ(); addFAQ();
 }
 
-// ─── Tabs ─────────────────────────────────────────────────────────────────
-function switchTab(t, el) {
-  document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active');});
-  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
-  el.classList.add('active');
-  document.getElementById('panel-'+t).classList.add('active');
-  if (t==='stats') renderStats();
+if (sessionStorage.getItem('admin_ok') === '1') initApp();
+
+/* ════════════════════════════════════════════
+   EVENTS TABLE
+   ════════════════════════════════════════════ */
+function countryFlags(countries) {
+  if (!countries || !countries.length) return '—';
+  return countries.slice(0, 8).map(function(c) {
+    var found = ALL_COUNTRIES.find(function(x) { return x.code === c; });
+    return found ? found.flag : c;
+  }).join(' ') + (countries.length > 8 ? ' +' + (countries.length - 8) : '');
 }
 
-// ─── Events table ─────────────────────────────────────────────────────────
 function renderEventTable(filter) {
   var tbody = document.getElementById('event-tbody');
-  var q = (filter||'').toLowerCase();
+  var q = (filter || '').toLowerCase();
   var rows = '';
   EVENTS.forEach(function(ev) {
-    if (q && ev.name.toLowerCase().indexOf(q)<0 && ev.slug.indexOf(q)<0 && ev.cat.toLowerCase().indexOf(q)<0 && ev.regions.join().indexOf(q)<0) return;
-    var cc = CAT_COLORS[ev.cat]||'#818CF8';
-    var regionBadges = ev.regions.map(function(r){return '<span class="badge badge-'+r+'">'+r+'</span>';}).join(' ');
-    var langDots = ['en','es','pt','fr'].map(function(l){
-      return '<span class="lang-dot '+(hasLang(ev.slug,l)?'has':'none')+'">'+l.toUpperCase()+'</span>';
-    }).join('');
-    var links = '<a class="view-link" href="/countdown/'+ev.slug+'/" target="_blank">EN</a>';
-    if (hasLang(ev.slug,'es')) links += '<a class="view-link" href="/es/countdown/'+ev.slug+'/" target="_blank">ES</a>';
-    if (hasLang(ev.slug,'pt')) links += '<a class="view-link" href="/pt/countdown/'+ev.slug+'/" target="_blank">PT</a>';
-    if (hasLang(ev.slug,'fr')) links += '<a class="view-link" href="/fr/countdown/'+ev.slug+'/" target="_blank">FR</a>';
+    if (q && ev.name.toLowerCase().indexOf(q) < 0 && ev.slug.indexOf(q) < 0
+        && ev.cat.toLowerCase().indexOf(q) < 0) return;
+    var cc = CAT_COLORS[ev.cat] || '#818CF8';
+    var typeCls = 'type-' + ev.type;
+    var dateCell = '';
+    if (ev.type === 'variable') {
+      /* we'll fill this async from countdownsData if loaded */
+      dateCell = '<span class="date-tba" id="ds-' + ev.slug + '">…</span>';
+    } else {
+      dateCell = '<span style="color:var(--ink-ghost);font-size:.8rem">auto</span>';
+    }
     rows += '<tr>'
-      +'<td><span class="cat-dot" style="background:'+cc+'"></span>'+ev.name+'</td>'
-      +'<td><code style="font-size:.78rem;color:var(--ink-dim)">'+ev.slug+'</code></td>'
-      +'<td>'+ev.cat+'</td>'
-      +'<td><span style="color:var(--ink-dim);font-size:.82rem">'+ev.type+'</span></td>'
-      +'<td>'+regionBadges+'</td>'
-      +'<td><div class="lang-dots">'+langDots+'</div></td>'
-      +'<td>'+links+'</td>'
-      +'</tr>';
+      + '<td><span class="cat-dot" style="background:' + cc + '"></span>' + ev.name + '</td>'
+      + '<td><code style="font-size:.78rem;color:var(--ink-dim)">' + ev.slug + '</code></td>'
+      + '<td><span class="type-badge ' + typeCls + '">' + ev.type + '</span></td>'
+      + '<td>' + dateCell + '</td>'
+      + '<td class="flag-cell">' + countryFlags(ev.countries) + '</td>'
+      + '<td><button class="edit-btn" onclick="openEdit(\'' + ev.slug + '\')">Edit</button></td>'
+      + '</tr>';
   });
-  tbody.innerHTML = rows || '<tr><td colspan="7" style="color:var(--ink-ghost);text-align:center;padding:32px">No events match your search.</td></tr>';
+  tbody.innerHTML = rows || '<tr><td colspan="6" style="color:var(--ink-ghost);text-align:center;padding:32px">No events match.</td></tr>';
+  fillDateStatuses();
 }
-function filterEvents() { renderEventTable(document.getElementById('event-search').value); }
-renderEventTable();
 
-// ─── Stats ────────────────────────────────────────────────────────────────
-function renderStats() {
-  var byLang = {en:0,es:0,pt:0,fr:0};
-  var byCat = {};
-  EVENTS.forEach(function(ev){
-    ['en','es','pt','fr'].forEach(function(l){ if(hasLang(ev.slug,l)) byLang[l]++; });
-    byCat[ev.cat] = (byCat[ev.cat]||0)+1;
+function fillDateStatuses() {
+  if (!countdownsData) {
+    fetch('/countdowns-data.json?_=' + Date.now())
+      .then(function(r) { return r.json(); })
+      .then(function(d) { countdownsData = d; applyDateStatuses(); })
+      .catch(function() {});
+  } else {
+    applyDateStatuses();
+  }
+}
+
+function applyDateStatuses() {
+  if (!countdownsData || !countdownsData.events) return;
+  EVENTS.forEach(function(ev) {
+    if (ev.type !== 'variable') return;
+    var el = document.getElementById('ds-' + ev.slug);
+    if (!el) return;
+    var ed = countdownsData.events[ev.slug];
+    if (ed && ed.date) {
+      el.className = 'date-ok';
+      el.textContent = '✓ ' + ed.date.substring(0, 10);
+    } else {
+      el.className = 'date-tba';
+      el.textContent = 'TBA';
+    }
   });
-  var total = byLang.en+byLang.es+byLang.pt+byLang.fr;
-  document.getElementById('stats-grid').innerHTML = [
-    {n:EVENTS.length,l:'Total events'},
-    {n:total,l:'Total pages'},
-    {n:byLang.en,l:'EN pages'},
-    {n:byLang.es,l:'ES pages'},
-    {n:byLang.pt,l:'PT pages'},
-    {n:byLang.fr,l:'FR pages'},
-  ].map(function(s){
-    return '<div class="stat-card"><div class="stat-num">'+s.n+'</div><div class="stat-lbl">'+s.l+'</div></div>';
+}
+
+/* ════════════════════════════════════════════
+   EDIT MODAL
+   ════════════════════════════════════════════ */
+var _editingSlug = null;
+
+function openEdit(slug) {
+  var ev = EVENTS.find(function(e) { return e.slug === slug; });
+  if (!ev) return;
+  _editingSlug = slug;
+
+  document.getElementById('modal-title').textContent = ev.name;
+
+  /* date section */
+  var dateSection = document.getElementById('modal-date-section');
+  if (ev.type === 'variable') {
+    dateSection.style.display = 'block';
+    var ed = countdownsData && countdownsData.events && countdownsData.events[slug];
+    if (ed && ed.date) {
+      /* datetime-local needs "YYYY-MM-DDTHH:MM" */
+      var dt = ed.date.replace(/(\+|-)\d\d:\d\d$/, '').replace('Z', '');
+      document.getElementById('modal-date').value = dt.substring(0, 16);
+    } else {
+      document.getElementById('modal-date').value = '';
+    }
+    document.getElementById('modal-note').value = (ed && ed.note) ? ed.note : '';
+  } else {
+    dateSection.style.display = 'none';
+  }
+
+  /* category */
+  var catSel = document.getElementById('modal-cat');
+  catSel.value = ev.cat;
+
+  /* countries */
+  var container = document.getElementById('modal-country-checks');
+  container.innerHTML = ALL_COUNTRIES.map(function(c) {
+    var checked = ev.countries.indexOf(c.code) >= 0;
+    return '<label class="country-check-item' + (checked ? ' checked' : '') + '" data-code="' + c.code + '">'
+      + '<input type="checkbox"' + (checked ? ' checked' : '') + ' value="' + c.code + '">'
+      + c.flag + ' ' + c.code
+      + '</label>';
+  }).join('');
+  container.querySelectorAll('.country-check-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      var cb = item.querySelector('input');
+      cb.checked = !cb.checked;
+      item.classList.toggle('checked', cb.checked);
+    });
+  });
+
+  document.getElementById('save-status').className = 'save-status';
+  document.getElementById('save-status').textContent = '';
+  document.getElementById('edit-modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('edit-modal').classList.add('hidden');
+  document.body.style.overflow = '';
+  _editingSlug = null;
+}
+
+function clearDate() {
+  document.getElementById('modal-date').value = '';
+}
+
+async function saveChanges() {
+  var slug = _editingSlug;
+  if (!slug) return;
+  var ev = EVENTS.find(function(e) { return e.slug === slug; });
+  if (!ev) return;
+
+  var statusEl = document.getElementById('save-status');
+  statusEl.className = 'save-status loading';
+  statusEl.textContent = 'Saving…';
+
+  var token = localStorage.getItem('admin_gh_token');
+  if (!token) {
+    statusEl.className = 'save-status err';
+    statusEl.textContent = 'No GitHub token set. Enter your token in the header.';
+    return;
+  }
+
+  /* gather new countries */
+  var newCountries = [];
+  document.querySelectorAll('#modal-country-checks input:checked').forEach(function(cb) {
+    newCountries.push(cb.value);
+  });
+  if (!newCountries.length) { newCountries = ['global']; }
+
+  var newCat = document.getElementById('modal-cat').value;
+  var newDate = document.getElementById('modal-date').value;
+  var newNote = document.getElementById('modal-note').value.trim();
+
+  var dateChanged = ev.type === 'variable';
+  var metaChanged = true; /* always update meta for simplicity */
+
+  try {
+    /* ── 1. Update countdowns-data.json if variable event ── */
+    if (ev.type === 'variable') {
+      var cdFile = await ghGet('countdowns-data.json');
+      var cdSha  = cdFile.sha;
+      var cdContent = JSON.parse(atob(cdFile.content.replace(/\n/g, '')));
+
+      if (!cdContent.events) cdContent.events = {};
+      if (!cdContent.events[slug]) cdContent.events[slug] = {};
+
+      if (newDate) {
+        cdContent.events[slug].date = newDate + ':00';
+      } else {
+        cdContent.events[slug].date = null;
+      }
+      if (newNote) {
+        cdContent.events[slug].note = newNote;
+      }
+      cdContent.updated = new Date().toISOString().substring(0, 10);
+
+      await ghPut('countdowns-data.json', cdContent,
+        'admin: update ' + slug + ' date via admin panel', cdSha);
+
+      /* update local cache */
+      countdownsData = cdContent;
+    }
+
+    /* ── 2. Update events-meta.json ── */
+    var metaFile = await ghGet('events-meta.json');
+    var metaSha  = metaFile.sha;
+    var metaContent = JSON.parse(atob(metaFile.content.replace(/\n/g, '')));
+    if (!metaContent.events) metaContent.events = {};
+    metaContent.events[slug] = { countries: newCountries, cat: newCat };
+
+    await ghPut('events-meta.json', metaContent,
+      'admin: update ' + slug + ' metadata via admin panel', metaSha);
+
+    /* update local EVENTS array */
+    ev.countries = newCountries;
+    ev.cat = newCat;
+    metaData = metaContent;
+
+    statusEl.className = 'save-status ok';
+    statusEl.textContent = '✓ Saved! Cloudflare will deploy in ~1 minute.';
+    renderEventTable(document.getElementById('event-search').value);
+    if (document.getElementById('panel-health').classList.contains('active')) renderHealth();
+
+  } catch (err) {
+    statusEl.className = 'save-status err';
+    statusEl.textContent = 'Error: ' + (err.message || String(err));
+  }
+}
+
+/* ════════════════════════════════════════════
+   DATA HEALTH
+   ════════════════════════════════════════════ */
+async function renderHealth() {
+  if (!countdownsData) {
+    try {
+      var r = await fetch('/countdowns-data.json?_=' + Date.now());
+      countdownsData = await r.json();
+    } catch(e) {}
+  }
+
+  var varEvents = EVENTS.filter(function(e) { return e.type === 'variable'; });
+  var confirmed = 0, tba = 0;
+  varEvents.forEach(function(ev) {
+    var ed = countdownsData && countdownsData.events && countdownsData.events[ev.slug];
+    if (ed && ed.date) confirmed++; else tba++;
+  });
+
+  document.getElementById('health-stats').innerHTML = [
+    { n: EVENTS.length, l: 'Total events', cls: '' },
+    { n: varEvents.length, l: 'Variable events', cls: '' },
+    { n: confirmed, l: 'Confirmed dates', cls: 'green' },
+    { n: tba, l: 'TBA / missing', cls: 'yellow' },
+  ].map(function(s) {
+    return '<div class="stat-card"><div class="stat-num ' + s.cls + '">' + s.n + '</div><div class="stat-lbl">' + s.l + '</div></div>';
   }).join('');
 
-  var maxCat = Math.max.apply(null, Object.values(byCat));
-  document.getElementById('cat-breakdown').innerHTML = Object.entries(byCat)
-    .sort(function(a,b){return b[1]-a[1];})
-    .map(function(kv){
-      var cc = CAT_COLORS[kv[0]]||'#818CF8';
-      var pct = (kv[1]/maxCat*100).toFixed(0)+'%';
-      return '<div class="cat-row">'
-        +'<span class="cat-dot" style="background:'+cc+'"></span>'
-        +'<span class="cat-name">'+kv[0]+'</span>'
-        +'<div class="cat-bar"><div class="cat-fill" style="width:'+pct+';background:'+cc+'"></div></div>'
-        +'<span class="cat-count">'+kv[1]+'</span>'
-        +'</div>';
-    }).join('');
+  /* TBA by category */
+  var tbaByCat = {};
+  varEvents.forEach(function(ev) {
+    var ed = countdownsData && countdownsData.events && countdownsData.events[ev.slug];
+    if (!ed || !ed.date) {
+      tbaByCat[ev.cat] = (tbaByCat[ev.cat] || 0) + 1;
+    }
+  });
+  var catGrid = '';
+  Object.keys(tbaByCat).sort(function(a,b){ return tbaByCat[b] - tbaByCat[a]; }).forEach(function(cat) {
+    var cc = CAT_COLORS[cat] || '#818CF8';
+    catGrid += '<div class="cat-tba-row">'
+      + '<span class="cat-dot" style="background:' + cc + '"></span>'
+      + '<span class="cat-name">' + cat + '</span>'
+      + '<span class="tba-count">' + tbaByCat[cat] + ' TBA</span>'
+      + '</div>';
+  });
+  document.getElementById('cat-tba-grid').innerHTML = catGrid || '<span style="color:var(--ink-ghost);font-size:.85rem">All variable events have confirmed dates!</span>';
+
+  /* event list */
+  var list = '';
+  varEvents.forEach(function(ev) {
+    var ed = countdownsData && countdownsData.events && countdownsData.events[ev.slug];
+    var hasDate = ed && ed.date;
+    var cc = CAT_COLORS[ev.cat] || '#818CF8';
+    list += '<div class="health-event-row">'
+      + '<span class="cat-dot" style="background:' + cc + '"></span>'
+      + '<span class="he-name">' + ev.name + '</span>'
+      + '<span class="he-date ' + (hasDate ? 'date-ok' : 'date-tba') + '">'
+        + (hasDate ? '✓ ' + ed.date.substring(0, 10) : 'TBA') + '</span>'
+      + '<button class="edit-btn" onclick="openEdit(\'' + ev.slug + '\')" style="margin-left:auto">Edit</button>'
+      + '</div>';
+  });
+  document.getElementById('health-event-list').innerHTML = list;
+
+  var updated = (countdownsData && countdownsData.updated) ? countdownsData.updated : '—';
+  document.getElementById('last-updated-row').textContent = 'countdowns-data.json last updated: ' + updated;
 }
 
-// ─── Add event form ────────────────────────────────────────────────────────
+/* ════════════════════════════════════════════
+   ADD EVENT FORM
+   ════════════════════════════════════════════ */
 var faqCount = 0;
 function addFAQ() {
   var id = ++faqCount;
   var div = document.createElement('div');
-  div.className = 'faq-row'; div.id = 'faq-'+id;
+  div.className = 'faq-row'; div.id = 'faq-' + id;
   div.innerHTML = '<div class="form-group"><label>Question</label><input type="text" placeholder="When is X?"></div>'
-    +'<div class="form-group"><label>Answer</label><input type="text" placeholder="X happens on..."></div>'
-    +'<button class="btn btn-danger" onclick="document.getElementById(\'faq-'+id+'\').remove()">✕</button>';
+    + '<div class="form-group"><label>Answer</label><input type="text" placeholder="X happens on…"></div>'
+    + '<button class="btn btn-danger" onclick="document.getElementById(\'faq-' + id + '\').remove()">✕</button>';
   document.getElementById('faq-container').appendChild(div);
 }
-addFAQ(); addFAQ(); addFAQ();
 
 function autoSlug() {
   var slug = document.getElementById('f-name').value.toLowerCase()
@@ -379,7 +888,7 @@ function generateCode() {
   var slug     = document.getElementById('f-slug').value.trim();
   var cat      = document.getElementById('f-cat').value;
   var type     = document.getElementById('f-type').value;
-  var regions  = Array.from(document.getElementById('f-regions').selectedOptions).map(function(o){return '"'+o.value+'"';});
+  var regions  = Array.from(document.getElementById('f-regions').selectedOptions).map(function(o){ return '"'+o.value+'"'; });
   var seoTitle = document.getElementById('f-seo-title').value.trim();
   var metaDesc = document.getElementById('f-meta-desc').value.trim();
   var heroDesc = document.getElementById('f-hero-desc').value.trim();
@@ -389,17 +898,14 @@ function generateCode() {
   if (!name||!slug) { alert('Name and slug are required.'); return; }
 
   var faqs = [];
-  document.querySelectorAll('#faq-container .faq-row').forEach(function(row){
+  document.querySelectorAll('#faq-container .faq-row').forEach(function(row) {
     var ins = row.querySelectorAll('input');
     if (ins[0].value.trim() && ins[1].value.trim()) faqs.push([ins[0].value.trim(), ins[1].value.trim()]);
   });
-
   var faqStr = faqs.length
     ? '[\n' + faqs.map(function(f){ return '      ('+py(f[0])+', '+py(f[1])+'),'; }).join('\n') + '\n    ]'
     : '[]';
-
   var dateExtra = (type==='fixed'&&fixDate) ? '\n    date='+py(fixDate)+',' : '';
-
   var code = 'dict(\n'
     +'  slug='+py(slug)+', name='+py(name)+', type='+py(type)+', category='+py(cat)+',\n'
     +'  regions=['+regions.join(', ')+'],\n'
@@ -427,7 +933,9 @@ function copyCode() {
 }
 
 function resetForm() {
-  ['f-name','f-slug','f-seo-title','f-meta-desc','f-hero-desc','f-content','f-date'].forEach(function(id){ document.getElementById(id).value=''; });
+  ['f-name','f-slug','f-seo-title','f-meta-desc','f-hero-desc','f-content','f-date'].forEach(function(id){
+    document.getElementById(id).value='';
+  });
   document.getElementById('output-box').classList.remove('visible');
   document.getElementById('faq-container').innerHTML='';
   faqCount=0;

@@ -636,7 +636,22 @@
       if (fb) fb.textContent = FLAG_MAP[savedCountry] || '🌍';
     }
 
-    loadHub();
+    /* ── Load events-meta.json overrides, then render ── */
+    fetch('/events-meta.json?_=' + Date.now())
+      .then(function(r) { return r.json(); })
+      .then(function(meta) {
+        if (meta && meta.events) {
+          EVENTS.forEach(function(ev) {
+            var m = meta.events[ev.slug];
+            if (m) {
+              if (m.countries) ev.countries = m.countries;
+              if (m.cat) ev.cat = m.cat;
+            }
+          });
+        }
+      })
+      .catch(function() {})
+      .then(function() { loadHub(); });
 
     /* First visit: detect country after hub starts loading */
     if (!savedCountry) {
