@@ -508,16 +508,54 @@ var CAT_COLORS = {
   Music:'#F472B6', Politics:'#94A3B8', Fashion:'#FDA4AF', Technology:'#34D399'
 };
 
+/* ── MASTER country list — keep in sync with index.html COUNTRY_LIST ── */
 var ALL_COUNTRIES = [
-  { code:'global', flag:'🌍' }, { code:'AR', flag:'🇦🇷' }, { code:'BR', flag:'🇧🇷' },
-  { code:'CL', flag:'🇨🇱' }, { code:'CO', flag:'🇨🇴' }, { code:'MX', flag:'🇲🇽' },
-  { code:'PE', flag:'🇵🇪' }, { code:'UY', flag:'🇺🇾' }, { code:'US', flag:'🇺🇸' },
-  { code:'GB', flag:'🇬🇧' }, { code:'CA', flag:'🇨🇦' }, { code:'AU', flag:'🇦🇺' },
-  { code:'IE', flag:'🇮🇪' }, { code:'ES', flag:'🇪🇸' }, { code:'FR', flag:'🇫🇷' },
-  { code:'BE', flag:'🇧🇪' }, { code:'DE', flag:'🇩🇪' }, { code:'PT', flag:'🇵🇹' },
-  { code:'IT', flag:'🇮🇹' }, { code:'NL', flag:'🇳🇱' }, { code:'CH', flag:'🇨🇭' },
-  { code:'AT', flag:'🇦🇹' }, { code:'SE', flag:'🇸🇪' }, { code:'NO', flag:'🇳🇴' },
-  { code:'FI', flag:'🇫🇮' }, { code:'GR', flag:'🇬🇷' }, { code:'NZ', flag:'🇳🇿' },
+  { code:'global', flag:'🌍', name:'Global'          },
+  /* English high-CPC */
+  { code:'US', flag:'🇺🇸', name:'USA'             },
+  { code:'GB', flag:'🇬🇧', name:'UK'              },
+  { code:'CA', flag:'🇨🇦', name:'Canada'          },
+  { code:'AU', flag:'🇦🇺', name:'Australia'       },
+  { code:'IE', flag:'🇮🇪', name:'Ireland'         },
+  { code:'NZ', flag:'🇳🇿', name:'New Zealand'     },
+  { code:'SG', flag:'🇸🇬', name:'Singapore'       },
+  { code:'AE', flag:'🇦🇪', name:'UAE'             },
+  /* Spanish Latin America */
+  { code:'AR', flag:'🇦🇷', name:'Argentina'       },
+  { code:'MX', flag:'🇲🇽', name:'México'          },
+  { code:'CL', flag:'🇨🇱', name:'Chile'           },
+  { code:'CO', flag:'🇨🇴', name:'Colombia'        },
+  { code:'PE', flag:'🇵🇪', name:'Perú'            },
+  { code:'UY', flag:'🇺🇾', name:'Uruguay'         },
+  { code:'VE', flag:'🇻🇪', name:'Venezuela'       },
+  { code:'EC', flag:'🇪🇨', name:'Ecuador'         },
+  { code:'BO', flag:'🇧🇴', name:'Bolivia'         },
+  { code:'PY', flag:'🇵🇾', name:'Paraguay'        },
+  { code:'CR', flag:'🇨🇷', name:'Costa Rica'      },
+  { code:'PA', flag:'🇵🇦', name:'Panamá'          },
+  { code:'DO', flag:'🇩🇴', name:'Rep. Dominicana' },
+  { code:'PR', flag:'🇵🇷', name:'Puerto Rico'     },
+  /* Spanish Europe */
+  { code:'ES', flag:'🇪🇸', name:'España'          },
+  /* Portuguese */
+  { code:'BR', flag:'🇧🇷', name:'Brasil'          },
+  { code:'PT', flag:'🇵🇹', name:'Portugal'        },
+  /* French */
+  { code:'FR', flag:'🇫🇷', name:'France'          },
+  { code:'BE', flag:'🇧🇪', name:'Belgique'        },
+  { code:'CH', flag:'🇨🇭', name:'Schweiz'         },
+  /* German-speaking */
+  { code:'DE', flag:'🇩🇪', name:'Deutschland'     },
+  { code:'AT', flag:'🇦🇹', name:'Österreich'      },
+  /* Nordic (high CPC) */
+  { code:'SE', flag:'🇸🇪', name:'Sverige'         },
+  { code:'NO', flag:'🇳🇴', name:'Norge'           },
+  { code:'DK', flag:'🇩🇰', name:'Danmark'         },
+  { code:'FI', flag:'🇫🇮', name:'Finland'         },
+  /* Other European */
+  { code:'NL', flag:'🇳🇱', name:'Nederland'       },
+  { code:'IT', flag:'🇮🇹', name:'Italia'          },
+  { code:'GR', flag:'🇬🇷', name:'Ελλάδα'          },
 ];
 
 /* cached countdowns-data.json for health tab */
@@ -682,7 +720,7 @@ function openEdit(slug) {
     var checked = ev.countries.indexOf(c.code) >= 0;
     return '<label class="country-check-item' + (checked ? ' checked' : '') + '" data-code="' + c.code + '">'
       + '<input type="checkbox"' + (checked ? ' checked' : '') + ' value="' + c.code + '">'
-      + c.flag + ' ' + c.code
+      + c.flag + ' ' + (c.name || c.code)
       + '</label>';
   }).join('');
   container.querySelectorAll('.country-check-item').forEach(function(item) {

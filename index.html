@@ -36,6 +36,8 @@
 .country-modal{background:var(--card-bg,#0E0E1C);border:1px solid rgba(129,140,248,.3);border-radius:20px;padding:2rem 1.75rem;max-width:500px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 0 80px rgba(129,140,248,.18)}
 .country-modal h2{font-size:1.35rem;font-weight:700;margin:0 0 .4rem;color:var(--text,#F1F5F9)}
 .country-modal p{font-size:.875rem;color:var(--muted,#94A3B8);margin:0 0 1.4rem;line-height:1.5}
+.country-search{width:100%;box-sizing:border-box;padding:.5rem .75rem;border-radius:10px;border:1px solid rgba(129,140,248,.3);background:rgba(255,255,255,.05);color:var(--text,#F1F5F9);font-size:.9rem;margin-bottom:1rem;outline:none}
+.country-search:focus{border-color:rgba(129,140,248,.7)}
 .country-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.45rem;margin-bottom:1rem}
 @media(min-width:400px){.country-grid{grid-template-columns:repeat(4,1fr)}}
 .country-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.6rem .3rem;cursor:pointer;text-align:center;transition:all .15s;color:var(--text,#F1F5F9);font-size:.78rem;font-weight:500;font-family:inherit}
@@ -112,6 +114,7 @@
     <h2>Where are you from?</h2>
     <p>We'll show you the most relevant countdowns for your country and language.</p>
     <div id="country-detected" class="country-detected hidden"></div>
+    <input type="text" id="country-search" class="country-search" placeholder="Search country…" autocomplete="off" spellcheck="false">
     <div id="country-grid" class="country-grid"></div>
     <button id="country-skip" class="country-skip">Skip — show everything</button>
   </div>
@@ -237,31 +240,67 @@
 
   /* ── Country / language maps (used by both switcher and country selector) ── */
   var COUNTRY_LANG = {
-    US:'en', GB:'en', AU:'en', CA:'en', NZ:'en', IE:'en', ZA:'en', IN:'en', PH:'en', SG:'en',
+    /* English */
+    US:'en', GB:'en', AU:'en', CA:'en', NZ:'en', IE:'en', SG:'en', AE:'en',
+    ZA:'en', IN:'en', PH:'en',
+    /* Spanish */
     AR:'es', MX:'es', CL:'es', CO:'es', PE:'es', UY:'es', VE:'es', BO:'es', PY:'es',
-    EC:'es', DO:'es', CR:'es', PA:'es', GT:'es', SV:'es', HN:'es', NI:'es', CU:'es', ES:'es',
+    EC:'es', DO:'es', CR:'es', PA:'es', PR:'es', GT:'es', SV:'es', HN:'es', NI:'es', CU:'es', ES:'es',
+    /* Portuguese */
     BR:'pt', PT:'pt', AO:'pt', MZ:'pt',
+    /* French */
     FR:'fr', BE:'fr', CH:'fr', LU:'fr', MC:'fr',
+    /* European (no dedicated hub → English) */
+    DE:'en', AT:'en', SE:'en', NO:'en', DK:'en', FI:'en', NL:'en', IT:'en', GR:'en',
   };
+  /* ── MASTER country list — keep in sync with admin/index.html ALL_COUNTRIES ── */
   var COUNTRY_LIST = [
-    { code:'global', flag:'🌍', name:'Global'    },
-    { code:'US',     flag:'🇺🇸', name:'USA'       },
-    { code:'GB',     flag:'🇬🇧', name:'UK'        },
-    { code:'CA',     flag:'🇨🇦', name:'Canada'    },
-    { code:'AU',     flag:'🇦🇺', name:'Australia' },
-    { code:'IE',     flag:'🇮🇪', name:'Ireland'   },
-    { code:'AR',     flag:'🇦🇷', name:'Argentina' },
-    { code:'MX',     flag:'🇲🇽', name:'México'    },
-    { code:'CL',     flag:'🇨🇱', name:'Chile'     },
-    { code:'CO',     flag:'🇨🇴', name:'Colombia'  },
-    { code:'PE',     flag:'🇵🇪', name:'Perú'      },
-    { code:'UY',     flag:'🇺🇾', name:'Uruguay'   },
-    { code:'VE',     flag:'🇻🇪', name:'Venezuela' },
-    { code:'ES',     flag:'🇪🇸', name:'España'    },
-    { code:'BR',     flag:'🇧🇷', name:'Brasil'    },
-    { code:'PT',     flag:'🇵🇹', name:'Portugal'  },
-    { code:'FR',     flag:'🇫🇷', name:'France'    },
-    { code:'BE',     flag:'🇧🇪', name:'Belgique'  },
+    { code:'global', flag:'🌍', name:'Global'          },
+    /* ── English-speaking (high CPC) ── */
+    { code:'US',     flag:'🇺🇸', name:'USA'             },
+    { code:'GB',     flag:'🇬🇧', name:'UK'              },
+    { code:'CA',     flag:'🇨🇦', name:'Canada'          },
+    { code:'AU',     flag:'🇦🇺', name:'Australia'       },
+    { code:'IE',     flag:'🇮🇪', name:'Ireland'         },
+    { code:'NZ',     flag:'🇳🇿', name:'New Zealand'     },
+    { code:'SG',     flag:'🇸🇬', name:'Singapore'       },
+    { code:'AE',     flag:'🇦🇪', name:'UAE'             },
+    /* ── Spanish Latin America ── */
+    { code:'AR',     flag:'🇦🇷', name:'Argentina'       },
+    { code:'MX',     flag:'🇲🇽', name:'México'          },
+    { code:'CL',     flag:'🇨🇱', name:'Chile'           },
+    { code:'CO',     flag:'🇨🇴', name:'Colombia'        },
+    { code:'PE',     flag:'🇵🇪', name:'Perú'            },
+    { code:'UY',     flag:'🇺🇾', name:'Uruguay'         },
+    { code:'VE',     flag:'🇻🇪', name:'Venezuela'       },
+    { code:'EC',     flag:'🇪🇨', name:'Ecuador'         },
+    { code:'BO',     flag:'🇧🇴', name:'Bolivia'         },
+    { code:'PY',     flag:'🇵🇾', name:'Paraguay'        },
+    { code:'CR',     flag:'🇨🇷', name:'Costa Rica'      },
+    { code:'PA',     flag:'🇵🇦', name:'Panamá'          },
+    { code:'DO',     flag:'🇩🇴', name:'Rep. Dominicana' },
+    { code:'PR',     flag:'🇵🇷', name:'Puerto Rico'     },
+    /* ── Spanish Europe ── */
+    { code:'ES',     flag:'🇪🇸', name:'España'          },
+    /* ── Portuguese ── */
+    { code:'BR',     flag:'🇧🇷', name:'Brasil'          },
+    { code:'PT',     flag:'🇵🇹', name:'Portugal'        },
+    /* ── French ── */
+    { code:'FR',     flag:'🇫🇷', name:'France'          },
+    { code:'BE',     flag:'🇧🇪', name:'Belgique'        },
+    { code:'CH',     flag:'🇨🇭', name:'Schweiz'         },
+    /* ── German-speaking ── */
+    { code:'DE',     flag:'🇩🇪', name:'Deutschland'     },
+    { code:'AT',     flag:'🇦🇹', name:'Österreich'      },
+    /* ── Nordic (high CPC) ── */
+    { code:'SE',     flag:'🇸🇪', name:'Sverige'         },
+    { code:'NO',     flag:'🇳🇴', name:'Norge'           },
+    { code:'DK',     flag:'🇩🇰', name:'Danmark'         },
+    { code:'FI',     flag:'🇫🇮', name:'Finland'         },
+    /* ── Other European ── */
+    { code:'NL',     flag:'🇳🇱', name:'Nederland'       },
+    { code:'IT',     flag:'🇮🇹', name:'Italia'          },
+    { code:'GR',     flag:'🇬🇷', name:'Ελλάδα'          },
   ];
   var FLAG_MAP = {};
   COUNTRY_LIST.forEach(function (c) { FLAG_MAP[c.code] = c.flag; });
@@ -584,6 +623,20 @@
 
       overlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+
+      /* search filter */
+      var searchEl = document.getElementById('country-search');
+      if (searchEl) {
+        searchEl.value = '';
+        searchEl.oninput = function () {
+          var q = this.value.toLowerCase();
+          grid.querySelectorAll('.country-item').forEach(function (btn) {
+            var matches = btn.textContent.toLowerCase().indexOf(q) >= 0 || btn.dataset.code.toLowerCase().indexOf(q) >= 0;
+            btn.style.display = matches ? '' : 'none';
+          });
+        };
+        setTimeout(function () { searchEl.focus(); }, 80);
+      }
 
       grid.querySelectorAll('.country-item').forEach(function (btn) {
         btn.addEventListener('click', function () {
