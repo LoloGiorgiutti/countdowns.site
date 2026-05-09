@@ -118,7 +118,7 @@
 (function () {
   'use strict';
 
-  /* ── Category colors (must match engine) ── */
+  /* ── Category colors ── */
   var CAT_COLOR = {
     'Releases':      { color:'#C084FC', glow:'rgba(192,132,252,.25)' },
     'Sports':        { color:'#FB923C', glow:'rgba(251,146,60,.25)'  },
@@ -132,6 +132,88 @@
     'Technology':    { color:'#34D399', glow:'rgba(52,211,153,.2)'   },
   };
   function cc(cat) { return CAT_COLOR[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' }; }
+
+  /* ── Translated event names ── */
+  var NAMES = {
+    'christmas':         { es:'Navidad',                pt:'Natal',                 fr:'Noël'                      },
+    'new-year':          { es:'Año Nuevo',              pt:'Ano Novo',              fr:'Nouvel An'                 },
+    'easter':            { es:'Pascua',                 pt:'Páscoa',                fr:'Pâques'                    },
+    'valentines':        { es:'San Valentín',           pt:'Dia dos Namorados',     fr:'Saint-Valentin'            },
+    'mothers-day':       { es:'Día de la Madre',        pt:'Dia das Mães',          fr:'Fête des Mères'            },
+    'fathers-day':       { es:'Día del Padre',          pt:'Dia dos Pais',          fr:'Fête des Pères'            },
+    'thanksgiving':      { es:'Acción de Gracias',      pt:'Ação de Graças',        fr:'Thanksgiving'              },
+    'world-cup':         { es:'Copa del Mundo 2026',    pt:'Copa do Mundo 2026',    fr:'Coupe du Monde 2026'       },
+    'f1':                { es:'F1: Próxima Carrera',    pt:'F1: Próxima Corrida',   fr:'F1: Prochain GP'           },
+    'ucl-final':         { es:'Final Champions League', pt:'Final da Champions',    fr:'Finale Ligue des Champions'},
+    'nba-finals':        { es:'Finales NBA',            pt:'Finais da NBA',         fr:'Finales NBA'               },
+    'olympics-2028':     { es:'Juegos Olímpicos LA 2028',pt:'Jogos Olímpicos LA 2028',fr:'JO Los Angeles 2028'    },
+    'full-moon':         { es:'Próxima Luna Llena',     pt:'Próxima Lua Cheia',     fr:'Prochaine Pleine Lune'     },
+    'eclipse':           { es:'Eclipse Solar',          pt:'Eclipse Solar',         fr:'Éclipse Solaire'           },
+    'oscars':            { es:'Premios Óscar',          pt:'Oscar',                 fr:'Oscars'                    },
+    'grammys':           { es:'Premios Grammy',         pt:'Grammy',                fr:'Grammy'                    },
+    'iphone':            { es:'Próximo iPhone',         pt:'Próximo iPhone',        fr:'Prochain iPhone'           },
+    'tour-de-france':    { es:'Tour de Francia',        pt:'Tour de France'                                        },
+    'bastille-day':      { fr:'Fête Nationale'                                                                     },
+    'black-friday':      { fr:'Black Friday'                                                                       },
+    'dia-del-nino':      { es:'Día del Niño',           pt:'Dia das Crianças',      fr:"Journée des Enfants"       },
+    'copa-libertadores': { es:'Final Copa Libertadores',pt:'Final Copa Libertadores'                               },
+    'nyfw':              { es:'Semana de la Moda NY',   pt:'NYFW',                  fr:'Semaine de la Mode NY'     },
+    'paris-fw':          { es:'Semana de la Moda París',pt:'Semana de Moda Paris',  fr:'Fashion Week Paris'        },
+    'milan-fw':          { es:'Semana de la Moda Milán',pt:'Semana de Moda Milão',  fr:'Fashion Week Milan'        },
+    'cannes':            { es:'Festival de Cannes',     fr:'Festival de Cannes'                                    },
+    'elecciones-ar':     { es:'Elecciones Argentina'                                                               },
+    'hot-sale':          { es:'Hot Sale'                                                                           },
+    'bafweek':           { es:'Buenos Aires Fashion Week'                                                          },
+  };
+  function evName(ev) {
+    var t = NAMES[ev.slug];
+    return (t && t[currentLang]) ? t[currentLang] : ev.name;
+  }
+
+  /* ── UI labels (buckets, misc) ── */
+  var UI = {
+    en: { today:'Today',         week:'This week',    month:'This month',  soon:'Coming soon',
+          year:'Later this year', future:'Next year +', tba:'Date TBA',     days:'days' },
+    es: { today:'Hoy',           week:'Esta semana',  month:'Este mes',    soon:'Próximamente',
+          year:'Más adelante',   future:'Año que viene', tba:'Fecha por confirmar', days:'días' },
+    pt: { today:'Hoje',          week:'Esta semana',  month:'Este mês',    soon:'Em breve',
+          year:'Mais adiante',   future:'Ano que vem',  tba:'Data a confirmar',    days:'dias' },
+    fr: { today:"Aujourd'hui",   week:'Cette semaine',month:'Ce mois-ci',  soon:'Bientôt',
+          year:'Cette année',    future:'Année prochaine', tba:'Date à confirmer', days:'jours'},
+  };
+  function ui(key) { return (UI[currentLang] || UI.en)[key] || UI.en[key] || ''; }
+
+  /* ── Country / language maps (used by both switcher and country selector) ── */
+  var COUNTRY_LANG = {
+    US:'en', GB:'en', AU:'en', CA:'en', NZ:'en', IE:'en', ZA:'en', IN:'en', PH:'en', SG:'en',
+    AR:'es', MX:'es', CL:'es', CO:'es', PE:'es', UY:'es', VE:'es', BO:'es', PY:'es',
+    EC:'es', DO:'es', CR:'es', PA:'es', GT:'es', SV:'es', HN:'es', NI:'es', CU:'es', ES:'es',
+    BR:'pt', PT:'pt', AO:'pt', MZ:'pt',
+    FR:'fr', BE:'fr', CH:'fr', LU:'fr', MC:'fr',
+  };
+  var COUNTRY_LIST = [
+    { code:'global', flag:'🌍', name:'Global'    },
+    { code:'US',     flag:'🇺🇸', name:'USA'       },
+    { code:'GB',     flag:'🇬🇧', name:'UK'        },
+    { code:'CA',     flag:'🇨🇦', name:'Canada'    },
+    { code:'AU',     flag:'🇦🇺', name:'Australia' },
+    { code:'IE',     flag:'🇮🇪', name:'Ireland'   },
+    { code:'AR',     flag:'🇦🇷', name:'Argentina' },
+    { code:'MX',     flag:'🇲🇽', name:'México'    },
+    { code:'CL',     flag:'🇨🇱', name:'Chile'     },
+    { code:'CO',     flag:'🇨🇴', name:'Colombia'  },
+    { code:'PE',     flag:'🇵🇪', name:'Perú'      },
+    { code:'UY',     flag:'🇺🇾', name:'Uruguay'   },
+    { code:'VE',     flag:'🇻🇪', name:'Venezuela' },
+    { code:'ES',     flag:'🇪🇸', name:'España'    },
+    { code:'BR',     flag:'🇧🇷', name:'Brasil'    },
+    { code:'PT',     flag:'🇵🇹', name:'Portugal'  },
+    { code:'FR',     flag:'🇫🇷', name:'France'    },
+    { code:'BE',     flag:'🇧🇪', name:'Belgique'  },
+  ];
+  var FLAG_MAP = {};
+  COUNTRY_LIST.forEach(function (c) { FLAG_MAP[c.code] = c.flag; });
+  function countryToLang(code) { return COUNTRY_LANG[code] || 'en'; }
 
   /* ── Events master list ──────────────────────────────────────
      regions: 'global' | 'en' | 'es' | 'pt' | 'fr'
@@ -220,33 +302,43 @@
     { slug:'dia-del-nino',  name:"Children's Day / Día del Niño", type:'auto', regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },
   ];
 
-  /* ── State ───────────────────────────────────────────────── */
+  /* ── State ── */
   var currentLang = 'en';
   var currentSort = 'chrono';
 
-  /* ── Language links ── */
-  var LANG_URLS = { en: '/', es: '/es/', pt: '/pt/', fr: '/fr/' };
-
-  /* ── Filter events by language ── */
-  function filteredEvents() {
-    return EVENTS.filter(function (e) {
-      return e.regions.indexOf('global') >= 0 || e.regions.indexOf(currentLang) >= 0;
+  /* ── Apply language (updates buttons + state, no reload) ── */
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.lang === lang);
     });
   }
 
-  /* ── Time bucket labels ── */
-  var BUCKETS = [
-    { key: 'today',    label: 'Today',         test: function (d) { return d <= 0; } },
-    { key: 'week',     label: 'This week',      test: function (d) { return d <= 7; } },
-    { key: 'month',    label: 'This month',     test: function (d) { return d <= 30; } },
-    { key: 'soon',     label: 'Coming soon',    test: function (d) { return d <= 90; } },
-    { key: 'year',     label: 'Later this year',test: function (d) { return d <= 365; } },
-    { key: 'future',   label: 'Next year +',    test: function (d) { return d > 365; } },
-  ];
+  /* ── All events shown regardless of country/lang ── */
+  function filteredEvents() {
+    return EVENTS;
+  }
 
+  /* ── Resolve card URL to the correct language page ── */
+  function cardURL(ev) {
+    if (currentLang === 'en') return ev.url;
+    var hasPage = ev.regions.indexOf('global') >= 0 || ev.regions.indexOf(currentLang) >= 0;
+    return hasPage ? '/' + currentLang + '/countdown/' + ev.slug + '/' : ev.url;
+  }
+
+  /* ── Time buckets ── */
+  var BUCKET_KEYS = ['today','week','month','soon','year','future'];
+  var BUCKET_TESTS = [
+    function (d) { return d <= 0; },
+    function (d) { return d <= 7; },
+    function (d) { return d <= 30; },
+    function (d) { return d <= 90; },
+    function (d) { return d <= 365; },
+    function ()  { return true; },
+  ];
   function bucket(days) {
-    for (var i = 0; i < BUCKETS.length; i++) {
-      if (BUCKETS[i].test(days)) return BUCKETS[i].key;
+    for (var i = 0; i < BUCKET_TESTS.length; i++) {
+      if (BUCKET_TESTS[i](days)) return BUCKET_KEYS[i];
     }
     return 'future';
   }
@@ -255,21 +347,20 @@
   function cardHTML(ev, data) {
     var c = cc(ev.cat);
     var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
+    var name = evName(ev);
     var inner = '';
-
     if (data.state === 'unknown') {
-      inner = '<div class="cd-card-name">' + ev.name + '</div>' +
-              '<div class="cd-card-unknown">Date TBA</div>';
+      inner = '<div class="cd-card-name">' + name + '</div>' +
+              '<div class="cd-card-unknown">' + ui('tba') + '</div>';
     } else if (data.state === 'today') {
-      inner = '<div class="cd-card-name">' + ev.name + '</div>' +
-              '<div class="cd-card-today">Today</div>';
+      inner = '<div class="cd-card-name">' + name + '</div>' +
+              '<div class="cd-card-today">' + ui('today') + '</div>';
     } else {
-      inner = '<div class="cd-card-name">' + ev.name + '</div>' +
+      inner = '<div class="cd-card-name">' + name + '</div>' +
               '<div class="cd-card-num">' + data.days + '</div>' +
-              '<div class="cd-card-lbl">days</div>';
+              '<div class="cd-card-lbl">' + ui('days') + '</div>';
     }
-
-    return '<a href="' + ev.url + '" class="cd-card" ' + style + '>' + inner + '</a>';
+    return '<a href="' + cardURL(ev) + '" class="cd-card" ' + style + '>' + inner + '</a>';
   }
 
   /* ── Render hub (called once all card data loaded) ── */
@@ -279,13 +370,12 @@
     var html = '';
 
     if (currentSort === 'chrono') {
-      /* Sort: today first, then ascending days, unknown/past last */
       results.sort(function (a, b) {
         function rank(r) {
           if (r.data.state === 'today')   return -1;
           if (r.data.state === 'future')  return r.data.days;
           if (r.data.state === 'unknown') return 99999;
-          return 99998; /* past */
+          return 99998;
         }
         return rank(a) - rank(b);
       });
@@ -295,28 +385,24 @@
         if (r.data.state === 'future' || r.data.state === 'today') {
           var b = bucket(r.data.state === 'today' ? 0 : r.data.days);
           if (b !== lastBucket) {
-            if (lastBucket !== null) html += '</div>'; /* close prev grid */
-            var label = BUCKETS.filter(function (x) { return x.key === b; })[0].label;
-            html += '<div class="time-bucket-hdr">' + label + '</div>';
+            if (lastBucket !== null) html += '</div>';
+            html += '<div class="time-bucket-hdr">' + ui(b) + '</div>';
             html += '<div class="cards-grid">';
             lastBucket = b;
           }
           html += cardHTML(r.ev, r.data);
         }
       });
-      if (lastBucket !== null) html += '</div>'; /* close last grid */
+      if (lastBucket !== null) html += '</div>';
 
-      /* Append TBA at the bottom */
       var tba = results.filter(function (r) { return r.data.state === 'unknown'; });
       if (tba.length) {
-        html += '<div class="time-bucket-hdr">Date TBA</div>';
+        html += '<div class="time-bucket-hdr">' + ui('tba') + '</div>';
         html += '<div class="cards-grid">';
         tba.forEach(function (r) { html += cardHTML(r.ev, r.data); });
         html += '</div>';
       }
-
     } else {
-      /* ── Category mode ── */
       var grouped = {};
       var catOrder = [];
       results.forEach(function (r) {
@@ -362,13 +448,14 @@
     });
   }
 
-  /* ── Language switcher ── */
+  /* ── Language switcher — in-place, no redirect ── */
   document.querySelectorAll('.lang-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var lang = btn.dataset.lang;
-      if (LANG_URLS[lang] && lang !== currentLang) {
-        window.location.href = LANG_URLS[lang];
-      }
+      if (lang === currentLang) return;
+      localStorage.setItem('cd_lang', lang);   /* explicit language choice */
+      setLang(lang);
+      loadHub();
     });
   });
 
@@ -384,78 +471,32 @@
 
   /* ── Cache results for re-sort without re-fetch ── */
   var _origRender = renderHub;
-  renderHub = function (results) {
-    window._hubResults = results;
-    _origRender(results);
-  };
+  renderHub = function (results) { window._hubResults = results; _origRender(results); };
 
-  // ── Theme toggle ──────────────────────────────────────────────
+  /* ── Theme toggle ── */
   (function () {
     var btn = document.getElementById('theme-toggle');
     var saved = localStorage.getItem('cd_theme');
     if (saved === 'light') { document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }
     btn.addEventListener('click', function () {
       var isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      if (isLight) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('cd_theme', 'dark');
-        btn.textContent = 'Light';
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('cd_theme', 'light');
-        btn.textContent = 'Dark';
-      }
+      if (isLight) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('cd_theme','dark'); btn.textContent = 'Light'; }
+      else          { document.documentElement.setAttribute('data-theme','light');  localStorage.setItem('cd_theme','light'); btn.textContent = 'Dark'; }
     });
   })();
 
-  /* ── Country selector ─────────────────────────────────────── */
+  /* ── Country selector ── */
   (function () {
-    var COUNTRY_LANG = {
-      US:'en', GB:'en', AU:'en', CA:'en', NZ:'en', IE:'en', ZA:'en', IN:'en', PH:'en', SG:'en',
-      AR:'es', MX:'es', CL:'es', CO:'es', PE:'es', UY:'es', VE:'es', BO:'es', PY:'es',
-      EC:'es', DO:'es', CR:'es', PA:'es', GT:'es', SV:'es', HN:'es', NI:'es', CU:'es', ES:'es',
-      BR:'pt', PT:'pt', AO:'pt', MZ:'pt',
-      FR:'fr', BE:'fr', CH:'fr', LU:'fr', MC:'fr',
-    };
 
-    var COUNTRY_LIST = [
-      { code:'global', flag:'🌍', name:'Global'        },
-      { code:'US',     flag:'🇺🇸', name:'USA'           },
-      { code:'GB',     flag:'🇬🇧', name:'UK'            },
-      { code:'CA',     flag:'🇨🇦', name:'Canada'        },
-      { code:'AU',     flag:'🇦🇺', name:'Australia'     },
-      { code:'IE',     flag:'🇮🇪', name:'Ireland'       },
-      { code:'AR',     flag:'🇦🇷', name:'Argentina'     },
-      { code:'MX',     flag:'🇲🇽', name:'México'        },
-      { code:'CL',     flag:'🇨🇱', name:'Chile'         },
-      { code:'CO',     flag:'🇨🇴', name:'Colombia'      },
-      { code:'PE',     flag:'🇵🇪', name:'Perú'          },
-      { code:'UY',     flag:'🇺🇾', name:'Uruguay'       },
-      { code:'VE',     flag:'🇻🇪', name:'Venezuela'     },
-      { code:'ES',     flag:'🇪🇸', name:'España'        },
-      { code:'BR',     flag:'🇧🇷', name:'Brasil'        },
-      { code:'PT',     flag:'🇵🇹', name:'Portugal'      },
-      { code:'FR',     flag:'🇫🇷', name:'France'        },
-      { code:'BE',     flag:'🇧🇪', name:'Belgique'      },
-    ];
-
-    var FLAG_MAP = {};
-    COUNTRY_LIST.forEach(function (c) { FLAG_MAP[c.code] = c.flag; });
-
-    function countryToLang(code) { return COUNTRY_LANG[code] || 'en'; }
-
-    function applyCountry(code, skipReload) {
+    function applyCountry(code) {
       localStorage.setItem('cd_country', code);
-      var lang = countryToLang(code);
-      currentLang = lang;
-      /* Update lang buttons */
-      document.querySelectorAll('.lang-btn').forEach(function (b) {
-        b.classList.toggle('active', b.dataset.lang === lang);
-      });
+      /* Only auto-set language if user hasn't explicitly chosen one */
+      if (!localStorage.getItem('cd_lang')) {
+        setLang(countryToLang(code));
+      }
       /* Update flag button */
       var fb = document.getElementById('country-flag-btn');
       if (fb) fb.textContent = FLAG_MAP[code] || '🌍';
-      if (!skipReload) loadHub();
     }
 
     function openModal(preselectedCode) {
@@ -464,7 +505,6 @@
       var det     = document.getElementById('country-detected');
       if (!grid) return;
 
-      /* Detected badge */
       if (preselectedCode && preselectedCode !== 'global') {
         var f = FLAG_MAP[preselectedCode] || '📍';
         det.innerHTML = '<span class="country-detected-dot"></span>Auto-detected: ' + f + ' ' + preselectedCode;
@@ -489,6 +529,7 @@
           applyCountry(btn.dataset.code);
           overlay.classList.add('hidden');
           document.body.style.overflow = '';
+          loadHub();
         });
       });
 
@@ -500,7 +541,6 @@
         if (fb) fb.textContent = '🌍';
       };
 
-      /* Close on backdrop click */
       overlay.onclick = function (e) {
         if (e.target === overlay) {
           overlay.classList.add('hidden');
@@ -510,7 +550,7 @@
       };
     }
 
-    /* Header flag button always opens modal */
+    /* Header flag button opens modal */
     var flagBtn = document.getElementById('country-flag-btn');
     if (flagBtn) {
       flagBtn.addEventListener('click', function () {
@@ -518,12 +558,25 @@
       });
     }
 
-    /* Boot: apply saved country or detect */
-    var saved = localStorage.getItem('cd_country');
-    if (saved) {
-      applyCountry(saved, true);   /* apply before loadHub() below */
-    } else {
-      /* First visit: detect via IP then show modal */
+    /* ── Boot: language priority: cd_lang > cd_country-derived > 'en' ── */
+    var savedLang    = localStorage.getItem('cd_lang');
+    var savedCountry = localStorage.getItem('cd_country');
+
+    if (savedLang) {
+      setLang(savedLang);
+    } else if (savedCountry) {
+      setLang(countryToLang(savedCountry));
+    }
+
+    if (savedCountry) {
+      var fb = document.getElementById('country-flag-btn');
+      if (fb) fb.textContent = FLAG_MAP[savedCountry] || '🌍';
+    }
+
+    loadHub();
+
+    /* First visit: detect country after hub starts loading */
+    if (!savedCountry) {
       fetch('https://ipapi.co/json/?fields=country_code')
         .then(function (r) { return r.json(); })
         .then(function (data) {
@@ -533,8 +586,6 @@
         .catch(function () { openModal('global'); });
     }
 
-    /* Boot hub (after potential applyCountry which set currentLang) */
-    loadHub();
   })();
 
 })();
