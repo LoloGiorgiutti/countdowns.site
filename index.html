@@ -499,10 +499,10 @@
 
     function applyCountry(code) {
       localStorage.setItem('cd_country', code);
-      /* Only auto-set language if user hasn't explicitly chosen one */
-      if (!localStorage.getItem('cd_lang')) {
-        setLang(countryToLang(code));
-      }
+      /* Changing country always resets language to that country's default.
+         Any previous manual language choice is cleared. */
+      localStorage.removeItem('cd_lang');
+      setLang(countryToLang(code));
       /* Update flag button */
       var fb = document.getElementById('country-flag-btn');
       if (fb) fb.textContent = FLAG_MAP[code] || '🌍';
