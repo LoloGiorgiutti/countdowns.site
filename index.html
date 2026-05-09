@@ -25,6 +25,11 @@
 <link rel="stylesheet" href="/countdown.css">
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <style>
+/* ── Category badge on cards ───────────────────────── */
+.cd-card-cat{font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;opacity:.55;margin-top:.3rem;display:block}
+/* ── Footer visibility fix ─────────────────────────── */
+.site-footer{color:rgba(255,255,255,.5)}
+[data-theme="light"] .site-footer{color:rgba(0,0,0,.35)}
 /* ── Country selector ───────────────────────────────── */
 .country-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:9999;padding:1rem}
 .country-overlay.hidden{display:none}
@@ -82,12 +87,12 @@
 
 <!-- ── HERO ── -->
 <div class="hub-hero">
-  <div class="hub-hero-label"><span></span>Live · updated in real time</div>
-  <h1>Every countdown<br>that <em>matters</em></h1>
-  <p class="hub-hero-sub">Sports, releases, holidays, sales — every event the world is waiting for.</p>
+  <div class="hub-hero-label"><span></span><span id="hero-live">Live · updated in real time</span></div>
+  <h1 id="hero-h1">Every countdown<br>that <em>matters</em></h1>
+  <p class="hub-hero-sub" id="hero-sub">Sports, releases, holidays, sales — every event the world is waiting for.</p>
   <div class="sort-toggle" role="group" aria-label="Sort order">
-    <button class="sort-btn active" data-sort="chrono">Soonest first</button>
-    <button class="sort-btn" data-sort="category">By category</button>
+    <button class="sort-btn active" data-sort="chrono" id="sort-chrono">Soonest first</button>
+    <button class="sort-btn" data-sort="category" id="sort-cat">By category</button>
   </div>
 </div>
 
@@ -182,6 +187,53 @@
           year:'Cette année',    future:'Année prochaine', tba:'Date à confirmer', days:'jours'},
   };
   function ui(key) { return (UI[currentLang] || UI.en)[key] || UI.en[key] || ''; }
+
+  /* ── Category name translations ── */
+  var CAT_NAMES = {
+    Releases:      { es:'Lanzamientos',    pt:'Lançamentos',    fr:'Sorties'          },
+    Sports:        { es:'Deportes',         pt:'Esportes',       fr:'Sports'           },
+    Holidays:      { es:'Feriados',         pt:'Feriados',       fr:'Fêtes'            },
+    Entertainment: { es:'Entretenimiento',  pt:'Entretenimento', fr:'Divertissements'  },
+    Sales:         { es:'Ofertas',          pt:'Ofertas',        fr:'Promotions'       },
+    Nature:        { es:'Naturaleza',       pt:'Natureza',       fr:'Nature'           },
+    Music:         { es:'Música',           pt:'Música',         fr:'Musique'          },
+    Politics:      { es:'Política',         pt:'Política',       fr:'Politique'        },
+    Fashion:       { es:'Moda',             pt:'Moda',           fr:'Mode'             },
+    Technology:    { es:'Tecnología',       pt:'Tecnologia',     fr:'Technologie'      },
+  };
+  function catName(cat) {
+    var t = CAT_NAMES[cat];
+    return (t && t[currentLang]) ? t[currentLang] : cat;
+  }
+
+  /* ── Static hero / sort translations ── */
+  var HERO_UI = {
+    en: { live:'Live · updated in real time',
+          h1:'Every countdown<br>that <em>matters</em>',
+          sub:'Sports, releases, holidays, sales — every event the world is waiting for.',
+          chrono:'Soonest first', bycat:'By category' },
+    es: { live:'En vivo · actualizado en tiempo real',
+          h1:'Cada cuenta regresiva<br>que <em>importa</em>',
+          sub:'Deportes, estrenos, feriados, descuentos — cada evento que el mundo espera.',
+          chrono:'Más próximo', bycat:'Por categoría' },
+    pt: { live:'Ao vivo · atualizado em tempo real',
+          h1:'Cada contagem regressiva<br>que <em>importa</em>',
+          sub:'Esportes, lançamentos, feriados, promoções — cada evento que o mundo aguarda.',
+          chrono:'Mais próximo', bycat:'Por categoria' },
+    fr: { live:'En direct · mis à jour en temps réel',
+          h1:'Chaque compte à rebours<br>qui <em>compte</em>',
+          sub:'Sports, sorties, fêtes, soldes — chaque événement que le monde attend.',
+          chrono:'Le plus tôt', bycat:'Par catégorie' },
+  };
+  function updateHeroUI() {
+    var t = HERO_UI[currentLang] || HERO_UI.en;
+    var el;
+    el = document.getElementById('hero-live'); if (el) el.textContent = t.live;
+    el = document.getElementById('hero-h1');   if (el) el.innerHTML   = t.h1;
+    el = document.getElementById('hero-sub');  if (el) el.textContent = t.sub;
+    el = document.getElementById('sort-chrono'); if (el) el.textContent = t.chrono;
+    el = document.getElementById('sort-cat');    if (el) el.textContent = t.bycat;
+  }
 
   /* ── Country / language maps (used by both switcher and country selector) ── */
   var COUNTRY_LANG = {
@@ -311,12 +363,13 @@
   var currentLang = 'en';
   var currentSort = 'chrono';
 
-  /* ── Apply language (updates buttons + state, no reload) ── */
+  /* ── Apply language (updates buttons, hero text + state) ── */
   function setLang(lang) {
     currentLang = lang;
     document.querySelectorAll('.lang-btn').forEach(function (b) {
       b.classList.toggle('active', b.dataset.lang === lang);
     });
+    updateHeroUI();
   }
 
   /* ── Filter by COUNTRY (not language) ── */
@@ -353,21 +406,22 @@
   }
 
   /* ── Render a single card ── */
-  function cardHTML(ev, data) {
+  function cardHTML(ev, data, showCat) {
     var c = cc(ev.cat);
     var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
     var name = evName(ev);
+    var badge = showCat ? '<span class="cd-card-cat">' + catName(ev.cat) + '</span>' : '';
     var inner = '';
     if (data.state === 'unknown') {
       inner = '<div class="cd-card-name">' + name + '</div>' +
-              '<div class="cd-card-unknown">' + ui('tba') + '</div>';
+              '<div class="cd-card-unknown">' + ui('tba') + '</div>' + badge;
     } else if (data.state === 'today') {
       inner = '<div class="cd-card-name">' + name + '</div>' +
-              '<div class="cd-card-today">' + ui('today') + '</div>';
+              '<div class="cd-card-today">' + ui('today') + '</div>' + badge;
     } else {
       inner = '<div class="cd-card-name">' + name + '</div>' +
               '<div class="cd-card-num">' + data.days + '</div>' +
-              '<div class="cd-card-lbl">' + ui('days') + '</div>';
+              '<div class="cd-card-lbl">' + ui('days') + '</div>' + badge;
     }
     return '<a href="' + cardURL(ev) + '" class="cd-card" ' + style + '>' + inner + '</a>';
   }
@@ -399,7 +453,7 @@
             html += '<div class="cards-grid">';
             lastBucket = b;
           }
-          html += cardHTML(r.ev, r.data);
+          html += cardHTML(r.ev, r.data, true);   /* show category badge */
         }
       });
       if (lastBucket !== null) html += '</div>';
@@ -408,7 +462,7 @@
       if (tba.length) {
         html += '<div class="time-bucket-hdr">' + ui('tba') + '</div>';
         html += '<div class="cards-grid">';
-        tba.forEach(function (r) { html += cardHTML(r.ev, r.data); });
+        tba.forEach(function (r) { html += cardHTML(r.ev, r.data, true); });
         html += '</div>';
       }
     } else {
@@ -423,9 +477,9 @@
         var c = cc(cat);
         html += '<div class="hub-section">';
         html += '<div class="section-hdr" style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '">';
-        html += '<span class="section-hdr-label">' + cat + '</span></div>';
+        html += '<span class="section-hdr-label">' + catName(cat) + '</span></div>';   /* translated */
         html += '<div class="cards-grid">';
-        grouped[cat].forEach(function (r) { html += cardHTML(r.ev, r.data); });
+        grouped[cat].forEach(function (r) { html += cardHTML(r.ev, r.data, false); });
         html += '</div></div>';
       });
     }
