@@ -30,6 +30,7 @@
     <div class="lang-seg" role="group" aria-label="Language">
       <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/custom/'">ES</button><button class="lang-btn" onclick="location.href='/pt/custom/'">PT</button><button class="lang-btn" onclick="location.href='/fr/custom/'">FR</button>
     </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>
 </header>
 
@@ -43,84 +44,7 @@
 (function(){
 'use strict';
 var LANG="en";
-var UI={
-  en:{
-    hero:'Create your countdown',
-    heroSub:'Pick a date — get a free shareable link. No sign-up needed.',
-    nameLabel:'Event name',namePlaceholder:'My wedding, Graduation, Trip to Japan…',
-    dateLabel:'Date',timeLabel:'Time',timePlaceholder:'Optional',
-    msgLabel:'Note',msgPlaceholder:'Optional — shown below the timer',
-    createBtn:'Create countdown →',editBtn:'← Edit',
-    copyLink:'Copy link',copied:'✓ Copied!',share:'Share',wa:'WhatsApp',
-    shareMsg:'Check out this countdown: ',
-    pastBadge:'This event already happened',
-    faqTitle:'How it works',
-    faqs:[
-      ['Is it free?','Yes, 100% free. No account or sign-up needed. Ever.'],
-      ['How do I share my countdown?','After creating it, click “Copy link” and send the URL to anyone. Opening that link shows the countdown directly.'],
-      ['Does my link expire?','No. All the data is encoded in the URL itself, so it works forever without any server.'],
-      ['Can I set an exact time?','Yes — the time field is optional. Leave it blank and the countdown goes to midnight on the chosen date.'],
-      ['Can I edit it later?','Click “Edit” on any countdown page to change the name, date, or note.'],
-    ]
-  },
-  es:{
-    hero:'Crea tu cuenta regresiva',
-    heroSub:'Elegí una fecha y compartí el enlace con quien quieras. Gratis, sin registro.',
-    nameLabel:'Nombre del evento',namePlaceholder:'Mi boda, Graduación, Viaje a Japón…',
-    dateLabel:'Fecha',timeLabel:'Hora',timePlaceholder:'Opcional',
-    msgLabel:'Nota',msgPlaceholder:'Opcional — se muestra bajo el temporizador',
-    createBtn:'Crear cuenta regresiva →',editBtn:'← Editar',
-    copyLink:'Copiar enlace',copied:'✓ ¡Copiado!',share:'Compartir',wa:'WhatsApp',
-    shareMsg:'Mírá esta cuenta regresiva: ',
-    pastBadge:'Este evento ya ocurrió',
-    faqTitle:'Cómo funciona',
-    faqs:[
-      ['¿Es gratis?','Sí, 100% gratis. Sin cuenta ni registro. Siempre.'],
-      ['¿Cómo lo comparto?','Después de crear tu cuenta regresiva, hacé clic en “Copiar enlace” y mandáselo a quien quieras.'],
-      ['¿El enlace caduca?','No. Todos los datos están en la URL, así que funciona para siempre sin ningún servidor.'],
-      ['¿Puedo poner una hora exacta?','Sí — el campo de hora es opcional. Si lo dejás vacío, cuenta hasta la medianoche de la fecha elegida.'],
-      ['¿Puedo editarlo después?','Hacé clic en “Editar” en cualquier página de cuenta regresiva para cambiar el nombre, fecha o nota.'],
-    ]
-  },
-  pt:{
-    hero:'Crie sua contagem regressiva',
-    heroSub:'Escolha uma data e compartilhe o link com quem quiser. Grátis, sem cadastro.',
-    nameLabel:'Nome do evento',namePlaceholder:'Meu casamento, Formatura, Viagem ao Japão…',
-    dateLabel:'Data',timeLabel:'Hora',timePlaceholder:'Opcional',
-    msgLabel:'Nota',msgPlaceholder:'Opcional — exibida abaixo do timer',
-    createBtn:'Criar contagem regressiva →',editBtn:'← Editar',
-    copyLink:'Copiar link',copied:'✓ Copiado!',share:'Compartilhar',wa:'WhatsApp',
-    shareMsg:'Veja esta contagem regressiva: ',
-    pastBadge:'Este evento já aconteceu',
-    faqTitle:'Como funciona',
-    faqs:[
-      ['É gratuito?','Sim, 100% gratuito. Sem cadastro ou conta. Sempre.'],
-      ['Como compartilho?','Após criar sua contagem, clique em “Copiar link” e envie para quem quiser.'],
-      ['O link expira?','Não. Todos os dados ficam na URL, então funciona para sempre sem servidor.'],
-      ['Posso definir um horário exato?','Sim — o campo de hora é opcional. Se deixar em branco, conta até a meia-noite da data escolhida.'],
-      ['Posso editar depois?','Clique em “Editar” em qualquer página para mudar o nome, data ou nota.'],
-    ]
-  },
-  fr:{
-    hero:'Créez votre compte à rebours',
-    heroSub:'Choisissez une date et partagez le lien avec qui vous voulez. Gratuit, sans inscription.',
-    nameLabel:"Événement",namePlaceholder:'Mon mariage, Diplôme, Voyage au Japon…',
-    dateLabel:'Date',timeLabel:'Heure',timePlaceholder:'Optionnel',
-    msgLabel:'Note',msgPlaceholder:'Optionnel — affichée sous le minuteur',
-    createBtn:'Créer le compte à rebours →',editBtn:'← Modifier',
-    copyLink:'Copier le lien',copied:'✓ Copié !',share:'Partager',wa:'WhatsApp',
-    shareMsg:'Regardez ce compte à rebours : ',
-    pastBadge:'Cet événement a déjà eu lieu',
-    faqTitle:'Comment ça marche',
-    faqs:[
-      ["C'est gratuit ?",'Oui, 100 % gratuit. Sans inscription ni compte. Toujours.'],
-      ['Comment le partager ?','Après avoir créé votre compte à rebours, cliquez sur “Copier le lien” et envoyez-le à qui vous voulez.'],
-      ['Le lien expire-t-il ?','Non. Toutes les données sont dans l'URL, donc il fonctionne indéfiniment sans serveur.'],
-      ['Puis-je définir une heure précise ?','Oui — le champ heure est optionnel. Si vous le laissez vide, le compte à rebours va jusqu’à minuit à la date choisie.'],
-      ['Puis-je modifier après ?','Cliquez sur “Modifier” sur n’importe quelle page pour changer le nom, la date ou la note.'],
-    ]
-  }
-};
+var UI={"en": {"hero": "Create your countdown", "heroSub": "Pick a date — get a free shareable link. No sign-up needed.", "nameLabel": "Event name", "namePlaceholder": "My wedding, Graduation, Trip to Japan…", "dateLabel": "Date", "timeLabel": "Time", "timePlaceholder": "Optional", "msgLabel": "Note", "msgPlaceholder": "Optional — shown below the timer", "createBtn": "Create countdown →", "editBtn": "← Edit", "copyLink": "Copy link", "copied": "✓ Copied!", "share": "Share", "wa": "WhatsApp", "shareMsg": "Check out this countdown: ", "pastBadge": "This event already happened", "faqTitle": "How it works", "faqs": [["Is it free?", "Yes, 100% free. No account or sign-up needed. Ever."], ["How do I share my countdown?", "After creating it, click “Copy link” and send the URL to anyone. Opening that link shows the countdown directly."], ["Does my link expire?", "No. All the data is encoded in the URL itself, so it works forever without any server."], ["Can I set an exact time?", "Yes — the time field is optional. Leave it blank and the countdown goes to midnight on the chosen date."], ["Can I edit it later?", "Click “Edit” on any countdown page to change the name, date, or note."]]}, "es": {"hero": "Crea tu cuenta regresiva", "heroSub": "Elegí una fecha y compartí el enlace con quien quieras. Gratis, sin registro.", "nameLabel": "Nombre del evento", "namePlaceholder": "Mi boda, Graduación, Viaje a Japón…", "dateLabel": "Fecha", "timeLabel": "Hora", "timePlaceholder": "Opcional", "msgLabel": "Nota", "msgPlaceholder": "Opcional — se muestra bajo el temporizador", "createBtn": "Crear cuenta regresiva →", "editBtn": "← Editar", "copyLink": "Copiar enlace", "copied": "✓ ¡Copiado!", "share": "Compartir", "wa": "WhatsApp", "shareMsg": "Mirá esta cuenta regresiva: ", "pastBadge": "Este evento ya ocurrió", "faqTitle": "Cómo funciona", "faqs": [["¿Es gratis?", "Sí, 100% gratis. Sin cuenta ni registro. Siempre."], ["¿Cómo lo comparto?", "Después de crear tu cuenta regresiva, hacé clic en “Copiar enlace” y mandáselo a quien quieras."], ["¿El enlace caduca?", "No. Todos los datos están en la URL, así que funciona para siempre sin ningún servidor."], ["¿Puedo poner una hora exacta?", "Sí — el campo de hora es opcional. Si lo dejás vacío, cuenta hasta la medianoche de la fecha elegida."], ["¿Puedo editarlo después?", "Hacé clic en “Editar” en cualquier página de cuenta regresiva para cambiar el nombre, fecha o nota."]]}, "pt": {"hero": "Crie sua contagem regressiva", "heroSub": "Escolha uma data e compartilhe o link com quem quiser. Grátis, sem cadastro.", "nameLabel": "Nome do evento", "namePlaceholder": "Meu casamento, Formatura, Viagem ao Japão…", "dateLabel": "Data", "timeLabel": "Hora", "timePlaceholder": "Opcional", "msgLabel": "Nota", "msgPlaceholder": "Opcional — exibida abaixo do timer", "createBtn": "Criar contagem regressiva →", "editBtn": "← Editar", "copyLink": "Copiar link", "copied": "✓ Copiado!", "share": "Compartilhar", "wa": "WhatsApp", "shareMsg": "Veja esta contagem regressiva: ", "pastBadge": "Este evento já aconteceu", "faqTitle": "Como funciona", "faqs": [["É gratuito?", "Sim, 100% gratuito. Sem cadastro ou conta. Sempre."], ["Como compartilho?", "Após criar sua contagem, clique em “Copiar link” e envie para quem quiser."], ["O link expira?", "Não. Todos os dados ficam na URL, então funciona para sempre sem servidor."], ["Posso definir um horário exato?", "Sim — o campo de hora é opcional. Se deixar em branco, conta até a meia-noite da data escolhida."], ["Posso editar depois?", "Clique em “Editar” em qualquer página para mudar o nome, data ou nota."]]}, "fr": {"hero": "Créez votre compte à rebours", "heroSub": "Choisissez une date et partagez le lien avec qui vous voulez. Gratuit, sans inscription.", "nameLabel": "Événement", "namePlaceholder": "Mon mariage, Diplôme, Voyage au Japon…", "dateLabel": "Date", "timeLabel": "Heure", "timePlaceholder": "Optionnel", "msgLabel": "Note", "msgPlaceholder": "Optionnel — affichée sous le minuteur", "createBtn": "Créer le compte à rebours →", "editBtn": "← Modifier", "copyLink": "Copier le lien", "copied": "✓ Copié !", "share": "Partager", "wa": "WhatsApp", "shareMsg": "Regardez ce compte à rebours : ", "pastBadge": "Cet événement a déjà eu lieu", "faqTitle": "Comment ça marche", "faqs": [["C’est gratuit ?", "Oui, 100 % gratuit. Sans inscription ni compte. Toujours."], ["Comment le partager ?", "Après avoir créé votre compte à rebours, cliquez sur “Copier le lien” et envoyez-le à qui vous voulez."], ["Le lien expire-t-il ?", "Non. Toutes les données sont dans l’URL, donc il fonctionne indéfiniment sans serveur."], ["Puis-je définir une heure précise ?", "Oui — le champ heure est optionnel. Si vous le laissez vide, le compte à rebours va jusqu’à minuit à la date choisie."], ["Puis-je modifier après ?", "Cliquez sur “Modifier” sur n’importe quelle page pour changer le nom, la date ou la note."]]}};
 var T=UI[LANG]||UI.en;
 var root=document.getElementById('cc-root');
 var _ticker=null;
@@ -345,6 +269,19 @@ render();
     var isLight=document.documentElement.getAttribute('data-theme')==='light';
     if(isLight){document.documentElement.removeAttribute('data-theme');localStorage.setItem('cd_theme','dark');btn.textContent='Light';}
     else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('cd_theme','light');btn.textContent='Dark';}
+  });
+})();
+// ── Country flag ──────────────────────────────────────────────────────
+(function(){
+  var fb=document.getElementById('country-flag-btn');
+  if(!fb)return;
+  var saved=typeof localStorage!=='undefined'?localStorage.getItem('cd_country'):null;
+  if(saved&&CountdownEngine.FLAG_MAP)fb.textContent=CountdownEngine.FLAG_MAP[saved]||'🌍';
+  fb.addEventListener('click',function(){
+    CountdownEngine.openCountryPicker(function(code){
+      localStorage.setItem('cd_country',code);
+      location.reload();
+    });
   });
 })();
 })();
