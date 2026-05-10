@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tour de France — countdowns.site</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden}
+:root{--cat:#FB923C;--cat-glow:rgba(251,146,60,.25);--cat-soft:rgba(251,146,60,.1);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="/countdown-engine.js"></script>
+<script>
+CountdownEngine.renderEmbed('root', {
+  slug: "tour-de-france",
+  type: "variable",
+  name: "Tour de France",
+  category: "Sports",
+  description: "Cuenta regresiva al Tour de France 2026.",
+  pageUrl: "https://countdowns.site/es/countdown/tour-de-france/"
+});
+</script>
+</body>
+</html>

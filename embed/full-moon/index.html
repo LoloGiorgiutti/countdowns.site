@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Full Moon — countdowns.site</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden}
+:root{--cat:#22D3EE;--cat-glow:rgba(34,211,238,.2);--cat-soft:rgba(34,211,238,.08);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="/countdown-engine.js"></script>
+<script>
+CountdownEngine.renderEmbed('root', {
+  slug: "full-moon",
+  type: "auto",
+  name: "Next Full Moon",
+  category: "Nature",
+  description: "Countdown to the next full moon.",
+  pageUrl: "https://countdowns.site/countdown/full-moon/"
+});
+</script>
+</body>
+</html>

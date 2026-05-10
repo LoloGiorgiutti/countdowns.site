@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Día de la Madre — countdowns.site</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden}
+:root{--cat:#4ADE80;--cat-glow:rgba(74,222,128,.2);--cat-soft:rgba(74,222,128,.08);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="/countdown-engine.js"></script>
+<script>
+(function() {
+  var VARIANTS = [{"code": "us", "label": "US, Canada & Australia", "dates": ["2026-05-10", "2027-05-09"]}, {"code": "uk", "label": "United Kingdom", "dates": ["2026-03-15", "2027-03-07"]}, {"code": "mx", "label": "M\u00e9xico", "dates": ["2026-05-10", "2027-05-10"]}, {"code": "ar", "label": "Argentina", "dates": ["2026-10-18", "2027-10-17"]}, {"code": "fr", "label": "France", "dates": ["2026-05-31", "2027-05-30"]}, {"code": "br", "label": "Brasil / Brazil", "dates": ["2026-05-10", "2027-05-09"]}];
+  var DEFAULT_IDX = 2;
+  var _cfg = {
+    slug: "mothers-day",
+    type: 'fixed',
+    name: "D\u00eda de la Madre",
+    category: "Holidays",
+    description: "Cuenta regresiva al D\u00eda de la Madre. La fecha var\u00eda seg\u00fan el pa\u00eds.",
+    pageUrl: "https://countdowns.site/es/countdown/mothers-day/"
+  };
+  function nextDate(dates) {
+    var now = new Date();
+    for (var i = 0; i < dates.length; i++) {
+      if (new Date(dates[i]) > now) return new Date(dates[i]);
+    }
+    return new Date(dates[dates.length - 1]);
+  }
+  CountdownEngine.renderEmbed('root', Object.assign({}, _cfg, { date: nextDate(VARIANTS[DEFAULT_IDX].dates) }));
+})();
+</script>
+</body>
+</html>
