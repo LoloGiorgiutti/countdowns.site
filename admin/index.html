@@ -204,6 +204,11 @@ code { background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 4px; 
       <button class="token-save-btn" onclick="saveToken()">Save</button>
       <span class="token-status" id="token-status"></span>
     </div>
+    <div class="token-bar">
+      <input class="token-input" type="password" id="anthropic-key-input" placeholder="Anthropic key (sk-ant-…)" autocomplete="off">
+      <button class="token-save-btn" onclick="saveAnthropicKey()">Save</button>
+      <span class="token-status" id="anthropic-key-status"></span>
+    </div>
     <span class="deploy-note">Cloudflare auto-deploys on push (~1 min)</span>
   </div>
 </header>
@@ -346,8 +351,9 @@ code { background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 4px; 
           </div>
         </div>
         <div class="form-group">
-          <label>Note</label>
+          <label>Note <span style="color:var(--ink-ghost);font-size:.72rem;font-weight:400">(auto-translates to ES/PT/FR on save if Anthropic key set)</span></label>
           <textarea id="modal-note" placeholder="Short description, venue, context…"></textarea>
+          <button id="note-generate-btn" class="btn btn-secondary" style="margin-top:6px;font-size:.8rem;padding:6px 12px" onclick="generateNote()">✨ Generate with AI</button>
         </div>
         <button class="btn btn-danger" onclick="clearDate()" style="margin-bottom:8px">Clear Date (set to TBA)</button>
       </div>
@@ -423,6 +429,97 @@ function saveToken() {
     document.getElementById('token-status').style.color = 'var(--green)';
   }
 })();
+
+function saveAnthropicKey() {
+  var val = document.getElementById('anthropic-key-input').value.trim();
+  if (val) {
+    localStorage.setItem('admin_anthropic_key', val);
+    document.getElementById('anthropic-key-status').textContent = '✓ Saved';
+    document.getElementById('anthropic-key-status').style.color = 'var(--green)';
+    document.getElementById('anthropic-key-input').value = '';
+    document.getElementById('anthropic-key-input').placeholder = '••••••••••••••••••••';
+  }
+}
+(function() {
+  var k = localStorage.getItem('admin_anthropic_key');
+  if (k) {
+    document.getElementById('anthropic-key-input').placeholder = '••••••••••••••••••••';
+    document.getElementById('anthropic-key-status').textContent = '✓ Key set';
+    document.getElementById('anthropic-key-status').style.color = 'var(--green)';
+  }
+})();
+
+/* ════════════════════════════════════════════
+   ANTHROPIC AI
+   ════════════════════════════════════════════ */
+async function callAnthropic(prompt, maxTokens) {
+  var key = localStorage.getItem('admin_anthropic_key');
+  if (!key) return null;
+  var r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': key,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: maxTokens || 256,
+      messages: [{ role: 'user', content: prompt }]
+    })
+  });
+  var data = await r.json();
+  if (!r.ok) throw new Error((data.error && data.error.message) || 'Anthropic API error ' + r.status);
+  return data.content[0].text.trim();
+}
+
+async function generateNote() {
+  if (!localStorage.getItem('admin_anthropic_key')) {
+    alert('Set your Anthropic API key in the header first.');
+    return;
+  }
+  var slug = _editingSlug;
+  var ev = EVENTS.find(function(e) { return e.slug === slug; });
+  if (!ev) return;
+  var btn = document.getElementById('note-generate-btn');
+  btn.disabled = true; btn.textContent = '⏳ Generating…';
+  try {
+    var dateCtx = document.getElementById('modal-date-day').value
+      ? ' Date: ' + document.getElementById('modal-date-day').value + '.' : '';
+    var text = await callAnthropic(
+      'Write a short factual note (1-2 sentences, max 180 chars) for a countdown page for "' + ev.name +
+      '" (category: ' + ev.cat + ').' + dateCtx +
+      ' Provide venue, key facts, or current status. English only. No quotes around the text.',
+      200
+    );
+    document.getElementById('modal-note').value = text;
+  } catch (err) {
+    alert('Generation failed: ' + (err.message || String(err)));
+  } finally {
+    btn.disabled = false; btn.textContent = '✨ Generate with AI';
+  }
+}
+
+async function translateNote(noteText) {
+  if (!noteText || !localStorage.getItem('admin_anthropic_key')) return {};
+  try {
+    var raw = await callAnthropic(
+      'Translate this countdown page note to Spanish, Brazilian Portuguese, and French.\n\n' +
+      'Note: "' + noteText.replace(/"/g, '\\"') + '"\n\n' +
+      'Return ONLY a JSON object: {"es":"...","pt":"...","fr":"..."}\n' +
+      'Keep proper nouns, brand names, numbers, and dates unchanged.',
+      512
+    );
+    if (!raw) return {};
+    var text = raw;
+    if (text.startsWith('```')) text = text.split('\n').slice(1).join('\n').split('```')[0].trim();
+    return JSON.parse(text);
+  } catch (e) {
+    console.warn('Note translation failed:', e);
+    return {};
+  }
+}
 
 /* ════════════════════════════════════════════
    GITHUB API
@@ -808,8 +905,13 @@ async function saveChanges() {
       } else {
         cdContent.events[slug].date = null;
       }
-      if (newNote) {
-        cdContent.events[slug].note = newNote;
+      cdContent.events[slug].note = newNote || null;
+      if (newNote && localStorage.getItem('admin_anthropic_key')) {
+        statusEl.textContent = 'Translating note to ES / PT / FR…';
+        var trans = await translateNote(newNote);
+        cdContent.events[slug].note_es = trans.es || null;
+        cdContent.events[slug].note_pt = trans.pt || null;
+        cdContent.events[slug].note_fr = trans.fr || null;
       }
       cdContent.updated = new Date().toISOString().substring(0, 10);
 

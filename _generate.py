@@ -7,6 +7,21 @@ Generates /countdown/{slug}/ (EN) + /{lang}/countdown/{slug}/ for translated lan
 import os, json
 from _translations import TRANSLATIONS
 
+# Merge auto-generated translations (manual entries in _translations.py always win)
+try:
+    from _translations_auto import TRANSLATIONS_AUTO as _AUTO
+    for _lang, _ldata in _AUTO.items():
+        if _lang not in TRANSLATIONS:
+            TRANSLATIONS[_lang] = _ldata
+            continue
+        for _slug, _fields in _ldata.get('events', {}).items():
+            _ev = TRANSLATIONS[_lang].setdefault('events', {}).setdefault(_slug, {})
+            for _k, _v in _fields.items():
+                if _k not in _ev:  # manual translation takes priority
+                    _ev[_k] = _v
+except ImportError:
+    pass
+
 BASE_URL = "https://countdowns.site"
 
 # ─── Events ───────────────────────────────────────────────────────────────────
