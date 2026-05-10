@@ -57,8 +57,11 @@
       "note": "Coachella 2027 dates have not been announced. Usually held in April."
     },
     "cannes": {
-      "date": "2026-05-13T19:00:00+02:00",
-      "note": "Cannes Film Festival 2026 — Opening Ceremony."
+      "date": "2026-05-12T19:00:00",
+      "note": "Cannes Film Festival 2026 — Opening Ceremony.",
+      "note_es": null,
+      "note_pt": null,
+      "note_fr": null
     },
     "eclipse": {
       "date": "2026-08-12T19:29:00+02:00",
