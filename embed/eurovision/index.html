@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eurovision Song Contest — countdowns.site</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden}
+:root{--cat:#FBBF24;--cat-glow:rgba(251,191,36,.2);--cat-soft:rgba(251,191,36,.08);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="/countdown-engine.js"></script>
+<script>
+CountdownEngine.renderEmbed('root', {
+  slug: "eurovision",
+  type: "variable",
+  name: "Eurovision Song Contest",
+  category: "Entertainment",
+  description: "Countdown to the Eurovision Song Contest 2027.",
+  pageUrl: "https://countdowns.site/countdown/eurovision/"
+});
+</script>
+</body>
+</html>

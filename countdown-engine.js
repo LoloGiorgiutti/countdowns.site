@@ -328,8 +328,10 @@
     var pageUrl = window.location.href.split('?')[0].split('#')[0];
     var waHref  = 'https://wa.me/send?text=' + encodeURIComponent(T.shareMsg + name + ' → ' + pageUrl);
     var xHref   = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(T.shareMsg + name) + '&url=' + encodeURIComponent(pageUrl);
-    var embedSrc = 'https://countdowns.site/embed/' + slug + '/';
-    var iframeCode = '<iframe src="' + embedSrc + '" width="320" height="200" frameborder="0" style="border-radius:16px;overflow:hidden" allowtransparency="true"></iframe>';
+    var embedBase = 'https://countdowns.site' + (_pageLang !== 'en' ? '/' + _pageLang : '');
+    var embedSrc = embedBase + '/embed/' + slug + '/';
+    var pageLink = 'https://countdowns.site' + (_pageLang !== 'en' ? '/' + _pageLang : '') + '/countdown/' + slug + '/';
+    var iframeCode = '<iframe src="' + embedSrc + '" width="320" height="200" frameborder="0" style="border-radius:16px;overflow:hidden" allowtransparency="true"></iframe>\n<p style="font-size:11px;text-align:center;margin:4px 0;font-family:sans-serif"><a href="' + pageLink + '" style="color:#888;text-decoration:none" target="_blank">countdowns.site</a></p>';
     return [
       '<div class="cd-share-bar">',
       '<button class="cd-share-btn" id="cd-copy-btn" onclick="window._cdCopy()">' + ICON_COPY + T.copyLink + '</button>',
@@ -484,6 +486,44 @@
     ].join('\n');
   }
 
+  /* ─── EMBED WIDGET ─────────────────────────────────────────── */
+  function buildEmbedWidget(config, targetDate, extra, isPast, isUnknown) {
+    var cc       = catColors(config.category);
+    var subtitle = (extra && extra.subtitle) || '';
+    var dispName = config.name + (subtitle ? ' — ' + subtitle : '');
+    var langPfx  = _pageLang !== 'en' ? '/' + _pageLang : '';
+    var pageUrl  = config.pageUrl || ('https://countdowns.site' + langPfx + '/countdown/' + (config.slug || '') + '/');
+
+    var timerHTML;
+    if (isUnknown) {
+      timerHTML = '<div class="wd-tbc">' + T.dateTBC + '</div>';
+    } else if (isPast) {
+      timerHTML = '<div class="wd-tbc">' + T.alreadyHappened + '</div>';
+    } else {
+      timerHTML = [
+        '<div class="wd-grid">',
+        '<div class="wd-box"><span class="cd-num" id="cd-d">—</span><span class="wd-lbl">' + T.days + '</span></div>',
+        '<span class="wd-sep">:</span>',
+        '<div class="wd-box"><span class="cd-num" id="cd-h">—</span><span class="wd-lbl">' + T.hours + '</span></div>',
+        '<span class="wd-sep">:</span>',
+        '<div class="wd-box"><span class="cd-num" id="cd-m">—</span><span class="wd-lbl">' + T.min + '</span></div>',
+        '<span class="wd-sep">:</span>',
+        '<div class="wd-box"><span class="cd-num" id="cd-s">—</span><span class="wd-lbl">' + T.sec + '</span></div>',
+        '</div>',
+        '<div class="wd-date">' + fmtDate(targetDate, _pageLang) + '</div>',
+      ].join('');
+    }
+
+    return [
+      '<div class="wd-widget" style="--cat:' + cc.color + ';--cat-glow:' + cc.glow + '">',
+      '<div class="wd-badge">' + tCat(config.category || '') + '</div>',
+      '<div class="wd-name">' + dispName + '</div>',
+      timerHTML,
+      '<a href="' + pageUrl + '" class="wd-brand" target="_blank" rel="noopener">countdowns.site</a>',
+      '</div>',
+    ].join('');
+  }
+
   /* ─── PUBLIC API ────────────────────────────────────────────── */
   window.CountdownEngine = {
 
@@ -535,6 +575,35 @@
           var ev   = ((data || {}).events || {})[config.slug] || {};
           var date = ev.date ? new Date(ev.date) : null;
           resolve(date, config.type === 'one-time' && date && date < new Date());
+        });
+      }
+    },
+
+    renderEmbed: function (rootId, config) {
+      var root = document.getElementById(rootId);
+      if (!root) return;
+
+      function initEmbed(targetDate, extra) {
+        var isPast    = config.type === 'one-time' && targetDate && targetDate < new Date();
+        var isUnknown = !targetDate;
+        root.innerHTML = buildEmbedWidget(config, targetDate, extra || {}, isPast, isUnknown);
+        if (!isPast && !isUnknown) startTicker(targetDate);
+      }
+
+      if (config.type === 'fixed') {
+        initEmbed(config.date || null, {});
+      } else if (config.type === 'auto') {
+        var getter = AUTO[config.slug];
+        if (!getter) { root.textContent = '—'; return; }
+        var res = getter();
+        initEmbed(res.date, res);
+      } else {
+        loadData(function (data) {
+          var ev   = ((data || {}).events || {})[config.slug] || {};
+          var date = ev.date ? new Date(ev.date) : null;
+          var _lang = _pageLang;
+          var _note = (_lang !== 'en' && ev['note_' + _lang]) || ev.note || '';
+          initEmbed(date, { note: _note, subtitle: ev.raceName || '' });
         });
       }
     },

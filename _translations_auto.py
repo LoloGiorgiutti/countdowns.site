@@ -430,6 +430,61 @@ TRANSLATIONS_AUTO = {
         ],
       ),
 
+      'st-patricks': dict(
+        name='Saint Patrick',
+        seo_title='Compte à rebours Saint Patrick 2027 — Jours avant le 17 mars',
+        meta_desc='Compte à rebours en direct pour la Saint Patrick 2027, le 17 mars. Célébrez la fête nationale irlandaise avec le monde entier.',
+        hero_desc='Compte à rebours pour la Saint Patrick — 17 mars.',
+        content='La Saint Patrick (Saint Patrick\'s Day) est la fête nationale de l\'Irlande, célébrée chaque année le 17 mars. Elle commémore Saint Patrick, le saint patron de l\'Irlande, décédé vers 461 après J.-C. La fête est marquée par des défilés, le port de vert et des festivités dans le monde entier, notamment à Dublin, New York et Chicago.',
+        faqs=[
+          ('Quand est la Saint Patrick 2027 ?', 'La Saint Patrick 2027 est le mercredi 17 mars 2027.'),
+          ('Pourquoi porte-t-on du vert à la Saint Patrick ?', 'Le vert est associé à l\'Irlande (surnommée l\'Île verte) et au mouvement irlandais du XVIIIe siècle. La tradition dit que porter du vert rend invisible aux lutins qui vous pincent.'),
+          ('Comment fête-t-on la Saint Patrick en France ?', 'De nombreux pubs irlandais en France organisent des soirées spéciales, des concerts de musique celtique et servent de la Guinness à prix réduit. Dublin, bien sûr, reste la destination phare.'),
+          ('La Saint Patrick est-elle un jour férié en France ?', 'Non, la Saint Patrick n\'est pas un jour férié en France. C\'est un jour férié national en Irlande et en Irlande du Nord.'),
+        ],
+      ),
+
+      'oktoberfest': dict(
+        name='Oktoberfest',
+        seo_title='Compte à rebours Oktoberfest 2026 — Jours avant Munich',
+        meta_desc='Compte à rebours en direct pour l\'Oktoberfest 2026 à Munich. Le plus grand festival de bière du monde commence fin septembre.',
+        hero_desc='Compte à rebours pour l\'Oktoberfest 2026 — Munich.',
+        content='L\'Oktoberfest est le plus grand festival folklorique du monde, organisé chaque année à Munich en Bavière. Le festival commence un samedi fin septembre et dure 16 à 18 jours, attirant environ 6 millions de visiteurs. Les grandes tentes de brasseries, les costumes traditionnels (Dirndl et Lederhosen) et la musique bavaroise en font un événement unique au monde.',
+        faqs=[
+          ('Quand est l\'Oktoberfest 2026 ?', 'L\'Oktoberfest 2026 commence le samedi 19 septembre 2026 et se termine le 4 octobre 2026.'),
+          ('Où se déroule l\'Oktoberfest ?', 'L\'Oktoberfest a lieu à la Theresienwiese (connue comme la Wiesn) à Munich, en Bavière, Allemagne.'),
+          ('Combien coûte l\'entrée à l\'Oktoberfest ?', 'L\'entrée sur le site est gratuite. Seul l\'accès aux tentes de bière et les consommations sont payants. Une chope de bière (Masskrug, 1 litre) coûte environ 15-16 €.'),
+          ('Faut-il réserver à l\'Oktoberfest ?', 'Les réservations dans les grandes tentes sont vivement conseillées, surtout le week-end. Beaucoup de tables sont réservées des mois à l\'avance par des groupes d\'entreprises.'),
+        ],
+      ),
+
+      'dia-del-nino': dict(
+        name='Fête des enfants',
+        seo_title='Compte à rebours Fête des enfants 2026 — Jours avant la Journée internationale',
+        meta_desc='Compte à rebours en direct pour la Journée internationale des droits de l\'enfant, le 20 novembre 2026.',
+        hero_desc='Compte à rebours pour la Journée internationale des droits de l\'enfant.',
+        content='La Journée internationale des droits de l\'enfant est célébrée le 20 novembre, date anniversaire de l\'adoption de la Convention relative aux droits de l\'enfant par l\'ONU en 1989. En France, cette journée est marquée par des actions de sensibilisation, des événements scolaires et des campagnes de solidarité internationale.',
+        faqs=[
+          ('Quand est la Journée internationale des droits de l\'enfant ?', 'La Journée internationale des droits de l\'enfant (ONU) est le 20 novembre chaque année.'),
+          ('Qu\'est-ce que la Convention des droits de l\'enfant ?', 'Adoptée le 20 novembre 1989 par l\'ONU, c\'est le traité international le plus ratifié au monde. Elle garantit les droits fondamentaux de tous les enfants : éducation, santé, protection et participation.'),
+          ('Y a-t-il une Fête des enfants en France ?', 'Il n\'existe pas de fête nationale spécifique pour les enfants en France comme dans d\'autres pays. La Journée internationale du 20 novembre est la référence principale.'),
+        ],
+      ),
+
+      'coachella': dict(
+        name='Coachella',
+        seo_title='Compte à rebours Coachella 2027 — Jours avant le festival',
+        meta_desc='Compte à rebours en direct pour le festival Coachella 2027 à Indio, Californie. Le plus grand festival de musique et d\'arts des États-Unis.',
+        hero_desc='Compte à rebours pour le festival Coachella 2027.',
+        content='Le Coachella Valley Music and Arts Festival (Coachella) est l\'un des festivals de musique et d\'arts les plus importants au monde. Organisé chaque année en avril dans le désert de Coachella Valley, en Californie, il attire des centaines de milliers de fans de musique du monde entier pendant deux week-ends consécutifs.',
+        faqs=[
+          ('Quand est Coachella 2027 ?', 'Les dates de Coachella 2027 n\'ont pas encore été annoncées officiellement. Le festival se tient généralement en avril.'),
+          ('Où se déroule Coachella ?', 'Coachella a lieu à l\'Empire Polo Club à Indio, en Californie, dans la vallée de Coachella.'),
+          ('Comment acheter des billets pour Coachella ?', 'Les billets sont vendus sur le site officiel de Coachella (coachella.com). Les passes généraux et les options camping se vendent généralement en quelques heures.'),
+          ('Coachella dure combien de jours ?', 'Coachella se déroule sur deux week-ends consécutifs (jeudi au dimanche), soit 8 jours au total, avec le même programme répété les deux week-ends.'),
+        ],
+      ),
+
     },
   },
 

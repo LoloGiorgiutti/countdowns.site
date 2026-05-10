@@ -1033,6 +1033,85 @@ def generate_page(ev, lang="en"):
 </body>
 </html>'''
 
+# ─── Embed page generator ──────────────────────────────────────────────────────
+def generate_embed_page(ev, lang="en"):
+    slug      = ev["slug"]
+    category  = ev["category"]
+    ev_type   = ev["type"]
+    cat_color, cat_glow, cat_soft = CAT_COLORS.get(
+        category, ('#818CF8', 'rgba(129,140,248,.2)', 'rgba(129,140,248,.08)')
+    )
+
+    t         = TRANSLATIONS.get(lang, {}).get("events", {}).get(slug, {}) if lang != "en" else {}
+    html_lang = TRANSLATIONS.get(lang, {}).get("html_lang", "en") if lang != "en" else "en"
+    name      = t.get("name", ev["name"])
+    hero_desc = t.get("hero_desc", ev["hero_desc"])
+
+    lang_pfx  = "" if lang == "en" else f"/{lang}"
+    page_url  = f"https://countdowns.site{lang_pfx}/countdown/{slug}/"
+
+    # render script — same patterns as generate_page but calling renderEmbed
+    country_variants = ev.get("country_variants", [])
+    default_variant_by_lang = ev.get("default_variant_by_lang", {})
+
+    if country_variants:
+        default_idx = default_variant_by_lang.get(lang, 0)
+        cv_js = json.dumps([
+            {"code": v["code"], "label": v["label"], "dates": v["dates"]}
+            for v in country_variants
+        ])
+        render_script = f'''(function() {{
+  var VARIANTS = {cv_js};
+  var DEFAULT_IDX = {default_idx};
+  var _cfg = {{
+    slug: {json.dumps(slug)},
+    type: 'fixed',
+    name: {json.dumps(name)},
+    category: {json.dumps(category)},
+    description: {json.dumps(hero_desc)},
+    pageUrl: {json.dumps(page_url)}
+  }};
+  function nextDate(dates) {{
+    var now = new Date();
+    for (var i = 0; i < dates.length; i++) {{
+      if (new Date(dates[i]) > now) return new Date(dates[i]);
+    }}
+    return new Date(dates[dates.length - 1]);
+  }}
+  CountdownEngine.renderEmbed('root', Object.assign({{}}, _cfg, {{ date: nextDate(VARIANTS[DEFAULT_IDX].dates) }}));
+}})();'''
+    else:
+        render_script = f'''CountdownEngine.renderEmbed('root', {{
+  slug: {json.dumps(slug)},
+  type: {json.dumps(ev_type)},
+  name: {json.dumps(name)},
+  category: {json.dumps(category)},
+  description: {json.dumps(hero_desc)},
+  pageUrl: {json.dumps(page_url)}
+}});'''
+
+    return f'''<!DOCTYPE html>
+<html lang="{html_lang}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{name} — countdowns.site</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
+html,body{{width:100%;height:100%;background:transparent;overflow:hidden}}
+:root{{--cat:{cat_color};--cat-glow:{cat_glow};--cat-soft:{cat_soft};}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="/countdown-engine.js"></script>
+<script>
+{render_script}
+</script>
+</body>
+</html>'''
+
 # ─── Generate all pages ────────────────────────────────────────────────────────
 generated = 0
 for ev in EVENTS:
@@ -1055,6 +1134,24 @@ for ev in EVENTS:
             with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
                 f.write(generate_page(ev, lang))
             print(f"  ✓  /{lang}/countdown/{slug}/")
+            generated += 1
+
+    # EN embed page → /embed/{slug}/
+    embed_en_dir = os.path.join("embed", slug)
+    os.makedirs(embed_en_dir, exist_ok=True)
+    with open(os.path.join(embed_en_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(generate_embed_page(ev, "en"))
+    print(f"  ✓  /embed/{slug}/")
+    generated += 1
+
+    # Translated embed pages → /{lang}/embed/{slug}/
+    for lang in ["es", "pt", "fr"]:
+        if lang in langs_for_slug:
+            out_dir = os.path.join(lang, "embed", slug)
+            os.makedirs(out_dir, exist_ok=True)
+            with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
+                f.write(generate_embed_page(ev, lang))
+            print(f"  ✓  /{lang}/embed/{slug}/")
             generated += 1
 
 print(f"\nGenerated {generated} pages.")

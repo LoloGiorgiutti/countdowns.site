@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dia das Crianças — countdowns.site</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden}
+:root{--cat:#4ADE80;--cat-glow:rgba(74,222,128,.2);--cat-soft:rgba(74,222,128,.08);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="/countdown-engine.js"></script>
+<script>
+(function() {
+  var VARIANTS = [{"code": "mx", "label": "M\u00e9xico (30 de abril)", "dates": ["2026-04-30", "2027-04-30"]}, {"code": "ar", "label": "Argentina (2.\u00b0 dom. de agosto)", "dates": ["2026-08-09", "2027-08-08"]}, {"code": "br", "label": "Brasil / Brazil (12 de outubro)", "dates": ["2026-10-12", "2027-10-12"]}, {"code": "un", "label": "International / Nov 20", "dates": ["2026-11-20", "2027-11-20"]}];
+  var DEFAULT_IDX = 2;
+  var _cfg = {
+    slug: "dia-del-nino",
+    type: 'fixed',
+    name: "Dia das Crian\u00e7as",
+    category: "Holidays",
+    description: "Contagem regressiva para o Dia das Crian\u00e7as. A data varia por pa\u00eds.",
+    pageUrl: "https://countdowns.site/pt/countdown/dia-del-nino/"
+  };
+  function nextDate(dates) {
+    var now = new Date();
+    for (var i = 0; i < dates.length; i++) {
+      if (new Date(dates[i]) > now) return new Date(dates[i]);
+    }
+    return new Date(dates[dates.length - 1]);
+  }
+  CountdownEngine.renderEmbed('root', Object.assign({}, _cfg, { date: nextDate(VARIANTS[DEFAULT_IDX].dates) }));
+})();
+</script>
+</body>
+</html>

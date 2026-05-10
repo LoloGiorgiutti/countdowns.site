@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Friday — countdowns.site</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden}
+:root{--cat:#60A5FA;--cat-glow:rgba(96,165,250,.2);--cat-soft:rgba(96,165,250,.08);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="/countdown-engine.js"></script>
+<script>
+CountdownEngine.renderEmbed('root', {
+  slug: "black-friday",
+  type: "auto",
+  name: "Black Friday",
+  category: "Sales",
+  description: "Cuenta regresiva al Black Friday \u2014 cuarto viernes de noviembre.",
+  pageUrl: "https://countdowns.site/es/countdown/black-friday/"
+});
+</script>
+</body>
+</html>
