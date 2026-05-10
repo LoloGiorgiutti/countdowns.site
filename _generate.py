@@ -1000,6 +1000,7 @@ def generate_page(ev, lang="en"):
     <div class="lang-seg" role="group" aria-label="Language">
       {lang_buttons}
     </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>
 </header>
 <div id="root"><div style="min-height:100vh;background:#080812"></div></div>
@@ -1027,6 +1028,19 @@ def generate_page(ev, lang="en"):
       localStorage.setItem('cd_theme', 'light');
       btn.textContent = 'Dark';
     }}
+  }});
+}})();
+// ── Country flag ──────────────────────────────────────────────────────
+(function(){{
+  var fb=document.getElementById('country-flag-btn');
+  if(!fb)return;
+  var saved=typeof localStorage!=='undefined'?localStorage.getItem('cd_country'):null;
+  if(saved&&CountdownEngine.FLAG_MAP)fb.textContent=CountdownEngine.FLAG_MAP[saved]||'🌍';
+  fb.addEventListener('click',function(){{
+    CountdownEngine.openCountryPicker(function(code){{
+      localStorage.setItem('cd_country',code);
+      location.reload();
+    }});
   }});
 }})();
 </script>
@@ -1174,6 +1188,7 @@ def generate_custom_page(lang="en"):
     <div class="lang-seg" role="group" aria-label="Language">
       {lang_buttons}
     </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>
 </header>
 
@@ -1489,6 +1504,19 @@ render();
     var isLight=document.documentElement.getAttribute('data-theme')==='light';
     if(isLight){{document.documentElement.removeAttribute('data-theme');localStorage.setItem('cd_theme','dark');btn.textContent='Light';}}
     else{{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('cd_theme','light');btn.textContent='Dark';}}
+  }});
+}})();
+// ── Country flag ──────────────────────────────────────────────────────
+(function(){{
+  var fb=document.getElementById('country-flag-btn');
+  if(!fb)return;
+  var saved=typeof localStorage!=='undefined'?localStorage.getItem('cd_country'):null;
+  if(saved&&CountdownEngine.FLAG_MAP)fb.textContent=CountdownEngine.FLAG_MAP[saved]||'🌍';
+  fb.addEventListener('click',function(){{
+    CountdownEngine.openCountryPicker(function(code){{
+      localStorage.setItem('cd_country',code);
+      location.reload();
+    }});
   }});
 }})();
 }})();

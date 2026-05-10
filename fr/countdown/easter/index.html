@@ -70,6 +70,7 @@
     <div class="lang-seg" role="group" aria-label="Language">
       <button class="lang-btn" onclick="location.href='/countdown/easter/'">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/easter/'">ES</button><button class="lang-btn" onclick="location.href='/pt/countdown/easter/'">PT</button><button class="lang-btn active">FR</button>
     </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>
 </header>
 <div id="root"><div style="min-height:100vh;background:#080812"></div></div>
@@ -106,6 +107,19 @@ CountdownEngine.render('root', {
       localStorage.setItem('cd_theme', 'light');
       btn.textContent = 'Dark';
     }
+  });
+})();
+// ── Country flag ──────────────────────────────────────────────────────
+(function(){
+  var fb=document.getElementById('country-flag-btn');
+  if(!fb)return;
+  var saved=typeof localStorage!=='undefined'?localStorage.getItem('cd_country'):null;
+  if(saved&&CountdownEngine.FLAG_MAP)fb.textContent=CountdownEngine.FLAG_MAP[saved]||'🌍';
+  fb.addEventListener('click',function(){
+    CountdownEngine.openCountryPicker(function(code){
+      localStorage.setItem('cd_country',code);
+      location.reload();
+    });
   });
 })();
 </script>

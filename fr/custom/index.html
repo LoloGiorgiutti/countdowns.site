@@ -30,6 +30,7 @@
     <div class="lang-seg" role="group" aria-label="Language">
       <button class="lang-btn" onclick="location.href='/custom/'">EN</button><button class="lang-btn" onclick="location.href='/es/custom/'">ES</button><button class="lang-btn" onclick="location.href='/pt/custom/'">PT</button><button class="lang-btn active">FR</button>
     </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>
 </header>
 
@@ -345,6 +346,19 @@ render();
     var isLight=document.documentElement.getAttribute('data-theme')==='light';
     if(isLight){document.documentElement.removeAttribute('data-theme');localStorage.setItem('cd_theme','dark');btn.textContent='Light';}
     else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('cd_theme','light');btn.textContent='Dark';}
+  });
+})();
+// ── Country flag ──────────────────────────────────────────────────────
+(function(){
+  var fb=document.getElementById('country-flag-btn');
+  if(!fb)return;
+  var saved=typeof localStorage!=='undefined'?localStorage.getItem('cd_country'):null;
+  if(saved&&CountdownEngine.FLAG_MAP)fb.textContent=CountdownEngine.FLAG_MAP[saved]||'🌍';
+  fb.addEventListener('click',function(){
+    CountdownEngine.openCountryPicker(function(code){
+      localStorage.setItem('cd_country',code);
+      location.reload();
+    });
   });
 })();
 })();

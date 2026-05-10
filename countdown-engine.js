@@ -94,6 +94,97 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     '2027-12-15T16:00Z',
   ].map(function (s) { return new Date(s); });
 
+  /* ─── COUNTRY → TIMEZONE MAP ────────────────────────────────── */
+  var COUNTRY_TZ = {
+    US:'America/New_York',  GB:'Europe/London',    CA:'America/Toronto',
+    AU:'Australia/Sydney',  IE:'Europe/Dublin',    NZ:'Pacific/Auckland',
+    SG:'Asia/Singapore',    AE:'Asia/Dubai',       IN:'Asia/Kolkata',
+    PH:'Asia/Manila',       ZA:'Africa/Johannesburg',
+    AR:'America/Argentina/Buenos_Aires', MX:'America/Mexico_City',
+    CL:'America/Santiago',  CO:'America/Bogota',   PE:'America/Lima',
+    UY:'America/Montevideo',VE:'America/Caracas',  BO:'America/La_Paz',
+    PY:'America/Asuncion',  EC:'America/Guayaquil',CR:'America/Costa_Rica',
+    PA:'America/Panama',    DO:'America/Santo_Domingo', PR:'America/Puerto_Rico',
+    GT:'America/Guatemala', SV:'America/El_Salvador',  HN:'America/Tegucigalpa',
+    NI:'America/Managua',   CU:'America/Havana',
+    ES:'Europe/Madrid',     FR:'Europe/Paris',     BE:'Europe/Brussels',
+    CH:'Europe/Zurich',     PT:'Europe/Lisbon',    DE:'Europe/Berlin',
+    AT:'Europe/Vienna',     SE:'Europe/Stockholm', NO:'Europe/Oslo',
+    DK:'Europe/Copenhagen', FI:'Europe/Helsinki',  NL:'Europe/Amsterdam',
+    IT:'Europe/Rome',       GR:'Europe/Athens',
+    BR:'America/Sao_Paulo', AO:'Africa/Luanda',    MZ:'Africa/Maputo',
+  };
+
+  /* ─── COUNTRY LIST (for picker UI) ─────────────────────────── */
+  var COUNTRY_LIST = [
+    {code:'global',flag:'🌍',name:'Global'},
+    {code:'US',flag:'🇺🇸',name:'USA'},          {code:'GB',flag:'🇬🇧',name:'UK'},
+    {code:'CA',flag:'🇨🇦',name:'Canada'},       {code:'AU',flag:'🇦🇺',name:'Australia'},
+    {code:'IE',flag:'🇮🇪',name:'Ireland'},      {code:'NZ',flag:'🇳🇿',name:'New Zealand'},
+    {code:'SG',flag:'🇸🇬',name:'Singapore'},    {code:'AE',flag:'🇦🇪',name:'UAE'},
+    {code:'AR',flag:'🇦🇷',name:'Argentina'},    {code:'MX',flag:'🇲🇽',name:'México'},
+    {code:'CL',flag:'🇨🇱',name:'Chile'},        {code:'CO',flag:'🇨🇴',name:'Colombia'},
+    {code:'PE',flag:'🇵🇪',name:'Perú'},         {code:'UY',flag:'🇺🇾',name:'Uruguay'},
+    {code:'VE',flag:'🇻🇪',name:'Venezuela'},    {code:'EC',flag:'🇪🇨',name:'Ecuador'},
+    {code:'BO',flag:'🇧🇴',name:'Bolivia'},      {code:'PY',flag:'🇵🇾',name:'Paraguay'},
+    {code:'CR',flag:'🇨🇷',name:'Costa Rica'},   {code:'PA',flag:'🇵🇦',name:'Panamá'},
+    {code:'DO',flag:'🇩🇴',name:'Rep. Dominicana'},{code:'PR',flag:'🇵🇷',name:'Puerto Rico'},
+    {code:'GT',flag:'🇬🇹',name:'Guatemala'},    {code:'SV',flag:'🇸🇻',name:'El Salvador'},
+    {code:'HN',flag:'🇭🇳',name:'Honduras'},     {code:'NI',flag:'🇳🇮',name:'Nicaragua'},
+    {code:'CU',flag:'🇨🇺',name:'Cuba'},         {code:'ES',flag:'🇪🇸',name:'España'},
+    {code:'BR',flag:'🇧🇷',name:'Brasil'},       {code:'PT',flag:'🇵🇹',name:'Portugal'},
+    {code:'FR',flag:'🇫🇷',name:'France'},       {code:'BE',flag:'🇧🇪',name:'Belgique'},
+    {code:'CH',flag:'🇨🇭',name:'Schweiz'},      {code:'DE',flag:'🇩🇪',name:'Deutschland'},
+    {code:'AT',flag:'🇦🇹',name:'Österreich'},   {code:'SE',flag:'🇸🇪',name:'Sverige'},
+    {code:'NO',flag:'🇳🇴',name:'Norge'},        {code:'DK',flag:'🇩🇰',name:'Danmark'},
+    {code:'FI',flag:'🇫🇮',name:'Finland'},      {code:'NL',flag:'🇳🇱',name:'Nederland'},
+    {code:'IT',flag:'🇮🇹',name:'Italia'},       {code:'GR',flag:'🇬🇷',name:'Ελλάδα'},
+  ];
+  var FLAG_MAP = {};
+  COUNTRY_LIST.forEach(function(c){FLAG_MAP[c.code]=c.flag;});
+
+  function getCountryTZ() {
+    var code = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+    return COUNTRY_TZ[code] || null; /* null → use browser local time */
+  }
+
+  /* Compute midnight on year/month/day in the given IANA timezone.
+     Falls back to browser local time if tz is null or Intl not available. */
+  function midnightInTZ(tz, year, month, day) {
+    if (!tz) return new Date(year, month, day);
+    try {
+      /* Reference: noon UTC on target day — safe from DST boundary issues */
+      var ref = new Date(Date.UTC(year, month, day, 12));
+      var parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz, hour12: false,
+        year:'numeric', month:'2-digit', day:'2-digit',
+        hour:'2-digit', minute:'2-digit'
+      }).formatToParts(ref);
+      var h = parseInt(parts.find(function(p){return p.type==='hour';}).value, 10);
+      var m = parseInt(parts.find(function(p){return p.type==='minute';}).value, 10);
+      var d = parseInt(parts.find(function(p){return p.type==='day';}).value, 10);
+      /* Determine if tz shows a different day than `day` (east/west extremes) */
+      var dayDiff = 0;
+      if (d !== day) {
+        if      (d > day  && d - day  <= 1)  dayDiff =  1;
+        else if (d < day  && day - d  <= 1)  dayDiff = -1;
+        else if (d === 1  && day >= 28)       dayDiff =  1;
+        else if (d >= 28  && day === 1)       dayDiff = -1;
+      }
+      var adjH      = h + dayDiff * 24;
+      var offsetMin = (adjH - 12) * 60 + m;
+      return new Date(Date.UTC(year, month, day) - offsetMin * 60000);
+    } catch (e) {
+      return new Date(year, month, day);
+    }
+  }
+
+  /* Convert a date returned by nthWeekday/lastWeekday to TZ-aware midnight */
+  function tzDay(tz, date) {
+    if (!tz) return date;
+    return midnightInTZ(tz, date.getFullYear(), date.getMonth(), date.getDate());
+  }
+
   /* ─── HELPERS ───────────────────────────────────────────────── */
   function nthWeekday(year, month, n, weekday) {
     var d = new Date(year, month, 1);
@@ -141,62 +232,65 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
   /* ─── AUTO DATE GETTERS ─────────────────────────────────────── */
   var AUTO = {
     /* ── Holidays ── */
-    'christmas':        function () { return { date: nextOccurrence(function (y) { return new Date(y, 11, 25); }) }; },
-    'new-year':         function () { return { date: nextOccurrence(function (y) { return new Date(y + 1, 0, 1); }) }; },
-    'halloween':        function () { return { date: nextOccurrence(function (y) { return new Date(y, 9, 31); }) }; },
-    'valentines':       function () { return { date: nextOccurrence(function (y) { return new Date(y, 1, 14); }) }; },
-    'easter':           function () { return { date: nextOccurrence(easterDate) }; },
-    'st-patricks':      function () { return { date: nextOccurrence(function (y) { return new Date(y, 2, 17); }) }; },
-    'dia-de-los-muertos': function () { return { date: nextOccurrence(function (y) { return new Date(y, 10, 1); }) }; },
-    'cinco-de-mayo':    function () { return { date: nextOccurrence(function (y) { return new Date(y, 4, 5); }) }; },
-    'fiestas-patrias':  function () { return { date: nextOccurrence(function (y) { return new Date(y, 8, 18); }) }; },
-    'bastille-day':     function () { return { date: nextOccurrence(function (y) { return new Date(y, 6, 14); }) }; },
-    'oktoberfest':      function () { return { date: nextOccurrence(function (y) { return new Date(y, 8, 19); }) }; },
+    'christmas':        function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,11,25); }) }; },
+    'new-year':         function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y+1,0,1); }) }; },
+    'halloween':        function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,9,31); }) }; },
+    'valentines':       function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,1,14); }) }; },
+    'easter':           function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,easterDate(y)); }) }; },
+    'st-patricks':      function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,2,17); }) }; },
+    'dia-de-los-muertos': function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,10,1); }) }; },
+    'cinco-de-mayo':    function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,4,5); }) }; },
+    'fiestas-patrias':  function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,8,18); }) }; },
+    'bastille-day':     function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,6,14); }) }; },
+    'oktoberfest':      function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,8,19); }) }; },
 
     /* ── US Holidays ── */
-    'thanksgiving':     function () { return { date: nextOccurrence(function (y) { return nthWeekday(y, 10, 4, 4); }) }; },
-    'independence-day': function () { return { date: nextOccurrence(function (y) { return new Date(y, 6, 4); }) }; },
-    'memorial-day':     function () { return { date: nextOccurrence(function (y) { return lastWeekday(y, 4, 1); }) }; },
-    'labor-day':        function () { return { date: nextOccurrence(function (y) { return nthWeekday(y, 8, 1, 1); }) }; },
+    'thanksgiving':     function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,nthWeekday(y,10,4,4)); }) }; },
+    'independence-day': function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,6,4); }) }; },
+    'memorial-day':     function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,lastWeekday(y,4,1)); }) }; },
+    'labor-day':        function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,nthWeekday(y,8,1,1)); }) }; },
     'mothers-day': function () {
+      var tz = getCountryTZ();
       var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
       var getDate;
       if (country === 'AR' || country === 'UY') {
-        getDate = function (y) { return nthWeekday(y, 9, 3, 0); };   /* 3rd Sun Oct */
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 9, 3, 0)); };   /* 3rd Sun Oct */
       } else if (['MX','DO','GT','HN','SV','NI','CO','EC','PE','VE','BO','CU','PR'].indexOf(country) >= 0) {
-        getDate = function (y) { return new Date(y, 4, 10); };        /* May 10 */
+        getDate = function (y) { return midnightInTZ(tz, y, 4, 10); };           /* May 10 */
       } else if (country === 'FR') {
-        getDate = function (y) { return lastWeekday(y, 4, 0); };      /* Last Sun May */
+        getDate = function (y) { return tzDay(tz, lastWeekday(y, 4, 0)); };      /* Last Sun May */
       } else {
-        getDate = function (y) { return nthWeekday(y, 4, 2, 0); };   /* 2nd Sun May (US/UK/CA/AU) */
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 4, 2, 0)); };   /* 2nd Sun May */
       }
       return { date: nextOccurrence(getDate) };
     },
     'fathers-day': function () {
+      var tz = getCountryTZ();
       var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
       var getDate;
       if (country === 'ES') {
-        getDate = function (y) { return new Date(y, 2, 19); };         /* March 19 (San José) */
+        getDate = function (y) { return midnightInTZ(tz, y, 2, 19); };           /* March 19 */
       } else if (country === 'BR') {
-        getDate = function (y) { return nthWeekday(y, 7, 2, 0); };    /* 2nd Sun Aug */
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 7, 2, 0)); };   /* 2nd Sun Aug */
       } else {
-        getDate = function (y) { return nthWeekday(y, 5, 3, 0); };    /* 3rd Sun Jun */
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 5, 3, 0)); };   /* 3rd Sun Jun */
       }
       return { date: nextOccurrence(getDate) };
     },
 
     /* ── Sports (recurring) ── */
-    'super-bowl':       function () { return { date: nextOccurrence(function (y) { return nthWeekday(y, 1, 2, 0); }), note: '2nd Sunday of February' }; },
-    'oscars':           function () { return { date: nextOccurrence(function (y) { return nthWeekday(y, 1, 4, 0); }), note: '~Last Sunday of February (estimated)' }; },
-    'met-gala':         function () { return { date: nextOccurrence(function (y) { return nthWeekday(y, 4, 1, 1); }) }; },
+    'super-bowl':       function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,nthWeekday(y,1,2,0)); }), note: '2nd Sunday of February' }; },
+    'oscars':           function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,nthWeekday(y,1,4,0)); }), note: '~Last Sunday of February (estimated)' }; },
+    'met-gala':         function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,nthWeekday(y,4,1,1)); }) }; },
 
     /* ── Sales ── */
-    'black-friday':     function () { return { date: nextOccurrence(function (y) { return nthWeekday(y, 10, 4, 5); }) }; },
+    'black-friday':     function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,nthWeekday(y,10,4,5)); }) }; },
     'cyber-monday':     function () {
+      var tz = getCountryTZ();
       return {
         date: nextOccurrence(function (y) {
           var bf = nthWeekday(y, 10, 4, 5);
-          return new Date(bf.getFullYear(), bf.getMonth(), bf.getDate() + 3);
+          return tzDay(tz, new Date(bf.getFullYear(), bf.getMonth(), bf.getDate() + 3));
         }),
         note: 'Monday after Black Friday'
       };
@@ -215,15 +309,16 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     },
 
     /* ── Latin American Holidays ── */
-    '25-de-mayo':       function () { return { date: nextOccurrence(function (y) { return new Date(y, 4, 25); }) }; },
+    '25-de-mayo':       function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,4,25); }) }; },
     'dia-del-nino': function () {
+      var tz = getCountryTZ();
       var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
       var m, d;
       if      (country === 'MX') { m = 3;  d = 30; }  /* Apr 30 */
       else if (country === 'AR') { m = 7;  d = 9;  }  /* Aug 9  */
       else if (country === 'BR') { m = 9;  d = 12; }  /* Oct 12 */
       else                       { m = 10; d = 20; }  /* Nov 20 (UN) */
-      return { date: nextOccurrence(function (y) { return new Date(y, m, d); }) };
+      return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, m, d); }) };
     },
 
     /* ── One-time political ── */
@@ -232,6 +327,52 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     /* ── LA 2028 Olympics ── */
     'olympics-2028':    function () { return { date: new Date(2028, 6, 14, 20, 0, 0), note: 'Los Angeles 2028 — Opening Ceremony' }; },
   };
+
+  /* ─── COUNTRY PICKER (shared modal for all pages) ───────────── */
+  function openCountryPicker(onSelect) {
+    var overlay = document.createElement('div');
+    overlay.className = 'cd-cpicker-overlay';
+    var saved = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+    overlay.innerHTML =
+      '<div class="cd-cpicker-modal">' +
+        '<h2 class="cd-cpicker-title">Select your country</h2>' +
+        '<input class="cd-cpicker-search" id="cd-cpicker-q" type="text" placeholder="Search…" autocomplete="off" spellcheck="false">' +
+        '<div class="cd-cpicker-grid" id="cd-cpicker-items"></div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+
+    var grid = document.getElementById('cd-cpicker-items');
+
+    function renderItems(filter) {
+      grid.innerHTML = COUNTRY_LIST.filter(function(c) {
+        if (!filter) return true;
+        return c.name.toLowerCase().indexOf(filter) >= 0 ||
+               c.code.toLowerCase().indexOf(filter) >= 0;
+      }).map(function(c) {
+        return '<button class="cd-cpicker-item' + (c.code === saved ? ' selected' : '') +
+               '" data-code="' + c.code + '">' +
+               '<span class="cd-cpicker-flag">' + c.flag + '</span>' + c.name + '</button>';
+      }).join('');
+      grid.querySelectorAll('.cd-cpicker-item').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.body.removeChild(overlay);
+          document.body.style.overflow = '';
+          onSelect(btn.dataset.code);
+        });
+      });
+    }
+
+    renderItems('');
+    var searchEl = document.getElementById('cd-cpicker-q');
+    if (searchEl) {
+      searchEl.oninput = function() { renderItems(this.value.toLowerCase()); };
+      setTimeout(function() { searchEl.focus(); }, 80);
+    }
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) { document.body.removeChild(overlay); document.body.style.overflow = ''; }
+    });
+  }
 
   /* ─── DATA CACHE ────────────────────────────────────────────── */
   var _cache = null;
@@ -605,6 +746,13 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
 
     catColors: catColors,
     fmtDate:   fmtDate,
+    openCountryPicker: openCountryPicker,
+    FLAG_MAP:          FLAG_MAP,
+    COUNTRY_LIST:      COUNTRY_LIST,
+    getCurrentFlag:    function() {
+      var code = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+      return FLAG_MAP[code] || '🌍';
+    },
   };
 
 })();
