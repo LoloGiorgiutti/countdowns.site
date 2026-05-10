@@ -322,7 +322,9 @@
         loadData(function (data) {
           var ev   = ((data || {}).events || {})[config.slug] || {};
           var date = ev.date ? new Date(ev.date) : null;
-          init(date, { note: ev.note, subtitle: ev.raceName || '' });
+          var _lang = (window.location.pathname.match(/^\/(es|pt|fr)\//) || [])[1] || 'en';
+          var _note = (_lang !== 'en' && ev['note_' + _lang]) || ev.note || '';
+          init(date, { note: _note, subtitle: ev.raceName || '' });
         });
       }
     },
