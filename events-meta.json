@@ -1,56 +1,410 @@
 {
   "version": 1,
   "events": {
-    "gta6":               { "countries": ["global"],                                                                                             "cat": "Releases"      },
-    "iphone":             { "countries": ["global"],                                                                                             "cat": "Releases"      },
-    "f1":                 { "countries": ["global"],                                                                                             "cat": "Sports"        },
-    "world-cup":          { "countries": ["global"],                                                                                             "cat": "Sports"        },
-    "ucl-final":          { "countries": ["global"],                                                                                             "cat": "Sports"        },
-    "nba-finals":         { "countries": ["global"],                                                                                             "cat": "Sports"        },
-    "le-mans":            { "countries": ["global"],                                                                                             "cat": "Sports"        },
-    "wimbledon":          { "countries": ["global"],                                                                                             "cat": "Sports"        },
-    "tour-de-france":     { "countries": ["global"],                                                                                             "cat": "Sports"        },
-    "olympics-2028":      { "countries": ["global"],                                                                                             "cat": "Sports"        },
-    "super-bowl":         { "countries": ["US","CA","MX","GB","AU"],                                                                             "cat": "Sports"        },
-    "copa-libertadores":  { "countries": ["AR","BR","CL","CO","PE","UY","VE","BO","PY","EC","CR","PA","GT","SV","HN","NI","DO","CU","MX"],       "cat": "Sports"        },
-    "christmas":          { "countries": ["global"],                                                                                             "cat": "Holidays"      },
-    "new-year":           { "countries": ["global"],                                                                                             "cat": "Holidays"      },
-    "halloween":          { "countries": ["US","CA","GB","AU","IE","MX","AR","CL","CO","PE","UY","BR","FR","ES","PT","DE","BE","NZ"],            "cat": "Holidays"      },
-    "valentines":         { "countries": ["global"],                                                                                             "cat": "Holidays"      },
-    "easter":             { "countries": ["global"],                                                                                             "cat": "Holidays"      },
-    "mothers-day":        { "countries": ["global"],                                                                                             "cat": "Holidays"      },
-    "fathers-day":        { "countries": ["global"],                                                                                             "cat": "Holidays"      },
-    "thanksgiving":       { "countries": ["US","CA"],                                                                                            "cat": "Holidays"      },
-    "independence-day":   { "countries": ["US"],                                                                                                 "cat": "Holidays"      },
-    "memorial-day":       { "countries": ["US"],                                                                                                 "cat": "Holidays"      },
-    "labor-day":          { "countries": ["US","CA"],                                                                                            "cat": "Holidays"      },
-    "st-patricks":        { "countries": ["US","IE","GB","AU","CA","AR","MX"],                                                                   "cat": "Holidays"      },
-    "dia-de-los-muertos": { "countries": ["MX","GT","SV","HN","NI","CR","CO","AR","CL","PE","UY"],                                              "cat": "Holidays"      },
-    "cinco-de-mayo":      { "countries": ["MX","US"],                                                                                            "cat": "Holidays"      },
-    "fiestas-patrias":    { "countries": ["CL"],                                                                                                 "cat": "Holidays"      },
-    "bastille-day":       { "countries": ["FR","BE","CH","LU"],                                                                                  "cat": "Holidays"      },
-    "oktoberfest":        { "countries": ["DE","AT","CH","US","CA","AU","BR"],                                                                   "cat": "Holidays"      },
-    "25-de-mayo":         { "countries": ["AR"],                                                                                                 "cat": "Holidays"      },
-    "dia-del-nino":       { "countries": ["MX","AR","BR","CO","CL","PE","UY","VE","BO","EC","CR","PA","GT","SV","DO","PY"],                     "cat": "Holidays"      },
-    "oscars":             { "countries": ["global"],                                                                                             "cat": "Entertainment" },
-    "grammys":            { "countries": ["global"],                                                                                             "cat": "Entertainment" },
-    "met-gala":           { "countries": ["global"],                                                                                             "cat": "Entertainment" },
-    "cannes":             { "countries": ["global"],                                                                                             "cat": "Entertainment" },
-    "eurovision":         { "countries": ["FR","BE","CH","ES","PT","GB","IE","AU","DE","AT","SE","NO","FI","NL","IT","GR"],                      "cat": "Entertainment" },
-    "coachella":          { "countries": ["US","MX","CA","GB"],                                                                                  "cat": "Entertainment" },
-    "black-friday":       { "countries": ["global"],                                                                                             "cat": "Sales"         },
-    "cyber-monday":       { "countries": ["global"],                                                                                             "cat": "Sales"         },
-    "hot-sale":           { "countries": ["AR","MX"],                                                                                            "cat": "Sales"         },
-    "full-moon":          { "countries": ["global"],                                                                                             "cat": "Nature"        },
-    "eclipse":            { "countries": ["global"],                                                                                             "cat": "Nature"        },
-    "lollapalooza-ar":    { "countries": ["AR","UY"],                                                                                            "cat": "Music"         },
-    "cosquin-rock":       { "countries": ["AR"],                                                                                                 "cat": "Music"         },
-    "lollapalooza-cl":    { "countries": ["CL","AR"],                                                                                            "cat": "Music"         },
-    "rock-in-rio":        { "countries": ["BR","PT"],                                                                                            "cat": "Music"         },
-    "nyfw":               { "countries": ["global"],                                                                                             "cat": "Fashion"       },
-    "paris-fw":           { "countries": ["global"],                                                                                             "cat": "Fashion"       },
-    "milan-fw":           { "countries": ["global"],                                                                                             "cat": "Fashion"       },
-    "bafweek":            { "countries": ["AR"],                                                                                                 "cat": "Fashion"       },
-    "elecciones-ar":      { "countries": ["AR"],                                                                                                 "cat": "Politics"      }
+    "gta6": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Releases"
+    },
+    "iphone": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Releases"
+    },
+    "f1": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Sports"
+    },
+    "world-cup": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Sports"
+    },
+    "ucl-final": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Sports"
+    },
+    "nba-finals": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Sports"
+    },
+    "le-mans": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Sports"
+    },
+    "wimbledon": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Sports"
+    },
+    "tour-de-france": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Sports"
+    },
+    "olympics-2028": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Sports"
+    },
+    "super-bowl": {
+      "countries": [
+        "US",
+        "CA",
+        "MX",
+        "GB",
+        "AU"
+      ],
+      "cat": "Sports"
+    },
+    "copa-libertadores": {
+      "countries": [
+        "AR",
+        "MX",
+        "CL",
+        "CO",
+        "PE",
+        "UY",
+        "VE",
+        "EC",
+        "BO",
+        "PY",
+        "CR",
+        "PA",
+        "DO",
+        "BR"
+      ],
+      "cat": "Sports"
+    },
+    "christmas": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Holidays"
+    },
+    "new-year": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Holidays"
+    },
+    "halloween": {
+      "countries": [
+        "US",
+        "CA",
+        "GB",
+        "AU",
+        "IE",
+        "MX",
+        "AR",
+        "CL",
+        "CO",
+        "PE",
+        "UY",
+        "BR",
+        "FR",
+        "ES",
+        "PT",
+        "DE",
+        "BE",
+        "NZ"
+      ],
+      "cat": "Holidays"
+    },
+    "valentines": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Holidays"
+    },
+    "easter": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Holidays"
+    },
+    "mothers-day": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Holidays"
+    },
+    "fathers-day": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Holidays"
+    },
+    "thanksgiving": {
+      "countries": [
+        "US",
+        "CA"
+      ],
+      "cat": "Holidays"
+    },
+    "independence-day": {
+      "countries": [
+        "US"
+      ],
+      "cat": "Holidays"
+    },
+    "memorial-day": {
+      "countries": [
+        "US"
+      ],
+      "cat": "Holidays"
+    },
+    "labor-day": {
+      "countries": [
+        "US",
+        "CA"
+      ],
+      "cat": "Holidays"
+    },
+    "st-patricks": {
+      "countries": [
+        "US",
+        "IE",
+        "GB",
+        "AU",
+        "CA",
+        "AR",
+        "MX"
+      ],
+      "cat": "Holidays"
+    },
+    "dia-de-los-muertos": {
+      "countries": [
+        "MX",
+        "GT",
+        "SV",
+        "HN",
+        "NI",
+        "CR",
+        "CO",
+        "AR",
+        "CL",
+        "PE",
+        "UY"
+      ],
+      "cat": "Holidays"
+    },
+    "cinco-de-mayo": {
+      "countries": [
+        "MX",
+        "US"
+      ],
+      "cat": "Holidays"
+    },
+    "fiestas-patrias": {
+      "countries": [
+        "CL"
+      ],
+      "cat": "Holidays"
+    },
+    "bastille-day": {
+      "countries": [
+        "FR",
+        "BE",
+        "CH",
+        "LU"
+      ],
+      "cat": "Holidays"
+    },
+    "oktoberfest": {
+      "countries": [
+        "DE",
+        "AT",
+        "CH",
+        "US",
+        "CA",
+        "AU",
+        "BR"
+      ],
+      "cat": "Holidays"
+    },
+    "25-de-mayo": {
+      "countries": [
+        "AR"
+      ],
+      "cat": "Holidays"
+    },
+    "dia-del-nino": {
+      "countries": [
+        "MX",
+        "AR",
+        "BR",
+        "CO",
+        "CL",
+        "PE",
+        "UY",
+        "VE",
+        "BO",
+        "EC",
+        "CR",
+        "PA",
+        "GT",
+        "SV",
+        "DO",
+        "PY"
+      ],
+      "cat": "Holidays"
+    },
+    "oscars": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Entertainment"
+    },
+    "grammys": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Entertainment"
+    },
+    "met-gala": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Entertainment"
+    },
+    "cannes": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Entertainment"
+    },
+    "eurovision": {
+      "countries": [
+        "FR",
+        "BE",
+        "CH",
+        "ES",
+        "PT",
+        "GB",
+        "IE",
+        "AU",
+        "DE",
+        "AT",
+        "SE",
+        "NO",
+        "FI",
+        "NL",
+        "IT",
+        "GR"
+      ],
+      "cat": "Entertainment"
+    },
+    "coachella": {
+      "countries": [
+        "US",
+        "MX",
+        "CA",
+        "GB"
+      ],
+      "cat": "Entertainment"
+    },
+    "black-friday": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Sales"
+    },
+    "cyber-monday": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Sales"
+    },
+    "hot-sale": {
+      "countries": [
+        "AR",
+        "MX"
+      ],
+      "cat": "Sales"
+    },
+    "full-moon": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Nature"
+    },
+    "eclipse": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Nature"
+    },
+    "lollapalooza-ar": {
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "cat": "Music"
+    },
+    "cosquin-rock": {
+      "countries": [
+        "AR"
+      ],
+      "cat": "Music"
+    },
+    "lollapalooza-cl": {
+      "countries": [
+        "CL",
+        "AR"
+      ],
+      "cat": "Music"
+    },
+    "rock-in-rio": {
+      "countries": [
+        "BR",
+        "PT"
+      ],
+      "cat": "Music"
+    },
+    "nyfw": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Fashion"
+    },
+    "paris-fw": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Fashion"
+    },
+    "milan-fw": {
+      "countries": [
+        "global"
+      ],
+      "cat": "Fashion"
+    },
+    "bafweek": {
+      "countries": [
+        "AR"
+      ],
+      "cat": "Fashion"
+    },
+    "elecciones-ar": {
+      "countries": [
+        "AR"
+      ],
+      "cat": "Politics"
+    }
   }
 }
