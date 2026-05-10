@@ -16,6 +16,13 @@
       alreadyHappened: 'Already happened',
       backLink: '← All countdowns',
       faqTitle: 'Frequently Asked Questions',
+      copyLink: 'Copy link', copied: '✓ Copied!',
+      shareBtn: 'Share', whatsapp: 'WhatsApp',
+      screenshot: 'Screenshot', embed: 'Embed',
+      embedTitle: 'Embed this countdown',
+      embedNote: 'Paste this code on any website:',
+      close: 'Close',
+      shareMsg: 'Countdown to ',
     },
     es: {
       days: 'días', hours: 'horas', min: 'min', sec: 'seg',
@@ -23,6 +30,13 @@
       alreadyHappened: 'Ya ocurrió',
       backLink: '← Todos los countdowns',
       faqTitle: 'Preguntas Frecuentes',
+      copyLink: 'Copiar enlace', copied: '✓ ¡Copiado!',
+      shareBtn: 'Compartir', whatsapp: 'WhatsApp',
+      screenshot: 'Captura', embed: 'Insertar',
+      embedTitle: 'Insertar este countdown',
+      embedNote: 'Pegá este código en cualquier sitio:',
+      close: 'Cerrar',
+      shareMsg: 'Countdown para ',
     },
     pt: {
       days: 'dias', hours: 'horas', min: 'min', sec: 's',
@@ -30,6 +44,13 @@
       alreadyHappened: 'Já aconteceu',
       backLink: '← Todos os countdowns',
       faqTitle: 'Perguntas Frequentes',
+      copyLink: 'Copiar link', copied: '✓ Copiado!',
+      shareBtn: 'Compartilhar', whatsapp: 'WhatsApp',
+      screenshot: 'Captura', embed: 'Incorporar',
+      embedTitle: 'Incorporar este countdown',
+      embedNote: 'Cole este código em qualquer site:',
+      close: 'Fechar',
+      shareMsg: 'Countdown para ',
     },
     fr: {
       days: 'jours', hours: 'heures', min: 'min', sec: 's',
@@ -37,6 +58,13 @@
       alreadyHappened: 'Déjà passé',
       backLink: '← Tous les comptes à rebours',
       faqTitle: 'Questions Fréquentes',
+      copyLink: 'Copier le lien', copied: '✓ Copié !',
+      shareBtn: 'Partager', whatsapp: 'WhatsApp',
+      screenshot: 'Capture', embed: 'Intégrer',
+      embedTitle: 'Intégrer ce countdown',
+      embedNote: 'Collez ce code sur n\'importe quel site :',
+      close: 'Fermer',
+      shareMsg: 'Compte à rebours : ',
     },
   };
   var T = UI[_pageLang] || UI.en;
@@ -286,6 +314,112 @@
     return CAT_COLORS[cat] || { color: '#818CF8', glow: 'rgba(129,140,248,.2)', soft: 'rgba(129,140,248,.08)' };
   }
 
+  /* ─── SHARE BAR ────────────────────────────────────────────── */
+  var ICON_COPY   = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  var ICON_SHARE  = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>';
+  var ICON_WA     = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>';
+  var ICON_X      = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
+  var ICON_CAM    = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>';
+  var ICON_EMBED  = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>';
+
+  function buildShareBar(config) {
+    var slug    = config.slug || '';
+    var name    = config.name || '';
+    var pageUrl = window.location.href.split('?')[0].split('#')[0];
+    var waHref  = 'https://wa.me/send?text=' + encodeURIComponent(T.shareMsg + name + ' → ' + pageUrl);
+    var xHref   = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(T.shareMsg + name) + '&url=' + encodeURIComponent(pageUrl);
+    var embedSrc = 'https://countdowns.site/embed/' + slug + '/';
+    var iframeCode = '<iframe src="' + embedSrc + '" width="320" height="200" frameborder="0" style="border-radius:16px;overflow:hidden" allowtransparency="true"></iframe>';
+    return [
+      '<div class="cd-share-bar">',
+      '<button class="cd-share-btn" id="cd-copy-btn" onclick="window._cdCopy()">' + ICON_COPY + T.copyLink + '</button>',
+      '<button class="cd-share-btn cd-share-native" onclick="window._cdNativeShare()">' + ICON_SHARE + T.shareBtn + '</button>',
+      '<a class="cd-share-btn" href="' + waHref + '" target="_blank" rel="noopener">' + ICON_WA + T.whatsapp + '</a>',
+      '<a class="cd-share-btn" href="' + xHref + '" target="_blank" rel="noopener">' + ICON_X + 'X</a>',
+      '<button class="cd-share-btn" onclick="window._cdScreenshot()">' + ICON_CAM + T.screenshot + '</button>',
+      '<button class="cd-share-btn" onclick="window._cdEmbed()">' + ICON_EMBED + T.embed + '</button>',
+      '</div>',
+      /* embed modal */
+      '<div id="cd-embed-modal" class="cd-embed-modal" onclick="if(event.target===this)window._cdCloseEmbed()">',
+      '<div class="cd-embed-dialog">',
+      '<div class="cd-embed-header"><h3>' + T.embedTitle + '</h3>',
+      '<button class="cd-embed-close" onclick="window._cdCloseEmbed()">&#x2715;</button></div>',
+      '<p class="cd-embed-note">' + T.embedNote + '</p>',
+      '<textarea class="cd-embed-code" readonly onclick="this.select()" spellcheck="false">' + iframeCode.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</textarea>',
+      '<button class="cd-share-btn cd-embed-copy" onclick="window._cdCopyEmbed()">' + ICON_COPY + T.copyLink + '</button>',
+      '</div></div>',
+    ].join('');
+  }
+
+  function setupShare(config) {
+    var pageUrl = window.location.href.split('?')[0].split('#')[0];
+    var name    = config.name || '';
+    var slug    = config.slug || '';
+    var iframeCode = '<iframe src="https://countdowns.site/embed/' + slug + '/" width="320" height="200" frameborder="0" style="border-radius:16px;overflow:hidden" allowtransparency="true"></iframe>';
+
+    window._cdCopy = function () {
+      navigator.clipboard.writeText(pageUrl).then(function () {
+        var btn = document.getElementById('cd-copy-btn');
+        if (btn) { btn.innerHTML = ICON_COPY + T.copied; setTimeout(function () { btn.innerHTML = ICON_COPY + T.copyLink; }, 2000); }
+      }).catch(function () {
+        /* fallback: select a hidden input */
+        var ta = document.createElement('textarea');
+        ta.value = pageUrl; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+        var btn = document.getElementById('cd-copy-btn');
+        if (btn) { btn.innerHTML = ICON_COPY + T.copied; setTimeout(function () { btn.innerHTML = ICON_COPY + T.copyLink; }, 2000); }
+      });
+    };
+
+    window._cdNativeShare = function () {
+      if (navigator.share) {
+        navigator.share({ title: name, text: T.shareMsg + name, url: pageUrl });
+      } else {
+        window._cdCopy();
+      }
+    };
+
+    window._cdScreenshot = function () {
+      var hero = document.querySelector('.cd-hero');
+      if (!hero) return;
+      if (window.html2canvas) { _doShot(hero); return; }
+      var s = document.createElement('script');
+      s.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+      s.onload = function () { _doShot(hero); };
+      document.head.appendChild(s);
+    };
+
+    function _doShot(hero) {
+      html2canvas(hero, { backgroundColor: null, scale: 2 }).then(function (canvas) {
+        var link = document.createElement('a');
+        link.download = (name || 'countdown').replace(/\s+/g, '-').toLowerCase() + '.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
+
+    window._cdEmbed = function () {
+      var m = document.getElementById('cd-embed-modal');
+      if (m) m.style.display = 'flex';
+    };
+    window._cdCloseEmbed = function () {
+      var m = document.getElementById('cd-embed-modal');
+      if (m) m.style.display = 'none';
+    };
+    window._cdCopyEmbed = function () {
+      var ta = document.querySelector('.cd-embed-code');
+      if (ta) { ta.select(); navigator.clipboard.writeText(iframeCode).catch(function () { document.execCommand('copy'); }); }
+      var btn = document.querySelector('.cd-embed-copy');
+      if (btn) { btn.innerHTML = ICON_COPY + T.copied; setTimeout(function () { btn.innerHTML = ICON_COPY + T.copyLink; }, 2000); }
+    };
+
+    /* hide native share btn on desktop where navigator.share is unavailable */
+    if (!navigator.share) {
+      var nb = document.querySelector('.cd-share-native');
+      if (nb) nb.style.display = 'none';
+    }
+  }
+
   /* ─── HTML BUILDER (individual pages) ──────────────────────── */
   function buildCountdownSection(targetDate, isPast, isUnknown, note) {
     if (isUnknown) {
@@ -321,7 +455,7 @@
       articleHTML += '<div class="cd-article">';
       if (config.content) articleHTML += '<p class="cd-article-body">' + config.content + '</p>';
       if (config.faqs && config.faqs.length) {
-        articleHTML += '<div class="cd-faq"><h2 class="cd-faq-title">Frequently asked questions</h2>';
+        articleHTML += '<div class="cd-faq"><h2 class="cd-faq-title">' + T.faqTitle + '</h2>';
         config.faqs.forEach(function (faq) {
           articleHTML += '<div class="cd-faq-item"><h3 class="cd-faq-q">' + faq.q + '</h3><p class="cd-faq-a">' + faq.a + '</p></div>';
         });
@@ -342,6 +476,7 @@
       '</div>',
       '<div class="cd-below">',
       (note && !isUnknown) ? '<div class="cd-note-card">' + note + '</div>' : '',
+      buildShareBar(config),
       '<a href="/" class="cd-back-link">' + T.backLink + '</a>',
       '</div>',
       articleHTML,
@@ -360,6 +495,7 @@
         var isPast    = config.type === 'one-time' && targetDate && targetDate < new Date();
         var isUnknown = !targetDate;
         root.innerHTML = buildPage(config, targetDate, extra || {}, isPast, isUnknown);
+        setupShare(config);
         if (!isPast && !isUnknown) startTicker(targetDate);
       }
 

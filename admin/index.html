@@ -895,7 +895,7 @@ async function saveChanges() {
     if (ev.type === 'variable') {
       var cdFile = await ghGet('countdowns-data.json');
       var cdSha  = cdFile.sha;
-      var cdContent = JSON.parse(atob(cdFile.content.replace(/\n/g, '')));
+      var cdContent = JSON.parse(decodeURIComponent(escape(atob(cdFile.content.replace(/\n/g, '')))));
 
       if (!cdContent.events) cdContent.events = {};
       if (!cdContent.events[slug]) cdContent.events[slug] = {};
@@ -925,7 +925,7 @@ async function saveChanges() {
     /* ── 2. Update events-meta.json ── */
     var metaFile = await ghGet('events-meta.json');
     var metaSha  = metaFile.sha;
-    var metaContent = JSON.parse(atob(metaFile.content.replace(/\n/g, '')));
+    var metaContent = JSON.parse(decodeURIComponent(escape(atob(metaFile.content.replace(/\n/g, '')))));
     if (!metaContent.events) metaContent.events = {};
     metaContent.events[slug] = { countries: newCountries, cat: newCat };
 
