@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Your Own Countdown — Free Shareable Timer | countdowns.site</title>
+<meta name="description" content="Create a free custom countdown timer for any event. Just pick a name, date and optional time — get a shareable link instantly. No sign-up needed.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://countdowns.site/custom/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://countdowns.site/custom/">
+<meta property="og:title" content="Create Your Own Countdown — Free Shareable Timer">
+<meta property="og:description" content="Create a free custom countdown timer for any event. Just pick a name, date and optional time — get a shareable link instantly. No sign-up needed.">
+<link rel="alternate" hreflang="en" href="https://countdowns.site/custom/">
+<link rel="alternate" hreflang="x-default" href="https://countdowns.site/custom/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/custom/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/custom/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/custom/">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/countdown.css">
+<style>:root{--cat-color:#818CF8;--cat-glow:rgba(129,140,248,.2);--cat-soft:rgba(129,140,248,.08);}</style>
+<script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
+  <div class="header-right">
+    <button class="theme-btn" id="theme-toggle">Light</button>
+    <div class="lang-seg" role="group" aria-label="Language">
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/custom/'">ES</button><button class="lang-btn" onclick="location.href='/pt/custom/'">PT</button><button class="lang-btn" onclick="location.href='/fr/custom/'">FR</button>
+    </div>
+  </div>
+</header>
+
+<div id="cc-root"></div>
+
+<footer class="site-footer">
+  countdowns<span class="logo-tld">.site</span>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var LANG="en";
+var UI={
+  en:{
+    hero:'Create your countdown',
+    heroSub:'Pick a date — get a free shareable link. No sign-up needed.',
+    nameLabel:'Event name',namePlaceholder:'My wedding, Graduation, Trip to Japan…',
+    dateLabel:'Date',timeLabel:'Time',timePlaceholder:'Optional',
+    msgLabel:'Note',msgPlaceholder:'Optional — shown below the timer',
+    createBtn:'Create countdown →',editBtn:'← Edit',
+    copyLink:'Copy link',copied:'✓ Copied!',share:'Share',wa:'WhatsApp',
+    shareMsg:'Check out this countdown: ',
+    pastBadge:'This event already happened',
+    faqTitle:'How it works',
+    faqs:[
+      ['Is it free?','Yes, 100% free. No account or sign-up needed. Ever.'],
+      ['How do I share my countdown?','After creating it, click “Copy link” and send the URL to anyone. Opening that link shows the countdown directly.'],
+      ['Does my link expire?','No. All the data is encoded in the URL itself, so it works forever without any server.'],
+      ['Can I set an exact time?','Yes — the time field is optional. Leave it blank and the countdown goes to midnight on the chosen date.'],
+      ['Can I edit it later?','Click “Edit” on any countdown page to change the name, date, or note.'],
+    ]
+  },
+  es:{
+    hero:'Crea tu cuenta regresiva',
+    heroSub:'Elegí una fecha y compartí el enlace con quien quieras. Gratis, sin registro.',
+    nameLabel:'Nombre del evento',namePlaceholder:'Mi boda, Graduación, Viaje a Japón…',
+    dateLabel:'Fecha',timeLabel:'Hora',timePlaceholder:'Opcional',
+    msgLabel:'Nota',msgPlaceholder:'Opcional — se muestra bajo el temporizador',
+    createBtn:'Crear cuenta regresiva →',editBtn:'← Editar',
+    copyLink:'Copiar enlace',copied:'✓ ¡Copiado!',share:'Compartir',wa:'WhatsApp',
+    shareMsg:'Mírá esta cuenta regresiva: ',
+    pastBadge:'Este evento ya ocurrió',
+    faqTitle:'Cómo funciona',
+    faqs:[
+      ['¿Es gratis?','Sí, 100% gratis. Sin cuenta ni registro. Siempre.'],
+      ['¿Cómo lo comparto?','Después de crear tu cuenta regresiva, hacé clic en “Copiar enlace” y mandáselo a quien quieras.'],
+      ['¿El enlace caduca?','No. Todos los datos están en la URL, así que funciona para siempre sin ningún servidor.'],
+      ['¿Puedo poner una hora exacta?','Sí — el campo de hora es opcional. Si lo dejás vacío, cuenta hasta la medianoche de la fecha elegida.'],
+      ['¿Puedo editarlo después?','Hacé clic en “Editar” en cualquier página de cuenta regresiva para cambiar el nombre, fecha o nota.'],
+    ]
+  },
+  pt:{
+    hero:'Crie sua contagem regressiva',
+    heroSub:'Escolha uma data e compartilhe o link com quem quiser. Grátis, sem cadastro.',
+    nameLabel:'Nome do evento',namePlaceholder:'Meu casamento, Formatura, Viagem ao Japão…',
+    dateLabel:'Data',timeLabel:'Hora',timePlaceholder:'Opcional',
+    msgLabel:'Nota',msgPlaceholder:'Opcional — exibida abaixo do timer',
+    createBtn:'Criar contagem regressiva →',editBtn:'← Editar',
+    copyLink:'Copiar link',copied:'✓ Copiado!',share:'Compartilhar',wa:'WhatsApp',
+    shareMsg:'Veja esta contagem regressiva: ',
+    pastBadge:'Este evento já aconteceu',
+    faqTitle:'Como funciona',
+    faqs:[
+      ['É gratuito?','Sim, 100% gratuito. Sem cadastro ou conta. Sempre.'],
+      ['Como compartilho?','Após criar sua contagem, clique em “Copiar link” e envie para quem quiser.'],
+      ['O link expira?','Não. Todos os dados ficam na URL, então funciona para sempre sem servidor.'],
+      ['Posso definir um horário exato?','Sim — o campo de hora é opcional. Se deixar em branco, conta até a meia-noite da data escolhida.'],
+      ['Posso editar depois?','Clique em “Editar” em qualquer página para mudar o nome, data ou nota.'],
+    ]
+  },
+  fr:{
+    hero:'Créez votre compte à rebours',
+    heroSub:'Choisissez une date et partagez le lien avec qui vous voulez. Gratuit, sans inscription.',
+    nameLabel:"Événement",namePlaceholder:'Mon mariage, Diplôme, Voyage au Japon…',
+    dateLabel:'Date',timeLabel:'Heure',timePlaceholder:'Optionnel',
+    msgLabel:'Note',msgPlaceholder:'Optionnel — affichée sous le minuteur',
+    createBtn:'Créer le compte à rebours →',editBtn:'← Modifier',
+    copyLink:'Copier le lien',copied:'✓ Copié !',share:'Partager',wa:'WhatsApp',
+    shareMsg:'Regardez ce compte à rebours : ',
+    pastBadge:'Cet événement a déjà eu lieu',
+    faqTitle:'Comment ça marche',
+    faqs:[
+      ["C'est gratuit ?",'Oui, 100 % gratuit. Sans inscription ni compte. Toujours.'],
+      ['Comment le partager ?','Après avoir créé votre compte à rebours, cliquez sur “Copier le lien” et envoyez-le à qui vous voulez.'],
+      ['Le lien expire-t-il ?','Non. Toutes les données sont dans l'URL, donc il fonctionne indéfiniment sans serveur.'],
+      ['Puis-je définir une heure précise ?','Oui — le champ heure est optionnel. Si vous le laissez vide, le compte à rebours va jusqu’à minuit à la date choisie.'],
+      ['Puis-je modifier après ?','Cliquez sur “Modifier” sur n’importe quelle page pour changer le nom, la date ou la note.'],
+    ]
+  }
+};
+var T=UI[LANG]||UI.en;
+var root=document.getElementById('cc-root');
+var _ticker=null;
+
+function pad(n){return n<10?'0'+n:''+n;}
+
+function getParams(){
+  var hash=location.hash.replace(/^#/,'');
+  var p={};
+  if(!hash)return p;
+  hash.split('&').forEach(function(part){
+    var eq=part.indexOf('=');
+    if(eq>0){
+      var k=decodeURIComponent(part.slice(0,eq));
+      var v=decodeURIComponent(part.slice(eq+1).replace(/\+/g,' '));
+      p[k]=v;
+    }
+  });
+  return p;
+}
+
+function buildHash(n,d,t,m){
+  var parts=['n='+encodeURIComponent(n),'d='+encodeURIComponent(d)];
+  if(t)parts.push('t='+encodeURIComponent(t));
+  if(m)parts.push('m='+encodeURIComponent(m));
+  return parts.join('&');
+}
+
+function startTicker(target){
+  if(_ticker)clearInterval(_ticker);
+  function tick(){
+    var now=new Date();
+    var diff=target-now;
+    if(diff<=0){clearInterval(_ticker);return;}
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor((diff%86400000)/3600000);
+    var m=Math.floor((diff%3600000)/60000);
+    var s=Math.floor((diff%60000)/1000);
+    var el;
+    el=document.getElementById('cc-d');if(el)el.textContent=d;
+    el=document.getElementById('cc-h');if(el)el.textContent=pad(h);
+    el=document.getElementById('cc-m');if(el)el.textContent=pad(m);
+    el=document.getElementById('cc-s');if(el)el.textContent=pad(s);
+  }
+  tick();
+  _ticker=setInterval(tick,1000);
+}
+
+function formatDate(d,t){
+  var parts=d.split('-');
+  var dt=new Date(+parts[0],+parts[1]-1,+parts[2],0,0,0);
+  var opts={weekday:'long',year:'numeric',month:'long',day:'numeric'};
+  var locale=LANG==='en'?'en-US':LANG==='es'?'es-ES':LANG==='pt'?'pt-BR':'fr-FR';
+  var str=dt.toLocaleDateString(locale,opts);
+  if(t)str+=' · '+t;
+  return str;
+}
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function buildForm(prefill){
+  prefill=prefill||{};
+  return '<div class="cc-wrap">'+
+    '<h1 class="cc-hero-title">'+T.hero+'</h1>'+
+    '<p class="cc-hero-sub">'+T.heroSub+'</p>'+
+    '<form id="cc-form" class="cc-form" autocomplete="off">'+
+      '<div class="cc-field">'+
+        '<label class="cc-label">'+T.nameLabel+' <span class="cc-required">*</span></label>'+
+        '<input class="cc-input" id="cc-name" type="text" placeholder="'+T.namePlaceholder+'" maxlength="80" value="'+esc(prefill.n||'')+'" required>'+
+      '</div>'+
+      '<div class="cc-field cc-row">'+
+        '<div class="cc-field-half">'+
+          '<label class="cc-label">'+T.dateLabel+' <span class="cc-required">*</span></label>'+
+          '<input class="cc-input" id="cc-date" type="date" value="'+(prefill.d||'')+'" required>'+
+        '</div>'+
+        '<div class="cc-field-half">'+
+          '<label class="cc-label">'+T.timeLabel+'</label>'+
+          '<input class="cc-input" id="cc-time" type="time" value="'+(prefill.t||'')+'">'+
+        '</div>'+
+      '</div>'+
+      '<div class="cc-field">'+
+        '<label class="cc-label">'+T.msgLabel+'</label>'+
+        '<input class="cc-input" id="cc-msg" type="text" placeholder="'+T.msgPlaceholder+'" maxlength="200" value="'+esc(prefill.m||'')+'">'+
+      '</div>'+
+      '<button class="cc-create-btn" type="submit">'+T.createBtn+'</button>'+
+    '</form>'+
+    buildFaq()+
+  '</div>';
+}
+
+function buildCountdown(p){
+  var target=new Date(p.d+(p.t?'T'+p.t+':00':'T00:00:00'));
+  var now=new Date();
+  var isPast=target<=now;
+  var timerHtml=isPast
+    ?('<div class="cd-past" style="padding:32px 0 16px">'+
+        '<div class="cd-past-badge">'+T.pastBadge+'</div>'+
+        '<p class="cd-past-date">'+formatDate(p.d,p.t||'')+'</p>'+
+      '</div>')
+    :('<div class="cd-grid">'+
+        '<div class="cd-box"><span class="cd-num" id="cc-d">0</span><span class="cd-lbl">'+(LANG==='en'?'days':LANG==='es'?'días':LANG==='pt'?'dias':'jours')+'</span></div>'+
+        '<span class="cd-sep">:</span>'+
+        '<div class="cd-box"><span class="cd-num" id="cc-h">00</span><span class="cd-lbl">'+(LANG==='en'?'hours':LANG==='es'?'horas':LANG==='pt'?'horas':'heures')+'</span></div>'+
+        '<span class="cd-sep">:</span>'+
+        '<div class="cd-box"><span class="cd-num" id="cc-m">00</span><span class="cd-lbl">min</span></div>'+
+        '<span class="cd-sep">:</span>'+
+        '<div class="cd-box"><span class="cd-num" id="cc-s">00</span><span class="cd-lbl">sec</span></div>'+
+      '</div>'+
+      '<p class="cd-date-label">'+formatDate(p.d,p.t||'')+'</p>');
+  var noteHtml=p.m?'<div class="cd-note-card">'+esc(p.m)+'</div>':'';
+  var shareUrl=location.href;
+  var waUrl='https://wa.me/?text='+encodeURIComponent((T.shareMsg)+shareUrl);
+  var xUrl='https://twitter.com/intent/tweet?text='+encodeURIComponent((T.shareMsg)+shareUrl);
+  var shareBar=
+    '<div class="cd-share-bar">'+
+      '<button class="cd-share-btn" id="cc-copy" title="'+T.copyLink+'">'+
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'+
+        T.copyLink+
+      '</button>'+
+      (navigator.share?'<button class="cd-share-btn" id="cc-native">'+
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>'+
+        T.share+'</button>':'')+
+      '<a class="cd-share-btn" href="'+waUrl+'" target="_blank" rel="noopener">'+
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>'+
+        T.wa+
+      '</a>'+
+      '<a class="cd-share-btn" href="'+xUrl+'" target="_blank" rel="noopener">'+
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'+
+        'X'+
+      '</a>'+
+    '</div>';
+  return '<div class="cc-countdown-wrap">'+
+    '<div class="cc-edit-row">'+
+      '<button class="cc-edit-btn" id="cc-edit">'+
+        '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>'+
+        T.editBtn+
+      '</button>'+
+    '</div>'+
+    '<div class="cd-hero" style="padding-top:32px">'+
+      '<div class="cd-category-badge" style="margin-bottom:18px">EVENT</div>'+
+      '<h1 class="cd-title">'+esc(p.n)+'</h1>'+
+      timerHtml+
+    '</div>'+
+    '<div class="cd-below">'+
+      noteHtml+
+      shareBar+
+    '</div>'+
+    buildFaq()+
+  '</div>';
+}
+
+function buildFaq(){
+  var items=T.faqs.map(function(f){
+    return '<div class="cd-faq-item"><h3 class="cd-faq-q">'+f[0]+'</h3><p class="cd-faq-a">'+f[1]+'</p></div>';
+  }).join('');
+  return '<div class="cd-article" style="max-width:540px;margin:0 auto;padding:0 20px 40px">'+
+    '<div class="cd-faq"><h2 class="cd-faq-title">'+T.faqTitle+'</h2>'+items+'</div>'+
+  '</div>';
+}
+
+function bindForm(){
+  var form=document.getElementById('cc-form');
+  if(!form)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('cc-name').value.trim();
+    var d=document.getElementById('cc-date').value;
+    var t=document.getElementById('cc-time').value;
+    var m=document.getElementById('cc-msg').value.trim();
+    if(!n||!d)return;
+    location.hash=buildHash(n,d,t,m);
+  });
+}
+
+function bindCountdown(p){
+  var isPast=new Date(p.d+(p.t?'T'+p.t+':00':'T00:00:00'))<=new Date();
+  if(!isPast)startTicker(new Date(p.d+(p.t?'T'+p.t+':00':'T00:00:00')));
+  // Edit
+  var editBtn=document.getElementById('cc-edit');
+  if(editBtn)editBtn.addEventListener('click',function(){location.hash='';render();});
+  // Copy
+  var copyBtn=document.getElementById('cc-copy');
+  if(copyBtn)copyBtn.addEventListener('click',function(){
+    navigator.clipboard.writeText(location.href).then(function(){
+      copyBtn.textContent=T.copied;
+      setTimeout(function(){copyBtn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'+T.copyLink;},2000);
+    }).catch(function(){
+      var ta=document.createElement('textarea');
+      ta.value=location.href;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+      copyBtn.textContent=T.copied;
+    });
+  });
+  // Native share
+  var nativeBtn=document.getElementById('cc-native');
+  if(nativeBtn)nativeBtn.addEventListener('click',function(){
+    navigator.share({title:p.n,url:location.href}).catch(function(){});
+  });
+}
+
+function render(){
+  var p=getParams();
+  if(p.n&&p.d){
+    root.innerHTML=buildCountdown(p);
+    bindCountdown(p);
+  }else{
+    root.innerHTML=buildForm(p);
+    bindForm();
+    var nameEl=document.getElementById('cc-name');
+    if(nameEl)nameEl.focus();
+  }
+}
+
+window.addEventListener('hashchange',render);
+render();
+
+// Theme toggle
+(function(){
+  var btn=document.getElementById('theme-toggle');
+  var saved=localStorage.getItem('cd_theme');
+  if(saved==='light'){document.documentElement.setAttribute('data-theme','light');btn.textContent='Dark';}
+  btn.addEventListener('click',function(){
+    var isLight=document.documentElement.getAttribute('data-theme')==='light';
+    if(isLight){document.documentElement.removeAttribute('data-theme');localStorage.setItem('cd_theme','dark');btn.textContent='Light';}
+    else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('cd_theme','light');btn.textContent='Dark';}
+  });
+})();
+})();
+</script>
+</body>
+</html>
