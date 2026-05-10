@@ -335,9 +335,15 @@ code { background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 4px; 
       <!-- Date section (variable only) -->
       <div id="modal-date-section">
         <div class="section-label">Date</div>
-        <div class="form-group">
-          <label>Date &amp; Time (local timezone of event)</label>
-          <input type="datetime-local" id="modal-date">
+        <div class="form-group" style="display:flex;gap:10px;align-items:flex-end">
+          <div style="flex:1">
+            <label>Date (local timezone of event)</label>
+            <input type="date" id="modal-date-day">
+          </div>
+          <div style="width:120px">
+            <label>Time <span style="opacity:.5;font-size:.75rem">(default 00:00)</span></label>
+            <input type="time" id="modal-date-time" placeholder="00:00">
+          </div>
         </div>
         <div class="form-group">
           <label>Note</label>
@@ -703,11 +709,13 @@ function openEdit(slug) {
     dateSection.style.display = 'block';
     var ed = countdownsData && countdownsData.events && countdownsData.events[slug];
     if (ed && ed.date) {
-      /* datetime-local needs "YYYY-MM-DDTHH:MM" */
+      /* split existing date into day + time fields */
       var dt = ed.date.replace(/(\+|-)\d\d:\d\d$/, '').replace('Z', '');
-      document.getElementById('modal-date').value = dt.substring(0, 16);
+      document.getElementById('modal-date-day').value  = dt.substring(0, 10);
+      document.getElementById('modal-date-time').value = dt.substring(11, 16) || '00:00';
     } else {
-      document.getElementById('modal-date').value = '';
+      document.getElementById('modal-date-day').value  = '';
+      document.getElementById('modal-date-time').value = '';
     }
     document.getElementById('modal-note').value = (ed && ed.note) ? ed.note : '';
   } else {
@@ -748,7 +756,8 @@ function closeModal() {
 }
 
 function clearDate() {
-  document.getElementById('modal-date').value = '';
+  document.getElementById('modal-date-day').value  = '';
+  document.getElementById('modal-date-time').value = '';
 }
 
 async function saveChanges() {
@@ -776,7 +785,9 @@ async function saveChanges() {
   if (!newCountries.length) { newCountries = ['global']; }
 
   var newCat = document.getElementById('modal-cat').value;
-  var newDate = document.getElementById('modal-date').value;
+  var dateDay  = document.getElementById('modal-date-day').value;
+  var dateTime = document.getElementById('modal-date-time').value || '00:00';
+  var newDate  = dateDay ? (dateDay + 'T' + dateTime) : '';
   var newNote = document.getElementById('modal-note').value.trim();
 
   var dateChanged = ev.type === 'variable';
