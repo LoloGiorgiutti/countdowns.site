@@ -5,6 +5,58 @@
 (function () {
   'use strict';
 
+  /* ─── LANGUAGE DETECTION ────────────────────────────────────── */
+  var _pageLang = (window.location.pathname.match(/^\/(es|pt|fr)\//) || [])[1] || 'en';
+
+  /* ─── UI STRING TRANSLATIONS ────────────────────────────────── */
+  var UI = {
+    en: {
+      days: 'days', hours: 'hours', min: 'min', sec: 'sec',
+      dateTBC: 'Date to be confirmed',
+      alreadyHappened: 'Already happened',
+      backLink: '← All countdowns',
+      faqTitle: 'Frequently Asked Questions',
+    },
+    es: {
+      days: 'días', hours: 'horas', min: 'min', sec: 'seg',
+      dateTBC: 'Fecha por confirmar',
+      alreadyHappened: 'Ya ocurrió',
+      backLink: '← Todos los countdowns',
+      faqTitle: 'Preguntas Frecuentes',
+    },
+    pt: {
+      days: 'dias', hours: 'horas', min: 'min', sec: 's',
+      dateTBC: 'Data a confirmar',
+      alreadyHappened: 'Já aconteceu',
+      backLink: '← Todos os countdowns',
+      faqTitle: 'Perguntas Frequentes',
+    },
+    fr: {
+      days: 'jours', hours: 'heures', min: 'min', sec: 's',
+      dateTBC: 'Date à confirmer',
+      alreadyHappened: 'Déjà passé',
+      backLink: '← Tous les comptes à rebours',
+      faqTitle: 'Questions Fréquentes',
+    },
+  };
+  var T = UI[_pageLang] || UI.en;
+
+  /* ─── CATEGORY NAME TRANSLATIONS ───────────────────────────── */
+  var CAT_I18N = {
+    es: { Releases:'Lanzamientos', Sports:'Deportes', Holidays:'Feriados',
+          Entertainment:'Entretenimiento', Sales:'Ofertas', Nature:'Naturaleza',
+          Music:'Música', Politics:'Política', Fashion:'Moda', Technology:'Tecnología' },
+    pt: { Releases:'Lançamentos', Sports:'Esportes', Holidays:'Feriados',
+          Entertainment:'Entretenimento', Sales:'Promoções', Nature:'Natureza',
+          Music:'Música', Politics:'Política', Fashion:'Moda', Technology:'Tecnologia' },
+    fr: { Releases:'Sorties', Sports:'Sports', Holidays:'Jours Fériés',
+          Entertainment:'Divertissement', Sales:'Promotions', Nature:'Nature',
+          Music:'Musique', Politics:'Politique', Fashion:'Mode', Technology:'Technologie' },
+  };
+  function tCat(cat) {
+    return (CAT_I18N[_pageLang] && CAT_I18N[_pageLang][cat]) || cat;
+  }
+
   /* ─── FULL MOON DATES (UTC, ±12h) ──────────────────────────── */
   var FULL_MOONS = [
     '2026-01-03T22:03Z','2026-02-01T22:09Z','2026-03-03T14:38Z',
@@ -237,24 +289,24 @@
   /* ─── HTML BUILDER (individual pages) ──────────────────────── */
   function buildCountdownSection(targetDate, isPast, isUnknown, note) {
     if (isUnknown) {
-      return '<div class="cd-unknown"><div class="cd-unknown-text">Date to be confirmed</div>' +
+      return '<div class="cd-unknown"><div class="cd-unknown-text">' + T.dateTBC + '</div>' +
              (note ? '<div class="cd-unknown-sub">' + note + '</div>' : '') + '</div>';
     }
     if (isPast) {
-      return '<div class="cd-past"><div class="cd-past-badge">Already happened</div>' +
-             '<div class="cd-past-date">' + fmtDate(targetDate, 'en') + '</div></div>';
+      return '<div class="cd-past"><div class="cd-past-badge">' + T.alreadyHappened + '</div>' +
+             '<div class="cd-past-date">' + fmtDate(targetDate, _pageLang) + '</div></div>';
     }
     return [
       '<div class="cd-grid">',
-      '<div class="cd-box"><div class="cd-num" id="cd-d">—</div><div class="cd-lbl">days</div></div>',
+      '<div class="cd-box"><div class="cd-num" id="cd-d">—</div><div class="cd-lbl">' + T.days + '</div></div>',
       '<div class="cd-sep">:</div>',
-      '<div class="cd-box"><div class="cd-num" id="cd-h">—</div><div class="cd-lbl">hours</div></div>',
+      '<div class="cd-box"><div class="cd-num" id="cd-h">—</div><div class="cd-lbl">' + T.hours + '</div></div>',
       '<div class="cd-sep">:</div>',
-      '<div class="cd-box"><div class="cd-num" id="cd-m">—</div><div class="cd-lbl">min</div></div>',
+      '<div class="cd-box"><div class="cd-num" id="cd-m">—</div><div class="cd-lbl">' + T.min + '</div></div>',
       '<div class="cd-sep">:</div>',
-      '<div class="cd-box"><div class="cd-num" id="cd-s">—</div><div class="cd-lbl">sec</div></div>',
+      '<div class="cd-box"><div class="cd-num" id="cd-s">—</div><div class="cd-lbl">' + T.sec + '</div></div>',
       '</div>',
-      '<div class="cd-date-label">' + fmtDate(targetDate, 'en') + '</div>',
+      '<div class="cd-date-label">' + fmtDate(targetDate, _pageLang) + '</div>',
     ].join('');
   }
 
@@ -281,8 +333,8 @@
     return [
       '<div class="cd-page">',
       '<div class="cd-hero" style="--cat:' + cc.color + ';--cat-glow:' + cc.glow + ';--cat-soft:' + cc.soft + '">',
-      '<div class="cd-breadcrumb"><a href="/">countdowns.site</a><span>/</span><a href="/#' + (config.category || '').toLowerCase() + '">' + (config.category || '') + '</a><span>/</span><span>' + config.name + '</span></div>',
-      '<div class="cd-badge">' + config.category + '</div>',
+      '<div class="cd-breadcrumb"><a href="/">countdowns.site</a><span>/</span><a href="/#' + (config.category || '').toLowerCase() + '">' + tCat(config.category || '') + '</a><span>/</span><span>' + config.name + '</span></div>',
+      '<div class="cd-badge">' + tCat(config.category || '') + '</div>',
       '<h1 class="cd-title">' + config.name + '</h1>',
       subtitle ? '<div class="cd-subtitle">' + subtitle + '</div>' : '',
       '<p class="cd-desc">' + (config.description || '') + '</p>',
@@ -290,7 +342,7 @@
       '</div>',
       '<div class="cd-below">',
       (note && !isUnknown) ? '<div class="cd-note-card">' + note + '</div>' : '',
-      '<a href="/" class="cd-back-link">← All countdowns</a>',
+      '<a href="/" class="cd-back-link">' + T.backLink + '</a>',
       '</div>',
       articleHTML,
       '</div>',
