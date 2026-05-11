@@ -69,13 +69,19 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
   var CAT_I18N = {
     es: { Releases:'Lanzamientos', Sports:'Deportes', Holidays:'Feriados',
           Entertainment:'Entretenimiento', Sales:'Ofertas', Nature:'Naturaleza',
-          Music:'Música', Politics:'Política', Fashion:'Moda', Technology:'Tecnología' },
+          Music:'Música', Politics:'Política', Fashion:'Moda', Technology:'Tecnología',
+          Months:'Meses', Seasons:'Estaciones', School:'Escuela',
+          'National Days':'Días Nacionales', 'Jewish Holidays':'Fiestas Judías' },
     pt: { Releases:'Lançamentos', Sports:'Esportes', Holidays:'Feriados',
           Entertainment:'Entretenimento', Sales:'Promoções', Nature:'Natureza',
-          Music:'Música', Politics:'Política', Fashion:'Moda', Technology:'Tecnologia' },
+          Music:'Música', Politics:'Política', Fashion:'Moda', Technology:'Tecnologia',
+          Months:'Meses', Seasons:'Estações', School:'Escola',
+          'National Days':'Datas Nacionais', 'Jewish Holidays':'Feriados Judaicos' },
     fr: { Releases:'Sorties', Sports:'Sports', Holidays:'Jours Fériés',
           Entertainment:'Divertissement', Sales:'Promotions', Nature:'Nature',
-          Music:'Musique', Politics:'Politique', Fashion:'Mode', Technology:'Technologie' },
+          Music:'Musique', Politics:'Politique', Fashion:'Mode', Technology:'Technologie',
+          Months:'Mois', Seasons:'Saisons', School:'École',
+          'National Days':'Jours Nationaux', 'Jewish Holidays':'Fêtes Juives' },
   };
   function tCat(cat) {
     return (CAT_I18N[_pageLang] && CAT_I18N[_pageLang][cat]) || cat;
@@ -229,6 +235,65 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     return new Date(y, month, day);
   }
 
+  /* ─── HEMISPHERE / NATIONAL DAYS / BACK-TO-SCHOOL / JEWISH ──── */
+  var SOUTHERN_HEMISPHERE = {
+    AR:1,BR:1,CL:1,BO:1,PY:1,PE:1,UY:1,ZA:1,AU:1,NZ:1,AO:1,MZ:1,EC:1
+  };
+  function isSouthern() {
+    var c=(typeof localStorage!=='undefined'?localStorage.getItem('cd_country'):null)||'global';
+    return !!SOUTHERN_HEMISPHERE[c];
+  }
+  function getCurrentCountry() {
+    return (typeof localStorage!=='undefined'?localStorage.getItem('cd_country'):null)||'global';
+  }
+
+  /* Main national/independence day per country */
+  var COUNTRY_NATIONAL_DATES = {
+    US:{m:6,d:4},  CA:{m:6,d:1},  MX:{m:8,d:16}, GT:{m:8,d:15}, SV:{m:8,d:15},
+    HN:{m:8,d:15}, NI:{m:8,d:15}, CR:{m:8,d:15},  PA:{m:10,d:3}, DO:{m:1,d:27},
+    CU:{m:0,d:1},  PR:{m:6,d:4},  AR:{m:6,d:9},   CL:{m:8,d:18}, CO:{m:6,d:20},
+    PE:{m:6,d:28}, EC:{m:7,d:10}, BO:{m:7,d:6},   PY:{m:4,d:14}, UY:{m:7,d:25},
+    VE:{m:6,d:5},  BR:{m:8,d:7},  ES:{m:9,d:12},  FR:{m:6,d:14}, PT:{m:5,d:10},
+    GB:{m:5,d:2},  IE:{m:2,d:17}, DE:{m:9,d:3},   IT:{m:5,d:2},  BE:{m:6,d:21},
+    CH:{m:7,d:1},  AT:{m:9,d:26}, SE:{m:5,d:6},   NO:{m:4,d:17}, DK:{m:5,d:5},
+    FI:{m:11,d:6}, NL:{m:3,d:27}, GR:{m:2,d:25},  AU:{m:0,d:26}, NZ:{m:1,d:6},
+    SG:{m:7,d:9},  AE:{m:11,d:2}, IN:{m:7,d:15},  PH:{m:5,d:12}, ZA:{m:3,d:27},
+    AO:{m:10,d:11},MZ:{m:5,d:25},
+  };
+
+  /* Typical first day back to school per country (month 0-indexed) */
+  var COUNTRY_BACK_TO_SCHOOL = {
+    AR:{m:2,d:4},  CL:{m:2,d:3},  UY:{m:2,d:1},  PY:{m:2,d:1},  BO:{m:1,d:7},
+    PE:{m:2,d:11}, BR:{m:1,d:4},  AU:{m:0,d:27}, NZ:{m:1,d:2},  ZA:{m:0,d:15},
+    AO:{m:0,d:15}, MZ:{m:0,d:15}, EC:{m:9,d:2},  VE:{m:8,d:15},
+    US:{m:7,d:25}, CA:{m:8,d:3},  MX:{m:7,d:25}, ES:{m:8,d:9},  FR:{m:8,d:2},
+    GB:{m:8,d:3},  DE:{m:8,d:12}, IT:{m:8,d:15}, PT:{m:8,d:14}, BE:{m:8,d:1},
+    NL:{m:8,d:2},  IE:{m:8,d:3},  AT:{m:8,d:1},  CH:{m:7,d:20}, SE:{m:7,d:21},
+    NO:{m:7,d:19}, DK:{m:7,d:13}, FI:{m:7,d:13}, GR:{m:8,d:11},
+    IN:{m:5,d:1},  PH:{m:5,d:1},  SG:{m:0,d:2},  CO:{m:0,d:15}, DO:{m:8,d:1},
+  };
+
+  /* Jewish holiday dates — [year, month(0-based), day] when the holiday begins.
+     Using the evening/sundown convention (when candles/fast begin). */
+  var JEWISH_TABLE = {
+    'rosh-hashana': [[2025,8,22],[2026,8,12],[2027,9,1],[2028,8,20]],
+    'yom-kipur':    [[2025,9,1], [2026,8,21],[2027,9,10],[2028,8,29]],
+    'januca':       [[2025,11,14],[2026,11,3],[2027,11,24],[2028,11,12]],
+    'purim':        [[2026,2,3], [2027,2,22],[2028,2,11]],
+    'pesaj':        [[2026,3,1], [2027,3,21],[2028,3,9]],
+    'shavuot':      [[2026,4,21],[2027,5,10],[2028,4,29]],
+  };
+
+  function nextJewishHoliday(key) {
+    var now=new Date(), tz=getCountryTZ(), entries=JEWISH_TABLE[key]||[];
+    for(var i=0;i<entries.length;i++){
+      var e=entries[i];
+      var d=tz?midnightInTZ(tz,e[0],e[1],e[2]):new Date(e[0],e[1],e[2]);
+      if(d>now)return d;
+    }
+    return null;
+  }
+
   /* ─── AUTO DATE GETTERS ─────────────────────────────────────── */
   var AUTO = {
     /* ── Holidays ── */
@@ -326,6 +391,126 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
 
     /* ── LA 2028 Olympics ── */
     'olympics-2028':    function () { return { date: new Date(2028, 6, 14, 20, 0, 0), note: 'Los Angeles 2028 — Opening Ceremony' }; },
+
+    /* ── Months (always next occurrence of the 1st of that month) ── */
+    'january':   function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,0,1);})};},
+    'february':  function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,1,1);})};},
+    'march':     function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,2,1);})};},
+    'april':     function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,3,1);})};},
+    'may-month': function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,4,1);})};},
+    'june-month':function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,5,1);})};},
+    'july-month':function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,6,1);})};},
+    'august':    function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,7,1);})};},
+    'september': function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,8,1);})};},
+    'october':   function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,9,1);})};},
+    'november':  function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,10,1);})};},
+    'december':  function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,11,1);})};},
+
+    /* ── Midnight (next midnight in selected country's timezone) ── */
+    'midnight': function(){
+      var tz=getCountryTZ(),now=new Date();
+      var y=now.getFullYear(),m=now.getMonth(),d=now.getDate();
+      var tonight=midnightInTZ(tz,y,m,d);
+      if(tonight<=now){var tmr=new Date(now);tmr.setDate(d+1);tonight=midnightInTZ(tz,tmr.getFullYear(),tmr.getMonth(),tmr.getDate());}
+      return{date:tonight};
+    },
+
+    /* ── Seasons (hemisphere-aware via selected country) ── */
+    'spring': function(){
+      var tz=getCountryTZ(),s=isSouthern();
+      /* Northern: Mar 20 | Southern: Sep 23 */
+      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,s?8:2,s?23:20);})};
+    },
+    'summer': function(){
+      var tz=getCountryTZ(),s=isSouthern();
+      /* Northern: Jun 21 | Southern: Dec 21 */
+      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,s?11:5,21);})};
+    },
+    'autumn': function(){
+      var tz=getCountryTZ(),s=isSouthern();
+      /* Northern: Sep 23 | Southern: Mar 20 */
+      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,s?2:8,s?20:23);})};
+    },
+    'winter-season': function(){
+      var tz=getCountryTZ(),s=isSouthern();
+      /* Northern: Dec 21 | Southern: Jun 21 */
+      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,s?5:11,21);})};
+    },
+
+    /* ── School (country-aware) ── */
+    'back-to-school': function(){
+      var tz=getCountryTZ(),c=getCurrentCountry();
+      var def=isSouthern()?{m:2,d:4}:{m:7,d:25};
+      var dt=COUNTRY_BACK_TO_SCHOOL[c]||def;
+      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,dt.m,dt.d);})};
+    },
+    'summer-vacation': function(){
+      var tz=getCountryTZ(),s=isSouthern();
+      /* Northern: Jun 15 | Southern: Dec 15 */
+      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,s?11:5,15);})};
+    },
+    'winter-vacation': function(){
+      var tz=getCountryTZ(),s=isSouthern();
+      /* Northern: Dec 20 | Southern: Jul 10 */
+      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,s?6:11,s?10:20);})};
+    },
+
+    /* ── Independence Day (adaptive: changes with selected country) ── */
+    'independence': function(){
+      var tz=getCountryTZ(),c=getCurrentCountry();
+      var dt=COUNTRY_NATIONAL_DATES[c]||{m:6,d:4};
+      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,dt.m,dt.d);})};
+    },
+
+    /* ── Other country-specific national dates ── */
+    'dia-de-la-bandera':     function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,5,20);})};},  /* Jun 20 AR */
+    'dia-de-la-revolucion':  function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,10,20);})};}, /* Nov 20 MX */
+    'dia-de-la-constitucion':function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,1,5);})};},   /* Feb 5 MX */
+    'proclamacao-da-republica':function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,10,15);})};},/* Nov 15 BR */
+    'tiradentes':            function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,3,21);})};},   /* Apr 21 BR */
+    'dia-de-la-hispanidad':  function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,9,12);})};},   /* Oct 12 ES */
+    'german-unity-day':      function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,9,3);})};},    /* Oct 3 DE */
+    'australia-day':         function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,0,26);})};},   /* Jan 26 AU */
+    'canada-day':            function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,6,1);})};},    /* Jul 1 CA */
+    'syttende-mai':          function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,4,17);})};},   /* May 17 NO */
+    'festa-della-repubblica':function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,5,2);})};},    /* Jun 2 IT */
+    'waitangi-day':          function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,1,6);})};},    /* Feb 6 NZ */
+    'national-day-sg':       function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,7,9);})};},    /* Aug 9 SG */
+    'dia-de-la-raza':        function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,9,12);})};},   /* Oct 12 CO/LA */
+    'freedom-day-za':        function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,3,27);})};},   /* Apr 27 ZA */
+
+    /* ── Epiphany / Three Kings Day ── */
+    'epiphany': function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,0,6);})};},
+
+    /* ── Rio Carnival (Mardi Gras = Easter − 47 days) ── */
+    'rio-carnival': function(){
+      var tz=getCountryTZ();
+      return{date:nextOccurrence(function(y){
+        var e=easterDate(y);
+        var fat=new Date(e.getFullYear(),e.getMonth(),e.getDate()-47);
+        return tzDay(tz,fat);
+      })};
+    },
+
+    /* ── CES Las Vegas (~Jan 6 each year) ── */
+    'ces': function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,0,6);})};},
+
+    /* ── Balón de Oro (last Monday of October) ── */
+    'balon-de-oro': function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return tzDay(tz,lastWeekday(y,9,1));})};},
+
+    /* ── Mr. Olympia (4th Thursday of September, Las Vegas) ── */
+    'mr-olympia': function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return tzDay(tz,nthWeekday(y,8,4,4));})};},
+
+    /* ── Arnold Classic (1st Thursday of March) ── */
+    'arnold-classic': function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return tzDay(tz,nthWeekday(y,2,1,4));})};},
+
+    /* ── Jewish Holidays ── */
+    'rosh-hashana': function(){return{date:nextJewishHoliday('rosh-hashana'),note:'Rosh Hashanah — Jewish New Year'};},
+    'yom-kipur':    function(){return{date:nextJewishHoliday('yom-kipur'),   note:'Yom Kippur — Day of Atonement'};},
+    'januca':       function(){return{date:nextJewishHoliday('januca'),       note:'Hanukkah — first candle'};},
+    'purim':        function(){return{date:nextJewishHoliday('purim')};},
+    'pesaj':        function(){return{date:nextJewishHoliday('pesaj'),        note:'Passover — first seder night'};},
+    'shavuot':      function(){return{date:nextJewishHoliday('shavuot')};},
   };
 
   /* ─── COUNTRY PICKER (shared modal for all pages) ───────────── */

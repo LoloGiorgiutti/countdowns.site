@@ -772,6 +772,834 @@ EVENTS = [
     ]
   ),
 
+
+  # ── Months ────────────────────────────────────────────────────────────────────
+  dict(
+    slug="january", name="January", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to January — Days Until January 1st",
+    meta_desc="Live countdown to January 1st. See exactly how many days, hours, minutes and seconds until January begins.",
+    hero_desc="Countdown to the start of January.",
+    content="January is the first month of the year in the Gregorian calendar, with 31 days. Named after Janus, the Roman god of beginnings and doorways, January marks the start of a new year for most of the world. The countdown resets automatically each year.",
+    faqs=[
+      ("When does January start?", "January 1st is the first day of the new year in the Gregorian calendar, celebrated worldwide as New Year's Day."),
+      ("How many days does January have?", "January has 31 days."),
+      ("What are the main holidays in January?", "Key January dates include New Year's Day (Jan 1), Epiphany / Three Kings Day (Jan 6), and Martin Luther King Jr. Day in the US (third Monday)."),
+    ]
+  ),
+  dict(
+    slug="february", name="February", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to February — Days Until February",
+    meta_desc="Live countdown to February 1st. See exactly how many days, hours and minutes until February begins.",
+    hero_desc="Countdown to the start of February.",
+    content="February is the second month of the year and the shortest, with 28 days in common years and 29 in leap years. It hosts Valentine's Day on February 14th and Groundhog Day on February 2nd.",
+    faqs=[
+      ("How many days does February have?", "February has 28 days in common years and 29 in leap years."),
+      ("When is the next leap year?", "Leap years occur every 4 years. The next leap year is 2028."),
+      ("What holidays are in February?", "Valentine's Day (Feb 14), Groundhog Day (Feb 2), Presidents' Day in the USA (third Monday), and Carnival in many countries."),
+    ]
+  ),
+  dict(
+    slug="march", name="March", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to March — Days Until March",
+    meta_desc="Live countdown to March 1st. See exactly how many days, hours and minutes until March begins.",
+    hero_desc="Countdown to the start of March.",
+    content="March is the third month of the year with 31 days. It marks the beginning of spring in the Northern Hemisphere (around March 20) and the start of autumn in the Southern Hemisphere. St. Patrick's Day falls on March 17.",
+    faqs=[
+      ("When does spring start in March?", "The spring equinox in the Northern Hemisphere falls around March 20 or 21 each year."),
+      ("How many days does March have?", "March has 31 days."),
+      ("What are the main March holidays?", "St. Patrick's Day (Mar 17), International Women's Day (Mar 8), and the spring equinox."),
+    ]
+  ),
+  dict(
+    slug="april", name="April", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to April — Days Until April",
+    meta_desc="Live countdown to April 1st. See exactly how many days, hours and minutes until April begins.",
+    hero_desc="Countdown to the start of April.",
+    content="April is the fourth month of the year with 30 days. It is known for April Fools' Day on April 1st. Easter often falls in April. In the Southern Hemisphere, April signals the beginning of autumn.",
+    faqs=[
+      ("What is April Fools' Day?", "April 1st is a day traditionally marked by pranks and jokes. Its exact origin is uncertain."),
+      ("How many days does April have?", "April has 30 days."),
+      ("Does Easter always fall in April?", "Easter can fall between March 22 and April 25. It often lands in April."),
+    ]
+  ),
+  dict(
+    slug="may-month", name="May", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to May — Days Until May",
+    meta_desc="Live countdown to May 1st. See exactly how many days, hours and minutes until May begins.",
+    hero_desc="Countdown to the start of May.",
+    content="May is the fifth month of the year with 31 days. It includes International Labour Day on May 1st (celebrated in many countries as a public holiday), Mother's Day in many nations (second Sunday), and marks mid-spring in the Northern Hemisphere.",
+    faqs=[
+      ("When is Labour Day?", "International Labour Day (May Day) is celebrated on May 1st in most countries."),
+      ("When is Mother's Day in May?", "In most countries, Mother's Day falls on the second Sunday of May."),
+      ("How many days does May have?", "May has 31 days."),
+    ]
+  ),
+  dict(
+    slug="june-month", name="June", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to June — Days Until June",
+    meta_desc="Live countdown to June 1st. See exactly how many days, hours and minutes until June begins.",
+    hero_desc="Countdown to the start of June.",
+    content="June is the sixth month of the year with 30 days. The summer solstice in the Northern Hemisphere occurs around June 21, marking the longest day of the year. Pride Month is celebrated globally throughout June.",
+    faqs=[
+      ("When is the summer solstice?", "The summer solstice in the Northern Hemisphere falls around June 21, the longest day of the year."),
+      ("What is celebrated in June?", "June hosts Pride Month, Father's Day (third Sunday in many countries), and the summer solstice."),
+      ("How many days does June have?", "June has 30 days."),
+    ]
+  ),
+  dict(
+    slug="july-month", name="July", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to July — Days Until July",
+    meta_desc="Live countdown to July 1st. See exactly how many days, hours and minutes until July begins.",
+    hero_desc="Countdown to the start of July.",
+    content="July is the seventh month of the year with 31 days. It is named after Julius Caesar. Key July dates include US Independence Day (July 4), Canada Day (July 1), and Bastille Day in France (July 14).",
+    faqs=[
+      ("What happens on July 4th?", "July 4th is US Independence Day, commemorating the Declaration of Independence in 1776."),
+      ("What is Bastille Day?", "Bastille Day on July 14th is France's national holiday, celebrating the storming of the Bastille in 1789."),
+      ("How many days does July have?", "July has 31 days."),
+    ]
+  ),
+  dict(
+    slug="august", name="August", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to August — Days Until August",
+    meta_desc="Live countdown to August 1st. See exactly how many days, hours and minutes until August begins.",
+    hero_desc="Countdown to the start of August.",
+    content="August is the eighth month of the year with 31 days, named after Emperor Augustus. It is the peak of summer in the Northern Hemisphere and a popular holiday month. August also marks the last full month of summer before schools return in September.",
+    faqs=[
+      ("Why is August named August?", "August is named after Roman Emperor Augustus Caesar, who considered it his lucky month."),
+      ("What holidays are in August?", "August includes India's Independence Day (Aug 15), National Day in many countries, and summer bank holidays in the UK."),
+      ("How many days does August have?", "August has 31 days."),
+    ]
+  ),
+  dict(
+    slug="september", name="September", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to September — Days Until September",
+    meta_desc="Live countdown to September 1st. See exactly how many days, hours and minutes until September begins.",
+    hero_desc="Countdown to the start of September.",
+    content="September is the ninth month of the year with 30 days. The autumn equinox in the Northern Hemisphere falls around September 22 or 23. Schools typically resume in September across the Northern Hemisphere.",
+    faqs=[
+      ("When does autumn start in September?", "The autumn equinox in the Northern Hemisphere falls around September 22 or 23."),
+      ("What is celebrated in September?", "Labor Day in the USA and Canada (first Monday), Mexican Independence Day (Sep 16), and the autumn equinox."),
+      ("How many days does September have?", "September has 30 days."),
+    ]
+  ),
+  dict(
+    slug="october", name="October", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to October — Days Until October",
+    meta_desc="Live countdown to October 1st. See exactly how many days, hours and minutes until October begins.",
+    hero_desc="Countdown to the start of October.",
+    content="October is the tenth month of the year with 31 days. It is home to Halloween on October 31, Oktoberfest in Germany (late September through early October), and World Mental Health Day on October 10.",
+    faqs=[
+      ("When is Halloween?", "Halloween is on October 31 every year."),
+      ("When is Oktoberfest?", "Oktoberfest typically runs from late September through the first weekend of October in Munich, Germany."),
+      ("How many days does October have?", "October has 31 days."),
+    ]
+  ),
+  dict(
+    slug="november", name="November", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to November — Days Until November",
+    meta_desc="Live countdown to November 1st. See exactly how many days, hours and minutes until November begins.",
+    hero_desc="Countdown to the start of November.",
+    content="November is the eleventh month of the year with 30 days. It includes Dia de los Muertos (Nov 1-2), Veterans Day / Remembrance Day (Nov 11), and Thanksgiving in the USA (fourth Thursday). Black Friday follows Thanksgiving.",
+    faqs=[
+      ("When is Thanksgiving?", "In the USA, Thanksgiving falls on the fourth Thursday of November. In Canada, it is the second Monday of October."),
+      ("When is Black Friday?", "Black Friday falls the day after US Thanksgiving, on the fourth Friday of November."),
+      ("How many days does November have?", "November has 30 days."),
+    ]
+  ),
+  dict(
+    slug="december", name="December", type="auto", category="Months",
+    regions=["global"],
+    seo_title="Countdown to December — Days Until December",
+    meta_desc="Live countdown to December 1st. See exactly how many days, hours and minutes until December begins.",
+    hero_desc="Countdown to the start of December.",
+    content="December is the twelfth and final month of the year with 31 days. It hosts the winter solstice (around December 21), Christmas (December 25), Hanukkah (dates vary), Kwanzaa (Dec 26), and New Year's Eve (Dec 31).",
+    faqs=[
+      ("When is the winter solstice?", "The winter solstice in the Northern Hemisphere falls around December 21, the shortest day of the year."),
+      ("What holidays are in December?", "Christmas (Dec 25), Hanukkah (dates vary), Kwanzaa (Dec 26-Jan 1), New Year's Eve (Dec 31), and the winter solstice."),
+      ("How many days does December have?", "December has 31 days."),
+    ]
+  ),
+
+  # ── Time ──────────────────────────────────────────────────────────────────────
+  dict(
+    slug="midnight", name="Midnight", type="auto", category="Time",
+    regions=["global"],
+    seo_title="Countdown to Midnight — Time Until Tonight's Midnight",
+    meta_desc="Live countdown to midnight tonight in your timezone. See exactly how many hours, minutes and seconds until the clock strikes 12:00 AM.",
+    hero_desc="Countdown to midnight tonight in your local timezone.",
+    content="Midnight marks the transition between one calendar day and the next, occurring at exactly 12:00:00 AM. The countdown above resets automatically every day, always showing the time remaining until the next midnight in your selected country's timezone.",
+    faqs=[
+      ("What time is midnight?", "Midnight is 12:00:00 AM, the moment when one day ends and the next begins."),
+      ("Is midnight 12 AM or 12 PM?", "Midnight is 12:00 AM (ante meridiem — before noon). Noon is 12:00 PM."),
+      ("Does the countdown adjust for my timezone?", "Yes. The countdown uses the timezone of your selected country to show the correct local midnight."),
+    ]
+  ),
+
+  # ── Seasons ───────────────────────────────────────────────────────────────────
+  dict(
+    slug="spring", name="Spring", type="auto", category="Seasons",
+    regions=["global"],
+    seo_title="Countdown to Spring — Days Until the First Day of Spring",
+    meta_desc="Live countdown to the first day of spring. The spring equinox marks the astronomical start of the season — adapts to your hemisphere.",
+    hero_desc="Countdown to the first day of spring in your hemisphere.",
+    content="Spring begins at the vernal equinox, when day and night are approximately equal in length. In the Northern Hemisphere this falls around March 20; in the Southern Hemisphere around September 23. The countdown automatically adapts to the hemisphere of your selected country.",
+    faqs=[
+      ("When does spring start?", "Spring begins at the vernal equinox: around March 20 in the Northern Hemisphere and around September 23 in the Southern Hemisphere."),
+      ("Does the countdown show my hemisphere?", "Yes. Select your country and the countdown will show the correct spring start date for your hemisphere."),
+      ("What is the vernal equinox?", "The vernal equinox is the moment when the sun crosses the celestial equator heading north, giving roughly equal day and night everywhere on Earth."),
+    ]
+  ),
+  dict(
+    slug="summer", name="Summer", type="auto", category="Seasons",
+    regions=["global"],
+    seo_title="Countdown to Summer — Days Until the First Day of Summer",
+    meta_desc="Live countdown to the first day of summer. The summer solstice is the longest day of the year — adapts to your hemisphere.",
+    hero_desc="Countdown to the first day of summer in your hemisphere.",
+    content="Summer begins at the summer solstice, the longest day of the year. In the Northern Hemisphere this falls around June 21; in the Southern Hemisphere around December 21. The countdown automatically adapts to the hemisphere of your selected country.",
+    faqs=[
+      ("When does summer start?", "Summer begins at the summer solstice: around June 21 in the Northern Hemisphere and around December 21 in the Southern Hemisphere."),
+      ("What is the summer solstice?", "The summer solstice is the day with the most hours of daylight. The sun reaches its highest point in the sky at noon."),
+      ("Does the countdown adapt to my hemisphere?", "Yes. Select your country and the countdown will show the correct summer start date for your hemisphere."),
+    ]
+  ),
+  dict(
+    slug="autumn", name="Autumn / Fall", type="auto", category="Seasons",
+    regions=["global"],
+    seo_title="Countdown to Autumn — Days Until the First Day of Fall",
+    meta_desc="Live countdown to the first day of autumn (fall). The autumnal equinox marks the start of the season — adapts to your hemisphere.",
+    hero_desc="Countdown to the first day of autumn in your hemisphere.",
+    content="Autumn (also called fall) begins at the autumnal equinox. In the Northern Hemisphere this falls around September 23; in the Southern Hemisphere around March 20. The countdown automatically adapts to the hemisphere of your selected country.",
+    faqs=[
+      ("When does autumn start?", "Autumn begins at the autumnal equinox: around September 23 in the Northern Hemisphere and around March 20 in the Southern Hemisphere."),
+      ("Why is autumn also called fall?", "The word 'fall' comes from the phrase 'fall of the leaf,' describing when deciduous trees shed their leaves."),
+      ("Does the countdown adapt to my hemisphere?", "Yes. Select your country and the countdown will show the correct autumn start date for your hemisphere."),
+    ]
+  ),
+  dict(
+    slug="winter-season", name="Winter", type="auto", category="Seasons",
+    regions=["global"],
+    seo_title="Countdown to Winter — Days Until the First Day of Winter",
+    meta_desc="Live countdown to the first day of winter. The winter solstice is the shortest day of the year — adapts to your hemisphere.",
+    hero_desc="Countdown to the first day of winter in your hemisphere.",
+    content="Winter begins at the winter solstice, the shortest day of the year. In the Northern Hemisphere this falls around December 21; in the Southern Hemisphere around June 21. The countdown automatically adapts to the hemisphere of your selected country.",
+    faqs=[
+      ("When does winter start?", "Winter begins at the winter solstice: around December 21 in the Northern Hemisphere and around June 21 in the Southern Hemisphere."),
+      ("What is the winter solstice?", "The winter solstice is the day with the fewest hours of daylight. It marks the official start of winter and the return of longer days."),
+      ("Does the countdown adapt to my hemisphere?", "Yes. Select your country and the countdown will show the correct winter start date for your hemisphere."),
+    ]
+  ),
+
+  # ── School ────────────────────────────────────────────────────────────────────
+  dict(
+    slug="back-to-school", name="Back to School", type="auto", category="School",
+    regions=["global"],
+    seo_title="Back to School Countdown — Days Until School Starts",
+    meta_desc="Live countdown to back-to-school day. The date automatically adapts to the school year calendar of your selected country.",
+    hero_desc="Countdown to the first day of school in your country.",
+    content="The back-to-school date varies widely around the world. In the Northern Hemisphere most schools resume in late August or early September. In the Southern Hemisphere — countries like Argentina, Chile, Brazil and Australia — schools typically restart in late January or early February. The countdown automatically adapts to your selected country.",
+    faqs=[
+      ("When does school start?", "School start dates vary by country. In the USA it is typically late August. In Argentina and Chile it is around early March. Select your country for the exact date."),
+      ("Does the countdown adapt to my country?", "Yes. The countdown uses the approximate first day of school for your selected country."),
+      ("Why do Southern Hemisphere countries start school in February?", "Because their seasons are reversed. Summer vacation coincides with December-January, so the school year starts in February or March."),
+    ]
+  ),
+  dict(
+    slug="summer-vacation", name="Summer Vacation", type="auto", category="School",
+    regions=["global"],
+    seo_title="Summer Vacation Countdown — Days Until Summer Break",
+    meta_desc="Live countdown to the start of summer vacation. The date adapts to your hemisphere's school calendar.",
+    hero_desc="Countdown to the start of summer school vacation.",
+    content="Summer vacation marks the long school break that coincides with the warmest months of the year. In the Northern Hemisphere this typically begins in June, while in the Southern Hemisphere it starts in December. The countdown adapts to your selected country.",
+    faqs=[
+      ("When does summer vacation start?", "Roughly mid-June in the Northern Hemisphere and mid-December in the Southern Hemisphere, varying by country."),
+      ("How long is summer vacation?", "Summer break typically lasts 6 to 12 weeks depending on the country."),
+      ("Does the countdown adapt to my hemisphere?", "Yes. Select your country and the countdown will show the approximate start of summer vacation for your region."),
+    ]
+  ),
+  dict(
+    slug="winter-vacation", name="Winter Vacation", type="auto", category="School",
+    regions=["global"],
+    seo_title="Winter Vacation Countdown — Days Until Winter Break",
+    meta_desc="Live countdown to the start of winter school vacation. The date adapts to your hemisphere.",
+    hero_desc="Countdown to the start of winter school vacation.",
+    content="Winter vacation is the school break that coincides with the winter holidays. In the Northern Hemisphere it typically falls in late December. In the Southern Hemisphere (Argentina, Chile, etc.) it falls in July. The countdown adapts to your selected country.",
+    faqs=[
+      ("When is winter vacation?", "In the Northern Hemisphere, winter break is typically late December. In the Southern Hemisphere it falls around July."),
+      ("How long is winter vacation?", "Winter break is usually 2 to 4 weeks, covering the winter holiday period."),
+      ("Does the countdown adapt to my country?", "Yes. The countdown uses your selected country to determine the correct winter vacation period."),
+    ]
+  ),
+
+  # ── National Days ─────────────────────────────────────────────────────────────
+  dict(
+    slug="independence", name="Independence Day", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Independence Day Countdown — Days Until Your Country's Independence Day",
+    meta_desc="Live countdown to Independence Day. The date automatically changes based on your selected country — USA, Argentina, Mexico, France, and 50+ more.",
+    hero_desc="Countdown to your country's Independence Day.",
+    content="Independence Day is the national holiday commemorating the date a country declared or achieved independence from colonial or foreign rule. The date varies by country: July 4 in the USA, July 9 in Argentina, September 16 in Mexico, July 14 in France (Bastille Day), and many more. Select your country above to see your national independence day.",
+    faqs=[
+      ("When is US Independence Day?", "US Independence Day is July 4, commemorating the Declaration of Independence in 1776."),
+      ("Does this countdown adapt to my country?", "Yes. Select your country and the countdown will automatically show the correct independence or national day for your nation."),
+      ("What if my country is not listed?", "If your country is not in the list, the countdown defaults to July 4 (US Independence Day) as a reference date."),
+      ("What is celebrated on independence day?", "Each country celebrates its own historical milestone: a declaration of independence, a revolution, a liberation, or the founding of the nation."),
+    ]
+  ),
+  dict(
+    slug="canada-day", name="Canada Day", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Canada Day Countdown — Days Until July 1st",
+    meta_desc="Live countdown to Canada Day on July 1st. Celebrate the anniversary of Canadian Confederation in 1867.",
+    hero_desc="Countdown to Canada Day — July 1st.",
+    content="Canada Day, celebrated on July 1st every year, marks the anniversary of Canadian Confederation. On July 1, 1867, the British North America Act came into effect, uniting the provinces of Canada, Nova Scotia and New Brunswick into a single dominion within the British Empire.",
+    faqs=[
+      ("When is Canada Day?", "Canada Day is on July 1st every year."),
+      ("What does Canada Day celebrate?", "Canada Day marks the anniversary of the Constitution Act (1867), which united three provinces into the Dominion of Canada."),
+      ("What do Canadians do on Canada Day?", "Canadians celebrate with fireworks, parades, outdoor concerts, barbecues, and public ceremonies across the country."),
+    ]
+  ),
+  dict(
+    slug="australia-day", name="Australia Day", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Australia Day Countdown — Days Until January 26th",
+    meta_desc="Live countdown to Australia Day on January 26th. Australia's national day commemorating the 1788 arrival of the First Fleet.",
+    hero_desc="Countdown to Australia Day — January 26th.",
+    content="Australia Day is observed on January 26th each year, marking the anniversary of the 1788 arrival of the First Fleet of British ships at Port Jackson, New South Wales. It is Australia's national day, though it remains a topic of ongoing national discussion regarding its date and meaning.",
+    faqs=[
+      ("When is Australia Day?", "Australia Day is on January 26th every year."),
+      ("What does Australia Day commemorate?", "It marks the 1788 arrival of the First Fleet at Port Jackson, the beginning of British colonisation of the continent."),
+      ("What happens on Australia Day?", "Celebrations include fireworks, outdoor events, citizenship ceremonies, and the Australian of the Year awards."),
+    ]
+  ),
+  dict(
+    slug="waitangi-day", name="Waitangi Day", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Waitangi Day Countdown — Days Until February 6th",
+    meta_desc="Live countdown to Waitangi Day on February 6th — New Zealand's national day commemorating the Treaty of Waitangi.",
+    hero_desc="Countdown to Waitangi Day — February 6th.",
+    content="Waitangi Day is New Zealand's national day, observed on February 6th each year. It commemorates the signing of the Treaty of Waitangi on February 6, 1840, between the British Crown and Maori chiefs. The treaty is considered the founding document of New Zealand.",
+    faqs=[
+      ("When is Waitangi Day?", "Waitangi Day is February 6th every year."),
+      ("What is the Treaty of Waitangi?", "The Treaty of Waitangi, signed in 1840, is a founding document of New Zealand establishing a relationship between the Crown and Maori."),
+      ("Is Waitangi Day a public holiday?", "Yes, Waitangi Day is a public holiday in New Zealand."),
+    ]
+  ),
+  dict(
+    slug="syttende-mai", name="Norwegian Constitution Day", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Norwegian Constitution Day Countdown — Syttende Mai, May 17th",
+    meta_desc="Live countdown to Syttende Mai — Norway's Constitution Day on May 17th.",
+    hero_desc="Countdown to Norway's Constitution Day — May 17th.",
+    content="Syttende mai (the 17th of May) is Norway's Constitution Day, celebrating the signing of the Norwegian Constitution on May 17, 1814. It is one of the world's most festive national days, characterized by school parades, traditional folk costumes (bunad), and celebrations in towns across the country.",
+    faqs=[
+      ("When is Norway's Constitution Day?", "Syttende mai is May 17th every year."),
+      ("What is the bunad?", "The bunad is a traditional Norwegian folk costume worn during national celebrations, varying by region."),
+      ("Why is May 17 special in Norway?", "On May 17, 1814, Norway signed its Constitution at Eidsvoll, asserting its independence."),
+    ]
+  ),
+  dict(
+    slug="german-unity-day", name="German Unity Day", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="German Unity Day Countdown — Tag der Deutschen Einheit, October 3rd",
+    meta_desc="Live countdown to German Unity Day on October 3rd, celebrating the reunification of Germany in 1990.",
+    hero_desc="Countdown to German Unity Day — October 3rd.",
+    content="German Unity Day (Tag der Deutschen Einheit) is Germany's national holiday, celebrated on October 3rd. It commemorates the reunification of East and West Germany on October 3, 1990, following the fall of the Berlin Wall in November 1989.",
+    faqs=[
+      ("When is German Unity Day?", "German Unity Day is October 3rd every year."),
+      ("What does October 3rd commemorate?", "It marks the reunification of East Germany (GDR) and West Germany (FRG) in 1990."),
+      ("When did the Berlin Wall fall?", "The Berlin Wall fell on November 9, 1989, leading to German reunification less than a year later."),
+    ]
+  ),
+  dict(
+    slug="festa-della-repubblica", name="Italian Republic Day", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Italian Republic Day Countdown — Festa della Repubblica, June 2nd",
+    meta_desc="Live countdown to Italian Republic Day (Festa della Repubblica) on June 2nd.",
+    hero_desc="Countdown to Italian Republic Day — June 2nd.",
+    content="The Festa della Repubblica is Italy's national holiday, held on June 2nd each year. It commemorates the institutional referendum of June 2, 1946, when Italians voted to abolish the monarchy and establish a republic. The day is marked by a military parade on Via dei Fori Imperiali in Rome.",
+    faqs=[
+      ("When is Italian Republic Day?", "Festa della Repubblica is June 2nd every year."),
+      ("What happened on June 2, 1946?", "Italy held a referendum in which citizens chose a republic over the monarchy, ending the reign of the House of Savoy."),
+      ("What are the main celebrations?", "The main event is a military parade in Rome along Via dei Fori Imperiali, attended by the President of the Republic."),
+    ]
+  ),
+  dict(
+    slug="national-day-sg", name="Singapore National Day", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Singapore National Day Countdown — Days Until August 9th",
+    meta_desc="Live countdown to Singapore National Day on August 9th, celebrating independence since 1965.",
+    hero_desc="Countdown to Singapore National Day — August 9th.",
+    content="Singapore's National Day is celebrated on August 9th every year, marking the country's independence from Malaysia on August 9, 1965. The highlight is the National Day Parade, featuring military displays, civilian performances, and a fireworks finale.",
+    faqs=[
+      ("When is Singapore National Day?", "Singapore's National Day is August 9th every year."),
+      ("What does August 9th commemorate?", "It marks Singapore's separation from Malaysia and declaration of independence on August 9, 1965."),
+      ("What is the National Day Parade?", "The NDP is Singapore's annual celebration featuring military contingents, cultural performances, and spectacular fireworks."),
+    ]
+  ),
+  dict(
+    slug="freedom-day-za", name="South Africa Freedom Day", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="South Africa Freedom Day Countdown — Days Until April 27th",
+    meta_desc="Live countdown to South Africa's Freedom Day on April 27th, celebrating the first democratic elections in 1994.",
+    hero_desc="Countdown to South Africa Freedom Day — April 27th.",
+    content="Freedom Day is South Africa's national holiday observed on April 27th. It commemorates the country's first fully democratic elections held on April 27, 1994, which ended apartheid and resulted in Nelson Mandela becoming the first democratically elected president.",
+    faqs=[
+      ("When is South Africa Freedom Day?", "Freedom Day is April 27th every year."),
+      ("What does Freedom Day celebrate?", "It marks the date of South Africa's first democratic elections in 1994, ending the apartheid era."),
+      ("Who became president after the 1994 elections?", "Nelson Mandela was elected president, serving from 1994 to 1999."),
+    ]
+  ),
+  dict(
+    slug="dia-de-la-hispanidad", name="Dia de la Hispanidad", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Dia de la Hispanidad Countdown — Spain's National Day, October 12th",
+    meta_desc="Live countdown to Spain's Dia de la Hispanidad (National Day) on October 12th.",
+    hero_desc="Countdown to Dia de la Hispanidad — October 12th.",
+    content="El Dia de la Hispanidad (also Fiesta Nacional de Espana) is Spain's national holiday, celebrated on October 12th. The date commemorates Christopher Columbus's arrival in the Americas on October 12, 1492. In many Latin American countries the same date is observed as Dia de la Raza or Columbus Day.",
+    faqs=[
+      ("When is Dia de la Hispanidad?", "Spain's national holiday is October 12th every year."),
+      ("What does October 12th commemorate?", "It marks Christopher Columbus's arrival in the Americas on October 12, 1492, sailing under the Spanish crown."),
+      ("How is it celebrated in Spain?", "A military parade takes place in Madrid attended by the royal family and senior government officials."),
+    ]
+  ),
+  dict(
+    slug="dia-de-la-raza", name="Dia de la Raza", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Dia de la Raza Countdown — Days Until October 12th",
+    meta_desc="Live countdown to Dia de la Raza on October 12th, celebrated across Latin America.",
+    hero_desc="Countdown to Dia de la Raza — October 12th.",
+    content="El Dia de la Raza is commemorated on October 12th across many Latin American countries, marking the anniversary of Christopher Columbus's arrival in the Americas in 1492. The holiday is known by different names in different countries: Dia de la Hispanidad in Spain, Columbus Day in the USA, and Dia de la Resistencia Indigena in Venezuela.",
+    faqs=[
+      ("When is Dia de la Raza?", "Dia de la Raza is October 12th every year."),
+      ("What is the significance of October 12th?", "It marks the date Christopher Columbus first sighted the Americas in 1492."),
+      ("What is it called in different countries?", "Dia de la Hispanidad (Spain), Columbus Day (USA), Dia de la Raza (Mexico, many Latin American countries), Dia de la Resistencia Indigena (Venezuela)."),
+    ]
+  ),
+  dict(
+    slug="dia-de-la-bandera", name="Dia de la Bandera (Argentina)", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Dia de la Bandera Countdown — Argentina Flag Day, June 20th",
+    meta_desc="Live countdown to Argentina's Dia de la Bandera (Flag Day) on June 20th.",
+    hero_desc="Countdown to Argentina's Dia de la Bandera — June 20th.",
+    content="El Dia de la Bandera (Flag Day) is one of Argentina's most important national holidays, observed on June 20th. It commemorates the death of Manuel Belgrano, the Argentine general who designed the national flag. The main ceremony takes place in Rosario, Santa Fe, the city where Belgrano raised the flag for the first time on February 27, 1812.",
+    faqs=[
+      ("When is Dia de la Bandera in Argentina?", "Flag Day in Argentina is June 20th every year."),
+      ("Who created the Argentine flag?", "Manuel Belgrano created and raised the Argentine flag for the first time on February 27, 1812, in Rosario."),
+      ("Why is June 20th significant?", "June 20th is the anniversary of Manuel Belgrano's death in 1820."),
+    ]
+  ),
+  dict(
+    slug="dia-de-la-revolucion", name="Dia de la Revolucion (Mexico)", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Dia de la Revolucion Countdown — Mexican Revolution Day, November 20th",
+    meta_desc="Live countdown to Mexico's Dia de la Revolucion on November 20th, commemorating the Mexican Revolution of 1910.",
+    hero_desc="Countdown to Mexico's Dia de la Revolucion — November 20th.",
+    content="El Dia de la Revolucion is a Mexican national holiday celebrated on the third Monday of November (closest to November 20th) to commemorate the start of the Mexican Revolution in 1910. The revolution began as a movement against the dictatorship of Porfirio Diaz and transformed into a decade-long civil conflict that reshaped Mexico.",
+    faqs=[
+      ("When is Dia de la Revolucion in Mexico?", "Revolution Day in Mexico is observed on the third Monday of November (around November 20th)."),
+      ("What does Dia de la Revolucion celebrate?", "It commemorates the start of the Mexican Revolution on November 20, 1910, led by Francisco I. Madero against Porfirio Diaz."),
+      ("How is it celebrated?", "Celebrations include military and civic parades, school ceremonies, and cultural events throughout Mexico."),
+    ]
+  ),
+  dict(
+    slug="dia-de-la-constitucion", name="Dia de la Constitucion (Mexico)", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Dia de la Constitucion Countdown — Mexican Constitution Day, February 5th",
+    meta_desc="Live countdown to Mexico's Dia de la Constitucion on February 5th, celebrating the 1917 Constitution.",
+    hero_desc="Countdown to Mexico's Dia de la Constitucion — February 5th.",
+    content="El Dia de la Constitucion (Constitution Day) is a Mexican national holiday observed on the first Monday of February (closest to February 5th). It commemorates the promulgation of the Political Constitution of Mexico on February 5, 1917, one of the most progressive constitutions of its time.",
+    faqs=[
+      ("When is Dia de la Constitucion in Mexico?", "Constitution Day in Mexico is observed on the first Monday of February (around February 5th)."),
+      ("What does it celebrate?", "It commemorates the promulgation of the Mexican Constitution on February 5, 1917."),
+      ("Why is the 1917 constitution significant?", "It was one of the world's first constitutions to include social rights such as land reform, labor rights, and limits on the power of the Catholic Church."),
+    ]
+  ),
+  dict(
+    slug="proclamacao-da-republica", name="Proclamacao da Republica (Brazil)", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Proclamacao da Republica Countdown — Brazil Republic Day, November 15th",
+    meta_desc="Live countdown to Brazil's Proclamacao da Republica on November 15th.",
+    hero_desc="Countdown to Brazil's Proclamacao da Republica — November 15th.",
+    content="A Proclamacao da Republica is a Brazilian national holiday observed on November 15th, commemorating the proclamation of the republic on November 15, 1889. On that day, a military coup led by Marshal Deodoro da Fonseca ended the Brazilian Empire and established the Republic of Brazil.",
+    faqs=[
+      ("When is Brazil's Republic Day?", "Proclamacao da Republica is November 15th every year."),
+      ("What happened on November 15, 1889?", "Marshal Deodoro da Fonseca proclaimed the Republic of Brazil, ending Emperor Pedro II's reign."),
+      ("Is November 15th a public holiday in Brazil?", "Yes, it is a national public holiday in Brazil."),
+    ]
+  ),
+  dict(
+    slug="tiradentes", name="Tiradentes (Brazil)", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="Tiradentes Countdown — Brazil National Holiday, April 21st",
+    meta_desc="Live countdown to Tiradentes Day in Brazil on April 21st.",
+    hero_desc="Countdown to Tiradentes Day — April 21st.",
+    content="Tiradentes is a Brazilian national holiday on April 21st, honoring Joaquim Jose da Silva Xavier (nicknamed Tiradentes, meaning 'tooth puller'), a leading figure in the Inconfidencia Mineira, Brazil's first major independence movement. He was executed on April 21, 1792, and is celebrated as a national hero and martyr.",
+    faqs=[
+      ("When is Tiradentes Day?", "Tiradentes Day is April 21st every year in Brazil."),
+      ("Who was Tiradentes?", "Tiradentes was a Brazilian revolutionary who led the Inconfidencia Mineira, an early independence movement. He was executed in 1792."),
+      ("Is Tiradentes Day a public holiday?", "Yes, April 21st is a national public holiday in Brazil."),
+    ]
+  ),
+  dict(
+    slug="proclamacion-independencia-ar", name="25 de Mayo (Argentina)", type="auto", category="National Days",
+    regions=["global"],
+    seo_title="25 de Mayo Countdown — Argentina Revolution Day, May 25th",
+    meta_desc="Live countdown to Argentina's 25 de Mayo (May Revolution Day) on May 25th.",
+    hero_desc="Countdown to Argentina's 25 de Mayo — May 25th.",
+    content="El 25 de Mayo es el Dia de la Revolucion de Mayo en Argentina, commemorating the May Revolution of 1810 when the Viceroyalty of the Rio de la Plata formed its first independent government, the Primera Junta, on May 25, 1810. This is considered the beginning of Argentina's independence process, culminating in formal independence on July 9, 1816.",
+    faqs=[
+      ("When is 25 de Mayo in Argentina?", "Argentina's May Revolution Day is May 25th every year."),
+      ("What happened on May 25, 1810?", "The Primera Junta was established in Buenos Aires, replacing the Spanish Viceroy and beginning Argentina's path to independence."),
+      ("What is the difference between May 25 and July 9 in Argentina?", "May 25 marks the start of the independence process (1810), while July 9 is the formal declaration of independence (1816)."),
+    ]
+  ),
+
+  # ── Jewish Holidays ───────────────────────────────────────────────────────────
+  dict(
+    slug="rosh-hashana", name="Rosh Hashanah", type="auto", category="Jewish Holidays",
+    regions=["global"],
+    seo_title="Rosh Hashanah Countdown — Days Until the Jewish New Year",
+    meta_desc="Live countdown to Rosh Hashanah, the Jewish New Year. Date follows the Hebrew calendar and varies each year.",
+    hero_desc="Countdown to Rosh Hashanah — the Jewish New Year.",
+    content="Rosh Hashanah (Hebrew: head of the year) is the Jewish New Year, observed on the 1st and 2nd of Tishrei in the Hebrew calendar. It marks the beginning of the High Holy Days (Yamim Noraim), a 10-day period of reflection ending with Yom Kippur. Rosh Hashanah traditions include blowing the shofar (ram's horn), eating apples dipped in honey, and attending synagogue services.",
+    faqs=[
+      ("When is Rosh Hashanah?", "Rosh Hashanah falls on the 1st and 2nd of Tishrei in the Hebrew calendar, typically in September or October."),
+      ("What does Rosh Hashanah celebrate?", "Rosh Hashanah is the Jewish New Year, celebrating the anniversary of creation and beginning a period of reflection and repentance."),
+      ("What is the shofar?", "The shofar is a ram's horn blown during Rosh Hashanah services as a call to repentance and spiritual awakening."),
+      ("Why eat apples and honey on Rosh Hashanah?", "Dipping apples in honey symbolizes the wish for a sweet new year."),
+    ]
+  ),
+  dict(
+    slug="yom-kipur", name="Yom Kippur", type="auto", category="Jewish Holidays",
+    regions=["global"],
+    seo_title="Yom Kippur Countdown — Days Until the Day of Atonement",
+    meta_desc="Live countdown to Yom Kippur, the Jewish Day of Atonement. The holiest day of the Jewish year.",
+    hero_desc="Countdown to Yom Kippur — the Day of Atonement.",
+    content="Yom Kippur (Hebrew: Day of Atonement) is the holiest day in Judaism, observed on the 10th of Tishrei. It is a day of fasting, prayer, and repentance, marking the conclusion of the Ten Days of Repentance that begin with Rosh Hashanah. The fast lasts approximately 25 hours.",
+    faqs=[
+      ("When is Yom Kippur?", "Yom Kippur falls on the 10th of Tishrei in the Hebrew calendar, 9 days after Rosh Hashanah."),
+      ("What is Yom Kippur?", "Yom Kippur is the Day of Atonement, the holiest day in Judaism. Jews fast for approximately 25 hours and attend synagogue services."),
+      ("Why do Jews fast on Yom Kippur?", "Fasting on Yom Kippur is a form of self-denial commanded in the Torah, symbolizing repentance and seeking forgiveness."),
+      ("What is Kol Nidre?", "Kol Nidre is the prayer that opens the Yom Kippur eve service. The haunting melody is one of the most recognizable in Jewish liturgy."),
+    ]
+  ),
+  dict(
+    slug="januca", name="Hanukkah", type="auto", category="Jewish Holidays",
+    regions=["global"],
+    seo_title="Hanukkah Countdown — Days Until Chanukah",
+    meta_desc="Live countdown to Hanukkah (Chanukah), the Jewish Festival of Lights. Eight nights of candle-lighting.",
+    hero_desc="Countdown to Hanukkah — the Festival of Lights.",
+    content="Hanukkah (also Chanukah) is a Jewish festival lasting eight nights, beginning on the 25th of Kislev in the Hebrew calendar. It commemorates the rededication of the Holy Temple in Jerusalem during the Maccabean Revolt (2nd century BCE). The main ritual is lighting the hanukkiah (menorah) — one candle on the first night, adding one each night until all eight are lit.",
+    faqs=[
+      ("When does Hanukkah start?", "Hanukkah begins on the 25th of Kislev in the Hebrew calendar, typically in November or December."),
+      ("How long does Hanukkah last?", "Hanukkah lasts eight nights and days."),
+      ("What is the hanukkiah?", "The hanukkiah is a special nine-branched menorah used during Hanukkah. Eight branches hold the Hanukkah candles, and the ninth (the shamash) is used to light the others."),
+      ("What is the story of Hanukkah?", "Hanukkah commemorates the Maccabees' victory over the Seleucid Empire and the miracle of a small amount of oil lasting eight days in the rededicated Temple."),
+    ]
+  ),
+  dict(
+    slug="purim", name="Purim", type="auto", category="Jewish Holidays",
+    regions=["global"],
+    seo_title="Purim Countdown — Days Until Purim",
+    meta_desc="Live countdown to Purim, the joyful Jewish holiday of costumes, gifts, and celebration.",
+    hero_desc="Countdown to Purim — the Festival of Lots.",
+    content="Purim is a joyous Jewish holiday observed on the 14th of Adar in the Hebrew calendar. It celebrates the salvation of the Jewish people as recorded in the Book of Esther. Traditions include reading the Megillah (Book of Esther), wearing costumes, exchanging food gifts (mishloach manot), giving charity, and enjoying festive meals.",
+    faqs=[
+      ("When is Purim?", "Purim falls on the 14th of Adar in the Hebrew calendar, typically in February or March."),
+      ("What is the story of Purim?", "Purim commemorates the story of Esther and Mordecai, who foiled the plot of Haman to destroy the Jewish people in ancient Persia."),
+      ("Why do people wear costumes on Purim?", "Wearing costumes is a Purim tradition with several explanations, including celebrating the hidden miracles of the Purim story."),
+      ("What are mishloach manot?", "Mishloach manot are food gift packages exchanged between friends and family on Purim, typically including ready-to-eat foods or drinks."),
+    ]
+  ),
+  dict(
+    slug="pesaj", name="Passover (Pesach)", type="auto", category="Jewish Holidays",
+    regions=["global"],
+    seo_title="Passover Countdown — Days Until Pesach (Seder Night)",
+    meta_desc="Live countdown to Passover (Pesach), the Jewish festival of freedom. The Seder is held on the first night.",
+    hero_desc="Countdown to Passover (Pesach) — the Seder night.",
+    content="Passover (Hebrew: Pesach) is one of the most widely observed Jewish holidays, lasting 7 days in Israel and 8 days in the diaspora. It commemorates the Exodus from Egypt, when the Israelites were liberated from slavery. The highlight is the Seder meal, held on the first (and often second) night, where the Haggadah is read and symbolic foods are eaten.",
+    faqs=[
+      ("When is Passover?", "Passover begins on the 15th of Nisan in the Hebrew calendar, typically in March or April."),
+      ("What is the Seder?", "The Seder is the ritual Passover meal where the story of the Exodus is retold through the Haggadah, and symbolic foods such as matzah and bitter herbs are eaten."),
+      ("What is matzah?", "Matzah is unleavened flatbread eaten during Passover, symbolizing the hasty departure from Egypt when there was no time for bread to rise."),
+      ("How long does Passover last?", "Passover lasts 7 days in Israel and 8 days in the diaspora."),
+    ]
+  ),
+  dict(
+    slug="shavuot", name="Shavuot", type="auto", category="Jewish Holidays",
+    regions=["global"],
+    seo_title="Shavuot Countdown — Days Until Shavuot",
+    meta_desc="Live countdown to Shavuot, the Jewish holiday marking the giving of the Torah at Mount Sinai.",
+    hero_desc="Countdown to Shavuot — the Festival of Weeks.",
+    content="Shavuot (Hebrew: weeks) is a Jewish holiday observed 49 days after Passover, on the 6th of Sivan. It marks the giving of the Torah to Moses at Mount Sinai and also celebrates the spring wheat harvest. Traditions include all-night Torah study, synagogue services decorated with flowers and plants, and eating dairy foods.",
+    faqs=[
+      ("When is Shavuot?", "Shavuot falls on the 6th of Sivan, exactly 50 days (7 weeks) after the second day of Passover."),
+      ("What does Shavuot celebrate?", "Shavuot commemorates the giving of the Torah to Moses and the Israelites at Mount Sinai."),
+      ("Why do Jews eat dairy on Shavuot?", "One explanation is that before receiving the Torah's dietary laws, the Israelites had not yet set up separate meat and dairy utensils, so they ate dairy foods."),
+      ("What is the tradition of staying up all night on Shavuot?", "Many Jewish communities study Torah through the entire night of Shavuot (Tikkun Leil Shavuot), preparing spiritually to receive the Torah again."),
+    ]
+  ),
+
+  # ── Holidays (additional) ─────────────────────────────────────────────────────
+  dict(
+    slug="epiphany", name="Epiphany / Three Kings Day", type="auto", category="Holidays",
+    regions=["global"],
+    seo_title="Three Kings Day Countdown — Days Until Epiphany, January 6th",
+    meta_desc="Live countdown to Epiphany (Three Kings Day) on January 6th. One of the most celebrated holidays in Spain and Latin America.",
+    hero_desc="Countdown to Epiphany — Three Kings Day, January 6th.",
+    content="Epiphany (also called Three Kings Day or Dia de Reyes) is celebrated on January 6th, commemorating the visit of the Magi to the newborn Jesus. In Spain and many Latin American countries it is one of the most important holidays of the Christmas season, traditionally when children receive gifts. In many Western churches it also marks the official end of the Christmas season.",
+    faqs=[
+      ("When is Epiphany / Three Kings Day?", "Epiphany is January 6th every year."),
+      ("What is Three Kings Day?", "Three Kings Day (Dia de Reyes) celebrates the arrival of the Biblical Magi who brought gifts to baby Jesus. In many countries children receive gifts on this day."),
+      ("Is January 6th a public holiday?", "Yes, January 6th is a public holiday in Spain, many Latin American countries, Italy, Poland, and several other nations."),
+      ("What is the Roscon de Reyes?", "The Roscon de Reyes is a ring-shaped sweet bread eaten in Spain on Three Kings Day. A small figurine hidden inside brings good luck to whoever finds it."),
+    ]
+  ),
+
+  # ── Music / Festivals ──────────────────────────────────────────────────────────
+  dict(
+    slug="rio-carnival", name="Rio Carnival", type="auto", category="Entertainment",
+    regions=["global"],
+    seo_title="Rio Carnival Countdown — Days Until Carnaval do Rio",
+    meta_desc="Live countdown to Rio de Janeiro Carnival. The world's biggest party starts on the Friday before Ash Wednesday.",
+    hero_desc="Countdown to Rio Carnival — the world's biggest party.",
+    content="The Rio de Janeiro Carnival (Carnaval do Rio) is the world's largest carnival, attracting over two million visitors to the streets of Rio each day during the festivities. It takes place in the days leading up to Ash Wednesday, typically in February or early March. The highlight is the Sambadrome parade, where samba schools compete for the championship title.",
+    faqs=[
+      ("When is Rio Carnival?", "Rio Carnival always starts on the Friday before Ash Wednesday and runs through Shrove Tuesday (Fat Tuesday). The date changes each year based on Easter."),
+      ("How long does Rio Carnival last?", "The official carnival lasts 5 days, from Friday to Carnival Tuesday, but street parties (blocos) begin weeks before."),
+      ("What is the Sambodrome?", "The Sambadrome (Sambodromo) is a purpose-built parade ground in Rio where samba schools compete during the carnival championship nights."),
+      ("How many people attend Rio Carnival?", "Rio Carnival draws an estimated 2 million people to the streets each day, making it one of the world's largest public events."),
+    ]
+  ),
+  dict(
+    slug="lollapalooza-us", name="Lollapalooza Chicago", type="variable", category="Music",
+    regions=["global"],
+    seo_title="Lollapalooza 2026 Countdown — Days Until Lollapalooza Chicago",
+    meta_desc="Live countdown to Lollapalooza 2026 at Grant Park, Chicago. July 30 - August 2, 2026.",
+    hero_desc="Countdown to Lollapalooza 2026 — Grant Park, Chicago.",
+    content="Lollapalooza is one of the world's premier music festivals, held annually in Grant Park, Chicago. The 2026 edition runs from July 30 to August 2 and typically features over 170 acts across multiple stages. Founded in 1991, Lollapalooza has also expanded internationally to cities including Berlin, Paris, Buenos Aires, and Sao Paulo.",
+    faqs=[
+      ("When is Lollapalooza 2026 in Chicago?", "Lollapalooza 2026 runs from July 30 to August 2, 2026 at Grant Park, Chicago."),
+      ("How do I get Lollapalooza tickets?", "Tickets are available at lollapalooza.com. Four-day passes and single-day tickets are usually offered."),
+      ("What kind of music is played at Lollapalooza?", "Lollapalooza features a wide range of genres: rock, hip-hop, EDM, pop, alternative, and more."),
+    ]
+  ),
+  dict(
+    slug="lollapalooza-de", name="Lollapalooza Berlin", type="variable", category="Music",
+    regions=["global"],
+    seo_title="Lollapalooza Berlin 2026 Countdown — Days Until Lolla Berlin",
+    meta_desc="Live countdown to Lollapalooza Berlin 2026 at Tempelhof Field. July 18-19, 2026.",
+    hero_desc="Countdown to Lollapalooza Berlin 2026 — Tempelhof Field.",
+    content="Lollapalooza Berlin is the European flagship of the Lollapalooza festival franchise, held at the historic Tempelhof Field in Berlin. The 2026 edition takes place on July 18-19, drawing top international acts to one of Europe's most iconic outdoor venues.",
+    faqs=[
+      ("When is Lollapalooza Berlin 2026?", "Lollapalooza Berlin 2026 is July 18-19, 2026 at Tempelhof Field, Berlin."),
+      ("Where is Lollapalooza Berlin held?", "At Tempelhof Field (Tempelhofer Feld), the former airport turned public park in central Berlin."),
+      ("How do I get tickets for Lollapalooza Berlin?", "Tickets are sold at lollapalooza.de."),
+    ]
+  ),
+  dict(
+    slug="lollapalooza-fr", name="Lollapalooza Paris", type="variable", category="Music",
+    regions=["global"],
+    seo_title="Lollapalooza Paris 2027 Countdown — Days Until Lolla Paris",
+    meta_desc="Live countdown to Lollapalooza Paris 2027. The 2026 edition was cancelled; 2027 dates are estimated.",
+    hero_desc="Countdown to Lollapalooza Paris 2027.",
+    content="Lollapalooza Paris has been held at the Hippodrome de Longchamp in the Bois de Boulogne. The 2026 edition was cancelled, with the next edition expected in 2027. The estimated date is mid-July 2027.",
+    faqs=[
+      ("When is Lollapalooza Paris?", "The 2026 edition was cancelled. The next expected edition is estimated for July 2027."),
+      ("Where is Lollapalooza Paris held?", "At the Hippodrome de Longchamp in the Bois de Boulogne, Paris."),
+      ("Why was Lollapalooza Paris 2026 cancelled?", "The organizers cancelled the 2026 edition due to scheduling and logistical issues."),
+    ]
+  ),
+  dict(
+    slug="primavera-sound-es", name="Primavera Sound Barcelona", type="variable", category="Music",
+    regions=["global"],
+    seo_title="Primavera Sound Barcelona 2026 Countdown — Days Until Primavera Sound",
+    meta_desc="Live countdown to Primavera Sound Barcelona 2026 at Parc del Forum. June 4-6, 2026.",
+    hero_desc="Countdown to Primavera Sound Barcelona 2026.",
+    content="Primavera Sound is one of the most acclaimed music festivals in Europe, held annually at Parc del Forum in Barcelona. Known for its eclectic lineup spanning indie, electronic, rock, and pop, the 2026 edition runs June 4-6 with a pre-festival week in late May.",
+    faqs=[
+      ("When is Primavera Sound Barcelona 2026?", "The main weekend is June 4-6, 2026 at Parc del Forum, Barcelona."),
+      ("What genres are featured?", "Primavera Sound is known for indie rock, electronic music, alternative pop, and experimental artists."),
+      ("Are there other Primavera Sound editions?", "Yes. Primavera Sound also takes place in Madrid and has international editions in Buenos Aires and Sao Paulo."),
+    ]
+  ),
+  dict(
+    slug="primavera-sound-ar", name="Primavera Sound Buenos Aires", type="variable", category="Music",
+    regions=["global"],
+    seo_title="Primavera Sound Buenos Aires 2026 Countdown",
+    meta_desc="Live countdown to Primavera Sound Buenos Aires 2026 at Hipodromo de Palermo. November 28-29, 2026.",
+    hero_desc="Countdown to Primavera Sound Buenos Aires 2026.",
+    content="Primavera Sound Buenos Aires brings the iconic Barcelona festival to Argentina, held at the Hipodromo de Palermo. The 2026 edition is scheduled for November 28-29, featuring international and local artists across multiple stages.",
+    faqs=[
+      ("When is Primavera Sound Buenos Aires 2026?", "November 28-29, 2026 at Hipodromo de Palermo, Buenos Aires."),
+      ("What artists perform at Primavera Sound Buenos Aires?", "The lineup mirrors Primavera Sound's signature blend of indie, electronic, and alternative music, featuring both international headliners and local South American acts."),
+      ("How do I get tickets?", "Tickets are available at primaverasound.com.ar."),
+    ]
+  ),
+  dict(
+    slug="primavera-sound-br", name="Primavera Sound Sao Paulo", type="variable", category="Music",
+    regions=["global"],
+    seo_title="Primavera Sound Sao Paulo 2026 Countdown",
+    meta_desc="Live countdown to Primavera Sound Sao Paulo 2026 at Interlagos. December 5-6, 2026.",
+    hero_desc="Countdown to Primavera Sound Sao Paulo 2026.",
+    content="Primavera Sound Sao Paulo is held at the Autodromo de Interlagos, the iconic Formula 1 venue. The 2026 edition is scheduled for December 5-6, featuring the same eclectic international lineup as the Barcelona and Buenos Aires editions.",
+    faqs=[
+      ("When is Primavera Sound Sao Paulo 2026?", "December 5-6, 2026 at Autodromo de Interlagos, Sao Paulo."),
+      ("Where is Primavera Sound Sao Paulo held?", "At the Autodromo Jose Carlos Pace (Interlagos), also home to the Brazilian Formula 1 Grand Prix."),
+      ("How do I get tickets?", "Tickets are available at primaverasound.com.br."),
+    ]
+  ),
+  dict(
+    slug="tomorrowland", name="Tomorrowland", type="variable", category="Music",
+    regions=["global"],
+    seo_title="Tomorrowland 2026 Countdown — Days Until Tomorrowland",
+    meta_desc="Live countdown to Tomorrowland 2026 at De Schorre, Boom, Belgium. July 17-26, 2026.",
+    hero_desc="Countdown to Tomorrowland 2026 — Boom, Belgium.",
+    content="Tomorrowland is the world's leading electronic music festival, held at De Schorre nature reserve in Boom, Belgium. The 2026 edition spans two weekends: July 17-19 and July 24-26, featuring hundreds of DJs across dozens of elaborately themed stages.",
+    faqs=[
+      ("When is Tomorrowland 2026?", "Tomorrowland 2026 takes place on July 17-19 and July 24-26, 2026 at De Schorre, Boom, Belgium."),
+      ("What music is played at Tomorrowland?", "Tomorrowland focuses on electronic dance music (EDM), house, techno, trance, and related genres."),
+      ("How do I get tickets for Tomorrowland?", "Tomorrowland tickets sell out very quickly. They are available at tomorrowland.com through a registration and lottery system."),
+      ("How many people attend Tomorrowland?", "Each weekend of Tomorrowland attracts around 200,000 festival-goers, with attendees from over 200 countries."),
+    ]
+  ),
+
+  # ── Sports (additional) ────────────────────────────────────────────────────────
+  dict(
+    slug="world-cup-final", name="2026 World Cup Final", type="variable", category="Sports",
+    regions=["global"],
+    seo_title="2026 World Cup Final Countdown — Days Until the FIFA World Cup Final",
+    meta_desc="Live countdown to the 2026 FIFA World Cup Final on July 19, 2026 at MetLife Stadium, New Jersey.",
+    hero_desc="Countdown to the 2026 FIFA World Cup Final.",
+    content="The 2026 FIFA World Cup Final will be played on July 19, 2026 at MetLife Stadium in East Rutherford, New Jersey (near New York City). It will be the most-watched sporting event in the world, expected to be seen by over 1.5 billion viewers globally. The 2026 edition is the first with 48 teams.",
+    faqs=[
+      ("When is the 2026 World Cup Final?", "The 2026 FIFA World Cup Final is on July 19, 2026."),
+      ("Where is the 2026 World Cup Final?", "The final is at MetLife Stadium in East Rutherford, New Jersey — the largest stadium in the host nations."),
+      ("What time does the 2026 World Cup Final start?", "Kickoff is at 3:00 PM Eastern Time (19:00 UTC) on July 19, 2026."),
+    ]
+  ),
+  dict(
+    slug="copa-america-2028", name="Copa America 2028", type="variable", category="Sports",
+    regions=["global"],
+    seo_title="Copa America 2028 Countdown — Days Until Copa America",
+    meta_desc="Live countdown to Copa America 2028. Estimated start: June 1, 2028. Host country TBD.",
+    hero_desc="Countdown to Copa America 2028.",
+    content="Copa America 2028 is the next edition of South America's premier international football tournament, organized by CONMEBOL. The host country is yet to be confirmed. The tournament typically takes place every four years and features the 10 CONMEBOL member nations plus 6 invited CONCACAF teams. The estimated start is June 2028.",
+    faqs=[
+      ("When is Copa America 2028?", "Copa America 2028 is estimated to start in June 2028. The exact dates and host country are yet to be confirmed."),
+      ("Who plays in Copa America?", "Copa America features the 10 CONMEBOL national teams (South America) plus invited CONCACAF (North America) teams."),
+      ("Who won Copa America 2024?", "Argentina won Copa America 2024, defeating Colombia 1-0 after extra time in the final in Miami."),
+    ]
+  ),
+  dict(
+    slug="copa-america-2028-final", name="Copa America 2028 Final", type="variable", category="Sports",
+    regions=["global"],
+    seo_title="Copa America 2028 Final Countdown — Days Until the Final",
+    meta_desc="Live countdown to the Copa America 2028 Final. Estimated date: July 1, 2028. Venue TBD.",
+    hero_desc="Countdown to the Copa America 2028 Final.",
+    content="The Copa America 2028 Final will be the decisive match of the 2028 edition of South America's premier international tournament. The host country and venue are yet to be confirmed. The final is estimated to take place in early July 2028.",
+    faqs=[
+      ("When is the Copa America 2028 Final?", "The Copa America 2028 Final is estimated for early July 2028. Exact date and venue TBD."),
+      ("Where will the 2028 Copa America Final be held?", "The host country and venue for Copa America 2028 have not yet been announced."),
+    ]
+  ),
+  dict(
+    slug="euro-2028", name="UEFA Euro 2028", type="variable", category="Sports",
+    regions=["global"],
+    seo_title="Euro 2028 Countdown — Days Until UEFA European Championship 2028",
+    meta_desc="Live countdown to UEFA Euro 2028, hosted by the UK and Republic of Ireland. Opening match estimated June 9, 2028.",
+    hero_desc="Countdown to UEFA Euro 2028 — UK and Ireland.",
+    content="UEFA Euro 2028 will be hosted jointly by the United Kingdom and the Republic of Ireland. It is the first time the UK has hosted a major UEFA tournament since Euro 1996. The tournament is expected to open in early June 2028 and conclude with the final at Wembley Stadium in London in July 2028.",
+    faqs=[
+      ("When is Euro 2028?", "Euro 2028 is estimated to run from early June to mid-July 2028, hosted by the UK and Republic of Ireland."),
+      ("Where is Euro 2028?", "Stadiums across England, Scotland, Wales, Northern Ireland, and the Republic of Ireland will host matches."),
+      ("Where is the Euro 2028 final?", "The final is expected to be held at Wembley Stadium in London."),
+      ("How many teams are in Euro 2028?", "UEFA Euro 2028 will feature 24 national teams."),
+    ]
+  ),
+  dict(
+    slug="euro-2028-final", name="UEFA Euro 2028 Final", type="variable", category="Sports",
+    regions=["global"],
+    seo_title="Euro 2028 Final Countdown — Days Until the UEFA Euro Final",
+    meta_desc="Live countdown to the UEFA Euro 2028 Final at Wembley Stadium, London. Estimated July 9, 2028.",
+    hero_desc="Countdown to the UEFA Euro 2028 Final — Wembley Stadium.",
+    content="The UEFA Euro 2028 Final is expected to take place on July 9, 2028 at Wembley Stadium in London, England. Wembley, with a capacity of 90,000, hosted the Euro 2020 final (played in 2021) and will once again be the stage for Europe's most prestigious international football match.",
+    faqs=[
+      ("When is the Euro 2028 Final?", "The Euro 2028 Final is estimated to be on July 9, 2028 at Wembley Stadium, London."),
+      ("Where is the Euro 2028 Final?", "At Wembley Stadium in London, England, with a capacity of approximately 90,000."),
+      ("Who hosted Euro 2028?", "Euro 2028 is jointly hosted by England, Scotland, Wales, Northern Ireland, and the Republic of Ireland."),
+    ]
+  ),
+
+  # ── Technology / Awards ────────────────────────────────────────────────────────
+  dict(
+    slug="ces", name="CES Las Vegas", type="auto", category="Technology",
+    regions=["global"],
+    seo_title="CES Las Vegas Countdown — Days Until CES 2027",
+    meta_desc="Live countdown to CES (Consumer Electronics Show) in Las Vegas. The world's largest tech trade show, held every January.",
+    hero_desc="Countdown to CES — Consumer Electronics Show, Las Vegas.",
+    content="CES (Consumer Electronics Show) is the world's most influential technology trade show, held annually in early January in Las Vegas, Nevada. Organized by the Consumer Technology Association, CES hosts over 4,000 exhibiting companies and attracts around 170,000 attendees from 160+ countries. Major announcements in TVs, cars, AI, robotics, and consumer gadgets are made every year.",
+    faqs=[
+      ("When is CES?", "CES takes place in early January in Las Vegas, typically the first or second week of the month."),
+      ("What is CES?", "CES is the Consumer Electronics Show, the world's largest tech trade show where companies unveil new products and technologies."),
+      ("Who can attend CES?", "CES is a trade show, primarily open to industry professionals. Some events are open to the public; check the official CES website for registration."),
+      ("What major brands exhibit at CES?", "Samsung, LG, Sony, Intel, NVIDIA, Ford, GM, and thousands of other technology and consumer electronics companies exhibit every year."),
+    ]
+  ),
+  dict(
+    slug="balon-de-oro", name="Balon de Oro", type="auto", category="Entertainment",
+    regions=["global"],
+    seo_title="Balon de Oro Countdown — Days Until the Ballon d'Or Ceremony",
+    meta_desc="Live countdown to the Ballon d'Or ceremony. Awarded annually to the world's best football player, typically in October.",
+    hero_desc="Countdown to the Balon de Oro ceremony.",
+    content="The Ballon d'Or (Golden Ball) is the most prestigious individual award in football (soccer), awarded annually by France Football magazine since 1956. The ceremony typically takes place in Paris in October. Winners are selected by international journalists and national team coaches and captains.",
+    faqs=[
+      ("When is the Balon de Oro ceremony?", "The Ballon d'Or ceremony typically takes place in Paris in late October."),
+      ("Who has won the most Ballons d'Or?", "Lionel Messi holds the record with 8 Ballons d'Or (2009, 2010, 2011, 2012, 2015, 2019, 2021, 2023)."),
+      ("How is the Ballon d'Or winner chosen?", "Votes are cast by sports journalists from around the world, as well as national team coaches and captains."),
+      ("Is there a women's Ballon d'Or?", "Yes. The women's Ballon d'Or (Ballon d'Or Feminin) has been awarded since 2018."),
+    ]
+  ),
+  dict(
+    slug="mr-olympia", name="Mr. Olympia", type="auto", category="Sports",
+    regions=["global"],
+    seo_title="Mr. Olympia Countdown — Days Until Mr. Olympia Competition",
+    meta_desc="Live countdown to Mr. Olympia, the most prestigious bodybuilding competition in the world, held in Las Vegas each fall.",
+    hero_desc="Countdown to Mr. Olympia — the world's top bodybuilding competition.",
+    content="Mr. Olympia is the most prestigious professional bodybuilding competition in the world, organized by the International Federation of Bodybuilding and Fitness (IFBB). Founded by Joe Weider in 1965, the competition is held annually in Las Vegas in the fall. The Mr. Olympia title is considered the pinnacle of professional bodybuilding.",
+    faqs=[
+      ("When is Mr. Olympia?", "Mr. Olympia is typically held in late September or early October in Las Vegas, Nevada."),
+      ("Who has won Mr. Olympia the most times?", "Lee Haney and Ronnie Coleman share the record with 8 consecutive Mr. Olympia titles each."),
+      ("What is the prize for Mr. Olympia?", "The Mr. Olympia winner receives a substantial prize purse; in recent editions the overall prize money exceeded $1 million."),
+      ("Is Mr. Olympia only for men?", "No. Mr. Olympia weekend includes multiple divisions for women, including Women's Physique, Bikini, Figure, and Fitness."),
+    ]
+  ),
+  dict(
+    slug="arnold-classic", name="Arnold Classic", type="auto", category="Sports",
+    regions=["global"],
+    seo_title="Arnold Classic Countdown — Days Until the Arnold Sports Festival",
+    meta_desc="Live countdown to the Arnold Classic (Arnold Sports Festival) in Columbus, Ohio. Held every March.",
+    hero_desc="Countdown to the Arnold Classic — Columbus, Ohio.",
+    content="The Arnold Classic is a prestigious bodybuilding and fitness competition held annually in Columbus, Ohio, as part of the Arnold Sports Festival. Founded in 1989 by Arnold Schwarzenegger and Jim Lorimer, it is considered the second most important bodybuilding competition after Mr. Olympia and also hosts over 80 sports disciplines.",
+    faqs=[
+      ("When is the Arnold Classic?", "The Arnold Classic is held in early March in Columbus, Ohio, typically the first weekend of the month."),
+      ("What is the Arnold Sports Festival?", "The Arnold Sports Festival is a multi-sport event spanning a full weekend, hosting over 80 sports and featuring the Arnold Classic bodybuilding competition."),
+      ("Who founded the Arnold Classic?", "The Arnold Classic was founded in 1989 by Arnold Schwarzenegger and promoter Jim Lorimer."),
+    ]
+  ),
+
+
   # ── Politics ───────────────────────────────────────────────────────────────
   dict(
     slug="elecciones-ar", name="Argentine Elections 2027", type="auto", category="Politics",
@@ -801,6 +1629,12 @@ CAT_COLORS = {
   'Politics':      ('#94A3B8', 'rgba(148,163,184,.2)',  'rgba(148,163,184,.08)'),
   'Fashion':       ('#FDA4AF', 'rgba(253,164,175,.2)',  'rgba(253,164,175,.08)'),
   'Technology':    ('#34D399', 'rgba(52,211,153,.2)',   'rgba(52,211,153,.08)'),
+  'Months':        ('#A78BFA', 'rgba(167,139,250,.2)',  'rgba(167,139,250,.08)'),
+  'Seasons':       ('#6EE7B7', 'rgba(110,231,183,.2)',  'rgba(110,231,183,.08)'),
+  'School':        ('#FCD34D', 'rgba(252,211,77,.2)',   'rgba(252,211,77,.08)'),
+  'National Days': ('#F87171', 'rgba(248,113,113,.2)',  'rgba(248,113,113,.08)'),
+  'Jewish Holidays':('#E9D5A1','rgba(233,213,161,.2)',  'rgba(233,213,161,.08)'),
+  'Time':          ('#67E8F9', 'rgba(103,232,249,.2)',  'rgba(103,232,249,.08)'),
 }
 
 # ─── Pre-compute which (lang, slug) pages to generate ─────────────────────────

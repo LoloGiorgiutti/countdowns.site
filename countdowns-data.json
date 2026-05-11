@@ -102,6 +102,62 @@
     "bafweek": {
       "date": "2026-10-13T10:00:00-03:00",
       "note": "Buenos Aires Fashion Week — Spring/Summer 2026 edition."
+    },
+    "world-cup-final": {
+      "date": "2026-07-19T15:00:00-04:00",
+      "note": "2026 FIFA World Cup Final — MetLife Stadium, East Rutherford, NJ."
+    },
+    "copa-america-2028": {
+      "date": "2028-06-01T00:00:00",
+      "note": "Estimated start date. 2028 Copa América — host country TBD."
+    },
+    "copa-america-2028-final": {
+      "date": "2028-07-01T00:00:00",
+      "note": "Estimated date. 2028 Copa América Final — host country and venue TBD."
+    },
+    "euro-2028": {
+      "date": "2028-06-09T21:00:00+01:00",
+      "note": "UEFA Euro 2028 Opening Match — UK & Republic of Ireland. Dates confirmed by UEFA."
+    },
+    "euro-2028-final": {
+      "date": "2028-07-09T21:00:00+01:00",
+      "note": "UEFA Euro 2028 Final — Wembley Stadium, London. Date confirmed by UEFA."
+    },
+    "lollapalooza-us": {
+      "date": "2026-07-30T12:00:00-05:00",
+      "note": "Lollapalooza 2026 — Grant Park, Chicago, IL. July 30 – August 2, 2026."
+    },
+    "lollapalooza-de": {
+      "date": "2026-07-18T12:00:00+02:00",
+      "note": "Lollapalooza Berlin 2026 — Tempelhof Field, Berlin. July 18–19, 2026."
+    },
+    "lollapalooza-fr": {
+      "date": "2027-07-17T12:00:00+02:00",
+      "note": "Lollapalooza Paris — 2026 edition was cancelled. Estimated date for 2027 based on prior years."
+    },
+    "primavera-sound-es": {
+      "date": "2026-06-04T16:00:00+02:00",
+      "note": "Primavera Sound Barcelona 2026 — Parc del Fòrum. June 4–6, 2026."
+    },
+    "primavera-sound-ar": {
+      "date": "2026-11-28T16:00:00-03:00",
+      "note": "Primavera Sound Buenos Aires 2026 — Hipódromo de Palermo. November 28–29, 2026."
+    },
+    "primavera-sound-br": {
+      "date": "2026-12-05T16:00:00-03:00",
+      "note": "Primavera Sound São Paulo 2026 — Autódromo de Interlagos. December 5–6, 2026."
+    },
+    "tomorrowland": {
+      "date": "2026-07-17T12:00:00+02:00",
+      "note": "Tomorrowland 2026 — De Schorre, Boom, Belgium. July 17–19 and July 24–26, 2026."
+    },
+    "balon-de-oro-2026": {
+      "date": "2026-10-26T20:00:00+02:00",
+      "note": "Balón de Oro 2026 ceremony — Paris. Date confirmed."
+    },
+    "mr-olympia-2026": {
+      "date": "2026-09-24T09:00:00-07:00",
+      "note": "Mr. Olympia 2026 — Palms Casino Resort, Las Vegas. September 24–27, 2026."
     }
   }
 }

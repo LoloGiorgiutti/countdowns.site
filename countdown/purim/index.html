@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purim Countdown — Days Until Purim | countdowns.site</title>
+<meta name="description" content="Live countdown to Purim, the joyful Jewish holiday of costumes, gifts, and celebration.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://countdowns.site/countdown/purim/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://countdowns.site/countdown/purim/">
+<meta property="og:title" content="Purim Countdown — Days Until Purim">
+<meta property="og:description" content="Live countdown to Purim, the joyful Jewish holiday of costumes, gifts, and celebration.">
+<link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/purim/">
+<link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/purim/">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/countdown.css">
+<style>:root{--cat-color:#E9D5A1;--cat-glow:rgba(233,213,161,.2);--cat-soft:rgba(233,213,161,.08);}</style>
+<script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://countdowns.site/countdown/purim/#webpage",
+      "url": "https://countdowns.site/countdown/purim/",
+      "name": "Purim Countdown — Days Until Purim",
+      "description": "Live countdown to Purim, the joyful Jewish holiday of costumes, gifts, and celebration.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When is Purim?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Purim falls on the 14th of Adar in the Hebrew calendar, typically in February or March." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the story of Purim?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Purim commemorates the story of Esther and Mordecai, who foiled the plot of Haman to destroy the Jewish people in ancient Persia." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do people wear costumes on Purim?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Wearing costumes is a Purim tradition with several explanations, including celebrating the hidden miracles of the Purim story." }
+    },
+    {
+      "@type": "Question",
+      "name": "What are mishloach manot?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Mishloach manot are food gift packages exchanged between friends and family on Purim, typically including ready-to-eat foods or drinks." }
+    }
+  ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
+  <div class="header-right">
+    <button class="theme-btn" id="theme-toggle">Light</button>
+    <div class="lang-seg" role="group" aria-label="Language">
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/'">ES</button><button class="lang-btn" onclick="location.href='/pt/'">PT</button><button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+    </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
+  </div>
+</header>
+<div id="root"><div style="min-height:100vh;background:#080812"></div></div>
+
+<div class="cd-article">
+  <p class="cd-article-body">Purim is a joyous Jewish holiday observed on the 14th of Adar in the Hebrew calendar. It celebrates the salvation of the Jewish people as recorded in the Book of Esther. Traditions include reading the Megillah (Book of Esther), wearing costumes, exchanging food gifts (mishloach manot), giving charity, and enjoying festive meals.</p>
+  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">When is Purim?</h3><p class="cd-faq-a">Purim falls on the 14th of Adar in the Hebrew calendar, typically in February or March.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What is the story of Purim?</h3><p class="cd-faq-a">Purim commemorates the story of Esther and Mordecai, who foiled the plot of Haman to destroy the Jewish people in ancient Persia.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Why do people wear costumes on Purim?</h3><p class="cd-faq-a">Wearing costumes is a Purim tradition with several explanations, including celebrating the hidden miracles of the Purim story.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What are mishloach manot?</h3><p class="cd-faq-a">Mishloach manot are food gift packages exchanged between friends and family on Purim, typically including ready-to-eat foods or drinks.</p></div></div>
+</div>
+<footer class="site-footer">
+  countdowns<span class="logo-tld">.site</span>
+</footer>
+<script src="/countdown-engine.js"></script>
+<script>
+CountdownEngine.render('root', {
+  slug: "purim",
+  type: "auto",
+  name: "Purim",
+  category: "Jewish Holidays",
+  description: "Countdown to Purim \u2014 the Festival of Lots."
+});
+// ── Theme toggle ──────────────────────────────────────────────────────
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  var saved = localStorage.getItem('cd_theme');
+  if (saved === 'light') { document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }
+  btn.addEventListener('click', function() {
+    var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('cd_theme', 'dark');
+      btn.textContent = 'Light';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('cd_theme', 'light');
+      btn.textContent = 'Dark';
+    }
+  });
+})();
+// ── Country flag ──────────────────────────────────────────────────────
+(function(){
+  var fb=document.getElementById('country-flag-btn');
+  if(!fb)return;
+  var saved=typeof localStorage!=='undefined'?localStorage.getItem('cd_country'):null;
+  if(saved&&CountdownEngine.FLAG_MAP)fb.textContent=CountdownEngine.FLAG_MAP[saved]||'🌍';
+  fb.addEventListener('click',function(){
+    CountdownEngine.openCountryPicker(function(code){
+      localStorage.setItem('cd_country',code);
+      location.reload();
+    });
+  });
+})();
+</script>
+</body>
+</html>

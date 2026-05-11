@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown to March — Days Until March | countdowns.site</title>
+<meta name="description" content="Live countdown to March 1st. See exactly how many days, hours and minutes until March begins.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://countdowns.site/countdown/march/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://countdowns.site/countdown/march/">
+<meta property="og:title" content="Countdown to March — Days Until March">
+<meta property="og:description" content="Live countdown to March 1st. See exactly how many days, hours and minutes until March begins.">
+<link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/march/">
+<link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/march/">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/countdown.css">
+<style>:root{--cat-color:#A78BFA;--cat-glow:rgba(167,139,250,.2);--cat-soft:rgba(167,139,250,.08);}</style>
+<script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://countdowns.site/countdown/march/#webpage",
+      "url": "https://countdowns.site/countdown/march/",
+      "name": "Countdown to March — Days Until March",
+      "description": "Live countdown to March 1st. See exactly how many days, hours and minutes until March begins.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When does spring start in March?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The spring equinox in the Northern Hemisphere falls around March 20 or 21 each year." }
+    },
+    {
+      "@type": "Question",
+      "name": "How many days does March have?",
+      "acceptedAnswer": { "@type": "Answer", "text": "March has 31 days." }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the main March holidays?",
+      "acceptedAnswer": { "@type": "Answer", "text": "St. Patrick's Day (Mar 17), International Women's Day (Mar 8), and the spring equinox." }
+    }
+  ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
+  <div class="header-right">
+    <button class="theme-btn" id="theme-toggle">Light</button>
+    <div class="lang-seg" role="group" aria-label="Language">
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/'">ES</button><button class="lang-btn" onclick="location.href='/pt/'">PT</button><button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+    </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
+  </div>
+</header>
+<div id="root"><div style="min-height:100vh;background:#080812"></div></div>
+
+<div class="cd-article">
+  <p class="cd-article-body">March is the third month of the year with 31 days. It marks the beginning of spring in the Northern Hemisphere (around March 20) and the start of autumn in the Southern Hemisphere. St. Patrick's Day falls on March 17.</p>
+  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">When does spring start in March?</h3><p class="cd-faq-a">The spring equinox in the Northern Hemisphere falls around March 20 or 21 each year.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">How many days does March have?</h3><p class="cd-faq-a">March has 31 days.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What are the main March holidays?</h3><p class="cd-faq-a">St. Patrick's Day (Mar 17), International Women's Day (Mar 8), and the spring equinox.</p></div></div>
+</div>
+<footer class="site-footer">
+  countdowns<span class="logo-tld">.site</span>
+</footer>
+<script src="/countdown-engine.js"></script>
+<script>
+CountdownEngine.render('root', {
+  slug: "march",
+  type: "auto",
+  name: "March",
+  category: "Months",
+  description: "Countdown to the start of March."
+});
+// ── Theme toggle ──────────────────────────────────────────────────────
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  var saved = localStorage.getItem('cd_theme');
+  if (saved === 'light') { document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }
+  btn.addEventListener('click', function() {
+    var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('cd_theme', 'dark');
+      btn.textContent = 'Light';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('cd_theme', 'light');
+      btn.textContent = 'Dark';
+    }
+  });
+})();
+// ── Country flag ──────────────────────────────────────────────────────
+(function(){
+  var fb=document.getElementById('country-flag-btn');
+  if(!fb)return;
+  var saved=typeof localStorage!=='undefined'?localStorage.getItem('cd_country'):null;
+  if(saved&&CountdownEngine.FLAG_MAP)fb.textContent=CountdownEngine.FLAG_MAP[saved]||'🌍';
+  fb.addEventListener('click',function(){
+    CountdownEngine.openCountryPicker(function(code){
+      localStorage.setItem('cd_country',code);
+      location.reload();
+    });
+  });
+})();
+</script>
+</body>
+</html>
