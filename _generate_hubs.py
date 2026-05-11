@@ -430,6 +430,7 @@ def generate_hub(lang):
       <button class="lang-btn{' active' if c == 'pt' else ''}" onclick="location.href='/pt/'">PT</button>
       <button class="lang-btn{' active' if c == 'fr' else ''}" onclick="location.href='/fr/'">FR</button>
     </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>
 </header>
 
@@ -639,6 +640,20 @@ def generate_hub(lang):
         localStorage.setItem('cd_theme', 'light');
         btn.textContent = 'Dark';
       }}
+    }});
+  }})();
+
+  // Country selector
+  (function(){{
+    var fb = document.getElementById('country-flag-btn');
+    if(!fb) return;
+    var savedC = typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null;
+    if(savedC && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+    fb.addEventListener('click', function(){{
+      CountdownEngine.openCountryPicker(function(code){{
+        localStorage.setItem('cd_country', code);
+        location.reload();
+      }});
     }});
   }})();
 
