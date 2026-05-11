@@ -468,6 +468,7 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     'dia-de-la-constitucion':function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,1,5);})};},   /* Feb 5 MX */
     'proclamacao-da-republica':function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,10,15);})};},/* Nov 15 BR */
     'tiradentes':            function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,3,21);})};},   /* Apr 21 BR */
+    'proclamacion-independencia-ar':function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,4,25);})};},/* May 25 AR */
     'dia-de-la-hispanidad':  function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,9,12);})};},   /* Oct 12 ES */
     'german-unity-day':      function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,9,3);})};},    /* Oct 3 DE */
     'australia-day':         function(){var tz=getCountryTZ();return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,0,26);})};},   /* Jan 26 AU */

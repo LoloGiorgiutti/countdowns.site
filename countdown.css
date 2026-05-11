@@ -177,6 +177,29 @@ body {
   color: #4F46E5;
 }
 
+.hub-hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.country-detected {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .78rem;
+  color: var(--muted, #64748B);
+  margin-bottom: .5rem;
+}
+.country-detected.hidden { display: none; }
+.country-detected-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ADE80;
+  flex-shrink: 0;
+}
+
 /* ── Sort Toggle ── */
 .sort-toggle {
   display: inline-flex;

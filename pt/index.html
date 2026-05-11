@@ -57,9 +57,13 @@
   <div class="hub-hero-label"><span></span>Ao vivo · atualizado em tempo real</div>
   <h1>Cada contagem regressiva<br>que <em>importa</em></h1>
   <p class="hub-hero-sub">Esportes, lançamentos, feriados, promoções — cada evento do mundo.</p>
-  <div class="sort-toggle" role="group" aria-label="Sort order">
-    <button class="sort-btn active" data-sort="chrono">Mais próximos</button>
-    <button class="sort-btn" data-sort="category">Por categoria</button>
+  <div id="country-detected" class="country-detected hidden"></div>
+  <div class="hub-hero-actions">
+    <div class="sort-toggle" role="group" aria-label="Sort order">
+      <button class="sort-btn active" data-sort="chrono">Mais próximos</button>
+      <button class="sort-btn" data-sort="category">Por categoria</button>
+    </div>
+    <a href="/custom/" class="hub-create-btn">✦ Create your own countdown</a>
   </div>
 </div>
 
@@ -77,18 +81,26 @@
   'use strict';
 
   var CAT_COLOR = {
-    'Releases':      { color:'#C084FC', glow:'rgba(192,132,252,.25)' },
-    'Sports':        { color:'#FB923C', glow:'rgba(251,146,60,.25)'  },
-    'Holidays':      { color:'#4ADE80', glow:'rgba(74,222,128,.2)'   },
-    'Entertainment': { color:'#FBBF24', glow:'rgba(251,191,36,.2)'   },
-    'Sales':         { color:'#60A5FA', glow:'rgba(96,165,250,.2)'   },
-    'Nature':        { color:'#22D3EE', glow:'rgba(34,211,238,.2)'   },
-    'Music':         { color:'#F472B6', glow:'rgba(244,114,182,.2)'  },
-    'Politics':      { color:'#94A3B8', glow:'rgba(148,163,184,.2)'  },
-    'Fashion':       { color:'#FDA4AF', glow:'rgba(253,164,175,.2)'  },
-    'Technology':    { color:'#34D399', glow:'rgba(52,211,153,.2)'   },
+    'Releases':       { color:'#C084FC', glow:'rgba(192,132,252,.25)' },
+    'Sports':         { color:'#FB923C', glow:'rgba(251,146,60,.25)'  },
+    'Holidays':       { color:'#4ADE80', glow:'rgba(74,222,128,.2)'   },
+    'Entertainment':  { color:'#FBBF24', glow:'rgba(251,191,36,.2)'   },
+    'Sales':          { color:'#60A5FA', glow:'rgba(96,165,250,.2)'   },
+    'Nature':         { color:'#22D3EE', glow:'rgba(34,211,238,.2)'   },
+    'Music':          { color:'#F472B6', glow:'rgba(244,114,182,.2)'  },
+    'Politics':       { color:'#94A3B8', glow:'rgba(148,163,184,.2)'  },
+    'Fashion':        { color:'#FDA4AF', glow:'rgba(253,164,175,.2)'  },
+    'Technology':     { color:'#34D399', glow:'rgba(52,211,153,.2)'   },
+    'Months':         { color:'#A78BFA', glow:'rgba(167,139,250,.2)'  },
+    'Seasons':        { color:'#6EE7B7', glow:'rgba(110,231,183,.2)'  },
+    'School':         { color:'#FCD34D', glow:'rgba(252,211,77,.2)'   },
+    'National Days':  { color:'#F87171', glow:'rgba(248,113,113,.2)'  },
+    'Jewish Holidays':{ color:'#E9D5A1', glow:'rgba(233,213,161,.2)'  },
+    'Time':           { color:'#67E8F9', glow:'rgba(103,232,249,.2)'  },
   };
   function cc(cat) { return CAT_COLOR[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' }; }
+
+  var LATAM = ['AR','BR','CL','CO','PE','UY','VE','BO','PY','EC','CR','PA','GT','SV','HN','NI','DO','CU','MX'];
 
   var NAMES = {
       'gta6': 'GTA VI',
@@ -158,138 +170,150 @@
 
   var EVENTS = [
     /* ── Releases ── */
-    { slug:'gta6',       name:'GTA VI',                        type:'variable', regions:['global'], cat:'Releases',      url:'/countdown/gta6/'       },
-    { slug:'iphone',     name:'Next iPhone',                   type:'variable', regions:['global'], cat:'Releases',      url:'/countdown/iphone/'     },
+    { slug:'gta6',       name:'GTA VI',                        type:'variable', countries:['global'], regions:['global'], cat:'Releases',      url:'/countdown/gta6/'       },
+    { slug:'iphone',     name:'Next iPhone',                   type:'variable', countries:['global'], regions:['global'], cat:'Releases',      url:'/countdown/iphone/'     },
     /* ── Sports – Global ── */
-    { slug:'f1',         name:'F1 Next Race',                  type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/f1/'         },
-    { slug:'world-cup',  name:'2026 FIFA World Cup',           type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/world-cup/'  },
-    { slug:'ucl-final',  name:'Champions League Final',        type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/ucl-final/'  },
-    { slug:'nba-finals', name:'NBA Finals',                    type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/nba-finals/' },
-    { slug:'le-mans',    name:'24h Le Mans',                   type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/le-mans/'    },
-    { slug:'wimbledon',  name:'Wimbledon',                     type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/wimbledon/'  },
-    { slug:'tour-de-france', name:'Tour de France',            type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/tour-de-france/' },
-    { slug:'olympics-2028',  name:'LA 2028 Olympics',          type:'auto',     regions:['global'], cat:'Sports',        url:'/countdown/olympics-2028/'  },
-    { slug:'copa-libertadores', name:'Copa Libertadores Final',type:'variable', regions:['es'],     cat:'Sports',        url:'/countdown/copa-libertadores/' },
+    { slug:'f1',         name:'F1 Next Race',                  type:'variable', countries:['global'], regions:['global'], cat:'Sports',        url:'/countdown/f1/'         },
+    { slug:'world-cup',  name:'2026 FIFA World Cup',           type:'variable', countries:['global'], regions:['global'], cat:'Sports',        url:'/countdown/world-cup/'  },
+    { slug:'ucl-final',  name:'Champions League Final',        type:'variable', countries:['global'], regions:['global'], cat:'Sports',        url:'/countdown/ucl-final/'  },
+    { slug:'nba-finals', name:'NBA Finals',                    type:'variable', countries:['global'], regions:['global'], cat:'Sports',        url:'/countdown/nba-finals/' },
+    { slug:'le-mans',    name:'24h Le Mans',                   type:'variable', countries:['global'], regions:['global'], cat:'Sports',        url:'/countdown/le-mans/'    },
+    { slug:'wimbledon',  name:'Wimbledon',                     type:'variable', countries:['global'], regions:['global'], cat:'Sports',        url:'/countdown/wimbledon/'  },
+    { slug:'tour-de-france', name:'Tour de France',            type:'variable', countries:['global'], regions:['global'], cat:'Sports',        url:'/countdown/tour-de-france/' },
+    { slug:'olympics-2028',  name:'LA 2028 Olympics',          type:'auto',     countries:['global'], regions:['global'], cat:'Sports',        url:'/countdown/olympics-2028/'  },
+    { slug:'super-bowl',     name:'Super Bowl',                type:'auto',     countries:['US','CA','MX','GB','AU'],     regions:['en'],      cat:'Sports',        url:'/countdown/super-bowl/'         },
+    { slug:'copa-libertadores', name:'Copa Libertadores Final',type:'variable', countries:LATAM,      regions:['es'],     cat:'Sports',        url:'/countdown/copa-libertadores/' },
     /* ── Holidays – Global ── */
-    { slug:'christmas',   name:'Christmas',                    type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/christmas/'   },
-    { slug:'new-year',    name:'New Year',                     type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/new-year/'    },
-    { slug:'halloween',   name:'Halloween',                    type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/halloween/'   },
-    { slug:'valentines',  name:"Valentine's Day",              type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/valentines/'  },
-    { slug:'easter',      name:'Easter',                       type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/easter/'      },
-    { slug:'mothers-day', name:"Mother's Day",                 type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/mothers-day/' },
-    { slug:'fathers-day', name:"Father's Day",                 type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/fathers-day/' },
-    { slug:'dia-de-los-muertos', name:'Día de los Muertos',    type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/dia-de-los-muertos/' },
-    { slug:'cinco-de-mayo',   name:'Cinco de Mayo',            type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/cinco-de-mayo/'    },
-    { slug:'fiestas-patrias', name:'Fiestas Patrias Chile',    type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/fiestas-patrias/'  },
-    { slug:'bastille-day',    name:'Bastille Day',             type:'auto',     regions:['fr'],     cat:'Holidays',      url:'/countdown/bastille-day/'     },
+    { slug:'christmas',   name:'Christmas',                    type:'auto',     countries:['global'], regions:['global'], cat:'Holidays',      url:'/countdown/christmas/'   },
+    { slug:'new-year',    name:'New Year',                     type:'auto',     countries:['global'], regions:['global'], cat:'Holidays',      url:'/countdown/new-year/'    },
+    { slug:'halloween',   name:'Halloween',                    type:'auto',     countries:['US','CA','GB','AU','IE','MX','AR','CL','CO','PE','UY','BR','FR','ES','PT','DE','BE','NZ'], regions:['global'], cat:'Holidays', url:'/countdown/halloween/' },
+    { slug:'valentines',  name:"Valentine's Day",              type:'auto',     countries:['global'], regions:['global'], cat:'Holidays',      url:'/countdown/valentines/'  },
+    { slug:'easter',      name:'Easter',                       type:'auto',     countries:['global'], regions:['global'], cat:'Holidays',      url:'/countdown/easter/'      },
+    { slug:'mothers-day', name:"Mother's Day",                 type:'auto',     countries:['global'], regions:['global'], cat:'Holidays',      url:'/countdown/mothers-day/' },
+    { slug:'fathers-day', name:"Father's Day",                 type:'auto',     countries:['global'], regions:['global'], cat:'Holidays',      url:'/countdown/fathers-day/' },
+    { slug:'thanksgiving',     name:'Thanksgiving',            type:'auto',     countries:['US','CA'],                   regions:['en'],      cat:'Holidays',      url:'/countdown/thanksgiving/'     },
+    { slug:'independence-day', name:'Independence Day (USA)',  type:'auto',     countries:['US'],                        regions:['en'],      cat:'Holidays',      url:'/countdown/independence-day/' },
+    { slug:'memorial-day',     name:'Memorial Day',            type:'auto',     countries:['US'],                        regions:['en'],      cat:'Holidays',      url:'/countdown/memorial-day/'     },
+    { slug:'labor-day',        name:'Labor Day',               type:'auto',     countries:['US','CA'],                   regions:['en'],      cat:'Holidays',      url:'/countdown/labor-day/'        },
+    { slug:'st-patricks',      name:"St. Patrick's Day",       type:'auto',     countries:['US','IE','GB','AU','CA','AR','MX'], regions:['en'], cat:'Holidays',   url:'/countdown/st-patricks/'      },
+    { slug:'dia-de-los-muertos', name:'Dia de los Muertos',    type:'auto',     countries:['MX','GT','SV','HN','NI','CR','CO','AR','CL','PE','UY'], regions:['es'], cat:'Holidays', url:'/countdown/dia-de-los-muertos/' },
+    { slug:'cinco-de-mayo',   name:'Cinco de Mayo',            type:'auto',     countries:['MX','US'],                   regions:['es'],      cat:'Holidays',      url:'/countdown/cinco-de-mayo/'    },
+    { slug:'fiestas-patrias', name:'Fiestas Patrias Chile',    type:'auto',     countries:['CL'],                        regions:['es'],      cat:'Holidays',      url:'/countdown/fiestas-patrias/'  },
+    { slug:'bastille-day',    name:'Bastille Day',             type:'auto',     countries:['FR','BE','CH','LU'],          regions:['fr'],      cat:'Holidays',      url:'/countdown/bastille-day/'     },
+    { slug:'oktoberfest',     name:'Oktoberfest',              type:'variable', countries:['DE','AT','CH','US','CA','AU','BR'], regions:['global'], cat:'Holidays', url:'/countdown/oktoberfest/'  },
+    { slug:'25-de-mayo',      name:'25 de Mayo',               type:'auto',     countries:['AR'],                        regions:['es'],      cat:'Holidays',      url:'/countdown/25-de-mayo/'       },
+    { slug:'dia-del-nino', name:"Children's Day",              type:'auto',     countries:['MX','AR','BR','CO','CL','PE','UY','VE','BO','EC','CR','PA','GT','SV','DO','PY'], regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },
+    { slug:'epiphany',    name:'Epiphany / Three Kings Day',   type:'auto',     countries:['ES','MX','AR','CL','CO','IT','DE','AT','PL','GR','FR','BE','BR','UY','BO','PY','PE','EC','VE','CR','PA','GT','SV','HN','NI','DO','CU'], regions:['global'], cat:'Holidays', url:'/countdown/epiphany/' },
     /* ── Entertainment – Global ── */
-    { slug:'oscars',     name:'Oscars',                        type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/oscars/'     },
-    { slug:'grammys',    name:'Grammy Awards',                 type:'variable', regions:['global'], cat:'Entertainment', url:'/countdown/grammys/'    },
-    { slug:'met-gala',   name:'Met Gala',                      type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/met-gala/'   },
-    { slug:'eurovision', name:'Eurovision',                    type:'variable', regions:['global','fr'], cat:'Entertainment', url:'/countdown/eurovision/' },
-    { slug:'cannes',     name:'Cannes Film Festival',          type:'variable', regions:['global'], cat:'Entertainment', url:'/countdown/cannes/'     },
+    { slug:'oscars',      name:'Oscars',                       type:'auto',     countries:['global'], regions:['global'], cat:'Entertainment', url:'/countdown/oscars/'     },
+    { slug:'grammys',     name:'Grammy Awards',                type:'variable', countries:['global'], regions:['global'], cat:'Entertainment', url:'/countdown/grammys/'    },
+    { slug:'met-gala',    name:'Met Gala',                     type:'auto',     countries:['global'], regions:['global'], cat:'Entertainment', url:'/countdown/met-gala/'   },
+    { slug:'cannes',      name:'Cannes Film Festival',         type:'variable', countries:['global'], regions:['global'], cat:'Entertainment', url:'/countdown/cannes/'     },
+    { slug:'eurovision',  name:'Eurovision',                   type:'variable', countries:['FR','BE','CH','ES','PT','GB','IE','AU','DE','AT','SE','NO','FI','NL','IT','GR'], regions:['global','fr'], cat:'Entertainment', url:'/countdown/eurovision/' },
+    { slug:'coachella',   name:'Coachella',                    type:'variable', countries:['US','MX','CA','GB'],          regions:['en'],      cat:'Entertainment', url:'/countdown/coachella/'  },
+    { slug:'rio-carnival',name:'Rio Carnival',                 type:'auto',     countries:['BR','AR','UY','CO','BO','PE'], regions:['global'], cat:'Entertainment', url:'/countdown/rio-carnival/'},
+    { slug:'balon-de-oro',name:'Ballon d'Or',                 type:'auto',     countries:['global'], regions:['global'], cat:'Entertainment', url:'/countdown/balon-de-oro/' },
     /* ── Sales – Global ── */
-    { slug:'black-friday', name:'Black Friday',                type:'auto',     regions:['global'], cat:'Sales',         url:'/countdown/black-friday/' },
-    { slug:'cyber-monday', name:'Cyber Monday',                type:'auto',     regions:['global'], cat:'Sales',         url:'/countdown/cyber-monday/' },
-    { slug:'hot-sale',     name:'Hot Sale',                    type:'variable', regions:['es'],     cat:'Sales',         url:'/countdown/hot-sale/'     },
+    { slug:'black-friday', name:'Black Friday',                type:'auto',     countries:['global'], regions:['global'], cat:'Sales',         url:'/countdown/black-friday/' },
+    { slug:'cyber-monday', name:'Cyber Monday',                type:'auto',     countries:['global'], regions:['global'], cat:'Sales',         url:'/countdown/cyber-monday/' },
+    { slug:'hot-sale',     name:'Hot Sale',                    type:'variable', countries:['AR','MX'],                   regions:['es'],      cat:'Sales',         url:'/countdown/hot-sale/'     },
     /* ── Nature – Global ── */
-    { slug:'full-moon',  name:'Next Full Moon',                type:'auto',     regions:['global'], cat:'Nature',        url:'/countdown/full-moon/'  },
-    { slug:'eclipse',    name:'Solar Eclipse',                 type:'variable', regions:['global'], cat:'Nature',        url:'/countdown/eclipse/'    },
+    { slug:'full-moon',   name:'Next Full Moon',               type:'auto',     countries:['global'], regions:['global'], cat:'Nature',        url:'/countdown/full-moon/'  },
+    { slug:'eclipse',     name:'Solar Eclipse',                type:'variable', countries:['global'], regions:['global'], cat:'Nature',        url:'/countdown/eclipse/'    },
     /* ── Music ── */
-    { slug:'lollapalooza-ar', name:'Lollapalooza Argentina',   type:'variable', regions:['es'],     cat:'Music',         url:'/countdown/lollapalooza-ar/' },
-    { slug:'lollapalooza-cl', name:'Lollapalooza Chile',       type:'variable', regions:['es'],     cat:'Music',         url:'/countdown/lollapalooza-cl/' },
-    { slug:'cosquin-rock',    name:'Cosquín Rock',             type:'variable', regions:['es'],     cat:'Music',         url:'/countdown/cosquin-rock/'    },
-    { slug:'rock-in-rio',     name:'Rock in Rio',              type:'variable', regions:['pt'],     cat:'Music',         url:'/countdown/rock-in-rio/'     },
+    { slug:'lollapalooza-ar', name:'Lollapalooza Argentina',   type:'variable', countries:['AR','UY'],                   regions:['es'],      cat:'Music',         url:'/countdown/lollapalooza-ar/' },
+    { slug:'lollapalooza-cl', name:'Lollapalooza Chile',       type:'variable', countries:['CL','AR'],                   regions:['es'],      cat:'Music',         url:'/countdown/lollapalooza-cl/' },
+    { slug:'cosquin-rock',    name:'Cosquin Rock',             type:'variable', countries:['AR'],                        regions:['es'],      cat:'Music',         url:'/countdown/cosquin-rock/'    },
+    { slug:'rock-in-rio',     name:'Rock in Rio',              type:'variable', countries:['BR','PT'],                   regions:['pt'],      cat:'Music',         url:'/countdown/rock-in-rio/'     },
+    { slug:'lollapalooza-us', name:'Lollapalooza Chicago',     type:'variable', countries:['US','CA','MX'],              regions:['global'],  cat:'Music',         url:'/countdown/lollapalooza-us/' },
+    { slug:'lollapalooza-de', name:'Lollapalooza Berlin',      type:'variable', countries:['DE','AT','CH','NL','BE','FR','ES','PL','SE','DK','NO','FI'], regions:['global'], cat:'Music', url:'/countdown/lollapalooza-de/' },
+    { slug:'lollapalooza-fr', name:'Lollapalooza Paris',       type:'variable', countries:['FR','BE','CH','ES','DE'],    regions:['global'],  cat:'Music',         url:'/countdown/lollapalooza-fr/' },
+    { slug:'primavera-sound-es',name:'Primavera Sound Barcelona', type:'variable', countries:['ES','FR','DE','GB','IT','PT','NL','BE','SE','NO','DK'], regions:['global'], cat:'Music', url:'/countdown/primavera-sound-es/'},
+    { slug:'primavera-sound-ar',name:'Primavera Sound Buenos Aires', type:'variable', countries:['AR','UY','CL','BO','PY','PE'], regions:['global'], cat:'Music', url:'/countdown/primavera-sound-ar/'},
+    { slug:'primavera-sound-br',name:'Primavera Sound Sao Paulo',    type:'variable', countries:['BR','AR','UY'],        regions:['global'],  cat:'Music',         url:'/countdown/primavera-sound-br/'},
+    { slug:'tomorrowland',    name:'Tomorrowland',              type:'variable', countries:['global'],                   regions:['global'],  cat:'Music',         url:'/countdown/tomorrowland/'     },
     /* ── Fashion – Global ── */
-    { slug:'nyfw',      name:'New York Fashion Week',          type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/nyfw/'       },
-    { slug:'paris-fw',  name:'Paris Fashion Week',             type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/paris-fw/'   },
-    { slug:'milan-fw',  name:'Milan Fashion Week',             type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/milan-fw/'   },
-    { slug:'bafweek',   name:'Buenos Aires Fashion Week',      type:'variable', regions:['es'],     cat:'Fashion',       url:'/countdown/bafweek/'    },
-    /* ── Politics ── */
-    { slug:'elecciones-ar', name:'Argentine Elections',        type:'auto',     regions:['es'],     cat:'Politics',      url:'/countdown/elecciones-ar/' },
-    /* ── ES-only Holidays ── */
-    { slug:'25-de-mayo',   name:'25 de Mayo',                 type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/25-de-mayo/'    },
-    /* ── Children's Day – global ── */
-    { slug:'dia-del-nino', name:"Children's Day",             type:'auto',     regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },
-    /* ── Months ── */
-    { slug:'january',   name:'January',   type:'auto', regions:['global'], cat:'Months', url:'/countdown/january/'   },
-    { slug:'february',  name:'February',  type:'auto', regions:['global'], cat:'Months', url:'/countdown/february/'  },
-    { slug:'march',     name:'March',     type:'auto', regions:['global'], cat:'Months', url:'/countdown/march/'     },
-    { slug:'april',     name:'April',     type:'auto', regions:['global'], cat:'Months', url:'/countdown/april/'     },
-    { slug:'may-month', name:'May',       type:'auto', regions:['global'], cat:'Months', url:'/countdown/may-month/' },
-    { slug:'june-month',name:'June',      type:'auto', regions:['global'], cat:'Months', url:'/countdown/june-month/'},
-    { slug:'july-month',name:'July',      type:'auto', regions:['global'], cat:'Months', url:'/countdown/july-month/'},
-    { slug:'august',    name:'August',    type:'auto', regions:['global'], cat:'Months', url:'/countdown/august/'    },
-    { slug:'september', name:'September', type:'auto', regions:['global'], cat:'Months', url:'/countdown/september/' },
-    { slug:'october',   name:'October',   type:'auto', regions:['global'], cat:'Months', url:'/countdown/october/'   },
-    { slug:'november',  name:'November',  type:'auto', regions:['global'], cat:'Months', url:'/countdown/november/'  },
-    { slug:'december',  name:'December',  type:'auto', regions:['global'], cat:'Months', url:'/countdown/december/'  },
-    /* ── Time ── */
-    { slug:'midnight',  name:'Midnight',  type:'auto', regions:['global'], cat:'Time',   url:'/countdown/midnight/'  },
-    /* ── Seasons ── */
-    { slug:'spring',        name:'Spring',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/spring/'        },
-    { slug:'summer',        name:'Summer',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/summer/'        },
-    { slug:'autumn',        name:'Autumn',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/autumn/'        },
-    { slug:'winter-season', name:'Winter',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/winter-season/' },
-    /* ── School ── */
-    { slug:'back-to-school',  name:'Back to School',   type:'auto', regions:['global'], cat:'School', url:'/countdown/back-to-school/'  },
-    { slug:'summer-vacation', name:'Summer Vacation',  type:'auto', regions:['global'], cat:'School', url:'/countdown/summer-vacation/' },
-    { slug:'winter-vacation', name:'Winter Vacation',  type:'auto', regions:['global'], cat:'School', url:'/countdown/winter-vacation/' },
-    /* ── National Days ── */
-    { slug:'independence',              name:'Independence Day',            type:'auto', regions:['global'], cat:'National Days', url:'/countdown/independence/'              },
-    { slug:'canada-day',                name:'Canada Day',                  type:'auto', regions:['global'], cat:'National Days', url:'/countdown/canada-day/'                },
-    { slug:'australia-day',             name:'Australia Day',               type:'auto', regions:['global'], cat:'National Days', url:'/countdown/australia-day/'             },
-    { slug:'waitangi-day',              name:'Waitangi Day',                type:'auto', regions:['global'], cat:'National Days', url:'/countdown/waitangi-day/'              },
-    { slug:'syttende-mai',              name:'Norwegian Constitution Day',  type:'auto', regions:['global'], cat:'National Days', url:'/countdown/syttende-mai/'              },
-    { slug:'german-unity-day',          name:'German Unity Day',            type:'auto', regions:['global'], cat:'National Days', url:'/countdown/german-unity-day/'          },
-    { slug:'festa-della-repubblica',    name:'Italian Republic Day',        type:'auto', regions:['global'], cat:'National Days', url:'/countdown/festa-della-repubblica/'    },
-    { slug:'national-day-sg',           name:'Singapore National Day',      type:'auto', regions:['global'], cat:'National Days', url:'/countdown/national-day-sg/'           },
-    { slug:'freedom-day-za',            name:'South Africa Freedom Day',    type:'auto', regions:['global'], cat:'National Days', url:'/countdown/freedom-day-za/'            },
-    { slug:'dia-de-la-hispanidad',      name:'Dia de la Hispanidad',        type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-hispanidad/'      },
-    { slug:'dia-de-la-raza',            name:'Dia de la Raza',              type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-raza/'            },
-    { slug:'dia-de-la-bandera',         name:'Dia de la Bandera (AR)',      type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-bandera/'         },
-    { slug:'dia-de-la-revolucion',      name:'Dia de la Revolucion (MX)',   type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-revolucion/'      },
-    { slug:'dia-de-la-constitucion',    name:'Dia de la Constitucion (MX)', type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-constitucion/'    },
-    { slug:'proclamacao-da-republica',  name:'Proclamacao da Republica',    type:'auto', regions:['global'], cat:'National Days', url:'/countdown/proclamacao-da-republica/'  },
-    { slug:'tiradentes',                name:'Tiradentes (Brazil)',          type:'auto', regions:['global'], cat:'National Days', url:'/countdown/tiradentes/'                },
-    { slug:'proclamacion-independencia-ar', name:'25 de Mayo (Argentina)',  type:'auto', regions:['global'], cat:'National Days', url:'/countdown/proclamacion-independencia-ar/' },
-    /* ── Jewish Holidays ── */
-    { slug:'rosh-hashana', name:'Rosh Hashanah',      type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/rosh-hashana/' },
-    { slug:'yom-kipur',    name:'Yom Kippur',          type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/yom-kipur/'    },
-    { slug:'januca',       name:'Hanukkah',            type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/januca/'       },
-    { slug:'purim',        name:'Purim',               type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/purim/'        },
-    { slug:'pesaj',        name:'Passover',            type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/pesaj/'        },
-    { slug:'shavuot',      name:'Shavuot',             type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/shavuot/'      },
-    /* ── Additional Holidays ── */
-    { slug:'epiphany',    name:'Epiphany / Three Kings Day', type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/epiphany/'    },
-    { slug:'rio-carnival',name:'Rio Carnival',               type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/rio-carnival/'},
-    /* ── Music (global) ── */
-    { slug:'lollapalooza-us',   name:'Lollapalooza Chicago',        type:'variable', regions:['global'], cat:'Music', url:'/countdown/lollapalooza-us/'   },
-    { slug:'lollapalooza-de',   name:'Lollapalooza Berlin',         type:'variable', regions:['global'], cat:'Music', url:'/countdown/lollapalooza-de/'   },
-    { slug:'lollapalooza-fr',   name:'Lollapalooza Paris',          type:'variable', regions:['global'], cat:'Music', url:'/countdown/lollapalooza-fr/'   },
-    { slug:'primavera-sound-es',name:'Primavera Sound Barcelona',   type:'variable', regions:['global'], cat:'Music', url:'/countdown/primavera-sound-es/'},
-    { slug:'primavera-sound-ar',name:'Primavera Sound Buenos Aires',type:'variable', regions:['global'], cat:'Music', url:'/countdown/primavera-sound-ar/'},
-    { slug:'primavera-sound-br',name:'Primavera Sound Sao Paulo',   type:'variable', regions:['global'], cat:'Music', url:'/countdown/primavera-sound-br/'},
-    { slug:'tomorrowland',      name:'Tomorrowland',                type:'variable', regions:['global'], cat:'Music', url:'/countdown/tomorrowland/'      },
+    { slug:'nyfw',     name:'New York Fashion Week',           type:'variable', countries:['global'], regions:['global'], cat:'Fashion',      url:'/countdown/nyfw/'     },
+    { slug:'paris-fw', name:'Paris Fashion Week',              type:'variable', countries:['global'], regions:['global'], cat:'Fashion',      url:'/countdown/paris-fw/' },
+    { slug:'milan-fw', name:'Milan Fashion Week',              type:'variable', countries:['global'], regions:['global'], cat:'Fashion',      url:'/countdown/milan-fw/' },
+    { slug:'bafweek',  name:'Buenos Aires Fashion Week',       type:'variable', countries:['AR'],                        regions:['es'],      cat:'Fashion',      url:'/countdown/bafweek/'  },
     /* ── Sports (additional) ── */
-    { slug:'world-cup-final',       name:'2026 World Cup Final',   type:'variable', regions:['global'], cat:'Sports', url:'/countdown/world-cup-final/'       },
-    { slug:'copa-america-2028',     name:'Copa America 2028',      type:'variable', regions:['global'], cat:'Sports', url:'/countdown/copa-america-2028/'     },
-    { slug:'copa-america-2028-final',name:'Copa America 2028 Final',type:'variable',regions:['global'], cat:'Sports', url:'/countdown/copa-america-2028-final/'},
-    { slug:'euro-2028',             name:'UEFA Euro 2028',         type:'variable', regions:['global'], cat:'Sports', url:'/countdown/euro-2028/'             },
-    { slug:'euro-2028-final',       name:'UEFA Euro 2028 Final',   type:'variable', regions:['global'], cat:'Sports', url:'/countdown/euro-2028-final/'       },
-    /* ── Tech / Awards ── */
-    { slug:'ces',          name:'CES Las Vegas',  type:'auto',     regions:['global'], cat:'Technology',    url:'/countdown/ces/'          },
-    { slug:'balon-de-oro', name:'Balon de Oro',   type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/balon-de-oro/' },
-    { slug:'mr-olympia',   name:'Mr. Olympia',    type:'auto',     regions:['global'], cat:'Sports',        url:'/countdown/mr-olympia/'   },
-    { slug:'arnold-classic',name:'Arnold Classic',type:'auto',     regions:['global'], cat:'Sports',        url:'/countdown/arnold-classic/'},
+    { slug:'world-cup-final',        name:'2026 World Cup Final',    type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/world-cup-final/'        },
+    { slug:'copa-america-2028',      name:'Copa America 2028',       type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/copa-america-2028/'      },
+    { slug:'copa-america-2028-final',name:'Copa America 2028 Final', type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/copa-america-2028-final/'},
+    { slug:'euro-2028',              name:'UEFA Euro 2028',          type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/euro-2028/'              },
+    { slug:'euro-2028-final',        name:'UEFA Euro 2028 Final',    type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/euro-2028-final/'        },
+    { slug:'mr-olympia',             name:'Mr. Olympia',             type:'auto',     countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/mr-olympia/'             },
+    { slug:'arnold-classic',         name:'Arnold Classic',          type:'auto',     countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/arnold-classic/'         },
+    /* ── Technology ── */
+    { slug:'ces',          name:'CES Las Vegas',               type:'auto',     countries:['global'], regions:['global'], cat:'Technology',    url:'/countdown/ces/'          },
+    /* ── Months ── */
+    { slug:'january',   name:'January',   type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/january/'   },
+    { slug:'february',  name:'February',  type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/february/'  },
+    { slug:'march',     name:'March',     type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/march/'     },
+    { slug:'april',     name:'April',     type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/april/'     },
+    { slug:'may-month', name:'May',       type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/may-month/' },
+    { slug:'june-month',name:'June',      type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/june-month/'},
+    { slug:'july-month',name:'July',      type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/july-month/'},
+    { slug:'august',    name:'August',    type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/august/'    },
+    { slug:'september', name:'September', type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/september/' },
+    { slug:'october',   name:'October',   type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/october/'   },
+    { slug:'november',  name:'November',  type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/november/'  },
+    { slug:'december',  name:'December',  type:'auto', countries:['global'], regions:['global'], cat:'Months', url:'/countdown/december/'  },
+    /* ── Time ── */
+    { slug:'midnight',  name:'Midnight',  type:'auto', countries:['global'], regions:['global'], cat:'Time',   url:'/countdown/midnight/'  },
+    /* ── Seasons ── */
+    { slug:'spring',        name:'Spring', type:'auto', countries:['global'], regions:['global'], cat:'Seasons', url:'/countdown/spring/'        },
+    { slug:'summer',        name:'Summer', type:'auto', countries:['global'], regions:['global'], cat:'Seasons', url:'/countdown/summer/'        },
+    { slug:'autumn',        name:'Autumn', type:'auto', countries:['global'], regions:['global'], cat:'Seasons', url:'/countdown/autumn/'        },
+    { slug:'winter-season', name:'Winter', type:'auto', countries:['global'], regions:['global'], cat:'Seasons', url:'/countdown/winter-season/' },
+    /* ── School ── */
+    { slug:'back-to-school',  name:'Back to School',  type:'auto', countries:['global'], regions:['global'], cat:'School', url:'/countdown/back-to-school/'  },
+    { slug:'summer-vacation', name:'Summer Vacation', type:'auto', countries:['global'], regions:['global'], cat:'School', url:'/countdown/summer-vacation/' },
+    { slug:'winter-vacation', name:'Winter Vacation', type:'auto', countries:['global'], regions:['global'], cat:'School', url:'/countdown/winter-vacation/' },
+    /* ── National Days ── */
+    { slug:'independence',    name:'Independence Day',            type:'auto', countries:['global'], regions:['global'], cat:'National Days', url:'/countdown/independence/'    },
+    { slug:'canada-day',      name:'Canada Day',                  type:'auto', countries:['CA'],     regions:['global'], cat:'National Days', url:'/countdown/canada-day/'      },
+    { slug:'australia-day',   name:'Australia Day',               type:'auto', countries:['AU'],     regions:['global'], cat:'National Days', url:'/countdown/australia-day/'   },
+    { slug:'waitangi-day',    name:'Waitangi Day',                type:'auto', countries:['NZ'],     regions:['global'], cat:'National Days', url:'/countdown/waitangi-day/'    },
+    { slug:'syttende-mai',    name:'Norwegian Constitution Day',  type:'auto', countries:['NO'],     regions:['global'], cat:'National Days', url:'/countdown/syttende-mai/'    },
+    { slug:'german-unity-day',name:'German Unity Day',            type:'auto', countries:['DE','AT'],regions:['global'], cat:'National Days', url:'/countdown/german-unity-day/'},
+    { slug:'festa-della-repubblica', name:'Italian Republic Day', type:'auto', countries:['IT'],    regions:['global'], cat:'National Days', url:'/countdown/festa-della-repubblica/' },
+    { slug:'national-day-sg', name:'Singapore National Day',      type:'auto', countries:['SG'],     regions:['global'], cat:'National Days', url:'/countdown/national-day-sg/' },
+    { slug:'freedom-day-za',  name:'South Africa Freedom Day',    type:'auto', countries:['ZA'],     regions:['global'], cat:'National Days', url:'/countdown/freedom-day-za/'  },
+    { slug:'dia-de-la-hispanidad', name:'Dia de la Hispanidad',   type:'auto', countries:['ES','MX','AR','CL','CO','PE','UY','BO','EC','PY','VE','CR','PA','GT','SV','HN','NI','DO','CU','PR'], regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-hispanidad/' },
+    { slug:'dia-de-la-raza',  name:'Dia de la Raza',              type:'auto', countries:LATAM,      regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-raza/'  },
+    { slug:'dia-de-la-bandera',name:'Dia de la Bandera',          type:'auto', countries:['AR'],     regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-bandera/'},
+    { slug:'dia-de-la-revolucion',   name:'Dia de la Revolucion', type:'auto', countries:['MX'],    regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-revolucion/'   },
+    { slug:'dia-de-la-constitucion', name:'Dia de la Constitucion',type:'auto',countries:['MX'],    regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-constitucion/' },
+    { slug:'proclamacao-da-republica', name:'Proclamacao da Republica', type:'auto', countries:['BR','PT'], regions:['global'], cat:'National Days', url:'/countdown/proclamacao-da-republica/' },
+    { slug:'tiradentes',      name:'Tiradentes',                  type:'auto', countries:['BR'],     regions:['global'], cat:'National Days', url:'/countdown/tiradentes/'      },
+    { slug:'proclamacion-independencia-ar', name:'25 de Mayo (Argentina)', type:'auto', countries:['AR'], regions:['global'], cat:'National Days', url:'/countdown/proclamacion-independencia-ar/' },
+    /* ── Jewish Holidays ── */
+    { slug:'rosh-hashana', name:'Rosh Hashanah', type:'auto', countries:['global'], regions:['global'], cat:'Jewish Holidays', url:'/countdown/rosh-hashana/' },
+    { slug:'yom-kipur',    name:'Yom Kippur',    type:'auto', countries:['global'], regions:['global'], cat:'Jewish Holidays', url:'/countdown/yom-kipur/'    },
+    { slug:'januca',       name:'Hanukkah',      type:'auto', countries:['global'], regions:['global'], cat:'Jewish Holidays', url:'/countdown/januca/'       },
+    { slug:'purim',        name:'Purim',         type:'auto', countries:['global'], regions:['global'], cat:'Jewish Holidays', url:'/countdown/purim/'        },
+    { slug:'pesaj',        name:'Passover',      type:'auto', countries:['global'], regions:['global'], cat:'Jewish Holidays', url:'/countdown/pesaj/'        },
+    { slug:'shavuot',      name:'Shavuot',       type:'auto', countries:['global'], regions:['global'], cat:'Jewish Holidays', url:'/countdown/shavuot/'      },
+    /* ── Politics ── */
+    { slug:'elecciones-ar', name:'Argentine Elections', type:'auto', countries:['AR'], regions:['es'], cat:'Politics', url:'/countdown/elecciones-ar/' },
+
   ];
 
   var currentLang = 'pt';
   var currentSort = 'chrono';
 
   function filteredEvents() {
+    var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
     return EVENTS.filter(function (e) {
-      return e.regions.indexOf('global') >= 0 || e.regions.indexOf(currentLang) >= 0;
+      var langOk = e.regions.indexOf('global') >= 0 || e.regions.indexOf(currentLang) >= 0;
+      if (!langOk) return false;
+      if (country === 'global' || !e.countries) return true;
+      var cs = e.countries;
+      if (cs.indexOf('global') >= 0) return true;
+      // handle LATAM reference (passed as array by the time JS runs)
+      return cs.indexOf(country) >= 0;
     });
   }
 
@@ -449,18 +473,44 @@
     });
   })();
 
-  // Country selector
+  // Country selector + auto geo-detection
   (function(){
     var fb = document.getElementById('country-flag-btn');
-    if(!fb) return;
+    var det = document.getElementById('country-detected');
     var savedC = typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null;
-    if(savedC && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
-    fb.addEventListener('click', function(){
-      CountdownEngine.openCountryPicker(function(code){
-        localStorage.setItem('cd_country', code);
-        location.reload();
+
+    function applyCountry(code, reload) {
+      localStorage.setItem('cd_country', code);
+      if (fb && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[code] || '🌍';
+      if (reload) { loadHub(); }
+    }
+
+    // Restore saved flag
+    if (savedC && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+
+    if (fb) {
+      fb.addEventListener('click', function(){
+        CountdownEngine.openCountryPicker(function(code){
+          if (det) det.classList.add('hidden');
+          applyCountry(code, true);
+        });
       });
-    });
+    }
+
+    // First visit: auto-detect via IP
+    if (!savedC) {
+      fetch('https://ipapi.co/json/?fields=country_code')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var code = ((data && data.country_code) || 'global').toUpperCase();
+          applyCountry(code, true);
+          if (det && code !== 'global' && CountdownEngine.FLAG_MAP) {
+            det.innerHTML = '<span class="country-detected-dot"></span>Auto-detected: ' + (CountdownEngine.FLAG_MAP[code] || '') + ' ' + code;
+            det.classList.remove('hidden');
+          }
+        })
+        .catch(function() { loadHub(); });
+    }
   })();
 
 })();
