@@ -371,10 +371,12 @@ def generate_hub(lang):
         f"      '{k}': '{v}',\n" for k, v in lang["names"].items()
     ) + "    }"
     # Build LANG_URLS: slug -> /{lang}/countdown/{slug}/ for slugs with translated pages
+    # For EN (code="en"), the canonical pages live at /countdown/{slug}/ (no prefix)
     lang_urls_items = ""
     for slug, langs in SLUG_LANGS.items():
         if c in langs:
-            lang_urls_items += f"      '{slug}': '/{c}/countdown/{slug}/',\n"
+            prefix = "" if c == "en" else f"/{c}"
+            lang_urls_items += f"      '{slug}': '{prefix}/countdown/{slug}/',\n"
     lang_urls_js = "{\n" + lang_urls_items + "    }"
 
     return f'''<!DOCTYPE html>
