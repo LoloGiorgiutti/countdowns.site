@@ -281,7 +281,7 @@ EVENTS_JS = """    /* ── Releases ── */
     { slug:'eurovision',  name:'Eurovision',                   type:'variable', countries:['FR','BE','CH','ES','PT','GB','IE','AU','DE','AT','SE','NO','FI','NL','IT','GR'], regions:['global','fr'], cat:'Entertainment', url:'/countdown/eurovision/' },
     { slug:'coachella',   name:'Coachella',                    type:'variable', countries:['US','MX','CA','GB'],          regions:['en'],      cat:'Entertainment', url:'/countdown/coachella/'  },
     { slug:'rio-carnival',name:'Rio Carnival',                 type:'auto',     countries:['BR','AR','UY','CO','BO','PE'], regions:['global'], cat:'Entertainment', url:'/countdown/rio-carnival/'},
-    { slug:'balon-de-oro',name:'Ballon d\'Or',                 type:'auto',     countries:['global'], regions:['global'], cat:'Entertainment', url:'/countdown/balon-de-oro/' },
+    { slug:'balon-de-oro',name:"Ballon d'Or",                  type:'auto',     countries:['global'], regions:['global'], cat:'Entertainment', url:'/countdown/balon-de-oro/' },
     /* ── Sales – Global ── */
     { slug:'black-friday', name:'Black Friday',                type:'auto',     countries:['global'], regions:['global'], cat:'Sales',         url:'/countdown/black-friday/' },
     { slug:'cyber-monday', name:'Cyber Monday',                type:'auto',     countries:['global'], regions:['global'], cat:'Sales',         url:'/countdown/cyber-monday/' },
