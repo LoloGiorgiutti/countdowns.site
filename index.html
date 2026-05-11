@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Countdowns — Every countdown that matters</title>
-<meta name="description" content="Real-time countdowns to sports, game releases, holidays, sales, and every event the world is waiting for. Free, live, no ads.">
+<meta name="description" content="Real-time countdowns for sports, releases, holidays, sales and more. Free, live, no ads.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://countdowns.site/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://countdowns.site/">
 <meta property="og:title" content="Countdowns — Every countdown that matters">
-<meta property="og:description" content="Real-time countdowns to sports, releases, holidays and more. Free and live.">
+<meta property="og:description" content="Real-time countdowns for every event the world is waiting for.">
 <meta property="og:locale" content="en_US">
 
 <link rel="alternate" hreflang="en" href="https://countdowns.site/">
@@ -24,34 +24,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
-<style>
-/* ── Category badge on cards ───────────────────────── */
-.cd-card-cat{font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;opacity:.55;margin-top:.3rem;display:block}
-/* ── Footer visibility fix ─────────────────────────── */
-.site-footer{color:rgba(255,255,255,.5)}
-[data-theme="light"] .site-footer{color:rgba(0,0,0,.35)}
-/* ── Country selector ───────────────────────────────── */
-.country-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:9999;padding:1rem}
-.country-overlay.hidden{display:none}
-.country-modal{background:var(--card-bg,#0E0E1C);border:1px solid rgba(129,140,248,.3);border-radius:20px;padding:2rem 1.75rem;max-width:500px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 0 80px rgba(129,140,248,.18)}
-.country-modal h2{font-size:1.35rem;font-weight:700;margin:0 0 .4rem;color:var(--text,#F1F5F9)}
-.country-modal p{font-size:.875rem;color:var(--muted,#94A3B8);margin:0 0 1.4rem;line-height:1.5}
-.country-search{width:100%;box-sizing:border-box;padding:.5rem .75rem;border-radius:10px;border:1px solid rgba(129,140,248,.3);background:rgba(255,255,255,.05);color:var(--text,#F1F5F9);font-size:.9rem;margin-bottom:1rem;outline:none}
-.country-search:focus{border-color:rgba(129,140,248,.7)}
-.country-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.45rem;margin-bottom:1rem}
-@media(min-width:400px){.country-grid{grid-template-columns:repeat(4,1fr)}}
-.country-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.6rem .3rem;cursor:pointer;text-align:center;transition:all .15s;color:var(--text,#F1F5F9);font-size:.78rem;font-weight:500;font-family:inherit}
-.country-item .ci-flag{font-size:1.6rem;display:block;margin-bottom:.2rem}
-.country-item:hover{background:rgba(129,140,248,.15);border-color:rgba(129,140,248,.35)}
-.country-item.selected{background:rgba(129,140,248,.22);border-color:#818CF8;box-shadow:0 0 14px rgba(129,140,248,.28)}
-.country-skip{width:100%;background:transparent;border:none;color:var(--muted,#64748B);font-size:.82rem;cursor:pointer;padding:.6rem;margin-top:.25rem;text-decoration:underline;font-family:inherit}
-.country-skip:hover{color:var(--text,#F1F5F9)}
-.country-detected{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted,#64748B);margin-bottom:1rem}
-.country-detected-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;flex-shrink:0}
-/* Header country flag button */
-.country-flag-btn{font-size:1.25rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:8px;cursor:pointer;padding:.2rem .4rem;line-height:1;transition:all .15s;margin-left:.25rem}
-.country-flag-btn:hover{border-color:rgba(129,140,248,.5);transform:scale(1.08)}
-</style>
 
 <script type="application/ld+json">
 {
@@ -59,49 +31,38 @@
   "@type": "WebSite",
   "@id": "https://countdowns.site/#website",
   "url": "https://countdowns.site/",
-  "name": "Countdowns.site",
-  "description": "Real-time countdowns to every event that matters",
-  "inLanguage": "en",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://countdowns.site/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+  "name": "Countdowns",
+  "description": "Real-time countdowns for every event that matters",
+  "inLanguage": "en"
 }
 </script>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
 <header class="site-header">
   <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="es">ES</button>
-      <button class="lang-btn" data-lang="pt">PT</button>
-      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" onclick="location.href='/'">EN</button>
+      <button class="lang-btn" onclick="location.href='/es/'">ES</button>
+      <button class="lang-btn" onclick="location.href='/pt/'">PT</button>
+      <button class="lang-btn" onclick="location.href='/fr/'">FR</button>
     </div>
-    <button class="country-flag-btn" id="country-flag-btn" title="Select your country" aria-label="Select country">🌍</button>
   </div>
 </header>
 
-<!-- ── HERO ── -->
 <div class="hub-hero">
-  <div class="hub-hero-label"><span></span><span id="hero-live">Live · updated in real time</span></div>
-  <h1 id="hero-h1">Every countdown<br>that <em>matters</em></h1>
-  <p class="hub-hero-sub" id="hero-sub">Sports, releases, holidays, sales — every event the world is waiting for.</p>
-  <a href="/custom/" class="hub-create-btn" id="hub-create-btn">✦ Create your own countdown</a>
+  <div class="hub-hero-label"><span></span>Live · updated in real time</div>
+  <h1>Every countdown<br>that <em>matters</em></h1>
+  <p class="hub-hero-sub">Sports, releases, holidays, sales — every event the world is counting down to.</p>
   <div class="sort-toggle" role="group" aria-label="Sort order">
-    <button class="sort-btn active" data-sort="chrono" id="sort-chrono">Soonest first</button>
-    <button class="sort-btn" data-sort="category" id="sort-cat">By category</button>
+    <button class="sort-btn active" data-sort="chrono">Soonest first</button>
+    <button class="sort-btn" data-sort="category">By category</button>
   </div>
 </div>
 
-<!-- ── HUB BODY ── -->
 <main class="hub-body" id="hub-body">
-  <!-- JS renders cards here -->
   <div id="hub-content"></div>
 </main>
 
@@ -109,25 +70,11 @@
   countdowns<span class="logo-tld">.site</span>
 </footer>
 
-<!-- ── COUNTRY MODAL ── -->
-<div id="country-overlay" class="country-overlay hidden" role="dialog" aria-modal="true" aria-label="Select your country">
-  <div class="country-modal">
-    <h2>Where are you from?</h2>
-    <p>We'll show you the most relevant countdowns for your country and language.</p>
-    <div id="country-detected" class="country-detected hidden"></div>
-    <input type="text" id="country-search" class="country-search" placeholder="Search country…" autocomplete="off" spellcheck="false">
-    <div id="country-grid" class="country-grid"></div>
-    <button id="country-skip" class="country-skip">Skip — show everything</button>
-  </div>
-</div>
-
-<!-- ── SCRIPTS ── -->
 <script src="/countdown-engine.js"></script>
 <script>
 (function () {
   'use strict';
 
-  /* ── Category colors ── */
   var CAT_COLOR = {
     'Releases':      { color:'#C084FC', glow:'rgba(192,132,252,.25)' },
     'Sports':        { color:'#FB923C', glow:'rgba(251,146,60,.25)'  },
@@ -142,331 +89,300 @@
   };
   function cc(cat) { return CAT_COLOR[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' }; }
 
-  /* ── Translated event names ── */
   var NAMES = {
-    'christmas':         { es:'Navidad',                pt:'Natal',                 fr:'Noël'                      },
-    'new-year':          { es:'Año Nuevo',              pt:'Ano Novo',              fr:'Nouvel An'                 },
-    'easter':            { es:'Pascua',                 pt:'Páscoa',                fr:'Pâques'                    },
-    'valentines':        { es:'San Valentín',           pt:'Dia dos Namorados',     fr:'Saint-Valentin'            },
-    'mothers-day':       { es:'Día de la Madre',        pt:'Dia das Mães',          fr:'Fête des Mères'            },
-    'fathers-day':       { es:'Día del Padre',          pt:'Dia dos Pais',          fr:'Fête des Pères'            },
-    'thanksgiving':      { es:'Acción de Gracias',      pt:'Ação de Graças',        fr:'Thanksgiving'              },
-    'world-cup':         { es:'Copa del Mundo 2026',    pt:'Copa do Mundo 2026',    fr:'Coupe du Monde 2026'       },
-    'f1':                { es:'F1: Próxima Carrera',    pt:'F1: Próxima Corrida',   fr:'F1: Prochain GP'           },
-    'ucl-final':         { es:'Final Champions League', pt:'Final da Champions',    fr:'Finale Ligue des Champions'},
-    'nba-finals':        { es:'Finales NBA',            pt:'Finais da NBA',         fr:'Finales NBA'               },
-    'olympics-2028':     { es:'Juegos Olímpicos LA 2028',pt:'Jogos Olímpicos LA 2028',fr:'JO Los Angeles 2028'    },
-    'full-moon':         { es:'Próxima Luna Llena',     pt:'Próxima Lua Cheia',     fr:'Prochaine Pleine Lune'     },
-    'eclipse':           { es:'Eclipse Solar',          pt:'Eclipse Solar',         fr:'Éclipse Solaire'           },
-    'oscars':            { es:'Premios Óscar',          pt:'Oscar',                 fr:'Oscars'                    },
-    'grammys':           { es:'Premios Grammy',         pt:'Grammy',                fr:'Grammy'                    },
-    'iphone':            { es:'Próximo iPhone',         pt:'Próximo iPhone',        fr:'Prochain iPhone'           },
-    'tour-de-france':    { es:'Tour de Francia',        pt:'Tour de France'                                        },
-    'bastille-day':      { fr:'Fête Nationale'                                                                     },
-    'black-friday':      { fr:'Black Friday'                                                                       },
-    'dia-del-nino':      { es:'Día del Niño',           pt:'Dia das Crianças',      fr:"Journée des Enfants"       },
-    'copa-libertadores': { es:'Final Copa Libertadores',pt:'Final Copa Libertadores'                               },
-    'nyfw':              { es:'Semana de la Moda NY',   pt:'NYFW',                  fr:'Semaine de la Mode NY'     },
-    'paris-fw':          { es:'Semana de la Moda París',pt:'Semana de Moda Paris',  fr:'Fashion Week Paris'        },
-    'milan-fw':          { es:'Semana de la Moda Milán',pt:'Semana de Moda Milão',  fr:'Fashion Week Milan'        },
-    'cannes':            { es:'Festival de Cannes',     fr:'Festival de Cannes'                                    },
-    'elecciones-ar':     { es:'Elecciones Argentina'                                                               },
-    'hot-sale':          { es:'Hot Sale'                                                                           },
-    'bafweek':           { es:'Buenos Aires Fashion Week'                                                          },
-  };
-  function evName(ev) {
-    var t = NAMES[ev.slug];
-    return (t && t[currentLang]) ? t[currentLang] : ev.name;
-  }
-
-  /* ── UI labels (buckets, misc) ── */
-  var UI = {
-    en: { today:'Today',         week:'This week',    month:'This month',  soon:'Coming soon',
-          year:'Later this year', future:'Next year +', tba:'Date TBA',     days:'days' },
-    es: { today:'Hoy',           week:'Esta semana',  month:'Este mes',    soon:'Próximamente',
-          year:'Más adelante',   future:'Año que viene', tba:'Fecha por confirmar', days:'días' },
-    pt: { today:'Hoje',          week:'Esta semana',  month:'Este mês',    soon:'Em breve',
-          year:'Mais adiante',   future:'Ano que vem',  tba:'Data a confirmar',    days:'dias' },
-    fr: { today:"Aujourd'hui",   week:'Cette semaine',month:'Ce mois-ci',  soon:'Bientôt',
-          year:'Cette année',    future:'Année prochaine', tba:'Date à confirmer', days:'jours'},
-  };
-  function ui(key) { return (UI[currentLang] || UI.en)[key] || UI.en[key] || ''; }
-
-  /* ── Category name translations ── */
-  var CAT_NAMES = {
-    Releases:      { es:'Lanzamientos',    pt:'Lançamentos',    fr:'Sorties'          },
-    Sports:        { es:'Deportes',         pt:'Esportes',       fr:'Sports'           },
-    Holidays:      { es:'Feriados',         pt:'Feriados',       fr:'Fêtes'            },
-    Entertainment: { es:'Entretenimiento',  pt:'Entretenimento', fr:'Divertissements'  },
-    Sales:         { es:'Ofertas',          pt:'Ofertas',        fr:'Promotions'       },
-    Nature:        { es:'Naturaleza',       pt:'Natureza',       fr:'Nature'           },
-    Music:         { es:'Música',           pt:'Música',         fr:'Musique'          },
-    Politics:      { es:'Política',         pt:'Política',       fr:'Politique'        },
-    Fashion:       { es:'Moda',             pt:'Moda',           fr:'Mode'             },
-    Technology:    { es:'Tecnología',       pt:'Tecnologia',     fr:'Technologie'      },
-  };
-  function catName(cat) {
-    var t = CAT_NAMES[cat];
-    return (t && t[currentLang]) ? t[currentLang] : cat;
-  }
-
-  /* ── Static hero / sort translations ── */
-  var HERO_UI = {
-    en: { live:'Live · updated in real time',
-          h1:'Every countdown<br>that <em>matters</em>',
-          sub:'Sports, releases, holidays, sales — every event the world is waiting for.',
-          chrono:'Soonest first', bycat:'By category' },
-    es: { live:'En vivo · actualizado en tiempo real',
-          h1:'Cada cuenta regresiva<br>que <em>importa</em>',
-          sub:'Deportes, estrenos, feriados, descuentos — cada evento que el mundo espera.',
-          chrono:'Más próximo', bycat:'Por categoría' },
-    pt: { live:'Ao vivo · atualizado em tempo real',
-          h1:'Cada contagem regressiva<br>que <em>importa</em>',
-          sub:'Esportes, lançamentos, feriados, promoções — cada evento que o mundo aguarda.',
-          chrono:'Mais próximo', bycat:'Por categoria' },
-    fr: { live:'En direct · mis à jour en temps réel',
-          h1:'Chaque compte à rebours<br>qui <em>compte</em>',
-          sub:'Sports, sorties, fêtes, soldes — chaque événement que le monde attend.',
-          chrono:'Le plus tôt', bycat:'Par catégorie' },
-  };
-  function updateHeroUI() {
-    var t = HERO_UI[currentLang] || HERO_UI.en;
-    var el;
-    el = document.getElementById('hero-live'); if (el) el.textContent = t.live;
-    el = document.getElementById('hero-h1');   if (el) el.innerHTML   = t.h1;
-    el = document.getElementById('hero-sub');  if (el) el.textContent = t.sub;
-    el = document.getElementById('sort-chrono'); if (el) el.textContent = t.chrono;
-    el = document.getElementById('sort-cat');    if (el) el.textContent = t.bycat;
-  }
-
-  /* ── Country / language maps (used by both switcher and country selector) ── */
-  var COUNTRY_LANG = {
-    /* English */
-    US:'en', GB:'en', AU:'en', CA:'en', NZ:'en', IE:'en', SG:'en', AE:'en',
-    ZA:'en', IN:'en', PH:'en',
-    /* Spanish */
-    AR:'es', MX:'es', CL:'es', CO:'es', PE:'es', UY:'es', VE:'es', BO:'es', PY:'es',
-    EC:'es', DO:'es', CR:'es', PA:'es', PR:'es', GT:'es', SV:'es', HN:'es', NI:'es', CU:'es', ES:'es',
-    /* Portuguese */
-    BR:'pt', PT:'pt', AO:'pt', MZ:'pt',
-    /* French */
-    FR:'fr', BE:'fr', CH:'fr', LU:'fr', MC:'fr',
-    /* European (no dedicated hub → English) */
-    DE:'en', AT:'en', SE:'en', NO:'en', DK:'en', FI:'en', NL:'en', IT:'en', GR:'en',
-  };
-  /* ── MASTER country list — keep in sync with admin/index.html ALL_COUNTRIES ── */
-  var COUNTRY_LIST = [
-    { code:'global', flag:'🌍', name:'Global'          },
-    /* ── English-speaking (high CPC) ── */
-    { code:'US',     flag:'🇺🇸', name:'USA'             },
-    { code:'GB',     flag:'🇬🇧', name:'UK'              },
-    { code:'CA',     flag:'🇨🇦', name:'Canada'          },
-    { code:'AU',     flag:'🇦🇺', name:'Australia'       },
-    { code:'IE',     flag:'🇮🇪', name:'Ireland'         },
-    { code:'NZ',     flag:'🇳🇿', name:'New Zealand'     },
-    { code:'SG',     flag:'🇸🇬', name:'Singapore'       },
-    { code:'AE',     flag:'🇦🇪', name:'UAE'             },
-    /* ── Spanish Latin America ── */
-    { code:'AR',     flag:'🇦🇷', name:'Argentina'       },
-    { code:'MX',     flag:'🇲🇽', name:'México'          },
-    { code:'CL',     flag:'🇨🇱', name:'Chile'           },
-    { code:'CO',     flag:'🇨🇴', name:'Colombia'        },
-    { code:'PE',     flag:'🇵🇪', name:'Perú'            },
-    { code:'UY',     flag:'🇺🇾', name:'Uruguay'         },
-    { code:'VE',     flag:'🇻🇪', name:'Venezuela'       },
-    { code:'EC',     flag:'🇪🇨', name:'Ecuador'         },
-    { code:'BO',     flag:'🇧🇴', name:'Bolivia'         },
-    { code:'PY',     flag:'🇵🇾', name:'Paraguay'        },
-    { code:'CR',     flag:'🇨🇷', name:'Costa Rica'      },
-    { code:'PA',     flag:'🇵🇦', name:'Panamá'          },
-    { code:'DO',     flag:'🇩🇴', name:'Rep. Dominicana' },
-    { code:'PR',     flag:'🇵🇷', name:'Puerto Rico'     },
-    /* ── Spanish Europe ── */
-    { code:'ES',     flag:'🇪🇸', name:'España'          },
-    /* ── Portuguese ── */
-    { code:'BR',     flag:'🇧🇷', name:'Brasil'          },
-    { code:'PT',     flag:'🇵🇹', name:'Portugal'        },
-    /* ── French ── */
-    { code:'FR',     flag:'🇫🇷', name:'France'          },
-    { code:'BE',     flag:'🇧🇪', name:'Belgique'        },
-    { code:'CH',     flag:'🇨🇭', name:'Schweiz'         },
-    /* ── German-speaking ── */
-    { code:'DE',     flag:'🇩🇪', name:'Deutschland'     },
-    { code:'AT',     flag:'🇦🇹', name:'Österreich'      },
-    /* ── Nordic (high CPC) ── */
-    { code:'SE',     flag:'🇸🇪', name:'Sverige'         },
-    { code:'NO',     flag:'🇳🇴', name:'Norge'           },
-    { code:'DK',     flag:'🇩🇰', name:'Danmark'         },
-    { code:'FI',     flag:'🇫🇮', name:'Finland'         },
-    /* ── Other European ── */
-    { code:'NL',     flag:'🇳🇱', name:'Nederland'       },
-    { code:'IT',     flag:'🇮🇹', name:'Italia'          },
-    { code:'GR',     flag:'🇬🇷', name:'Ελλάδα'          },
-  ];
-  var FLAG_MAP = {};
-  COUNTRY_LIST.forEach(function (c) { FLAG_MAP[c.code] = c.flag; });
-  function countryToLang(code) { return COUNTRY_LANG[code] || 'en'; }
-
-  /* ── Events master list ─────────────────────────────────────
-     countries: country codes shown for, or ['global'] for all.
-     regions:   used by cardURL() to resolve translated page paths.
-  ─────────────────────────────────────────────────────────── */
-  var LATAM = ['AR','BR','CL','CO','PE','UY','VE','BO','PY','EC','CR','PA','GT','SV','HN','NI','DO','CU','MX'];
+    };
+  var LANG_URLS = {
+      'gta6': '/en/countdown/gta6/',
+      'iphone': '/en/countdown/iphone/',
+      'f1': '/en/countdown/f1/',
+      'world-cup': '/en/countdown/world-cup/',
+      'ucl-final': '/en/countdown/ucl-final/',
+      'nba-finals': '/en/countdown/nba-finals/',
+      'le-mans': '/en/countdown/le-mans/',
+      'wimbledon': '/en/countdown/wimbledon/',
+      'tour-de-france': '/en/countdown/tour-de-france/',
+      'olympics-2028': '/en/countdown/olympics-2028/',
+      'super-bowl': '/en/countdown/super-bowl/',
+      'copa-libertadores': '/en/countdown/copa-libertadores/',
+      'christmas': '/en/countdown/christmas/',
+      'new-year': '/en/countdown/new-year/',
+      'halloween': '/en/countdown/halloween/',
+      'valentines': '/en/countdown/valentines/',
+      'easter': '/en/countdown/easter/',
+      'mothers-day': '/en/countdown/mothers-day/',
+      'fathers-day': '/en/countdown/fathers-day/',
+      'thanksgiving': '/en/countdown/thanksgiving/',
+      'independence-day': '/en/countdown/independence-day/',
+      'memorial-day': '/en/countdown/memorial-day/',
+      'labor-day': '/en/countdown/labor-day/',
+      'st-patricks': '/en/countdown/st-patricks/',
+      'dia-de-los-muertos': '/en/countdown/dia-de-los-muertos/',
+      'cinco-de-mayo': '/en/countdown/cinco-de-mayo/',
+      '25-de-mayo': '/en/countdown/25-de-mayo/',
+      'fiestas-patrias': '/en/countdown/fiestas-patrias/',
+      'bastille-day': '/en/countdown/bastille-day/',
+      'oktoberfest': '/en/countdown/oktoberfest/',
+      'dia-del-nino': '/en/countdown/dia-del-nino/',
+      'oscars': '/en/countdown/oscars/',
+      'grammys': '/en/countdown/grammys/',
+      'met-gala': '/en/countdown/met-gala/',
+      'eurovision': '/en/countdown/eurovision/',
+      'cannes': '/en/countdown/cannes/',
+      'coachella': '/en/countdown/coachella/',
+      'black-friday': '/en/countdown/black-friday/',
+      'cyber-monday': '/en/countdown/cyber-monday/',
+      'hot-sale': '/en/countdown/hot-sale/',
+      'full-moon': '/en/countdown/full-moon/',
+      'eclipse': '/en/countdown/eclipse/',
+      'lollapalooza-ar': '/en/countdown/lollapalooza-ar/',
+      'lollapalooza-cl': '/en/countdown/lollapalooza-cl/',
+      'cosquin-rock': '/en/countdown/cosquin-rock/',
+      'rock-in-rio': '/en/countdown/rock-in-rio/',
+      'nyfw': '/en/countdown/nyfw/',
+      'paris-fw': '/en/countdown/paris-fw/',
+      'milan-fw': '/en/countdown/milan-fw/',
+      'bafweek': '/en/countdown/bafweek/',
+      'january': '/en/countdown/january/',
+      'february': '/en/countdown/february/',
+      'march': '/en/countdown/march/',
+      'april': '/en/countdown/april/',
+      'may-month': '/en/countdown/may-month/',
+      'june-month': '/en/countdown/june-month/',
+      'july-month': '/en/countdown/july-month/',
+      'august': '/en/countdown/august/',
+      'september': '/en/countdown/september/',
+      'october': '/en/countdown/october/',
+      'november': '/en/countdown/november/',
+      'december': '/en/countdown/december/',
+      'midnight': '/en/countdown/midnight/',
+      'spring': '/en/countdown/spring/',
+      'summer': '/en/countdown/summer/',
+      'autumn': '/en/countdown/autumn/',
+      'winter-season': '/en/countdown/winter-season/',
+      'back-to-school': '/en/countdown/back-to-school/',
+      'summer-vacation': '/en/countdown/summer-vacation/',
+      'winter-vacation': '/en/countdown/winter-vacation/',
+      'independence': '/en/countdown/independence/',
+      'canada-day': '/en/countdown/canada-day/',
+      'australia-day': '/en/countdown/australia-day/',
+      'waitangi-day': '/en/countdown/waitangi-day/',
+      'syttende-mai': '/en/countdown/syttende-mai/',
+      'german-unity-day': '/en/countdown/german-unity-day/',
+      'festa-della-repubblica': '/en/countdown/festa-della-repubblica/',
+      'national-day-sg': '/en/countdown/national-day-sg/',
+      'freedom-day-za': '/en/countdown/freedom-day-za/',
+      'dia-de-la-hispanidad': '/en/countdown/dia-de-la-hispanidad/',
+      'dia-de-la-raza': '/en/countdown/dia-de-la-raza/',
+      'dia-de-la-bandera': '/en/countdown/dia-de-la-bandera/',
+      'dia-de-la-revolucion': '/en/countdown/dia-de-la-revolucion/',
+      'dia-de-la-constitucion': '/en/countdown/dia-de-la-constitucion/',
+      'proclamacao-da-republica': '/en/countdown/proclamacao-da-republica/',
+      'tiradentes': '/en/countdown/tiradentes/',
+      'proclamacion-independencia-ar': '/en/countdown/proclamacion-independencia-ar/',
+      'rosh-hashana': '/en/countdown/rosh-hashana/',
+      'yom-kipur': '/en/countdown/yom-kipur/',
+      'januca': '/en/countdown/januca/',
+      'purim': '/en/countdown/purim/',
+      'pesaj': '/en/countdown/pesaj/',
+      'shavuot': '/en/countdown/shavuot/',
+      'epiphany': '/en/countdown/epiphany/',
+      'rio-carnival': '/en/countdown/rio-carnival/',
+      'lollapalooza-us': '/en/countdown/lollapalooza-us/',
+      'lollapalooza-de': '/en/countdown/lollapalooza-de/',
+      'lollapalooza-fr': '/en/countdown/lollapalooza-fr/',
+      'primavera-sound-es': '/en/countdown/primavera-sound-es/',
+      'primavera-sound-ar': '/en/countdown/primavera-sound-ar/',
+      'primavera-sound-br': '/en/countdown/primavera-sound-br/',
+      'tomorrowland': '/en/countdown/tomorrowland/',
+      'world-cup-final': '/en/countdown/world-cup-final/',
+      'copa-america-2028': '/en/countdown/copa-america-2028/',
+      'copa-america-2028-final': '/en/countdown/copa-america-2028-final/',
+      'euro-2028': '/en/countdown/euro-2028/',
+      'euro-2028-final': '/en/countdown/euro-2028-final/',
+      'ces': '/en/countdown/ces/',
+      'balon-de-oro': '/en/countdown/balon-de-oro/',
+      'mr-olympia': '/en/countdown/mr-olympia/',
+      'arnold-classic': '/en/countdown/arnold-classic/',
+      'elecciones-ar': '/en/countdown/elecciones-ar/',
+    };
 
   var EVENTS = [
     /* ── Releases ── */
-    { slug:'gta6',    name:'GTA VI',        type:'variable', countries:['global'], regions:['global'], cat:'Releases', url:'/countdown/gta6/'   },
-    { slug:'iphone',  name:'Next iPhone',   type:'variable', countries:['global'], regions:['global'], cat:'Releases', url:'/countdown/iphone/' },
-
+    { slug:'gta6',       name:'GTA VI',                        type:'variable', regions:['global'], cat:'Releases',      url:'/countdown/gta6/'       },
+    { slug:'iphone',     name:'Next iPhone',                   type:'variable', regions:['global'], cat:'Releases',      url:'/countdown/iphone/'     },
     /* ── Sports – Global ── */
-    { slug:'f1',            name:'F1 Next Race',          type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/f1/'            },
-    { slug:'world-cup',     name:'2026 FIFA World Cup',   type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/world-cup/'     },
-    { slug:'ucl-final',     name:'Champions League Final',type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/ucl-final/'     },
-    { slug:'nba-finals',    name:'NBA Finals',            type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/nba-finals/'    },
-    { slug:'le-mans',       name:'24h Le Mans',           type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/le-mans/'       },
-    { slug:'wimbledon',     name:'Wimbledon',             type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/wimbledon/'     },
-    { slug:'tour-de-france',name:'Tour de France',        type:'variable', countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/tour-de-france/'},
-    { slug:'olympics-2028', name:'LA 2028 Olympics',      type:'auto',     countries:['global'], regions:['global'], cat:'Sports', url:'/countdown/olympics-2028/' },
-    /* ── Sports – North America ── */
-    { slug:'super-bowl',    name:'Super Bowl',            type:'auto',     countries:['US','CA','MX','GB','AU'],       regions:['en'],     cat:'Sports', url:'/countdown/super-bowl/' },
-    /* ── Sports – Latin America ── */
-    { slug:'copa-libertadores', name:'Copa Libertadores Final', type:'variable', countries:LATAM,   regions:['es'],     cat:'Sports', url:'/countdown/copa-libertadores/' },
-
+    { slug:'f1',         name:'F1 Next Race',                  type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/f1/'         },
+    { slug:'world-cup',  name:'2026 FIFA World Cup',           type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/world-cup/'  },
+    { slug:'ucl-final',  name:'Champions League Final',        type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/ucl-final/'  },
+    { slug:'nba-finals', name:'NBA Finals',                    type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/nba-finals/' },
+    { slug:'le-mans',    name:'24h Le Mans',                   type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/le-mans/'    },
+    { slug:'wimbledon',  name:'Wimbledon',                     type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/wimbledon/'  },
+    { slug:'tour-de-france', name:'Tour de France',            type:'variable', regions:['global'], cat:'Sports',        url:'/countdown/tour-de-france/' },
+    { slug:'olympics-2028',  name:'LA 2028 Olympics',          type:'auto',     regions:['global'], cat:'Sports',        url:'/countdown/olympics-2028/'  },
+    { slug:'copa-libertadores', name:'Copa Libertadores Final',type:'variable', regions:['es'],     cat:'Sports',        url:'/countdown/copa-libertadores/' },
     /* ── Holidays – Global ── */
-    { slug:'christmas',  name:'Christmas',      type:'auto', countries:['global'], regions:['global'], cat:'Holidays', url:'/countdown/christmas/'  },
-    { slug:'new-year',   name:'New Year',        type:'auto', countries:['global'], regions:['global'], cat:'Holidays', url:'/countdown/new-year/'   },
-    { slug:'halloween',  name:'Halloween',       type:'auto', countries:['US','CA','GB','AU','IE','MX','AR','CL','CO','PE','UY','BR','FR','ES','PT','DE','BE','NZ'], regions:['global'], cat:'Holidays', url:'/countdown/halloween/'  },
-    { slug:'valentines', name:"Valentine's Day", type:'auto', countries:['global'], regions:['global'], cat:'Holidays', url:'/countdown/valentines/' },
-    { slug:'easter',     name:'Easter',          type:'auto', countries:['global'], regions:['global'], cat:'Holidays', url:'/countdown/easter/'     },
-    { slug:'mothers-day',name:"Mother's Day",    type:'auto', countries:['global'], regions:['global'], cat:'Holidays', url:'/countdown/mothers-day/'},
-    { slug:'fathers-day',name:"Father's Day",    type:'auto', countries:['global'], regions:['global'], cat:'Holidays', url:'/countdown/fathers-day/'},
-    /* ── Holidays – USA ── */
-    { slug:'thanksgiving',     name:'Thanksgiving',     type:'auto', countries:['US','CA'],             regions:['en'], cat:'Holidays', url:'/countdown/thanksgiving/'     },
-    { slug:'independence-day', name:'Independence Day', type:'auto', countries:['US'],                  regions:['en'], cat:'Holidays', url:'/countdown/independence-day/' },
-    { slug:'memorial-day',     name:'Memorial Day',     type:'auto', countries:['US'],                  regions:['en'], cat:'Holidays', url:'/countdown/memorial-day/'     },
-    { slug:'labor-day',        name:'Labor Day',        type:'auto', countries:['US','CA'],             regions:['en'], cat:'Holidays', url:'/countdown/labor-day/'        },
-    { slug:'st-patricks',      name:"St. Patrick's Day",type:'auto', countries:['US','IE','GB','AU','CA','AR','MX'], regions:['en'], cat:'Holidays', url:'/countdown/st-patricks/'  },
-    /* ── Holidays – Mexico / LatAm ── */
-    { slug:'dia-de-los-muertos', name:'Día de los Muertos', type:'auto', countries:['MX','GT','SV','HN','NI','CR','CO','AR','CL','PE','UY'], regions:['es'], cat:'Holidays', url:'/countdown/dia-de-los-muertos/' },
-    { slug:'cinco-de-mayo',      name:'Cinco de Mayo',      type:'auto', countries:['MX','US'],         regions:['es'], cat:'Holidays', url:'/countdown/cinco-de-mayo/'    },
-    /* ── Holidays – Chile ── */
-    { slug:'fiestas-patrias',    name:'Fiestas Patrias Chile', type:'auto', countries:['CL'],            regions:['es'], cat:'Holidays', url:'/countdown/fiestas-patrias/'  },
-    /* ── Holidays – France ── */
-    { slug:'bastille-day',       name:'Bastille Day',       type:'auto', countries:['FR','BE','CH','LU'], regions:['fr'], cat:'Holidays', url:'/countdown/bastille-day/'    },
-    /* ── Holidays – Germany / international ── */
-    { slug:'oktoberfest',        name:'Oktoberfest',        type:'auto', countries:['DE','AT','CH','US','CA','AU','BR'], regions:['de'], cat:'Holidays', url:'/countdown/oktoberfest/' },
-    /* ── Holidays – Argentina ── */
-    { slug:'25-de-mayo',         name:'25 de Mayo — Día de la Patria', type:'auto', countries:['AR'],   regions:['es'], cat:'Holidays', url:'/countdown/25-de-mayo/'       },
-    /* ── Holidays – LatAm (children) ── */
-    { slug:'dia-del-nino', name:"Children's Day / Día del Niño", type:'auto', countries:['MX','AR','BR','CO','CL','PE','UY','VE','BO','EC','CR','PA','GT','SV','DO','PY'], regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },
-
+    { slug:'christmas',   name:'Christmas',                    type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/christmas/'   },
+    { slug:'new-year',    name:'New Year',                     type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/new-year/'    },
+    { slug:'halloween',   name:'Halloween',                    type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/halloween/'   },
+    { slug:'valentines',  name:"Valentine's Day",              type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/valentines/'  },
+    { slug:'easter',      name:'Easter',                       type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/easter/'      },
+    { slug:'mothers-day', name:"Mother's Day",                 type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/mothers-day/' },
+    { slug:'fathers-day', name:"Father's Day",                 type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/fathers-day/' },
+    { slug:'dia-de-los-muertos', name:'Día de los Muertos',    type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/dia-de-los-muertos/' },
+    { slug:'cinco-de-mayo',   name:'Cinco de Mayo',            type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/cinco-de-mayo/'    },
+    { slug:'fiestas-patrias', name:'Fiestas Patrias Chile',    type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/fiestas-patrias/'  },
+    { slug:'bastille-day',    name:'Bastille Day',             type:'auto',     regions:['fr'],     cat:'Holidays',      url:'/countdown/bastille-day/'     },
     /* ── Entertainment – Global ── */
-    { slug:'oscars',     name:'Oscars',             type:'auto',     countries:['global'], regions:['global'],      cat:'Entertainment', url:'/countdown/oscars/'    },
-    { slug:'grammys',    name:'Grammy Awards',      type:'variable', countries:['global'], regions:['global'],      cat:'Entertainment', url:'/countdown/grammys/'   },
-    { slug:'met-gala',   name:'Met Gala',           type:'auto',     countries:['global'], regions:['global'],      cat:'Entertainment', url:'/countdown/met-gala/'  },
-    { slug:'cannes',     name:'Cannes Film Festival',type:'variable', countries:['global'], regions:['global'],     cat:'Entertainment', url:'/countdown/cannes/'    },
-    /* ── Entertainment – Europe ── */
-    { slug:'eurovision', name:'Eurovision',         type:'variable', countries:['FR','BE','CH','ES','PT','GB','IE','AU','DE','AT','SE','NO','FI','NL','IT','GR'], regions:['global','fr'], cat:'Entertainment', url:'/countdown/eurovision/' },
-    /* ── Entertainment – North America ── */
-    { slug:'coachella',  name:'Coachella',          type:'variable', countries:['US','MX','CA','GB'],              regions:['en'],      cat:'Entertainment', url:'/countdown/coachella/' },
-
+    { slug:'oscars',     name:'Oscars',                        type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/oscars/'     },
+    { slug:'grammys',    name:'Grammy Awards',                 type:'variable', regions:['global'], cat:'Entertainment', url:'/countdown/grammys/'    },
+    { slug:'met-gala',   name:'Met Gala',                      type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/met-gala/'   },
+    { slug:'eurovision', name:'Eurovision',                    type:'variable', regions:['global','fr'], cat:'Entertainment', url:'/countdown/eurovision/' },
+    { slug:'cannes',     name:'Cannes Film Festival',          type:'variable', regions:['global'], cat:'Entertainment', url:'/countdown/cannes/'     },
     /* ── Sales – Global ── */
-    { slug:'black-friday', name:'Black Friday', type:'auto',     countries:['global'], regions:['global'], cat:'Sales', url:'/countdown/black-friday/' },
-    { slug:'cyber-monday', name:'Cyber Monday', type:'auto',     countries:['global'], regions:['global'], cat:'Sales', url:'/countdown/cyber-monday/' },
-    /* ── Sales – LatAm ── */
-    { slug:'hot-sale',     name:'Hot Sale',     type:'variable', countries:['AR','MX'],                    regions:['es'], cat:'Sales', url:'/countdown/hot-sale/' },
-
+    { slug:'black-friday', name:'Black Friday',                type:'auto',     regions:['global'], cat:'Sales',         url:'/countdown/black-friday/' },
+    { slug:'cyber-monday', name:'Cyber Monday',                type:'auto',     regions:['global'], cat:'Sales',         url:'/countdown/cyber-monday/' },
+    { slug:'hot-sale',     name:'Hot Sale',                    type:'variable', regions:['es'],     cat:'Sales',         url:'/countdown/hot-sale/'     },
     /* ── Nature – Global ── */
-    { slug:'full-moon', name:'Next Full Moon', type:'auto',     countries:['global'], regions:['global'], cat:'Nature', url:'/countdown/full-moon/' },
-    { slug:'eclipse',   name:'Solar Eclipse',  type:'variable', countries:['global'], regions:['global'], cat:'Nature', url:'/countdown/eclipse/'   },
-
-    /* ── Music – Argentina ── */
-    { slug:'lollapalooza-ar', name:'Lollapalooza Argentina', type:'variable', countries:['AR','UY'],  regions:['es'], cat:'Music', url:'/countdown/lollapalooza-ar/' },
-    { slug:'cosquin-rock',    name:'Cosquín Rock',           type:'variable', countries:['AR'],        regions:['es'], cat:'Music', url:'/countdown/cosquin-rock/'    },
-    /* ── Music – Chile ── */
-    { slug:'lollapalooza-cl', name:'Lollapalooza Chile',     type:'variable', countries:['CL','AR'],  regions:['es'], cat:'Music', url:'/countdown/lollapalooza-cl/' },
-    /* ── Music – Brazil / Portugal ── */
-    { slug:'rock-in-rio',     name:'Rock in Rio',            type:'variable', countries:['BR','PT'],   regions:['pt'], cat:'Music', url:'/countdown/rock-in-rio/'     },
-
+    { slug:'full-moon',  name:'Next Full Moon',                type:'auto',     regions:['global'], cat:'Nature',        url:'/countdown/full-moon/'  },
+    { slug:'eclipse',    name:'Solar Eclipse',                 type:'variable', regions:['global'], cat:'Nature',        url:'/countdown/eclipse/'    },
+    /* ── Music ── */
+    { slug:'lollapalooza-ar', name:'Lollapalooza Argentina',   type:'variable', regions:['es'],     cat:'Music',         url:'/countdown/lollapalooza-ar/' },
+    { slug:'lollapalooza-cl', name:'Lollapalooza Chile',       type:'variable', regions:['es'],     cat:'Music',         url:'/countdown/lollapalooza-cl/' },
+    { slug:'cosquin-rock',    name:'Cosquín Rock',             type:'variable', regions:['es'],     cat:'Music',         url:'/countdown/cosquin-rock/'    },
+    { slug:'rock-in-rio',     name:'Rock in Rio',              type:'variable', regions:['pt'],     cat:'Music',         url:'/countdown/rock-in-rio/'     },
     /* ── Fashion – Global ── */
-    { slug:'nyfw',     name:'New York Fashion Week',     type:'variable', countries:['global'], regions:['global'], cat:'Fashion', url:'/countdown/nyfw/'     },
-    { slug:'paris-fw', name:'Paris Fashion Week',        type:'variable', countries:['global'], regions:['global'], cat:'Fashion', url:'/countdown/paris-fw/' },
-    { slug:'milan-fw', name:'Milan Fashion Week',        type:'variable', countries:['global'], regions:['global'], cat:'Fashion', url:'/countdown/milan-fw/' },
-    /* ── Fashion – Argentina ── */
-    { slug:'bafweek',  name:'Buenos Aires Fashion Week', type:'variable', countries:['AR'],     regions:['es'],     cat:'Fashion', url:'/countdown/bafweek/'  },
-
-    /* ── Politics – Argentina ── */
-    { slug:'elecciones-ar', name:'Argentine Elections', type:'auto', countries:['AR'], regions:['es'], cat:'Politics', url:'/countdown/elecciones-ar/' },
+    { slug:'nyfw',      name:'New York Fashion Week',          type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/nyfw/'       },
+    { slug:'paris-fw',  name:'Paris Fashion Week',             type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/paris-fw/'   },
+    { slug:'milan-fw',  name:'Milan Fashion Week',             type:'variable', regions:['global'], cat:'Fashion',       url:'/countdown/milan-fw/'   },
+    { slug:'bafweek',   name:'Buenos Aires Fashion Week',      type:'variable', regions:['es'],     cat:'Fashion',       url:'/countdown/bafweek/'    },
+    /* ── Politics ── */
+    { slug:'elecciones-ar', name:'Argentine Elections',        type:'auto',     regions:['es'],     cat:'Politics',      url:'/countdown/elecciones-ar/' },
+    /* ── ES-only Holidays ── */
+    { slug:'25-de-mayo',   name:'25 de Mayo',                 type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/25-de-mayo/'    },
+    /* ── Children's Day – global ── */
+    { slug:'dia-del-nino', name:"Children's Day",             type:'auto',     regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },
+    /* ── Months ── */
+    { slug:'january',   name:'January',   type:'auto', regions:['global'], cat:'Months', url:'/countdown/january/'   },
+    { slug:'february',  name:'February',  type:'auto', regions:['global'], cat:'Months', url:'/countdown/february/'  },
+    { slug:'march',     name:'March',     type:'auto', regions:['global'], cat:'Months', url:'/countdown/march/'     },
+    { slug:'april',     name:'April',     type:'auto', regions:['global'], cat:'Months', url:'/countdown/april/'     },
+    { slug:'may-month', name:'May',       type:'auto', regions:['global'], cat:'Months', url:'/countdown/may-month/' },
+    { slug:'june-month',name:'June',      type:'auto', regions:['global'], cat:'Months', url:'/countdown/june-month/'},
+    { slug:'july-month',name:'July',      type:'auto', regions:['global'], cat:'Months', url:'/countdown/july-month/'},
+    { slug:'august',    name:'August',    type:'auto', regions:['global'], cat:'Months', url:'/countdown/august/'    },
+    { slug:'september', name:'September', type:'auto', regions:['global'], cat:'Months', url:'/countdown/september/' },
+    { slug:'october',   name:'October',   type:'auto', regions:['global'], cat:'Months', url:'/countdown/october/'   },
+    { slug:'november',  name:'November',  type:'auto', regions:['global'], cat:'Months', url:'/countdown/november/'  },
+    { slug:'december',  name:'December',  type:'auto', regions:['global'], cat:'Months', url:'/countdown/december/'  },
+    /* ── Time ── */
+    { slug:'midnight',  name:'Midnight',  type:'auto', regions:['global'], cat:'Time',   url:'/countdown/midnight/'  },
+    /* ── Seasons ── */
+    { slug:'spring',        name:'Spring',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/spring/'        },
+    { slug:'summer',        name:'Summer',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/summer/'        },
+    { slug:'autumn',        name:'Autumn',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/autumn/'        },
+    { slug:'winter-season', name:'Winter',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/winter-season/' },
+    /* ── School ── */
+    { slug:'back-to-school',  name:'Back to School',   type:'auto', regions:['global'], cat:'School', url:'/countdown/back-to-school/'  },
+    { slug:'summer-vacation', name:'Summer Vacation',  type:'auto', regions:['global'], cat:'School', url:'/countdown/summer-vacation/' },
+    { slug:'winter-vacation', name:'Winter Vacation',  type:'auto', regions:['global'], cat:'School', url:'/countdown/winter-vacation/' },
+    /* ── National Days ── */
+    { slug:'independence',              name:'Independence Day',            type:'auto', regions:['global'], cat:'National Days', url:'/countdown/independence/'              },
+    { slug:'canada-day',                name:'Canada Day',                  type:'auto', regions:['global'], cat:'National Days', url:'/countdown/canada-day/'                },
+    { slug:'australia-day',             name:'Australia Day',               type:'auto', regions:['global'], cat:'National Days', url:'/countdown/australia-day/'             },
+    { slug:'waitangi-day',              name:'Waitangi Day',                type:'auto', regions:['global'], cat:'National Days', url:'/countdown/waitangi-day/'              },
+    { slug:'syttende-mai',              name:'Norwegian Constitution Day',  type:'auto', regions:['global'], cat:'National Days', url:'/countdown/syttende-mai/'              },
+    { slug:'german-unity-day',          name:'German Unity Day',            type:'auto', regions:['global'], cat:'National Days', url:'/countdown/german-unity-day/'          },
+    { slug:'festa-della-repubblica',    name:'Italian Republic Day',        type:'auto', regions:['global'], cat:'National Days', url:'/countdown/festa-della-repubblica/'    },
+    { slug:'national-day-sg',           name:'Singapore National Day',      type:'auto', regions:['global'], cat:'National Days', url:'/countdown/national-day-sg/'           },
+    { slug:'freedom-day-za',            name:'South Africa Freedom Day',    type:'auto', regions:['global'], cat:'National Days', url:'/countdown/freedom-day-za/'            },
+    { slug:'dia-de-la-hispanidad',      name:'Dia de la Hispanidad',        type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-hispanidad/'      },
+    { slug:'dia-de-la-raza',            name:'Dia de la Raza',              type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-raza/'            },
+    { slug:'dia-de-la-bandera',         name:'Dia de la Bandera (AR)',      type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-bandera/'         },
+    { slug:'dia-de-la-revolucion',      name:'Dia de la Revolucion (MX)',   type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-revolucion/'      },
+    { slug:'dia-de-la-constitucion',    name:'Dia de la Constitucion (MX)', type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-constitucion/'    },
+    { slug:'proclamacao-da-republica',  name:'Proclamacao da Republica',    type:'auto', regions:['global'], cat:'National Days', url:'/countdown/proclamacao-da-republica/'  },
+    { slug:'tiradentes',                name:'Tiradentes (Brazil)',          type:'auto', regions:['global'], cat:'National Days', url:'/countdown/tiradentes/'                },
+    { slug:'proclamacion-independencia-ar', name:'25 de Mayo (Argentina)',  type:'auto', regions:['global'], cat:'National Days', url:'/countdown/proclamacion-independencia-ar/' },
+    /* ── Jewish Holidays ── */
+    { slug:'rosh-hashana', name:'Rosh Hashanah',      type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/rosh-hashana/' },
+    { slug:'yom-kipur',    name:'Yom Kippur',          type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/yom-kipur/'    },
+    { slug:'januca',       name:'Hanukkah',            type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/januca/'       },
+    { slug:'purim',        name:'Purim',               type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/purim/'        },
+    { slug:'pesaj',        name:'Passover',            type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/pesaj/'        },
+    { slug:'shavuot',      name:'Shavuot',             type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/shavuot/'      },
+    /* ── Additional Holidays ── */
+    { slug:'epiphany',    name:'Epiphany / Three Kings Day', type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/epiphany/'    },
+    { slug:'rio-carnival',name:'Rio Carnival',               type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/rio-carnival/'},
+    /* ── Music (global) ── */
+    { slug:'lollapalooza-us',   name:'Lollapalooza Chicago',        type:'variable', regions:['global'], cat:'Music', url:'/countdown/lollapalooza-us/'   },
+    { slug:'lollapalooza-de',   name:'Lollapalooza Berlin',         type:'variable', regions:['global'], cat:'Music', url:'/countdown/lollapalooza-de/'   },
+    { slug:'lollapalooza-fr',   name:'Lollapalooza Paris',          type:'variable', regions:['global'], cat:'Music', url:'/countdown/lollapalooza-fr/'   },
+    { slug:'primavera-sound-es',name:'Primavera Sound Barcelona',   type:'variable', regions:['global'], cat:'Music', url:'/countdown/primavera-sound-es/'},
+    { slug:'primavera-sound-ar',name:'Primavera Sound Buenos Aires',type:'variable', regions:['global'], cat:'Music', url:'/countdown/primavera-sound-ar/'},
+    { slug:'primavera-sound-br',name:'Primavera Sound Sao Paulo',   type:'variable', regions:['global'], cat:'Music', url:'/countdown/primavera-sound-br/'},
+    { slug:'tomorrowland',      name:'Tomorrowland',                type:'variable', regions:['global'], cat:'Music', url:'/countdown/tomorrowland/'      },
+    /* ── Sports (additional) ── */
+    { slug:'world-cup-final',       name:'2026 World Cup Final',   type:'variable', regions:['global'], cat:'Sports', url:'/countdown/world-cup-final/'       },
+    { slug:'copa-america-2028',     name:'Copa America 2028',      type:'variable', regions:['global'], cat:'Sports', url:'/countdown/copa-america-2028/'     },
+    { slug:'copa-america-2028-final',name:'Copa America 2028 Final',type:'variable',regions:['global'], cat:'Sports', url:'/countdown/copa-america-2028-final/'},
+    { slug:'euro-2028',             name:'UEFA Euro 2028',         type:'variable', regions:['global'], cat:'Sports', url:'/countdown/euro-2028/'             },
+    { slug:'euro-2028-final',       name:'UEFA Euro 2028 Final',   type:'variable', regions:['global'], cat:'Sports', url:'/countdown/euro-2028-final/'       },
+    /* ── Tech / Awards ── */
+    { slug:'ces',          name:'CES Las Vegas',  type:'auto',     regions:['global'], cat:'Technology',    url:'/countdown/ces/'          },
+    { slug:'balon-de-oro', name:'Balon de Oro',   type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/balon-de-oro/' },
+    { slug:'mr-olympia',   name:'Mr. Olympia',    type:'auto',     regions:['global'], cat:'Sports',        url:'/countdown/mr-olympia/'   },
+    { slug:'arnold-classic',name:'Arnold Classic',type:'auto',     regions:['global'], cat:'Sports',        url:'/countdown/arnold-classic/'},
   ];
 
-  /* ── State ── */
   var currentLang = 'en';
   var currentSort = 'chrono';
 
-  /* ── Apply language (updates buttons, hero text + state) ── */
-  function setLang(lang) {
-    currentLang = lang;
-    document.querySelectorAll('.lang-btn').forEach(function (b) {
-      b.classList.toggle('active', b.dataset.lang === lang);
-    });
-    updateHeroUI();
-  }
-
-  /* ── Filter by COUNTRY (not language) ── */
   function filteredEvents() {
-    var country = localStorage.getItem('cd_country') || 'global';
-    if (country === 'global') return EVENTS;   /* no country set → show all */
     return EVENTS.filter(function (e) {
-      return e.countries.indexOf('global') >= 0 || e.countries.indexOf(country) >= 0;
+      return e.regions.indexOf('global') >= 0 || e.regions.indexOf(currentLang) >= 0;
     });
   }
 
-  /* ── Resolve card URL to the correct language page ── */
-  function cardURL(ev) {
-    if (currentLang === 'en') return ev.url;
-    var hasPage = ev.regions.indexOf('global') >= 0 || ev.regions.indexOf(currentLang) >= 0;
-    return hasPage ? '/' + currentLang + '/countdown/' + ev.slug + '/' : ev.url;
-  }
-
-  /* ── Time buckets ── */
-  var BUCKET_KEYS = ['today','week','month','soon','year','future'];
-  var BUCKET_TESTS = [
-    function (d) { return d <= 0; },
-    function (d) { return d <= 7; },
-    function (d) { return d <= 30; },
-    function (d) { return d <= 90; },
-    function (d) { return d <= 365; },
-    function ()  { return true; },
+  var BUCKETS = [
+    { key:'today',  label:'Today',  test: function(d){ return d<=0; } },
+    { key:'week',   label:'This week',   test: function(d){ return d<=7; } },
+    { key:'month',  label:'This month',  test: function(d){ return d<=30; } },
+    { key:'soon',   label:'Coming soon',   test: function(d){ return d<=90; } },
+    { key:'year',   label:'Later this year',   test: function(d){ return d<=365; } },
+    { key:'future', label:'Next year +', test: function(d){ return d>365; } },
   ];
+
   function bucket(days) {
-    for (var i = 0; i < BUCKET_TESTS.length; i++) {
-      if (BUCKET_TESTS[i](days)) return BUCKET_KEYS[i];
+    for (var i = 0; i < BUCKETS.length; i++) {
+      if (BUCKETS[i].test(days)) return BUCKETS[i].key;
     }
     return 'future';
   }
 
-  /* ── Render a single card ── */
-  function cardHTML(ev, data, showCat) {
-    var c = cc(ev.cat);
-    var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
-    var name = evName(ev);
-    var badge = showCat ? '<span class="cd-card-cat">' + catName(ev.cat) + '</span>' : '';
-    var inner = '';
-    if (data.state === 'unknown') {
-      inner = '<div class="cd-card-name">' + name + '</div>' +
-              '<div class="cd-card-unknown">' + ui('tba') + '</div>' + badge;
-    } else if (data.state === 'today') {
-      inner = '<div class="cd-card-name">' + name + '</div>' +
-              '<div class="cd-card-today">' + ui('today') + '</div>' + badge;
-    } else {
-      inner = '<div class="cd-card-name">' + name + '</div>' +
-              '<div class="cd-card-num">' + data.days + '</div>' +
-              '<div class="cd-card-lbl">' + ui('days') + '</div>' + badge;
-    }
-    return '<a href="' + cardURL(ev) + '" class="cd-card" ' + style + '>' + inner + '</a>';
+  function displayName(ev) {
+    return NAMES[ev.slug] || ev.name;
   }
 
-  /* ── Render hub (called once all card data loaded) ── */
+  function cardHTML(ev, data) {
+    var c = cc(ev.cat);
+    var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
+    var n = displayName(ev);
+    var inner = '';
+    if (data.state === 'unknown') {
+      inner = '<div class="cd-card-name">' + n + '</div>' +
+              '<div class="cd-card-unknown">Date TBA</div>';
+    } else if (data.state === 'today') {
+      inner = '<div class="cd-card-name">' + n + '</div>' +
+              '<div class="cd-card-today">Today</div>';
+    } else {
+      inner = '<div class="cd-card-name">' + n + '</div>' +
+              '<div class="cd-card-num">' + data.days + '</div>' +
+              '<div class="cd-card-lbl">days</div>';
+    }
+    var cardUrl = LANG_URLS[ev.slug] || ev.url;
+    return '<a href="' + cardUrl + '" class="cd-card" ' + style + '>' + inner + '</a>';
+  }
+
   function renderHub(results) {
     var container = document.getElementById('hub-content');
     if (!container) return;
@@ -489,25 +405,25 @@
           var b = bucket(r.data.state === 'today' ? 0 : r.data.days);
           if (b !== lastBucket) {
             if (lastBucket !== null) html += '</div>';
-            html += '<div class="time-bucket-hdr">' + ui(b) + '</div>';
+            var label = BUCKETS.filter(function(x){ return x.key===b; })[0].label;
+            html += '<div class="time-bucket-hdr">' + label + '</div>';
             html += '<div class="cards-grid">';
             lastBucket = b;
           }
-          html += cardHTML(r.ev, r.data, true);   /* show category badge */
+          html += cardHTML(r.ev, r.data);
         }
       });
       if (lastBucket !== null) html += '</div>';
 
       var tba = results.filter(function (r) { return r.data.state === 'unknown'; });
       if (tba.length) {
-        html += '<div class="time-bucket-hdr">' + ui('tba') + '</div>';
+        html += '<div class="time-bucket-hdr">Date TBA</div>';
         html += '<div class="cards-grid">';
-        tba.forEach(function (r) { html += cardHTML(r.ev, r.data, true); });
+        tba.forEach(function (r) { html += cardHTML(r.ev, r.data); });
         html += '</div>';
       }
     } else {
-      var grouped = {};
-      var catOrder = [];
+      var grouped = {}, catOrder = [];
       results.forEach(function (r) {
         var cat = r.ev.cat;
         if (!grouped[cat]) { grouped[cat] = []; catOrder.push(cat); }
@@ -517,9 +433,9 @@
         var c = cc(cat);
         html += '<div class="hub-section">';
         html += '<div class="section-hdr" style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '">';
-        html += '<span class="section-hdr-label">' + catName(cat) + '</span></div>';   /* translated */
+        html += '<span class="section-hdr-label">' + cat + '</span></div>';
         html += '<div class="cards-grid">';
-        grouped[cat].forEach(function (r) { html += cardHTML(r.ev, r.data, false); });
+        grouped[cat].forEach(function (r) { html += cardHTML(r.ev, r.data); });
         html += '</div></div>';
       });
     }
@@ -527,12 +443,9 @@
     container.innerHTML = html;
   }
 
-  /* ── Load all card data then render ── */
   function loadHub() {
     var container = document.getElementById('hub-content');
     var evs = filteredEvents();
-
-    /* Skeleton placeholders */
     var skeletons = '';
     for (var s = 0; s < Math.min(evs.length, 12); s++) {
       skeletons += '<div class="cd-card-skeleton"></div>';
@@ -540,8 +453,7 @@
     container.innerHTML = '<div class="cards-grid">' + skeletons + '</div>';
 
     var results = new Array(evs.length);
-    var loaded  = 0;
-
+    var loaded = 0;
     evs.forEach(function (ev, i) {
       CountdownEngine.getCardData({ slug: ev.slug, type: ev.type }, function (data) {
         results[i] = { ev: ev, data: data };
@@ -551,18 +463,6 @@
     });
   }
 
-  /* ── Language switcher — in-place, no redirect ── */
-  document.querySelectorAll('.lang-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var lang = btn.dataset.lang;
-      if (lang === currentLang) return;
-      localStorage.setItem('cd_lang', lang);   /* explicit language choice */
-      setLang(lang);
-      loadHub();
-    });
-  });
-
-  /* ── Sort toggle ── */
   document.querySelectorAll('.sort-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       document.querySelectorAll('.sort-btn').forEach(function (b) { b.classList.remove('active'); });
@@ -572,156 +472,34 @@
     });
   });
 
-  /* ── Cache results for re-sort without re-fetch ── */
-  var _origRender = renderHub;
-  renderHub = function (results) { window._hubResults = results; _origRender(results); };
+  loadHub();
 
-  /* ── Theme toggle ── */
+  var _origRender = renderHub;
+  renderHub = function (results) {
+    window._hubResults = results;
+    _origRender(results);
+  };
+
+  // Theme toggle
   (function () {
     var btn = document.getElementById('theme-toggle');
     var saved = localStorage.getItem('cd_theme');
     if (saved === 'light') { document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }
     btn.addEventListener('click', function () {
       var isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      if (isLight) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('cd_theme','dark'); btn.textContent = 'Light'; }
-      else          { document.documentElement.setAttribute('data-theme','light');  localStorage.setItem('cd_theme','light'); btn.textContent = 'Dark'; }
-    });
-  })();
-
-  /* ── Country selector ── */
-  (function () {
-
-    function applyCountry(code) {
-      localStorage.setItem('cd_country', code);
-      /* Changing country always resets language to that country's default.
-         Any previous manual language choice is cleared. */
-      localStorage.removeItem('cd_lang');
-      setLang(countryToLang(code));
-      /* Update flag button */
-      var fb = document.getElementById('country-flag-btn');
-      if (fb) fb.textContent = FLAG_MAP[code] || '🌍';
-    }
-
-    function openModal(preselectedCode) {
-      var overlay = document.getElementById('country-overlay');
-      var grid    = document.getElementById('country-grid');
-      var det     = document.getElementById('country-detected');
-      if (!grid) return;
-
-      if (preselectedCode && preselectedCode !== 'global') {
-        var f = FLAG_MAP[preselectedCode] || '📍';
-        det.innerHTML = '<span class="country-detected-dot"></span>Auto-detected: ' + f + ' ' + preselectedCode;
-        det.classList.remove('hidden');
+      if (isLight) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('cd_theme', 'dark');
+        btn.textContent = 'Light';
       } else {
-        det.classList.add('hidden');
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('cd_theme', 'light');
+        btn.textContent = 'Dark';
       }
-
-      grid.innerHTML = COUNTRY_LIST.map(function (c) {
-        var sel = c.code === preselectedCode ? ' selected' : '';
-        return '<button class="country-item' + sel + '" data-code="' + c.code + '">' +
-               '<span class="ci-flag">' + c.flag + '</span>' + c.name + '</button>';
-      }).join('');
-
-      overlay.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-
-      /* search filter */
-      var searchEl = document.getElementById('country-search');
-      if (searchEl) {
-        searchEl.value = '';
-        searchEl.oninput = function () {
-          var q = this.value.toLowerCase();
-          grid.querySelectorAll('.country-item').forEach(function (btn) {
-            var matches = btn.textContent.toLowerCase().indexOf(q) >= 0 || btn.dataset.code.toLowerCase().indexOf(q) >= 0;
-            btn.style.display = matches ? '' : 'none';
-          });
-        };
-        setTimeout(function () { searchEl.focus(); }, 80);
-      }
-
-      grid.querySelectorAll('.country-item').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          grid.querySelectorAll('.country-item').forEach(function (b) { b.classList.remove('selected'); });
-          btn.classList.add('selected');
-          applyCountry(btn.dataset.code);
-          overlay.classList.add('hidden');
-          document.body.style.overflow = '';
-          loadHub();
-        });
-      });
-
-      document.getElementById('country-skip').onclick = function () {
-        overlay.classList.add('hidden');
-        document.body.style.overflow = '';
-        localStorage.setItem('cd_country', 'global');
-        var fb = document.getElementById('country-flag-btn');
-        if (fb) fb.textContent = '🌍';
-      };
-
-      overlay.onclick = function (e) {
-        if (e.target === overlay) {
-          overlay.classList.add('hidden');
-          document.body.style.overflow = '';
-          if (!localStorage.getItem('cd_country')) localStorage.setItem('cd_country', 'global');
-        }
-      };
-    }
-
-    /* Header flag button opens modal */
-    var flagBtn = document.getElementById('country-flag-btn');
-    if (flagBtn) {
-      flagBtn.addEventListener('click', function () {
-        openModal(localStorage.getItem('cd_country') || 'global');
-      });
-    }
-
-    /* ── Boot: language priority: cd_lang > cd_country-derived > 'en' ── */
-    var savedLang    = localStorage.getItem('cd_lang');
-    var savedCountry = localStorage.getItem('cd_country');
-
-    if (savedLang) {
-      setLang(savedLang);
-    } else if (savedCountry) {
-      setLang(countryToLang(savedCountry));
-    }
-
-    if (savedCountry) {
-      var fb = document.getElementById('country-flag-btn');
-      if (fb) fb.textContent = FLAG_MAP[savedCountry] || '🌍';
-    }
-
-    /* ── Load events-meta.json overrides, then render ── */
-    fetch('/events-meta.json?_=' + Date.now())
-      .then(function(r) { return r.json(); })
-      .then(function(meta) {
-        if (meta && meta.events) {
-          EVENTS.forEach(function(ev) {
-            var m = meta.events[ev.slug];
-            if (m) {
-              if (m.countries) ev.countries = m.countries;
-              if (m.cat) ev.cat = m.cat;
-            }
-          });
-        }
-      })
-      .catch(function() {})
-      .then(function() { loadHub(); });
-
-    /* First visit: detect country after hub starts loading */
-    if (!savedCountry) {
-      fetch('https://ipapi.co/json/?fields=country_code')
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          var code = ((data && data.country_code) || 'global').toUpperCase();
-          openModal(code);
-        })
-        .catch(function () { openModal('global'); });
-    }
-
+    });
   })();
 
 })();
 </script>
-
 </body>
 </html>

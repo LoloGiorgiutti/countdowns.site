@@ -14,6 +14,35 @@ BASE_URL = "https://countdowns.site"
 
 LANGS = [
   dict(
+    code="en", html_lang="en",
+    dir="",
+    canonical=f"{BASE_URL}/",
+    og_locale="en_US",
+    title="Countdowns — Every countdown that matters",
+    meta_desc="Real-time countdowns for sports, releases, holidays, sales and more. Free, live, no ads.",
+    og_title="Countdowns — Every countdown that matters",
+    og_desc="Real-time countdowns for every event the world is waiting for.",
+    hero_label="Live · updated in real time",
+    h1="Every countdown<br>that <em>matters</em>",
+    hero_sub="Sports, releases, holidays, sales — every event the world is counting down to.",
+    sort_chrono="Soonest first",
+    sort_cat="By category",
+    bucket_today="Today",
+    bucket_week="This week",
+    bucket_month="This month",
+    bucket_soon="Coming soon",
+    bucket_year="Later this year",
+    bucket_future="Next year +",
+    bucket_tba="Date TBA",
+    card_tba="Date TBA",
+    card_today="Today",
+    card_days="days",
+    lang_btn_active="EN",
+    names={},
+    json_ld_name="Countdowns",
+    json_ld_desc="Real-time countdowns for every event that matters",
+  ),
+  dict(
     code="es", html_lang="es",
     dir="es",
     canonical=f"{BASE_URL}/es/",
@@ -262,7 +291,78 @@ EVENTS_JS = """    /* ── Releases ── */
     /* ── ES-only Holidays ── */
     { slug:'25-de-mayo',   name:'25 de Mayo',                 type:'auto',     regions:['es'],     cat:'Holidays',      url:'/countdown/25-de-mayo/'    },
     /* ── Children's Day – global ── */
-    { slug:'dia-del-nino', name:"Children's Day",             type:'auto',     regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },"""
+    { slug:'dia-del-nino', name:"Children's Day",             type:'auto',     regions:['global','es','pt'], cat:'Holidays', url:'/countdown/dia-del-nino/' },
+    /* ── Months ── */
+    { slug:'january',   name:'January',   type:'auto', regions:['global'], cat:'Months', url:'/countdown/january/'   },
+    { slug:'february',  name:'February',  type:'auto', regions:['global'], cat:'Months', url:'/countdown/february/'  },
+    { slug:'march',     name:'March',     type:'auto', regions:['global'], cat:'Months', url:'/countdown/march/'     },
+    { slug:'april',     name:'April',     type:'auto', regions:['global'], cat:'Months', url:'/countdown/april/'     },
+    { slug:'may-month', name:'May',       type:'auto', regions:['global'], cat:'Months', url:'/countdown/may-month/' },
+    { slug:'june-month',name:'June',      type:'auto', regions:['global'], cat:'Months', url:'/countdown/june-month/'},
+    { slug:'july-month',name:'July',      type:'auto', regions:['global'], cat:'Months', url:'/countdown/july-month/'},
+    { slug:'august',    name:'August',    type:'auto', regions:['global'], cat:'Months', url:'/countdown/august/'    },
+    { slug:'september', name:'September', type:'auto', regions:['global'], cat:'Months', url:'/countdown/september/' },
+    { slug:'october',   name:'October',   type:'auto', regions:['global'], cat:'Months', url:'/countdown/october/'   },
+    { slug:'november',  name:'November',  type:'auto', regions:['global'], cat:'Months', url:'/countdown/november/'  },
+    { slug:'december',  name:'December',  type:'auto', regions:['global'], cat:'Months', url:'/countdown/december/'  },
+    /* ── Time ── */
+    { slug:'midnight',  name:'Midnight',  type:'auto', regions:['global'], cat:'Time',   url:'/countdown/midnight/'  },
+    /* ── Seasons ── */
+    { slug:'spring',        name:'Spring',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/spring/'        },
+    { slug:'summer',        name:'Summer',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/summer/'        },
+    { slug:'autumn',        name:'Autumn',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/autumn/'        },
+    { slug:'winter-season', name:'Winter',      type:'auto', regions:['global'], cat:'Seasons', url:'/countdown/winter-season/' },
+    /* ── School ── */
+    { slug:'back-to-school',  name:'Back to School',   type:'auto', regions:['global'], cat:'School', url:'/countdown/back-to-school/'  },
+    { slug:'summer-vacation', name:'Summer Vacation',  type:'auto', regions:['global'], cat:'School', url:'/countdown/summer-vacation/' },
+    { slug:'winter-vacation', name:'Winter Vacation',  type:'auto', regions:['global'], cat:'School', url:'/countdown/winter-vacation/' },
+    /* ── National Days ── */
+    { slug:'independence',              name:'Independence Day',            type:'auto', regions:['global'], cat:'National Days', url:'/countdown/independence/'              },
+    { slug:'canada-day',                name:'Canada Day',                  type:'auto', regions:['global'], cat:'National Days', url:'/countdown/canada-day/'                },
+    { slug:'australia-day',             name:'Australia Day',               type:'auto', regions:['global'], cat:'National Days', url:'/countdown/australia-day/'             },
+    { slug:'waitangi-day',              name:'Waitangi Day',                type:'auto', regions:['global'], cat:'National Days', url:'/countdown/waitangi-day/'              },
+    { slug:'syttende-mai',              name:'Norwegian Constitution Day',  type:'auto', regions:['global'], cat:'National Days', url:'/countdown/syttende-mai/'              },
+    { slug:'german-unity-day',          name:'German Unity Day',            type:'auto', regions:['global'], cat:'National Days', url:'/countdown/german-unity-day/'          },
+    { slug:'festa-della-repubblica',    name:'Italian Republic Day',        type:'auto', regions:['global'], cat:'National Days', url:'/countdown/festa-della-repubblica/'    },
+    { slug:'national-day-sg',           name:'Singapore National Day',      type:'auto', regions:['global'], cat:'National Days', url:'/countdown/national-day-sg/'           },
+    { slug:'freedom-day-za',            name:'South Africa Freedom Day',    type:'auto', regions:['global'], cat:'National Days', url:'/countdown/freedom-day-za/'            },
+    { slug:'dia-de-la-hispanidad',      name:'Dia de la Hispanidad',        type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-hispanidad/'      },
+    { slug:'dia-de-la-raza',            name:'Dia de la Raza',              type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-raza/'            },
+    { slug:'dia-de-la-bandera',         name:'Dia de la Bandera (AR)',      type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-bandera/'         },
+    { slug:'dia-de-la-revolucion',      name:'Dia de la Revolucion (MX)',   type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-revolucion/'      },
+    { slug:'dia-de-la-constitucion',    name:'Dia de la Constitucion (MX)', type:'auto', regions:['global'], cat:'National Days', url:'/countdown/dia-de-la-constitucion/'    },
+    { slug:'proclamacao-da-republica',  name:'Proclamacao da Republica',    type:'auto', regions:['global'], cat:'National Days', url:'/countdown/proclamacao-da-republica/'  },
+    { slug:'tiradentes',                name:'Tiradentes (Brazil)',          type:'auto', regions:['global'], cat:'National Days', url:'/countdown/tiradentes/'                },
+    { slug:'proclamacion-independencia-ar', name:'25 de Mayo (Argentina)',  type:'auto', regions:['global'], cat:'National Days', url:'/countdown/proclamacion-independencia-ar/' },
+    /* ── Jewish Holidays ── */
+    { slug:'rosh-hashana', name:'Rosh Hashanah',      type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/rosh-hashana/' },
+    { slug:'yom-kipur',    name:'Yom Kippur',          type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/yom-kipur/'    },
+    { slug:'januca',       name:'Hanukkah',            type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/januca/'       },
+    { slug:'purim',        name:'Purim',               type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/purim/'        },
+    { slug:'pesaj',        name:'Passover',            type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/pesaj/'        },
+    { slug:'shavuot',      name:'Shavuot',             type:'auto', regions:['global'], cat:'Jewish Holidays', url:'/countdown/shavuot/'      },
+    /* ── Additional Holidays ── */
+    { slug:'epiphany',    name:'Epiphany / Three Kings Day', type:'auto',     regions:['global'], cat:'Holidays',      url:'/countdown/epiphany/'    },
+    { slug:'rio-carnival',name:'Rio Carnival',               type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/rio-carnival/'},
+    /* ── Music (global) ── */
+    { slug:'lollapalooza-us',   name:'Lollapalooza Chicago',        type:'variable', regions:['global'], cat:'Music', url:'/countdown/lollapalooza-us/'   },
+    { slug:'lollapalooza-de',   name:'Lollapalooza Berlin',         type:'variable', regions:['global'], cat:'Music', url:'/countdown/lollapalooza-de/'   },
+    { slug:'lollapalooza-fr',   name:'Lollapalooza Paris',          type:'variable', regions:['global'], cat:'Music', url:'/countdown/lollapalooza-fr/'   },
+    { slug:'primavera-sound-es',name:'Primavera Sound Barcelona',   type:'variable', regions:['global'], cat:'Music', url:'/countdown/primavera-sound-es/'},
+    { slug:'primavera-sound-ar',name:'Primavera Sound Buenos Aires',type:'variable', regions:['global'], cat:'Music', url:'/countdown/primavera-sound-ar/'},
+    { slug:'primavera-sound-br',name:'Primavera Sound Sao Paulo',   type:'variable', regions:['global'], cat:'Music', url:'/countdown/primavera-sound-br/'},
+    { slug:'tomorrowland',      name:'Tomorrowland',                type:'variable', regions:['global'], cat:'Music', url:'/countdown/tomorrowland/'      },
+    /* ── Sports (additional) ── */
+    { slug:'world-cup-final',       name:'2026 World Cup Final',   type:'variable', regions:['global'], cat:'Sports', url:'/countdown/world-cup-final/'       },
+    { slug:'copa-america-2028',     name:'Copa America 2028',      type:'variable', regions:['global'], cat:'Sports', url:'/countdown/copa-america-2028/'     },
+    { slug:'copa-america-2028-final',name:'Copa America 2028 Final',type:'variable',regions:['global'], cat:'Sports', url:'/countdown/copa-america-2028-final/'},
+    { slug:'euro-2028',             name:'UEFA Euro 2028',         type:'variable', regions:['global'], cat:'Sports', url:'/countdown/euro-2028/'             },
+    { slug:'euro-2028-final',       name:'UEFA Euro 2028 Final',   type:'variable', regions:['global'], cat:'Sports', url:'/countdown/euro-2028-final/'       },
+    /* ── Tech / Awards ── */
+    { slug:'ces',          name:'CES Las Vegas',  type:'auto',     regions:['global'], cat:'Technology',    url:'/countdown/ces/'          },
+    { slug:'balon-de-oro', name:'Balon de Oro',   type:'auto',     regions:['global'], cat:'Entertainment', url:'/countdown/balon-de-oro/' },
+    { slug:'mr-olympia',   name:'Mr. Olympia',    type:'auto',     regions:['global'], cat:'Sports',        url:'/countdown/mr-olympia/'   },
+    { slug:'arnold-classic',name:'Arnold Classic',type:'auto',     regions:['global'], cat:'Sports',        url:'/countdown/arnold-classic/'},"""
 
 
 def generate_hub(lang):
@@ -548,10 +648,11 @@ def generate_hub(lang):
 
 for lang in LANGS:
     out_dir = lang["dir"]
-    os.makedirs(out_dir, exist_ok=True)
-    out_path = os.path.join(out_dir, "index.html")
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
+    out_path = os.path.join(out_dir, "index.html") if out_dir else "index.html"
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(generate_hub(lang))
-    print(f"  ✓  /{out_dir}/")
+    print(f"  ✓  /{out_dir}/" if out_dir else "  ✓  /")
 
 print(f"\nGenerated {len(LANGS)} hub pages.")
