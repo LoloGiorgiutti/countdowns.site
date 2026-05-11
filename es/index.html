@@ -250,6 +250,67 @@
       'paris-fw': '/es/countdown/paris-fw/',
       'milan-fw': '/es/countdown/milan-fw/',
       'bafweek': '/es/countdown/bafweek/',
+      'january': '/es/countdown/january/',
+      'february': '/es/countdown/february/',
+      'march': '/es/countdown/march/',
+      'april': '/es/countdown/april/',
+      'may-month': '/es/countdown/may-month/',
+      'june-month': '/es/countdown/june-month/',
+      'july-month': '/es/countdown/july-month/',
+      'august': '/es/countdown/august/',
+      'september': '/es/countdown/september/',
+      'october': '/es/countdown/october/',
+      'november': '/es/countdown/november/',
+      'december': '/es/countdown/december/',
+      'midnight': '/es/countdown/midnight/',
+      'spring': '/es/countdown/spring/',
+      'summer': '/es/countdown/summer/',
+      'autumn': '/es/countdown/autumn/',
+      'winter-season': '/es/countdown/winter-season/',
+      'back-to-school': '/es/countdown/back-to-school/',
+      'summer-vacation': '/es/countdown/summer-vacation/',
+      'winter-vacation': '/es/countdown/winter-vacation/',
+      'independence': '/es/countdown/independence/',
+      'canada-day': '/es/countdown/canada-day/',
+      'australia-day': '/es/countdown/australia-day/',
+      'waitangi-day': '/es/countdown/waitangi-day/',
+      'syttende-mai': '/es/countdown/syttende-mai/',
+      'german-unity-day': '/es/countdown/german-unity-day/',
+      'festa-della-repubblica': '/es/countdown/festa-della-repubblica/',
+      'national-day-sg': '/es/countdown/national-day-sg/',
+      'freedom-day-za': '/es/countdown/freedom-day-za/',
+      'dia-de-la-hispanidad': '/es/countdown/dia-de-la-hispanidad/',
+      'dia-de-la-raza': '/es/countdown/dia-de-la-raza/',
+      'dia-de-la-bandera': '/es/countdown/dia-de-la-bandera/',
+      'dia-de-la-revolucion': '/es/countdown/dia-de-la-revolucion/',
+      'dia-de-la-constitucion': '/es/countdown/dia-de-la-constitucion/',
+      'proclamacao-da-republica': '/es/countdown/proclamacao-da-republica/',
+      'tiradentes': '/es/countdown/tiradentes/',
+      'proclamacion-independencia-ar': '/es/countdown/proclamacion-independencia-ar/',
+      'rosh-hashana': '/es/countdown/rosh-hashana/',
+      'yom-kipur': '/es/countdown/yom-kipur/',
+      'januca': '/es/countdown/januca/',
+      'purim': '/es/countdown/purim/',
+      'pesaj': '/es/countdown/pesaj/',
+      'shavuot': '/es/countdown/shavuot/',
+      'epiphany': '/es/countdown/epiphany/',
+      'rio-carnival': '/es/countdown/rio-carnival/',
+      'lollapalooza-us': '/es/countdown/lollapalooza-us/',
+      'lollapalooza-de': '/es/countdown/lollapalooza-de/',
+      'lollapalooza-fr': '/es/countdown/lollapalooza-fr/',
+      'primavera-sound-es': '/es/countdown/primavera-sound-es/',
+      'primavera-sound-ar': '/es/countdown/primavera-sound-ar/',
+      'primavera-sound-br': '/es/countdown/primavera-sound-br/',
+      'tomorrowland': '/es/countdown/tomorrowland/',
+      'world-cup-final': '/es/countdown/world-cup-final/',
+      'copa-america-2028': '/es/countdown/copa-america-2028/',
+      'copa-america-2028-final': '/es/countdown/copa-america-2028-final/',
+      'euro-2028': '/es/countdown/euro-2028/',
+      'euro-2028-final': '/es/countdown/euro-2028-final/',
+      'ces': '/es/countdown/ces/',
+      'balon-de-oro': '/es/countdown/balon-de-oro/',
+      'mr-olympia': '/es/countdown/mr-olympia/',
+      'arnold-classic': '/es/countdown/arnold-classic/',
       'elecciones-ar': '/es/countdown/elecciones-ar/',
     };
 
@@ -588,8 +649,15 @@
       }
     }
 
-    // Restore saved flag
-    if (savedC && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+    // Restore saved flag + redirect returning users to correct language hub
+    if (savedC) {
+      if (CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+      var savedLang = countryToLang(savedC);
+      if (savedLang !== currentLang) {
+        location.href = LANG_PREFIX[savedLang] || '/';
+        return;
+      }
+    }
 
     if (fb) {
       fb.addEventListener('click', function(){

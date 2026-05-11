@@ -881,8 +881,15 @@ def generate_hub(lang):
       }}
     }}
 
-    // Restore saved flag
-    if (savedC && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+    // Restore saved flag + redirect returning users to correct language hub
+    if (savedC) {{
+      if (CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+      var savedLang = countryToLang(savedC);
+      if (savedLang !== currentLang) {{
+        location.href = LANG_PREFIX[savedLang] || '/';
+        return;
+      }}
+    }}
 
     if (fb) {{
       fb.addEventListener('click', function(){{

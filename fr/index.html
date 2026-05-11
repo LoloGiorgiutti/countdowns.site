@@ -242,6 +242,67 @@
       'nyfw': '/fr/countdown/nyfw/',
       'paris-fw': '/fr/countdown/paris-fw/',
       'milan-fw': '/fr/countdown/milan-fw/',
+      'january': '/fr/countdown/january/',
+      'february': '/fr/countdown/february/',
+      'march': '/fr/countdown/march/',
+      'april': '/fr/countdown/april/',
+      'may-month': '/fr/countdown/may-month/',
+      'june-month': '/fr/countdown/june-month/',
+      'july-month': '/fr/countdown/july-month/',
+      'august': '/fr/countdown/august/',
+      'september': '/fr/countdown/september/',
+      'october': '/fr/countdown/october/',
+      'november': '/fr/countdown/november/',
+      'december': '/fr/countdown/december/',
+      'midnight': '/fr/countdown/midnight/',
+      'spring': '/fr/countdown/spring/',
+      'summer': '/fr/countdown/summer/',
+      'autumn': '/fr/countdown/autumn/',
+      'winter-season': '/fr/countdown/winter-season/',
+      'back-to-school': '/fr/countdown/back-to-school/',
+      'summer-vacation': '/fr/countdown/summer-vacation/',
+      'winter-vacation': '/fr/countdown/winter-vacation/',
+      'independence': '/fr/countdown/independence/',
+      'canada-day': '/fr/countdown/canada-day/',
+      'australia-day': '/fr/countdown/australia-day/',
+      'waitangi-day': '/fr/countdown/waitangi-day/',
+      'syttende-mai': '/fr/countdown/syttende-mai/',
+      'german-unity-day': '/fr/countdown/german-unity-day/',
+      'festa-della-repubblica': '/fr/countdown/festa-della-repubblica/',
+      'national-day-sg': '/fr/countdown/national-day-sg/',
+      'freedom-day-za': '/fr/countdown/freedom-day-za/',
+      'dia-de-la-hispanidad': '/fr/countdown/dia-de-la-hispanidad/',
+      'dia-de-la-raza': '/fr/countdown/dia-de-la-raza/',
+      'dia-de-la-bandera': '/fr/countdown/dia-de-la-bandera/',
+      'dia-de-la-revolucion': '/fr/countdown/dia-de-la-revolucion/',
+      'dia-de-la-constitucion': '/fr/countdown/dia-de-la-constitucion/',
+      'proclamacao-da-republica': '/fr/countdown/proclamacao-da-republica/',
+      'tiradentes': '/fr/countdown/tiradentes/',
+      'proclamacion-independencia-ar': '/fr/countdown/proclamacion-independencia-ar/',
+      'rosh-hashana': '/fr/countdown/rosh-hashana/',
+      'yom-kipur': '/fr/countdown/yom-kipur/',
+      'januca': '/fr/countdown/januca/',
+      'purim': '/fr/countdown/purim/',
+      'pesaj': '/fr/countdown/pesaj/',
+      'shavuot': '/fr/countdown/shavuot/',
+      'epiphany': '/fr/countdown/epiphany/',
+      'rio-carnival': '/fr/countdown/rio-carnival/',
+      'lollapalooza-us': '/fr/countdown/lollapalooza-us/',
+      'lollapalooza-de': '/fr/countdown/lollapalooza-de/',
+      'lollapalooza-fr': '/fr/countdown/lollapalooza-fr/',
+      'primavera-sound-es': '/fr/countdown/primavera-sound-es/',
+      'primavera-sound-ar': '/fr/countdown/primavera-sound-ar/',
+      'primavera-sound-br': '/fr/countdown/primavera-sound-br/',
+      'tomorrowland': '/fr/countdown/tomorrowland/',
+      'world-cup-final': '/fr/countdown/world-cup-final/',
+      'copa-america-2028': '/fr/countdown/copa-america-2028/',
+      'copa-america-2028-final': '/fr/countdown/copa-america-2028-final/',
+      'euro-2028': '/fr/countdown/euro-2028/',
+      'euro-2028-final': '/fr/countdown/euro-2028-final/',
+      'ces': '/fr/countdown/ces/',
+      'balon-de-oro': '/fr/countdown/balon-de-oro/',
+      'mr-olympia': '/fr/countdown/mr-olympia/',
+      'arnold-classic': '/fr/countdown/arnold-classic/',
     };
 
   var EVENTS = [
@@ -579,8 +640,15 @@
       }
     }
 
-    // Restore saved flag
-    if (savedC && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+    // Restore saved flag + redirect returning users to correct language hub
+    if (savedC) {
+      if (CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+      var savedLang = countryToLang(savedC);
+      if (savedLang !== currentLang) {
+        location.href = LANG_PREFIX[savedLang] || '/';
+        return;
+      }
+    }
 
     if (fb) {
       fb.addEventListener('click', function(){

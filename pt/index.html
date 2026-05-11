@@ -226,10 +226,15 @@
       'easter': '/pt/countdown/easter/',
       'mothers-day': '/pt/countdown/mothers-day/',
       'fathers-day': '/pt/countdown/fathers-day/',
+      'st-patricks': '/pt/countdown/st-patricks/',
+      'oktoberfest': '/pt/countdown/oktoberfest/',
       'dia-del-nino': '/pt/countdown/dia-del-nino/',
       'oscars': '/pt/countdown/oscars/',
       'grammys': '/pt/countdown/grammys/',
       'met-gala': '/pt/countdown/met-gala/',
+      'eurovision': '/pt/countdown/eurovision/',
+      'cannes': '/pt/countdown/cannes/',
+      'coachella': '/pt/countdown/coachella/',
       'black-friday': '/pt/countdown/black-friday/',
       'cyber-monday': '/pt/countdown/cyber-monday/',
       'full-moon': '/pt/countdown/full-moon/',
@@ -238,6 +243,67 @@
       'nyfw': '/pt/countdown/nyfw/',
       'paris-fw': '/pt/countdown/paris-fw/',
       'milan-fw': '/pt/countdown/milan-fw/',
+      'january': '/pt/countdown/january/',
+      'february': '/pt/countdown/february/',
+      'march': '/pt/countdown/march/',
+      'april': '/pt/countdown/april/',
+      'may-month': '/pt/countdown/may-month/',
+      'june-month': '/pt/countdown/june-month/',
+      'july-month': '/pt/countdown/july-month/',
+      'august': '/pt/countdown/august/',
+      'september': '/pt/countdown/september/',
+      'october': '/pt/countdown/october/',
+      'november': '/pt/countdown/november/',
+      'december': '/pt/countdown/december/',
+      'midnight': '/pt/countdown/midnight/',
+      'spring': '/pt/countdown/spring/',
+      'summer': '/pt/countdown/summer/',
+      'autumn': '/pt/countdown/autumn/',
+      'winter-season': '/pt/countdown/winter-season/',
+      'back-to-school': '/pt/countdown/back-to-school/',
+      'summer-vacation': '/pt/countdown/summer-vacation/',
+      'winter-vacation': '/pt/countdown/winter-vacation/',
+      'independence': '/pt/countdown/independence/',
+      'canada-day': '/pt/countdown/canada-day/',
+      'australia-day': '/pt/countdown/australia-day/',
+      'waitangi-day': '/pt/countdown/waitangi-day/',
+      'syttende-mai': '/pt/countdown/syttende-mai/',
+      'german-unity-day': '/pt/countdown/german-unity-day/',
+      'festa-della-repubblica': '/pt/countdown/festa-della-repubblica/',
+      'national-day-sg': '/pt/countdown/national-day-sg/',
+      'freedom-day-za': '/pt/countdown/freedom-day-za/',
+      'dia-de-la-hispanidad': '/pt/countdown/dia-de-la-hispanidad/',
+      'dia-de-la-raza': '/pt/countdown/dia-de-la-raza/',
+      'dia-de-la-bandera': '/pt/countdown/dia-de-la-bandera/',
+      'dia-de-la-revolucion': '/pt/countdown/dia-de-la-revolucion/',
+      'dia-de-la-constitucion': '/pt/countdown/dia-de-la-constitucion/',
+      'proclamacao-da-republica': '/pt/countdown/proclamacao-da-republica/',
+      'tiradentes': '/pt/countdown/tiradentes/',
+      'proclamacion-independencia-ar': '/pt/countdown/proclamacion-independencia-ar/',
+      'rosh-hashana': '/pt/countdown/rosh-hashana/',
+      'yom-kipur': '/pt/countdown/yom-kipur/',
+      'januca': '/pt/countdown/januca/',
+      'purim': '/pt/countdown/purim/',
+      'pesaj': '/pt/countdown/pesaj/',
+      'shavuot': '/pt/countdown/shavuot/',
+      'epiphany': '/pt/countdown/epiphany/',
+      'rio-carnival': '/pt/countdown/rio-carnival/',
+      'lollapalooza-us': '/pt/countdown/lollapalooza-us/',
+      'lollapalooza-de': '/pt/countdown/lollapalooza-de/',
+      'lollapalooza-fr': '/pt/countdown/lollapalooza-fr/',
+      'primavera-sound-es': '/pt/countdown/primavera-sound-es/',
+      'primavera-sound-ar': '/pt/countdown/primavera-sound-ar/',
+      'primavera-sound-br': '/pt/countdown/primavera-sound-br/',
+      'tomorrowland': '/pt/countdown/tomorrowland/',
+      'world-cup-final': '/pt/countdown/world-cup-final/',
+      'copa-america-2028': '/pt/countdown/copa-america-2028/',
+      'copa-america-2028-final': '/pt/countdown/copa-america-2028-final/',
+      'euro-2028': '/pt/countdown/euro-2028/',
+      'euro-2028-final': '/pt/countdown/euro-2028-final/',
+      'ces': '/pt/countdown/ces/',
+      'balon-de-oro': '/pt/countdown/balon-de-oro/',
+      'mr-olympia': '/pt/countdown/mr-olympia/',
+      'arnold-classic': '/pt/countdown/arnold-classic/',
     };
 
   var EVENTS = [
@@ -575,8 +641,15 @@
       }
     }
 
-    // Restore saved flag
-    if (savedC && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+    // Restore saved flag + redirect returning users to correct language hub
+    if (savedC) {
+      if (CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+      var savedLang = countryToLang(savedC);
+      if (savedLang !== currentLang) {
+        location.href = LANG_PREFIX[savedLang] || '/';
+        return;
+      }
+    }
 
     if (fb) {
       fb.addEventListener('click', function(){
