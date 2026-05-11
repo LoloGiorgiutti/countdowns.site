@@ -73,7 +73,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/dia-del-nino/'">ES</button><button class="lang-btn" onclick="location.href='/pt/countdown/dia-del-nino/'">PT</button><button class="lang-btn" onclick="location.href='/fr/countdown/dia-del-nino/'">FR</button>
+      <button class="lang-btn active">EN</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/countdown/dia-del-nino/'">ES</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='/pt/countdown/dia-del-nino/'">PT</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='/fr/countdown/dia-del-nino/'">FR</button>
     </div>
     <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>

@@ -1705,7 +1705,7 @@ def generate_page(ev, lang="en"):
         active = ' active' if btn_lang == lang else ''
         if btn_lang == lang:
             return f'<button class="lang-btn{active}">{label}</button>'
-        return f'<button class="lang-btn{active}" onclick="location.href=\'{lang_href(btn_lang)}\'">{label}</button>'
+        return f'<button class="lang-btn{active}" onclick="localStorage.setItem(\'cd_lang_override\',\'{btn_lang}\');location.href=\'{lang_href(btn_lang)}\'">{label}</button>'
 
     lang_buttons = (
         lang_btn("en", "EN") +
@@ -1974,7 +1974,7 @@ def generate_custom_page(lang="en"):
         active = ' active' if btn_lang == lang else ''
         if btn_lang == lang:
             return f'<button class="lang-btn{active}">{label}</button>'
-        return f'<button class="lang-btn{active}" onclick="location.href=\'{lang_href(btn_lang)}\'">{label}</button>'
+        return f'<button class="lang-btn{active}" onclick="localStorage.setItem(\'cd_lang_override\',\'{btn_lang}\');location.href=\'{lang_href(btn_lang)}\'">{label}</button>'
     lang_buttons = lang_btn("en","EN") + lang_btn("es","ES") + lang_btn("pt","PT") + lang_btn("fr","FR")
 
     hreflang = f'<link rel="alternate" hreflang="en" href="{en_url}">\n'

@@ -63,7 +63,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn" onclick="location.href='/countdown/ucl-final/'">EN</button><button class="lang-btn" onclick="location.href='/es/countdown/ucl-final/'">ES</button><button class="lang-btn active">PT</button><button class="lang-btn" onclick="location.href='/fr/countdown/ucl-final/'">FR</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='/countdown/ucl-final/'">EN</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/countdown/ucl-final/'">ES</button><button class="lang-btn active">PT</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='/fr/countdown/ucl-final/'">FR</button>
     </div>
     <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>

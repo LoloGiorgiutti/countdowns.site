@@ -614,10 +614,10 @@ def generate_hub(lang):
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn" onclick="location.href='/'">EN</button>
-      <button class="lang-btn{' active' if c == 'es' else ''}" onclick="location.href='/es/'">ES</button>
-      <button class="lang-btn{' active' if c == 'pt' else ''}" onclick="location.href='/pt/'">PT</button>
-      <button class="lang-btn{' active' if c == 'fr' else ''}" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='/'">EN</button>
+      <button class="lang-btn{' active' if c == 'es' else ''}" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/'">ES</button>
+      <button class="lang-btn{' active' if c == 'pt' else ''}" onclick="localStorage.setItem('cd_lang_override','pt');location.href='/pt/'">PT</button>
+      <button class="lang-btn{' active' if c == 'fr' else ''}" onclick="localStorage.setItem('cd_lang_override','fr');location.href='/fr/'">FR</button>
     </div>
     <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>
@@ -881,9 +881,12 @@ def generate_hub(lang):
       }}
     }}
 
-    // Restore saved flag + redirect returning users to correct language hub
-    if (savedC) {{
-      if (CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+    // Restore saved flag
+    if (savedC && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+
+    // Redirect to correct language hub based on country — unless user manually chose a language
+    var langOverride = (typeof localStorage !== 'undefined') ? localStorage.getItem('cd_lang_override') : null;
+    if (!langOverride && savedC) {{
       var savedLang = countryToLang(savedC);
       if (savedLang !== currentLang) {{
         location.href = LANG_PREFIX[savedLang] || '/';
@@ -895,13 +898,14 @@ def generate_hub(lang):
       fb.addEventListener('click', function(){{
         CountdownEngine.openCountryPicker(function(code){{
           if (det) det.classList.add('hidden');
+          localStorage.removeItem('cd_lang_override');
           applyCountry(code, true);
         }});
       }});
     }}
 
-    // First visit: auto-detect via IP
-    if (!savedC) {{
+    // First visit: auto-detect via IP (only if no manual lang override)
+    if (!savedC && !langOverride) {{
       fetch('https://ipapi.co/json/?fields=country_code')
         .then(function(r) {{ return r.json(); }})
         .then(function(data) {{

@@ -71,7 +71,7 @@
   <div class="header-right">
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn" onclick="location.href='/countdown/25-de-mayo/'">EN</button><button class="lang-btn active">ES</button><button class="lang-btn" onclick="location.href='/pt/'">PT</button><button class="lang-btn" onclick="location.href='/fr/'">FR</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='/countdown/25-de-mayo/'">EN</button><button class="lang-btn active">ES</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='/pt/'">PT</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='/fr/'">FR</button>
     </div>
     <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>
