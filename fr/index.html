@@ -665,14 +665,27 @@
 
     // First visit: auto-detect via IP (only if no manual lang override)
     if (!savedC && !langOverride) {
+      // Guard: don't redirect if user already clicked a card (race condition)
+      var _userClicked = false;
+      document.addEventListener('click', function(e) {
+        if (e.target.closest && e.target.closest('a[href]')) _userClicked = true;
+      }, true);
+
       fetch('https://ipapi.co/json/?fields=country_code')
         .then(function(r) { return r.json(); })
         .then(function(data) {
           var code = ((data && data.country_code) || 'global').toUpperCase();
-          applyCountry(code, true);
-          if (det && code !== 'global' && CountdownEngine.FLAG_MAP) {
-            det.innerHTML = '<span class="country-detected-dot"></span>Auto-detected: ' + (CountdownEngine.FLAG_MAP[code] || '') + ' ' + code;
-            det.classList.remove('hidden');
+          localStorage.setItem('cd_country', code);
+          if (fb && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[code] || '🌍';
+          var targetLang = countryToLang(code);
+          if (targetLang !== currentLang && !_userClicked) {
+            location.href = LANG_PREFIX[targetLang] || '/';
+          } else {
+            loadHub();
+            if (det && code !== 'global' && CountdownEngine.FLAG_MAP) {
+              det.innerHTML = '<span class="country-detected-dot"></span>Auto-detected: ' + (CountdownEngine.FLAG_MAP[code] || '') + ' ' + code;
+              det.classList.remove('hidden');
+            }
           }
         })
         .catch(function() { loadHub(); });

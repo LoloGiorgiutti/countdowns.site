@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#0A0A14"/>
+  <!-- rocket body -->
+  <ellipse cx="16" cy="13" rx="5" ry="8" fill="#818CF8"/>
+  <!-- window -->
+  <circle cx="16" cy="12" r="2" fill="#0A0A14"/>
+  <!-- fins -->
+  <polygon points="11,19 8,24 13,21" fill="#A78BFA" opacity="0.8"/>
+  <polygon points="21,19 24,24 19,21" fill="#A78BFA" opacity="0.8"/>
+  <!-- flame -->
+  <ellipse cx="16" cy="23" rx="3" ry="4" fill="url(#flame)" opacity="0.9"/>
+  <defs>
+    <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

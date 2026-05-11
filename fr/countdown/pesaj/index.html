@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compte à rebours Pâque Juive 2027 — Pessa'h | countdowns.site</title>
+<meta name="description" content="Compte à rebours en direct pour Pessa'h (Pâque Juive). La date varie chaque année.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://countdowns.site/countdown/pesaj/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://countdowns.site/fr/countdown/pesaj/">
+<meta property="og:title" content="Compte à rebours Pâque Juive 2027 — Pessa'h">
+<meta property="og:description" content="Compte à rebours en direct pour Pessa'h (Pâque Juive). La date varie chaque année.">
+<link rel="alternate" hreflang="en" href="https://countdowns.site/countdown/pesaj/">
+<link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/pesaj/">
+<link rel="alternate" hreflang="es" href="https://countdowns.site/es/countdown/pesaj/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/countdown/pesaj/">
+<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/countdown/pesaj/">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/countdown.css">
+<style>:root{--cat-color:#E9D5A1;--cat-glow:rgba(233,213,161,.2);--cat-soft:rgba(233,213,161,.08);}</style>
+<script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://countdowns.site/fr/countdown/pesaj/#webpage",
+      "url": "https://countdowns.site/fr/countdown/pesaj/",
+      "name": "Compte à rebours Pâque Juive 2027 — Pessa'h",
+      "description": "Compte à rebours en direct pour Pessa'h (Pâque Juive). La date varie chaque année.",
+      "inLanguage": "fr"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quand est Pessa'h ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "La date varie. En 2027, Pessa'h commence au coucher du soleil le 21 avril." }
+    }
+  ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
+  <div class="header-right">
+    <button class="theme-btn" id="theme-toggle">Light</button>
+    <div class="lang-seg" role="group" aria-label="Language">
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='/countdown/pesaj/'">EN</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/countdown/pesaj/'">ES</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='/pt/countdown/pesaj/'">PT</button><button class="lang-btn active">FR</button>
+    </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
+  </div>
+</header>
+<div id="root"><div style="min-height:100vh;background:#080812"></div></div>
+
+<div class="cd-article">
+  <p class="cd-article-body">Pessa'h (Pâque Juive) est l'une des fêtes les plus importantes du judaïsme. Elle commémore l'Exode, la libération du peuple juif de l'esclavage en Égypte. Célébrée pendant 7 ou 8 jours à partir du 15 Nissan.</p>
+  <div class="cd-faq"><h2 class="cd-faq-title">Questions Fréquentes</h2><div class="cd-faq-item"><h3 class="cd-faq-q">Quand est Pessa'h ?</h3><p class="cd-faq-a">La date varie. En 2027, Pessa'h commence au coucher du soleil le 21 avril.</p></div></div>
+</div>
+<footer class="site-footer">
+  countdowns<span class="logo-tld">.site</span>
+</footer>
+<script src="/countdown-engine.js"></script>
+<script>
+CountdownEngine.render('root', {
+  slug: "pesaj",
+  type: "auto",
+  name: "P\u00e2que Juive",
+  category: "Jewish Holidays",
+  description: "Compte \u00e0 rebours jusqu'\u00e0 Pessa'h, la P\u00e2que Juive."
+});
+// ── Theme toggle ──────────────────────────────────────────────────────
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  var saved = localStorage.getItem('cd_theme');
+  if (saved === 'light') { document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }
+  btn.addEventListener('click', function() {
+    var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('cd_theme', 'dark');
+      btn.textContent = 'Light';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('cd_theme', 'light');
+      btn.textContent = 'Dark';
+    }
+  });
+})();
+// ── Country flag ──────────────────────────────────────────────────────
+(function(){
+  var fb=document.getElementById('country-flag-btn');
+  if(!fb)return;
+  var saved=typeof localStorage!=='undefined'?localStorage.getItem('cd_country'):null;
+  if(saved&&CountdownEngine.FLAG_MAP)fb.textContent=CountdownEngine.FLAG_MAP[saved]||'🌍';
+  fb.addEventListener('click',function(){
+    CountdownEngine.openCountryPicker(function(code){
+      localStorage.setItem('cd_country',code);
+      location.reload();
+    });
+  });
+})();
+</script>
+</body>
+</html>

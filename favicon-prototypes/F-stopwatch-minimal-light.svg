@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- white/light bg -->
+  <rect width="32" height="32" rx="7" fill="#ffffff"/>
+  <!-- crown -->
+  <rect x="13.5" y="2" width="5" height="3" rx="1.5" fill="#6D28D9"/>
+  <rect x="15" y="4.5" width="2" height="2.5" fill="#6D28D9"/>
+  <!-- side buttons -->
+  <rect x="3.5" y="12" width="3" height="5" rx="1.5" fill="#6D28D9"/>
+  <rect x="25.5" y="12" width="3" height="5" rx="1.5" fill="#6D28D9"/>
+  <!-- outer ring -->
+  <circle cx="16" cy="18" r="10" fill="none" stroke="#6D28D9" stroke-width="2.5"/>
+  <!-- face -->
+  <circle cx="16" cy="18" r="7" fill="#f5f3ff"/>
+  <!-- wedge -->
+  <path d="M16 18 L16 11.5 A6.5 6.5 0 0 1 22.5 18 Z" fill="#7C3AED"/>
+  <circle cx="16" cy="18" r="1.2" fill="#6D28D9"/>
+</svg>

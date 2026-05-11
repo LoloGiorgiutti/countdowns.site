@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+  </defs>
+  <!-- bg -->
+  <rect width="32" height="32" rx="7" fill="#0A0A14"/>
+  <!-- crown button -->
+  <rect x="13" y="1.5" width="6" height="3.5" rx="1.75" fill="#A78BFA"/>
+  <rect x="14.5" y="4.5" width="3" height="2.5" fill="#A78BFA"/>
+  <!-- side buds -->
+  <ellipse cx="4.5" cy="15" rx="2.5" ry="3" fill="#A78BFA"/>
+  <ellipse cx="27.5" cy="15" rx="2.5" ry="3" fill="#A78BFA"/>
+  <!-- main circle filled -->
+  <circle cx="16" cy="18" r="11" fill="url(#body)"/>
+  <!-- inner face -->
+  <circle cx="16" cy="18" r="7.5" fill="#0A0A14"/>
+  <!-- wedge 90° elapsed -->
+  <path d="M16 18 L16 10.5 A7.5 7.5 0 0 1 23.5 18 Z" fill="#ffffff" opacity="0.95"/>
+  <!-- hands pointer -->
+  <line x1="16" y1="18" x2="16" y2="11" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="16" cy="18" r="1.5" fill="#A78BFA"/>
+</svg>

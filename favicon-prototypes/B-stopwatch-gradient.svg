@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#0A0A14"/>
+    </linearGradient>
+    <linearGradient id="sw" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#60A5FA"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="url(#bg2)"/>
+  <!-- crown -->
+  <rect x="13.5" y="2" width="5" height="3" rx="1.5" fill="url(#sw)"/>
+  <rect x="15" y="4.5" width="2" height="2.5" fill="url(#sw)"/>
+  <!-- side buttons -->
+  <rect x="3.5" y="12" width="3" height="5" rx="1.5" fill="url(#sw)"/>
+  <rect x="25.5" y="12" width="3" height="5" rx="1.5" fill="url(#sw)"/>
+  <!-- outer ring -->
+  <circle cx="16" cy="18" r="10" fill="none" stroke="url(#sw)" stroke-width="2.5"/>
+  <!-- face -->
+  <circle cx="16" cy="18" r="7" fill="#0d0d1f"/>
+  <!-- wedge -->
+  <path d="M16 18 L16 11.5 A6.5 6.5 0 0 1 22.5 18 Z" fill="url(#sw)"/>
+  <circle cx="16" cy="18" r="1.2" fill="#ffffff"/>
+</svg>

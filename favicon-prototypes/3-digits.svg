@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#0A0A14"/>
+  <!-- digit segments style -->
+  <rect x="5" y="8" width="9" height="16" rx="3" fill="#1a1a2e" stroke="#818CF8" stroke-width="1.5"/>
+  <rect x="18" y="8" width="9" height="16" rx="3" fill="#1a1a2e" stroke="#818CF8" stroke-width="1.5"/>
+  <text x="7" y="21" font-family="monospace" font-size="12" font-weight="700" fill="#ffffff">0</text>
+  <text x="20" y="21" font-family="monospace" font-size="12" font-weight="700" fill="#818CF8">3</text>
+</svg>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automne — countdowns.site</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden}
+:root{--cat:#6EE7B7;--cat-glow:rgba(110,231,183,.2);--cat-soft:rgba(110,231,183,.08);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="/countdown-engine.js"></script>
+<script>
+CountdownEngine.renderEmbed('root', {
+  slug: "autumn",
+  type: "auto",
+  name: "Automne",
+  category: "Seasons",
+  description: "Compte \u00e0 rebours jusqu'au d\u00e9but de l'automne.",
+  pageUrl: "https://countdowns.site/fr/countdown/autumn/"
+});
+</script>
+</body>
+</html>
