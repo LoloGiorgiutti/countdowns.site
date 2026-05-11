@@ -134,6 +134,78 @@
       'paris-fw': 'Semaine Mode Paris',
       'milan-fw': 'Semaine Mode Milan',
       'dia-del-nino': 'Journée des Enfants',
+      'copa-libertadores': 'Finale Copa Libertadores',
+      'lollapalooza-ar': 'Lollapalooza Argentine',
+      'lollapalooza-cl': 'Lollapalooza Chili',
+      'cosquin-rock': 'Cosquín Rock',
+      'bafweek': 'BAFWeek Buenos Aires',
+      'cinco-de-mayo': 'Cinco de Mayo',
+      'fiestas-patrias': 'Fêtes Nationales du Chili',
+      'dia-de-los-muertos': 'Jour des Morts',
+      '25-de-mayo': '25 Mai (Argentine)',
+      'elecciones-ar': 'Élections Argentine 2027',
+      'hot-sale': 'Hot Sale',
+      'january': 'Janvier',
+      'february': 'Février',
+      'march': 'Mars',
+      'april': 'Avril',
+      'may-month': 'Mai',
+      'june-month': 'Juin',
+      'july-month': 'Juillet',
+      'august': 'Août',
+      'september': 'Septembre',
+      'october': 'Octobre',
+      'november': 'Novembre',
+      'december': 'Décembre',
+      'midnight': 'Minuit',
+      'spring': 'Printemps',
+      'summer': 'Été',
+      'autumn': 'Automne',
+      'winter-season': 'Hiver',
+      'back-to-school': 'Rentrée Scolaire',
+      'summer-vacation': 'Vacances d'Été',
+      'winter-vacation': 'Vacances d'Hiver',
+      'independence': 'Jour de l'Indépendance',
+      'canada-day': 'Fête du Canada',
+      'australia-day': 'Fête de l'Australie',
+      'waitangi-day': 'Jour de Waitangi',
+      'syttende-mai': 'Fête Nationale de Norvège',
+      'german-unity-day': 'Jour de l'Unité Allemande',
+      'festa-della-repubblica': 'Fête de la République Italienne',
+      'national-day-sg': 'Fête Nationale de Singapour',
+      'freedom-day-za': 'Jour de la Liberté (Afrique du Sud)',
+      'dia-de-la-hispanidad': 'Fête Nationale Espagnole',
+      'dia-de-la-raza': 'Jour de la Race',
+      'dia-de-la-bandera': 'Jour du Drapeau (AR)',
+      'dia-de-la-revolucion': 'Révolution Mexicaine',
+      'dia-de-la-constitucion': 'Constitution du Mexique',
+      'proclamacao-da-republica': 'Proclamation de la République (BR)',
+      'tiradentes': 'Tiradentes',
+      'proclamacion-independencia-ar': '25 Mai (Argentine)',
+      'rosh-hashana': 'Roch Hachana',
+      'yom-kipur': 'Yom Kippour',
+      'januca': 'Hanoukka',
+      'purim': 'Pourim',
+      'pesaj': 'Pâque Juive',
+      'shavuot': 'Chavouot',
+      'epiphany': 'Épiphanie / Rois Mages',
+      'rio-carnival': 'Carnaval de Rio',
+      'lollapalooza-us': 'Lollapalooza Chicago',
+      'lollapalooza-de': 'Lollapalooza Berlin',
+      'lollapalooza-fr': 'Lollapalooza Paris',
+      'primavera-sound-es': 'Primavera Sound Barcelone',
+      'primavera-sound-ar': 'Primavera Sound Buenos Aires',
+      'primavera-sound-br': 'Primavera Sound São Paulo',
+      'tomorrowland': 'Tomorrowland',
+      'world-cup-final': 'Finale Coupe du Monde 2026',
+      'copa-america-2028': 'Copa América 2028',
+      'copa-america-2028-final': 'Finale Copa América 2028',
+      'euro-2028': 'Euro 2028',
+      'euro-2028-final': 'Finale Euro 2028',
+      'ces': 'CES Las Vegas',
+      'balon-de-oro': 'Ballon d'Or',
+      'mr-olympia': 'Mr. Olympia',
+      'arnold-classic': 'Arnold Classic',
     };
   var LANG_URLS = {
       'gta6': '/fr/countdown/gta6/',
@@ -308,6 +380,17 @@
   var currentLang = 'fr';
   var currentSort = 'chrono';
 
+  var COUNTRY_LANG = {
+    AR:'es',CL:'es',MX:'es',CO:'es',PE:'es',UY:'es',VE:'es',BO:'es',
+    PY:'es',EC:'es',CR:'es',PA:'es',GT:'es',SV:'es',HN:'es',NI:'es',
+    DO:'es',CU:'es',PR:'es',ES:'es',
+    BR:'pt',PT:'pt',
+    FR:'fr',BE:'fr',LU:'fr'
+  };
+  function countryToLang(code) { return COUNTRY_LANG[code] || 'en'; }
+
+  var LANG_PREFIX = { en:'/', es:'/es/', pt:'/pt/', fr:'/fr/' };
+
   function filteredEvents() {
     var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
     return EVENTS.filter(function (e) {
@@ -316,7 +399,6 @@
       if (country === 'global' || !e.countries) return true;
       var cs = e.countries;
       if (cs.indexOf('global') >= 0) return true;
-      // handle LATAM reference (passed as array by the time JS runs)
       return cs.indexOf(country) >= 0;
     });
   }
@@ -486,7 +568,15 @@
     function applyCountry(code, reload) {
       localStorage.setItem('cd_country', code);
       if (fb && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[code] || '🌍';
-      if (reload) { loadHub(); }
+      if (reload) {
+        var targetLang = countryToLang(code);
+        var targetPrefix = LANG_PREFIX[targetLang] || '/';
+        if (targetLang !== currentLang) {
+          location.href = targetPrefix;
+          return;
+        }
+        loadHub();
+      }
     }
 
     // Restore saved flag

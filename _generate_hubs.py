@@ -110,6 +110,60 @@ LANGS = [
       'elecciones-ar':     'Elecciones Argentina 2027',
       '25-de-mayo':        '25 de Mayo — Día de la Patria',
       'dia-del-nino':      'Día del Niño',
+      # Months
+      'january':   'Enero',       'february':  'Febrero',    'march':     'Marzo',
+      'april':     'Abril',       'may-month': 'Mayo',       'june-month':'Junio',
+      'july-month':'Julio',       'august':    'Agosto',     'september': 'Septiembre',
+      'october':   'Octubre',     'november':  'Noviembre',  'december':  'Diciembre',
+      # Time
+      'midnight':  'Medianoche',
+      # Seasons
+      'spring':        'Primavera', 'summer':       'Verano',
+      'autumn':        'Otoño',     'winter-season':'Invierno',
+      # School
+      'back-to-school': 'Vuelta al Cole', 'summer-vacation':'Vacaciones de Verano',
+      'winter-vacation':'Vacaciones de Invierno',
+      # National Days
+      'independence':    'Día de la Independencia',
+      'canada-day':      'Día de Canadá',
+      'australia-day':   'Día de Australia',
+      'waitangi-day':    'Día de Waitangi',
+      'syttende-mai':    'Día Nacional de Noruega',
+      'german-unity-day':'Día de la Unidad Alemana',
+      'festa-della-repubblica':'Día de la República Italiana',
+      'national-day-sg': 'Día Nacional de Singapur',
+      'freedom-day-za':  'Día de la Libertad (Sudáfrica)',
+      'dia-de-la-hispanidad':       'Día de la Hispanidad',
+      'dia-de-la-raza':             'Día de la Raza',
+      'dia-de-la-bandera':          'Día de la Bandera (AR)',
+      'dia-de-la-revolucion':       'Día de la Revolución (MX)',
+      'dia-de-la-constitucion':     'Día de la Constitución (MX)',
+      'proclamacao-da-republica':   'Proclamación de la República (BR)',
+      'tiradentes':                 'Tiradentes (Brasil)',
+      'proclamacion-independencia-ar':'25 de Mayo (Argentina)',
+      # Jewish Holidays
+      'rosh-hashana':'Rosh Hashaná',  'yom-kipur':'Yom Kipur',
+      'januca':      'Janucá',        'purim':    'Purim',
+      'pesaj':       'Pésaj',         'shavuot':  'Shavuot',
+      # Other
+      'epiphany':     'Reyes Magos',
+      'rio-carnival': 'Carnaval de Río',
+      'lollapalooza-us':    'Lollapalooza Chicago',
+      'lollapalooza-de':    'Lollapalooza Berlín',
+      'lollapalooza-fr':    'Lollapalooza París',
+      'primavera-sound-es': 'Primavera Sound Barcelona',
+      'primavera-sound-ar': 'Primavera Sound Buenos Aires',
+      'primavera-sound-br': 'Primavera Sound São Paulo',
+      'tomorrowland':       'Tomorrowland',
+      'world-cup-final':         'Final Copa del Mundo 2026',
+      'copa-america-2028':       'Copa América 2028',
+      'copa-america-2028-final': 'Final Copa América 2028',
+      'euro-2028':               'Eurocopa 2028',
+      'euro-2028-final':         'Final Eurocopa 2028',
+      'ces':             'CES Las Vegas',
+      'balon-de-oro':    'Balón de Oro',
+      'mr-olympia':      'Mr. Olympia',
+      'arnold-classic':  'Arnold Classic',
     },
     json_ld_name="Countdowns en Español",
     json_ld_desc="Contadores en tiempo real para cada evento que importa",
@@ -171,6 +225,71 @@ LANGS = [
       'nyfw':           'Semana de Moda NY',
       'paris-fw':       'Semana de Moda Paris',
       'milan-fw':       'Semana de Moda Milão',
+      'copa-libertadores':    'Final da Libertadores',
+      'lollapalooza-ar':      'Lollapalooza Argentina',
+      'lollapalooza-cl':      'Lollapalooza Chile',
+      'cosquin-rock':         'Cosquín Rock',
+      'bafweek':              'BAFWeek Buenos Aires',
+      'cinco-de-mayo':        'Cinco de Mayo',
+      'fiestas-patrias':      'Festas Pátrias Chile',
+      'dia-de-los-muertos':   'Dia dos Mortos',
+      '25-de-mayo':           '25 de Maio (Argentina)',
+      'elecciones-ar':        'Eleições Argentina 2027',
+      'hot-sale':             'Hot Sale',
+      # Months
+      'january':   'Janeiro',    'february':  'Fevereiro',  'march':     'Março',
+      'april':     'Abril',      'may-month': 'Maio',       'june-month':'Junho',
+      'july-month':'Julho',      'august':    'Agosto',     'september': 'Setembro',
+      'october':   'Outubro',    'november':  'Novembro',   'december':  'Dezembro',
+      # Time
+      'midnight':  'Meia-noite',
+      # Seasons
+      'spring':        'Primavera', 'summer':       'Verão',
+      'autumn':        'Outono',    'winter-season':'Inverno',
+      # School
+      'back-to-school': 'Volta às Aulas', 'summer-vacation':'Férias de Verão',
+      'winter-vacation':'Férias de Inverno',
+      # National Days
+      'independence':    'Dia da Independência',
+      'canada-day':      'Dia do Canadá',
+      'australia-day':   'Dia da Austrália',
+      'waitangi-day':    'Dia de Waitangi',
+      'syttende-mai':    'Dia Nacional da Noruega',
+      'german-unity-day':'Dia da Unidade Alemã',
+      'festa-della-repubblica':'Dia da República Italiana',
+      'national-day-sg': 'Dia Nacional de Singapura',
+      'freedom-day-za':  'Dia da Liberdade (África do Sul)',
+      'dia-de-la-hispanidad':       'Dia da Hispanidade',
+      'dia-de-la-raza':             'Dia da Raça',
+      'dia-de-la-bandera':          'Dia da Bandeira (AR)',
+      'dia-de-la-revolucion':       'Revolução Mexicana',
+      'dia-de-la-constitucion':     'Constituição do México',
+      'proclamacao-da-republica':   'Proclamação da República',
+      'tiradentes':                 'Tiradentes',
+      'proclamacion-independencia-ar':'25 de Maio (Argentina)',
+      # Jewish Holidays
+      'rosh-hashana':'Rosh Hashaná',  'yom-kipur':'Yom Kipur',
+      'januca':      'Hanukkah',      'purim':    'Purim',
+      'pesaj':       'Páscoa Judaica','shavuot':  'Shavuot',
+      # Other / Music / Sports
+      'epiphany':           'Dia de Reis',
+      'rio-carnival':       'Carnaval do Rio',
+      'lollapalooza-us':    'Lollapalooza Chicago',
+      'lollapalooza-de':    'Lollapalooza Berlim',
+      'lollapalooza-fr':    'Lollapalooza Paris',
+      'primavera-sound-es': 'Primavera Sound Barcelona',
+      'primavera-sound-ar': 'Primavera Sound Buenos Aires',
+      'primavera-sound-br': 'Primavera Sound São Paulo',
+      'tomorrowland':             'Tomorrowland',
+      'world-cup-final':          'Final da Copa do Mundo 2026',
+      'copa-america-2028':        'Copa América 2028',
+      'copa-america-2028-final':  'Final da Copa América 2028',
+      'euro-2028':                'Eurocopa 2028',
+      'euro-2028-final':          'Final da Eurocopa 2028',
+      'ces':         'CES Las Vegas',
+      'balon-de-oro':'Bola de Ouro',
+      'mr-olympia':  'Mr. Olympia',
+      'arnold-classic':'Arnold Classic',
     },
     json_ld_name="Countdowns em Português",
     json_ld_desc="Contagens regressivas em tempo real para cada evento que importa",
@@ -232,6 +351,71 @@ LANGS = [
       'paris-fw':       'Semaine Mode Paris',
       'milan-fw':       'Semaine Mode Milan',
       'dia-del-nino':   'Journée des Enfants',
+      'copa-libertadores':    'Finale Copa Libertadores',
+      'lollapalooza-ar':      'Lollapalooza Argentine',
+      'lollapalooza-cl':      'Lollapalooza Chili',
+      'cosquin-rock':         'Cosquín Rock',
+      'bafweek':              'BAFWeek Buenos Aires',
+      'cinco-de-mayo':        'Cinco de Mayo',
+      'fiestas-patrias':      'Fêtes Nationales du Chili',
+      'dia-de-los-muertos':   'Jour des Morts',
+      '25-de-mayo':           '25 Mai (Argentine)',
+      'elecciones-ar':        'Élections Argentine 2027',
+      'hot-sale':             'Hot Sale',
+      # Months
+      'january':   'Janvier',   'february':  'Février',    'march':     'Mars',
+      'april':     'Avril',     'may-month': 'Mai',        'june-month':'Juin',
+      'july-month':'Juillet',   'august':    'Août',       'september': 'Septembre',
+      'october':   'Octobre',   'november':  'Novembre',   'december':  'Décembre',
+      # Time
+      'midnight':  'Minuit',
+      # Seasons
+      'spring':        'Printemps', 'summer':       'Été',
+      'autumn':        'Automne',   'winter-season':'Hiver',
+      # School
+      'back-to-school': 'Rentrée Scolaire', 'summer-vacation':"Vacances d'Été",
+      'winter-vacation':"Vacances d'Hiver",
+      # National Days
+      'independence':    "Jour de l'Indépendance",
+      'canada-day':      'Fête du Canada',
+      'australia-day':   "Fête de l'Australie",
+      'waitangi-day':    'Jour de Waitangi',
+      'syttende-mai':    'Fête Nationale de Norvège',
+      'german-unity-day':"Jour de l'Unité Allemande",
+      'festa-della-repubblica':'Fête de la République Italienne',
+      'national-day-sg': 'Fête Nationale de Singapour',
+      'freedom-day-za':  "Jour de la Liberté (Afrique du Sud)",
+      'dia-de-la-hispanidad':       "Fête Nationale Espagnole",
+      'dia-de-la-raza':             'Jour de la Race',
+      'dia-de-la-bandera':          'Jour du Drapeau (AR)',
+      'dia-de-la-revolucion':       'Révolution Mexicaine',
+      'dia-de-la-constitucion':     'Constitution du Mexique',
+      'proclamacao-da-republica':   'Proclamation de la République (BR)',
+      'tiradentes':                 'Tiradentes',
+      'proclamacion-independencia-ar':'25 Mai (Argentine)',
+      # Jewish Holidays
+      'rosh-hashana':'Roch Hachana',  'yom-kipur':'Yom Kippour',
+      'januca':      'Hanoukka',      'purim':    'Pourim',
+      'pesaj':       'Pâque Juive',   'shavuot':  'Chavouot',
+      # Other / Music / Sports
+      'epiphany':           'Épiphanie / Rois Mages',
+      'rio-carnival':       'Carnaval de Rio',
+      'lollapalooza-us':    'Lollapalooza Chicago',
+      'lollapalooza-de':    'Lollapalooza Berlin',
+      'lollapalooza-fr':    'Lollapalooza Paris',
+      'primavera-sound-es': 'Primavera Sound Barcelone',
+      'primavera-sound-ar': 'Primavera Sound Buenos Aires',
+      'primavera-sound-br': 'Primavera Sound São Paulo',
+      'tomorrowland':             'Tomorrowland',
+      'world-cup-final':          'Finale Coupe du Monde 2026',
+      'copa-america-2028':        'Copa América 2028',
+      'copa-america-2028-final':  'Finale Copa América 2028',
+      'euro-2028':                'Euro 2028',
+      'euro-2028-final':          'Finale Euro 2028',
+      'ces':          'CES Las Vegas',
+      "balon-de-oro": "Ballon d'Or",
+      'mr-olympia':   'Mr. Olympia',
+      'arnold-classic':'Arnold Classic',
     },
     json_ld_name="Countdowns en Français",
     json_ld_desc="Comptes à rebours en temps réel pour chaque événement qui compte",
@@ -498,6 +682,17 @@ def generate_hub(lang):
   var currentLang = '{c}';
   var currentSort = 'chrono';
 
+  var COUNTRY_LANG = {{
+    AR:'es',CL:'es',MX:'es',CO:'es',PE:'es',UY:'es',VE:'es',BO:'es',
+    PY:'es',EC:'es',CR:'es',PA:'es',GT:'es',SV:'es',HN:'es',NI:'es',
+    DO:'es',CU:'es',PR:'es',ES:'es',
+    BR:'pt',PT:'pt',
+    FR:'fr',BE:'fr',LU:'fr'
+  }};
+  function countryToLang(code) {{ return COUNTRY_LANG[code] || 'en'; }}
+
+  var LANG_PREFIX = {{ en:'/', es:'/es/', pt:'/pt/', fr:'/fr/' }};
+
   function filteredEvents() {{
     var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
     return EVENTS.filter(function (e) {{
@@ -506,7 +701,6 @@ def generate_hub(lang):
       if (country === 'global' || !e.countries) return true;
       var cs = e.countries;
       if (cs.indexOf('global') >= 0) return true;
-      // handle LATAM reference (passed as array by the time JS runs)
       return cs.indexOf(country) >= 0;
     }});
   }}
@@ -676,7 +870,15 @@ def generate_hub(lang):
     function applyCountry(code, reload) {{
       localStorage.setItem('cd_country', code);
       if (fb && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[code] || '🌍';
-      if (reload) {{ loadHub(); }}
+      if (reload) {{
+        var targetLang = countryToLang(code);
+        var targetPrefix = LANG_PREFIX[targetLang] || '/';
+        if (targetLang !== currentLang) {{
+          location.href = targetPrefix;
+          return;
+        }}
+        loadHub();
+      }}
     }}
 
     // Restore saved flag

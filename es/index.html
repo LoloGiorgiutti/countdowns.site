@@ -144,6 +144,67 @@
       'elecciones-ar': 'Elecciones Argentina 2027',
       '25-de-mayo': '25 de Mayo — Día de la Patria',
       'dia-del-nino': 'Día del Niño',
+      'january': 'Enero',
+      'february': 'Febrero',
+      'march': 'Marzo',
+      'april': 'Abril',
+      'may-month': 'Mayo',
+      'june-month': 'Junio',
+      'july-month': 'Julio',
+      'august': 'Agosto',
+      'september': 'Septiembre',
+      'october': 'Octubre',
+      'november': 'Noviembre',
+      'december': 'Diciembre',
+      'midnight': 'Medianoche',
+      'spring': 'Primavera',
+      'summer': 'Verano',
+      'autumn': 'Otoño',
+      'winter-season': 'Invierno',
+      'back-to-school': 'Vuelta al Cole',
+      'summer-vacation': 'Vacaciones de Verano',
+      'winter-vacation': 'Vacaciones de Invierno',
+      'independence': 'Día de la Independencia',
+      'canada-day': 'Día de Canadá',
+      'australia-day': 'Día de Australia',
+      'waitangi-day': 'Día de Waitangi',
+      'syttende-mai': 'Día Nacional de Noruega',
+      'german-unity-day': 'Día de la Unidad Alemana',
+      'festa-della-repubblica': 'Día de la República Italiana',
+      'national-day-sg': 'Día Nacional de Singapur',
+      'freedom-day-za': 'Día de la Libertad (Sudáfrica)',
+      'dia-de-la-hispanidad': 'Día de la Hispanidad',
+      'dia-de-la-raza': 'Día de la Raza',
+      'dia-de-la-bandera': 'Día de la Bandera (AR)',
+      'dia-de-la-revolucion': 'Día de la Revolución (MX)',
+      'dia-de-la-constitucion': 'Día de la Constitución (MX)',
+      'proclamacao-da-republica': 'Proclamación de la República (BR)',
+      'tiradentes': 'Tiradentes (Brasil)',
+      'proclamacion-independencia-ar': '25 de Mayo (Argentina)',
+      'rosh-hashana': 'Rosh Hashaná',
+      'yom-kipur': 'Yom Kipur',
+      'januca': 'Janucá',
+      'purim': 'Purim',
+      'pesaj': 'Pésaj',
+      'shavuot': 'Shavuot',
+      'epiphany': 'Reyes Magos',
+      'rio-carnival': 'Carnaval de Río',
+      'lollapalooza-us': 'Lollapalooza Chicago',
+      'lollapalooza-de': 'Lollapalooza Berlín',
+      'lollapalooza-fr': 'Lollapalooza París',
+      'primavera-sound-es': 'Primavera Sound Barcelona',
+      'primavera-sound-ar': 'Primavera Sound Buenos Aires',
+      'primavera-sound-br': 'Primavera Sound São Paulo',
+      'tomorrowland': 'Tomorrowland',
+      'world-cup-final': 'Final Copa del Mundo 2026',
+      'copa-america-2028': 'Copa América 2028',
+      'copa-america-2028-final': 'Final Copa América 2028',
+      'euro-2028': 'Eurocopa 2028',
+      'euro-2028-final': 'Final Eurocopa 2028',
+      'ces': 'CES Las Vegas',
+      'balon-de-oro': 'Balón de Oro',
+      'mr-olympia': 'Mr. Olympia',
+      'arnold-classic': 'Arnold Classic',
     };
   var LANG_URLS = {
       'gta6': '/es/countdown/gta6/',
@@ -328,6 +389,17 @@
   var currentLang = 'es';
   var currentSort = 'chrono';
 
+  var COUNTRY_LANG = {
+    AR:'es',CL:'es',MX:'es',CO:'es',PE:'es',UY:'es',VE:'es',BO:'es',
+    PY:'es',EC:'es',CR:'es',PA:'es',GT:'es',SV:'es',HN:'es',NI:'es',
+    DO:'es',CU:'es',PR:'es',ES:'es',
+    BR:'pt',PT:'pt',
+    FR:'fr',BE:'fr',LU:'fr'
+  };
+  function countryToLang(code) { return COUNTRY_LANG[code] || 'en'; }
+
+  var LANG_PREFIX = { en:'/', es:'/es/', pt:'/pt/', fr:'/fr/' };
+
   function filteredEvents() {
     var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
     return EVENTS.filter(function (e) {
@@ -336,7 +408,6 @@
       if (country === 'global' || !e.countries) return true;
       var cs = e.countries;
       if (cs.indexOf('global') >= 0) return true;
-      // handle LATAM reference (passed as array by the time JS runs)
       return cs.indexOf(country) >= 0;
     });
   }
@@ -506,7 +577,15 @@
     function applyCountry(code, reload) {
       localStorage.setItem('cd_country', code);
       if (fb && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[code] || '🌍';
-      if (reload) { loadHub(); }
+      if (reload) {
+        var targetLang = countryToLang(code);
+        var targetPrefix = LANG_PREFIX[targetLang] || '/';
+        if (targetLang !== currentLang) {
+          location.href = targetPrefix;
+          return;
+        }
+        loadHub();
+      }
     }
 
     // Restore saved flag
