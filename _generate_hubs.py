@@ -706,12 +706,12 @@ def generate_hub(lang):
   }}
 
   var BUCKETS = [
-    {{ key:'today',  label:'{lang['bucket_today']}',  test: function(d){{ return d<=0; }} }},
-    {{ key:'week',   label:'{lang['bucket_week']}',   test: function(d){{ return d<=7; }} }},
-    {{ key:'month',  label:'{lang['bucket_month']}',  test: function(d){{ return d<=30; }} }},
-    {{ key:'soon',   label:'{lang['bucket_soon']}',   test: function(d){{ return d<=90; }} }},
-    {{ key:'year',   label:'{lang['bucket_year']}',   test: function(d){{ return d<=365; }} }},
-    {{ key:'future', label:'{lang['bucket_future']}', test: function(d){{ return d>365; }} }},
+    {{ key:'today',  label:"{lang['bucket_today']}",  test: function(d){{ return d<=0; }} }},
+    {{ key:'week',   label:"{lang['bucket_week']}",   test: function(d){{ return d<=7; }} }},
+    {{ key:'month',  label:"{lang['bucket_month']}",  test: function(d){{ return d<=30; }} }},
+    {{ key:'soon',   label:"{lang['bucket_soon']}",   test: function(d){{ return d<=90; }} }},
+    {{ key:'year',   label:"{lang['bucket_year']}",   test: function(d){{ return d<=365; }} }},
+    {{ key:'future', label:"{lang['bucket_future']}", test: function(d){{ return d>365; }} }},
   ];
 
   function bucket(days) {{
@@ -732,14 +732,14 @@ def generate_hub(lang):
     var inner = '';
     if (data.state === 'unknown') {{
       inner = '<div class="cd-card-name">' + n + '</div>' +
-              '<div class="cd-card-unknown">{lang['card_tba']}</div>';
+              "<div class='cd-card-unknown'>{lang['card_tba']}</div>";
     }} else if (data.state === 'today') {{
       inner = '<div class="cd-card-name">' + n + '</div>' +
-              '<div class="cd-card-today">{lang['card_today']}</div>';
+              "<div class='cd-card-today'>{lang['card_today']}</div>";
     }} else {{
       inner = '<div class="cd-card-name">' + n + '</div>' +
               '<div class="cd-card-num">' + data.days + '</div>' +
-              '<div class="cd-card-lbl">{lang['card_days']}</div>';
+              "<div class='cd-card-lbl'>{lang['card_days']}</div>";
     }}
     var cardUrl = LANG_URLS[ev.slug] || ev.url;
     return '<a href="' + cardUrl + '" class="cd-card" ' + style + '>' + inner + '</a>';
@@ -779,7 +779,7 @@ def generate_hub(lang):
 
       var tba = results.filter(function (r) {{ return r.data.state === 'unknown'; }});
       if (tba.length) {{
-        html += '<div class="time-bucket-hdr">{lang['bucket_tba']}</div>';
+        html += "<div class='time-bucket-hdr'>{lang['bucket_tba']}</div>";
         html += '<div class="cards-grid">';
         tba.forEach(function (r) {{ html += cardHTML(r.ev, r.data); }});
         html += '</div>';

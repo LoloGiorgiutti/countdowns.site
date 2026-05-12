@@ -466,12 +466,12 @@
   }
 
   var BUCKETS = [
-    { key:'today',  label:'Hoje',  test: function(d){ return d<=0; } },
-    { key:'week',   label:'Esta semana',   test: function(d){ return d<=7; } },
-    { key:'month',  label:'Este mês',  test: function(d){ return d<=30; } },
-    { key:'soon',   label:'Em breve',   test: function(d){ return d<=90; } },
-    { key:'year',   label:'Este ano',   test: function(d){ return d<=365; } },
-    { key:'future', label:'Próximo ano +', test: function(d){ return d>365; } },
+    { key:'today',  label:"Hoje",  test: function(d){ return d<=0; } },
+    { key:'week',   label:"Esta semana",   test: function(d){ return d<=7; } },
+    { key:'month',  label:"Este mês",  test: function(d){ return d<=30; } },
+    { key:'soon',   label:"Em breve",   test: function(d){ return d<=90; } },
+    { key:'year',   label:"Este ano",   test: function(d){ return d<=365; } },
+    { key:'future', label:"Próximo ano +", test: function(d){ return d>365; } },
   ];
 
   function bucket(days) {
@@ -492,14 +492,14 @@
     var inner = '';
     if (data.state === 'unknown') {
       inner = '<div class="cd-card-name">' + n + '</div>' +
-              '<div class="cd-card-unknown">Data TBA</div>';
+              "<div class='cd-card-unknown'>Data TBA</div>";
     } else if (data.state === 'today') {
       inner = '<div class="cd-card-name">' + n + '</div>' +
-              '<div class="cd-card-today">Hoje</div>';
+              "<div class='cd-card-today'>Hoje</div>";
     } else {
       inner = '<div class="cd-card-name">' + n + '</div>' +
               '<div class="cd-card-num">' + data.days + '</div>' +
-              '<div class="cd-card-lbl">dias</div>';
+              "<div class='cd-card-lbl'>dias</div>";
     }
     var cardUrl = LANG_URLS[ev.slug] || ev.url;
     return '<a href="' + cardUrl + '" class="cd-card" ' + style + '>' + inner + '</a>';
@@ -539,7 +539,7 @@
 
       var tba = results.filter(function (r) { return r.data.state === 'unknown'; });
       if (tba.length) {
-        html += '<div class="time-bucket-hdr">Data a confirmar</div>';
+        html += "<div class='time-bucket-hdr'>Data a confirmar</div>";
         html += '<div class="cards-grid">';
         tba.forEach(function (r) { html += cardHTML(r.ev, r.data); });
         html += '</div>';
