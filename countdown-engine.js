@@ -266,7 +266,7 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     AR:{m:2,d:4},  CL:{m:2,d:3},  UY:{m:2,d:1},  PY:{m:2,d:1},  BO:{m:1,d:7},
     PE:{m:2,d:11}, BR:{m:1,d:4},  AU:{m:0,d:27}, NZ:{m:1,d:2},  ZA:{m:0,d:15},
     AO:{m:0,d:15}, MZ:{m:0,d:15}, EC:{m:9,d:2},  VE:{m:8,d:15},
-    US:{m:7,d:25}, CA:{m:8,d:3},  MX:{m:7,d:25}, ES:{m:8,d:9},  FR:{m:8,d:2},
+    US:{m:7,d:25}, CA:{m:8,d:3},  MX:{m:7,d:31}, ES:{m:8,d:9},  FR:{m:8,d:2},
     GB:{m:8,d:3},  DE:{m:8,d:12}, IT:{m:8,d:15}, PT:{m:8,d:14}, BE:{m:8,d:1},
     NL:{m:8,d:2},  IE:{m:8,d:3},  AT:{m:8,d:1},  CH:{m:7,d:20}, SE:{m:7,d:21},
     NO:{m:7,d:19}, DK:{m:7,d:13}, FI:{m:7,d:13}, GR:{m:8,d:11},
@@ -275,11 +275,11 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
 
   /* Start of winter/mid-year school break per country (month 0-indexed) */
   var COUNTRY_WINTER_VACATION = {
-    /* Southern Hemisphere — mid-year break (start date) */
-    AR:{m:6,d:20}, CL:{m:6,d:13}, UY:{m:6,d:7},  PY:{m:6,d:7},  BO:{m:6,d:6},
-    BR:{m:6,d:6},  PE:{m:6,d:15}, CO:{m:6,d:15},  AU:{m:6,d:27}, NZ:{m:6,d:27},
-    ZA:{m:6,d:27},
-    /* Northern Hemisphere — Christmas break (default Dec 20, only override specific ones) */
+    /* Southern Hemisphere — mid-year break start (0-indexed months) */
+    AR:{m:6,d:20}, CL:{m:5,d:22}, UY:{m:5,d:29}, PY:{m:6,d:7},  BO:{m:6,d:6},
+    BR:{m:6,d:7},  PE:{m:6,d:15}, CO:{m:6,d:15}, AU:{m:6,d:6},  NZ:{m:6,d:4},
+    ZA:{m:5,d:27},
+    /* Northern Hemisphere — Christmas break */
     US:{m:11,d:20}, CA:{m:11,d:21}, MX:{m:11,d:20}, GB:{m:11,d:20},
     FR:{m:11,d:21}, DE:{m:11,d:21}, ES:{m:11,d:21}, IT:{m:11,d:21},
     PT:{m:11,d:21}, NL:{m:11,d:20}, BE:{m:11,d:20}, AT:{m:11,d:20},
@@ -287,13 +287,13 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
 
   /* Start of summer/end-of-year school break per country (month 0-indexed) */
   var COUNTRY_SUMMER_VACATION = {
-    /* Southern Hemisphere — December (start of long summer break) */
-    AR:{m:11,d:23}, CL:{m:11,d:23}, UY:{m:11,d:10}, PY:{m:11,d:10}, BO:{m:11,d:15},
+    /* Southern Hemisphere — long summer break start (0-indexed months) */
+    AR:{m:11,d:18}, CL:{m:11,d:23}, UY:{m:11,d:10}, PY:{m:11,d:10}, BO:{m:11,d:15},
     BR:{m:11,d:15}, PE:{m:11,d:15}, CO:{m:11,d:15}, AU:{m:11,d:15}, NZ:{m:11,d:15},
     ZA:{m:11,d:10},
-    /* Northern Hemisphere — June */
-    US:{m:5,d:15}, CA:{m:6,d:1},  MX:{m:6,d:15}, GB:{m:6,d:20}, FR:{m:6,d:15},
-    DE:{m:5,d:25}, ES:{m:5,d:15}, IT:{m:5,d:10}, PT:{m:5,d:15}, NL:{m:6,d:15},
+    /* Northern Hemisphere — summer break start */
+    US:{m:5,d:15}, CA:{m:5,d:26}, MX:{m:6,d:15}, GB:{m:6,d:23}, FR:{m:6,d:15},
+    DE:{m:6,d:30}, ES:{m:5,d:22}, IT:{m:5,d:10}, PT:{m:5,d:15}, NL:{m:6,d:15},
     BE:{m:6,d:15}, AT:{m:6,d:27},
   };
 
