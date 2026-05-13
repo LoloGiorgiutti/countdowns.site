@@ -273,6 +273,30 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     IN:{m:5,d:1},  PH:{m:5,d:1},  SG:{m:0,d:2},  CO:{m:0,d:15}, DO:{m:8,d:1},
   };
 
+  /* Start of winter/mid-year school break per country (month 0-indexed) */
+  var COUNTRY_WINTER_VACATION = {
+    /* Southern Hemisphere — mid-year break (start date) */
+    AR:{m:6,d:20}, CL:{m:6,d:13}, UY:{m:6,d:7},  PY:{m:6,d:7},  BO:{m:6,d:6},
+    BR:{m:6,d:6},  PE:{m:6,d:15}, CO:{m:6,d:15},  AU:{m:6,d:27}, NZ:{m:6,d:27},
+    ZA:{m:6,d:27},
+    /* Northern Hemisphere — Christmas break (default Dec 20, only override specific ones) */
+    US:{m:11,d:20}, CA:{m:11,d:21}, MX:{m:11,d:20}, GB:{m:11,d:20},
+    FR:{m:11,d:21}, DE:{m:11,d:21}, ES:{m:11,d:21}, IT:{m:11,d:21},
+    PT:{m:11,d:21}, NL:{m:11,d:20}, BE:{m:11,d:20}, AT:{m:11,d:20},
+  };
+
+  /* Start of summer/end-of-year school break per country (month 0-indexed) */
+  var COUNTRY_SUMMER_VACATION = {
+    /* Southern Hemisphere — December (start of long summer break) */
+    AR:{m:11,d:23}, CL:{m:11,d:23}, UY:{m:11,d:10}, PY:{m:11,d:10}, BO:{m:11,d:15},
+    BR:{m:11,d:15}, PE:{m:11,d:15}, CO:{m:11,d:15}, AU:{m:11,d:15}, NZ:{m:11,d:15},
+    ZA:{m:11,d:10},
+    /* Northern Hemisphere — June */
+    US:{m:5,d:15}, CA:{m:6,d:1},  MX:{m:6,d:15}, GB:{m:6,d:20}, FR:{m:6,d:15},
+    DE:{m:5,d:25}, ES:{m:5,d:15}, IT:{m:5,d:10}, PT:{m:5,d:15}, NL:{m:6,d:15},
+    BE:{m:6,d:15}, AT:{m:6,d:27},
+  };
+
   /* Jewish holiday dates — [year, month(0-based), day] when the holiday begins.
      Using the evening/sundown convention (when candles/fast begin). */
   var JEWISH_TABLE = {
@@ -445,14 +469,16 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
       return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,dt.m,dt.d);})};
     },
     'summer-vacation': function(){
-      var tz=getCountryTZ(),s=isSouthern();
-      /* Northern: Jun 15 | Southern: Dec 15 */
-      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,s?11:5,15);})};
+      var tz=getCountryTZ(),s=isSouthern(),c=getCurrentCountry();
+      var def=s?{m:11,d:15}:{m:5,d:15};
+      var dt=COUNTRY_SUMMER_VACATION[c]||def;
+      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,dt.m,dt.d);})};
     },
     'winter-vacation': function(){
-      var tz=getCountryTZ(),s=isSouthern();
-      /* Northern: Dec 20 | Southern: Jul 10 */
-      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,s?6:11,s?10:20);})};
+      var tz=getCountryTZ(),s=isSouthern(),c=getCurrentCountry();
+      var def=s?{m:6,d:20}:{m:11,d:20};
+      var dt=COUNTRY_WINTER_VACATION[c]||def;
+      return{date:nextOccurrence(function(y){return midnightInTZ(tz,y,dt.m,dt.d);})};
     },
 
     /* ── Independence Day (adaptive: changes with selected country) ── */
