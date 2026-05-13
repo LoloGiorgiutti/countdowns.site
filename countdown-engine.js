@@ -263,38 +263,38 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
 
   /* Typical first day back to school per country (month 0-indexed) */
   var COUNTRY_BACK_TO_SCHOOL = {
-    AR:{m:2,d:4},  CL:{m:2,d:3},  UY:{m:2,d:1},  PY:{m:2,d:1},  BO:{m:1,d:7},
-    PE:{m:2,d:11}, BR:{m:1,d:4},  AU:{m:0,d:27}, NZ:{m:1,d:2},  ZA:{m:0,d:15},
-    AO:{m:0,d:15}, MZ:{m:0,d:15}, EC:{m:9,d:2},  VE:{m:8,d:15},
-    US:{m:7,d:25}, CA:{m:8,d:3},  MX:{m:7,d:31}, ES:{m:8,d:9},  FR:{m:8,d:2},
-    GB:{m:8,d:3},  DE:{m:8,d:12}, IT:{m:8,d:15}, PT:{m:8,d:14}, BE:{m:8,d:1},
-    NL:{m:8,d:2},  IE:{m:8,d:3},  AT:{m:8,d:1},  CH:{m:7,d:20}, SE:{m:7,d:21},
-    NO:{m:7,d:19}, DK:{m:7,d:13}, FI:{m:7,d:13}, GR:{m:8,d:11},
-    IN:{m:5,d:1},  PH:{m:5,d:1},  SG:{m:0,d:2},  CO:{m:0,d:15}, DO:{m:8,d:1},
+    AR:{m:2,d:2},  CL:{m:2,d:4},  UY:{m:2,d:2},  PY:{m:1,d:23}, BO:{m:1,d:2},
+    PE:{m:2,d:16}, BR:{m:1,d:2},  AU:{m:0,d:28}, NZ:{m:1,d:2},  ZA:{m:0,d:14},
+    AO:{m:0,d:15}, MZ:{m:0,d:15}, EC:{m:4,d:4},  VE:{m:8,d:15},
+    US:{m:7,d:18}, CA:{m:8,d:8},  MX:{m:7,d:31}, ES:{m:8,d:7},  FR:{m:8,d:1},
+    GB:{m:8,d:3},  DE:{m:8,d:15}, IT:{m:8,d:15}, PT:{m:8,d:14}, BE:{m:7,d:31},
+    NL:{m:7,d:24}, IE:{m:8,d:1},  AT:{m:8,d:7},  CH:{m:7,d:17}, SE:{m:7,d:21},
+    NO:{m:7,d:19}, DK:{m:7,d:13}, FI:{m:7,d:13}, GR:{m:8,d:8},
+    IN:{m:5,d:11}, PH:{m:5,d:8},  SG:{m:0,d:2},  CO:{m:0,d:26}, DO:{m:7,d:25},
   };
 
   /* Start of winter/mid-year school break per country (month 0-indexed) */
   var COUNTRY_WINTER_VACATION = {
     /* Southern Hemisphere — mid-year break start (0-indexed months) */
-    AR:{m:6,d:20}, CL:{m:5,d:22}, UY:{m:5,d:29}, PY:{m:6,d:7},  BO:{m:6,d:6},
-    BR:{m:6,d:7},  PE:{m:6,d:15}, CO:{m:6,d:15}, AU:{m:6,d:6},  NZ:{m:6,d:4},
+    AR:{m:6,d:20}, CL:{m:5,d:22}, UY:{m:5,d:29}, PY:{m:6,d:13}, BO:{m:6,d:6},
+    BR:{m:6,d:7},  PE:{m:6,d:27}, CO:{m:5,d:22}, AU:{m:6,d:6},  NZ:{m:6,d:4},
     ZA:{m:5,d:27},
     /* Northern Hemisphere — Christmas break */
-    US:{m:11,d:20}, CA:{m:11,d:21}, MX:{m:11,d:20}, GB:{m:11,d:20},
-    FR:{m:11,d:21}, DE:{m:11,d:21}, ES:{m:11,d:21}, IT:{m:11,d:21},
-    PT:{m:11,d:21}, NL:{m:11,d:20}, BE:{m:11,d:20}, AT:{m:11,d:20},
+    US:{m:11,d:20}, CA:{m:11,d:21}, MX:{m:11,d:20}, GB:{m:11,d:18},
+    FR:{m:11,d:19}, DE:{m:11,d:23}, ES:{m:11,d:21}, IT:{m:11,d:23},
+    PT:{m:11,d:16}, NL:{m:11,d:19}, BE:{m:11,d:21}, AT:{m:11,d:24},
   };
 
   /* Start of summer/end-of-year school break per country (month 0-indexed) */
   var COUNTRY_SUMMER_VACATION = {
     /* Southern Hemisphere — long summer break start (0-indexed months) */
-    AR:{m:11,d:18}, CL:{m:11,d:23}, UY:{m:11,d:10}, PY:{m:11,d:10}, BO:{m:11,d:15},
-    BR:{m:11,d:15}, PE:{m:11,d:15}, CO:{m:11,d:15}, AU:{m:11,d:15}, NZ:{m:11,d:15},
-    ZA:{m:11,d:10},
+    AR:{m:11,d:18}, CL:{m:11,d:18}, UY:{m:11,d:18}, PY:{m:10,d:30}, BO:{m:11,d:2},
+    BR:{m:11,d:18}, PE:{m:11,d:18}, CO:{m:10,d:29}, AU:{m:11,d:17}, NZ:{m:11,d:18},
+    ZA:{m:11,d:11},
     /* Northern Hemisphere — summer break start */
-    US:{m:5,d:15}, CA:{m:5,d:26}, MX:{m:6,d:15}, GB:{m:6,d:23}, FR:{m:6,d:15},
-    DE:{m:6,d:30}, ES:{m:5,d:22}, IT:{m:5,d:10}, PT:{m:5,d:15}, NL:{m:6,d:15},
-    BE:{m:6,d:15}, AT:{m:6,d:27},
+    US:{m:5,d:15}, CA:{m:5,d:26}, MX:{m:6,d:15}, GB:{m:6,d:22}, FR:{m:6,d:4},
+    DE:{m:7,d:3},  ES:{m:5,d:19}, IT:{m:5,d:10}, PT:{m:5,d:12}, NL:{m:6,d:12},
+    BE:{m:6,d:6},  AT:{m:6,d:4},
   };
 
   /* Jewish holiday dates — [year, month(0-based), day] when the holiday begins.
