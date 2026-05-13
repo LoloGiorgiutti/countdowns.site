@@ -282,12 +282,12 @@ EVENTS = [
       ("Why is Mother's Day on different dates in different countries?", "Each country independently adopted the holiday at different times and chose a date tied to local tradition, religious calendars, or historic events."),
     ],
     country_variants=[
-      {"code": "us",  "label": "US, Canada & Australia", "dates": ["2026-05-10", "2027-05-09"]},
-      {"code": "uk",  "label": "United Kingdom",         "dates": ["2026-03-15", "2027-03-07"]},
-      {"code": "mx",  "label": "México",                 "dates": ["2026-05-10", "2027-05-10"]},
-      {"code": "ar",  "label": "Argentina",              "dates": ["2026-10-18", "2027-10-17"]},
-      {"code": "fr",  "label": "France",                 "dates": ["2026-05-31", "2027-05-30"]},
-      {"code": "br",  "label": "Brasil / Brazil",        "dates": ["2026-05-10", "2027-05-09"]},
+      {"code": "us",  "label": "US, Canada & Australia", "dates": ["2026-05-10", "2027-05-09"], "countries": ["US","CA","AU","NZ"]},
+      {"code": "uk",  "label": "United Kingdom",         "dates": ["2026-03-15", "2027-03-07"], "countries": ["GB","IE"]},
+      {"code": "mx",  "label": "México",                 "dates": ["2026-05-10", "2027-05-10"], "countries": ["MX"]},
+      {"code": "ar",  "label": "Argentina",              "dates": ["2026-10-18", "2027-10-17"], "countries": ["AR","UY","CL","CO","PE","BO","EC","VE","PY","CR","GT","SV","HN","NI","DO","CU","PR"]},
+      {"code": "fr",  "label": "France",                 "dates": ["2026-05-31", "2027-05-30"], "countries": ["FR","BE","LU","CH"]},
+      {"code": "br",  "label": "Brasil / Brazil",        "dates": ["2026-05-10", "2027-05-09"], "countries": ["BR","PT"]},
     ],
     default_variant_by_lang={"en": 0, "es": 2, "pt": 5, "fr": 4},
   ),
@@ -306,11 +306,11 @@ EVENTS = [
       ("Why is Father's Day on different dates?", "Countries independently adopted the holiday and chose dates tied to local traditions. The US date (3rd Sunday of June) is the most widely followed internationally."),
     ],
     country_variants=[
-      {"code": "us",  "label": "US, Canada, UK & Mexico", "dates": ["2026-06-21", "2027-06-20"]},
-      {"code": "au",  "label": "Australia & New Zealand",  "dates": ["2026-09-06", "2027-09-05"]},
-      {"code": "de",  "label": "Germany & Austria",        "dates": ["2026-05-14", "2027-05-06"]},
-      {"code": "br",  "label": "Brasil / Brazil",          "dates": ["2026-08-09", "2027-08-08"]},
-      {"code": "fr",  "label": "France",                   "dates": ["2026-06-21", "2027-06-20"]},
+      {"code": "us",  "label": "US, Canada, UK & Mexico", "dates": ["2026-06-21", "2027-06-20"], "countries": ["US","CA","GB","IE","MX","IN","ZA","SG"]},
+      {"code": "au",  "label": "Australia & New Zealand",  "dates": ["2026-09-06", "2027-09-05"], "countries": ["AU","NZ"]},
+      {"code": "de",  "label": "Germany & Austria",        "dates": ["2026-05-14", "2027-05-06"], "countries": ["DE","AT"]},
+      {"code": "br",  "label": "Brasil / Brazil",          "dates": ["2026-08-09", "2027-08-08"], "countries": ["BR","PT"]},
+      {"code": "fr",  "label": "France",                   "dates": ["2026-06-21", "2027-06-20"], "countries": ["FR","BE","LU","CH"]},
     ],
     default_variant_by_lang={"en": 0, "es": 0, "pt": 3, "fr": 4},
   ),
@@ -492,10 +492,10 @@ EVENTS = [
       ("Is Children's Day a public holiday?", "It depends on the country. In Brazil, October 12 is a national public holiday. In Mexico and Argentina it is a cultural observance, not a public holiday."),
     ],
     country_variants=[
-      {"code": "mx", "label": "México (30 de abril)",                 "dates": ["2026-04-30", "2027-04-30"]},
-      {"code": "ar", "label": "Argentina (2.° dom. de agosto)",       "dates": ["2026-08-09", "2027-08-08"]},
-      {"code": "br", "label": "Brasil / Brazil (12 de outubro)",      "dates": ["2026-10-12", "2027-10-12"]},
-      {"code": "un", "label": "International / Nov 20",               "dates": ["2026-11-20", "2027-11-20"]},
+      {"code": "mx", "label": "México (30 de abril)",                 "dates": ["2026-04-30", "2027-04-30"], "countries": ["MX"]},
+      {"code": "ar", "label": "Argentina (2.° dom. de agosto)",       "dates": ["2026-08-09", "2027-08-08"], "countries": ["AR","UY","CL","CO","PE","BO","EC","VE","PY","CR","GT","SV","HN","NI","DO","CU","PR"]},
+      {"code": "br", "label": "Brasil / Brazil (12 de outubro)",      "dates": ["2026-10-12", "2027-10-12"], "countries": ["BR","PT"]},
+      {"code": "un", "label": "International / Nov 20",               "dates": ["2026-11-20", "2027-11-20"], "countries": []},
     ],
     default_variant_by_lang={"en": 3, "es": 0, "pt": 2, "fr": 3},
   ),
@@ -1740,7 +1740,7 @@ def generate_page(ev, lang="en"):
     if country_variants:
         default_idx = default_variant_by_lang.get(lang, 0)
         cv_js = json.dumps([
-            {"code": v["code"], "label": v["label"], "dates": v["dates"]}
+            {"code": v["code"], "label": v["label"], "dates": v["dates"], "countries": v.get("countries", [])}
             for v in country_variants
         ])
         country_picker_html = f'''<div class="cd-country-picker">
@@ -1764,10 +1764,20 @@ def generate_page(ev, lang="en"):
     }}
     return new Date(dates[dates.length - 1]);
   }}
+  // Auto-select variant based on saved country
+  var _savedC = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || '';
+  var activeIdx = DEFAULT_IDX;
+  if (_savedC) {{
+    for (var _i = 0; _i < VARIANTS.length; _i++) {{
+      if (VARIANTS[_i].countries && VARIANTS[_i].countries.indexOf(_savedC) >= 0) {{
+        activeIdx = _i; break;
+      }}
+    }}
+  }}
   var grid = document.getElementById('cd-cpicker-grid');
   VARIANTS.forEach(function(v, idx) {{
     var btn = document.createElement('button');
-    btn.className = 'cd-cpicker-btn' + (idx === DEFAULT_IDX ? ' active' : '');
+    btn.className = 'cd-cpicker-btn' + (idx === activeIdx ? ' active' : '');
     btn.textContent = v.label;
     btn.onclick = function() {{
       document.querySelectorAll('.cd-cpicker-btn').forEach(function(b) {{ b.classList.remove('active'); }});
@@ -1776,7 +1786,7 @@ def generate_page(ev, lang="en"):
     }};
     grid.appendChild(btn);
   }});
-  CountdownEngine.render('root', Object.assign({{}}, _cfg, {{ date: nextDate(VARIANTS[DEFAULT_IDX].dates) }}));
+  CountdownEngine.render('root', Object.assign({{}}, _cfg, {{ date: nextDate(VARIANTS[activeIdx].dates) }}));
 }})();'''
     else:
         country_picker_html = ""
@@ -1905,7 +1915,7 @@ def generate_embed_page(ev, lang="en"):
     if country_variants:
         default_idx = default_variant_by_lang.get(lang, 0)
         cv_js = json.dumps([
-            {"code": v["code"], "label": v["label"], "dates": v["dates"]}
+            {"code": v["code"], "label": v["label"], "dates": v["dates"], "countries": v.get("countries", [])}
             for v in country_variants
         ])
         render_script = f'''(function() {{
@@ -1926,7 +1936,16 @@ def generate_embed_page(ev, lang="en"):
     }}
     return new Date(dates[dates.length - 1]);
   }}
-  CountdownEngine.renderEmbed('root', Object.assign({{}}, _cfg, {{ date: nextDate(VARIANTS[DEFAULT_IDX].dates) }}));
+  var _savedC = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || '';
+  var activeIdx = DEFAULT_IDX;
+  if (_savedC) {{
+    for (var _i = 0; _i < VARIANTS.length; _i++) {{
+      if (VARIANTS[_i].countries && VARIANTS[_i].countries.indexOf(_savedC) >= 0) {{
+        activeIdx = _i; break;
+      }}
+    }}
+  }}
+  CountdownEngine.renderEmbed('root', Object.assign({{}}, _cfg, {{ date: nextDate(VARIANTS[activeIdx].dates) }}));
 }})();'''
     else:
         render_script = f'''CountdownEngine.renderEmbed('root', {{

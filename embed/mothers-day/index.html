@@ -16,7 +16,7 @@ html,body{width:100%;height:100%;background:transparent;overflow:hidden}
 <script src="/countdown-engine.js"></script>
 <script>
 (function() {
-  var VARIANTS = [{"code": "us", "label": "US, Canada & Australia", "dates": ["2026-05-10", "2027-05-09"]}, {"code": "uk", "label": "United Kingdom", "dates": ["2026-03-15", "2027-03-07"]}, {"code": "mx", "label": "M\u00e9xico", "dates": ["2026-05-10", "2027-05-10"]}, {"code": "ar", "label": "Argentina", "dates": ["2026-10-18", "2027-10-17"]}, {"code": "fr", "label": "France", "dates": ["2026-05-31", "2027-05-30"]}, {"code": "br", "label": "Brasil / Brazil", "dates": ["2026-05-10", "2027-05-09"]}];
+  var VARIANTS = [{"code": "us", "label": "US, Canada & Australia", "dates": ["2026-05-10", "2027-05-09"], "countries": ["US", "CA", "AU", "NZ"]}, {"code": "uk", "label": "United Kingdom", "dates": ["2026-03-15", "2027-03-07"], "countries": ["GB", "IE"]}, {"code": "mx", "label": "M\u00e9xico", "dates": ["2026-05-10", "2027-05-10"], "countries": ["MX"]}, {"code": "ar", "label": "Argentina", "dates": ["2026-10-18", "2027-10-17"], "countries": ["AR", "UY", "CL", "CO", "PE", "BO", "EC", "VE", "PY", "CR", "GT", "SV", "HN", "NI", "DO", "CU", "PR"]}, {"code": "fr", "label": "France", "dates": ["2026-05-31", "2027-05-30"], "countries": ["FR", "BE", "LU", "CH"]}, {"code": "br", "label": "Brasil / Brazil", "dates": ["2026-05-10", "2027-05-09"], "countries": ["BR", "PT"]}];
   var DEFAULT_IDX = 0;
   var _cfg = {
     slug: "mothers-day",
@@ -33,7 +33,16 @@ html,body{width:100%;height:100%;background:transparent;overflow:hidden}
     }
     return new Date(dates[dates.length - 1]);
   }
-  CountdownEngine.renderEmbed('root', Object.assign({}, _cfg, { date: nextDate(VARIANTS[DEFAULT_IDX].dates) }));
+  var _savedC = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || '';
+  var activeIdx = DEFAULT_IDX;
+  if (_savedC) {
+    for (var _i = 0; _i < VARIANTS.length; _i++) {
+      if (VARIANTS[_i].countries && VARIANTS[_i].countries.indexOf(_savedC) >= 0) {
+        activeIdx = _i; break;
+      }
+    }
+  }
+  CountdownEngine.renderEmbed('root', Object.assign({}, _cfg, { date: nextDate(VARIANTS[activeIdx].dates) }));
 })();
 </script>
 </body>

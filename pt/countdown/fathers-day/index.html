@@ -83,7 +83,7 @@
 <script src="/countdown-engine.js"></script>
 <script>
 (function() {
-  var VARIANTS = [{"code": "us", "label": "US, Canada, UK & Mexico", "dates": ["2026-06-21", "2027-06-20"]}, {"code": "au", "label": "Australia & New Zealand", "dates": ["2026-09-06", "2027-09-05"]}, {"code": "de", "label": "Germany & Austria", "dates": ["2026-05-14", "2027-05-06"]}, {"code": "br", "label": "Brasil / Brazil", "dates": ["2026-08-09", "2027-08-08"]}, {"code": "fr", "label": "France", "dates": ["2026-06-21", "2027-06-20"]}];
+  var VARIANTS = [{"code": "us", "label": "US, Canada, UK & Mexico", "dates": ["2026-06-21", "2027-06-20"], "countries": ["US", "CA", "GB", "IE", "MX", "IN", "ZA", "SG"]}, {"code": "au", "label": "Australia & New Zealand", "dates": ["2026-09-06", "2027-09-05"], "countries": ["AU", "NZ"]}, {"code": "de", "label": "Germany & Austria", "dates": ["2026-05-14", "2027-05-06"], "countries": ["DE", "AT"]}, {"code": "br", "label": "Brasil / Brazil", "dates": ["2026-08-09", "2027-08-08"], "countries": ["BR", "PT"]}, {"code": "fr", "label": "France", "dates": ["2026-06-21", "2027-06-20"], "countries": ["FR", "BE", "LU", "CH"]}];
   var DEFAULT_IDX = 3;
   var _cfg = {
     slug: "fathers-day",
@@ -99,10 +99,20 @@
     }
     return new Date(dates[dates.length - 1]);
   }
+  // Auto-select variant based on saved country
+  var _savedC = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || '';
+  var activeIdx = DEFAULT_IDX;
+  if (_savedC) {
+    for (var _i = 0; _i < VARIANTS.length; _i++) {
+      if (VARIANTS[_i].countries && VARIANTS[_i].countries.indexOf(_savedC) >= 0) {
+        activeIdx = _i; break;
+      }
+    }
+  }
   var grid = document.getElementById('cd-cpicker-grid');
   VARIANTS.forEach(function(v, idx) {
     var btn = document.createElement('button');
-    btn.className = 'cd-cpicker-btn' + (idx === DEFAULT_IDX ? ' active' : '');
+    btn.className = 'cd-cpicker-btn' + (idx === activeIdx ? ' active' : '');
     btn.textContent = v.label;
     btn.onclick = function() {
       document.querySelectorAll('.cd-cpicker-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -111,7 +121,7 @@
     };
     grid.appendChild(btn);
   });
-  CountdownEngine.render('root', Object.assign({}, _cfg, { date: nextDate(VARIANTS[DEFAULT_IDX].dates) }));
+  CountdownEngine.render('root', Object.assign({}, _cfg, { date: nextDate(VARIANTS[activeIdx].dates) }));
 })();
 // ── Theme toggle ──────────────────────────────────────────────────────
 (function() {

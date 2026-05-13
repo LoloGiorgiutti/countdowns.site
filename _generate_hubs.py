@@ -557,7 +557,7 @@ EVENTS_JS = """    /* ── Releases ── */
 def generate_hub(lang):
     c = lang["code"]
     names_js = "{\n" + "".join(
-        f"      '{k}': '{v}',\n" for k, v in lang["names"].items()
+        f"      '{k}': \"{v}\",\n" for k, v in lang["names"].items()
     ) + "    }"
     # Build LANG_URLS: slug -> /{lang}/countdown/{slug}/ for slugs with translated pages
     # For EN (code="en"), the canonical pages live at /countdown/{slug}/ (no prefix)
