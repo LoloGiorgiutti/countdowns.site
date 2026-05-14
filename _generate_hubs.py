@@ -578,6 +578,8 @@ def generate_hub(lang):
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{lang['canonical']}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="256x256">
+<link rel="apple-touch-icon" href="/favicon.png">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="{lang['canonical']}">
@@ -594,7 +596,7 @@ def generate_hub(lang):
 
 <link rel="alternate" hreflang="en" href="https://countdowns.site/">
 <link rel="alternate" hreflang="es" href="https://countdowns.site/es/">
-<link rel="alternate" hreflang="pt" href="https://countdowns.site/pt/">
+<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/">
 <link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/">
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/">
 

@@ -1808,6 +1808,8 @@ def generate_page(ev, lang="en"):
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{en_url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="256x256">
+<link rel="apple-touch-icon" href="/favicon.png">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{page_url}">
 <meta property="og:title" content="{seo_title}">
@@ -2123,6 +2125,8 @@ def generate_custom_page(lang="en"):
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{page_url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="256x256">
+<link rel="apple-touch-icon" href="/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{page_url}">
 <meta property="og:title" content="{seo_title}">
