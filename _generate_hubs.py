@@ -584,6 +584,13 @@ def generate_hub(lang):
 <meta property="og:title" content="{lang['og_title']}">
 <meta property="og:description" content="{lang['og_desc']}">
 <meta property="og:locale" content="{lang['og_locale']}">
+<meta property="og:image" content="https://countdowns.site/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{lang['og_title']}">
+<meta name="twitter:description" content="{lang['og_desc']}">
+<meta name="twitter:image" content="https://countdowns.site/og-image.png">
 
 <link rel="alternate" hreflang="en" href="https://countdowns.site/">
 <link rel="alternate" hreflang="es" href="https://countdowns.site/es/">
@@ -642,7 +649,7 @@ def generate_hub(lang):
 </main>
 
 <footer class="site-footer">
-  countdowns<span class="logo-tld">.site</span>
+  countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>
 </footer>
 
 <script src="/countdown-engine.js"></script>

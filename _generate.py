@@ -1808,10 +1808,17 @@ def generate_page(ev, lang="en"):
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{en_url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:url" content="{page_url}">
 <meta property="og:title" content="{seo_title}">
 <meta property="og:description" content="{meta_desc}">
+<meta property="og:image" content="https://countdowns.site/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{seo_title}">
+<meta name="twitter:description" content="{meta_desc}">
+<meta name="twitter:image" content="https://countdowns.site/og-image.png">
 {hreflang}<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{{--cat-color:{cat_color};--cat-glow:{cat_glow};--cat-soft:{cat_soft};}}</style>
@@ -1827,6 +1834,17 @@ def generate_page(ev, lang="en"):
       "name": "{seo_title}",
       "description": "{meta_desc}",
       "inLanguage": "{html_lang}"
+    }},
+    {{
+      "@type": "Event",
+      "name": "{name}",
+      "description": "{meta_desc}",
+      "url": "{page_url}",
+      "organizer": {{
+        "@type": "Organization",
+        "name": "countdowns.site",
+        "url": "https://countdowns.site"
+      }}
     }},
     {{
       "@type": "FAQPage",
@@ -1851,7 +1869,7 @@ def generate_page(ev, lang="en"):
 {country_picker_html}
 {faq_section}
 <footer class="site-footer">
-  countdowns<span class="logo-tld">.site</span>
+  countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>
 </footer>
 <script src="/countdown-engine.js"></script>
 <script>
@@ -2129,7 +2147,7 @@ def generate_custom_page(lang="en"):
 <div id="cc-root"></div>
 
 <footer class="site-footer">
-  countdowns<span class="logo-tld">.site</span>
+  countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>
 </footer>
 
 <script>
