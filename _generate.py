@@ -5,7 +5,158 @@ Run from repo root: python3 _generate.py
 Generates /countdown/{slug}/ (EN) + /{lang}/countdown/{slug}/ for translated langs.
 """
 import os, json
+from datetime import date
 from _translations import TRANSLATIONS
+
+# ─── SEO: Multilingual keyword system ─────────────────────────────────────────
+# Each phrase uses {name} (event name) and {year} (current/next occurrence year).
+# This generates <meta name="keywords"> in 15 languages automatically for every page.
+# Google ignores meta keywords, but Bing, Yandex, Baidu, DuckDuckGo use them.
+# For Google: the English phrases are already in title/meta_desc/H1/FAQs.
+#
+# HOW TO ADD NEW EVENTS:
+#   1. Add event dict to EVENTS with: slug, name, type, category, seo_title, meta_desc, hero_desc
+#   2. Use seo_title pattern:  "How many days until {Name}? — {Name} Countdown {Year}"
+#   3. Use meta_desc pattern:  "How many days until {name} {year}? Live countdown showing
+#                               days, hours, minutes, seconds. When is {name} {year}?"
+#   4. The keyword meta tag and multilingual phrases are auto-generated — nothing else needed.
+#   5. If adding translations, add to _translations.py following existing pattern.
+
+CURRENT_YEAR = date.today().year
+
+# Keyword phrase templates per language (use {name} and {year} as placeholders)
+KEYWORD_PHRASES = {
+    'en': [
+        'how many days until {name}',
+        'how many days till {name}',
+        'when is {name}',
+        '{name} {year}',
+        '{name} day',
+        '{name} countdown',
+        'days until {name}',
+        'countdown to {name}',
+        '{name} countdown {year}',
+    ],
+    'es': [
+        'cuántos días faltan para {name}',
+        'cuánto falta para {name}',
+        'cuando es {name}',
+        '{name} {year}',
+        'cuenta regresiva {name}',
+        'días para {name}',
+        'cuántos días quedan para {name}',
+    ],
+    'pt': [
+        'quantos dias faltam para {name}',
+        'quando é {name}',
+        '{name} {year}',
+        'contagem regressiva {name}',
+        'dias para {name}',
+        'faltam quantos dias para {name}',
+    ],
+    'fr': [
+        'combien de jours avant {name}',
+        'quand est {name}',
+        '{name} {year}',
+        'compte à rebours {name}',
+        'jours avant {name}',
+        'dans combien de jours {name}',
+    ],
+    'de': [
+        'wie viele tage bis {name}',
+        'wann ist {name}',
+        '{name} {year}',
+        '{name} countdown',
+        '{name} countdown {year}',
+        'wie lange bis {name}',
+    ],
+    'it': [
+        'quanti giorni mancano a {name}',
+        'quando è {name}',
+        '{name} {year}',
+        'conto alla rovescia {name}',
+        'giorni mancanti a {name}',
+    ],
+    'ar': [
+        'كم يوم حتى {name}',
+        'متى يكون {name}',
+        '{name} {year}',
+        'العد التنازلي {name}',
+        'كم تبقى على {name}',
+    ],
+    'zh': [
+        '距{name}还有多少天',
+        '{name}倒计时',
+        '{name}{year}',
+        '还有几天到{name}',
+        '{name}剩余天数',
+    ],
+    'ja': [
+        '{name}まで何日',
+        '{name}カウントダウン',
+        '{name} {year}',
+        '{name}までの日数',
+        '{name}残り日数',
+    ],
+    'ko': [
+        '{name}까지 며칠',
+        '{name} 카운트다운',
+        '{name} {year}',
+        '{name}까지 남은 날',
+        '{name} 날짜',
+    ],
+    'hi': [
+        '{name} में कितने दिन बाकी हैं',
+        '{name} काउंटडाउन',
+        '{name} {year}',
+        '{name} कब है',
+    ],
+    'ru': [
+        'сколько дней до {name}',
+        'когда {name}',
+        '{name} {year}',
+        'обратный отсчёт {name}',
+        'дней до {name}',
+    ],
+    'nl': [
+        'hoeveel dagen tot {name}',
+        'wanneer is {name}',
+        '{name} {year}',
+        '{name} countdown',
+        'nog hoeveel dagen tot {name}',
+    ],
+    'tr': [
+        '{name} geri sayım',
+        '{name} ne zaman',
+        '{name} {year}',
+        '{name} kaç gün kaldı',
+    ],
+    'pl': [
+        'ile dni do {name}',
+        'kiedy jest {name}',
+        '{name} {year}',
+        '{name} odliczanie',
+    ],
+}
+
+def build_meta_keywords(name_en, year, name_by_lang=None):
+    """Return comma-separated keywords in 15 languages for <meta name="keywords">.
+    name_en     : English event name
+    year        : Year of the event occurrence (int or str)
+    name_by_lang: dict lang_code -> translated name (e.g. {'es': 'Navidad', 'fr': 'Noël'})
+    """
+    if name_by_lang is None:
+        name_by_lang = {}
+    seen = set()
+    keywords = []
+    for lang_code, phrases in KEYWORD_PHRASES.items():
+        name = name_by_lang.get(lang_code, name_en)
+        for phrase in phrases:
+            kw = phrase.format(name=name, year=year)
+            if kw not in seen:
+                seen.add(kw)
+                keywords.append(kw)
+    return ', '.join(keywords)
 
 # Merge auto-generated translations (manual entries in _translations.py always win)
 try:
@@ -1688,6 +1839,14 @@ def generate_page(ev, lang="en"):
     content   = t.get("content",   ev.get("content", ""))
     faqs      = t.get("faqs",      ev.get("faqs", []))
 
+    # Collect translated event names for multilingual keywords
+    name_by_lang = {}
+    for _lc in ("es", "pt", "fr"):
+        _tname = TRANSLATIONS.get(_lc, {}).get("events", {}).get(slug, {}).get("name")
+        if _tname:
+            name_by_lang[_lc] = _tname
+    meta_keywords = build_meta_keywords(ev["name"], CURRENT_YEAR, name_by_lang)
+
     # URLs
     en_url   = f"{BASE_URL}/countdown/{slug}/"
     page_url = en_url if lang == "en" else f"{BASE_URL}/{lang}/countdown/{slug}/"
@@ -1805,6 +1964,7 @@ def generate_page(ev, lang="en"):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{seo_title} | countdowns.site</title>
 <meta name="description" content="{meta_desc}">
+<meta name="keywords" content="{meta_keywords}">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{en_url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
