@@ -627,7 +627,16 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     if (_tickerHandle) { clearInterval(_tickerHandle); _tickerHandle = null; }
     function tick() {
       var diff = targetDate - new Date();
-      if (diff <= 0) { location.reload(); return; }
+      if (diff <= 0) {
+        clearInterval(_tickerHandle); _tickerHandle = null;
+        var grid = document.querySelector('.cd-grid');
+        if (grid) {
+          grid.parentNode.innerHTML =
+            '<div class="cd-past"><div class="cd-past-badge">' + T.alreadyHappened + '</div>' +
+            '<div class="cd-past-date">' + fmtDate(targetDate, _pageLang) + '</div></div>';
+        }
+        return;
+      }
       var days  = Math.floor(diff / 86400000);
       var hours = Math.floor((diff % 86400000) / 3600000);
       var mins  = Math.floor((diff % 3600000) / 60000);
