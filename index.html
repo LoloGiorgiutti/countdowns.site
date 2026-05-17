@@ -563,6 +563,14 @@
       }
     }
 
+    function showGeoToast(label) {
+      var t = document.createElement('div');
+      t.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:rgba(129,140,248,.95);color:#fff;padding:.5rem 1.1rem;border-radius:999px;font-size:.82rem;font-weight:600;z-index:9998;pointer-events:none;transition:opacity .4s;white-space:nowrap';
+      t.textContent = 'Showing countdowns for ' + label;
+      document.body.appendChild(t);
+      setTimeout(function () { t.style.opacity = '0'; setTimeout(function () { t.remove(); }, 450); }, 3000);
+    }
+
     // Restore saved flag
     if (savedC && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
 
@@ -586,32 +594,21 @@
       });
     }
 
-    // First visit: auto-detect via IP (only if no manual lang override)
-    if (!savedC && !langOverride) {
-      // Guard: don't redirect if user already clicked a card (race condition)
-      var _userClicked = false;
-      document.addEventListener('click', function(e) {
-        if (e.target.closest && e.target.closest('a[href]')) _userClicked = true;
-      }, true);
-
+    /* First visit: detect country silently — apply without modal */
+    if (!savedC) {
       fetch('https://ipapi.co/json/?fields=country_code')
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-          var code = ((data && data.country_code) || 'global').toUpperCase();
-          localStorage.setItem('cd_country', code);
-          if (fb && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[code] || '🌍';
-          var targetLang = countryToLang(code);
-          if (targetLang !== currentLang && !_userClicked) {
-            location.href = LANG_PREFIX[targetLang] || '/';
-          } else {
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var code = ((data && data.country_code) || '').toUpperCase();
+          var supported = code && CountdownEngine.COUNTRY_LIST.find(function (c) { return c.code === code; });
+          if (supported && code !== 'global') {
+            applyCountry(code);
             loadHub();
-            if (det && code !== 'global' && CountdownEngine.FLAG_MAP) {
-              det.innerHTML = '<span class="country-detected-dot"></span>Auto-detected: ' + (CountdownEngine.FLAG_MAP[code] || '') + ' ' + code;
-              det.classList.remove('hidden');
-            }
+            showGeoToast(supported.flag + ' ' + supported.name);
           }
+          /* if unsupported country → stay global silently */
         })
-        .catch(function() { loadHub(); });
+        .catch(function () { /* silent fail, stay global */ });
     }
   })();
 

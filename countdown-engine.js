@@ -343,13 +343,20 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
       var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
       var getDate;
       if (country === 'AR' || country === 'UY') {
-        getDate = function (y) { return tzDay(tz, nthWeekday(y, 9, 3, 0)); };   /* 3rd Sun Oct */
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 9, 3, 0)); };          /* 3rd Sun Oct */
       } else if (['MX','DO','GT','HN','SV','NI','CO','EC','PE','VE','BO','CU','PR'].indexOf(country) >= 0) {
-        getDate = function (y) { return midnightInTZ(tz, y, 4, 10); };           /* May 10 */
+        getDate = function (y) { return midnightInTZ(tz, y, 4, 10); };                 /* May 10 (fixed) */
+      } else if (country === 'GB' || country === 'IE') {
+        getDate = function (y) {                                                         /* Mothering Sunday = Easter - 21 days */
+          var e = easterDate(y);
+          return tzDay(tz, new Date(e.getFullYear(), e.getMonth(), e.getDate() - 21));
+        };
       } else if (country === 'FR') {
-        getDate = function (y) { return tzDay(tz, lastWeekday(y, 4, 0)); };      /* Last Sun May */
+        getDate = function (y) { return tzDay(tz, lastWeekday(y, 4, 0)); };             /* Last Sun May */
+      } else if (country === 'PT') {
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 4, 1, 0)); };          /* 1st Sun May */
       } else {
-        getDate = function (y) { return tzDay(tz, nthWeekday(y, 4, 2, 0)); };   /* 2nd Sun May */
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 4, 2, 0)); };          /* 2nd Sun May (default) */
       }
       return { date: nextOccurrence(getDate) };
     },
@@ -402,12 +409,19 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     'dia-del-nino': function () {
       var tz = getCountryTZ();
       var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
-      var m, d;
-      if      (country === 'MX') { m = 3;  d = 30; }  /* Apr 30 */
-      else if (country === 'AR') { m = 7;  d = 9;  }  /* Aug 9  */
-      else if (country === 'BR') { m = 9;  d = 12; }  /* Oct 12 */
-      else                       { m = 10; d = 20; }  /* Nov 20 (UN) */
-      return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, m, d); }) };
+      if (country === 'MX') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 3, 30); }) };  /* Apr 30 */
+      } else if (country === 'AR') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 7, 3, 0)); }) };  /* 3rd Sunday August */
+      } else if (country === 'UY') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 7, 2, 0)); }) };  /* 2nd Sunday August */
+      } else if (country === 'CL') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 9, 4, 0)); }) };  /* 4th Sunday October */
+      } else if (country === 'BR') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 9, 12); }) };  /* Oct 12 */
+      } else {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 10, 20); }) };  /* Nov 20 UN Day */
+      }
     },
 
     /* ── One-time political ── */
