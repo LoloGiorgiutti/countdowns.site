@@ -334,7 +334,16 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     'oktoberfest':      function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,8,19); }) }; },
 
     /* ── US Holidays ── */
-    'thanksgiving':     function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,nthWeekday(y,10,4,4)); }) }; },
+    'thanksgiving': function () {
+      var tz = getCountryTZ();
+      var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+      if (country === 'CA') {
+        /* Canada: 2nd Monday of October */
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 9, 2, 1)); }) };
+      }
+      /* US (default): 4th Thursday of November */
+      return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 10, 4, 4)); }) };
+    },
     'independence-day': function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,6,4); }) }; },
     'memorial-day':     function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,lastWeekday(y,4,1)); }) }; },
     'labor-day':        function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,nthWeekday(y,8,1,1)); }) }; },
