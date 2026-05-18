@@ -412,7 +412,10 @@
     var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
     var n = displayName(ev);
     var inner = '';
-    if (data.state === 'unknown') {
+    if (data.state === 'past') {
+      inner = '<div class="cd-card-name">' + n + '</div>' +
+              "<div class='cd-card-past'>" + (data.date ? CountdownEngine.fmtDate(data.date, 'en') : 'Already happened') + '</div>';
+    } else if (data.state === 'unknown') {
       inner = '<div class="cd-card-name">' + n + '</div>' +
               "<div class='cd-card-unknown'>Date TBA</div>";
     } else if (data.state === 'today') {
@@ -424,7 +427,7 @@
               "<div class='cd-card-lbl'>days</div>";
     }
     var cardUrl = LANG_URLS[ev.slug] || ev.url;
-    return '<a href="' + cardUrl + '" class="cd-card" ' + style + '>' + inner + '</a>';
+    return '<a href="' + cardUrl + '" class="cd-card cd-card--' + (data.state === 'past' ? 'past' : 'active') + '" ' + style + '>' + inner + '</a>';
   }
 
   function renderHub(results) {
@@ -464,6 +467,14 @@
         html += "<div class='time-bucket-hdr'>Date TBA</div>";
         html += '<div class="cards-grid">';
         tba.forEach(function (r) { html += cardHTML(r.ev, r.data); });
+        html += '</div>';
+      }
+
+      var past = results.filter(function (r) { return r.data.state === 'past'; });
+      if (past.length) {
+        html += "<div class='time-bucket-hdr cd-bucket-past'>Already happened</div>";
+        html += '<div class="cards-grid">';
+        past.forEach(function (r) { html += cardHTML(r.ev, r.data); });
         html += '</div>';
       }
     } else {

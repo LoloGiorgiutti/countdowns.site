@@ -359,6 +359,29 @@ body {
   text-shadow: 0 0 16px rgba(251,191,36,.4);
   margin-top: auto;
 }
+.cd-card-past {
+  font-size: 11px;
+  color: var(--ink-ghost);
+  margin-top: auto;
+  font-style: italic;
+}
+
+/* past card — dimmed appearance */
+.cd-card--past {
+  opacity: .5;
+  filter: grayscale(.6);
+}
+.cd-card--past:hover {
+  opacity: .7;
+  transform: none;
+  box-shadow: none;
+}
+
+/* past section header — subtle different color */
+.cd-bucket-past {
+  color: var(--ink-ghost);
+  opacity: .65;
+}
 
 /* ── Loading skeleton ── */
 .cd-card-skeleton {

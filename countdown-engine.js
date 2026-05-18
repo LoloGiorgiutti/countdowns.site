@@ -1036,6 +1036,7 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
       function resolve(date, isPast) {
         if (!date) { cb({ state: 'unknown' }); return; }
         if (isPast) { cb({ state: 'past', date: date }); return; }
+        if (date < new Date()) { cb({ state: 'unknown' }); return; } // recurring past date → TBC
         var days = daysUntil(date);
         cb({ state: days <= 0 ? 'today' : 'future', days: days, date: date });
       }
