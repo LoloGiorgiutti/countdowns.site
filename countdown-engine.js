@@ -349,36 +349,65 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     'labor-day':        function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,nthWeekday(y,8,1,1)); }) }; },
     'mothers-day': function () {
       var tz = getCountryTZ();
-      var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+      var country = getCurrentCountry();
       var getDate;
-      if (country === 'AR' || country === 'UY') {
-        getDate = function (y) { return tzDay(tz, nthWeekday(y, 9, 3, 0)); };          /* 3rd Sun Oct */
-      } else if (['MX','DO','GT','HN','SV','NI','CO','EC','PE','VE','BO','CU','PR'].indexOf(country) >= 0) {
-        getDate = function (y) { return midnightInTZ(tz, y, 4, 10); };                 /* May 10 (fixed) */
+      if (country === 'AR') {
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 9, 3, 0)); };         /* 3rd Sun Oct */
+      } else if (['MX','GT','SV'].indexOf(country) >= 0) {
+        getDate = function (y) { return midnightInTZ(tz, y, 4, 10); };               /* May 10 fixed */
       } else if (country === 'GB' || country === 'IE') {
-        getDate = function (y) {                                                         /* Mothering Sunday = Easter - 21 days */
+        getDate = function (y) {                                                        /* Mothering Sunday = Easter − 21 days */
           var e = easterDate(y);
           return tzDay(tz, new Date(e.getFullYear(), e.getMonth(), e.getDate() - 21));
         };
-      } else if (country === 'FR') {
-        getDate = function (y) { return tzDay(tz, lastWeekday(y, 4, 0)); };             /* Last Sun May */
-      } else if (country === 'PT') {
-        getDate = function (y) { return tzDay(tz, nthWeekday(y, 4, 1, 0)); };          /* 1st Sun May */
+      } else if (country === 'FR' || country === 'SE' || country === 'DO') {
+        getDate = function (y) { return tzDay(tz, lastWeekday(y, 4, 0)); };            /* Last Sun May */
+      } else if (country === 'PT' || country === 'ES') {
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 4, 1, 0)); };         /* 1st Sun May */
+      } else if (country === 'BO') {
+        getDate = function (y) { return midnightInTZ(tz, y, 4, 27); };               /* May 27 fixed */
+      } else if (country === 'PY') {
+        getDate = function (y) { return midnightInTZ(tz, y, 4, 15); };               /* May 15 fixed */
+      } else if (country === 'NI') {
+        getDate = function (y) { return midnightInTZ(tz, y, 4, 30); };               /* May 30 fixed */
+      } else if (country === 'CR') {
+        getDate = function (y) { return midnightInTZ(tz, y, 7, 15); };               /* Aug 15 fixed */
+      } else if (country === 'PA') {
+        getDate = function (y) { return midnightInTZ(tz, y, 11, 8); };               /* Dec 8 fixed */
+      } else if (country === 'NO') {
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 1, 2, 0)); };         /* 2nd Sun Feb */
       } else {
-        getDate = function (y) { return tzDay(tz, nthWeekday(y, 4, 2, 0)); };          /* 2nd Sun May (default) */
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 4, 2, 0)); };         /* 2nd Sun May default */
       }
       return { date: nextOccurrence(getDate) };
     },
     'fathers-day': function () {
       var tz = getCountryTZ();
-      var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+      var country = getCurrentCountry();
       var getDate;
-      if (country === 'ES') {
-        getDate = function (y) { return midnightInTZ(tz, y, 2, 19); };           /* March 19 */
-      } else if (country === 'BR') {
-        getDate = function (y) { return tzDay(tz, nthWeekday(y, 7, 2, 0)); };   /* 2nd Sun Aug */
+      if (country === 'ES' || country === 'BO' || country === 'HN') {
+        getDate = function (y) { return midnightInTZ(tz, y, 2, 19); };          /* March 19 */
+      } else if (country === 'BR' || country === 'PT') {
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 7, 2, 0)); };  /* 2nd Sun Aug */
+      } else if (country === 'AU' || country === 'NZ') {
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 8, 1, 0)); };  /* 1st Sun Sep */
+      } else if (country === 'DE' || country === 'AT') {
+        getDate = function (y) {                                                  /* Ascension Thu = Easter + 39 days */
+          var e = easterDate(y);
+          return tzDay(tz, new Date(e.getFullYear(), e.getMonth(), e.getDate() + 39));
+        };
+      } else if (country === 'UY') {
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 6, 2, 0)); };  /* 2nd Sun Jul */
+      } else if (country === 'GT' || country === 'SV') {
+        getDate = function (y) { return midnightInTZ(tz, y, 5, 17); };         /* Jun 17 fixed */
+      } else if (country === 'NI') {
+        getDate = function (y) { return midnightInTZ(tz, y, 5, 23); };         /* Jun 23 fixed */
+      } else if (country === 'DO') {
+        getDate = function (y) { return tzDay(tz, lastWeekday(y, 6, 0)); };    /* Last Sun Jul */
+      } else if (country === 'FI') {
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 10, 2, 0)); }; /* 2nd Sun Nov */
       } else {
-        getDate = function (y) { return tzDay(tz, nthWeekday(y, 5, 3, 0)); };   /* 3rd Sun Jun */
+        getDate = function (y) { return tzDay(tz, nthWeekday(y, 5, 3, 0)); };  /* 3rd Sun Jun default */
       }
       return { date: nextOccurrence(getDate) };
     },
@@ -417,17 +446,49 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     '25-de-mayo':       function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,4,25); }) }; },
     'dia-del-nino': function () {
       var tz = getCountryTZ();
-      var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+      var country = getCurrentCountry();
       if (country === 'MX') {
-        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 3, 30); }) };  /* Apr 30 */
-      } else if (country === 'AR') {
-        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 7, 3, 0)); }) };  /* 3rd Sunday August */
-      } else if (country === 'UY') {
-        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 7, 3, 0)); }) };  /* 3rd Sunday August */
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 3, 30); }) };   /* Apr 30 */
+      } else if (country === 'AE') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 2, 15); }) };   /* Mar 15 */
+      } else if (country === 'BO') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 3, 12); }) };   /* Apr 12 */
+      } else if (country === 'ES') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 3, 15); }) };   /* Apr 15 */
+      } else if (country === 'CO') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, lastWeekday(y, 3, 6)); }) }; /* Last Sat Apr */
+      } else if (country === 'EC' || country === 'NI' || country === 'PT' || country === 'BE') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 5, 1); }) };    /* Jun 1 */
+      } else if (country === 'US') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 5, 2, 0)); }) }; /* 2nd Sun Jun */
+      } else if (country === 'VE' || country === 'PA' || country === 'CU') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 6, 3, 0)); }) }; /* 3rd Sun Jul */
+      } else if (country === 'AR' || country === 'UY' || country === 'PE') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 7, 3, 0)); }) }; /* 3rd Sun Aug */
+      } else if (country === 'PY') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 7, 16); }) };   /* Aug 16 */
+      } else if (country === 'PR') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 7, 2, 0)); }) }; /* 2nd Sun Aug */
+      } else if (country === 'CR') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 8, 9); }) };    /* Sep 9 */
+      } else if (country === 'HN') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 8, 10); }) };   /* Sep 10 */
+      } else if (country === 'DO') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 8, 29); }) };   /* Sep 29 */
+      } else if (country === 'DE' || country === 'AT') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 8, 20); }) };   /* Sep 20 */
+      } else if (country === 'GT' || country === 'SV') {
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 9, 1); }) };    /* Oct 1 */
+      } else if (country === 'SG') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 9, 1, 5)); }) }; /* 1st Fri Oct */
+      } else if (country === 'AU') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 9, 4, 3)); }) }; /* 4th Wed Oct */
       } else if (country === 'CL') {
-        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 9, 4, 0)); }) };  /* 4th Sunday October */
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 9, 4, 0)); }) }; /* 4th Sun Oct */
       } else if (country === 'BR') {
-        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 9, 12); }) };  /* Oct 12 */
+        return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 9, 12); }) };   /* Oct 12 */
+      } else if (country === 'NZ') {
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 2, 1, 0)); }) }; /* 1st Sun Mar */
       } else {
         return { date: nextOccurrence(function (y) { return midnightInTZ(tz, y, 10, 20); }) };  /* Nov 20 UN Day */
       }

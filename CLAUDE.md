@@ -242,29 +242,58 @@ Steps: add to `index.html` EVENTS → Music section · add to `countdowns-data.j
 ### Día del Niño (Children's Day)
 | Country | Date | Formula |
 |---------|------|---------|
-| AR | 3rd Sunday August | `nthWeekday(y, 7, 3, 0)` ✅ user-confirmed |
-| UY | 3rd Sunday August | `nthWeekday(y, 7, 3, 0)` ✅ user-confirmed |
-| CL | 4th Sunday October | `nthWeekday(y, 9, 4, 0)` ✅ |
 | MX | April 30 (fixed) | `midnightInTZ(tz, y, 3, 30)` ✅ |
+| AE | March 15 (fixed) | `midnightInTZ(tz, y, 2, 15)` ✅ |
+| BO | April 12 (fixed) | `midnightInTZ(tz, y, 3, 12)` ✅ user-confirmed |
+| ES | April 15 (fixed) | `midnightInTZ(tz, y, 3, 15)` ✅ |
+| CO | Last Saturday April | `tzDay(tz, lastWeekday(y, 3, 6))` ✅ |
+| EC, NI, PT, BE | June 1 (fixed) | `midnightInTZ(tz, y, 5, 1)` ✅ |
+| US | 2nd Sunday June | `tzDay(tz, nthWeekday(y, 5, 2, 0))` ✅ |
+| VE, PA, CU | 3rd Sunday July | `tzDay(tz, nthWeekday(y, 6, 3, 0))` ✅ |
+| AR, UY, PE | 3rd Sunday August | `tzDay(tz, nthWeekday(y, 7, 3, 0))` ✅ user-confirmed |
+| PY | August 16 (fixed) | `midnightInTZ(tz, y, 7, 16)` ✅ |
+| PR | 2nd Sunday August | `tzDay(tz, nthWeekday(y, 7, 2, 0))` ✅ |
+| CR | September 9 (fixed) | `midnightInTZ(tz, y, 8, 9)` ✅ |
+| HN | September 10 (fixed) | `midnightInTZ(tz, y, 8, 10)` ✅ |
+| DO | September 29 (fixed) | `midnightInTZ(tz, y, 8, 29)` ✅ |
+| DE, AT | September 20 (fixed) | `midnightInTZ(tz, y, 8, 20)` ✅ |
+| GT, SV | October 1 (fixed) | `midnightInTZ(tz, y, 9, 1)` ✅ |
+| SG | 1st Friday October | `tzDay(tz, nthWeekday(y, 9, 1, 5))` ✅ |
+| AU | 4th Wednesday October | `tzDay(tz, nthWeekday(y, 9, 4, 3))` ✅ |
+| CL | 4th Sunday October | `tzDay(tz, nthWeekday(y, 9, 4, 0))` ✅ |
 | BR | October 12 (fixed) | `midnightInTZ(tz, y, 9, 12)` ✅ |
+| NZ | 1st Sunday March | `tzDay(tz, nthWeekday(y, 2, 1, 0))` ✅ |
 | default | November 20 (UN Day) | `midnightInTZ(tz, y, 10, 20)` ✅ |
 
 ### Día de la Madre (Mother's Day)
 | Country | Date | Formula |
 |---------|------|---------|
-| AR, UY | 3rd Sunday October | `nthWeekday(y, 9, 3, 0)` ✅ |
-| MX + most LatAm | May 10 (fixed) | `midnightInTZ(tz, y, 4, 10)` ✅ |
+| AR | 3rd Sunday October | `nthWeekday(y, 9, 3, 0)` ✅ |
+| MX, GT, SV | May 10 (fixed) | `midnightInTZ(tz, y, 4, 10)` ✅ |
 | GB, IE | Mothering Sunday = Easter − 21 days | `easterDate(y) − 21` ✅ |
-| FR | Last Sunday May | `lastWeekday(y, 4, 0)` ✅ |
-| PT | 1st Sunday May | `nthWeekday(y, 4, 1, 0)` ✅ |
-| default (US/CA/AU/etc.) | 2nd Sunday May | `nthWeekday(y, 4, 2, 0)` ✅ |
+| FR, SE, DO | Last Sunday May | `lastWeekday(y, 4, 0)` ✅ |
+| PT, ES | 1st Sunday May | `nthWeekday(y, 4, 1, 0)` ✅ |
+| BO | May 27 (fixed) | `midnightInTZ(tz, y, 4, 27)` ✅ |
+| PY | May 15 (fixed) | `midnightInTZ(tz, y, 4, 15)` ✅ |
+| NI | May 30 (fixed) | `midnightInTZ(tz, y, 4, 30)` ✅ |
+| CR | August 15 (fixed) | `midnightInTZ(tz, y, 7, 15)` ✅ |
+| PA | December 8 (fixed) | `midnightInTZ(tz, y, 11, 8)` ✅ |
+| NO | 2nd Sunday February | `nthWeekday(y, 1, 2, 0)` ✅ |
+| default (US/CA/AU/UY/CL/CO/PE/EC/VE/BR/etc.) | 2nd Sunday May | `nthWeekday(y, 4, 2, 0)` ✅ |
 
 ### Día del Padre (Father's Day)
 | Country | Date | Formula |
 |---------|------|---------|
-| ES | March 19 (San José, fixed) | `midnightInTZ(tz, y, 2, 19)` ✅ |
-| BR | 2nd Sunday August | `nthWeekday(y, 7, 2, 0)` ✅ |
-| default | 3rd Sunday June | `nthWeekday(y, 5, 3, 0)` ✅ |
+| ES, BO, HN | March 19 (San José, fixed) | `midnightInTZ(tz, y, 2, 19)` ✅ |
+| BR, PT | 2nd Sunday August | `nthWeekday(y, 7, 2, 0)` ✅ |
+| AU, NZ | 1st Sunday September | `nthWeekday(y, 8, 1, 0)` ✅ |
+| DE, AT | Ascension Thursday = Easter + 39 days | `easterDate(y) + 39` ✅ |
+| UY | 2nd Sunday July | `nthWeekday(y, 6, 2, 0)` ✅ |
+| GT, SV | June 17 (fixed) | `midnightInTZ(tz, y, 5, 17)` ✅ |
+| NI | June 23 (fixed) | `midnightInTZ(tz, y, 5, 23)` ✅ |
+| DO | Last Sunday July | `lastWeekday(y, 6, 0)` ✅ |
+| FI | 2nd Sunday November | `nthWeekday(y, 10, 2, 0)` ✅ |
+| default (US/CA/MX/AR/CL/CO etc.) | 3rd Sunday June | `nthWeekday(y, 5, 3, 0)` ✅ |
 
 ### Thanksgiving
 | Country | Date | Formula |
