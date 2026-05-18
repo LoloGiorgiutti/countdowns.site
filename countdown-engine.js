@@ -65,6 +65,40 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
   };
   var T = UI[_pageLang] || UI.en;
 
+  /* ─── FEEDBACK WIDGET TRANSLATIONS ─────────────────────────── */
+  var FB = ({
+    en: { title:'Anything to improve?',
+          sub:'Missing something? Have an idea? Every suggestion helps.',
+          love:'😍 Love it', add:"💡 I'd add something",
+          broken:"🐛 Something's broken", question:'❓ I have a question',
+          ph:"Tell us what you'd add or what's not working. Every suggestion counts!",
+          send:'Send feedback →', thanks:'✓ Thanks for your feedback!' },
+    es: { title:'¿Algo para mejorar?',
+          sub:'¿Le falta algo? ¿Tenés una idea? Cada sugerencia nos ayuda a mejorar.',
+          love:'😍 Me encanta', add:'💡 Le agregaría algo',
+          broken:'🐛 Algo no funciona', question:'❓ Tengo una pregunta',
+          ph:'Contanos qué le agregarías o qué no funciona. ¡Cada sugerencia cuenta!',
+          send:'Enviar sugerencia →', thanks:'✓ ¡Gracias por tu sugerencia!' },
+    pt: { title:'Algo para melhorar?',
+          sub:'Falta algo? Tem uma ideia? Cada sugestão nos ajuda.',
+          love:'😍 Adorei', add:'💡 Adicionaria algo',
+          broken:'🐛 Algo não funciona', question:'❓ Tenho uma pergunta',
+          ph:'Conta o que adicionarias ou o que não está funcionando. Toda sugestão conta!',
+          send:'Enviar sugestão →', thanks:'✓ Obrigado pelo seu feedback!' },
+    fr: { title:'Quelque chose à améliorer ?',
+          sub:'Il manque quelque chose ? Une idée ? Chaque suggestion nous aide.',
+          love:"😍 J'adore", add:"💡 J'ajouterais quelque chose",
+          broken:'🐛 Quelque chose ne fonctionne pas', question:"❓ J'ai une question",
+          ph:"Dites-nous ce que vous ajouteriez ou ce qui ne fonctionne pas.",
+          send:'Envoyer →', thanks:'✓ Merci pour votre retour !' },
+  })[_pageLang] || ({
+    title:'Anything to improve?',
+    sub:'Missing something? Have an idea? Every suggestion helps.',
+    love:'😍 Love it', add:"💡 I'd add something",
+    broken:"🐛 Something's broken", question:'❓ I have a question',
+    ph:"Tell us what you'd add or what's not working.",
+    send:'Send feedback →', thanks:'✓ Thanks for your feedback!' });
+
   /* ─── CATEGORY NAME TRANSLATIONS ───────────────────────────── */
   var CAT_I18N = {
     es: { Releases:'Lanzamientos', Sports:'Deportes', Holidays:'Feriados',
@@ -1059,5 +1093,88 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
       return FLAG_MAP[code] || '🌍';
     },
   };
+
+  /* ─── FEEDBACK WIDGET ────────────────────────────────────────── */
+  function renderFeedback() {
+    if (!document.querySelector('.cd-article')) return; // individual countdown pages only
+
+    var ENDPOINT = 'REPLACE_WITH_FORMSPREE_ENDPOINT';
+
+    var wrap = document.createElement('div');
+    wrap.className = 'cd-feedback';
+    wrap.innerHTML =
+      '<p class="cd-fb-title">' + FB.title + '</p>' +
+      '<p class="cd-fb-sub">' + FB.sub + '</p>' +
+      '<div class="cd-fb-btns">' +
+        '<button class="cd-fb-btn" data-cat="love">'    + FB.love     + '</button>' +
+        '<button class="cd-fb-btn" data-cat="add">'     + FB.add      + '</button>' +
+        '<button class="cd-fb-btn" data-cat="broken">'  + FB.broken   + '</button>' +
+        '<button class="cd-fb-btn" data-cat="question">' + FB.question + '</button>' +
+      '</div>' +
+      '<div class="cd-fb-form" style="display:none">' +
+        '<textarea class="cd-fb-ta" rows="3" placeholder="' + FB.ph + '"></textarea>' +
+        '<button class="cd-fb-send">' + FB.send + '</button>' +
+      '</div>' +
+      '<p class="cd-fb-thanks" style="display:none">' + FB.thanks + '</p>';
+
+    var footer = document.querySelector('.site-footer');
+    if (footer) footer.parentNode.insertBefore(wrap, footer);
+    else document.body.appendChild(wrap);
+
+    var selected = null;
+    var btns  = wrap.querySelectorAll('.cd-fb-btn');
+    var form  = wrap.querySelector('.cd-fb-form');
+    var ta    = wrap.querySelector('.cd-fb-ta');
+    var send  = wrap.querySelector('.cd-fb-send');
+    var thanks = wrap.querySelector('.cd-fb-thanks');
+
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        btns.forEach(function(b) { b.classList.remove('cd-fb-btn--active'); });
+        btn.classList.add('cd-fb-btn--active');
+        selected = btn.getAttribute('data-cat');
+        form.style.display = '';
+        ta.focus();
+      });
+    });
+
+    send.addEventListener('click', function() {
+      var msg = ta.value.trim();
+      if (!msg && !selected) return;
+
+      var payload = {
+        category: selected || '',
+        message:  msg,
+        page:     window.location.href
+      };
+
+      if (ENDPOINT === 'REPLACE_WITH_FORMSPREE_ENDPOINT') {
+        // No endpoint yet — just show thanks locally
+        form.style.display = 'none';
+        wrap.querySelector('.cd-fb-btns').style.display = 'none';
+        wrap.querySelector('.cd-fb-title').style.display = 'none';
+        wrap.querySelector('.cd-fb-sub').style.display = 'none';
+        thanks.style.display = '';
+        return;
+      }
+
+      send.disabled = true;
+      fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function(r) {
+        form.style.display = 'none';
+        wrap.querySelector('.cd-fb-btns').style.display = 'none';
+        wrap.querySelector('.cd-fb-title').style.display = 'none';
+        wrap.querySelector('.cd-fb-sub').style.display = 'none';
+        thanks.style.display = '';
+      }).catch(function() {
+        send.disabled = false;
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', renderFeedback);
 
 })();
