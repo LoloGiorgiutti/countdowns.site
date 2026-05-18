@@ -1098,7 +1098,7 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
   function renderFeedback() {
     if (!document.querySelector('.cd-article')) return; // individual countdown pages only
 
-    var ENDPOINT = 'REPLACE_WITH_FORMSPREE_ENDPOINT';
+    var ENDPOINT = 'https://formspree.io/f/xkoegbgy';
 
     var wrap = document.createElement('div');
     wrap.className = 'cd-feedback';
