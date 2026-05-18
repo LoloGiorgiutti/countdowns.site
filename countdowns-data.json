@@ -72,8 +72,9 @@
       "note": "Hot Sale Argentina 2027 dates have not been announced. Usually held in May."
     },
     "lollapalooza-ar": {
-      "date": null,
-      "note": "Lollapalooza Argentina 2027 dates have not been announced. Usually held at Hipódromo de San Isidro in March."
+      "date": "2027-03-12T18:00:00-03:00",
+      "note": "Lollapalooza Argentina 2027 — March 12, 13 & 14 at Hipódromo de San Isidro, Buenos Aires.",
+      "note_es": "Lollapalooza Argentina 2027 — 12, 13 y 14 de marzo en el Hipódromo de San Isidro, Buenos Aires."
     },
     "lollapalooza-cl": {
       "date": null,

@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /embed/
+Disallow: /countdowns-src/
 
 Sitemap: https://countdowns.site/sitemap.xml
