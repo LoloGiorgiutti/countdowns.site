@@ -423,7 +423,7 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
       } else if (country === 'AR') {
         return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 7, 3, 0)); }) };  /* 3rd Sunday August */
       } else if (country === 'UY') {
-        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 7, 2, 0)); }) };  /* 2nd Sunday August */
+        return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 7, 3, 0)); }) };  /* 3rd Sunday August */
       } else if (country === 'CL') {
         return { date: nextOccurrence(function (y) { return tzDay(tz, nthWeekday(y, 9, 4, 0)); }) };  /* 4th Sunday October */
       } else if (country === 'BR') {
