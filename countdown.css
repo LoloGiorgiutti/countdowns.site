@@ -13,8 +13,8 @@
   --border-hi:   rgba(255,255,255,.16);
   --ink:         #FFFFFF;
   --ink-dim:     rgba(255,255,255,.5);
-  --ink-faint:   rgba(255,255,255,.22);
-  --ink-ghost:   rgba(255,255,255,.1);
+  --ink-faint:   rgba(255,255,255,.42);
+  --ink-ghost:   rgba(255,255,255,.28);
   --radius:      14px;
   --radius-sm:   10px;
   --radius-xs:   8px;
