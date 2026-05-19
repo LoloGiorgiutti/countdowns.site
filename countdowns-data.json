@@ -238,6 +238,82 @@
     "golden-globes": {
       "date": null,
       "note": "Golden Globes 2027 date not yet announced. Typically held in January."
+    },
+    "messi-birthday": {
+      "date": "2026-06-24",
+      "note": "Lionel Messi's 39th birthday — born June 24, 1987 in Rosario, Argentina."
+    },
+    "ronaldo-birthday": {
+      "date": "2027-02-05",
+      "note": "Cristiano Ronaldo's 42nd birthday — born February 5, 1985. 2026 birthday already passed."
+    },
+    "taylor-swift-birthday": {
+      "date": "2026-12-13",
+      "note": "Taylor Swift's 37th birthday — born December 13, 1989."
+    },
+    "bad-bunny-birthday": {
+      "date": "2027-03-10",
+      "note": "Bad Bunny's 33rd birthday — born March 10, 1994. 2026 birthday already passed."
+    },
+    "lebron-james-birthday": {
+      "date": "2026-12-30",
+      "note": "LeBron James's 42nd birthday — born December 30, 1984."
+    },
+    "brit-awards": {
+      "date": null,
+      "note": "BRIT Awards 2027 date not yet announced. Typically held in February or March at The O2 Arena, London."
+    },
+    "latin-grammys": {
+      "date": "2026-11-19",
+      "note": "Latin Grammy Awards 2026 — confirmed November 19, 2026."
+    },
+    "mtv-vmas": {
+      "date": null,
+      "note": "MTV VMAs 2026 date not yet announced. Typically held in August or September."
+    },
+    "bafta": {
+      "date": null,
+      "note": "BAFTA Film Awards 2027 date not yet announced. Typically held in February at Royal Festival Hall, London."
+    },
+    "nfl-season": {
+      "date": "2026-09-10",
+      "note": "NFL 2026 Season Kickoff — Thursday, September 10, 2026."
+    },
+    "stanley-cup": {
+      "date": null,
+      "note": "Stanley Cup Finals 2026 date TBA — depends on NHL playoff results. Typically June."
+    },
+    "masters-golf": {
+      "date": "2027-04-08",
+      "note": "The Masters 2027 — Augusta National Golf Club, April 8–13, 2027."
+    },
+    "wwe-summerslam": {
+      "date": "2026-08-01",
+      "note": "WWE SummerSlam 2026 — August 1–2, 2026."
+    },
+    "wwe-royal-rumble": {
+      "date": null,
+      "note": "WWE Royal Rumble 2027 date not yet announced. Typically held in late January."
+    },
+    "wwe-survivor-series": {
+      "date": null,
+      "note": "WWE Survivor Series 2026 date not yet announced. Typically held in November."
+    },
+    "cs2-major": {
+      "date": null,
+      "note": "Next CS2 Major Championship date not yet announced by Valve."
+    },
+    "lol-worlds": {
+      "date": null,
+      "note": "League of Legends World Championship 2026 date and host region not yet announced. Typically October–November."
+    },
+    "elecciones-colombia": {
+      "date": "2026-05-31",
+      "note": "Colombian Presidential Election 2026 — first round confirmed May 31, 2026."
+    },
+    "elecciones-brasil": {
+      "date": "2026-10-04",
+      "note": "Brazilian General Election 2026 — first round October 4, 2026. Potential runoff October 25, 2026."
     }
   }
 }
