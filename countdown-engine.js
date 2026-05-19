@@ -550,11 +550,14 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
 
     /* ── Midnight (next midnight in selected country's timezone) ── */
     'midnight': function(){
-      var tz=getCountryTZ(),now=new Date();
-      var y=now.getFullYear(),m=now.getMonth(),d=now.getDate();
-      var tonight=midnightInTZ(tz,y,m,d);
-      if(tonight<=now){var tmr=new Date(now);tmr.setDate(d+1);tonight=midnightInTZ(tz,tmr.getFullYear(),tmr.getMonth(),tmr.getDate());}
-      return{date:tonight};
+      var tz=getCountryTZ(), now=new Date();
+      var cursor=new Date(now), midnight, attempts=0;
+      do {
+        midnight=midnightInTZ(tz,cursor.getFullYear(),cursor.getMonth(),cursor.getDate());
+        if(midnight<=now){ cursor.setDate(cursor.getDate()+1); }
+        attempts++;
+      } while(midnight<=now && attempts<4);
+      return{date:midnight};
     },
 
     /* ── Seasons (hemisphere-aware via selected country) ── */
@@ -1036,9 +1039,9 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
       function resolve(date, isPast) {
         if (!date) { cb({ state: 'unknown' }); return; }
         if (isPast) { cb({ state: 'past', date: date }); return; }
-        if (date < new Date()) { cb({ state: 'unknown' }); return; } // recurring past date → TBC
         var days = daysUntil(date);
-        cb({ state: days <= 0 ? 'today' : 'future', days: days, date: date });
+        if (days < 0) { cb({ state: 'unknown' }); return; } // recurring past date (>1 day ago) → TBC
+        cb({ state: days === 0 ? 'today' : 'future', days: days, date: date });
       }
 
       if (config.type === 'auto') {
@@ -1094,6 +1097,40 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
       return FLAG_MAP[code] || '🌍';
     },
   };
+
+  /* ─── THEME TOGGLE (sun/moon icons) ────────────────────────────── */
+  function initThemeToggle() {
+    var oldBtn = document.getElementById('theme-toggle');
+    if (!oldBtn) return;
+    /* Apply saved theme early */
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('cd_theme') === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+    var SUN  = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>';
+    var MOON = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    /* Clone to remove any prior click handlers from inline page scripts */
+    var btn = oldBtn.cloneNode(false);
+    oldBtn.parentNode.replaceChild(btn, oldBtn);
+    function updateIcon() {
+      var light = document.documentElement.getAttribute('data-theme') === 'light';
+      btn.innerHTML = light ? MOON : SUN;
+      btn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+    }
+    updateIcon();
+    btn.addEventListener('click', function () {
+      var light = document.documentElement.getAttribute('data-theme') === 'light';
+      if (light) {
+        document.documentElement.removeAttribute('data-theme');
+        if (typeof localStorage !== 'undefined') localStorage.setItem('cd_theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        if (typeof localStorage !== 'undefined') localStorage.setItem('cd_theme', 'light');
+      }
+      updateIcon();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
 
   /* ─── FEEDBACK WIDGET ────────────────────────────────────────── */
   function renderFeedback() {

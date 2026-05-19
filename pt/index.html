@@ -72,7 +72,7 @@
       <button class="sort-btn active" data-sort="chrono">Mais próximos</button>
       <button class="sort-btn" data-sort="category">Por categoria</button>
     </div>
-    <a href="/custom/" class="hub-create-btn">✦ Create your own countdown</a>
+    <a href="/pt/custom/" class="hub-create-btn">✦ Crie seu próprio countdown</a>
   </div>
 </div>
 
@@ -465,9 +465,10 @@
   function filteredEvents() {
     var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
     return EVENTS.filter(function (e) {
+      if (country === 'global') return true; // global flag → show all events regardless of region
       var langOk = e.regions.indexOf('global') >= 0 || e.regions.indexOf(currentLang) >= 0;
       if (!langOk) return false;
-      if (country === 'global' || !e.countries) return true;
+      if (!e.countries) return true;
       var cs = e.countries;
       if (cs.indexOf('global') >= 0) return true;
       return cs.indexOf(country) >= 0;
