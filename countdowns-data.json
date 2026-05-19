@@ -190,6 +190,54 @@
     "bonnaroo": {
       "date": "2026-06-11T12:00:00-05:00",
       "note": "Bonnaroo 2026 runs June 11–14 at Great Stage Park, Manchester, Tennessee."
+    },
+    "guy-fawkes": {
+      "date": "2026-11-05T19:00:00+00:00",
+      "note": "Guy Fawkes Night / Bonfire Night, celebrated annually on November 5 in the UK."
+    },
+    "boxing-day": {
+      "date": "2026-12-26T00:00:00+00:00",
+      "note": "Boxing Day 2026 falls on December 26."
+    },
+    "mardi-gras": {
+      "date": "2027-02-09T00:00:00-06:00",
+      "note": "Mardi Gras 2027 is February 9 — 47 days before Easter Sunday March 28, 2027."
+    },
+    "holi": {
+      "date": "2027-03-14T06:00:00+05:30",
+      "note": "Holi 2027 falls on March 14, the full moon of Phalgun."
+    },
+    "lunar-new-year": {
+      "date": "2027-02-06T00:00:00+08:00",
+      "note": "Lunar New Year 2027 is February 6 — Year of the Goat."
+    },
+    "anzac-day": {
+      "date": "2027-04-25T06:00:00+10:00",
+      "note": "ANZAC Day is observed every April 25 in Australia and New Zealand."
+    },
+    "melbourne-cup": {
+      "date": "2026-11-03T15:00:00+11:00",
+      "note": "Melbourne Cup 2026 is November 3 — first Tuesday of November at Flemington Racecourse."
+    },
+    "koningsdag": {
+      "date": "2027-04-27T10:00:00+02:00",
+      "note": "King's Day (Koningsdag) 2027 is April 27 — King Willem-Alexander's birthday."
+    },
+    "royal-ascot": {
+      "date": "2026-06-16T14:30:00+01:00",
+      "note": "Royal Ascot 2026 runs June 16–20 at Ascot Racecourse, Berkshire."
+    },
+    "diwali": {
+      "date": null,
+      "note": "Diwali 2026 date not yet confirmed. Follows Hindu lunar calendar, typically October–November."
+    },
+    "emmys": {
+      "date": null,
+      "note": "Emmy Awards 2026 date not yet announced. Typically held in September."
+    },
+    "golden-globes": {
+      "date": null,
+      "note": "Golden Globes 2027 date not yet announced. Typically held in January."
     }
   }
 }
