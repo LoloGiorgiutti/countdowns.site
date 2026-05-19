@@ -3,7 +3,7 @@
   "_policy": "Only confirmed official dates. If unconfirmed → date: null. No estimated dates shown as real countdowns.",
   "events": {
     "gta6": {
-      "date": "2026-11-19T00:00:00",
+      "date": "2026-11-19T12:00:00",
       "note": "Rockstar Games has not announced an official release date. Stay tuned for updates."
     },
     "iphone": {
@@ -41,7 +41,7 @@
       "note": "Tour de France 2026 — Grand Départ."
     },
     "copa-libertadores": {
-      "date": "2026-11-28T00:00:00",
+      "date": "2026-11-28T12:00:00",
       "note": "El partido se disputará en el Estadio Centenario de Montevideo, Uruguay, según confirmó la CONMEBOL en mayo de 2026."
     },
     "grammys": {
@@ -112,11 +112,11 @@
       "note": "2026 FIFA World Cup Final — MetLife Stadium, East Rutherford, NJ."
     },
     "copa-america-2028": {
-      "date": "2028-06-01T00:00:00",
+      "date": "2028-06-01T12:00:00",
       "note": "Estimated start date. 2028 Copa América — host country TBD."
     },
     "copa-america-2028-final": {
-      "date": "2028-07-01T00:00:00",
+      "date": "2028-07-01T12:00:00",
       "note": "Estimated date. 2028 Copa América Final — host country and venue TBD."
     },
     "euro-2028": {
@@ -196,7 +196,7 @@
       "note": "Guy Fawkes Night / Bonfire Night, celebrated annually on November 5 in the UK."
     },
     "boxing-day": {
-      "date": "2026-12-26T00:00:00+00:00",
+      "date": "2026-12-26T12:00:00",
       "note": "Boxing Day 2026 falls on December 26."
     },
     "mardi-gras": {
@@ -228,8 +228,8 @@
       "note": "Royal Ascot 2026 runs June 16–20 at Ascot Racecourse, Berkshire."
     },
     "diwali": {
-      "date": null,
-      "note": "Diwali 2026 date not yet confirmed. Follows Hindu lunar calendar, typically October–November."
+      "date": "2026-11-08T12:00:00",
+      "note": "Diwali 2026 — Festival of Lights, November 8, 2026."
     },
     "emmys": {
       "date": null,
@@ -240,23 +240,23 @@
       "note": "Golden Globes 2027 date not yet announced. Typically held in January."
     },
     "messi-birthday": {
-      "date": "2026-06-24",
+      "date": "2026-06-24T12:00:00",
       "note": "Lionel Messi's 39th birthday — born June 24, 1987 in Rosario, Argentina."
     },
     "ronaldo-birthday": {
-      "date": "2027-02-05",
+      "date": "2027-02-05T12:00:00",
       "note": "Cristiano Ronaldo's 42nd birthday — born February 5, 1985. 2026 birthday already passed."
     },
     "taylor-swift-birthday": {
-      "date": "2026-12-13",
+      "date": "2026-12-13T12:00:00",
       "note": "Taylor Swift's 37th birthday — born December 13, 1989."
     },
     "bad-bunny-birthday": {
-      "date": "2027-03-10",
+      "date": "2027-03-10T12:00:00",
       "note": "Bad Bunny's 33rd birthday — born March 10, 1994. 2026 birthday already passed."
     },
     "lebron-james-birthday": {
-      "date": "2026-12-30",
+      "date": "2026-12-30T12:00:00",
       "note": "LeBron James's 42nd birthday — born December 30, 1984."
     },
     "brit-awards": {
@@ -264,7 +264,7 @@
       "note": "BRIT Awards 2027 date not yet announced. Typically held in February or March at The O2 Arena, London."
     },
     "latin-grammys": {
-      "date": "2026-11-19",
+      "date": "2026-11-19T12:00:00",
       "note": "Latin Grammy Awards 2026 — confirmed November 19, 2026."
     },
     "mtv-vmas": {
@@ -276,7 +276,7 @@
       "note": "BAFTA Film Awards 2027 date not yet announced. Typically held in February at Royal Festival Hall, London."
     },
     "nfl-season": {
-      "date": "2026-09-10",
+      "date": "2026-09-10T12:00:00",
       "note": "NFL 2026 Season Kickoff — Thursday, September 10, 2026."
     },
     "stanley-cup": {
@@ -284,11 +284,11 @@
       "note": "Stanley Cup Finals 2026 date TBA — depends on NHL playoff results. Typically June."
     },
     "masters-golf": {
-      "date": "2027-04-08",
+      "date": "2027-04-08T12:00:00",
       "note": "The Masters 2027 — Augusta National Golf Club, April 8–13, 2027."
     },
     "wwe-summerslam": {
-      "date": "2026-08-01",
+      "date": "2026-08-01T12:00:00",
       "note": "WWE SummerSlam 2026 — August 1–2, 2026."
     },
     "wwe-royal-rumble": {
@@ -308,12 +308,16 @@
       "note": "League of Legends World Championship 2026 date and host region not yet announced. Typically October–November."
     },
     "elecciones-colombia": {
-      "date": "2026-05-31",
+      "date": "2026-05-31T12:00:00",
       "note": "Colombian Presidential Election 2026 — first round confirmed May 31, 2026."
     },
     "elecciones-brasil": {
-      "date": "2026-10-04",
+      "date": "2026-10-04T12:00:00",
       "note": "Brazilian General Election 2026 — first round October 4, 2026. Potential runoff October 25, 2026."
+    },
+    "oktoberfest": {
+      "date": "2026-09-19T12:00:00",
+      "note": "Oktoberfest 2026 — Munich, September 19 – October 4, 2026."
     }
   }
 }
