@@ -318,6 +318,78 @@
     "oktoberfest": {
       "date": "2026-09-19T12:00:00",
       "note": "Oktoberfest 2026 — Munich, September 19 – October 4, 2026."
+    },
+    "elecciones-usa-midterms": {
+      "date": "2026-11-03T12:00:00",
+      "note": "US Midterm Elections 2026 — November 3, 2026."
+    },
+    "elecciones-france": {
+      "date": null,
+      "note": "French Presidential Election 2027 — April 2027 (exact date TBA). First round typically in April."
+    },
+    "elecciones-mexico": {
+      "date": "2027-06-01T12:00:00",
+      "note": "Elecciones intermedias México 2027 — 1 de junio de 2027."
+    },
+    "copa-del-rey": {
+      "date": null,
+      "note": "Copa del Rey Final 2026 — date TBA, typically late April or May."
+    },
+    "fa-cup-final": {
+      "date": null,
+      "note": "FA Cup Final 2026 — date TBA, typically May at Wembley Stadium."
+    },
+    "nba-draft": {
+      "date": "2026-06-25T12:00:00",
+      "note": "NBA Draft 2026 — June 25, 2026."
+    },
+    "cricket-world-cup": {
+      "date": null,
+      "note": "ICC Cricket World Cup 2027 — scheduled for 2027 in South Africa, Zimbabwe, and Namibia. Exact dates TBA."
+    },
+    "rugby-world-cup": {
+      "date": "2027-09-04T12:00:00",
+      "note": "Rugby World Cup 2027 — Australia, September 4 – October 23, 2027."
+    },
+    "six-nations": {
+      "date": "2027-02-06T12:00:00",
+      "note": "Six Nations Championship 2027 — starts February 6, 2027."
+    },
+    "la-velada-del-ano": {
+      "date": null,
+      "note": "La Velada del Año — Ibai Llanos boxing event. Date TBA, typically summer."
+    },
+    "world-series": {
+      "date": null,
+      "note": "MLB World Series 2026 — typically late October. Date TBA (depends on playoff results)."
+    },
+    "shakira-birthday": {
+      "date": "2027-02-02T12:00:00",
+      "note": "Shakira's 50th birthday — born February 2, 1977."
+    },
+    "drake-birthday": {
+      "date": "2026-10-24T12:00:00",
+      "note": "Drake's 40th birthday — born October 24, 1986."
+    },
+    "neymar-birthday": {
+      "date": "2027-02-05T12:00:00",
+      "note": "Neymar Jr's 35th birthday — born February 5, 1992."
+    },
+    "mbappe-birthday": {
+      "date": "2026-12-20T12:00:00",
+      "note": "Kylian Mbappé's 28th birthday — born December 20, 1998."
+    },
+    "billie-eilish-birthday": {
+      "date": "2026-12-18T12:00:00",
+      "note": "Billie Eilish's 25th birthday — born December 18, 2001."
+    },
+    "ariana-grande-birthday": {
+      "date": "2026-06-26T12:00:00",
+      "note": "Ariana Grande's 33rd birthday — born June 26, 1993."
+    },
+    "canada-day": {
+      "date": "2026-07-01T12:00:00",
+      "note": "Canada Day 2026 — July 1, 2026. Canada's 159th birthday."
     }
   }
 }
