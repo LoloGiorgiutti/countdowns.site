@@ -45,16 +45,18 @@
       "note": "El partido se disputará en el Estadio Centenario de Montevideo, Uruguay, según confirmó la CONMEBOL en mayo de 2026."
     },
     "grammys": {
-      "date": null,
-      "note": "Grammy Awards 2027 dates have not been announced yet. Usually held in January or February."
+      "date": "2027-02-07T20:00:00-08:00",
+      "note": "Grammy Awards 2027 — February 7, 2027 at Crypto.com Arena, Los Angeles.",
+      "note_es": "Premios Grammy 2027 — 7 de febrero de 2027 en el Crypto.com Arena, Los Ángeles."
     },
     "eurovision": {
       "date": null,
       "note": "Eurovision Song Contest 2027 — host country and dates not yet confirmed."
     },
     "coachella": {
-      "date": null,
-      "note": "Coachella 2027 dates have not been announced. Usually held in April."
+      "date": "2027-04-09T12:00:00-07:00",
+      "note": "Coachella 2027 — April 9–11 & 16–18, Empire Polo Club, Indio, California.",
+      "note_es": "Coachella 2027 — 9–11 y 16–18 de abril, Empire Polo Club, Indio, California."
     },
     "cannes": {
       "date": "2026-05-12T19:00:00",
@@ -77,8 +79,9 @@
       "note_es": "Lollapalooza Argentina 2027 — 12, 13 y 14 de marzo en el Hipódromo de San Isidro, Buenos Aires."
     },
     "lollapalooza-cl": {
-      "date": null,
-      "note": "Lollapalooza Chile 2027 dates have not been announced. Usually held at Parque Bicentenario, Santiago."
+      "date": "2027-03-12T18:00:00-03:00",
+      "note": "Lollapalooza Chile 2027 — March 12, 13 & 14 at Parque O'Higgins, Santiago de Chile.",
+      "note_es": "Lollapalooza Chile 2027 — 12, 13 y 14 de marzo en el Parque O'Higgins, Santiago de Chile."
     },
     "cosquin-rock": {
       "date": null,
