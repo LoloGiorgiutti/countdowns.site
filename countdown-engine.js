@@ -1009,12 +1009,37 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
       var root = document.getElementById(rootId);
       if (!root) return;
 
+      function patchEventSchema(targetDate) {
+        if (!targetDate) return;
+        try {
+          var scripts = document.querySelectorAll('script[type="application/ld+json"]');
+          for (var i = 0; i < scripts.length; i++) {
+            var text = scripts[i].textContent || '';
+            if (text.indexOf('"Event"') === -1) continue;
+            var data = JSON.parse(text);
+            var nodes = data['@graph'] ? data['@graph'] : [data];
+            var changed = false;
+            for (var j = 0; j < nodes.length; j++) {
+              var node = nodes[j];
+              if (node['@type'] !== 'Event') continue;
+              if (!node.startDate)   { node.startDate   = targetDate.toISOString(); changed = true; }
+              if (!node.endDate)     { node.endDate     = targetDate.toISOString(); changed = true; }
+              if (!node.location)    { node.location    = { '@type': 'Place', 'name': 'Worldwide' }; changed = true; }
+              if (!node.eventStatus) { node.eventStatus = 'https://schema.org/EventScheduled'; changed = true; }
+            }
+            if (changed) scripts[i].textContent = JSON.stringify(data);
+            break;
+          }
+        } catch (e) {}
+      }
+
       function init(targetDate, extra) {
         var isPast    = config.type === 'one-time' && targetDate && targetDate < new Date();
         var isUnknown = !targetDate;
         root.innerHTML = buildPage(config, targetDate, extra || {}, isPast, isUnknown);
         setupShare(config);
         if (!isPast && !isUnknown) startTicker(targetDate);
+        patchEventSchema(targetDate);
       }
 
       if (config.type === 'fixed') {
