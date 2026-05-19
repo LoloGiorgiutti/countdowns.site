@@ -31,51 +31,19 @@
 <header class="site-header">
   <a href="/fr/" class="logo">countdowns<span class="logo-tld">.site</span></a>
   <div class="header-right">
-    <div class="lang-switcher"><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='https://countdowns.site/countdown/six-nations/'">EN</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='https://countdowns.site/es/countdown/six-nations/'">ES</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='https://countdowns.site/pt/countdown/six-nations/'">PT</button><button class="lang-btn active">FR</button></div>
+    <div class="lang-seg" role="group" aria-label="Language"><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='https://countdowns.site/countdown/six-nations/'">EN</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='https://countdowns.site/es/countdown/six-nations/'">ES</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='https://countdowns.site/pt/countdown/six-nations/'">PT</button><button class="lang-btn active">FR</button></div>
     <button class="country-flag-btn" id="country-flag-btn" aria-label="Select country">🌍</button>
     <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme"></button>
   </div>
 </header>
 
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="/fr/">countdowns.site</a> / <span>Sports</span> / <span>Tournoi des Six Nations 2027</span>
-</nav>
 
-<main class="cd-wrap">
-  <div class="cd-hero">
-    <div class="cd-label">SPORTS • 2027</div>
-    <h1 class="cd-title">Tournoi des Six Nations 2027</h1>
-    <p class="cd-subtitle">Compte à rebours pour le Tournoi des Six Nations</p>
-    <div class="countdown-display" id="countdown"></div>
-    <p class="cd-note" id="cd-note"></p>
-  </div>
+<div id="root"><div style="min-height:100vh;background:#080812"></div></div>
 
-  <section class="cd-about">
-    <h2>À propos de Tournoi des Six Nations 2027</h2>
-    <p>Le Tournoi des Six Nations est la compétition annuelle de rugby opposant l'Angleterre, la France, l'Irlande, l'Italie, l'Écosse et le Pays de Galles. Le tournoi 2027 débute le 6 février 2027.</p>
-  </section>
-
-  <section class="cd-faq">
-    <h2>Questions Fréquentes</h2>
-    <div class="faq-item">
-      <h3 class="faq-q">Quand commence le Tournoi des Six Nations 2027?</h3>
-      <p class="faq-a">Le 6 février 2027.</p>
-    </div>
-    <div class="faq-item">
-      <h3 class="faq-q">Quelles équipes participent?</h3>
-      <p class="faq-a">Angleterre, France, Irlande, Italie, Écosse et Pays de Galles.</p>
-    </div>
-    <div class="faq-item">
-      <h3 class="faq-q">Qui est le champion en titre?</h3>
-      <p class="faq-a">L'Irlande est le champion en titre du Tournoi des Six Nations.</p>
-    </div>
-  </section>
-
-  <section class="cd-other">
-    <h2>Autres Comptes à Rebours</h2>
-    <div class="other-grid" id="other-grid"></div>
-  </section>
-</main>
+<div class="cd-article">
+  <p>Le Tournoi des Six Nations est la compétition annuelle de rugby opposant l'Angleterre, la France, l'Irlande, l'Italie, l'Écosse et le Pays de Galles. Le tournoi 2027 débute le 6 février 2027.</p>
+  <div class="cd-faq"><h2 class="cd-faq-title">Questions Fréquentes</h2><div class="cd-faq-item"><h3 class="cd-faq-q">Quand commence le Tournoi des Six Nations 2027?</h3><p class="cd-faq-a">Le 6 février 2027.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Quelles équipes participent?</h3><p class="cd-faq-a">Angleterre, France, Irlande, Italie, Écosse et Pays de Galles.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Qui est le champion en titre?</h3><p class="cd-faq-a">L'Irlande est le champion en titre du Tournoi des Six Nations.</p></div></div>
+</div>
 
 <footer class="site-footer">
   countdowns<span class="logo-tld">.site</span> · <a href="/fr/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>

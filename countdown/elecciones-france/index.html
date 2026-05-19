@@ -31,51 +31,19 @@
 <header class="site-header">
   <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
   <div class="header-right">
-    <div class="lang-switcher"><button class="lang-btn active">EN</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='https://countdowns.site/es/countdown/elecciones-france/'">ES</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='https://countdowns.site/pt/countdown/elecciones-france/'">PT</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='https://countdowns.site/fr/countdown/elecciones-france/'">FR</button></div>
+    <div class="lang-seg" role="group" aria-label="Language"><button class="lang-btn active">EN</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='https://countdowns.site/es/countdown/elecciones-france/'">ES</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='https://countdowns.site/pt/countdown/elecciones-france/'">PT</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='https://countdowns.site/fr/countdown/elecciones-france/'">FR</button></div>
     <button class="country-flag-btn" id="country-flag-btn" aria-label="Select country">🌍</button>
     <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme"></button>
   </div>
 </header>
 
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="/">countdowns.site</a> / <span>Politics</span> / <span>French Presidential Election 2027</span>
-</nav>
 
-<main class="cd-wrap">
-  <div class="cd-hero">
-    <div class="cd-label">POLITICS • 2027</div>
-    <h1 class="cd-title">French Presidential Election 2027</h1>
-    <p class="cd-subtitle">Countdown to France's next presidential election</p>
-    <div class="countdown-display" id="countdown"></div>
-    <p class="cd-note" id="cd-note"></p>
-  </div>
+<div id="root"><div style="min-height:100vh;background:#080812"></div></div>
 
-  <section class="cd-about">
-    <h2>About French Presidential Election 2027</h2>
-    <p>France holds presidential elections every five years. The next French presidential election is scheduled for spring 2027. The French president holds significant executive power — appointing the prime minister, leading foreign policy, and commanding the armed forces.</p><p>The election uses a two-round system: if no candidate wins an absolute majority in the first round, the top two candidates advance to a runoff two weeks later.</p>
-  </section>
-
-  <section class="cd-faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <h3 class="faq-q">When is the French Presidential Election 2027?</h3>
-      <p class="faq-a">The exact date is not yet confirmed. French presidential elections traditionally take place in April, with a runoff two weeks later if needed.</p>
-    </div>
-    <div class="faq-item">
-      <h3 class="faq-q">How does the French presidential election work?</h3>
-      <p class="faq-a">It uses a two-round majority system. If no candidate wins 50%+ in the first round, the top two candidates face off in a second round.</p>
-    </div>
-    <div class="faq-item">
-      <h3 class="faq-q">Who can vote in the French election?</h3>
-      <p class="faq-a">All French citizens aged 18 or older, including those living abroad, can vote.</p>
-    </div>
-  </section>
-
-  <section class="cd-other">
-    <h2>Other Countdowns</h2>
-    <div class="other-grid" id="other-grid"></div>
-  </section>
-</main>
+<div class="cd-article">
+  <p>France holds presidential elections every five years. The next French presidential election is scheduled for spring 2027. The French president holds significant executive power — appointing the prime minister, leading foreign policy, and commanding the armed forces.</p><p>The election uses a two-round system: if no candidate wins an absolute majority in the first round, the top two candidates advance to a runoff two weeks later.</p>
+  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">When is the French Presidential Election 2027?</h3><p class="cd-faq-a">The exact date is not yet confirmed. French presidential elections traditionally take place in April, with a runoff two weeks later if needed.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">How does the French presidential election work?</h3><p class="cd-faq-a">It uses a two-round majority system. If no candidate wins 50%+ in the first round, the top two candidates face off in a second round.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Who can vote in the French election?</h3><p class="cd-faq-a">All French citizens aged 18 or older, including those living abroad, can vote.</p></div></div>
+</div>
 
 <footer class="site-footer">
   countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>
