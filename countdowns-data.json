@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-10",
+  "updated": "2026-05-19",
   "_policy": "Only confirmed official dates. If unconfirmed → date: null. No estimated dates shown as real countdowns.",
   "events": {
     "gta6": {
@@ -162,6 +162,34 @@
     "mr-olympia-2026": {
       "date": "2026-09-24T09:00:00-07:00",
       "note": "Mr. Olympia 2026 — Palms Casino Resort, Las Vegas. September 24–27, 2026."
+    },
+    "roland-garros": {
+      "date": "2026-05-25T10:00:00+02:00",
+      "note": "Roland Garros 2026 runs May 25 – June 8 at Stade Roland Garros, Paris."
+    },
+    "pga-championship": {
+      "date": "2026-05-21T08:00:00-04:00",
+      "note": "PGA Championship 2026 runs May 21–24 at Quail Hollow Club, Charlotte, NC."
+    },
+    "us-open-golf": {
+      "date": "2026-06-18T07:00:00-04:00",
+      "note": "US Open Golf 2026 runs June 18–21 at Oakmont Country Club, Pennsylvania."
+    },
+    "the-open": {
+      "date": "2026-07-16T06:30:00+01:00",
+      "note": "The Open Championship 2026 runs July 16–19 at Royal Portrush, Northern Ireland."
+    },
+    "glastonbury": {
+      "date": "2026-06-24T12:00:00+01:00",
+      "note": "Glastonbury Festival 2026 runs June 24–28 at Worthy Farm, Pilton, Somerset."
+    },
+    "us-open-tennis": {
+      "date": "2026-08-31T11:00:00-04:00",
+      "note": "US Open Tennis 2026 runs August 31 – September 13 at USTA Billie Jean King National Tennis Center, New York."
+    },
+    "bonnaroo": {
+      "date": "2026-06-11T12:00:00-05:00",
+      "note": "Bonnaroo 2026 runs June 11–14 at Great Stage Park, Manchester, Tennessee."
     }
   }
 }
