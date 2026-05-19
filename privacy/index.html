@@ -17,19 +17,24 @@
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <style>
 .priv-wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
-.priv-wrap h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+.priv-wrap h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; color: var(--text, #e8eaf0); }
 .priv-wrap .priv-date { color: var(--text-muted, #888); font-size: .9rem; margin-bottom: 40px; }
-.priv-wrap h2 { font-size: 1.15rem; font-weight: 600; margin: 36px 0 10px; }
-.priv-wrap p, .priv-wrap li { line-height: 1.75; color: var(--text-secondary, #ccc); font-size: .97rem; }
+.priv-wrap h2 { font-size: 1.15rem; font-weight: 600; margin: 36px 0 10px; color: var(--text, #e8eaf0); }
+.priv-wrap p, .priv-wrap li { line-height: 1.75; color: var(--text-secondary, #a0aaba); font-size: .97rem; }
 .priv-wrap ul { padding-left: 1.4em; margin: 8px 0; }
 .priv-wrap a { color: var(--cat-color, #FBBF24); }
+[data-theme='light'] .priv-wrap h1,
+[data-theme='light'] .priv-wrap h2 { color: #1a1a2e; }
+[data-theme='light'] .priv-wrap p,
+[data-theme='light'] .priv-wrap li { color: #3a3a4a; }
+[data-theme='light'] .priv-wrap .priv-date { color: #666; }
 </style>
 </head>
 <body>
 <header class="site-header">
   <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
   <div class="header-right">
-    <button class="theme-btn" id="theme-toggle">Light</button>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme"></button>
   </div>
 </header>
 
@@ -73,20 +78,6 @@
   countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>
 </footer>
 
-<script>
-(function(){
-  var btn = document.getElementById('theme-toggle');
-  function applyTheme(t){
-    document.documentElement.setAttribute('data-theme', t);
-    if(btn) btn.textContent = t === 'light' ? 'Dark' : 'Light';
-    localStorage.setItem('cd_theme', t);
-  }
-  var saved = localStorage.getItem('cd_theme');
-  if(saved) applyTheme(saved);
-  if(btn) btn.addEventListener('click', function(){
-    applyTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
-  });
-})();
-</script>
+<script src="/countdown-engine.js"></script>
 </body>
 </html>
