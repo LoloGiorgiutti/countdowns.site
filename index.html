@@ -120,6 +120,19 @@
   .hub-fc-name { font-size:1.35rem; }
   .hub-fc-days-num { font-size:1.7rem; }
 }
+/* ── Override countdown.css conflicts ── */
+.hub-hero { text-align:left !important; }
+.hub-hero::before { display:none !important; }
+.hub-hero h1 em { background:none !important; -webkit-background-clip:unset !important; -webkit-text-fill-color:unset !important; background-clip:unset !important; color:var(--txt-muted,#75758f) !important; }
+.hub-hero-label span:first-child { background:#4ADE80 !important; box-shadow:0 0 8px #4ADE80 !important; }
+.hub-hero-actions { flex-direction:row !important; align-items:center !important; }
+.hub-create-btn { background:var(--txt,#eeeef8) !important; color:var(--bg,#08080f) !important; border:none !important; border-radius:99px !important; padding:7px 18px !important; font-size:.78rem !important; font-weight:700 !important; text-decoration:none !important; display:inline-flex !important; align-items:center !important; gap:5px !important; white-space:nowrap !important; cursor:pointer !important; }
+[data-theme="light"] .hub-create-btn { background:#0d0d18 !important; color:#f1f1f7 !important; }
+.sort-toggle { background:transparent !important; border:none !important; padding:0 !important; gap:8px !important; display:inline-flex !important; }
+.sort-btn { background:transparent !important; border:1px solid var(--card-border,rgba(255,255,255,.065)) !important; border-radius:99px !important; padding:7px 16px !important; font-size:.78rem !important; color:var(--txt-muted,#75758f) !important; cursor:pointer !important; font-family:inherit !important; }
+.sort-btn.active { background:var(--card-bg,#111119) !important; border-color:transparent !important; color:var(--txt,#eeeef8) !important; }
+[data-theme="light"] .sort-btn { border-color:rgba(0,0,0,.1) !important; color:#555 !important; }
+[data-theme="light"] .sort-btn.active { background:#fff !important; color:#0d0d18 !important; border-color:transparent !important; }
 </style>
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 
