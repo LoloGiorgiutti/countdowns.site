@@ -195,13 +195,13 @@ EVENTS = [
   dict(
     slug="iphone", name="Next iPhone", type="variable", category="Releases",
     regions=["global"],
-    seo_title="Next iPhone Countdown — Days Until iPhone 18 Release 2026",
-    meta_desc="Live countdown to the next iPhone release. Apple typically unveils new iPhones in September. Track the exact days until iPhone 18 launch.",
+    seo_title="Next iPhone Countdown — Days Until the Next Apple iPhone Release",
+    meta_desc="Live countdown to the next iPhone release. Apple typically unveils new iPhones in September each year. Track the exact days, hours and minutes.",
     hero_desc="Live countdown to Apple's next iPhone announcement and release.",
-    content="Apple traditionally announces new iPhone models in September, with an event usually held in the first or second week of the month. The iPhone 18 lineup is expected to be unveiled in September 2026, following the same annual release cadence Apple has maintained since 2012.",
+    content="Apple traditionally announces new iPhone models in September, with an event usually held in the first or second week of the month. Apple has maintained this annual release cadence since 2012, consistently launching new models each fall season.",
     faqs=[
-      ("When will the next iPhone be released?", "Apple typically announces new iPhones in September. The next iPhone (iPhone 18) is estimated to launch around September 9, 2026."),
-      ("What will iPhone 18 feature?", "Apple has not officially revealed iPhone 18 specs yet. Leaks suggest significant camera improvements, a new A20 chip, and potential design changes."),
+      ("When will the next iPhone be released?", "Apple typically announces new iPhones in September, with release following a week or two later. The live countdown above shows the estimated time until the next launch."),
+      ("What features will the next iPhone have?", "Apple does not pre-announce features. Leaks typically emerge several months before the September event and cover camera, chip, and design updates."),
       ("How do I pre-order the next iPhone?", "Apple opens pre-orders on the Friday following its September event, usually at apple.com and through carriers."),
     ]
   ),
@@ -215,7 +215,7 @@ EVENTS = [
     hero_desc="Live countdown to the next Formula 1 Grand Prix.",
     content="Formula 1 holds around 24 Grands Prix per season, racing on circuits across five continents from March to December. The countdown above always shows the time remaining until the next scheduled race.",
     faqs=[
-      ("When is the next F1 race?", "The countdown above shows the date of the next scheduled Grand Prix. The current race on the calendar is the Monaco Grand Prix on May 24, 2026."),
+      ("When is the next F1 race?", "The countdown above shows the date of the next scheduled Grand Prix. The current race on the calendar is the Monaco Grand Prix on May 24."),
       ("How long is an F1 race weekend?", "A standard F1 weekend spans Thursday–Sunday, with practice on Thursday and Friday, qualifying on Saturday, and the race on Sunday."),
       ("Where can I watch F1?", "Formula 1 is broadcast on ESPN (USA), Sky Sports F1 (UK), Canal+ (France), DAZN (various countries), and F1 TV globally."),
     ]
@@ -237,21 +237,21 @@ EVENTS = [
   dict(
     slug="ucl-final", name="Champions League Final", type="variable", category="Sports",
     regions=["global"],
-    seo_title="Champions League Final Countdown 2026 — Days Until UCL Final",
-    meta_desc="Live countdown to the UEFA Champions League 2025–26 Final at Puskás Aréna, Budapest on May 30, 2026.",
-    hero_desc="Countdown to the 2026 UEFA Champions League Final.",
-    content="The UEFA Champions League 2025–26 Final takes place at Puskás Aréna in Budapest, Hungary on May 30, 2026. The final is the most-watched annual club football event in the world, drawing an estimated 500 million viewers globally.",
+    seo_title="Champions League Final Countdown — Days Until the UCL Final",
+    meta_desc="Live countdown to the UEFA Champions League Final — the most-watched annual club football match in the world. Days, hours, minutes and seconds.",
+    hero_desc="Countdown to the UEFA Champions League Final.",
+    content="The UEFA Champions League Final is the most-watched annual club football event in the world, drawing an estimated 500 million viewers globally. The final is held each May or June at a pre-selected host stadium, with the venue rotating across Europe each season.",
     faqs=[
-      ("When is the Champions League Final 2026?", "The UCL Final 2026 is on May 30, 2026 at Puskás Aréna, Budapest."),
-      ("Where is the 2026 Champions League Final?", "The final is held at Puskás Aréna in Budapest, Hungary, with a capacity of around 68,000."),
-      ("How many teams are in the Champions League?", "The 2024–25 reformed format features 36 clubs in the league phase, with the top 8 advancing directly to the round of 16."),
+      ("When is the Champions League Final?", "The UCL Final typically takes place in late May or early June. The live countdown above updates automatically each season."),
+      ("Where is the Champions League Final held?", "The final venue rotates across European stadiums and is announced by UEFA each season, usually 3-4 years in advance."),
+      ("How many teams are in the Champions League?", "The reformed format features 36 clubs in the league phase, with the top 8 advancing directly to the round of 16."),
     ]
   ),
   dict(
     slug="nba-finals", name="NBA Finals", type="variable", category="Sports",
     regions=["global"],
-    seo_title="NBA Finals Countdown 2026 — Days Until the NBA Championship",
-    meta_desc="Real-time countdown to the 2026 NBA Finals. Track the days until basketball's biggest series begins.",
+    seo_title="NBA Finals Countdown — Days Until the NBA Championship",
+    meta_desc="Real-time countdown to the NBA Finals. Track the days until basketball's biggest series begins.",
     hero_desc="Countdown to the 2026 NBA Finals.",
     content="The NBA Finals is the annual championship series of the National Basketball Association, contested between the Eastern and Western Conference champions. The series typically begins in June following the conference finals.",
     faqs=[
@@ -263,12 +263,12 @@ EVENTS = [
   dict(
     slug="le-mans", name="24 Hours of Le Mans", type="variable", category="Sports",
     regions=["global"],
-    seo_title="Le Mans 24h Countdown 2026 — Days Until the 24 Hours of Le Mans",
-    meta_desc="Live countdown to the 24 Hours of Le Mans 2026. The world's most prestigious endurance race starts June 13, 2026 at Circuit de la Sarthe.",
+    seo_title="Le Mans 24h Countdown — Days Until the 24 Hours of Le Mans",
+    meta_desc="Live countdown to the 24 Hours of Le Mans. The world's most prestigious endurance race starts June 13, 2026 at Circuit de la Sarthe.",
     hero_desc="Countdown to the 2026 24 Hours of Le Mans.",
     content="The 24 Hours of Le Mans is the world's oldest active sports car endurance race, held annually on the Circuit de la Sarthe near Le Mans, France. In 2026, the race starts on June 13 and runs continuously for 24 hours, featuring the top hypercar, LMP2 and GT classes.",
     faqs=[
-      ("When is Le Mans 2026?", "The 24 Hours of Le Mans 2026 starts on Saturday, June 13, 2026 at 16:00 local time (CET)."),
+      ("When is Le Mans?", "The 24 Hours of Le Mans 2026 starts on Saturday, June 13, 2026 at 16:00 local time (CET)."),
       ("Where is Le Mans held?", "Le Mans is held on the Circuit de la Sarthe, a 13.6 km circuit combining permanent track with closed public roads near Le Mans, France."),
       ("How can I watch Le Mans?", "Le Mans is broadcast live on Eurosport (Europe), MotorTrend (USA), and the FIA WEC streaming platform globally."),
     ]
@@ -276,9 +276,9 @@ EVENTS = [
   dict(
     slug="wimbledon", name="Wimbledon", type="variable", category="Sports",
     regions=["global"],
-    seo_title="Wimbledon 2026 Countdown — Days Until Wimbledon Tennis",
-    meta_desc="Live countdown to Wimbledon 2026, the world's oldest and most prestigious tennis Grand Slam, starting June 29, 2026 at the All England Club.",
-    hero_desc="Countdown to The Championships, Wimbledon 2026.",
+    seo_title="Wimbledon Countdown — Days Until Wimbledon Tennis",
+    meta_desc="Live countdown to Wimbledon, the world's oldest and most prestigious tennis Grand Slam, starting June 29, 2026 at the All England Club.",
+    hero_desc="Countdown to The Championships, Wimbledon.",
     content="Wimbledon is the oldest tennis Grand Slam in the world, held annually at the All England Lawn Tennis Club in London since 1877. The 2026 Championships begin on June 29, with the men's and women's singles finals held on the last two Sundays of the fortnight.",
     faqs=[
       ("When does Wimbledon 2026 start?", "Wimbledon 2026 begins on Monday, June 29, 2026 and runs for two weeks through mid-July."),
@@ -289,8 +289,8 @@ EVENTS = [
   dict(
     slug="tour-de-france", name="Tour de France", type="variable", category="Sports",
     regions=["global"],
-    seo_title="Tour de France 2026 Countdown — Days Until the Tour de France",
-    meta_desc="Live countdown to the Tour de France 2026. The world's most famous cycling race starts in late June 2026 with 21 stages over three weeks.",
+    seo_title="Tour de France Countdown — Days Until the Tour de France",
+    meta_desc="Live countdown to the Tour de France. The world's most famous cycling race starts in late June 2026 with 21 stages over three weeks.",
     hero_desc="Countdown to the 2026 Tour de France.",
     content="The Tour de France is the world's most prestigious cycling race, held annually since 1903. The 2026 edition features 21 stages over 23 days, covering approximately 3,400 km across France and neighboring countries, finishing on the Champs-Élysées in Paris.",
     faqs=[
@@ -316,13 +316,13 @@ EVENTS = [
   dict(
     slug="super-bowl", name="Super Bowl", type="auto", category="Sports",
     regions=["en"],
-    seo_title="Super Bowl Countdown — Days Until Super Bowl LXI 2027",
-    meta_desc="Live countdown to Super Bowl LXI in 2027. The NFL championship game is played on the second Sunday of February each year.",
-    hero_desc="Countdown to Super Bowl LXI — the NFL Championship.",
-    content="The Super Bowl is the annual championship game of the National Football League (NFL), and one of the most-watched television events in the world. Super Bowl LXI takes place on the second Sunday of February 2027. The halftime show and commercials are as iconic as the game itself.",
+    seo_title="Super Bowl Countdown — Days Until the Next Super Bowl",
+    meta_desc="Live countdown to the next Super Bowl. The NFL championship game is played on the second Sunday of February each year. Days, hours, minutes and seconds.",
+    hero_desc="Countdown to the next Super Bowl — the NFL Championship.",
+    content="The Super Bowl is the annual championship game of the National Football League (NFL), and one of the most-watched television events in the world. Held on the second Sunday of February each year, the halftime show and commercials are as iconic as the game itself.",
     faqs=[
-      ("When is the next Super Bowl?", "Super Bowl LXI will be held on Sunday, February 7, 2027 (second Sunday of February)."),
-      ("Where is Super Bowl LXI?", "The host city for Super Bowl LXI has not yet been announced by the NFL."),
+      ("When is the next Super Bowl?", "The Super Bowl is held on the second Sunday of February each year. The live countdown above shows the exact time remaining."),
+      ("Where is the Super Bowl held?", "The Super Bowl host city rotates and is announced by the NFL several years in advance. It has been held in cities like Miami, New Orleans, Los Angeles, Las Vegas and Phoenix."),
       ("How much are Super Bowl tickets?", "Super Bowl tickets typically start at $900+ on the secondary market and often exceed $10,000 for premium seats."),
       ("When is the Super Bowl halftime show?", "The halftime show takes place between the second and third quarters, roughly 30–40 minutes into the game."),
     ]
@@ -330,12 +330,12 @@ EVENTS = [
   dict(
     slug="copa-libertadores", name="Copa Libertadores Final", type="variable", category="Sports",
     regions=["es", "pt"],
-    seo_title="Copa Libertadores Final 2026 Countdown — Days Until the Final",
+    seo_title="Copa Libertadores Final Countdown — Days Until the Final",
     meta_desc="Live countdown to the 2026 Copa Libertadores Final, South America's biggest club football match. Date and venue TBD by CONMEBOL.",
     hero_desc="Countdown to the 2026 Copa Libertadores Final.",
     content="The Copa Libertadores is South America's premier club football competition, organized by CONMEBOL. The annual final is one of the most watched football matches in the Americas. The 2026 final date and host city will be announced by CONMEBOL.",
     faqs=[
-      ("When is the Copa Libertadores Final 2026?", "The 2026 final date has not been confirmed yet. CONMEBOL usually holds the final in November."),
+      ("When is the Copa Libertadores Final?", "The 2026 final date has not been confirmed yet. CONMEBOL usually holds the final in November."),
       ("Where is the Copa Libertadores Final held?", "CONMEBOL selects a neutral venue for the final, often in a major South American city such as Buenos Aires, Lima, Montevideo or Asunción."),
       ("Which teams have won the most Copa Libertadores titles?", "Independiente (Argentina) is the most successful club with 7 titles. Boca Juniors (Argentina) and Estudiantes (Argentina) are also among the top winners."),
       ("How many teams participate in the Copa Libertadores?", "The Copa Libertadores features 47 clubs from CONMEBOL's 10 member nations, competing across multiple knockout and group stage rounds."),
@@ -346,8 +346,8 @@ EVENTS = [
   dict(
     slug="christmas", name="Christmas", type="auto", category="Holidays",
     regions=["global"],
-    seo_title="Christmas Countdown 2026 — Days Until Christmas",
-    meta_desc="How many days until Christmas 2026? Live countdown showing exact days, hours, minutes and seconds until December 25.",
+    seo_title="Christmas Countdown — Days Until Christmas",
+    meta_desc="How many days until Christmas? Live countdown showing exact days, hours, minutes and seconds until December 25.",
     hero_desc="How many days until Christmas?",
     content="Christmas is celebrated on December 25 each year across the world. As a public holiday in over 160 countries, it marks the culmination of the Advent season and is celebrated with gift-giving, family gatherings, and festive traditions.",
     faqs=[
@@ -361,12 +361,12 @@ EVENTS = [
   dict(
     slug="new-year", name="New Year", type="auto", category="Holidays",
     regions=["global"],
-    seo_title="New Year Countdown 2027 — Days Until New Year's Eve",
-    meta_desc="Live countdown to New Year 2027. How many days, hours and seconds until January 1, 2027? Watch the real-time counter.",
-    hero_desc="Countdown to New Year 2027.",
+    seo_title="New Year Countdown — Days Until New Year's Eve",
+    meta_desc="Live countdown to New Year. How many days, hours and seconds until January 1,? Watch the real-time counter.",
+    hero_desc="Countdown to New Year.",
     content="New Year's Day is celebrated on January 1 and marks the start of the new calendar year. New Year's Eve on December 31 is famous for fireworks and celebrations in cities around the world, including Sydney, Dubai, London and New York.",
     faqs=[
-      ("How many days until New Year 2027?", "The live counter above shows the exact time remaining until January 1, 2027."),
+      ("How many days until New Year?", "The live counter above shows the exact time remaining until January 1."),
       ("What day is New Year's Day 2027?", "New Year's Day 2027 falls on a Friday, January 1."),
       ("Where are the best New Year fireworks?", "Famous New Year fireworks displays include Sydney Harbour Bridge, Dubai, London's Thames, and New York's Times Square."),
       ("What time zone does New Year start first?", "New Year arrives first in Kiribati (UTC+14) and last in the Baker Island (UTC-12), about 26 hours apart."),
@@ -376,8 +376,8 @@ EVENTS = [
   dict(
     slug="halloween", name="Halloween", type="auto", category="Holidays",
     regions=["global"],
-    seo_title="Halloween Countdown 2026 — Days Until Halloween",
-    meta_desc="How many days until Halloween 2026? Live countdown to October 31. Watch the exact hours, minutes and seconds tick down.",
+    seo_title="Halloween Countdown — Days Until Halloween",
+    meta_desc="How many days until Halloween? Live countdown to October 31. Watch the exact hours, minutes and seconds tick down.",
     hero_desc="How many days until Halloween?",
     content="Halloween is celebrated annually on October 31, primarily in the United States, Canada, the United Kingdom, Ireland and Australia. Traditions include trick-or-treating, costume parties, pumpkin carving and haunted house visits.",
     faqs=[
@@ -391,8 +391,8 @@ EVENTS = [
   dict(
     slug="valentines", name="Valentine's Day", type="auto", category="Holidays",
     regions=["global"],
-    seo_title="Valentine's Day Countdown 2027 — Days Until Valentine's Day",
-    meta_desc="Live countdown to Valentine's Day 2027. How many days until February 14? Watch the exact hours and minutes remaining.",
+    seo_title="Valentine's Day Countdown — Days Until Valentine's Day",
+    meta_desc="Live countdown to Valentine's Day. How many days until February 14? Watch the exact hours and minutes remaining.",
     hero_desc="Countdown to Valentine's Day, February 14.",
     content="Valentine's Day is observed on February 14 each year as a celebration of love and affection. It is one of the most commercially significant holidays globally, with traditions including sending cards, flowers, chocolates and gifts to romantic partners.",
     faqs=[
@@ -406,13 +406,13 @@ EVENTS = [
   dict(
     slug="easter", name="Easter", type="auto", category="Holidays",
     regions=["global"],
-    seo_title="Easter 2027 Countdown — How Many Days Until Easter Sunday",
-    meta_desc="Live countdown to Easter 2027. Easter Sunday is a moveable feast — the countdown updates automatically each year.",
+    seo_title="Easter Countdown — How Many Days Until Easter Sunday",
+    meta_desc="Live countdown to Easter. Easter Sunday is a moveable feast — the countdown updates automatically each year.",
     hero_desc="Countdown to Easter Sunday.",
     content="Easter is a Christian holiday celebrating the resurrection of Jesus Christ. Easter Sunday falls on the first Sunday after the first full moon following the spring equinox (March 21), making it a moveable feast between March 22 and April 25.",
     faqs=[
-      ("When is Easter 2027?", "Easter 2027 falls on Sunday, March 28, 2027."),
-      ("When is Easter 2026?", "Easter 2026 falls on Sunday, April 5, 2026."),
+      ("When is Easter?", "Easter 2027 falls on Sunday, March 28."),
+      ("When is Easter?", "Easter 2026 falls on Sunday, April 5."),
       ("How is the date of Easter calculated?", "Easter falls on the first Sunday after the first full moon on or after March 21 (the ecclesiastical spring equinox). This is known as the computus."),
       ("What is Good Friday?", "Good Friday falls two days before Easter Sunday and marks the crucifixion of Jesus Christ. It is a public holiday in many countries."),
       ("What is Holy Week?", "Holy Week is the week leading up to Easter Sunday, beginning with Palm Sunday and including Maundy Thursday, Good Friday, and Holy Saturday."),
@@ -421,12 +421,12 @@ EVENTS = [
   dict(
     slug="mothers-day", name="Mother's Day", type="auto", category="Holidays",
     regions=["global"],
-    seo_title="Mother's Day Countdown 2027 — Days Until Mother's Day",
+    seo_title="Mother's Day Countdown — Days Until Mother's Day",
     meta_desc="Live countdown to Mother's Day. Select your country — date varies by region. US, UK, Mexico, Argentina, France and more.",
     hero_desc="Countdown to Mother's Day. Date varies by country.",
     content="Mother's Day is celebrated on different dates around the world. The US, Canada, Australia and Brazil observe it on the second Sunday of May. The UK celebrates Mothering Sunday on the fourth Sunday of Lent (usually in March). Mexico always celebrates on May 10. Argentina marks it on the third Sunday of October. France holds it on the last Sunday of May. Use the selector below to find the date for your country.",
     faqs=[
-      ("When is Mother's Day 2027 in the US?", "Mother's Day 2027 in the US, Canada and Australia falls on Sunday, May 9, 2027 (second Sunday of May)."),
+      ("When is Mother's Day 2027 in the US?", "Mother's Day 2027 in the US, Canada and Australia falls on Sunday, May 9 (second Sunday of May)."),
       ("When is Mother's Day in Mexico?", "Mexico always celebrates Mother's Day on May 10, regardless of the day of the week."),
       ("When is Mother's Day in Argentina?", "Argentina celebrates Mother's Day on the third Sunday of October. In 2026 it falls on October 18; in 2027 on October 17."),
       ("When is Mothering Sunday in the UK?", "The UK observes Mothering Sunday on the fourth Sunday of Lent, which varies each year. In 2027 it falls on March 7."),
@@ -445,12 +445,12 @@ EVENTS = [
   dict(
     slug="fathers-day", name="Father's Day", type="auto", category="Holidays",
     regions=["global"],
-    seo_title="Father's Day Countdown 2026 — Days Until Father's Day",
+    seo_title="Father's Day Countdown — Days Until Father's Day",
     meta_desc="Live countdown to Father's Day. Select your country — date varies by region. US, Australia, Germany, Brazil and more.",
     hero_desc="Countdown to Father's Day. Date varies by country.",
     content="Father's Day is celebrated on different dates around the world. The US, Canada, UK and Mexico observe it on the third Sunday of June. Australia and New Zealand celebrate on the first Sunday of September. Germany and Austria mark it on Ascension Thursday (39 days after Easter). Brazil celebrates on the second Sunday of August. Select your country below to see the countdown for your region.",
     faqs=[
-      ("When is Father's Day 2026 in the US?", "Father's Day 2026 in the US, Canada, UK and Mexico falls on Sunday, June 21, 2026 (third Sunday of June)."),
+      ("When is Father's Day 2026 in the US?", "Father's Day 2026 in the US, Canada, UK and Mexico falls on Sunday, June 21 (third Sunday of June)."),
       ("When is Father's Day in Australia?", "Australia and New Zealand celebrate Father's Day on the first Sunday of September. In 2026 that is September 6."),
       ("When is Father's Day in Germany?", "Germany and Austria celebrate Father's Day on Ascension Thursday, 39 days after Easter. In 2026 that falls on May 14."),
       ("When is Father's Day in Brazil?", "Brazil celebrates Father's Day on the second Sunday of August. In 2026 that is August 9."),
@@ -468,27 +468,27 @@ EVENTS = [
   dict(
     slug="thanksgiving", name="Thanksgiving", type="auto", category="Holidays",
     regions=["en"],
-    seo_title="Thanksgiving Countdown 2026 — Days Until Thanksgiving",
-    meta_desc="Live countdown to Thanksgiving 2026. US Thanksgiving falls on the fourth Thursday of November.",
+    seo_title="Thanksgiving Countdown — Days Until Thanksgiving",
+    meta_desc="Live countdown to Thanksgiving. US Thanksgiving falls on the fourth Thursday of November.",
     hero_desc="Countdown to Thanksgiving — fourth Thursday of November.",
     content="Thanksgiving is a national holiday in the United States celebrated on the fourth Thursday of November. It is one of the most travelled holidays in the US, marked by large family gatherings, a traditional turkey meal and the start of the holiday shopping season.",
     faqs=[
-      ("When is Thanksgiving 2026?", "Thanksgiving 2026 falls on Thursday, November 26, 2026."),
-      ("When is Black Friday 2026?", "Black Friday always falls the day after Thanksgiving — November 27, 2026."),
+      ("When is Thanksgiving?", "Thanksgiving 2026 falls on Thursday, November 26."),
+      ("When is Black Friday?", "Black Friday always falls the day after Thanksgiving — November 27."),
       ("Is Thanksgiving a national holiday?", "Yes, Thanksgiving is a federal holiday in the United States. Canada also celebrates Thanksgiving, but on the second Monday of October."),
-      ("When is Canadian Thanksgiving 2026?", "Canadian Thanksgiving 2026 falls on Monday, October 12, 2026 (second Monday of October)."),
+      ("When is Canadian Thanksgiving?", "Canadian Thanksgiving 2026 falls on Monday, October 12 (second Monday of October)."),
       ("What is the traditional Thanksgiving meal?", "The traditional US Thanksgiving meal typically includes roast turkey, stuffing, mashed potatoes, cranberry sauce, green bean casserole, and pumpkin pie."),
     ]
   ),
   dict(
     slug="independence-day", name="Independence Day", type="auto", category="Holidays",
     regions=["en"],
-    seo_title="Independence Day Countdown 2026 — Days Until July 4th",
-    meta_desc="Live countdown to US Independence Day 2026, July 4. How many days until the 4th of July fireworks?",
+    seo_title="Independence Day Countdown — Days Until July 4th",
+    meta_desc="Live countdown to US Independence Day, July 4. How many days until the 4th of July fireworks?",
     hero_desc="Countdown to US Independence Day — July 4.",
     content="Independence Day, commonly known as the Fourth of July, is a federal holiday in the United States commemorating the Declaration of Independence on July 4, 1776. Celebrations include fireworks, parades, barbecues and concerts across the country.",
     faqs=[
-      ("When is Independence Day 2026?", "Independence Day 2026 is on Saturday, July 4, 2026."),
+      ("When is Independence Day?", "Independence Day 2026 is on Saturday, July 4."),
       ("What day of the week is July 4, 2026?", "July 4, 2026 falls on a Saturday."),
       ("Why is Independence Day on July 4?", "The Continental Congress voted for independence on July 2, 1776, and the Declaration of Independence was formally adopted on July 4, 1776."),
     ]
@@ -496,13 +496,13 @@ EVENTS = [
   dict(
     slug="memorial-day", name="Memorial Day", type="auto", category="Holidays",
     regions=["en"],
-    seo_title="Memorial Day Countdown 2027 — Days Until Memorial Day",
-    meta_desc="Live countdown to Memorial Day 2027. Memorial Day is the last Monday of May and marks the unofficial start of summer in the US.",
+    seo_title="Memorial Day Countdown — Days Until Memorial Day",
+    meta_desc="Live countdown to Memorial Day. Memorial Day is the last Monday of May and marks the unofficial start of summer in the US.",
     hero_desc="Countdown to Memorial Day — last Monday of May.",
     content="Memorial Day is a United States federal holiday observed on the last Monday of May. It honours military personnel who have died in service. It is also widely regarded as the unofficial start of the summer season.",
     faqs=[
-      ("When is Memorial Day 2027?", "Memorial Day 2027 falls on Monday, May 31, 2027."),
-      ("When is Memorial Day 2026?", "Memorial Day 2026 falls on Monday, May 25, 2026 (last Monday of May)."),
+      ("When is Memorial Day?", "Memorial Day 2027 falls on Monday, May 31."),
+      ("When is Memorial Day?", "Memorial Day 2026 falls on Monday, May 25 (last Monday of May)."),
       ("Is Memorial Day a federal holiday?", "Yes, Memorial Day is a federal holiday in the US. Banks, government offices and many businesses are closed."),
       ("What is the difference between Memorial Day and Veterans Day?", "Memorial Day (last Monday of May) honours military personnel who died in service. Veterans Day (November 11) honours all military veterans, living and deceased."),
       ("Does Memorial Day mark the start of summer?", "Yes. Memorial Day weekend is widely considered the unofficial start of summer in the United States, with many people opening pools and taking road trips."),
@@ -511,12 +511,12 @@ EVENTS = [
   dict(
     slug="labor-day", name="Labor Day", type="auto", category="Holidays",
     regions=["en"],
-    seo_title="Labor Day Countdown 2026 — Days Until Labor Day",
-    meta_desc="Live countdown to Labor Day 2026. US Labor Day is the first Monday of September, marking the end of summer.",
+    seo_title="Labor Day Countdown — Days Until Labor Day",
+    meta_desc="Live countdown to Labor Day. US Labor Day is the first Monday of September, marking the end of summer.",
     hero_desc="Countdown to US Labor Day — first Monday of September.",
     content="Labor Day in the United States and Canada is celebrated on the first Monday of September. It honors the labour movement and the contributions of workers. In the US, it also marks the unofficial end of summer.",
     faqs=[
-      ("When is Labor Day 2026?", "Labor Day 2026 falls on Monday, September 7, 2026."),
+      ("When is Labor Day?", "Labor Day 2026 falls on Monday, September 7."),
       ("Is Labor Day the same as International Workers' Day?", "No. International Workers' Day (May Day) is May 1. US/Canada Labor Day is the first Monday of September."),
       ("Is Labor Day a federal holiday?", "Yes, Labor Day is a federal holiday in both the United States and Canada. Most businesses, schools and government offices are closed."),
       ("Does Labor Day mark the end of summer?", "Yes. Labor Day weekend is considered the unofficial end of summer in the US, and many schools resume in the days following it."),
@@ -525,13 +525,13 @@ EVENTS = [
   dict(
     slug="st-patricks", name="St. Patrick's Day", type="auto", category="Holidays",
     regions=["global"],
-    seo_title="St. Patrick's Day Countdown 2027 — Days Until March 17",
+    seo_title="St. Patrick's Day Countdown — Days Until March 17",
     meta_desc="Live countdown to St. Patrick's Day 2027, March 17. The Irish cultural holiday celebrated worldwide with parades, green beer and festivities.",
     hero_desc="Countdown to St. Patrick's Day — March 17.",
     content="St. Patrick's Day is a cultural and religious celebration held on March 17, the traditional death date of Saint Patrick, the patron saint of Ireland. It is a public holiday in Ireland and celebrated worldwide with parades, wearing of green, and Irish music and food.",
     faqs=[
-      ("When is St. Patrick's Day 2027?", "St. Patrick's Day 2027 falls on Wednesday, March 17, 2027."),
-      ("When is St. Patrick's Day 2026?", "St. Patrick's Day 2026 falls on Tuesday, March 17, 2026."),
+      ("When is St. Patrick's Day?", "St. Patrick's Day 2027 falls on Wednesday, March 17."),
+      ("When is St. Patrick's Day?", "St. Patrick's Day 2026 falls on Tuesday, March 17."),
       ("Where is the biggest St. Patrick's Day parade?", "New York City hosts one of the world's largest St. Patrick's Day parades, drawing millions of spectators along Fifth Avenue. Dublin also holds a major parade."),
       ("Is St. Patrick's Day a public holiday?", "St. Patrick's Day is a public holiday in the Republic of Ireland and Northern Ireland. It is a cultural observance (not a public holiday) in the US, Canada and Australia."),
       ("What colour is associated with St. Patrick's Day?", "Green is the iconic colour, symbolising Ireland's lush landscape. People around the world wear green and buildings are illuminated in green light on March 17."),
@@ -540,12 +540,12 @@ EVENTS = [
   dict(
     slug="dia-de-los-muertos", name="Día de los Muertos", type="auto", category="Holidays",
     regions=["es"],
-    seo_title="Día de los Muertos Countdown 2026 — Days Until Day of the Dead",
-    meta_desc="Live countdown to Día de los Muertos 2026, celebrated November 1–2 in Mexico and Latin America.",
+    seo_title="Día de los Muertos Countdown — Days Until Day of the Dead",
+    meta_desc="Live countdown to Día de los Muertos, celebrated November 1–2 in Mexico and Latin America.",
     hero_desc="Countdown to Día de los Muertos — November 1.",
     content="Día de los Muertos (Day of the Dead) is a Mexican and Latin American holiday celebrated on November 1–2, coinciding with the Catholic holy days of All Saints' Day and All Souls' Day. It honours deceased loved ones with colourful altars, marigolds, skull imagery and celebrations.",
     faqs=[
-      ("When is Día de los Muertos 2026?", "Día de los Muertos is celebrated November 1–2, 2026."),
+      ("When is Día de los Muertos?", "Día de los Muertos is celebrated November 1–2, 2026."),
       ("Is Día de los Muertos the same as Halloween?", "No. While they fall close together, Día de los Muertos is a distinct Mexican tradition honouring deceased loved ones through colour, food and altars — not a horror celebration."),
       ("What is an ofrenda?", "An ofrenda is a colourful altar built during Día de los Muertos to honour deceased loved ones. It typically holds photos, marigolds, candles, food and personal mementos."),
       ("Why are marigolds associated with Día de los Muertos?", "Marigolds (cempasúchil) are believed to guide the spirits of the dead back to the living world with their bright colour and strong scent."),
@@ -555,12 +555,12 @@ EVENTS = [
   dict(
     slug="cinco-de-mayo", name="Cinco de Mayo", type="auto", category="Holidays",
     regions=["es"],
-    seo_title="Cinco de Mayo Countdown 2027 — Days Until May 5",
-    meta_desc="Live countdown to Cinco de Mayo 2027. The Mexican holiday celebrated on May 5 commemorating the Battle of Puebla in 1862.",
+    seo_title="Cinco de Mayo Countdown — Days Until May 5",
+    meta_desc="Live countdown to Cinco de Mayo. The Mexican holiday celebrated on May 5 commemorating the Battle of Puebla.",
     hero_desc="Countdown to Cinco de Mayo — May 5.",
     content="Cinco de Mayo commemorates the Mexican army's victory over French forces at the Battle of Puebla on May 5, 1862. While it is a minor holiday in Mexico, it is widely celebrated in the United States as a celebration of Mexican-American culture.",
     faqs=[
-      ("When is Cinco de Mayo 2027?", "Cinco de Mayo 2027 falls on Tuesday, May 5, 2027."),
+      ("When is Cinco de Mayo?", "Cinco de Mayo 2027 falls on Tuesday, May 5."),
       ("Is Cinco de Mayo Mexican Independence Day?", "No. Mexican Independence Day is September 16. Cinco de Mayo commemorates the Mexican army's victory at the Battle of Puebla on May 5, 1862."),
       ("Is Cinco de Mayo a national holiday in Mexico?", "Cinco de Mayo is a regional holiday mainly observed in the state of Puebla, Mexico. It is not a federal public holiday. It is much more widely celebrated in the United States."),
       ("Why is Cinco de Mayo celebrated in the US?", "Cinco de Mayo became a celebration of Mexican-American culture and heritage in the US, popularised from the 1960s onward, particularly in states with large Mexican-American communities."),
@@ -569,7 +569,7 @@ EVENTS = [
   dict(
     slug="25-de-mayo", name="25 de Mayo — Día de la Patria", type="auto", category="Holidays",
     regions=["es"],
-    seo_title="25 de Mayo 2027 — Cuenta Regresiva Día de la Patria Argentina",
+    seo_title="25 de Mayo — Cuenta Regresiva Día de la Patria Argentina",
     meta_desc="Cuenta regresiva en vivo para el 25 de mayo, Día de la Patria Argentina. La Revolución de Mayo de 1810 que dio origen a la nación.",
     hero_desc="Cuenta regresiva al 25 de Mayo — Día de la Patria Argentina.",
     content="El 25 de Mayo conmemora la Revolución de Mayo de 1810, cuando se estableció la Primera Junta de Gobierno en Buenos Aires, marcando el inicio del camino hacia la independencia argentina. Es uno de los feriados patrios más importantes de la Argentina, celebrado con actos escolares, desfiles y el tradicional locro.",
@@ -584,7 +584,7 @@ EVENTS = [
   dict(
     slug="fiestas-patrias", name="Fiestas Patrias Chile", type="auto", category="Holidays",
     regions=["es"],
-    seo_title="Fiestas Patrias Chile 2026 Countdown — Days Until September 18",
+    seo_title="Fiestas Patrias Chile Countdown — Days Until September 18",
     meta_desc="Cuenta regresiva en vivo para las Fiestas Patrias de Chile 2026, celebradas el 18 y 19 de septiembre.",
     hero_desc="Countdown to Chilean Independence Day — September 18.",
     content="Las Fiestas Patrias chilenas se celebran el 18 y 19 de septiembre, conmemorando la Primera Junta de Gobierno de 1810 y el Día de las Glorias del Ejército. Son los días festivos más importantes de Chile, celebrados con fondas, cueca, asados y fuegos artificiales.",
@@ -599,12 +599,12 @@ EVENTS = [
   dict(
     slug="bastille-day", name="Bastille Day", type="auto", category="Holidays",
     regions=["fr"],
-    seo_title="Bastille Day Countdown 2026 — Days Until July 14 (Fête Nationale)",
-    meta_desc="Live countdown to Bastille Day 2026. The French national holiday on July 14 marks the storming of the Bastille in 1789.",
+    seo_title="Bastille Day Countdown — Days Until July 14 (Fête Nationale)",
+    meta_desc="Live countdown to Bastille Day. The French national holiday on July 14 marks the storming of the Bastille.",
     hero_desc="Countdown to Bastille Day — French National Holiday, July 14.",
     content="Bastille Day (La Fête Nationale) is France's national holiday, celebrated on July 14 to commemorate the Storming of the Bastille on July 14, 1789, a pivotal moment in the French Revolution. Celebrations include the military parade on the Champs-Élysées and a fireworks display at the Eiffel Tower.",
     faqs=[
-      ("When is Bastille Day 2026?", "Bastille Day 2026 falls on Tuesday, July 14, 2026."),
+      ("When is Bastille Day?", "Bastille Day 2026 falls on Tuesday, July 14."),
       ("What happens on Bastille Day?", "France celebrates with a military parade on the Champs-Élysées in Paris, a fireworks display at the Eiffel Tower, and balls and celebrations across the country."),
       ("What is the Storming of the Bastille?", "On July 14, 1789, Parisian revolutionaries stormed the Bastille prison, a symbol of royal tyranny. The event marked a turning point in the French Revolution."),
       ("Is Bastille Day a public holiday?", "Yes. July 14 is a national public holiday in France. Businesses, schools and government offices are closed."),
@@ -614,12 +614,12 @@ EVENTS = [
   dict(
     slug="oktoberfest", name="Oktoberfest", type="auto", category="Holidays",
     regions=["global"],
-    seo_title="Oktoberfest 2026 Countdown — Days Until Munich Oktoberfest",
+    seo_title="Oktoberfest Countdown — Days Until Munich Oktoberfest",
     meta_desc="Live countdown to Oktoberfest 2026 in Munich. The world's largest beer festival runs from late September through early October.",
     hero_desc="Countdown to Oktoberfest 2026 — Munich.",
     content="Oktoberfest is the world's largest folk festival, held annually in Munich, Bavaria. The festival begins on a Saturday in late September and runs for 16–18 days, ending on the first Sunday of October. It attracts around 6 million visitors each year.",
     faqs=[
-      ("When is Oktoberfest 2026?", "Oktoberfest 2026 begins on Saturday, September 19, 2026, and runs until October 4, 2026."),
+      ("When is Oktoberfest?", "Oktoberfest 2026 begins on Saturday, September 19, 2026, and runs until October 4."),
       ("Where is Oktoberfest held?", "Oktoberfest takes place at the Theresienwiese fairgrounds (known as the Wiesn) in Munich, Bavaria, Germany."),
       ("How many people attend Oktoberfest?", "Oktoberfest draws around 6 million visitors each year, making it the world's largest beer festival and folk event."),
       ("What is the most popular Oktoberfest tent?", "The Hofbräu-Festzelt (Hofbräu tent) is among the most famous. There are 17 large tents and 21 smaller ones, each run by a different Munich brewery."),
@@ -631,7 +631,7 @@ EVENTS = [
   dict(
     slug="dia-del-nino", name="Children's Day", type="fixed", category="Holidays",
     regions=["global", "es", "pt"],
-    seo_title="Children's Day Countdown 2026 — Days Until Children's Day",
+    seo_title="Children's Day Countdown — Days Until Children's Day",
     meta_desc="Live countdown to Children's Day. Date varies by country — Mexico April 30, Argentina 2nd Sunday of August, Brazil October 12.",
     hero_desc="Countdown to Children's Day. Date varies by country.",
     content="Children's Day is celebrated on different dates around the world. Mexico observes it on April 30. Argentina celebrates on the second Sunday of August. Brazil marks it on October 12 (also a religious holiday, Nossa Senhora Aparecida). The United Nations' Universal Children's Day is November 20. Select your country below to see your local countdown.",
@@ -655,7 +655,7 @@ EVENTS = [
   dict(
     slug="oscars", name="Oscars", type="auto", category="Entertainment",
     regions=["global"],
-    seo_title="Oscars 2027 Countdown — Days Until the Academy Awards",
+    seo_title="Oscars Countdown — Days Until the Academy Awards",
     meta_desc="Live countdown to the 2027 Academy Awards (Oscars). The ceremony is held on the last Sunday of February at the Dolby Theatre, Hollywood.",
     hero_desc="Countdown to the 2027 Academy Awards.",
     content="The Academy Awards, known as the Oscars, are the most prestigious awards in the film industry. Hosted by the Academy of Motion Picture Arts and Sciences, the ceremony is held annually at the Dolby Theatre in Hollywood and broadcast to over 200 countries.",
@@ -668,8 +668,8 @@ EVENTS = [
   dict(
     slug="grammys", name="Grammy Awards", type="variable", category="Entertainment",
     regions=["global"],
-    seo_title="Grammy Awards 2027 Countdown — Days Until the Grammys",
-    meta_desc="Live countdown to the Grammy Awards 2027. Music's biggest night — date TBA, usually held in January or February.",
+    seo_title="Grammy Awards Countdown — Days Until the Grammys",
+    meta_desc="Live countdown to the Grammy Awards. Music's biggest night — date TBA, usually held in January or February.",
     hero_desc="Countdown to the 2027 Grammy Awards.",
     content="The Grammy Awards are the most prestigious honours in the music industry, presented annually by the Recording Academy. The ceremony typically takes place in January or February and is broadcast live on CBS.",
     faqs=[
@@ -682,12 +682,12 @@ EVENTS = [
   dict(
     slug="met-gala", name="Met Gala", type="auto", category="Entertainment",
     regions=["global"],
-    seo_title="Met Gala 2027 Countdown — Days Until the Met Gala",
-    meta_desc="Live countdown to the Met Gala 2027. Fashion's biggest night is held on the first Monday of May at the Metropolitan Museum of Art.",
+    seo_title="Met Gala Countdown — Days Until the Met Gala",
+    meta_desc="Live countdown to the Met Gala. Fashion's biggest night is held on the first Monday of May at the Metropolitan Museum of Art.",
     hero_desc="Countdown to the Met Gala — first Monday of May.",
     content="The Met Gala (formally the Costume Institute Benefit) is an annual fundraising gala for the Metropolitan Museum of Art's Costume Institute in New York City. Held on the first Monday of May, it is fashion's most glamorous and star-studded event of the year.",
     faqs=[
-      ("When is the Met Gala 2027?", "The Met Gala 2027 is on Monday, May 3, 2027 (first Monday of May)."),
+      ("When is the Met Gala?", "The Met Gala 2027 is on Monday, May 3, 2027 (first Monday of May)."),
       ("Who hosts the Met Gala?", "The Met Gala is chaired by Vogue editor-in-chief Anna Wintour, along with celebrity co-chairs who change each year."),
       ("Can anyone attend the Met Gala?", "Attendance is invitation-only. Tables are sold to fashion houses and corporations, with individual tickets reportedly costing $75,000+."),
     ]
@@ -695,12 +695,12 @@ EVENTS = [
   dict(
     slug="eurovision", name="Eurovision Song Contest", type="variable", category="Entertainment",
     regions=["global", "fr"],
-    seo_title="Eurovision 2027 Countdown — Days Until the Eurovision Song Contest",
-    meta_desc="Live countdown to Eurovision Song Contest 2027. The Grand Final is held in May each year and is watched by over 160 million viewers.",
-    hero_desc="Countdown to the Eurovision Song Contest 2027.",
+    seo_title="Eurovision Countdown — Days Until the Eurovision Song Contest",
+    meta_desc="Live countdown to Eurovision Song Contest. The Grand Final is held in May each year and is watched by over 160 million viewers.",
+    hero_desc="Countdown to the Eurovision Song Contest.",
     content="The Eurovision Song Contest is Europe's (and the world's) biggest live music event, with over 160 million viewers tuning in annually. Held each May, it features competing songs from dozens of countries across Europe and beyond, with a combination of public and jury voting.",
     faqs=[
-      ("When is Eurovision 2027?", "The Eurovision 2027 Grand Final is estimated for Saturday, May 15, 2027. The exact date depends on the host country."),
+      ("When is Eurovision?", "The Eurovision 2027 Grand Final is estimated for Saturday, May 15. The exact date depends on the host country."),
       ("Who can participate in Eurovision?", "Any member country of the European Broadcasting Union (EBU) can participate, including non-European countries like Australia, Israel and Armenia."),
       ("How does Eurovision voting work?", "Each country awards points through a combination of national jury votes and public televote. 12 points goes to the favourite (douze points!)."),
     ]
@@ -708,12 +708,12 @@ EVENTS = [
   dict(
     slug="cannes", name="Cannes Film Festival", type="variable", category="Entertainment",
     regions=["global", "fr"],
-    seo_title="Cannes Film Festival 2026 Countdown — Days Until Cannes",
+    seo_title="Cannes Film Festival Countdown — Days Until Cannes",
     meta_desc="Live countdown to the 2026 Cannes Film Festival. The Palme d'Or competition opens May 13, 2026 on the French Riviera.",
     hero_desc="Countdown to the 2026 Cannes Film Festival.",
     content="The Cannes Film Festival is one of the world's most prestigious and publicised film festivals. Held annually in Cannes, France on the French Riviera, it presents and promotes films from around the world. The top prize, the Palme d'Or, is among the most coveted awards in cinema.",
     faqs=[
-      ("When is the Cannes Film Festival 2026?", "Cannes 2026 opens on May 13, 2026 and runs through May 24."),
+      ("When is the Cannes Film Festival?", "Cannes 2026 opens on May 13, 2026 and runs through May 24."),
       ("Where is the Cannes Film Festival?", "The festival is held at the Palais des Festivals et des Congrès in Cannes, on the French Riviera."),
       ("What is the Palme d'Or?", "The Palme d'Or is the highest prize awarded at Cannes, given to the best film in the main competition."),
     ]
@@ -721,12 +721,12 @@ EVENTS = [
   dict(
     slug="coachella", name="Coachella", type="variable", category="Entertainment",
     regions=["global"],
-    seo_title="Coachella 2027 Countdown — Days Until Coachella Valley Music Festival",
-    meta_desc="Live countdown to Coachella 2027. The world's most famous music festival takes place in the California desert each April.",
-    hero_desc="Countdown to Coachella 2027.",
+    seo_title="Coachella Countdown — Days Until Coachella Valley Music Festival",
+    meta_desc="Live countdown to Coachella. The world's most famous music festival takes place in the California desert each April.",
+    hero_desc="Countdown to Coachella.",
     content="The Coachella Valley Music and Arts Festival is held annually at the Empire Polo Club in Indio, California. It is one of the largest and most famous music festivals in the world, featuring top artists across two weekends in April.",
     faqs=[
-      ("When is Coachella 2027?", "Coachella 2027 Weekend 1 is estimated for April 9–11, 2027. Official dates are typically announced in late 2026."),
+      ("When is Coachella?", "Coachella 2027 Weekend 1 is estimated for April 9–11, 2027. Official dates are typically announced in late 2026."),
       ("Where is Coachella held?", "Coachella takes place at the Empire Polo Club in Indio, California, in the Coachella Valley desert."),
       ("How do I get Coachella tickets?", "Tickets go on sale on coachella.com, often selling out within hours. Passes include camping and shuttle options."),
     ]
@@ -736,14 +736,14 @@ EVENTS = [
   dict(
     slug="black-friday", name="Black Friday", type="auto", category="Sales",
     regions=["global"],
-    seo_title="Black Friday 2026 Countdown — Days Until Black Friday",
-    meta_desc="How many days until Black Friday 2026? Live countdown to the biggest shopping day of the year, the fourth Friday of November.",
+    seo_title="Black Friday Countdown — Days Until Black Friday",
+    meta_desc="How many days until Black Friday? Live countdown to the biggest shopping day of the year, the fourth Friday of November.",
     hero_desc="Countdown to Black Friday — fourth Friday of November.",
     content="Black Friday is the Friday after Thanksgiving in the United States and has become the unofficial start of the Christmas shopping season. Retailers offer steep discounts, and the day has expanded globally with online deals that now extend over an entire week.",
     faqs=[
-      ("When is Black Friday 2026?", "Black Friday 2026 falls on Friday, November 27, 2026."),
+      ("When is Black Friday?", "Black Friday 2026 falls on Friday, November 27."),
       ("When does Black Friday start?", "Many retailers now start Black Friday deals a week early online. The main in-store event is always the Friday after US Thanksgiving."),
-      ("When is Cyber Monday 2026?", "Cyber Monday 2026 is on Monday, November 30, 2026 — three days after Black Friday."),
+      ("When is Cyber Monday?", "Cyber Monday 2026 is on Monday, November 30, 2026 — three days after Black Friday."),
       ("Is Black Friday only in the US?", "No. Black Friday has spread globally and is now a major shopping event in the UK, Canada, Australia, Brazil, and most of Europe."),
       ("What are the best Black Friday deals?", "Electronics, appliances, clothing, toys and travel tend to offer the deepest discounts on Black Friday, both in-store and online."),
     ]
@@ -751,12 +751,12 @@ EVENTS = [
   dict(
     slug="cyber-monday", name="Cyber Monday", type="auto", category="Sales",
     regions=["global"],
-    seo_title="Cyber Monday 2026 Countdown — Days Until Cyber Monday",
-    meta_desc="Live countdown to Cyber Monday 2026. The biggest online shopping day of the year falls on the Monday after Black Friday.",
+    seo_title="Cyber Monday Countdown — Days Until Cyber Monday",
+    meta_desc="Live countdown to Cyber Monday. The biggest online shopping day of the year falls on the Monday after Black Friday.",
     hero_desc="Countdown to Cyber Monday — the biggest online shopping day.",
     content="Cyber Monday is an online shopping holiday created by retailers in 2005 to encourage people to shop online. It falls on the Monday after US Thanksgiving (three days after Black Friday) and has grown into the biggest online shopping day of the year globally.",
     faqs=[
-      ("When is Cyber Monday 2026?", "Cyber Monday 2026 is on Monday, November 30, 2026."),
+      ("When is Cyber Monday?", "Cyber Monday 2026 is on Monday, November 30."),
       ("Is Cyber Monday better than Black Friday?", "Both offer major deals. Cyber Monday focuses on online shopping and tech, while Black Friday traditionally includes both in-store and online offers. Many retailers now offer deals across the full Cyber Week."),
       ("What are the best Cyber Monday deals?", "Electronics, software, streaming services, laptops, and gaming gear typically see the deepest Cyber Monday discounts."),
       ("Is Cyber Monday only in the US?", "Originally a US event, Cyber Monday is now observed globally in the UK, Canada, Australia, and Latin America."),
@@ -765,7 +765,7 @@ EVENTS = [
   dict(
     slug="hot-sale", name="Hot Sale", type="variable", category="Sales",
     regions=["es"],
-    seo_title="Hot Sale Argentina 2027 Countdown — Cuántos días faltan para el Hot Sale",
+    seo_title="Hot Sale Argentina Countdown — Cuántos días faltan para el Hot Sale",
     meta_desc="Cuenta regresiva en vivo para el Hot Sale Argentina 2027. El evento de descuentos online más grande del país.",
     hero_desc="Countdown to Hot Sale Argentina — Argentina's biggest online sale event.",
     content="El Hot Sale es el evento de comercio electrónico más importante de Argentina, organizado por la Cámara Argentina de Comercio Electrónico (CACE). Se realiza anualmente en mayo y reúne a cientos de marcas con ofertas y descuentos exclusivos online.",
@@ -811,9 +811,9 @@ EVENTS = [
   dict(
     slug="lollapalooza-ar", name="Lollapalooza Argentina", type="variable", category="Music",
     regions=["es"],
-    seo_title="Lollapalooza Argentina 2027 Countdown — Cuántos días faltan",
+    seo_title="Lollapalooza Argentina Countdown — Cuántos días faltan",
     meta_desc="Cuenta regresiva en vivo para el Lollapalooza Argentina 2027 en el Hipódromo de San Isidro, Buenos Aires.",
-    hero_desc="Countdown to Lollapalooza Argentina 2027.",
+    hero_desc="Countdown to Lollapalooza Argentina.",
     content="Lollapalooza Argentina is one of the biggest music festivals in South America, held annually at the Hipódromo de San Isidro in Buenos Aires. The 2027 dates and lineup have not yet been announced.",
     faqs=[
       ("¿Cuándo es el Lollapalooza Argentina 2027?", "Las fechas aún no fueron anunciadas. El festival suele realizarse en marzo en el Hipódromo de San Isidro, Buenos Aires."),
@@ -825,9 +825,9 @@ EVENTS = [
   dict(
     slug="lollapalooza-cl", name="Lollapalooza Chile", type="variable", category="Music",
     regions=["es"],
-    seo_title="Lollapalooza Chile 2027 Countdown — Cuántos días faltan",
+    seo_title="Lollapalooza Chile Countdown — Cuántos días faltan",
     meta_desc="Cuenta regresiva en vivo para el Lollapalooza Chile 2027 en el Parque Bicentenario Cerrillos, Santiago.",
-    hero_desc="Countdown to Lollapalooza Chile 2027.",
+    hero_desc="Countdown to Lollapalooza Chile.",
     content="Lollapalooza Chile is held annually at Parque Bicentenario Cerrillos in Santiago. It is one of the most important music festivals in Latin America, typically held in March. The 2027 lineup and dates are pending announcement.",
     faqs=[
       ("¿Cuándo es el Lollapalooza Chile 2027?", "Las fechas aún no fueron anunciadas. Suele realizarse en marzo en el Parque Bicentenario Cerrillos, Santiago."),
@@ -839,9 +839,9 @@ EVENTS = [
   dict(
     slug="cosquin-rock", name="Cosquín Rock", type="variable", category="Music",
     regions=["es"],
-    seo_title="Cosquín Rock 2027 Countdown — Cuántos días faltan",
+    seo_title="Cosquín Rock Countdown — Cuántos días faltan",
     meta_desc="Cuenta regresiva en vivo para el Cosquín Rock 2027 en Santa María de Punilla, Córdoba.",
-    hero_desc="Countdown to Cosquín Rock 2027.",
+    hero_desc="Countdown to Cosquín Rock.",
     content="El Cosquín Rock es uno de los festivales de rock más importantes de Argentina y América Latina, realizado en Santa María de Punilla, Córdoba. Suele celebrarse en febrero y reúne a artistas nacionales e internacionales. Las fechas de 2027 aún no fueron anunciadas.",
     faqs=[
       ("¿Cuándo es el Cosquín Rock 2027?", "Las fechas aún no fueron anunciadas. Suele realizarse en febrero en Santa María de Punilla, Córdoba."),
@@ -853,12 +853,12 @@ EVENTS = [
   dict(
     slug="rock-in-rio", name="Rock in Rio Lisboa", type="variable", category="Music",
     regions=["pt"],
-    seo_title="Rock in Rio Lisboa 2026 Countdown — Days Until Rock in Rio",
+    seo_title="Rock in Rio Lisboa Countdown — Days Until Rock in Rio",
     meta_desc="Live countdown to Rock in Rio Lisboa 2026 at Parque da Bela Vista, Lisbon. Starts September 18, 2026.",
-    hero_desc="Countdown to Rock in Rio Lisboa 2026.",
+    hero_desc="Countdown to Rock in Rio Lisboa.",
     content="Rock in Rio Lisboa is one of the world's largest music festivals, held at Parque da Bela Vista in Lisbon, Portugal. The 2026 edition starts on September 18 and features international headliners across multiple stages.",
     faqs=[
-      ("When is Rock in Rio Lisboa 2026?", "Rock in Rio Lisboa 2026 starts on September 18, 2026 at Parque da Bela Vista, Lisbon."),
+      ("When is Rock in Rio Lisboa?", "Rock in Rio Lisboa 2026 starts on September 18, 2026 at Parque da Bela Vista, Lisbon."),
       ("How do I get Rock in Rio Lisboa tickets?", "Tickets (called Passports) are available at the official Rock in Rio Lisboa website. They often sell out within hours of going on sale."),
       ("How many days does Rock in Rio Lisboa last?", "Rock in Rio Lisboa typically runs over two consecutive weekends — 4 days of concerts spread across 8 days."),
       ("What stages does Rock in Rio Lisboa have?", "The main stage is the Palco Mundo (World Stage). Other stages include the Palco NOS and several smaller themed stages throughout the Cidade do Rock."),
@@ -869,12 +869,12 @@ EVENTS = [
   dict(
     slug="nyfw", name="New York Fashion Week", type="variable", category="Fashion",
     regions=["global"],
-    seo_title="New York Fashion Week 2026 Countdown — Days Until NYFW",
+    seo_title="New York Fashion Week Countdown — Days Until NYFW",
     meta_desc="Live countdown to New York Fashion Week September 2026 (Spring/Summer 2027 collections).",
-    hero_desc="Countdown to New York Fashion Week — September 2026.",
+    hero_desc="Countdown to New York Fashion Week — September.",
     content="New York Fashion Week (NYFW) is held twice a year in New York City — in February (for Fall/Winter collections) and September (for Spring/Summer collections). It is the first of the four major fashion weeks, followed by London, Milan and Paris.",
     faqs=[
-      ("When is New York Fashion Week 2026?", "NYFW September 2026 starts on September 8, 2026 (Spring/Summer 2027 collections)."),
+      ("When is New York Fashion Week?", "NYFW September 2026 starts on September 8, 2026 (Spring/Summer 2027 collections)."),
       ("Can I attend NYFW?", "NYFW shows are primarily industry-only events (buyers, press, stylists). Some designers hold open presentations or pop-up events — check nyfw.com for public programming."),
       ("How long does New York Fashion Week last?", "NYFW typically runs for about 7–9 days. It is held twice a year: February (Fall/Winter) and September (Spring/Summer)."),
       ("What is the order of the Big Four fashion weeks?", "The Big Four run in order: New York → London → Milan → Paris. The September season typically starts in early September and ends in late October."),
@@ -883,12 +883,12 @@ EVENTS = [
   dict(
     slug="paris-fw", name="Paris Fashion Week", type="variable", category="Fashion",
     regions=["global", "fr"],
-    seo_title="Paris Fashion Week 2026 Countdown — Days Until PFW",
+    seo_title="Paris Fashion Week Countdown — Days Until PFW",
     meta_desc="Live countdown to Paris Fashion Week September 2026 — the final and most glamorous of the Big Four fashion weeks.",
-    hero_desc="Countdown to Paris Fashion Week — September 2026.",
+    hero_desc="Countdown to Paris Fashion Week — September.",
     content="Paris Fashion Week closes the Big Four fashion weeks season. The September edition (Spring/Summer 2027 collections) features shows from Chanel, Dior, Louis Vuitton, Saint Laurent and more iconic French and international houses.",
     faqs=[
-      ("When is Paris Fashion Week 2026?", "Paris Fashion Week September 2026 starts on September 28, 2026 (Spring/Summer 2027 collections)."),
+      ("When is Paris Fashion Week?", "Paris Fashion Week September 2026 starts on September 28, 2026 (Spring/Summer 2027 collections)."),
       ("What is the order of the Big Four Fashion Weeks?", "The Big Four run in order: New York (Sep 8) → London → Milan (Sep 16) → Paris (Sep 28)."),
       ("What brands show at Paris Fashion Week?", "Paris Fashion Week features shows from Chanel, Dior, Louis Vuitton, Balenciaga, Givenchy, Saint Laurent, Valentino and many other iconic houses."),
       ("Is Paris Fashion Week open to the public?", "Most runway shows are strictly invitation-only. However, some brands hold exhibitions, presentations and pop-up events open to a wider audience."),
@@ -897,12 +897,12 @@ EVENTS = [
   dict(
     slug="milan-fw", name="Milan Fashion Week", type="variable", category="Fashion",
     regions=["global"],
-    seo_title="Milan Fashion Week 2026 Countdown — Days Until MFW",
-    meta_desc="Live countdown to Milan Fashion Week September 2026, featuring Prada, Gucci, Versace, Armani and more.",
-    hero_desc="Countdown to Milan Fashion Week — September 2026.",
+    seo_title="Milan Fashion Week Countdown — Days Until MFW",
+    meta_desc="Live countdown to Milan Fashion Week September, featuring Prada, Gucci, Versace, Armani and more.",
+    hero_desc="Countdown to Milan Fashion Week — September.",
     content="Milan Fashion Week is the third of the Big Four fashion weeks, held in September for Spring/Summer collections and February for Fall/Winter. The September 2026 edition features runway shows from Prada, Gucci, Versace, Bottega Veneta and many other iconic Italian houses.",
     faqs=[
-      ("When is Milan Fashion Week 2026?", "Milan Fashion Week September 2026 starts on September 16, 2026 (Spring/Summer 2027 collections)."),
+      ("When is Milan Fashion Week?", "Milan Fashion Week September 2026 starts on September 16, 2026 (Spring/Summer 2027 collections)."),
       ("What brands show at Milan Fashion Week?", "Milan Fashion Week features shows from Prada, Gucci, Versace, Armani, Dolce & Gabbana, Bottega Veneta, Fendi and many other Italian and international houses."),
       ("How long does Milan Fashion Week last?", "Milan Fashion Week typically runs for about 7–8 days, with multiple shows each day across the city."),
       ("Is Milan Fashion Week open to the public?", "Most runway shows are invitation-only for buyers, press and VIPs. Some brands also hold open exhibitions or public events during the week."),
@@ -911,9 +911,9 @@ EVENTS = [
   dict(
     slug="bafweek", name="Buenos Aires Fashion Week", type="variable", category="Fashion",
     regions=["es"],
-    seo_title="Buenos Aires Fashion Week 2026 Countdown — Cuántos días faltan",
+    seo_title="Buenos Aires Fashion Week Countdown — Cuántos días faltan",
     meta_desc="Cuenta regresiva en vivo para el Buenos Aires Fashion Week 2026, la semana de la moda más importante de Argentina.",
-    hero_desc="Countdown to Buenos Aires Fashion Week 2026.",
+    hero_desc="Countdown to Buenos Aires Fashion Week.",
     content="Buenos Aires Fashion Week (BAFWeek) is Argentina's premier fashion week, held twice a year showcasing the best of Argentine and Latin American fashion design. The Spring/Summer edition takes place in October at various venues across Buenos Aires.",
     faqs=[
       ("¿Cuándo es el BAFWeek 2026?", "El Buenos Aires Fashion Week edición primavera-verano 2026 está estimado para octubre de 2026."),
@@ -1211,7 +1211,7 @@ EVENTS = [
     slug="canada-day", name="Canada Day", type="auto", category="National Days",
     regions=["global"],
     seo_title="Canada Day Countdown — Days Until July 1st",
-    meta_desc="Live countdown to Canada Day on July 1st. Celebrate the anniversary of Canadian Confederation in 1867.",
+    meta_desc="Live countdown to Canada Day on July 1st. Celebrate the anniversary of Canadian Confederation.",
     hero_desc="Countdown to Canada Day — July 1st.",
     content="Canada Day, celebrated on July 1st every year, marks the anniversary of Canadian Confederation. On July 1, 1867, the British North America Act came into effect, uniting the provinces of Canada, Nova Scotia and New Brunswick into a single dominion within the British Empire.",
     faqs=[
@@ -1263,7 +1263,7 @@ EVENTS = [
     slug="german-unity-day", name="German Unity Day", type="auto", category="National Days",
     regions=["global"],
     seo_title="German Unity Day Countdown — Tag der Deutschen Einheit, October 3rd",
-    meta_desc="Live countdown to German Unity Day on October 3rd, celebrating the reunification of Germany in 1990.",
+    meta_desc="Live countdown to German Unity Day on October 3rd, celebrating the reunification of Germany.",
     hero_desc="Countdown to German Unity Day — October 3rd.",
     content="German Unity Day (Tag der Deutschen Einheit) is Germany's national holiday, celebrated on October 3rd. It commemorates the reunification of East and West Germany on October 3, 1990, following the fall of the Berlin Wall in November 1989.",
     faqs=[
@@ -1302,7 +1302,7 @@ EVENTS = [
     slug="freedom-day-za", name="South Africa Freedom Day", type="auto", category="National Days",
     regions=["global"],
     seo_title="South Africa Freedom Day Countdown — Days Until April 27th",
-    meta_desc="Live countdown to South Africa's Freedom Day on April 27th, celebrating the first democratic elections in 1994.",
+    meta_desc="Live countdown to South Africa's Freedom Day on April 27th, celebrating the first democratic elections.",
     hero_desc="Countdown to South Africa Freedom Day — April 27th.",
     content="Freedom Day is South Africa's national holiday observed on April 27th. It commemorates the country's first fully democratic elections held on April 27, 1994, which ended apartheid and resulted in Nelson Mandela becoming the first democratically elected president.",
     faqs=[
@@ -1536,7 +1536,7 @@ EVENTS = [
   dict(
     slug="lollapalooza-us", name="Lollapalooza Chicago", type="variable", category="Music",
     regions=["global"],
-    seo_title="Lollapalooza 2026 Countdown — Days Until Lollapalooza Chicago",
+    seo_title="Lollapalooza Countdown — Days Until Lollapalooza Chicago",
     meta_desc="Live countdown to Lollapalooza 2026 at Grant Park, Chicago. July 30 - August 2, 2026.",
     hero_desc="Countdown to Lollapalooza 2026 — Grant Park, Chicago.",
     content="Lollapalooza is one of the world's premier music festivals, held annually in Grant Park, Chicago. The 2026 edition runs from July 30 to August 2 and typically features over 170 acts across multiple stages. Founded in 1991, Lollapalooza has also expanded internationally to cities including Berlin, Paris, Buenos Aires, and Sao Paulo.",
@@ -1549,12 +1549,12 @@ EVENTS = [
   dict(
     slug="lollapalooza-de", name="Lollapalooza Berlin", type="variable", category="Music",
     regions=["global"],
-    seo_title="Lollapalooza Berlin 2026 Countdown — Days Until Lolla Berlin",
+    seo_title="Lollapalooza Berlin Countdown — Days Until Lolla Berlin",
     meta_desc="Live countdown to Lollapalooza Berlin 2026 at Tempelhof Field. July 18-19, 2026.",
     hero_desc="Countdown to Lollapalooza Berlin 2026 — Tempelhof Field.",
     content="Lollapalooza Berlin is the European flagship of the Lollapalooza festival franchise, held at the historic Tempelhof Field in Berlin. The 2026 edition takes place on July 18-19, drawing top international acts to one of Europe's most iconic outdoor venues.",
     faqs=[
-      ("When is Lollapalooza Berlin 2026?", "Lollapalooza Berlin 2026 is July 18-19, 2026 at Tempelhof Field, Berlin."),
+      ("When is Lollapalooza Berlin?", "Lollapalooza Berlin 2026 is July 18-19, 2026 at Tempelhof Field, Berlin."),
       ("Where is Lollapalooza Berlin held?", "At Tempelhof Field (Tempelhofer Feld), the former airport turned public park in central Berlin."),
       ("How do I get tickets for Lollapalooza Berlin?", "Tickets are sold at lollapalooza.de."),
     ]
@@ -1562,9 +1562,9 @@ EVENTS = [
   dict(
     slug="lollapalooza-fr", name="Lollapalooza Paris", type="variable", category="Music",
     regions=["global"],
-    seo_title="Lollapalooza Paris 2027 Countdown — Days Until Lolla Paris",
-    meta_desc="Live countdown to Lollapalooza Paris 2027. The 2026 edition was cancelled; 2027 dates are estimated.",
-    hero_desc="Countdown to Lollapalooza Paris 2027.",
+    seo_title="Lollapalooza Paris Countdown — Days Until Lolla Paris",
+    meta_desc="Live countdown to Lollapalooza Paris. The upcoming edition was cancelled; 2027 dates are estimated.",
+    hero_desc="Countdown to Lollapalooza Paris.",
     content="Lollapalooza Paris has been held at the Hippodrome de Longchamp in the Bois de Boulogne. The 2026 edition was cancelled, with the next edition expected in 2027. The estimated date is mid-July 2027.",
     faqs=[
       ("When is Lollapalooza Paris?", "The 2026 edition was cancelled. The next expected edition is estimated for July 2027."),
@@ -1575,12 +1575,12 @@ EVENTS = [
   dict(
     slug="primavera-sound-es", name="Primavera Sound Barcelona", type="variable", category="Music",
     regions=["global"],
-    seo_title="Primavera Sound Barcelona 2026 Countdown — Days Until Primavera Sound",
+    seo_title="Primavera Sound Barcelona Countdown — Days Until Primavera Sound",
     meta_desc="Live countdown to Primavera Sound Barcelona 2026 at Parc del Forum. June 4-6, 2026.",
-    hero_desc="Countdown to Primavera Sound Barcelona 2026.",
+    hero_desc="Countdown to Primavera Sound Barcelona.",
     content="Primavera Sound is one of the most acclaimed music festivals in Europe, held annually at Parc del Forum in Barcelona. Known for its eclectic lineup spanning indie, electronic, rock, and pop, the 2026 edition runs June 4-6 with a pre-festival week in late May.",
     faqs=[
-      ("When is Primavera Sound Barcelona 2026?", "The main weekend is June 4-6, 2026 at Parc del Forum, Barcelona."),
+      ("When is Primavera Sound Barcelona?", "The main weekend is June 4-6, 2026 at Parc del Forum, Barcelona."),
       ("What genres are featured?", "Primavera Sound is known for indie rock, electronic music, alternative pop, and experimental artists."),
       ("Are there other Primavera Sound editions?", "Yes. Primavera Sound also takes place in Madrid and has international editions in Buenos Aires and Sao Paulo."),
     ]
@@ -1588,12 +1588,12 @@ EVENTS = [
   dict(
     slug="primavera-sound-ar", name="Primavera Sound Buenos Aires", type="variable", category="Music",
     regions=["global"],
-    seo_title="Primavera Sound Buenos Aires 2026 Countdown",
+    seo_title="Primavera Sound Buenos Aires Countdown",
     meta_desc="Live countdown to Primavera Sound Buenos Aires 2026 at Hipodromo de Palermo. November 28-29, 2026.",
-    hero_desc="Countdown to Primavera Sound Buenos Aires 2026.",
+    hero_desc="Countdown to Primavera Sound Buenos Aires.",
     content="Primavera Sound Buenos Aires brings the iconic Barcelona festival to Argentina, held at the Hipodromo de Palermo. The 2026 edition is scheduled for November 28-29, featuring international and local artists across multiple stages.",
     faqs=[
-      ("When is Primavera Sound Buenos Aires 2026?", "November 28-29, 2026 at Hipodromo de Palermo, Buenos Aires."),
+      ("When is Primavera Sound Buenos Aires?", "November 28-29, 2026 at Hipodromo de Palermo, Buenos Aires."),
       ("What artists perform at Primavera Sound Buenos Aires?", "The lineup mirrors Primavera Sound's signature blend of indie, electronic, and alternative music, featuring both international headliners and local South American acts."),
       ("How do I get tickets?", "Tickets are available at primaverasound.com.ar."),
     ]
@@ -1601,12 +1601,12 @@ EVENTS = [
   dict(
     slug="primavera-sound-br", name="Primavera Sound Sao Paulo", type="variable", category="Music",
     regions=["global"],
-    seo_title="Primavera Sound Sao Paulo 2026 Countdown",
+    seo_title="Primavera Sound Sao Paulo Countdown",
     meta_desc="Live countdown to Primavera Sound Sao Paulo 2026 at Interlagos. December 5-6, 2026.",
-    hero_desc="Countdown to Primavera Sound Sao Paulo 2026.",
+    hero_desc="Countdown to Primavera Sound Sao Paulo.",
     content="Primavera Sound Sao Paulo is held at the Autodromo de Interlagos, the iconic Formula 1 venue. The 2026 edition is scheduled for December 5-6, featuring the same eclectic international lineup as the Barcelona and Buenos Aires editions.",
     faqs=[
-      ("When is Primavera Sound Sao Paulo 2026?", "December 5-6, 2026 at Autodromo de Interlagos, Sao Paulo."),
+      ("When is Primavera Sound Sao Paulo?", "December 5-6, 2026 at Autodromo de Interlagos, Sao Paulo."),
       ("Where is Primavera Sound Sao Paulo held?", "At the Autodromo Jose Carlos Pace (Interlagos), also home to the Brazilian Formula 1 Grand Prix."),
       ("How do I get tickets?", "Tickets are available at primaverasound.com.br."),
     ]
@@ -1614,12 +1614,12 @@ EVENTS = [
   dict(
     slug="tomorrowland", name="Tomorrowland", type="variable", category="Music",
     regions=["global"],
-    seo_title="Tomorrowland 2026 Countdown — Days Until Tomorrowland",
+    seo_title="Tomorrowland Countdown — Days Until Tomorrowland",
     meta_desc="Live countdown to Tomorrowland 2026 at De Schorre, Boom, Belgium. July 17-26, 2026.",
     hero_desc="Countdown to Tomorrowland 2026 — Boom, Belgium.",
     content="Tomorrowland is the world's leading electronic music festival, held at De Schorre nature reserve in Boom, Belgium. The 2026 edition spans two weekends: July 17-19 and July 24-26, featuring hundreds of DJs across dozens of elaborately themed stages.",
     faqs=[
-      ("When is Tomorrowland 2026?", "Tomorrowland 2026 takes place on July 17-19 and July 24-26, 2026 at De Schorre, Boom, Belgium."),
+      ("When is Tomorrowland?", "Tomorrowland 2026 takes place on July 17-19 and July 24-26, 2026 at De Schorre, Boom, Belgium."),
       ("What music is played at Tomorrowland?", "Tomorrowland focuses on electronic dance music (EDM), house, techno, trance, and related genres."),
       ("How do I get tickets for Tomorrowland?", "Tomorrowland tickets sell out very quickly. They are available at tomorrowland.com through a registration and lottery system."),
       ("How many people attend Tomorrowland?", "Each weekend of Tomorrowland attracts around 200,000 festival-goers, with attendees from over 200 countries."),
@@ -1645,7 +1645,7 @@ EVENTS = [
     regions=["global"],
     seo_title="Copa America 2028 Countdown — Days Until Copa America",
     meta_desc="Live countdown to Copa America 2028. Estimated start: June 1, 2028. Host country TBD.",
-    hero_desc="Countdown to Copa America 2028.",
+    hero_desc="Countdown to Copa America.",
     content="Copa America 2028 is the next edition of South America's premier international football tournament, organized by CONMEBOL. The host country is yet to be confirmed. The tournament typically takes place every four years and features the 10 CONMEBOL member nations plus 6 invited CONCACAF teams. The estimated start is June 2028.",
     faqs=[
       ("When is Copa America 2028?", "Copa America 2028 is estimated to start in June 2028. The exact dates and host country are yet to be confirmed."),
@@ -1697,7 +1697,7 @@ EVENTS = [
   dict(
     slug="ces", name="CES Las Vegas", type="auto", category="Technology",
     regions=["global"],
-    seo_title="CES Las Vegas Countdown — Days Until CES 2027",
+    seo_title="CES Las Vegas Countdown — Days Until ",
     meta_desc="Live countdown to CES (Consumer Electronics Show) in Las Vegas. The world's largest tech trade show, held every January.",
     hero_desc="Countdown to CES — Consumer Electronics Show, Las Vegas.",
     content="CES (Consumer Electronics Show) is the world's most influential technology trade show, held annually in early January in Las Vegas, Nevada. Organized by the Consumer Technology Association, CES hosts over 4,000 exhibiting companies and attracts around 170,000 attendees from 160+ countries. Major announcements in TVs, cars, AI, robotics, and consumer gadgets are made every year.",
@@ -1757,7 +1757,7 @@ EVENTS = [
     regions=["es"],
     seo_title="Argentine Elections 2027 Countdown — Días para las Elecciones",
     meta_desc="Cuenta regresiva para las Elecciones Generales Argentina 2027, estimadas para el 26 de octubre de 2027.",
-    hero_desc="Countdown to the Argentine General Elections 2027.",
+    hero_desc="Countdown to the Argentine General Elections.",
     content="Argentina celebrará elecciones generales en octubre de 2027, cuando se renovará la composición del Congreso Nacional y se elegirá al próximo presidente y vicepresidente de la Nación para el período 2027–2031.",
     faqs=[
       ("¿Cuándo son las elecciones en Argentina 2027?", "Las elecciones generales Argentina 2027 están estimadas para el 26 de octubre de 2027."),

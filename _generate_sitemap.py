@@ -8,7 +8,8 @@ BASE_URL = "https://countdowns.site"
 ROOT = os.path.dirname(os.path.abspath(__file__))
 TODAY = date.today().isoformat()
 
-EXCLUDE = {"/admin", "/custom", "/es/custom", "/pt/custom", "/fr/custom"}
+EXCLUDE = {"/admin", "/custom", "/es/custom", "/pt/custom", "/fr/custom",
+           "/embed", "/es/embed", "/pt/embed", "/fr/embed", "/countdowns-src"}
 
 def get_priority(path):
     if path == "":
