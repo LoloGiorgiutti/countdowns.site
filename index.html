@@ -741,10 +741,7 @@
       if (featuredGrid) featuredGrid.innerHTML = featured.map(function(r){ return buildFeatured(r.ev,r.data); }).join('');
 
       var html = '';
-      var _featuredMaxDays = featured.length > 0 && featured[featured.length-1].data.state !== 'unknown'
-        ? (featured[featured.length-1].data.state === 'today' ? 0 : (featured[featured.length-1].data.days || 0))
-        : -1;
-      var lastBucket = _featuredMaxDays >= 0 ? bucket(_featuredMaxDays) : null;
+      var lastBucket = null;
       rest.forEach(function(r) {
         var b = bucket(r.data.state==='today'?0:r.data.days);
         if (b !== lastBucket) {
