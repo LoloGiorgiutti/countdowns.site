@@ -366,6 +366,34 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     'fiestas-patrias':  function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,8,18); }) }; },
     'bastille-day':     function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,6,14); }) }; },
     'oktoberfest':      function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,8,19); }) }; },
+    'dia-del-nino': function () {
+      var tz = getCountryTZ();
+      var country = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
+      return { date: nextOccurrence(function (y) {
+        if (country === 'AE') return midnightInTZ(tz, y, 2, 15);
+        if (country === 'NZ') return tzDay(tz, nthWeekday(y, 2, 1, 0));
+        if (country === 'BO') return midnightInTZ(tz, y, 3, 12);
+        if (country === 'ES') return midnightInTZ(tz, y, 3, 15);
+        if (country === 'CO') return tzDay(tz, lastWeekday(y, 3, 6));
+        if (country === 'MX') return midnightInTZ(tz, y, 3, 30);
+        if (['EC','NI','PT','BE'].indexOf(country) >= 0) return midnightInTZ(tz, y, 5, 1);
+        if (country === 'US') return tzDay(tz, nthWeekday(y, 5, 2, 0));
+        if (['VE','PA','CU'].indexOf(country) >= 0) return tzDay(tz, nthWeekday(y, 6, 3, 0));
+        if (country === 'PR') return tzDay(tz, nthWeekday(y, 7, 2, 0));
+        if (['AR','UY','PE'].indexOf(country) >= 0) return tzDay(tz, nthWeekday(y, 7, 3, 0));
+        if (country === 'PY') return midnightInTZ(tz, y, 7, 16);
+        if (country === 'CR') return midnightInTZ(tz, y, 8, 9);
+        if (country === 'HN') return midnightInTZ(tz, y, 8, 10);
+        if (['DE','AT'].indexOf(country) >= 0) return midnightInTZ(tz, y, 8, 20);
+        if (country === 'DO') return midnightInTZ(tz, y, 8, 29);
+        if (['GT','SV'].indexOf(country) >= 0) return midnightInTZ(tz, y, 9, 1);
+        if (country === 'SG') return tzDay(tz, nthWeekday(y, 9, 1, 5));
+        if (country === 'BR') return midnightInTZ(tz, y, 9, 12);
+        if (country === 'CL') return tzDay(tz, nthWeekday(y, 9, 4, 0));
+        if (country === 'AU') return tzDay(tz, nthWeekday(y, 9, 4, 3));
+        return midnightInTZ(tz, y, 10, 20);
+      }) };
+    },
 
     /* ── US Holidays ── */
     'thanksgiving': function () {
