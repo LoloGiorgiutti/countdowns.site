@@ -32,6 +32,95 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
+<style>
+/* ── HUB HERO layout ── */
+.hub-hero { max-width:1120px; margin:0 auto; padding:56px 32px 0; }
+.hub-hero-top { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:24px; }
+.hub-hero h1 { font-size:clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.035em; line-height:1.1; }
+.hub-hero h1 em { font-style:normal; color:var(--txt-muted,#75758f); }
+.hub-hero-label { display:inline-flex; align-items:center; gap:7px; font-size:.72rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--txt-muted,#75758f); margin-bottom:14px; }
+.hub-hero-label span { display:inline-block; width:6px; height:6px; border-radius:50%; background:#4ADE80; box-shadow:0 0 8px #4ADE80; animation:hub-pulse 2s infinite; }
+@keyframes hub-pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.hub-hero-actions { display:flex; gap:8px; align-items:center; flex-wrap:wrap; flex-shrink:0; }
+.hub-hero-sub { display:none; }
+/* ── SEARCH ── */
+.hub-search-wrap { position:relative; margin-bottom:40px; }
+.hub-search-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--txt-muted,#75758f); display:flex; align-items:center; pointer-events:none; }
+.hub-search-input { font-family:inherit; font-size:.9rem; font-weight:500; width:100%; padding:11px 16px 11px 42px; background:var(--card-bg,#111119); border:1px solid var(--card-border,rgba(255,255,255,.065)); border-radius:12px; color:var(--txt,#eeeef8); outline:none; transition:border-color .2s; }
+.hub-search-input::placeholder { color:var(--txt-dim,#3d3d52); }
+.hub-search-input:focus { border-color:rgba(255,255,255,.18); }
+[data-theme="light"] .hub-search-input { background:#fff; border-color:rgba(0,0,0,.07); color:#0d0d18; }
+[data-theme="light"] .hub-search-input::placeholder { color:#b0b0c8; }
+[data-theme="light"] .hub-search-input:focus { border-color:rgba(0,0,0,.2); }
+.hub-search-clear { position:absolute; right:12px; top:50%; transform:translateY(-50%); display:none; cursor:pointer; font-size:.85rem; color:var(--txt-muted,#75758f); background:none; border:none; font-family:inherit; padding:4px 6px; }
+/* ── FEATURED SECTION ── */
+.hub-featured-label { font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt-dim,#3d3d52); display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.hub-featured-label::after { content:''; flex:1; height:1px; background:var(--card-border,rgba(255,255,255,.065)); }
+.hub-featured-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:48px; }
+/* ── FEATURED CARD ── */
+.hub-fc { position:relative; overflow:hidden; border-radius:18px; padding:26px 22px 22px; min-height:186px; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--card-border,rgba(255,255,255,.065)); background:var(--card-bg,#111119); text-decoration:none; color:inherit; transition:transform .18s, box-shadow .18s, border-color .18s; }
+.hub-fc::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 110% -10%, var(--cat-glow,rgba(129,140,248,.15)) 0%, transparent 55%); }
+.hub-fc::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--cat-color,#818CF8) 0%, transparent 70%); opacity:.5; }
+.hub-fc:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(0,0,0,.35); border-color:rgba(255,255,255,.12); }
+[data-theme="light"] .hub-fc { background:#fff; border-color:rgba(0,0,0,.07); }
+[data-theme="light"] .hub-fc:hover { box-shadow:0 8px 24px rgba(0,0,0,.1); border-color:rgba(0,0,0,.13); }
+.hub-fc-cat { font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--cat-color,#818CF8); opacity:.85; margin-bottom:10px; }
+.hub-fc-name { font-size:1.65rem; font-weight:700; letter-spacing:-.03em; line-height:1.15; flex:1; color:var(--txt,#eeeef8); }
+[data-theme="light"] .hub-fc-name { color:#0d0d18; }
+.hub-fc-bottom { display:flex; align-items:flex-end; justify-content:space-between; margin-top:20px; }
+.hub-fc-days-num { font-size:2.2rem; font-weight:700; letter-spacing:-.04em; line-height:1; color:#ffffff; text-shadow:0 0 18px rgba(255,255,255,.45), 0 0 40px rgba(255,255,255,.18); }
+[data-theme="light"] .hub-fc-days-num { color:#0d0d18; text-shadow:0 0 12px rgba(0,0,0,.12); }
+.hub-fc-days-lbl { font-size:.72rem; color:var(--txt-muted,#75758f); margin-top:3px; }
+.hub-fc-date-arrow { display:flex; flex-direction:column; align-items:flex-end; gap:5px; }
+.hub-fc-date { font-size:.78rem; color:var(--txt-muted,#75758f); }
+.hub-fc-arrow { font-size:1rem; color:var(--txt-dim,#3d3d52); transition:transform .15s, color .15s; }
+.hub-fc:hover .hub-fc-arrow { transform:translateX(4px); color:var(--cat-color,#818CF8); }
+/* ── COMPACT GRID ── */
+.hub-compact-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; margin-bottom:32px; }
+/* ── COMPACT CARD ── */
+.hub-cc { position:relative; overflow:hidden; border-radius:14px; padding:18px 16px 14px; min-height:118px; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--card-border,rgba(255,255,255,.065)); background:var(--card-bg,#111119); text-decoration:none; color:inherit; transition:transform .14s, border-color .14s; }
+.hub-cc::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at -10% 60%, var(--cat-glow,rgba(129,140,248,.07)) 0%, transparent 60%); opacity:.5; }
+.hub-cc:hover { transform:translateY(-2px); border-color:rgba(255,255,255,.12); }
+[data-theme="light"] .hub-cc { background:#fff; border-color:rgba(0,0,0,.07); }
+[data-theme="light"] .hub-cc:hover { border-color:rgba(0,0,0,.12); }
+.hub-cc-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:8px; }
+.hub-cc-cat { font-size:.67rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--cat-color,#818CF8); opacity:.9; }
+.hub-cc-pill { flex-shrink:0; font-size:1.25rem; font-weight:700; letter-spacing:-.03em; line-height:1; color:#ffffff; text-shadow:0 0 10px rgba(255,255,255,.2); white-space:nowrap; }
+[data-theme="light"] .hub-cc-pill { color:#0d0d18; text-shadow:0 0 10px rgba(0,0,0,.1); }
+.hub-cc-pill--today { font-size:.8rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--cat-color,#818CF8); text-shadow:0 0 12px var(--cat-glow,rgba(129,140,248,.5)); }
+.hub-cc-pill--tba { font-size:.75rem; font-weight:600; color:var(--txt-muted,#75758f); text-shadow:none; }
+.hub-cc-name { font-size:1.08rem; font-weight:700; letter-spacing:-.02em; line-height:1.25; color:var(--txt,#eeeef8); flex:1; }
+[data-theme="light"] .hub-cc-name { color:#0d0d18; }
+.hub-cc-bottom { display:flex; align-items:center; justify-content:space-between; margin-top:10px; }
+.hub-cc-date { font-size:.73rem; color:var(--txt-dim,#3d3d52); }
+[data-theme="light"] .hub-cc-date { color:#b0b0c8; }
+.hub-cc-arrow { font-size:.85rem; color:var(--txt-dim,#3d3d52); transition:transform .14s, color .14s; }
+.hub-cc:hover .hub-cc-arrow { transform:translateX(3px); color:var(--cat-color,#818CF8); }
+.hub-cc--past { opacity:.45; }
+/* ── BUCKET HEADER ── */
+.hub-bucket-hdr { font-size:.66rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt-dim,#3d3d52); display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:36px; }
+.hub-bucket-hdr:first-child { margin-top:0; }
+.hub-bucket-hdr::after { content:''; flex:1; height:1px; background:var(--card-border,rgba(255,255,255,.065)); }
+/* ── NO RESULTS ── */
+.hub-no-results { text-align:center; color:var(--txt-muted,#75758f); padding:60px 0; font-size:.95rem; }
+/* ── SKELETON ── */
+.hub-fc--skeleton { background:var(--card-bg,#111119); animation:skel-pulse 1.5s infinite; min-height:186px; }
+.hub-cc--skeleton { background:var(--card-bg,#111119); animation:skel-pulse 1.5s infinite; min-height:118px; }
+@keyframes skel-pulse { 0%,100%{opacity:.4} 50%{opacity:.7} }
+/* ── HUB BODY ── */
+.hub-body { max-width:1120px; margin:0 auto; padding:0 32px 80px; }
+/* ── RESPONSIVE ── */
+@media(max-width:760px) { .hub-featured-grid { grid-template-columns:1fr; } }
+@media(max-width:640px) {
+  .hub-hero { padding:36px 16px 0; }
+  .hub-hero-top { flex-direction:column; align-items:flex-start; gap:16px; }
+  .hub-hero h1 { font-size:1.9rem; }
+  .hub-body { padding:0 16px 60px; }
+  .hub-compact-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .hub-fc-name { font-size:1.35rem; }
+  .hub-fc-days-num { font-size:1.7rem; }
+}
+</style>
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 
 <script type="application/ld+json">
@@ -63,20 +152,34 @@
 </header>
 
 <div class="hub-hero">
-  <div class="hub-hero-label"><span></span>Live · updated in real time</div>
-  <h1>Every countdown<br>that <em>matters</em></h1>
-  <p class="hub-hero-sub">Sports, releases, holidays, sales — every event the world is counting down to.</p>
-  <div id="country-detected" class="country-detected hidden"></div>
-  <div class="hub-hero-actions">
-    <div class="sort-toggle" role="group" aria-label="Sort order">
-      <button class="sort-btn active" data-sort="chrono">Soonest first</button>
-      <button class="sort-btn" data-sort="category">By category</button>
+  <div class="hub-hero-top">
+    <div>
+      <div class="hub-hero-label"><span></span>Live · updated in real time</div>
+      <h1>Every countdown<br>that <em>matters</em></h1>
     </div>
-    <a href="/custom/" class="hub-create-btn">✦ Create your own countdown</a>
+    <div class="hub-hero-actions">
+      <div class="sort-toggle" role="group" aria-label="Sort order">
+        <button class="sort-btn active" data-sort="chrono">Soonest first</button>
+        <button class="sort-btn" data-sort="category">By category</button>
+      </div>
+      <a href="/custom/" class="hub-create-btn">✦ Create your own countdown</a>
+    </div>
+  </div>
+  <div id="country-detected" class="country-detected hidden"></div>
+  <div class="hub-search-wrap">
+    <span class="hub-search-icon">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </span>
+    <input class="hub-search-input" id="hub-search" type="text" placeholder="Search countdowns…" autocomplete="off" spellcheck="false">
+    <button class="hub-search-clear" id="hub-search-clear">✕</button>
   </div>
 </div>
 
 <main class="hub-body" id="hub-body">
+  <div id="hub-featured-section">
+    <div class="hub-featured-label" id="hub-featured-label">Happening soon</div>
+    <div class="hub-featured-grid" id="hub-featured-grid"></div>
+  </div>
   <div id="hub-content"></div>
 </main>
 
@@ -548,105 +651,145 @@
     return NAMES[ev.slug] || ev.name;
   }
 
-  function cardHTML(ev, data) {
+  function buildFeatured(ev, data) {
     var c = cc(ev.cat);
     var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
     var n = displayName(ev);
-    var inner = '';
-    if (data.state === 'past') {
-      inner = '<div class="cd-card-name">' + n + '</div>' +
-              "<div class='cd-card-past'>" + (data.date ? CountdownEngine.fmtDate(data.date, 'en') : 'Already happened') + '</div>';
-    } else if (data.state === 'unknown') {
-      inner = '<div class="cd-card-name">' + n + '</div>' +
-              "<div class='cd-card-unknown'>Date TBA</div>";
-    } else if (data.state === 'today') {
-      inner = '<div class="cd-card-name">' + n + '</div>' +
-              "<div class='cd-card-today'>Today</div>";
-    } else {
-      inner = '<div class="cd-card-name">' + n + '</div>' +
-              '<div class="cd-card-num">' + data.days + '</div>' +
-              "<div class='cd-card-lbl'>days</div>";
-    }
+    var daysBlock = data.state === 'today'
+      ? '<div class="hub-fc-days-num" style="font-size:1.4rem">Today</div>'
+      : '<div class="hub-fc-days-num">' + data.days + '</div><div class="hub-fc-days-lbl">days to go</div>';
+    var dateStr = data.date ? CountdownEngine.fmtDate(data.date, currentLang) : '';
     var cardUrl = LANG_URLS[ev.slug] || ev.url;
-    return '<a href="' + cardUrl + '" class="cd-card cd-card--' + (data.state === 'past' ? 'past' : 'active') + '" ' + style + '>' + inner + '</a>';
+    return '<a href="' + cardUrl + '" class="hub-fc" ' + style + '>' +
+      '<div><div class="hub-fc-cat">' + ev.cat + '</div><div class="hub-fc-name">' + n + '</div></div>' +
+      '<div class="hub-fc-bottom">' +
+        '<div>' + daysBlock + '</div>' +
+        '<div class="hub-fc-date-arrow">' + (dateStr ? '<span class="hub-fc-date">' + dateStr + '</span>' : '') + '<span class="hub-fc-arrow">→</span></div>' +
+      '</div>' +
+    '</a>';
+  }
+
+  function buildCompact(ev, data) {
+    var c = cc(ev.cat);
+    var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
+    var n = displayName(ev);
+    var pill = data.state === 'today'   ? '<span class="hub-cc-pill hub-cc-pill--today">Today</span>'
+             : data.state === 'unknown' ? '<span class="hub-cc-pill hub-cc-pill--tba">TBA</span>'
+             : data.state === 'past'    ? ''
+             : '<span class="hub-cc-pill">' + data.days + '</span>';
+    var dateStr = data.date ? CountdownEngine.fmtDate(data.date, currentLang)
+                : data.state === 'unknown' ? 'Date TBA' : '';
+    var cardUrl = LANG_URLS[ev.slug] || ev.url;
+    var cls = 'hub-cc' + (data.state === 'past' ? ' hub-cc--past' : '');
+    return '<a href="' + cardUrl + '" class="' + cls + '" ' + style + '>' +
+      '<div><div class="hub-cc-top"><span class="hub-cc-cat">' + ev.cat + '</span>' + pill + '</div>' +
+      '<div class="hub-cc-name">' + n + '</div></div>' +
+      '<div class="hub-cc-bottom"><span class="hub-cc-date">' + dateStr + '</span><span class="hub-cc-arrow">→</span></div>' +
+    '</a>';
+  }
+
+  function renderSearch(q) {
+    var container = document.getElementById('hub-content');
+    var featuredSection = document.getElementById('hub-featured-section');
+    if (featuredSection) featuredSection.style.display = 'none';
+    var src = window._hubResults || [];
+    var matches = src.filter(function(r) {
+      return displayName(r.ev).toLowerCase().indexOf(q) >= 0 || r.ev.cat.toLowerCase().indexOf(q) >= 0;
+    }).sort(function(a,b){
+      function rank(r){ return r.data.state==='today'?-1:r.data.state==='future'?r.data.days:r.data.state==='unknown'?99999:99998; }
+      return rank(a)-rank(b);
+    });
+    var html = matches.length === 0
+      ? '<div class="hub-no-results">No countdowns found for "' + q + '"</div>'
+      : '<div class="hub-compact-grid">' + matches.map(function(r){ return buildCompact(r.ev, r.data); }).join('') + '</div>';
+    container.innerHTML = html;
   }
 
   function renderHub(results) {
     var container = document.getElementById('hub-content');
+    var featuredGrid = document.getElementById('hub-featured-grid');
+    var featuredLabel = document.getElementById('hub-featured-label');
+    var featuredSection = document.getElementById('hub-featured-section');
     if (!container) return;
-    var html = '';
+
+    var q = (document.getElementById('hub-search') || {}).value;
+    if (q && q.trim()) { renderSearch(q.trim().toLowerCase()); return; }
 
     if (currentSort === 'chrono') {
+      if (featuredSection) featuredSection.style.display = '';
       results.sort(function (a, b) {
-        function rank(r) {
-          if (r.data.state === 'today')   return -1;
-          if (r.data.state === 'future')  return r.data.days;
-          if (r.data.state === 'unknown') return 99999;
-          return 99998;
-        }
+        function rank(r) { return r.data.state==='today'?-1:r.data.state==='future'?r.data.days:r.data.state==='unknown'?99999:99998; }
         return rank(a) - rank(b);
       });
+      var future = results.filter(function(r){ return r.data.state==='future'||r.data.state==='today'; });
+      var featured = future.slice(0,3);
+      var rest = future.slice(3);
 
+      if (featuredLabel && featured.length) {
+        var maxDays = featured[featured.length-1].data.state==='today' ? 0 : featured[featured.length-1].data.days;
+        featuredLabel.textContent = maxDays<=0?'Today':maxDays<=7?'This week':maxDays<=30?'This month':'Happening soon';
+      }
+      if (featuredGrid) featuredGrid.innerHTML = featured.map(function(r){ return buildFeatured(r.ev,r.data); }).join('');
+
+      var html = '';
       var lastBucket = null;
-      results.forEach(function (r) {
-        if (r.data.state === 'future' || r.data.state === 'today') {
-          var b = bucket(r.data.state === 'today' ? 0 : r.data.days);
-          if (b !== lastBucket) {
-            if (lastBucket !== null) html += '</div>';
-            var label = BUCKETS.filter(function(x){ return x.key===b; })[0].label;
-            html += '<div class="time-bucket-hdr">' + label + '</div>';
-            html += '<div class="cards-grid">';
-            lastBucket = b;
-          }
-          html += cardHTML(r.ev, r.data);
+      rest.forEach(function(r) {
+        var b = bucket(r.data.state==='today'?0:r.data.days);
+        if (b !== lastBucket) {
+          if (lastBucket !== null) html += '</div>';
+          html += '<div class="hub-bucket-hdr">' + BUCKETS.filter(function(x){return x.key===b;})[0].label + '</div>';
+          html += '<div class="hub-compact-grid">';
+          lastBucket = b;
         }
+        html += buildCompact(r.ev, r.data);
       });
       if (lastBucket !== null) html += '</div>';
 
-      var tba = results.filter(function (r) { return r.data.state === 'unknown'; });
+      var tba = results.filter(function(r){ return r.data.state==='unknown'; });
       if (tba.length) {
-        html += "<div class='time-bucket-hdr'>Date TBA</div>";
-        html += '<div class="cards-grid">';
-        tba.forEach(function (r) { html += cardHTML(r.ev, r.data); });
+        html += '<div class="hub-bucket-hdr">Date TBA</div><div class="hub-compact-grid">';
+        tba.forEach(function(r){ html += buildCompact(r.ev,r.data); });
         html += '</div>';
       }
-
-      var past = results.filter(function (r) { return r.data.state === 'past'; });
+      var past = results.filter(function(r){ return r.data.state==='past'; });
       if (past.length) {
-        html += "<div class='time-bucket-hdr cd-bucket-past'>Already happened</div>";
-        html += '<div class="cards-grid">';
-        past.forEach(function (r) { html += cardHTML(r.ev, r.data); });
+        html += '<div class="hub-bucket-hdr">Already happened</div><div class="hub-compact-grid">';
+        past.forEach(function(r){ html += buildCompact(r.ev,r.data); });
         html += '</div>';
       }
+      container.innerHTML = html;
     } else {
+      if (featuredSection) featuredSection.style.display = 'none';
       var grouped = {}, catOrder = [];
-      results.forEach(function (r) {
+      results.forEach(function(r) {
         var cat = r.ev.cat;
-        if (!grouped[cat]) { grouped[cat] = []; catOrder.push(cat); }
+        if (!grouped[cat]) { grouped[cat]=[]; catOrder.push(cat); }
         grouped[cat].push(r);
       });
-      catOrder.forEach(function (cat) {
-        var c = cc(cat);
-        html += '<div class="hub-section">';
-        html += '<div class="section-hdr" style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '">';
-        html += '<span class="section-hdr-label">' + cat + '</span></div>';
-        html += '<div class="cards-grid">';
-        grouped[cat].forEach(function (r) { html += cardHTML(r.ev, r.data); });
-        html += '</div></div>';
+      var html = '';
+      catOrder.forEach(function(cat) {
+        html += '<div class="hub-bucket-hdr">'+cat+'</div><div class="hub-compact-grid">';
+        grouped[cat].forEach(function(r){ html += buildCompact(r.ev,r.data); });
+        html += '</div>';
       });
+      container.innerHTML = html;
     }
-
-    container.innerHTML = html;
   }
 
   function loadHub() {
     var container = document.getElementById('hub-content');
+    var featuredGrid = document.getElementById('hub-featured-grid');
     var evs = filteredEvents();
+    if (featuredGrid) {
+      var fsk = '';
+      for (var f = 0; f < 3; f++) fsk += '<div class="hub-fc hub-fc--skeleton"></div>';
+      featuredGrid.innerHTML = fsk;
+    }
     var skeletons = '';
     for (var s = 0; s < Math.min(evs.length, 12); s++) {
-      skeletons += '<div class="cd-card-skeleton"></div>';
+      skeletons += '<div class="hub-cc hub-cc--skeleton"></div>';
     }
-    container.innerHTML = '<div class="cards-grid">' + skeletons + '</div>';
+    container.innerHTML = '<div class="hub-compact-grid">' + skeletons + '</div>';
 
     var results = new Array(evs.length);
     var loaded = 0;
@@ -664,9 +807,29 @@
       document.querySelectorAll('.sort-btn').forEach(function (b) { b.classList.remove('active'); });
       btn.classList.add('active');
       currentSort = btn.dataset.sort;
+      var si = document.getElementById('hub-search');
+      if (si) si.value = '';
+      var sc = document.getElementById('hub-search-clear');
+      if (sc) sc.style.display = 'none';
       renderHub(window._hubResults || []);
     });
   });
+
+  (function() {
+    var si = document.getElementById('hub-search');
+    var sc = document.getElementById('hub-search-clear');
+    if (!si) return;
+    si.addEventListener('input', function() {
+      var q = this.value.trim();
+      if (sc) sc.style.display = q ? 'block' : 'none';
+      if (q.length >= 1) renderSearch(q.toLowerCase());
+      else renderHub(window._hubResults || []);
+    });
+    if (sc) sc.addEventListener('click', function() {
+      si.value = ''; sc.style.display = 'none'; si.focus();
+      renderHub(window._hubResults || []);
+    });
+  })();
 
   loadHub();
 
