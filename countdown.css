@@ -698,23 +698,26 @@ body {
 .cd-article {
   max-width: 680px;
   margin: 0 auto;
-  padding: 0 20px 80px;
+  padding: 40px 20px 80px;
 }
 .cd-article-body {
-  font-size: 15px;
-  color: var(--ink-dim);
-  line-height: 1.75;
-  margin-bottom: 40px;
-  border-left: 2px solid var(--border);
-  padding-left: 16px;
+  display: none;
+}
+.cd-faq {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 0 20px;
 }
 .cd-faq-title {
   font-size: 17px; font-weight: 700;
   letter-spacing: -.02em; color: var(--ink);
-  margin-bottom: 16px;
+  margin: 0;
+  padding: 20px 0 16px;
 }
 .cd-faq-item { border-top: 1px solid var(--border); padding: 18px 0; }
-.cd-faq-item:last-child { border-bottom: 1px solid var(--border); }
+.cd-faq-item:last-child { border-bottom: none; }
 .cd-faq-q { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.4; }
 .cd-faq-a { font-size: 14px; color: var(--ink-dim); line-height: 1.65; }
 
