@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-19",
+  "updated": "2026-05-20",
   "_policy": "Only confirmed official dates. If unconfirmed → date: null. No estimated dates shown as real countdowns.",
   "events": {
     "gta6": {
@@ -390,6 +390,106 @@
     "canada-day": {
       "date": "2026-07-01T12:00:00",
       "note": "Canada Day 2026 — July 1, 2026. Canada's 159th birthday."
+    },
+    "justin-bieber-birthday": {
+      "date": "2027-03-01T12:00:00",
+      "note": "Justin Bieber's 33rd birthday — born March 1, 1994 in London, Ontario, Canada."
+    },
+    "beyonce-birthday": {
+      "date": "2026-09-04T12:00:00",
+      "note": "Beyoncé's 45th birthday — born September 4, 1981 in Houston, Texas, USA."
+    },
+    "rihanna-birthday": {
+      "date": "2027-02-20T12:00:00",
+      "note": "Rihanna's 39th birthday — born February 20, 1988 in Saint Michael, Barbados."
+    },
+    "weeknd-birthday": {
+      "date": "2027-02-16T12:00:00",
+      "note": "The Weeknd's 37th birthday — born February 16, 1990 in Toronto, Ontario, Canada."
+    },
+    "dua-lipa-birthday": {
+      "date": "2026-08-22T12:00:00",
+      "note": "Dua Lipa's 31st birthday — born August 22, 1995 in London, UK."
+    },
+    "selena-gomez-birthday": {
+      "date": "2026-07-22T12:00:00",
+      "note": "Selena Gomez's 34th birthday — born July 22, 1992 in Grand Prairie, Texas, USA."
+    },
+    "ed-sheeran-birthday": {
+      "date": "2027-02-17T12:00:00",
+      "note": "Ed Sheeran's 36th birthday — born February 17, 1991 in Halifax, West Yorkshire, UK."
+    },
+    "vinicius-birthday": {
+      "date": "2026-07-12T12:00:00",
+      "note": "Vinicius Jr's 26th birthday — born July 12, 2000 in São Gonçalo, Rio de Janeiro, Brazil."
+    },
+    "lamine-yamal-birthday": {
+      "date": "2026-07-16T12:00:00",
+      "note": "Lamine Yamal's 19th birthday — born July 16, 2007 in Esplugues de Llobregat, Barcelona, Spain."
+    },
+    "haaland-birthday": {
+      "date": "2026-07-21T12:00:00",
+      "note": "Erling Haaland's 26th birthday — born July 21, 2000 in Leeds, UK (Norwegian)."
+    },
+    "donald-trump-birthday": {
+      "date": "2026-06-14T12:00:00",
+      "note": "Donald Trump's 80th birthday — born June 14, 1946 in Queens, New York, USA."
+    },
+    "elon-musk-birthday": {
+      "date": "2026-06-28T12:00:00",
+      "note": "Elon Musk's 55th birthday — born June 28, 1971 in Pretoria, South Africa."
+    },
+    "virat-kohli-birthday": {
+      "date": "2026-11-05T12:00:00",
+      "note": "Virat Kohli's 38th birthday — born November 5, 1988 in Delhi, India."
+    },
+    "mrbeast-birthday": {
+      "date": "2027-05-07T12:00:00",
+      "note": "MrBeast's 29th birthday — born May 7, 1998 in Greenville, North Carolina, USA. Real name: Jimmy Donaldson."
+    },
+    "ksi-birthday": {
+      "date": "2026-06-19T12:00:00",
+      "note": "KSI's 33rd birthday — born June 19, 1993 in Watford, Hertfordshire, UK. Real name: Olajide Olatunji."
+    },
+    "dicaprio-birthday": {
+      "date": "2026-11-11T12:00:00",
+      "note": "Leonardo DiCaprio's 52nd birthday — born November 11, 1974 in Los Angeles, California, USA."
+    },
+    "brad-pitt-birthday": {
+      "date": "2026-12-18T12:00:00",
+      "note": "Brad Pitt's 63rd birthday — born December 18, 1963 in Shawnee, Oklahoma, USA."
+    },
+    "dwayne-johnson-birthday": {
+      "date": "2027-05-02T12:00:00",
+      "note": "Dwayne Johnson's 55th birthday — born May 2, 1972 in Hayward, California, USA."
+    },
+    "tom-cruise-birthday": {
+      "date": "2026-07-03T12:00:00",
+      "note": "Tom Cruise's 64th birthday — born July 3, 1962 in Syracuse, New York, USA."
+    },
+    "ryan-reynolds-birthday": {
+      "date": "2026-10-23T12:00:00",
+      "note": "Ryan Reynolds's 50th birthday — born October 23, 1976 in Vancouver, British Columbia, Canada."
+    },
+    "robert-downey-jr-birthday": {
+      "date": "2027-04-04T12:00:00",
+      "note": "Robert Downey Jr's 62nd birthday — born April 4, 1965 in Manhattan, New York, USA."
+    },
+    "will-smith-birthday": {
+      "date": "2026-09-25T12:00:00",
+      "note": "Will Smith's 58th birthday — born September 25, 1968 in Philadelphia, Pennsylvania, USA."
+    },
+    "zendaya-birthday": {
+      "date": "2026-09-01T12:00:00",
+      "note": "Zendaya's 30th birthday — born September 1, 1996 in Oakland, California, USA."
+    },
+    "angelina-jolie-birthday": {
+      "date": "2026-06-04T12:00:00",
+      "note": "Angelina Jolie's 51st birthday — born June 4, 1975 in Los Angeles, California, USA."
+    },
+    "scarlett-johansson-birthday": {
+      "date": "2026-11-22T12:00:00",
+      "note": "Scarlett Johansson's 42nd birthday — born November 22, 1984 in New York City, USA."
     }
   }
 }
