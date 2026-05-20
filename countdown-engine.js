@@ -1049,6 +1049,21 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
         if (!getter) { root.textContent = '[Engine] No auto getter for: ' + config.slug; return; }
         var res = getter();
         init(res.date, res);
+      } else if (config.type === 'annual') {
+        loadData(function (data) {
+          var ev   = ((data || {}).events || {})[config.slug] || {};
+          var _lang = (window.location.pathname.match(/^\/(es|pt|fr)\//) || [])[1] || 'en';
+          var _note = (_lang !== 'en' && ev['note_' + _lang]) || ev.note || '';
+          var date = null;
+          if (ev.date) {
+            var dp = ev.date.split('T')[0].split('-');
+            var mo = parseInt(dp[1], 10) - 1;
+            var dy = parseInt(dp[2], 10);
+            var tz = getCountryTZ();
+            date = nextOccurrence(function (y) { return midnightInTZ(tz, y, mo, dy); });
+          }
+          init(date, { note: _note });
+        });
       } else {
         loadData(function (data) {
           var ev   = ((data || {}).events || {})[config.slug] || {};
@@ -1074,6 +1089,19 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
         if (!getter) { cb({ state: 'unknown' }); return; }
         var res = getter();
         resolve(res.date, false);
+      } else if (config.type === 'annual') {
+        loadData(function (data) {
+          var ev   = ((data || {}).events || {})[config.slug] || {};
+          var date = null;
+          if (ev.date) {
+            var dp = ev.date.split('T')[0].split('-');
+            var mo = parseInt(dp[1], 10) - 1;
+            var dy = parseInt(dp[2], 10);
+            var tz = getCountryTZ();
+            date = nextOccurrence(function (y) { return midnightInTZ(tz, y, mo, dy); });
+          }
+          resolve(date, false);
+        });
       } else {
         loadData(function (data) {
           var ev   = ((data || {}).events || {})[config.slug] || {};
@@ -1101,6 +1129,20 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
         if (!getter) { root.textContent = '—'; return; }
         var res = getter();
         initEmbed(res.date, res);
+      } else if (config.type === 'annual') {
+        loadData(function (data) {
+          var ev   = ((data || {}).events || {})[config.slug] || {};
+          var _note = (_pageLang !== 'en' && ev['note_' + _pageLang]) || ev.note || '';
+          var date = null;
+          if (ev.date) {
+            var dp = ev.date.split('T')[0].split('-');
+            var mo = parseInt(dp[1], 10) - 1;
+            var dy = parseInt(dp[2], 10);
+            var tz = getCountryTZ();
+            date = nextOccurrence(function (y) { return midnightInTZ(tz, y, mo, dy); });
+          }
+          initEmbed(date, { note: _note });
+        });
       } else {
         loadData(function (data) {
           var ev   = ((data || {}).events || {})[config.slug] || {};
