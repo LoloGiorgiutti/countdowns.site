@@ -107,6 +107,17 @@
     'Jewish Holidays':{ color:'#E9D5A1', glow:'rgba(233,213,161,.2)'  },
     'Time':           { color:'#67E8F9', glow:'rgba(103,232,249,.2)'  },
   };
+
+  var CAT_LABEL = {
+    'Sports':         'Deportes',
+    'Entertainment':  'Entretenimiento',
+    'Holidays':       'Festividades',
+    'Politics':       'Política',
+    'Music':          'Música',
+    'National Days':  'Días Nacionales',
+    'Nature':         'Naturaleza',
+    'Jewish Holidays':'Festividades Judías',
+  };
   function cc(cat) { return CAT_COLOR[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' }; }
 
   var LATAM = ['AR','BR','CL','CO','PE','UY','VE','BO','PY','EC','CR','PA','GT','SV','HN','NI','DO','CU','MX'];
@@ -131,7 +142,7 @@
       'mothers-day': "Día de la Madre",
       'fathers-day': "Día del Padre",
       'dia-de-los-muertos': "Día de los Muertos",
-      'cinco-de-mayo': "Cinco de Mayo",
+      'cinco-de-mayo': "Batalla de Puebla",
       'fiestas-patrias': "Fiestas Patrias Chile",
       'oscars': "Premios Oscar",
       'grammys': "Grammy Awards",
@@ -180,14 +191,14 @@
       'german-unity-day': "Día de la Unidad Alemana",
       'festa-della-repubblica': "Día de la República Italiana",
       'national-day-sg': "Día Nacional de Singapur",
-      'freedom-day-za': "Día de la Libertad (Sudáfrica)",
+      'freedom-day-za': "Día de la Libertad (ZA)",
       'dia-de-la-hispanidad': "Día de la Hispanidad",
       'dia-de-la-raza': "Día de la Raza",
       'dia-de-la-bandera': "Día de la Bandera (AR)",
       'dia-de-la-revolucion': "Día de la Revolución (MX)",
       'dia-de-la-constitucion': "Día de la Constitución (MX)",
       'proclamacao-da-republica': "Proclamación de la República (BR)",
-      'tiradentes': "Tiradentes (Brasil)",
+      'tiradentes': "Tiradentes (BR)",
       'rosh-hashana': "Rosh Hashaná",
       'yom-kipur': "Yom Kipur",
       'januca': "Janucá",
@@ -692,7 +703,7 @@
         var c = cc(cat);
         html += '<div class="hub-section">';
         html += '<div class="section-hdr" style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '">';
-        html += '<span class="section-hdr-label">' + cat + '</span></div>';
+        html += '<span class="section-hdr-label">' + (CAT_LABEL[cat]||cat) + '</span></div>';
         html += '<div class="cards-grid">';
         grouped[cat].forEach(function (r) { html += cardHTML(r.ev, r.data); });
         html += '</div></div>';

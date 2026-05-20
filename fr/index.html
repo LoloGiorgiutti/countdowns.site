@@ -107,6 +107,17 @@
     'Jewish Holidays':{ color:'#E9D5A1', glow:'rgba(233,213,161,.2)'  },
     'Time':           { color:'#67E8F9', glow:'rgba(103,232,249,.2)'  },
   };
+
+  var CAT_LABEL = {
+    'Sports':         'Sports',
+    'Entertainment':  'Divertissements',
+    'Holidays':       'Jours Fériés',
+    'Politics':       'Politique',
+    'Music':          'Musique',
+    'National Days':  'Fêtes Nationales',
+    'Nature':         'Nature',
+    'Jewish Holidays':'Fêtes Juives',
+  };
   function cc(cat) { return CAT_COLOR[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' }; }
 
   var LATAM = ['AR','BR','CL','CO','PE','UY','VE','BO','PY','EC','CR','PA','GT','SV','HN','NI','DO','CU','MX'];
@@ -148,7 +159,7 @@
       'lollapalooza-cl': "Lollapalooza Chili",
       'cosquin-rock': "Cosquín Rock",
       'bafweek': "BAFWeek Buenos Aires",
-      'cinco-de-mayo': "Cinco de Mayo",
+      'cinco-de-mayo': "Bataille de Puebla",
       'fiestas-patrias': "Fêtes Nationales du Chili",
       'dia-de-los-muertos': "Jour des Morts",
       '25-de-mayo': "25 Mai (Argentine)",
@@ -181,7 +192,7 @@
       'german-unity-day': "Jour de l'Unité Allemande",
       'festa-della-repubblica': "Fête de la République Italienne",
       'national-day-sg': "Fête Nationale de Singapour",
-      'freedom-day-za': "Jour de la Liberté (Afrique du Sud)",
+      'freedom-day-za': "Jour de la Liberté (ZA)",
       'dia-de-la-hispanidad': "Fête Nationale Espagnole",
       'dia-de-la-raza': "Jour de la Race",
       'dia-de-la-bandera': "Jour du Drapeau (AR)",
@@ -683,7 +694,7 @@
         var c = cc(cat);
         html += '<div class="hub-section">';
         html += '<div class="section-hdr" style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '">';
-        html += '<span class="section-hdr-label">' + cat + '</span></div>';
+        html += '<span class="section-hdr-label">' + (CAT_LABEL[cat]||cat) + '</span></div>';
         html += '<div class="cards-grid">';
         grouped[cat].forEach(function (r) { html += cardHTML(r.ev, r.data); });
         html += '</div></div>';

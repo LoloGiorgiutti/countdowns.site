@@ -107,6 +107,17 @@
     'Jewish Holidays':{ color:'#E9D5A1', glow:'rgba(233,213,161,.2)'  },
     'Time':           { color:'#67E8F9', glow:'rgba(103,232,249,.2)'  },
   };
+
+  var CAT_LABEL = {
+    'Sports':         'Esportes',
+    'Entertainment':  'Entretenimento',
+    'Holidays':       'Feriados',
+    'Politics':       'Política',
+    'Music':          'Música',
+    'National Days':  'Datas Nacionais',
+    'Nature':         'Natureza',
+    'Jewish Holidays':'Feriados Judeus',
+  };
   function cc(cat) { return CAT_COLOR[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' }; }
 
   var LATAM = ['AR','BR','CL','CO','PE','UY','VE','BO','PY','EC','CR','PA','GT','SV','HN','NI','DO','CU','MX'];
@@ -148,7 +159,7 @@
       'lollapalooza-cl': "Lollapalooza Chile",
       'cosquin-rock': "Cosquín Rock",
       'bafweek': "BAFWeek Buenos Aires",
-      'cinco-de-mayo': "Cinco de Mayo",
+      'cinco-de-mayo': "Batalha de Puebla",
       'fiestas-patrias': "Festas Pátrias Chile",
       'dia-de-los-muertos': "Dia dos Mortos",
       '25-de-mayo': "25 de Maio (Argentina)",
@@ -181,7 +192,7 @@
       'german-unity-day': "Dia da Unidade Alemã",
       'festa-della-repubblica': "Dia da República Italiana",
       'national-day-sg': "Dia Nacional de Singapura",
-      'freedom-day-za': "Dia da Liberdade (África do Sul)",
+      'freedom-day-za': "Dia da Liberdade (ZA)",
       'dia-de-la-hispanidad': "Dia da Hispanidade",
       'dia-de-la-raza': "Dia da Raça",
       'dia-de-la-bandera': "Dia da Bandeira (AR)",
@@ -684,7 +695,7 @@
         var c = cc(cat);
         html += '<div class="hub-section">';
         html += '<div class="section-hdr" style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '">';
-        html += '<span class="section-hdr-label">' + cat + '</span></div>';
+        html += '<span class="section-hdr-label">' + (CAT_LABEL[cat]||cat) + '</span></div>';
         html += '<div class="cards-grid">';
         grouped[cat].forEach(function (r) { html += cardHTML(r.ev, r.data); });
         html += '</div></div>';
