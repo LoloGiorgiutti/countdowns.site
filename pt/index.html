@@ -784,11 +784,11 @@
 
   var BUCKETS = [
     { key:'today',  label:"Hoje",              test: function(d){ return d<=0; } },
-    { key:'week',   label:"Esta semana",       test: function(d){ return d<=7; } },
+    { key:'week',   label:"Próximos 7 dias",       test: function(d){ return d<=7; } },
     { key:'month',  label:"Próximos 30 dias",  test: function(d){ return d<=30; } },
     { key:'soon',   label:"Próximos 3 meses",  test: function(d){ return d<=90; } },
-    { key:'year',   label:"Este ano",          test: function(d){ return d<=365; } },
-    { key:'future', label:"Próximo ano +",     test: function(d){ return d>365; } },
+    { key:'year',   label:"Próximos 12 meses",          test: function(d){ return d<=365; } },
+    { key:'future', label:"Mais de um ano",     test: function(d){ return d>365; } },
   ];
 
   function bucket(days) {

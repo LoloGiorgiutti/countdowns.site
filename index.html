@@ -645,12 +645,12 @@
   }
 
   var BUCKETS = [
-    { key:'today',  label:"Today",          test: function(d){ return d<=0; } },
-    { key:'week',   label:"This week",      test: function(d){ return d<=7; } },
+    { key:'today',  label:"Today",           test: function(d){ return d<=0; } },
+    { key:'week',   label:"Next 7 days",    test: function(d){ return d<=7; } },
     { key:'month',  label:"Next 30 days",   test: function(d){ return d<=30; } },
     { key:'soon',   label:"Next 3 months",  test: function(d){ return d<=90; } },
-    { key:'year',   label:"Later this year",test: function(d){ return d<=365; } },
-    { key:'future', label:"Next year +",    test: function(d){ return d>365; } },
+    { key:'year',   label:"Next 12 months", test: function(d){ return d<=365; } },
+    { key:'future', label:"More than a year away", test: function(d){ return d>365; } },
   ];
 
   function bucket(days) {
