@@ -232,12 +232,12 @@
       "note": "Diwali 2026 — Festival of Lights, November 8, 2026."
     },
     "emmys": {
-      "date": null,
-      "note": "Emmy Awards 2026 date not yet announced. Typically held in September."
+      "date": "2026-09-14T12:00:00",
+      "note": "78th Primetime Emmy Awards, Monday September 14, 2026 at the Peacock Theater, Los Angeles."
     },
     "golden-globes": {
-      "date": null,
-      "note": "Golden Globes 2027 date not yet announced. Typically held in January."
+      "date": "2027-01-10T12:00:00",
+      "note": "84th Golden Globe Awards, Sunday January 10, 2027, Beverly Hilton, Beverly Hills. Host: Nikki Glaser."
     },
     "messi-birthday": {
       "date": "2026-06-24T12:00:00",
@@ -272,16 +272,16 @@
       "note": "MTV VMAs 2026 date not yet announced. Typically held in August or September."
     },
     "bafta": {
-      "date": null,
-      "note": "BAFTA Film Awards 2027 date not yet announced. Typically held in February at Royal Festival Hall, London."
+      "date": "2027-02-21T12:00:00",
+      "note": "80th BAFTA Film Awards, Sunday February 21, 2027, Royal Festival Hall, London."
     },
     "nfl-season": {
       "date": "2026-09-10T12:00:00",
       "note": "NFL 2026 Season Kickoff — Thursday, September 10, 2026."
     },
     "stanley-cup": {
-      "date": null,
-      "note": "Stanley Cup Finals 2026 date TBA — depends on NHL playoff results. Typically June."
+      "date": "2026-06-04T12:00:00",
+      "note": "2026 Stanley Cup Finals begin June 4, 2026, best-of-seven series through June 24."
     },
     "masters-golf": {
       "date": "2027-04-08T12:00:00",
@@ -292,20 +292,20 @@
       "note": "WWE SummerSlam 2026 — August 1–2, 2026."
     },
     "wwe-royal-rumble": {
-      "date": null,
-      "note": "WWE Royal Rumble 2027 date not yet announced. Typically held in late January."
+      "date": "2027-01-30T12:00:00",
+      "note": "WWE Royal Rumble 2027, January 30, 2027, returning to a domestic US stadium."
     },
     "wwe-survivor-series": {
       "date": null,
       "note": "WWE Survivor Series 2026 date not yet announced. Typically held in November."
     },
     "cs2-major": {
-      "date": null,
-      "note": "Next CS2 Major Championship date not yet announced by Valve."
+      "date": "2026-06-02T12:00:00",
+      "note": "IEM Cologne CS2 Major 2026, June 2–21, 2026, at Lanxess Arena, Cologne, Germany."
     },
     "lol-worlds": {
-      "date": null,
-      "note": "League of Legends World Championship 2026 date and host region not yet announced. Typically October–November."
+      "date": "2026-11-01T12:00:00",
+      "note": "LoL Worlds 2026 runs October 1 – November 1, 2026. Grand Final at Barclays Center, Brooklyn, NY."
     },
     "elecciones-colombia": {
       "date": "2026-05-31T12:00:00",
@@ -336,16 +336,16 @@
       "note": "Copa del Rey Final 2026 — date TBA, typically late April or May."
     },
     "fa-cup-final": {
-      "date": null,
-      "note": "FA Cup Final 2026 — date TBA, typically May at Wembley Stadium."
+      "date": "2027-05-15T12:00:00",
+      "note": "FA Cup Final 2027 at Wembley Stadium, London, Saturday May 15, 2027."
     },
     "nba-draft": {
       "date": "2026-06-25T12:00:00",
       "note": "NBA Draft 2026 — June 25, 2026."
     },
     "cricket-world-cup": {
-      "date": null,
-      "note": "ICC Cricket World Cup 2027 — scheduled for 2027 in South Africa, Zimbabwe, and Namibia. Exact dates TBA."
+      "date": "2026-06-12T12:00:00",
+      "note": "ICC Women's T20 World Cup 2026, June 12 – July 5, 2026, hosted by England."
     },
     "rugby-world-cup": {
       "date": "2027-09-04T12:00:00",
@@ -356,8 +356,8 @@
       "note": "Six Nations Championship 2027 — starts February 6, 2027."
     },
     "la-velada-del-ano": {
-      "date": null,
-      "note": "La Velada del Año — Ibai Llanos boxing event. Date TBA, typically summer."
+      "date": "2026-07-25T12:00:00",
+      "note": "La Velada del Año VI se celebra el sábado 25 de julio de 2026 en el Estadio de La Cartuja de Sevilla."
     },
     "world-series": {
       "date": null,
