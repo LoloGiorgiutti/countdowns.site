@@ -126,9 +126,9 @@
 .hub-hero h1 em { background:none !important; -webkit-background-clip:unset !important; -webkit-text-fill-color:unset !important; background-clip:unset !important; color:var(--txt-muted,#75758f) !important; }
 .hub-hero-label span:first-child { background:#4ADE80 !important; box-shadow:0 0 8px #4ADE80 !important; }
 .hub-hero-actions { flex-direction:row !important; align-items:center !important; }
-.hub-create-btn { background:var(--txt,#eeeef8) !important; color:var(--bg,#08080f) !important; border:none !important; border-radius:99px !important; padding:7px 18px !important; font-size:.78rem !important; font-weight:700 !important; text-decoration:none !important; display:inline-flex !important; align-items:center !important; gap:5px !important; white-space:nowrap !important; cursor:pointer !important; }
+.hub-create-btn { background:var(--txt,#eeeef8) !important; color:var(--bg,#08080f) !important; border:none !important; border-radius:99px !important; padding:7px 18px !important; font-size:.78rem !important; font-weight:700 !important; text-decoration:none !important; display:inline-flex !important; align-items:center !important; gap:5px !important; white-space:nowrap !important; cursor:pointer !important; margin:0 !important; line-height:1.2 !important; }
 [data-theme="light"] .hub-create-btn { background:#0d0d18 !important; color:#f1f1f7 !important; }
-.sort-toggle { background:transparent !important; border:none !important; padding:0 !important; gap:8px !important; display:inline-flex !important; }
+.sort-toggle { background:transparent !important; border:none !important; padding:0 !important; gap:8px !important; display:inline-flex !important; align-items:center !important; }
 .sort-btn { background:transparent !important; border:1px solid var(--card-border,rgba(255,255,255,.065)) !important; border-radius:99px !important; padding:7px 16px !important; font-size:.78rem !important; color:var(--txt-muted,#75758f) !important; cursor:pointer !important; font-family:inherit !important; }
 .sort-btn.active { background:var(--card-bg,#111119) !important; border-color:transparent !important; color:var(--txt,#eeeef8) !important; }
 [data-theme="light"] .sort-btn { border-color:rgba(0,0,0,.1) !important; color:#555 !important; }
@@ -190,7 +190,7 @@
 
 <main class="hub-body" id="hub-body">
   <div id="hub-featured-section">
-    <div class="hub-featured-label" id="hub-featured-label">Happening soon</div>
+    <div class="hub-featured-label" id="hub-featured-label">Very soon</div>
     <div class="hub-featured-grid" id="hub-featured-grid"></div>
   </div>
   <div id="hub-content"></div>
@@ -645,12 +645,12 @@
   }
 
   var BUCKETS = [
-    { key:'today',  label:"Today",  test: function(d){ return d<=0; } },
-    { key:'week',   label:"This week",   test: function(d){ return d<=7; } },
-    { key:'month',  label:"This month",  test: function(d){ return d<=30; } },
-    { key:'soon',   label:"Coming soon",   test: function(d){ return d<=90; } },
-    { key:'year',   label:"Later this year",   test: function(d){ return d<=365; } },
-    { key:'future', label:"Next year +", test: function(d){ return d>365; } },
+    { key:'today',  label:"Today",          test: function(d){ return d<=0; } },
+    { key:'week',   label:"This week",      test: function(d){ return d<=7; } },
+    { key:'month',  label:"Next 30 days",   test: function(d){ return d<=30; } },
+    { key:'soon',   label:"Next 3 months",  test: function(d){ return d<=90; } },
+    { key:'year',   label:"Later this year",test: function(d){ return d<=365; } },
+    { key:'future', label:"Next year +",    test: function(d){ return d>365; } },
   ];
 
   function bucket(days) {
@@ -738,14 +738,13 @@
       var featured = future.slice(0,3);
       var rest = future.slice(3);
 
-      if (featuredLabel && featured.length) {
-        var maxDays = featured[featured.length-1].data.state==='today' ? 0 : featured[featured.length-1].data.days;
-        featuredLabel.textContent = maxDays<=0?'Today':maxDays<=7?'This week':maxDays<=30?'This month':'Happening soon';
-      }
       if (featuredGrid) featuredGrid.innerHTML = featured.map(function(r){ return buildFeatured(r.ev,r.data); }).join('');
 
       var html = '';
-      var lastBucket = null;
+      var _featuredMaxDays = featured.length > 0 && featured[featured.length-1].data.state !== 'unknown'
+        ? (featured[featured.length-1].data.state === 'today' ? 0 : (featured[featured.length-1].data.days || 0))
+        : -1;
+      var lastBucket = _featuredMaxDays >= 0 ? bucket(_featuredMaxDays) : null;
       rest.forEach(function(r) {
         var b = bucket(r.data.state==='today'?0:r.data.days);
         if (b !== lastBucket) {
