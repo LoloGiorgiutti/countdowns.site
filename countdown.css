@@ -477,11 +477,7 @@ body {
   text-shadow: 0 0 12px var(--cat-glow);
 }
 .cd-desc {
-  font-size: 13px;
-  color: var(--ink-faint);
-  margin-bottom: 48px;
-  max-width: 380px;
-  line-height: 1.65;
+  display: none;
 }
 
 /* ── Countdown grid ── */
@@ -988,7 +984,7 @@ body {
 }
 [data-theme="light"] .cd-sep { color: rgba(0,0,0,.15); }
 [data-theme="light"] .cd-note-card { background: #ffffff; }
-[data-theme="light"] .cd-article { background: #ffffff; }
+[data-theme="light"] .cd-article { background: transparent; }
 [data-theme="light"] .cd-faq-item { border-color: rgba(0,0,0,.08); }
 [data-theme="light"] .cd-cpicker-btn {
   background: #ffffff;
