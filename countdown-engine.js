@@ -760,9 +760,11 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
   /* ─── FORMATTING ────────────────────────────────────────────── */
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
-  function fmtDate(d, lang) {
+  function fmtDate(d, lang, tz) {
     var locale = lang === 'es' ? 'es' : lang === 'pt' ? 'pt-BR' : lang === 'fr' ? 'fr' : lang === 'de' ? 'de' : 'en-US';
-    return d.toLocaleDateString(locale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    var opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    if (tz) { try { opts.timeZone = tz; } catch(e) {} }
+    return d.toLocaleDateString(locale, opts);
   }
 
   function daysUntil(d) {
@@ -949,7 +951,7 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
       '<div class="cd-sep">:</div>',
       '<div class="cd-box"><div class="cd-num" id="cd-s">—</div><div class="cd-lbl">' + T.sec + '</div></div>',
       '</div>',
-      '<div class="cd-date-label">' + fmtDate(targetDate, _pageLang) + '</div>',
+      '<div class="cd-date-label">' + fmtDate(targetDate, _pageLang, getCountryTZ()) + '</div>',
     ].join('');
   }
 
