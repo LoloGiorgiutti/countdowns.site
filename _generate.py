@@ -1847,6 +1847,16 @@ def generate_page(ev, lang="en"):
             name_by_lang[_lc] = _tname
     meta_keywords = build_meta_keywords(ev["name"], CURRENT_YEAR, name_by_lang)
 
+    # OG image — use event-specific if available, else generic
+    _og_jpg = os.path.join("og-images", f"{slug}.jpg")
+    _og_png = os.path.join("og-images", f"{slug}.png")
+    if os.path.exists(_og_jpg):
+        og_image_url = f"https://countdowns.site/og-images/{slug}.jpg"
+    elif os.path.exists(_og_png):
+        og_image_url = f"https://countdowns.site/og-images/{slug}.png"
+    else:
+        og_image_url = "https://countdowns.site/og-image.png"
+
     # URLs
     en_url   = f"{BASE_URL}/countdown/{slug}/"
     page_url = en_url if lang == "en" else f"{BASE_URL}/{lang}/countdown/{slug}/"
@@ -1974,13 +1984,13 @@ def generate_page(ev, lang="en"):
 <meta property="og:url" content="{page_url}">
 <meta property="og:title" content="{seo_title}">
 <meta property="og:description" content="{meta_desc}">
-<meta property="og:image" content="https://countdowns.site/og-image.png">
+<meta property="og:image" content="{og_image_url}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{seo_title}">
 <meta name="twitter:description" content="{meta_desc}">
-<meta name="twitter:image" content="https://countdowns.site/og-image.png">
+<meta name="twitter:image" content="{og_image_url}">
 {hreflang}<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
 <style>:root{{--cat-color:{cat_color};--cat-glow:{cat_glow};--cat-soft:{cat_soft};}}</style>
