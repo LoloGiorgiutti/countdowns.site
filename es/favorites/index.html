@@ -100,7 +100,7 @@
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
       <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='/'">EN</button>
-      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/'" class="lang-btn active">ES</button>
+      <button class="lang-btn active" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/'">ES</button>
       <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='/pt/'">PT</button>
       <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='/fr/'">FR</button>
     </div>
@@ -153,6 +153,7 @@
     'Time':           { color:'#67E8F9', glow:'rgba(103,232,249,.2)'  },
     'Birthdays':      { color:'#E879F9', glow:'rgba(232,121,249,.2)'  },
   };
+  var CAT_LABEL = {'Sports':'Deportes','Entertainment':'Entretenimiento','Holidays':'Festividades','Politics':'Política','Music':'Música','National Days':'Días Nacionales','Nature':'Naturaleza','Jewish Holidays':'Festividades Judías','Fashion':'Moda','Months':'Meses','Releases':'Lanzamientos','Sales':'Ofertas','School':'Escuela','Seasons':'Estaciones','Technology':'Tecnología','Time':'Tiempo','Birthdays':'Cumpleaños'};
   function cc(cat) { return CAT_COLOR[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' }; }
 
   /* ── Favourites helpers ── */
@@ -370,16 +371,16 @@
   function buildCompact(ev, data) {
     var c = cc(ev.cat);
     var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
-    var pill = data.state === 'today'   ? '<span class="hub-cc-pill hub-cc-pill--today">Today</span>'
+    var pill = data.state === 'today'   ? '<span class="hub-cc-pill hub-cc-pill--today">Hoy</span>'
              : data.state === 'unknown' ? '<span class="hub-cc-pill hub-cc-pill--tba">TBA</span>'
              : data.state === 'past'    ? ''
              : '<span class="hub-cc-pill">' + data.days + '</span>';
-    var dateStr = data.date ? CountdownEngine.fmtDate(data.date, 'en')
-                : data.state === 'unknown' ? 'Date TBA' : '';
+    var dateStr = data.date ? CountdownEngine.fmtDate(data.date, 'es')
+                : data.state === 'unknown' ? 'Fecha TBA' : '';
     var cls = 'hub-cc' + (data.state === 'past' ? ' hub-cc--past' : '');
     return '<a href="' + ev.url + '" class="' + cls + '" ' + style + '>' +
       '<button class="hub-fav-btn active" data-slug="' + ev.slug + '" title="Quitar de favoritos">★</button>' +
-      '<div><div class="hub-cc-top"><span class="hub-cc-cat">' + ev.cat + '</span>' + pill + '</div>' +
+      '<div><div class="hub-cc-top"><span class="hub-cc-cat">' + (CAT_LABEL[ev.cat]||ev.cat) + '</span>' + pill + '</div>' +
       '<div class="hub-cc-name">' + ev.name + '</div></div>' +
       '<div class="hub-cc-bottom"><span class="hub-cc-date">' + dateStr + '</span><span class="hub-cc-arrow">→</span></div>' +
     '</a>';
