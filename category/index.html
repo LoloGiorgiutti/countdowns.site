@@ -65,9 +65,12 @@
 .hub-cc-name { font-size:1.08rem; font-weight:700; letter-spacing:-.02em; line-height:1.25; color:var(--txt,#eeeef8); flex:1; }
 [data-theme="light"] .hub-cc-name { color:#0d0d18; }
 .hub-cc-bottom { display:flex; align-items:center; justify-content:space-between; margin-top:10px; }
-.hub-cc-date { font-size:.73rem; color:var(--txt-dim,#3d3d52); }
-.hub-cc-arrow { font-size:.85rem; color:var(--txt-dim,#3d3d52); transition:transform .14s, color .14s; }
+.hub-cc-date { font-size:.73rem; color:var(--txt-dim,#3d3d52); opacity:0; transition:opacity .14s; }
+.hub-cc:hover .hub-cc-date { opacity:1; }
+.hub-cc-arrow { font-size:.85rem; color:var(--txt-dim,#3d3d52); transition:transform .14s, color .14s, opacity .14s; }
 .hub-cc:hover .hub-cc-arrow { transform:translateX(3px); color:var(--cat-color,#818CF8); }
+.hub-cc:has(.hub-fav-btn.active) .hub-cc-arrow { opacity:0; }
+.hub-cc-unit { font-size:.52rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--txt-muted,#75758f); margin-left:2px; vertical-align:middle; }
 .hub-cc--past { opacity:.45; }
 /* ── BUCKET HEADER ── */
 .hub-bucket-hdr { font-size:.66rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt-dim,#3d3d52); display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:36px; }
@@ -494,7 +497,7 @@
     var pill = data.state === 'today'   ? '<span class="hub-cc-pill hub-cc-pill--today">Today</span>'
              : data.state === 'unknown' ? '<span class="hub-cc-pill hub-cc-pill--tba">TBA</span>'
              : data.state === 'past'    ? ''
-             : '<span class="hub-cc-pill">' + data.days + '</span>';
+             : '<span class="hub-cc-pill">' + data.days + '<span class="hub-cc-unit"> days</span></span>';
     var dateStr = data.date ? CountdownEngine.fmtDate(data.date, 'en')
                 : data.state === 'unknown' ? 'Date TBA' : '';
     var cls = 'hub-cc' + (data.state === 'past' ? ' hub-cc--past' : '');
