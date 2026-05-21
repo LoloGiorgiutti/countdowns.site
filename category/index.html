@@ -90,6 +90,10 @@
 .hub-fc:hover .hub-fav-btn, .hub-cc:hover .hub-fav-btn, .hub-fav-btn.active { opacity:1; }
 .hub-fav-btn.active { color:#FBBF24; }
 .hub-fav-btn:hover { color:#FBBF24; opacity:1 !important; transform:scale(1.18); }
+/* Fix: compact card fav button at bottom-right (no overlap with days pill) */
+.hub-cc .hub-fav-btn { top:auto !important; bottom:12px; right:14px; }
+.hub-cc .hub-cc-arrow { transition:transform .14s, color .14s, opacity .14s; }
+.hub-cc:hover .hub-cc-arrow { opacity:0; }
 /* ── FAVORITES HEADER LINK ── */
 .hub-fav-header-link { display:inline-flex; align-items:center; gap:5px; font-size:.78rem; font-weight:600; color:var(--txt-muted,#75758f); text-decoration:none; padding:6px 11px; border-radius:99px; border:1px solid var(--card-border,rgba(255,255,255,.065)); transition:color .15s, border-color .15s; white-space:nowrap; }
 .hub-fav-header-link:hover { color:var(--txt,#eeeef8); border-color:rgba(255,255,255,.14); }
