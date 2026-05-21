@@ -15,80 +15,30 @@ client = tweepy.Client(
     access_token_secret=os.getenv("ACCESS_TOKEN_SECRET")
 )
 
-# ── Event names per language ──────────────────────────────────────────────────
+# ── Event names ───────────────────────────────────────────────────────────────
 NAMES = {
-    "en": {
-        "gta6": "GTA VI", "iphone": "iPhone 2026", "f1": "the next F1 race",
-        "world-cup": "the 2026 FIFA World Cup", "ucl-final": "the Champions League Final",
-        "nba-finals": "the NBA Finals", "le-mans": "24 Hours of Le Mans",
-        "wimbledon": "Wimbledon", "tour-de-france": "Tour de France",
-        "olympics-2028": "the 2028 Olympics", "super-bowl": "the Super Bowl",
-        "copa-libertadores": "the Copa Libertadores Final",
-        "christmas": "Christmas", "new-year": "New Year's",
-        "halloween": "Halloween", "valentines": "Valentine's Day",
-        "easter": "Easter", "mothers-day": "Mother's Day",
-        "fathers-day": "Father's Day", "thanksgiving": "Thanksgiving",
-        "black-friday": "Black Friday", "cyber-monday": "Cyber Monday",
-        "full-moon": "the next full moon", "eclipse": "the next eclipse",
-        "oscars": "the Oscars", "grammys": "the Grammys",
-        "met-gala": "the Met Gala", "cannes": "Cannes Film Festival",
-        "coachella": "Coachella", "eurovision": "Eurovision",
-        "lollapalooza-ar": "Lollapalooza Argentina",
-        "rock-in-rio": "Rock in Rio",
-        "nyfw": "New York Fashion Week", "paris-fw": "Paris Fashion Week",
-    },
-    "es": {
-        "gta6": "GTA VI", "iphone": "iPhone 2026", "f1": "la próxima carrera de F1",
-        "world-cup": "la Copa del Mundo 2026", "ucl-final": "la Final de Champions League",
-        "nba-finals": "las Finales de la NBA", "le-mans": "las 24 Horas de Le Mans",
-        "wimbledon": "Wimbledon", "tour-de-france": "el Tour de Francia",
-        "olympics-2028": "los Juegos Olímpicos 2028", "super-bowl": "el Super Bowl",
-        "copa-libertadores": "la Final de Copa Libertadores",
-        "christmas": "Navidad", "new-year": "Año Nuevo",
-        "halloween": "Halloween", "valentines": "San Valentín",
-        "easter": "Semana Santa", "mothers-day": "el Día de la Madre",
-        "fathers-day": "el Día del Padre", "thanksgiving": "Thanksgiving",
-        "black-friday": "el Black Friday", "cyber-monday": "el Cyber Monday",
-        "full-moon": "la próxima luna llena", "eclipse": "el próximo eclipse",
-        "oscars": "los Premios Óscar", "grammys": "los Grammys",
-        "met-gala": "la Met Gala", "cannes": "el Festival de Cannes",
-        "coachella": "Coachella", "eurovision": "Eurovisión",
-        "lollapalooza-ar": "Lollapalooza Argentina",
-        "rock-in-rio": "Rock in Rio",
-        "dia-de-los-muertos": "el Día de los Muertos",
-        "cinco-de-mayo": "el Cinco de Mayo",
-        "hot-sale": "el Hot Sale",
-    },
-    "pt": {
-        "gta6": "GTA VI", "iphone": "iPhone 2026", "f1": "a próxima corrida de F1",
-        "world-cup": "a Copa do Mundo 2026", "ucl-final": "a Final da Champions League",
-        "nba-finals": "as Finais da NBA", "le-mans": "as 24 Horas de Le Mans",
-        "wimbledon": "Wimbledon", "tour-de-france": "o Tour de France",
-        "olympics-2028": "os Jogos Olímpicos 2028", "super-bowl": "o Super Bowl",
-        "christmas": "o Natal", "new-year": "o Ano Novo",
-        "halloween": "o Halloween", "valentines": "o Dia dos Namorados",
-        "easter": "a Páscoa", "mothers-day": "o Dia das Mães",
-        "fathers-day": "o Dia dos Pais",
-        "black-friday": "a Black Friday", "cyber-monday": "a Cyber Monday",
-        "full-moon": "a próxima lua cheia", "eclipse": "o próximo eclipse",
-        "oscars": "o Oscar", "grammys": "o Grammy",
-        "met-gala": "o Met Gala", "cannes": "o Festival de Cannes",
-        "coachella": "o Coachella", "rock-in-rio": "o Rock in Rio",
-    },
-    "fr": {
-        "gta6": "GTA VI", "iphone": "iPhone 2026", "f1": "la prochaine course F1",
-        "world-cup": "la Coupe du Monde 2026", "ucl-final": "la Finale de la Champions League",
-        "christmas": "Noël", "new-year": "le Nouvel An",
-        "halloween": "Halloween", "valentines": "la Saint-Valentin",
-        "easter": "Pâques",
-        "black-friday": "le Black Friday", "cyber-monday": "le Cyber Monday",
-        "full-moon": "la prochaine pleine lune", "eclipse": "la prochaine éclipse",
-        "oscars": "les Oscars", "grammys": "les Grammys",
-        "cannes": "le Festival de Cannes", "eurovision": "l'Eurovision",
-        "paris-fw": "la Fashion Week de Paris",
-        "bastille-day": "le 14 Juillet",
-        "tour-de-france": "le Tour de France",
-    },
+    "gta6": "GTA VI", "iphone": "iPhone 2026", "f1": "the next F1 race",
+    "world-cup": "the 2026 FIFA World Cup", "ucl-final": "the Champions League Final",
+    "nba-finals": "the NBA Finals", "le-mans": "24 Hours of Le Mans",
+    "wimbledon": "Wimbledon", "tour-de-france": "Tour de France",
+    "olympics-2028": "the 2028 Olympics", "super-bowl": "the Super Bowl",
+    "copa-libertadores": "the Copa Libertadores Final",
+    "christmas": "Christmas", "new-year": "New Year's",
+    "halloween": "Halloween", "valentines": "Valentine's Day",
+    "easter": "Easter", "mothers-day": "Mother's Day",
+    "fathers-day": "Father's Day", "thanksgiving": "Thanksgiving",
+    "black-friday": "Black Friday", "cyber-monday": "Cyber Monday",
+    "full-moon": "the next full moon", "eclipse": "the next eclipse",
+    "oscars": "the Oscars", "grammys": "the Grammys",
+    "met-gala": "the Met Gala", "cannes": "Cannes Film Festival",
+    "coachella": "Coachella", "eurovision": "Eurovision",
+    "lollapalooza-ar": "Lollapalooza Argentina",
+    "lollapalooza-cl": "Lollapalooza Chile",
+    "rock-in-rio": "Rock in Rio",
+    "nyfw": "New York Fashion Week", "paris-fw": "Paris Fashion Week",
+    "elecciones-ar": "Argentina's elections",
+    "bastille-day": "Bastille Day",
+    "dia-de-los-muertos": "Día de los Muertos",
 }
 
 # ── Hashtags per event ────────────────────────────────────────────────────────
@@ -100,7 +50,7 @@ HASHTAGS = {
     "super-bowl":       "#SuperBowl #NFL",
     "wimbledon":        "#Wimbledon #Tennis",
     "le-mans":          "#LeMans24 #LeMans",
-    "tour-de-france":   "#TourDeFrance #Cycling",
+    "tour-de-france":   "#TourDeFrance",
     "olympics-2028":    "#Olympics2028 #Olympics",
     "copa-libertadores":"#Libertadores #Conmebol",
     "oscars":           "#Oscars #AcademyAwards",
@@ -116,160 +66,107 @@ HASHTAGS = {
     "cyber-monday":     "#CyberMonday",
     "thanksgiving":     "#Thanksgiving",
     "valentines":       "#ValentinesDay",
+    "mothers-day":      "#MothersDay",
+    "fathers-day":      "#FathersDay",
+    "easter":           "#Easter",
     "gta6":             "#GTA6 #GTAVI #RockstarGames",
     "iphone":           "#iPhone #Apple",
     "full-moon":        "#FullMoon",
     "eclipse":          "#Eclipse",
     "lollapalooza-ar":  "#Lollapalooza",
+    "lollapalooza-cl":  "#Lollapalooza",
     "rock-in-rio":      "#RockInRio",
     "nyfw":             "#NYFW #FashionWeek",
     "paris-fw":         "#ParisFashionWeek #PFW",
 }
 
 # ── Engagement questions per event ────────────────────────────────────────────
-# Used in "question" templates. None = skip question template for that event.
 QUESTIONS = {
-    "en": {
-        "world-cup":        "Who's winning the 2026 World Cup? 🏆",
-        "ucl-final":        "Who's lifting the trophy? 🏆",
-        "f1":               "Who takes the win? 🏎️",
-        "nba-finals":       "Who's your pick? 🏀",
-        "super-bowl":       "Who's winning the Super Bowl? 🏈",
-        "wimbledon":        "Who wins Wimbledon this year? 🎾",
-        "oscars":           "Best Picture predictions? 🎬",
-        "grammys":          "Who wins Album of the Year? 🎵",
-        "christmas":        "Ready for Christmas? 🎄",
-        "halloween":        "Costume ideas? 🎃",
-        "coachella":        "Who are you most excited to see? 🎸",
-        "gta6":             "Are you hyped? 🎮",
-        "olympics-2028":    "Which sport are you watching first? 🏅",
-        "black-friday":     "What are you buying? 🛍️",
-        "met-gala":         "Whose look are you waiting for? 👗",
-    },
-    "es": {
-        "world-cup":        "¿Quién gana el Mundial 2026? 🏆",
-        "ucl-final":        "¿Quién levanta la Champions? 🏆",
-        "f1":               "¿Quién gana la carrera? 🏎️",
-        "nba-finals":       "¿Cuál es tu pick? 🏀",
-        "super-bowl":       "¿Quién gana el Super Bowl? 🏈",
-        "wimbledon":        "¿Quién gana Wimbledon este año? 🎾",
-        "oscars":           "¿Cuál es tu predicción para Mejor Película? 🎬",
-        "christmas":        "¿Ya estás listo para Navidad? 🎄",
-        "halloween":        "¿Ya tenés disfraz? 🎃",
-        "coachella":        "¿A quién más querés ver? 🎸",
-        "gta6":             "¿Estás hipeado? 🎮",
-        "black-friday":     "¿Qué vas a comprar? 🛍️",
-    },
-    "pt": {
-        "world-cup":        "Quem vence a Copa do Mundo 2026? 🏆",
-        "ucl-final":        "Quem vai erguer a taça? 🏆",
-        "f1":               "Quem vence a corrida? 🏎️",
-        "christmas":        "Já está preparado para o Natal? 🎄",
-        "black-friday":     "O que você vai comprar? 🛍️",
-        "oscars":           "Suas previsões para Melhor Filme? 🎬",
-    },
-    "fr": {
-        "world-cup":        "Qui remporte la Coupe du Monde 2026? 🏆",
-        "ucl-final":        "Qui soulève le trophée? 🏆",
-        "christmas":        "Vous êtes prêts pour Noël? 🎄",
-        "cannes":           "Quel film vous attend le plus? 🎬",
-    },
+    "world-cup":        ("Who's winning the 2026 World Cup? 🏆\n\n{days} days to go.", "#WorldCup2026 #FIFA"),
+    "ucl-final":        ("Who lifts the trophy at the Champions League Final? 🏆\n\n{days} days left.", "#UCLFinal #ChampionsLeague"),
+    "f1":               ("Who's taking the win at the next F1 race? 🏎️\n\n{days} days to go.", "#F1 #Formula1"),
+    "nba-finals":       ("NBA Finals in {days} days — who's your pick? 🏀", "#NBAFinals #NBA"),
+    "super-bowl":       ("Super Bowl in {days} days. Who wins? 🏈\n\nDrop your prediction 👇", "#SuperBowl #NFL"),
+    "wimbledon":        ("Wimbledon is {days} days away 🎾\n\nWho wins the men's and women's titles this year?", "#Wimbledon #Tennis"),
+    "oscars":           ("The Oscars are in {days} days 🎬\n\nWhat's your Best Picture prediction?", "#Oscars #AcademyAwards"),
+    "grammys":          ("The GRAMMYs are in {days} days 🎵\n\nWho wins Album of the Year?", "#GRAMMYs"),
+    "christmas":        ("Christmas is {days} days away 🎄\n\nAre you ready?", "#Christmas"),
+    "halloween":        ("Halloween in {days} days 🎃\n\nAlready have a costume idea?", "#Halloween"),
+    "coachella":        ("Coachella is {days} days away 🎸\n\nWho are you most excited to see?", "#Coachella"),
+    "gta6":             ("GTA VI drops in {days} days 🎮\n\nAre you ready? What are you expecting?", "#GTA6 #GTAVI"),
+    "olympics-2028":    ("The 2028 Olympics are in {days} days 🏅\n\nWhich sport are you most excited for?", "#Olympics2028"),
+    "black-friday":     ("Black Friday is {days} days away 🛍️\n\nWhat's on your list this year?", "#BlackFriday"),
+    "met-gala":         ("The Met Gala is in {days} days 👗\n\nWhose look are you most excited to see?", "#MetGala"),
+    "thanksgiving":     ("Thanksgiving is {days} days away 🦃\n\nWhat's your favorite dish?", "#Thanksgiving"),
+    "valentines":       ("Valentine's Day is {days} days away 💝\n\nDo you already have plans?", "#ValentinesDay"),
+    "tour-de-france":   ("Tour de France starts in {days} days 🚴\n\nWho wins this year?", "#TourDeFrance"),
+    "wimbledon":        ("Wimbledon is {days} days away 🎾\n\nWho wins the title this year?", "#Wimbledon #Tennis"),
+    "le-mans":          ("24 Hours of Le Mans in {days} days 🏁\n\nWho's your pick to win?", "#LeMans24"),
 }
 
-# ── URL patterns ──────────────────────────────────────────────────────────────
-URL_BASE = {
-    "en": "https://countdowns.site/countdown/{slug}/",
-    "es": "https://countdowns.site/es/countdown/{slug}/",
-    "pt": "https://countdowns.site/pt/countdown/{slug}/",
-    "fr": "https://countdowns.site/fr/countdown/{slug}/",
-}
+# ── URL pattern ───────────────────────────────────────────────────────────────
+URL_BASE = "https://countdowns.site/countdown/{slug}/"
 
-# ── Tweet templates ───────────────────────────────────────────────────────────
-# Types:
-#   "countdown" → classic countdown with URL (generates OG image preview)
-#   "text"      → no URL, plain text (no image, more organic feel)
-#   "question"  → engagement question, no URL
+# ── Tweet templates by days-range ─────────────────────────────────────────────
+# "close"  → days <= 30
+# "medium" → 31–90 days
+# "far"    → > 90 days
 #
+# All "countdown" templates include {url} → Twitter will show OG image preview.
+# "question" templates have no URL → plain text, no image.
+
 TEMPLATES = {
-    "en": {
-        "countdown": [
-            "⏱️ {days} days until {name}. → {url} {hashtags}",
-            "🗓️ {name} is in {days} days. → {url} {hashtags}",
-            "📅 {days} days to go until {name}. Track it live → {url} {hashtags}",
-            "⌛ Only {days} days until {name}! → {url} {hashtags}",
-            "🔢 {days} days left. {name} is almost here. → {url} {hashtags}",
-        ],
-        "text": [
-            "⏱️ {days} days until {name}. {hashtags}",
-            "📅 {name} is just {days} days away. {hashtags}",
-            "🗓️ Mark your calendar — {name} in {days} days. {hashtags}",
-            "⌛ {days} days. That's how long until {name}. {hashtags}",
-            "🔔 Reminder: {name} is in {days} days. {hashtags}",
-        ],
-        "question": [
-            "{question}\n\n{days} days to go. {hashtags}",
-            "{days} days until {name}.\n\n{question} {hashtags}",
-            "{question}\n\n{name} is in {days} days. {hashtags}",
-        ],
-    },
-    "es": {
-        "countdown": [
-            "⏱️ Faltan {days} días para {name}. → {url} {hashtags}",
-            "🗓️ {name} es en {days} días. → {url} {hashtags}",
-            "📅 {days} días para {name}. Seguí la cuenta regresiva → {url} {hashtags}",
-            "🔢 Quedan {days} días para {name}. → {url} {hashtags}",
-        ],
-        "text": [
-            "⏱️ Faltan {days} días para {name}. {hashtags}",
-            "📅 {name} en {days} días. {hashtags}",
-            "🗓️ Marcá el calendario — {name} en {days} días. {hashtags}",
-            "🔔 Recordatorio: {name} es en {days} días. {hashtags}",
-        ],
-        "question": [
-            "{question}\n\nFaltan {days} días. {hashtags}",
-            "{days} días para {name}.\n\n{question} {hashtags}",
-        ],
-    },
-    "pt": {
-        "countdown": [
-            "⏱️ Faltam {days} dias para {name}. → {url} {hashtags}",
-            "🗓️ {name} em {days} dias. → {url} {hashtags}",
-            "📅 {days} dias restantes para {name}. → {url} {hashtags}",
-            "🔢 Faltam apenas {days} dias para {name}! → {url} {hashtags}",
-        ],
-        "text": [
-            "⏱️ Faltam {days} dias para {name}. {hashtags}",
-            "📅 {name} está chegando — {days} dias. {hashtags}",
-            "🔔 Lembrete: {name} em {days} dias. {hashtags}",
-        ],
-        "question": [
-            "{question}\n\nFaltam {days} dias. {hashtags}",
-            "{days} dias para {name}.\n\n{question} {hashtags}",
-        ],
-    },
-    "fr": {
-        "countdown": [
-            "⏱️ {days} jours avant {name}. → {url} {hashtags}",
-            "🗓️ {name} dans {days} jours. → {url} {hashtags}",
-            "📅 Plus que {days} jours avant {name}. → {url} {hashtags}",
-        ],
-        "text": [
-            "⏱️ {days} jours avant {name}. {hashtags}",
-            "📅 {name} approche — {days} jours. {hashtags}",
-            "🔔 Rappel : {name} dans {days} jours. {hashtags}",
-        ],
-        "question": [
-            "{question}\n\nEncore {days} jours. {hashtags}",
-            "{days} jours avant {name}.\n\n{question} {hashtags}",
-        ],
-    },
+    "close": [
+        # Urgency / excitement
+        "🚨 {days} days until {name}. It's almost time. → {url} {hashtags}",
+        "⏳ Only {days} days left until {name}. → {url} {hashtags}",
+        "🔥 {name} is {days} days away. Things are heating up. → {url} {hashtags}",
+        "📢 {days} days to {name}. Don't miss it. → {url} {hashtags}",
+        "⚡ {name} in {days} days. Get ready. → {url} {hashtags}",
+        "🎯 {days} days. {name} is RIGHT around the corner. → {url} {hashtags}",
+        "👀 {days} days until {name}. Are you ready? → {url} {hashtags}",
+        "📅 We're {days} days out from {name}. The countdown is on. → {url} {hashtags}",
+        "🏁 {days} days to go. {name} is almost here. → {url} {hashtags}",
+        "⏰ T-minus {days} days until {name}. → {url} {hashtags}",
+    ],
+    "medium": [
+        # Building anticipation
+        "📅 {name} is {days} days away. Start getting excited. → {url} {hashtags}",
+        "🗓️ Mark your calendar — {name} in {days} days. → {url} {hashtags}",
+        "⏱️ {days} days until {name}. The wait is real. → {url} {hashtags}",
+        "📌 {name} is coming. {days} days to go. → {url} {hashtags}",
+        "🔔 Reminder: {name} is in {days} days. → {url} {hashtags}",
+        "🧭 {days} days on the clock until {name}. → {url} {hashtags}",
+        "📊 {days} days until {name}. Track the countdown live → {url} {hashtags}",
+        "🎯 {days} days until {name}. Already counting. → {url} {hashtags}",
+        "⌛ {days} days. That's how long until {name}. → {url} {hashtags}",
+        "🗓️ {name} in {days} days. Time flies. → {url} {hashtags}",
+        "📍 {days} days to {name}. Don't lose track. → {url} {hashtags}",
+        "🔢 {days} days and counting until {name}. → {url} {hashtags}",
+    ],
+    "far": [
+        # Patience / long wait
+        "📅 {days} days until {name}. The wait begins. → {url} {hashtags}",
+        "🗓️ {name} is still {days} days away. Plan ahead. → {url} {hashtags}",
+        "⏳ {days} days until {name}. Patience is a virtue. → {url} {hashtags}",
+        "📌 Save the date — {name} is {days} days from now. → {url} {hashtags}",
+        "🔭 {days} days until {name}. Far but worth the wait. → {url} {hashtags}",
+        "📊 {days} days on the clock until {name}. Start counting. → {url} {hashtags}",
+        "🗓️ {name} — {days} days to go. Mark it. → {url} {hashtags}",
+        "⏱️ {days} days. That's how far away {name} still is. → {url} {hashtags}",
+        "🔔 Just a heads up — {name} is in {days} days. → {url} {hashtags}",
+        "📅 {days} days until {name}. The countdown starts now. → {url} {hashtags}",
+        "🧭 {days} days to {name}. Follow the live countdown → {url} {hashtags}",
+        "🗓️ {name} is {days} days away. Still a while, but here we go. → {url} {hashtags}",
+    ],
 }
 
-# Tweet type weights: 40% countdown (with URL/image), 35% text (no image), 25% question
-TWEET_TYPE_WEIGHTS = [("countdown", 40), ("text", 35), ("question", 25)]
-
-# ── Language weights — English only, Twitter handles translation ──────────────
+# ── Language weights — English only ──────────────────────────────────────────
 LANG_WEIGHTS = [("en", 100)]
+
+# ── Tweet type weights ────────────────────────────────────────────────────────
+# 70% countdown (with URL+image), 30% question (no URL, no image)
+TWEET_TYPE_WEIGHTS = [("countdown", 70), ("question", 30)]
 
 # ── Load real countdown data ──────────────────────────────────────────────────
 def load_events():
@@ -292,12 +189,11 @@ def get_days_remaining(date_str):
     except Exception:
         return None
 
-def pick_event(lang):
+def pick_event():
     events = load_events()
-    names = NAMES.get(lang, NAMES["en"])
     candidates = []
     for slug, event_data in events.items():
-        if slug not in names:
+        if slug not in NAMES:
             continue
         days = get_days_remaining(event_data.get("date"))
         if days is None or days == 0:
@@ -307,38 +203,40 @@ def pick_event(lang):
         return None
     return random.choice(candidates)
 
+def days_range(days):
+    if days <= 30:
+        return "close"
+    elif days <= 90:
+        return "medium"
+    else:
+        return "far"
+
 # ── Post tweet ────────────────────────────────────────────────────────────────
 def post_tweet():
-    # Pick language
-    langs, lang_w = zip(*LANG_WEIGHTS)
-    lang = random.choices(langs, weights=lang_w, k=1)[0]
-
-    result = pick_event(lang)
+    result = pick_event()
     if not result:
         print("No valid events found.")
         return
 
     slug, days = result
-    name = NAMES[lang][slug]
-    url = URL_BASE[lang].format(slug=slug)
+    name = NAMES[slug]
+    url = URL_BASE.format(slug=slug)
     hashtags = HASHTAGS.get(slug, "")
-    question = QUESTIONS.get(lang, {}).get(slug)
 
-    # Pick tweet type — fall back to "text" if no question defined
+    # Pick tweet type
     types, type_w = zip(*TWEET_TYPE_WEIGHTS)
     tweet_type = random.choices(types, weights=type_w, k=1)[0]
-    if tweet_type == "question" and not question:
-        tweet_type = "text"
 
-    template = random.choice(TEMPLATES[lang][tweet_type])
+    # Fall back to countdown if no question defined for this event
+    if tweet_type == "question" and slug not in QUESTIONS:
+        tweet_type = "countdown"
 
-    tweet = template.format(
-        days=days,
-        name=name,
-        url=url,
-        hashtags=hashtags,
-        question=question or "",
-    ).strip()
+    if tweet_type == "question":
+        question_template, q_hashtags = QUESTIONS[slug]
+        tweet = question_template.format(days=days, name=name) + "\n\n" + q_hashtags
+    else:
+        template = random.choice(TEMPLATES[days_range(days)])
+        tweet = template.format(days=days, name=name, url=url, hashtags=hashtags).strip()
 
     # Safety: Twitter limit is 280 chars
     if len(tweet) > 280:
@@ -346,7 +244,7 @@ def post_tweet():
 
     try:
         client.create_tweet(text=tweet)
-        print(f"[{lang}][{tweet_type}] Tweet posted: {tweet}")
+        print(f"[{tweet_type}][{days_range(days)}] Tweet posted: {tweet}")
     except Exception as e:
         print(f"Error: {e}")
 
