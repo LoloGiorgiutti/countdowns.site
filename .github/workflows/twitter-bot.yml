@@ -1,0 +1,31 @@
+name: Twitter Bot
+
+on:
+  schedule:
+    - cron: '0 10 * * *'   # 10:00 UTC → morning Americas
+    - cron: '0 16 * * *'   # 16:00 UTC → afternoon Americas / evening Europe
+    - cron: '0 22 * * *'   # 22:00 UTC → night Americas
+  workflow_dispatch:        # allow manual run from GitHub UI
+
+jobs:
+  tweet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r twitter-bot/requirements.txt
+
+      - name: Post tweet
+        env:
+          API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+        run: python twitter-bot/bot.py
