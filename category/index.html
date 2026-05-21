@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Category — Countdowns</title>
+<meta name="description" id="page-desc" content="All countdowns in this category.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="256x256">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/countdown.css">
+<style>
+/* ── HUB HERO layout ── */
+.hub-hero { max-width:1120px; margin:0 auto; padding:56px 32px 0; }
+.hub-hero-top { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:24px; }
+.hub-hero h1 { font-size:clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.035em; line-height:1.1; }
+.hub-hero h1 em { font-style:normal; color:var(--cat-color,#818CF8); }
+.hub-hero-label { display:inline-flex; align-items:center; gap:7px; font-size:.72rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--txt-muted,#75758f); margin-bottom:14px; }
+.hub-hero-actions { display:flex; gap:8px; align-items:center; flex-wrap:wrap; flex-shrink:0; }
+/* ── SEARCH ── */
+.hub-search-wrap { position:relative; margin-bottom:40px; }
+.hub-search-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--txt-muted,#75758f); display:flex; align-items:center; pointer-events:none; }
+.hub-search-input { font-family:inherit; font-size:.9rem; font-weight:500; width:100%; padding:11px 16px 11px 42px; background:var(--card-bg,#111119); border:1px solid var(--card-border,rgba(255,255,255,.065)); border-radius:12px; color:var(--txt,#eeeef8); outline:none; transition:border-color .2s; }
+.hub-search-input::placeholder { color:var(--txt-dim,#3d3d52); }
+.hub-search-input:focus { border-color:rgba(255,255,255,.18); }
+[data-theme="light"] .hub-search-input { background:#fff; border-color:rgba(0,0,0,.07); color:#0d0d18; }
+[data-theme="light"] .hub-search-input::placeholder { color:#b0b0c8; }
+.hub-search-clear { position:absolute; right:12px; top:50%; transform:translateY(-50%); display:none; cursor:pointer; font-size:.85rem; color:var(--txt-muted,#75758f); background:none; border:none; font-family:inherit; padding:4px 6px; }
+/* ── FEATURED SECTION ── */
+.hub-featured-label { font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt-dim,#3d3d52); display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.hub-featured-label::after { content:''; flex:1; height:1px; background:var(--card-border,rgba(255,255,255,.065)); }
+.hub-featured-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:48px; }
+/* ── FEATURED CARD ── */
+.hub-fc { position:relative; overflow:hidden; border-radius:18px; padding:26px 22px 22px; min-height:186px; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--card-border,rgba(255,255,255,.065)); background:var(--card-bg,#111119); text-decoration:none; color:inherit; transition:transform .18s, box-shadow .18s, border-color .18s; }
+.hub-fc::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 110% -10%, var(--cat-glow,rgba(129,140,248,.15)) 0%, transparent 55%); }
+.hub-fc::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--cat-color,#818CF8) 0%, transparent 70%); opacity:.5; }
+.hub-fc:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(0,0,0,.35); border-color:rgba(255,255,255,.12); }
+[data-theme="light"] .hub-fc { background:#fff; border-color:rgba(0,0,0,.07); }
+.hub-fc-cat { font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--cat-color,#818CF8); opacity:.85; margin-bottom:10px; }
+.hub-fc-name { font-size:1.65rem; font-weight:700; letter-spacing:-.03em; line-height:1.15; flex:1; color:var(--txt,#eeeef8); }
+[data-theme="light"] .hub-fc-name { color:#0d0d18; }
+.hub-fc-bottom { display:flex; align-items:flex-end; justify-content:space-between; margin-top:20px; }
+.hub-fc-days-num { font-size:2.2rem; font-weight:700; letter-spacing:-.04em; line-height:1; color:#ffffff; text-shadow:0 0 18px rgba(255,255,255,.45), 0 0 40px rgba(255,255,255,.18); }
+[data-theme="light"] .hub-fc-days-num { color:#0d0d18; text-shadow:none; }
+.hub-fc-days-lbl { font-size:.72rem; color:var(--txt-muted,#75758f); margin-top:3px; }
+.hub-fc-date-arrow { display:flex; flex-direction:column; align-items:flex-end; gap:5px; }
+.hub-fc-date { font-size:.78rem; color:var(--txt-muted,#75758f); }
+.hub-fc-arrow { font-size:1rem; color:var(--txt-dim,#3d3d52); transition:transform .15s, color .15s; }
+.hub-fc:hover .hub-fc-arrow { transform:translateX(4px); color:var(--cat-color,#818CF8); }
+/* ── COMPACT GRID ── */
+.hub-compact-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; margin-bottom:32px; }
+/* ── COMPACT CARD ── */
+.hub-cc { position:relative; overflow:hidden; border-radius:14px; padding:18px 16px 14px; min-height:118px; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--card-border,rgba(255,255,255,.065)); background:var(--card-bg,#111119); text-decoration:none; color:inherit; transition:transform .14s, border-color .14s; }
+.hub-cc::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at -10% 60%, var(--cat-glow,rgba(129,140,248,.07)) 0%, transparent 60%); opacity:.5; }
+.hub-cc:hover { transform:translateY(-2px); border-color:rgba(255,255,255,.12); }
+[data-theme="light"] .hub-cc { background:#fff; border-color:rgba(0,0,0,.07); }
+.hub-cc-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:8px; }
+.hub-cc-cat { font-size:.67rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--cat-color,#818CF8); opacity:.9; }
+.hub-cc-pill { flex-shrink:0; font-size:1.25rem; font-weight:700; letter-spacing:-.03em; line-height:1; color:#ffffff; text-shadow:0 0 10px rgba(255,255,255,.2); white-space:nowrap; }
+[data-theme="light"] .hub-cc-pill { color:#0d0d18; }
+.hub-cc-pill--today { font-size:.8rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--cat-color,#818CF8); text-shadow:0 0 12px var(--cat-glow,rgba(129,140,248,.5)); }
+.hub-cc-pill--tba { font-size:.75rem; font-weight:600; color:var(--txt-muted,#75758f); text-shadow:none; }
+.hub-cc-name { font-size:1.08rem; font-weight:700; letter-spacing:-.02em; line-height:1.25; color:var(--txt,#eeeef8); flex:1; }
+[data-theme="light"] .hub-cc-name { color:#0d0d18; }
+.hub-cc-bottom { display:flex; align-items:center; justify-content:space-between; margin-top:10px; }
+.hub-cc-date { font-size:.73rem; color:var(--txt-dim,#3d3d52); }
+.hub-cc-arrow { font-size:.85rem; color:var(--txt-dim,#3d3d52); transition:transform .14s, color .14s; }
+.hub-cc:hover .hub-cc-arrow { transform:translateX(3px); color:var(--cat-color,#818CF8); }
+.hub-cc--past { opacity:.45; }
+/* ── BUCKET HEADER ── */
+.hub-bucket-hdr { font-size:.66rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt-dim,#3d3d52); display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:36px; }
+.hub-bucket-hdr:first-child { margin-top:0; }
+.hub-bucket-hdr::after { content:''; flex:1; height:1px; background:var(--card-border,rgba(255,255,255,.065)); }
+/* ── NO RESULTS ── */
+.hub-no-results { text-align:center; color:var(--txt-muted,#75758f); padding:60px 0; font-size:.95rem; }
+/* ── SKELETON ── */
+.hub-fc--skeleton { background:var(--card-bg,#111119); animation:skel-pulse 1.5s infinite; min-height:186px; }
+.hub-cc--skeleton { background:var(--card-bg,#111119); animation:skel-pulse 1.5s infinite; min-height:118px; }
+@keyframes skel-pulse { 0%,100%{opacity:.4} 50%{opacity:.7} }
+/* ── HUB BODY ── */
+.hub-body { max-width:1120px; margin:0 auto; padding:0 32px 80px; }
+/* ── BACK LINK ── */
+.hub-back-link { display:inline-flex; align-items:center; gap:5px; font-size:.8rem; font-weight:600; color:var(--txt-muted,#75758f); text-decoration:none; margin-bottom:6px; transition:color .15s; }
+.hub-back-link:hover { color:var(--txt,#eeeef8); }
+[data-theme="light"] .hub-back-link:hover { color:#0d0d18; }
+/* ── FAVORITES BUTTON ── */
+.hub-fav-btn { position:absolute; top:10px; right:10px; background:none; border:none; cursor:pointer; font-size:1.1rem; line-height:1; color:var(--txt-dim,#3d3d52); padding:4px 5px; opacity:0; transition:opacity .15s, color .15s, transform .12s; z-index:2; }
+.hub-fc:hover .hub-fav-btn, .hub-cc:hover .hub-fav-btn, .hub-fav-btn.active { opacity:1; }
+.hub-fav-btn.active { color:#FBBF24; }
+.hub-fav-btn:hover { color:#FBBF24; opacity:1 !important; transform:scale(1.18); }
+/* ── FAVORITES HEADER LINK ── */
+.hub-fav-header-link { display:inline-flex; align-items:center; gap:5px; font-size:.78rem; font-weight:600; color:var(--txt-muted,#75758f); text-decoration:none; padding:6px 11px; border-radius:99px; border:1px solid var(--card-border,rgba(255,255,255,.065)); transition:color .15s, border-color .15s; white-space:nowrap; }
+.hub-fav-header-link:hover { color:var(--txt,#eeeef8); border-color:rgba(255,255,255,.14); }
+[data-theme="light"] .hub-fav-header-link { border-color:rgba(0,0,0,.08); color:#888; }
+[data-theme="light"] .hub-fav-header-link:hover { color:#0d0d18; border-color:rgba(0,0,0,.16); }
+.hub-fav-badge { display:inline-flex; align-items:center; justify-content:center; min-width:15px; height:15px; background:#FBBF24; color:#000; font-size:.6rem; font-weight:700; border-radius:99px; padding:0 4px; line-height:1; }
+/* ── RESPONSIVE ── */
+@media(max-width:760px) { .hub-featured-grid { grid-template-columns:1fr; } }
+@media(max-width:640px) {
+  .hub-hero { padding:36px 16px 0; }
+  .hub-hero-top { flex-direction:column; align-items:flex-start; gap:16px; }
+  .hub-hero h1 { font-size:1.9rem; }
+  .hub-body { padding:0 16px 60px; }
+  .hub-compact-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .hub-fc-name { font-size:1.35rem; }
+  .hub-fc-days-num { font-size:1.7rem; }
+}
+/* ── Override countdown.css conflicts ── */
+.hub-hero { text-align:left !important; }
+.hub-hero::before { display:none !important; }
+.hub-hero h1 em { background:none !important; -webkit-background-clip:unset !important; -webkit-text-fill-color:unset !important; background-clip:unset !important; color:var(--cat-color,#818CF8) !important; }
+.hub-hero-actions { flex-direction:row !important; align-items:center !important; }
+.sort-toggle { background:transparent !important; border:none !important; padding:0 !important; gap:8px !important; display:inline-flex !important; align-items:center !important; }
+.sort-btn { background:transparent !important; border:1px solid var(--card-border,rgba(255,255,255,.065)) !important; border-radius:99px !important; padding:7px 16px !important; font-size:.78rem !important; color:var(--txt-muted,#75758f) !important; cursor:pointer !important; font-family:inherit !important; }
+.sort-btn.active { background:var(--card-bg,#111119) !important; border-color:transparent !important; color:var(--txt,#eeeef8) !important; }
+[data-theme="light"] .sort-btn { border-color:rgba(0,0,0,.1) !important; color:#555 !important; }
+[data-theme="light"] .sort-btn.active { background:#fff !important; color:#0d0d18 !important; border-color:transparent !important; }
+</style>
+<script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
+  <div class="header-right">
+    <a href="/favorites/" class="hub-fav-header-link" id="hub-fav-header-link" title="My Favorites">☆&nbsp;Favorites <span id="hub-fav-badge" class="hub-fav-badge" style="display:none"></span></a>
+    <button class="theme-btn" id="theme-toggle">Light</button>
+    <div class="lang-seg" role="group" aria-label="Language">
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='/'">EN</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/'">ES</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='/pt/'">PT</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='/fr/'">FR</button>
+    </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
+  </div>
+</header>
+
+<div class="hub-hero" id="hub-hero">
+  <div class="hub-hero-top">
+    <div>
+      <a href="/" class="hub-back-link">← All countdowns</a>
+      <div class="hub-hero-label" id="hub-hero-label" style="margin-top:10px">Category</div>
+      <h1 id="hub-hero-h1">Loading…</h1>
+    </div>
+    <div class="hub-hero-actions">
+      <div class="sort-toggle" role="group" aria-label="Sort order">
+        <button class="sort-btn active" data-sort="chrono">Soonest first</button>
+        <button class="sort-btn" data-sort="alpha">A–Z</button>
+      </div>
+    </div>
+  </div>
+  <div class="hub-search-wrap">
+    <span class="hub-search-icon">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </span>
+    <input class="hub-search-input" id="hub-search" type="text" placeholder="Search in this category…" autocomplete="off" spellcheck="false">
+    <button class="hub-search-clear" id="hub-search-clear">✕</button>
+  </div>
+</div>
+
+<main class="hub-body" id="hub-body">
+  <div id="hub-featured-section">
+    <div class="hub-featured-label" id="hub-featured-label">Very soon</div>
+    <div class="hub-featured-grid" id="hub-featured-grid"></div>
+  </div>
+  <div id="hub-content"></div>
+</main>
+
+<footer class="site-footer">
+  countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>
+</footer>
+
+<script src="/countdown-engine.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var CAT_COLOR = {
+    'Releases':       { color:'#C084FC', glow:'rgba(192,132,252,.25)' },
+    'Sports':         { color:'#FB923C', glow:'rgba(251,146,60,.25)'  },
+    'Holidays':       { color:'#4ADE80', glow:'rgba(74,222,128,.2)'   },
+    'Entertainment':  { color:'#FBBF24', glow:'rgba(251,191,36,.2)'   },
+    'Sales':          { color:'#60A5FA', glow:'rgba(96,165,250,.2)'   },
+    'Nature':         { color:'#22D3EE', glow:'rgba(34,211,238,.2)'   },
+    'Music':          { color:'#F472B6', glow:'rgba(244,114,182,.2)'  },
+    'Politics':       { color:'#94A3B8', glow:'rgba(148,163,184,.2)'  },
+    'Fashion':        { color:'#FDA4AF', glow:'rgba(253,164,175,.2)'  },
+    'Technology':     { color:'#34D399', glow:'rgba(52,211,153,.2)'   },
+    'Months':         { color:'#A78BFA', glow:'rgba(167,139,250,.2)'  },
+    'Seasons':        { color:'#6EE7B7', glow:'rgba(110,231,183,.2)'  },
+    'School':         { color:'#FCD34D', glow:'rgba(252,211,77,.2)'   },
+    'National Days':  { color:'#F87171', glow:'rgba(248,113,113,.2)'  },
+    'Jewish Holidays':{ color:'#E9D5A1', glow:'rgba(233,213,161,.2)'  },
+    'Time':           { color:'#67E8F9', glow:'rgba(103,232,249,.2)'  },
+    'Birthdays':      { color:'#E879F9', glow:'rgba(232,121,249,.2)'  },
+  };
+  function cc(cat) { return CAT_COLOR[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' }; }
+
+  /* ── Read category from URL ── */
+  var params = new URLSearchParams(window.location.search);
+  var currentCat = params.get('cat') || '';
+  var catData = CAT_COLOR[currentCat];
+
+  if (!currentCat || !catData) {
+    document.getElementById('hub-hero-h1').textContent = 'Category not found';
+    document.getElementById('hub-featured-section').style.display = 'none';
+    document.getElementById('hub-content').innerHTML = '<div class="hub-no-results">Category not found. <a href="/" style="color:var(--cat-color,#818CF8)">Browse all countdowns →</a></div>';
+  } else {
+    // Set page title and meta
+    document.title = currentCat + ' Countdowns — Countdowns.site';
+    document.getElementById('hub-hero-h1').innerHTML = currentCat === 'Birthdays' ? 'Celebrity <em>Birthdays</em>'
+      : currentCat === 'Jewish Holidays' ? 'Jewish <em>Holidays</em>'
+      : currentCat === 'National Days' ? 'National <em>Days</em>'
+      : '<em>' + currentCat + '</em>';
+    document.getElementById('hub-hero-label').textContent = currentCat + ' · All countdowns';
+
+    // Apply category color to hero
+    var hero = document.getElementById('hub-hero');
+    if (hero) hero.style.cssText += ';--cat-color:' + catData.color + ';--cat-glow:' + catData.glow;
+  }
+
+  var currentSort = 'chrono';
+
+  /* ── Favourites helpers ── */
+  function getFavs() { try { return JSON.parse(localStorage.getItem('cd_favorites') || '[]'); } catch(e) { return []; } }
+  function setFavs(favs) { localStorage.setItem('cd_favorites', JSON.stringify(favs)); }
+  function toggleFav(slug) {
+    var favs = getFavs(); var idx = favs.indexOf(slug);
+    if (idx >= 0) favs.splice(idx, 1); else favs.push(slug);
+    setFavs(favs); return idx < 0;
+  }
+  function updateFavButtons() {
+    var favs = getFavs();
+    document.querySelectorAll('.hub-fav-btn').forEach(function(btn) {
+      var on = favs.indexOf(btn.dataset.slug) >= 0;
+      btn.classList.toggle('active', on);
+      btn.textContent = on ? '★' : '☆';
+      btn.title = on ? 'Remove from favorites' : 'Save to favorites';
+    });
+  }
+  function updateFavBadge() {
+    var badge = document.getElementById('hub-fav-badge');
+    if (!badge) return;
+    var n = getFavs().length;
+    badge.textContent = n;
+    badge.style.display = n > 0 ? 'inline-flex' : 'none';
+  }
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest ? e.target.closest('.hub-fav-btn') : null;
+    if (!btn) return;
+    e.preventDefault(); e.stopPropagation();
+    var slug = btn.dataset.slug;
+    var on = toggleFav(slug);
+    document.querySelectorAll('.hub-fav-btn[data-slug="' + slug + '"]').forEach(function(b) {
+      b.classList.toggle('active', on);
+      b.textContent = on ? '★' : '☆';
+      b.title = on ? 'Remove from favorites' : 'Save to favorites';
+    });
+    updateFavBadge();
+  });
+
+  /* ── All events filtered to this category ── */
+  var ALL_EVENTS = [
+    { slug:'gta6',       name:'GTA VI',                        cat:'Releases',      url:'/countdown/gta6/',       type:'variable' },
+    { slug:'iphone',     name:'Next iPhone',                   cat:'Releases',      url:'/countdown/iphone/',     type:'variable' },
+    { slug:'f1',         name:'F1 Next Race',                  cat:'Sports',        url:'/countdown/f1/',         type:'variable' },
+    { slug:'world-cup',  name:'2026 FIFA World Cup',           cat:'Sports',        url:'/countdown/world-cup/',  type:'variable' },
+    { slug:'ucl-final',  name:'Champions League Final',        cat:'Sports',        url:'/countdown/ucl-final/',  type:'variable' },
+    { slug:'nba-finals', name:'NBA Finals',                    cat:'Sports',        url:'/countdown/nba-finals/', type:'variable' },
+    { slug:'le-mans',    name:'24h Le Mans',                   cat:'Sports',        url:'/countdown/le-mans/',    type:'variable' },
+    { slug:'wimbledon',  name:'Wimbledon',                     cat:'Sports',        url:'/countdown/wimbledon/',  type:'variable' },
+    { slug:'roland-garros',    name:'Roland Garros',           cat:'Sports',        url:'/countdown/roland-garros/',    type:'variable' },
+    { slug:'pga-championship', name:'PGA Championship',        cat:'Sports',        url:'/countdown/pga-championship/', type:'variable' },
+    { slug:'us-open-golf',     name:'US Open Golf',            cat:'Sports',        url:'/countdown/us-open-golf/',     type:'variable' },
+    { slug:'the-open',         name:'The Open Championship',   cat:'Sports',        url:'/countdown/the-open/',         type:'variable' },
+    { slug:'us-open-tennis',   name:'US Open Tennis',          cat:'Sports',        url:'/countdown/us-open-tennis/',   type:'variable' },
+    { slug:'royal-ascot',      name:'Royal Ascot',             cat:'Sports',        url:'/countdown/royal-ascot/',      type:'variable' },
+    { slug:'melbourne-cup',    name:'Melbourne Cup',           cat:'Sports',        url:'/countdown/melbourne-cup/',    type:'variable' },
+    { slug:'nfl-season',       name:'NFL Season Kickoff',      cat:'Sports',        url:'/countdown/nfl-season/',       type:'variable' },
+    { slug:'stanley-cup',      name:'Stanley Cup Finals',      cat:'Sports',        url:'/countdown/stanley-cup/',      type:'variable' },
+    { slug:'masters-golf',     name:'The Masters',             cat:'Sports',        url:'/countdown/masters-golf/',     type:'variable' },
+    { slug:'wwe-summerslam',   name:'WWE SummerSlam',          cat:'Sports',        url:'/countdown/wwe-summerslam/',   type:'variable' },
+    { slug:'wwe-royal-rumble', name:'WWE Royal Rumble',        cat:'Sports',        url:'/countdown/wwe-royal-rumble/', type:'variable' },
+    { slug:'wwe-survivor-series',name:'WWE Survivor Series',   cat:'Sports',        url:'/countdown/wwe-survivor-series/',type:'variable'},
+    { slug:'copa-del-rey',     name:'Copa del Rey Final',      cat:'Sports',        url:'/countdown/copa-del-rey/',     type:'variable' },
+    { slug:'fa-cup-final',     name:'FA Cup Final',            cat:'Sports',        url:'/countdown/fa-cup-final/',     type:'variable' },
+    { slug:'nba-draft',        name:'NBA Draft',               cat:'Sports',        url:'/countdown/nba-draft/',        type:'variable' },
+    { slug:'cricket-world-cup',name:'ICC Cricket World Cup',   cat:'Sports',        url:'/countdown/cricket-world-cup/',type:'variable' },
+    { slug:'rugby-world-cup',  name:'Rugby World Cup 2027',    cat:'Sports',        url:'/countdown/rugby-world-cup/',  type:'variable' },
+    { slug:'six-nations',      name:'Six Nations',             cat:'Sports',        url:'/countdown/six-nations/',      type:'variable' },
+    { slug:'world-series',     name:'MLB World Series',        cat:'Sports',        url:'/countdown/world-series/',     type:'variable' },
+    { slug:'tour-de-france',   name:'Tour de France',          cat:'Sports',        url:'/countdown/tour-de-france/',   type:'variable' },
+    { slug:'olympics-2028',    name:'LA 2028 Olympics',        cat:'Sports',        url:'/countdown/olympics-2028/',    type:'auto'     },
+    { slug:'super-bowl',       name:'Super Bowl',              cat:'Sports',        url:'/countdown/super-bowl/',       type:'auto'     },
+    { slug:'copa-libertadores',name:'Copa Libertadores Final', cat:'Sports',        url:'/countdown/copa-libertadores/',type:'variable' },
+    { slug:'world-cup-final',  name:'2026 World Cup Final',    cat:'Sports',        url:'/countdown/world-cup-final/',  type:'variable' },
+    { slug:'copa-america-2028',name:'Copa America 2028',       cat:'Sports',        url:'/countdown/copa-america-2028/',type:'variable' },
+    { slug:'copa-america-2028-final',name:'Copa America 2028 Final',cat:'Sports',   url:'/countdown/copa-america-2028-final/',type:'variable'},
+    { slug:'euro-2028',        name:'UEFA Euro 2028',          cat:'Sports',        url:'/countdown/euro-2028/',        type:'variable' },
+    { slug:'euro-2028-final',  name:'UEFA Euro 2028 Final',    cat:'Sports',        url:'/countdown/euro-2028-final/',  type:'variable' },
+    { slug:'mr-olympia',       name:'Mr. Olympia',             cat:'Sports',        url:'/countdown/mr-olympia/',       type:'auto'     },
+    { slug:'arnold-classic',   name:'Arnold Classic',          cat:'Sports',        url:'/countdown/arnold-classic/',   type:'auto'     },
+    { slug:'christmas',        name:'Christmas',               cat:'Holidays',      url:'/countdown/christmas/',        type:'auto'     },
+    { slug:'new-year',         name:'New Year',                cat:'Holidays',      url:'/countdown/new-year/',         type:'auto'     },
+    { slug:'halloween',        name:'Halloween',               cat:'Holidays',      url:'/countdown/halloween/',        type:'auto'     },
+    { slug:'valentines',       name:"Valentine's Day",         cat:'Holidays',      url:'/countdown/valentines/',       type:'auto'     },
+    { slug:'easter',           name:'Easter',                  cat:'Holidays',      url:'/countdown/easter/',           type:'auto'     },
+    { slug:'mothers-day',      name:"Mother's Day",            cat:'Holidays',      url:'/countdown/mothers-day/',      type:'auto'     },
+    { slug:'fathers-day',      name:"Father's Day",            cat:'Holidays',      url:'/countdown/fathers-day/',      type:'auto'     },
+    { slug:'thanksgiving',     name:'Thanksgiving',            cat:'Holidays',      url:'/countdown/thanksgiving/',     type:'auto'     },
+    { slug:'memorial-day',     name:'Memorial Day',            cat:'Holidays',      url:'/countdown/memorial-day/',     type:'auto'     },
+    { slug:'labor-day',        name:'Labor Day',               cat:'Holidays',      url:'/countdown/labor-day/',        type:'auto'     },
+    { slug:'st-patricks',      name:"St. Patrick's Day",       cat:'Holidays',      url:'/countdown/st-patricks/',      type:'auto'     },
+    { slug:'dia-de-los-muertos',name:'Dia de los Muertos',     cat:'Holidays',      url:'/countdown/dia-de-los-muertos/',type:'auto'   },
+    { slug:'cinco-de-mayo',    name:'Cinco de Mayo',           cat:'Holidays',      url:'/countdown/cinco-de-mayo/',    type:'auto'     },
+    { slug:'fiestas-patrias',  name:'Fiestas Patrias Chile',   cat:'Holidays',      url:'/countdown/fiestas-patrias/',  type:'auto'     },
+    { slug:'bastille-day',     name:'Bastille Day',            cat:'Holidays',      url:'/countdown/bastille-day/',     type:'auto'     },
+    { slug:'oktoberfest',      name:'Oktoberfest',             cat:'Holidays',      url:'/countdown/oktoberfest/',      type:'variable' },
+    { slug:'dia-del-nino',     name:"Children's Day",          cat:'Holidays',      url:'/countdown/dia-del-nino/',     type:'auto'     },
+    { slug:'epiphany',         name:'Epiphany / Three Kings Day',cat:'Holidays',    url:'/countdown/epiphany/',         type:'auto'     },
+    { slug:'lunar-new-year',   name:'Lunar New Year',          cat:'Holidays',      url:'/countdown/lunar-new-year/',   type:'variable' },
+    { slug:'holi',             name:'Holi',                    cat:'Holidays',      url:'/countdown/holi/',             type:'variable' },
+    { slug:'mardi-gras',       name:'Mardi Gras',              cat:'Holidays',      url:'/countdown/mardi-gras/',       type:'variable' },
+    { slug:'anzac-day',        name:'ANZAC Day',               cat:'Holidays',      url:'/countdown/anzac-day/',        type:'variable' },
+    { slug:'koningsdag',       name:'Koningsdag',              cat:'Holidays',      url:'/countdown/koningsdag/',       type:'variable' },
+    { slug:'guy-fawkes',       name:"Guy Fawkes Night",        cat:'Holidays',      url:'/countdown/guy-fawkes/',       type:'variable' },
+    { slug:'boxing-day',       name:'Boxing Day',              cat:'Holidays',      url:'/countdown/boxing-day/',       type:'variable' },
+    { slug:'diwali',           name:'Diwali',                  cat:'Holidays',      url:'/countdown/diwali/',           type:'variable' },
+    { slug:'oscars',           name:'Oscars',                  cat:'Entertainment', url:'/countdown/oscars/',           type:'auto'     },
+    { slug:'grammys',          name:'Grammy Awards',           cat:'Entertainment', url:'/countdown/grammys/',          type:'variable' },
+    { slug:'met-gala',         name:'Met Gala',                cat:'Entertainment', url:'/countdown/met-gala/',         type:'auto'     },
+    { slug:'cannes',           name:'Cannes Film Festival',    cat:'Entertainment', url:'/countdown/cannes/',           type:'variable' },
+    { slug:'emmys',            name:'Emmy Awards',             cat:'Entertainment', url:'/countdown/emmys/',            type:'variable' },
+    { slug:'golden-globes',    name:'Golden Globe Awards',     cat:'Entertainment', url:'/countdown/golden-globes/',    type:'variable' },
+    { slug:'cs2-major',        name:'CS2 Major Championship',  cat:'Entertainment', url:'/countdown/cs2-major/',        type:'variable' },
+    { slug:'lol-worlds',       name:'LoL World Championship',  cat:'Entertainment', url:'/countdown/lol-worlds/',       type:'variable' },
+    { slug:'la-velada-del-ano',name:'La Velada del Año',       cat:'Entertainment', url:'/countdown/la-velada-del-ano/',type:'variable' },
+    { slug:'balon-de-oro',     name:"Ballon d'Or",             cat:'Entertainment', url:'/countdown/balon-de-oro/',     type:'auto'     },
+    { slug:'brit-awards',      name:'BRIT Awards',             cat:'Entertainment', url:'/countdown/brit-awards/',      type:'variable' },
+    { slug:'latin-grammys',    name:'Latin Grammy Awards',     cat:'Entertainment', url:'/countdown/latin-grammys/',    type:'variable' },
+    { slug:'mtv-vmas',         name:'MTV VMAs',                cat:'Entertainment', url:'/countdown/mtv-vmas/',         type:'variable' },
+    { slug:'bafta',            name:'BAFTA Awards',            cat:'Entertainment', url:'/countdown/bafta/',            type:'variable' },
+    { slug:'eurovision',       name:'Eurovision',              cat:'Entertainment', url:'/countdown/eurovision/',       type:'variable' },
+    { slug:'coachella',        name:'Coachella',               cat:'Entertainment', url:'/countdown/coachella/',        type:'variable' },
+    { slug:'rio-carnival',     name:'Rio Carnival',            cat:'Entertainment', url:'/countdown/rio-carnival/',     type:'auto'     },
+    { slug:'black-friday',     name:'Black Friday',            cat:'Sales',         url:'/countdown/black-friday/',     type:'auto'     },
+    { slug:'cyber-monday',     name:'Cyber Monday',            cat:'Sales',         url:'/countdown/cyber-monday/',     type:'auto'     },
+    { slug:'hot-sale',         name:'Hot Sale',                cat:'Sales',         url:'/countdown/hot-sale/',         type:'variable' },
+    { slug:'full-moon',        name:'Next Full Moon',          cat:'Nature',        url:'/countdown/full-moon/',        type:'auto'     },
+    { slug:'eclipse',          name:'Solar Eclipse',           cat:'Nature',        url:'/countdown/eclipse/',          type:'variable' },
+    { slug:'lollapalooza-ar',  name:'Lollapalooza Argentina',  cat:'Music',         url:'/countdown/lollapalooza-ar/',  type:'variable' },
+    { slug:'lollapalooza-cl',  name:'Lollapalooza Chile',      cat:'Music',         url:'/countdown/lollapalooza-cl/',  type:'variable' },
+    { slug:'cosquin-rock',     name:'Cosquin Rock',            cat:'Music',         url:'/countdown/cosquin-rock/',     type:'variable' },
+    { slug:'rock-in-rio',      name:'Rock in Rio',             cat:'Music',         url:'/countdown/rock-in-rio/',      type:'variable' },
+    { slug:'lollapalooza-us',  name:'Lollapalooza Chicago',    cat:'Music',         url:'/countdown/lollapalooza-us/',  type:'variable' },
+    { slug:'lollapalooza-de',  name:'Lollapalooza Berlin',     cat:'Music',         url:'/countdown/lollapalooza-de/',  type:'variable' },
+    { slug:'lollapalooza-fr',  name:'Lollapalooza Paris',      cat:'Music',         url:'/countdown/lollapalooza-fr/',  type:'variable' },
+    { slug:'primavera-sound-es',name:'Primavera Sound Barcelona',cat:'Music',       url:'/countdown/primavera-sound-es/',type:'variable'},
+    { slug:'primavera-sound-ar',name:'Primavera Sound Buenos Aires',cat:'Music',    url:'/countdown/primavera-sound-ar/',type:'variable'},
+    { slug:'primavera-sound-br',name:'Primavera Sound Sao Paulo',cat:'Music',       url:'/countdown/primavera-sound-br/',type:'variable'},
+    { slug:'glastonbury',      name:'Glastonbury Festival',    cat:'Music',         url:'/countdown/glastonbury/',      type:'variable' },
+    { slug:'bonnaroo',         name:'Bonnaroo',                cat:'Music',         url:'/countdown/bonnaroo/',         type:'variable' },
+    { slug:'tomorrowland',     name:'Tomorrowland',            cat:'Music',         url:'/countdown/tomorrowland/',     type:'variable' },
+    { slug:'nyfw',             name:'New York Fashion Week',   cat:'Fashion',       url:'/countdown/nyfw/',             type:'variable' },
+    { slug:'paris-fw',         name:'Paris Fashion Week',      cat:'Fashion',       url:'/countdown/paris-fw/',         type:'variable' },
+    { slug:'milan-fw',         name:'Milan Fashion Week',      cat:'Fashion',       url:'/countdown/milan-fw/',         type:'variable' },
+    { slug:'bafweek',          name:'Buenos Aires Fashion Week',cat:'Fashion',      url:'/countdown/bafweek/',          type:'variable' },
+    { slug:'ces',              name:'CES Las Vegas',           cat:'Technology',    url:'/countdown/ces/',              type:'auto'     },
+    { slug:'messi-birthday',        name:"Messi's Birthday",        cat:'Birthdays', url:'/countdown/messi-birthday/',        type:'variable' },
+    { slug:'ronaldo-birthday',      name:"Ronaldo's Birthday",       cat:'Birthdays', url:'/countdown/ronaldo-birthday/',      type:'variable' },
+    { slug:'taylor-swift-birthday', name:"Taylor Swift's Birthday",  cat:'Birthdays', url:'/countdown/taylor-swift-birthday/', type:'variable' },
+    { slug:'bad-bunny-birthday',    name:"Bad Bunny's Birthday",     cat:'Birthdays', url:'/countdown/bad-bunny-birthday/',    type:'variable' },
+    { slug:'lebron-james-birthday', name:"LeBron James's Birthday",  cat:'Birthdays', url:'/countdown/lebron-james-birthday/', type:'variable' },
+    { slug:'shakira-birthday',      name:"Shakira's Birthday",       cat:'Birthdays', url:'/countdown/shakira-birthday/',      type:'variable' },
+    { slug:'drake-birthday',        name:"Drake's Birthday",         cat:'Birthdays', url:'/countdown/drake-birthday/',        type:'variable' },
+    { slug:'neymar-birthday',       name:"Neymar's Birthday",        cat:'Birthdays', url:'/countdown/neymar-birthday/',       type:'variable' },
+    { slug:'mbappe-birthday',       name:"Mbappé's Birthday",        cat:'Birthdays', url:'/countdown/mbappe-birthday/',       type:'variable' },
+    { slug:'billie-eilish-birthday',name:"Billie Eilish's Birthday", cat:'Birthdays', url:'/countdown/billie-eilish-birthday/',type:'variable' },
+    { slug:'ariana-grande-birthday',name:"Ariana Grande's Birthday", cat:'Birthdays', url:'/countdown/ariana-grande-birthday/',type:'variable' },
+    { slug:'justin-bieber-birthday',name:"Justin Bieber's Birthday", cat:'Birthdays', url:'/countdown/justin-bieber-birthday/',type:'variable' },
+    { slug:'beyonce-birthday',      name:"Beyoncé's Birthday",       cat:'Birthdays', url:'/countdown/beyonce-birthday/',      type:'variable' },
+    { slug:'rihanna-birthday',      name:"Rihanna's Birthday",       cat:'Birthdays', url:'/countdown/rihanna-birthday/',      type:'variable' },
+    { slug:'weeknd-birthday',       name:"The Weeknd's Birthday",    cat:'Birthdays', url:'/countdown/weeknd-birthday/',       type:'variable' },
+    { slug:'dua-lipa-birthday',     name:"Dua Lipa's Birthday",      cat:'Birthdays', url:'/countdown/dua-lipa-birthday/',     type:'variable' },
+    { slug:'selena-gomez-birthday', name:"Selena Gomez's Birthday",  cat:'Birthdays', url:'/countdown/selena-gomez-birthday/', type:'variable' },
+    { slug:'ed-sheeran-birthday',   name:"Ed Sheeran's Birthday",    cat:'Birthdays', url:'/countdown/ed-sheeran-birthday/',   type:'variable' },
+    { slug:'vinicius-birthday',     name:"Vinicius Jr's Birthday",   cat:'Birthdays', url:'/countdown/vinicius-birthday/',     type:'variable' },
+    { slug:'lamine-yamal-birthday', name:"Lamine Yamal's Birthday",  cat:'Birthdays', url:'/countdown/lamine-yamal-birthday/', type:'variable' },
+    { slug:'haaland-birthday',      name:"Erling Haaland's Birthday",cat:'Birthdays', url:'/countdown/haaland-birthday/',      type:'variable' },
+    { slug:'donald-trump-birthday', name:"Donald Trump's Birthday",  cat:'Birthdays', url:'/countdown/donald-trump-birthday/', type:'variable' },
+    { slug:'elon-musk-birthday',    name:"Elon Musk's Birthday",     cat:'Birthdays', url:'/countdown/elon-musk-birthday/',    type:'variable' },
+    { slug:'virat-kohli-birthday',  name:"Virat Kohli's Birthday",   cat:'Birthdays', url:'/countdown/virat-kohli-birthday/',  type:'variable' },
+    { slug:'mrbeast-birthday',      name:"MrBeast's Birthday",       cat:'Birthdays', url:'/countdown/mrbeast-birthday/',      type:'variable' },
+    { slug:'ksi-birthday',          name:"KSI's Birthday",           cat:'Birthdays', url:'/countdown/ksi-birthday/',          type:'variable' },
+    { slug:'dicaprio-birthday',     name:"Leonardo DiCaprio's Birthday",cat:'Birthdays',url:'/countdown/dicaprio-birthday/',   type:'variable' },
+    { slug:'brad-pitt-birthday',    name:"Brad Pitt's Birthday",     cat:'Birthdays', url:'/countdown/brad-pitt-birthday/',    type:'variable' },
+    { slug:'dwayne-johnson-birthday',name:"Dwayne Johnson's Birthday",cat:'Birthdays',url:'/countdown/dwayne-johnson-birthday/',type:'variable'},
+    { slug:'tom-cruise-birthday',   name:"Tom Cruise's Birthday",    cat:'Birthdays', url:'/countdown/tom-cruise-birthday/',   type:'variable' },
+    { slug:'ryan-reynolds-birthday',name:"Ryan Reynolds's Birthday", cat:'Birthdays', url:'/countdown/ryan-reynolds-birthday/',type:'variable' },
+    { slug:'robert-downey-jr-birthday',name:"Robert Downey Jr's Birthday",cat:'Birthdays',url:'/countdown/robert-downey-jr-birthday/',type:'variable'},
+    { slug:'will-smith-birthday',   name:"Will Smith's Birthday",    cat:'Birthdays', url:'/countdown/will-smith-birthday/',   type:'variable' },
+    { slug:'zendaya-birthday',      name:"Zendaya's Birthday",       cat:'Birthdays', url:'/countdown/zendaya-birthday/',      type:'variable' },
+    { slug:'angelina-jolie-birthday',name:"Angelina Jolie's Birthday",cat:'Birthdays',url:'/countdown/angelina-jolie-birthday/',type:'variable'},
+    { slug:'scarlett-johansson-birthday',name:"Scarlett Johansson's Birthday",cat:'Birthdays',url:'/countdown/scarlett-johansson-birthday/',type:'variable'},
+    { slug:'independence',     name:'Independence Day',        cat:'National Days', url:'/countdown/independence/',     type:'auto'     },
+    { slug:'canada-day',       name:'Canada Day',              cat:'National Days', url:'/countdown/canada-day/',       type:'auto'     },
+    { slug:'australia-day',    name:'Australia Day',           cat:'National Days', url:'/countdown/australia-day/',    type:'auto'     },
+    { slug:'waitangi-day',     name:'Waitangi Day',            cat:'National Days', url:'/countdown/waitangi-day/',     type:'auto'     },
+    { slug:'syttende-mai',     name:'Norwegian Constitution Day',cat:'National Days',url:'/countdown/syttende-mai/',   type:'auto'     },
+    { slug:'german-unity-day', name:'German Unity Day',        cat:'National Days', url:'/countdown/german-unity-day/',type:'auto'     },
+    { slug:'festa-della-repubblica',name:'Italian Republic Day',cat:'National Days',url:'/countdown/festa-della-repubblica/',type:'auto'},
+    { slug:'national-day-sg',  name:'Singapore National Day',  cat:'National Days', url:'/countdown/national-day-sg/', type:'auto'     },
+    { slug:'freedom-day-za',   name:'South Africa Freedom Day',cat:'National Days', url:'/countdown/freedom-day-za/',  type:'auto'     },
+    { slug:'dia-de-la-hispanidad',name:'Dia de la Hispanidad', cat:'National Days', url:'/countdown/dia-de-la-hispanidad/',type:'auto' },
+    { slug:'dia-de-la-raza',   name:'Dia de la Raza',          cat:'National Days', url:'/countdown/dia-de-la-raza/',  type:'auto'     },
+    { slug:'dia-de-la-bandera',name:'Dia de la Bandera',       cat:'National Days', url:'/countdown/dia-de-la-bandera/',type:'auto'   },
+    { slug:'proclamacion-independencia-ar',name:'Revolución de Mayo',cat:'National Days',url:'/countdown/proclamacion-independencia-ar/',type:'auto'},
+    { slug:'dia-de-la-revolucion',name:'Dia de la Revolucion', cat:'National Days', url:'/countdown/dia-de-la-revolucion/',type:'auto' },
+    { slug:'dia-de-la-constitucion',name:'Dia de la Constitucion',cat:'National Days',url:'/countdown/dia-de-la-constitucion/',type:'auto'},
+    { slug:'proclamacao-da-republica',name:'Proclamacao da Republica',cat:'National Days',url:'/countdown/proclamacao-da-republica/',type:'auto'},
+    { slug:'tiradentes',       name:'Tiradentes',              cat:'National Days', url:'/countdown/tiradentes/',       type:'auto'     },
+    { slug:'rosh-hashana',     name:'Rosh Hashanah',           cat:'Jewish Holidays',url:'/countdown/rosh-hashana/',   type:'auto'     },
+    { slug:'yom-kipur',        name:'Yom Kippur',              cat:'Jewish Holidays',url:'/countdown/yom-kipur/',      type:'auto'     },
+    { slug:'januca',           name:'Hanukkah',                cat:'Jewish Holidays',url:'/countdown/januca/',         type:'auto'     },
+    { slug:'purim',            name:'Purim',                   cat:'Jewish Holidays',url:'/countdown/purim/',          type:'auto'     },
+    { slug:'pesaj',            name:'Passover',                cat:'Jewish Holidays',url:'/countdown/pesaj/',          type:'auto'     },
+    { slug:'shavuot',          name:'Shavuot',                 cat:'Jewish Holidays',url:'/countdown/shavuot/',        type:'auto'     },
+    { slug:'elecciones-ar',    name:'Argentine Elections',     cat:'Politics',      url:'/countdown/elecciones-ar/',   type:'auto'     },
+    { slug:'elecciones-colombia',name:'Colombia Presidential Election',cat:'Politics',url:'/countdown/elecciones-colombia/',type:'variable'},
+    { slug:'elecciones-brasil',name:'Brazil General Election', cat:'Politics',      url:'/countdown/elecciones-brasil/',type:'variable'},
+    { slug:'elecciones-usa-midterms',name:'US Midterm Elections 2026',cat:'Politics',url:'/countdown/elecciones-usa-midterms/',type:'variable'},
+    { slug:'elecciones-france',name:'French Presidential 2027',cat:'Politics',      url:'/countdown/elecciones-france/',type:'variable'},
+    { slug:'elecciones-mexico',name:'Mexican Midterms 2027',   cat:'Politics',      url:'/countdown/elecciones-mexico/',type:'variable'},
+    { slug:'january',   name:'January',   cat:'Months', url:'/countdown/january/',   type:'auto' },
+    { slug:'february',  name:'February',  cat:'Months', url:'/countdown/february/',  type:'auto' },
+    { slug:'march',     name:'March',     cat:'Months', url:'/countdown/march/',     type:'auto' },
+    { slug:'april',     name:'April',     cat:'Months', url:'/countdown/april/',     type:'auto' },
+    { slug:'may-month', name:'May',       cat:'Months', url:'/countdown/may-month/', type:'auto' },
+    { slug:'june-month',name:'June',      cat:'Months', url:'/countdown/june-month/',type:'auto' },
+    { slug:'july-month',name:'July',      cat:'Months', url:'/countdown/july-month/',type:'auto' },
+    { slug:'august',    name:'August',    cat:'Months', url:'/countdown/august/',    type:'auto' },
+    { slug:'september', name:'September', cat:'Months', url:'/countdown/september/', type:'auto' },
+    { slug:'october',   name:'October',   cat:'Months', url:'/countdown/october/',   type:'auto' },
+    { slug:'november',  name:'November',  cat:'Months', url:'/countdown/november/',  type:'auto' },
+    { slug:'december',  name:'December',  cat:'Months', url:'/countdown/december/',  type:'auto' },
+    { slug:'midnight',  name:'Midnight',  cat:'Time',   url:'/countdown/midnight/',  type:'auto' },
+    { slug:'spring',        name:'Spring', cat:'Seasons', url:'/countdown/spring/',        type:'auto' },
+    { slug:'summer',        name:'Summer', cat:'Seasons', url:'/countdown/summer/',        type:'auto' },
+    { slug:'autumn',        name:'Autumn', cat:'Seasons', url:'/countdown/autumn/',        type:'auto' },
+    { slug:'winter-season', name:'Winter', cat:'Seasons', url:'/countdown/winter-season/', type:'auto' },
+    { slug:'back-to-school',  name:'Back to School',  cat:'School', url:'/countdown/back-to-school/',  type:'auto' },
+    { slug:'summer-vacation', name:'Summer Vacation', cat:'School', url:'/countdown/summer-vacation/', type:'auto' },
+    { slug:'winter-vacation', name:'Winter Vacation', cat:'School', url:'/countdown/winter-vacation/', type:'auto' },
+  ];
+
+  var EVENTS = currentCat ? ALL_EVENTS.filter(function(e){ return e.cat === currentCat; }) : [];
+
+  var BUCKETS = [
+    { key:'today',  label:"Today",                test: function(d){ return d<=0; } },
+    { key:'week',   label:"Next 7 days",          test: function(d){ return d<=7; } },
+    { key:'month',  label:"Next 30 days",         test: function(d){ return d<=30; } },
+    { key:'soon',   label:"Next 3 months",        test: function(d){ return d<=90; } },
+    { key:'year',   label:"Next 12 months",       test: function(d){ return d<=365; } },
+    { key:'future', label:"More than a year away",test: function(d){ return d>365; } },
+  ];
+  function bucket(days) { for(var i=0;i<BUCKETS.length;i++){ if(BUCKETS[i].test(days)) return BUCKETS[i].key; } return 'future'; }
+
+  function buildFeatured(ev, data) {
+    var c = cc(ev.cat);
+    var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
+    var daysBlock = data.state === 'today'
+      ? '<div class="hub-fc-days-num" style="font-size:1.4rem">Today</div>'
+      : '<div class="hub-fc-days-num">' + data.days + '</div><div class="hub-fc-days-lbl">days to go</div>';
+    var dateStr = data.date ? CountdownEngine.fmtDate(data.date, 'en') : '';
+    return '<a href="' + ev.url + '" class="hub-fc" ' + style + '>' +
+      '<button class="hub-fav-btn" data-slug="' + ev.slug + '" title="Save to favorites">☆</button>' +
+      '<div><div class="hub-fc-cat">' + ev.cat + '</div><div class="hub-fc-name">' + ev.name + '</div></div>' +
+      '<div class="hub-fc-bottom">' +
+        '<div>' + daysBlock + '</div>' +
+        '<div class="hub-fc-date-arrow">' + (dateStr ? '<span class="hub-fc-date">' + dateStr + '</span>' : '') + '<span class="hub-fc-arrow">→</span></div>' +
+      '</div>' +
+    '</a>';
+  }
+
+  function buildCompact(ev, data) {
+    var c = cc(ev.cat);
+    var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
+    var pill = data.state === 'today'   ? '<span class="hub-cc-pill hub-cc-pill--today">Today</span>'
+             : data.state === 'unknown' ? '<span class="hub-cc-pill hub-cc-pill--tba">TBA</span>'
+             : data.state === 'past'    ? ''
+             : '<span class="hub-cc-pill">' + data.days + '</span>';
+    var dateStr = data.date ? CountdownEngine.fmtDate(data.date, 'en')
+                : data.state === 'unknown' ? 'Date TBA' : '';
+    var cls = 'hub-cc' + (data.state === 'past' ? ' hub-cc--past' : '');
+    return '<a href="' + ev.url + '" class="' + cls + '" ' + style + '>' +
+      '<button class="hub-fav-btn" data-slug="' + ev.slug + '" title="Save to favorites">☆</button>' +
+      '<div><div class="hub-cc-top"><span class="hub-cc-cat">' + ev.cat + '</span>' + pill + '</div>' +
+      '<div class="hub-cc-name">' + ev.name + '</div></div>' +
+      '<div class="hub-cc-bottom"><span class="hub-cc-date">' + dateStr + '</span><span class="hub-cc-arrow">→</span></div>' +
+    '</a>';
+  }
+
+  function renderSearch(q, allResults) {
+    var container = document.getElementById('hub-content');
+    var featuredSection = document.getElementById('hub-featured-section');
+    if (featuredSection) featuredSection.style.display = 'none';
+    var matches = allResults.filter(function(r) {
+      return r.ev.name.toLowerCase().indexOf(q) >= 0;
+    }).sort(function(a,b){
+      function rank(r){ return r.data.state==='today'?-1:r.data.state==='future'?r.data.days:r.data.state==='unknown'?99999:99998; }
+      return rank(a)-rank(b);
+    });
+    container.innerHTML = matches.length === 0
+      ? '<div class="hub-no-results">No results for "' + q + '"</div>'
+      : '<div class="hub-compact-grid">' + matches.map(function(r){ return buildCompact(r.ev, r.data); }).join('') + '</div>';
+    updateFavButtons();
+  }
+
+  function renderResults(results) {
+    var container = document.getElementById('hub-content');
+    var featuredGrid = document.getElementById('hub-featured-grid');
+    var featuredSection = document.getElementById('hub-featured-section');
+
+    var q = (document.getElementById('hub-search') || {}).value;
+    if (q && q.trim()) { renderSearch(q.trim().toLowerCase(), results); return; }
+
+    results.sort(function(a, b) {
+      if (currentSort === 'alpha') return a.ev.name.localeCompare(b.ev.name);
+      function rank(r) { return r.data.state==='today'?-1:r.data.state==='future'?r.data.days:r.data.state==='unknown'?99999:99998; }
+      return rank(a) - rank(b);
+    });
+
+    if (currentSort === 'chrono') {
+      if (featuredSection) featuredSection.style.display = '';
+      var future = results.filter(function(r){ return r.data.state==='future'||r.data.state==='today'; });
+      var featured = future.slice(0, 3);
+      var rest = future.slice(3);
+      if (featuredGrid) featuredGrid.innerHTML = featured.map(function(r){ return buildFeatured(r.ev,r.data); }).join('');
+      var html = '';
+      var lastBucket = null;
+      rest.forEach(function(r) {
+        var b = bucket(r.data.state==='today'?0:r.data.days);
+        if (b !== lastBucket) {
+          if (lastBucket !== null) html += '</div>';
+          html += '<div class="hub-bucket-hdr">' + BUCKETS.filter(function(x){return x.key===b;})[0].label + '</div>';
+          html += '<div class="hub-compact-grid">';
+          lastBucket = b;
+        }
+        html += buildCompact(r.ev, r.data);
+      });
+      if (lastBucket !== null) html += '</div>';
+      var tba = results.filter(function(r){ return r.data.state==='unknown'; });
+      if (tba.length) { html += '<div class="hub-bucket-hdr">Date TBA</div><div class="hub-compact-grid">'; tba.forEach(function(r){ html += buildCompact(r.ev,r.data); }); html += '</div>'; }
+      var past = results.filter(function(r){ return r.data.state==='past'; });
+      if (past.length) { html += '<div class="hub-bucket-hdr">Already happened</div><div class="hub-compact-grid">'; past.forEach(function(r){ html += buildCompact(r.ev,r.data); }); html += '</div>'; }
+      container.innerHTML = html;
+    } else {
+      if (featuredSection) featuredSection.style.display = 'none';
+      var html = '<div class="hub-compact-grid">' + results.map(function(r){ return buildCompact(r.ev, r.data); }).join('') + '</div>';
+      container.innerHTML = html;
+    }
+    updateFavButtons();
+    updateFavBadge();
+  }
+
+  function loadCategory() {
+    if (!currentCat || !catData || EVENTS.length === 0) return;
+    var container = document.getElementById('hub-content');
+    var featuredGrid = document.getElementById('hub-featured-grid');
+
+    // Skeletons
+    if (featuredGrid) {
+      var fsk = '';
+      for (var f = 0; f < Math.min(3, EVENTS.length); f++) fsk += '<div class="hub-fc hub-fc--skeleton"></div>';
+      featuredGrid.innerHTML = fsk;
+    }
+    var skel = '';
+    for (var s = 0; s < Math.min(EVENTS.length, 8); s++) skel += '<div class="hub-cc hub-cc--skeleton"></div>';
+    container.innerHTML = '<div class="hub-compact-grid">' + skel + '</div>';
+
+    var allResults = new Array(EVENTS.length);
+    var loaded = 0;
+    EVENTS.forEach(function(ev, i) {
+      CountdownEngine.getCardData({ slug: ev.slug, type: ev.type }, function(data) {
+        allResults[i] = { ev: ev, data: data };
+        loaded++;
+        if (loaded === EVENTS.length) {
+          window._catResults = allResults;
+          renderResults(allResults);
+        }
+      });
+    });
+  }
+
+  // Sort buttons
+  document.querySelectorAll('.sort-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.sort-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentSort = btn.dataset.sort;
+      var si = document.getElementById('hub-search');
+      if (si) si.value = '';
+      var sc = document.getElementById('hub-search-clear');
+      if (sc) sc.style.display = 'none';
+      renderResults(window._catResults || []);
+    });
+  });
+
+  // Search
+  (function() {
+    var si = document.getElementById('hub-search');
+    var sc = document.getElementById('hub-search-clear');
+    if (!si) return;
+    si.addEventListener('input', function() {
+      var q = this.value.trim();
+      if (sc) sc.style.display = q ? 'block' : 'none';
+      if (q.length >= 1) renderSearch(q.toLowerCase(), window._catResults || []);
+      else renderResults(window._catResults || []);
+    });
+    if (sc) sc.addEventListener('click', function() {
+      si.value = ''; sc.style.display = 'none'; si.focus();
+      renderResults(window._catResults || []);
+    });
+  })();
+
+  loadCategory();
+  updateFavBadge();
+
+  // Theme toggle
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    var saved = localStorage.getItem('cd_theme');
+    if (saved === 'light') { document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }
+    btn.addEventListener('click', function () {
+      var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('cd_theme', 'dark');
+        btn.textContent = 'Light';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('cd_theme', 'light');
+        btn.textContent = 'Dark';
+      }
+    });
+  })();
+
+  // Country flag button
+  (function(){
+    var fb = document.getElementById('country-flag-btn');
+    var savedC = typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null;
+    if (savedC && fb && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+    if (fb) {
+      fb.addEventListener('click', function(){
+        CountdownEngine.openCountryPicker(function(code){
+          localStorage.setItem('cd_country', code);
+          if (fb && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[code] || '🌍';
+        });
+      });
+    }
+  })();
+
+})();
+</script>
+</body>
+</html>

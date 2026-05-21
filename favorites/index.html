@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Favorites — Countdowns</title>
+<meta name="description" content="Your saved countdowns in one place.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://countdowns.site/favorites/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="256x256">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/countdown.css">
+<style>
+/* ── HUB HERO layout ── */
+.hub-hero { max-width:1120px; margin:0 auto; padding:56px 32px 0; }
+.hub-hero-top { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:32px; }
+.hub-hero h1 { font-size:clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.035em; line-height:1.1; }
+.hub-hero h1 em { font-style:normal; color:var(--txt-muted,#75758f); }
+.hub-hero-label { display:inline-flex; align-items:center; gap:7px; font-size:.72rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--txt-muted,#75758f); margin-bottom:14px; }
+/* ── COMPACT GRID ── */
+.hub-compact-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; margin-bottom:32px; }
+/* ── COMPACT CARD ── */
+.hub-cc { position:relative; overflow:hidden; border-radius:14px; padding:18px 16px 14px; min-height:118px; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--card-border,rgba(255,255,255,.065)); background:var(--card-bg,#111119); text-decoration:none; color:inherit; transition:transform .14s, border-color .14s; }
+.hub-cc::before { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at -10% 60%, var(--cat-glow,rgba(129,140,248,.07)) 0%, transparent 60%); opacity:.5; }
+.hub-cc:hover { transform:translateY(-2px); border-color:rgba(255,255,255,.12); }
+[data-theme="light"] .hub-cc { background:#fff; border-color:rgba(0,0,0,.07); }
+[data-theme="light"] .hub-cc:hover { border-color:rgba(0,0,0,.12); }
+.hub-cc-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:8px; }
+.hub-cc-cat { font-size:.67rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--cat-color,#818CF8); opacity:.9; }
+.hub-cc-pill { flex-shrink:0; font-size:1.25rem; font-weight:700; letter-spacing:-.03em; line-height:1; color:#ffffff; text-shadow:0 0 10px rgba(255,255,255,.2); white-space:nowrap; }
+[data-theme="light"] .hub-cc-pill { color:#0d0d18; text-shadow:0 0 10px rgba(0,0,0,.1); }
+.hub-cc-pill--today { font-size:.8rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--cat-color,#818CF8); text-shadow:0 0 12px var(--cat-glow,rgba(129,140,248,.5)); }
+.hub-cc-pill--tba { font-size:.75rem; font-weight:600; color:var(--txt-muted,#75758f); text-shadow:none; }
+.hub-cc-name { font-size:1.08rem; font-weight:700; letter-spacing:-.02em; line-height:1.25; color:var(--txt,#eeeef8); flex:1; }
+[data-theme="light"] .hub-cc-name { color:#0d0d18; }
+.hub-cc-bottom { display:flex; align-items:center; justify-content:space-between; margin-top:10px; }
+.hub-cc-date { font-size:.73rem; color:var(--txt-dim,#3d3d52); }
+[data-theme="light"] .hub-cc-date { color:#b0b0c8; }
+.hub-cc-arrow { font-size:.85rem; color:var(--txt-dim,#3d3d52); transition:transform .14s, color .14s; }
+.hub-cc:hover .hub-cc-arrow { transform:translateX(3px); color:var(--cat-color,#818CF8); }
+.hub-cc--past { opacity:.45; }
+/* ── BUCKET HEADER ── */
+.hub-bucket-hdr { font-size:.66rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt-dim,#3d3d52); display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:36px; }
+.hub-bucket-hdr:first-child { margin-top:0; }
+.hub-bucket-hdr::after { content:''; flex:1; height:1px; background:var(--card-border,rgba(255,255,255,.065)); }
+/* ── SKELETON ── */
+.hub-cc--skeleton { background:var(--card-bg,#111119); animation:skel-pulse 1.5s infinite; min-height:118px; }
+@keyframes skel-pulse { 0%,100%{opacity:.4} 50%{opacity:.7} }
+/* ── HUB BODY ── */
+.hub-body { max-width:1120px; margin:0 auto; padding:0 32px 80px; }
+/* ── EMPTY STATE ── */
+.hub-empty { text-align:center; padding:80px 0 60px; }
+.hub-empty-icon { font-size:3rem; margin-bottom:16px; opacity:.4; }
+.hub-empty-title { font-size:1.2rem; font-weight:700; color:var(--txt,#eeeef8); margin-bottom:8px; }
+[data-theme="light"] .hub-empty-title { color:#0d0d18; }
+.hub-empty-sub { font-size:.9rem; color:var(--txt-muted,#75758f); margin-bottom:28px; }
+.hub-empty-btn { display:inline-flex; align-items:center; gap:6px; background:var(--txt,#eeeef8); color:var(--bg,#08080f); border:none; border-radius:99px; padding:10px 22px; font-size:.85rem; font-weight:700; text-decoration:none; cursor:pointer; font-family:inherit; }
+[data-theme="light"] .hub-empty-btn { background:#0d0d18; color:#f1f1f7; }
+/* ── BACK LINK ── */
+.hub-back-link { display:inline-flex; align-items:center; gap:5px; font-size:.8rem; font-weight:600; color:var(--txt-muted,#75758f); text-decoration:none; margin-bottom:6px; transition:color .15s; }
+.hub-back-link:hover { color:var(--txt,#eeeef8); }
+[data-theme="light"] .hub-back-link:hover { color:#0d0d18; }
+/* ── CLEAR ALL BUTTON ── */
+.hub-clear-btn { font-size:.75rem; font-weight:600; color:var(--txt-muted,#75758f); background:none; border:1px solid var(--card-border,rgba(255,255,255,.065)); border-radius:99px; padding:5px 12px; cursor:pointer; font-family:inherit; transition:color .15s, border-color .15s; display:none; }
+.hub-clear-btn:hover { color:#F87171; border-color:#F87171; }
+[data-theme="light"] .hub-clear-btn { border-color:rgba(0,0,0,.1); }
+/* ── FAVORITES BUTTON ── */
+.hub-fav-btn { position:absolute; top:10px; right:10px; background:none; border:none; cursor:pointer; font-size:1.1rem; line-height:1; color:var(--txt-dim,#3d3d52); padding:4px 5px; opacity:1; transition:color .15s, transform .12s; z-index:2; color:#FBBF24; }
+.hub-fav-btn:hover { transform:scale(1.18); }
+/* ── FAVORITES HEADER LINK ── */
+.hub-fav-header-link { display:inline-flex; align-items:center; gap:5px; font-size:.78rem; font-weight:600; color:var(--txt,#eeeef8); text-decoration:none; padding:6px 11px; border-radius:99px; border:1px solid rgba(255,255,255,.14); transition:color .15s, border-color .15s; white-space:nowrap; }
+[data-theme="light"] .hub-fav-header-link { border-color:rgba(0,0,0,.16); color:#0d0d18; }
+.hub-fav-badge { display:inline-flex; align-items:center; justify-content:center; min-width:15px; height:15px; background:#FBBF24; color:#000; font-size:.6rem; font-weight:700; border-radius:99px; padding:0 4px; line-height:1; }
+/* ── RESPONSIVE ── */
+@media(max-width:640px) {
+  .hub-hero { padding:36px 16px 0; }
+  .hub-hero-top { flex-direction:column; align-items:flex-start; gap:16px; }
+  .hub-hero h1 { font-size:1.9rem; }
+  .hub-body { padding:0 16px 60px; }
+  .hub-compact-grid { grid-template-columns:1fr 1fr; gap:8px; }
+}
+/* ── Override countdown.css conflicts ── */
+.hub-hero { text-align:left !important; }
+.hub-hero::before { display:none !important; }
+</style>
+<script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
+  <div class="header-right">
+    <a href="/favorites/" class="hub-fav-header-link" id="hub-fav-header-link" title="My Favorites">★&nbsp;Favorites <span id="hub-fav-badge" class="hub-fav-badge" style="display:none"></span></a>
+    <button class="theme-btn" id="theme-toggle">Light</button>
+    <div class="lang-seg" role="group" aria-label="Language">
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='/'">EN</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/'">ES</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='/pt/'">PT</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='/fr/'">FR</button>
+    </div>
+    <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
+  </div>
+</header>
+
+<div class="hub-hero">
+  <div class="hub-hero-top">
+    <div>
+      <a href="/" class="hub-back-link">← All countdowns</a>
+      <div class="hub-hero-label" style="margin-top:10px">★ Your saved countdowns</div>
+      <h1>My <em>Favorites</em></h1>
+    </div>
+    <button class="hub-clear-btn" id="hub-clear-btn" title="Remove all favorites">Remove all</button>
+  </div>
+</div>
+
+<main class="hub-body" id="hub-body">
+  <div id="hub-content">
+    <div class="hub-compact-grid" id="hub-skeleton-grid"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>
+</footer>
+
+<script src="/countdown-engine.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var CAT_COLOR = {
+    'Releases':       { color:'#C084FC', glow:'rgba(192,132,252,.25)' },
+    'Sports':         { color:'#FB923C', glow:'rgba(251,146,60,.25)'  },
+    'Holidays':       { color:'#4ADE80', glow:'rgba(74,222,128,.2)'   },
+    'Entertainment':  { color:'#FBBF24', glow:'rgba(251,191,36,.2)'   },
+    'Sales':          { color:'#60A5FA', glow:'rgba(96,165,250,.2)'   },
+    'Nature':         { color:'#22D3EE', glow:'rgba(34,211,238,.2)'   },
+    'Music':          { color:'#F472B6', glow:'rgba(244,114,182,.2)'  },
+    'Politics':       { color:'#94A3B8', glow:'rgba(148,163,184,.2)'  },
+    'Fashion':        { color:'#FDA4AF', glow:'rgba(253,164,175,.2)'  },
+    'Technology':     { color:'#34D399', glow:'rgba(52,211,153,.2)'   },
+    'Months':         { color:'#A78BFA', glow:'rgba(167,139,250,.2)'  },
+    'Seasons':        { color:'#6EE7B7', glow:'rgba(110,231,183,.2)'  },
+    'School':         { color:'#FCD34D', glow:'rgba(252,211,77,.2)'   },
+    'National Days':  { color:'#F87171', glow:'rgba(248,113,113,.2)'  },
+    'Jewish Holidays':{ color:'#E9D5A1', glow:'rgba(233,213,161,.2)'  },
+    'Time':           { color:'#67E8F9', glow:'rgba(103,232,249,.2)'  },
+    'Birthdays':      { color:'#E879F9', glow:'rgba(232,121,249,.2)'  },
+  };
+  function cc(cat) { return CAT_COLOR[cat] || { color:'#818CF8', glow:'rgba(129,140,248,.2)' }; }
+
+  /* ── Favourites helpers ── */
+  function getFavs() { try { return JSON.parse(localStorage.getItem('cd_favorites') || '[]'); } catch(e) { return []; } }
+  function setFavs(favs) { localStorage.setItem('cd_favorites', JSON.stringify(favs)); }
+  function toggleFav(slug) {
+    var favs = getFavs(); var idx = favs.indexOf(slug);
+    if (idx >= 0) favs.splice(idx, 1); else favs.push(slug);
+    setFavs(favs); return idx < 0;
+  }
+  function updateFavBadge() {
+    var badge = document.getElementById('hub-fav-badge');
+    if (!badge) return;
+    var n = getFavs().length;
+    badge.textContent = n;
+    badge.style.display = n > 0 ? 'inline-flex' : 'none';
+  }
+
+  /* ── All events ── */
+  var EVENTS = [
+    { slug:'gta6',       name:'GTA VI',                        cat:'Releases',      url:'/countdown/gta6/'       },
+    { slug:'iphone',     name:'Next iPhone',                   cat:'Releases',      url:'/countdown/iphone/'     },
+    { slug:'f1',         name:'F1 Next Race',                  cat:'Sports',        url:'/countdown/f1/'         },
+    { slug:'world-cup',  name:'2026 FIFA World Cup',           cat:'Sports',        url:'/countdown/world-cup/'  },
+    { slug:'ucl-final',  name:'Champions League Final',        cat:'Sports',        url:'/countdown/ucl-final/'  },
+    { slug:'nba-finals', name:'NBA Finals',                    cat:'Sports',        url:'/countdown/nba-finals/' },
+    { slug:'le-mans',    name:'24h Le Mans',                   cat:'Sports',        url:'/countdown/le-mans/'    },
+    { slug:'wimbledon',  name:'Wimbledon',                     cat:'Sports',        url:'/countdown/wimbledon/'  },
+    { slug:'roland-garros',    name:'Roland Garros',           cat:'Sports',        url:'/countdown/roland-garros/'    },
+    { slug:'pga-championship', name:'PGA Championship',        cat:'Sports',        url:'/countdown/pga-championship/' },
+    { slug:'us-open-golf',     name:'US Open Golf',            cat:'Sports',        url:'/countdown/us-open-golf/'     },
+    { slug:'the-open',         name:'The Open Championship',   cat:'Sports',        url:'/countdown/the-open/'         },
+    { slug:'us-open-tennis',   name:'US Open Tennis',          cat:'Sports',        url:'/countdown/us-open-tennis/'   },
+    { slug:'royal-ascot',      name:'Royal Ascot',             cat:'Sports',        url:'/countdown/royal-ascot/'      },
+    { slug:'melbourne-cup',    name:'Melbourne Cup',           cat:'Sports',        url:'/countdown/melbourne-cup/'    },
+    { slug:'nfl-season',       name:'NFL Season Kickoff',      cat:'Sports',        url:'/countdown/nfl-season/'       },
+    { slug:'stanley-cup',      name:'Stanley Cup Finals',      cat:'Sports',        url:'/countdown/stanley-cup/'      },
+    { slug:'masters-golf',     name:'The Masters',             cat:'Sports',        url:'/countdown/masters-golf/'     },
+    { slug:'wwe-summerslam',   name:'WWE SummerSlam',          cat:'Sports',        url:'/countdown/wwe-summerslam/'   },
+    { slug:'wwe-royal-rumble', name:'WWE Royal Rumble',        cat:'Sports',        url:'/countdown/wwe-royal-rumble/' },
+    { slug:'wwe-survivor-series',name:'WWE Survivor Series',   cat:'Sports',        url:'/countdown/wwe-survivor-series/' },
+    { slug:'copa-del-rey',     name:'Copa del Rey Final',      cat:'Sports',        url:'/countdown/copa-del-rey/'     },
+    { slug:'fa-cup-final',     name:'FA Cup Final',            cat:'Sports',        url:'/countdown/fa-cup-final/'     },
+    { slug:'nba-draft',        name:'NBA Draft',               cat:'Sports',        url:'/countdown/nba-draft/'        },
+    { slug:'cricket-world-cup',name:'ICC Cricket World Cup',   cat:'Sports',        url:'/countdown/cricket-world-cup/'},
+    { slug:'rugby-world-cup',  name:'Rugby World Cup 2027',    cat:'Sports',        url:'/countdown/rugby-world-cup/'  },
+    { slug:'six-nations',      name:'Six Nations',             cat:'Sports',        url:'/countdown/six-nations/'      },
+    { slug:'world-series',     name:'MLB World Series',        cat:'Sports',        url:'/countdown/world-series/'     },
+    { slug:'tour-de-france',   name:'Tour de France',          cat:'Sports',        url:'/countdown/tour-de-france/'   },
+    { slug:'olympics-2028',    name:'LA 2028 Olympics',        cat:'Sports',        url:'/countdown/olympics-2028/'    },
+    { slug:'super-bowl',       name:'Super Bowl',              cat:'Sports',        url:'/countdown/super-bowl/'       },
+    { slug:'copa-libertadores',name:'Copa Libertadores Final', cat:'Sports',        url:'/countdown/copa-libertadores/'},
+    { slug:'world-cup-final',  name:'2026 World Cup Final',    cat:'Sports',        url:'/countdown/world-cup-final/'  },
+    { slug:'copa-america-2028',name:'Copa America 2028',       cat:'Sports',        url:'/countdown/copa-america-2028/'},
+    { slug:'copa-america-2028-final',name:'Copa America 2028 Final',cat:'Sports',   url:'/countdown/copa-america-2028-final/'},
+    { slug:'euro-2028',        name:'UEFA Euro 2028',          cat:'Sports',        url:'/countdown/euro-2028/'        },
+    { slug:'euro-2028-final',  name:'UEFA Euro 2028 Final',    cat:'Sports',        url:'/countdown/euro-2028-final/'  },
+    { slug:'mr-olympia',       name:'Mr. Olympia',             cat:'Sports',        url:'/countdown/mr-olympia/'       },
+    { slug:'arnold-classic',   name:'Arnold Classic',          cat:'Sports',        url:'/countdown/arnold-classic/'   },
+    { slug:'christmas',        name:'Christmas',               cat:'Holidays',      url:'/countdown/christmas/'        },
+    { slug:'new-year',         name:'New Year',                cat:'Holidays',      url:'/countdown/new-year/'         },
+    { slug:'halloween',        name:'Halloween',               cat:'Holidays',      url:'/countdown/halloween/'        },
+    { slug:'valentines',       name:"Valentine's Day",         cat:'Holidays',      url:'/countdown/valentines/'       },
+    { slug:'easter',           name:'Easter',                  cat:'Holidays',      url:'/countdown/easter/'           },
+    { slug:'mothers-day',      name:"Mother's Day",            cat:'Holidays',      url:'/countdown/mothers-day/'      },
+    { slug:'fathers-day',      name:"Father's Day",            cat:'Holidays',      url:'/countdown/fathers-day/'      },
+    { slug:'thanksgiving',     name:'Thanksgiving',            cat:'Holidays',      url:'/countdown/thanksgiving/'     },
+    { slug:'memorial-day',     name:'Memorial Day',            cat:'Holidays',      url:'/countdown/memorial-day/'     },
+    { slug:'labor-day',        name:'Labor Day',               cat:'Holidays',      url:'/countdown/labor-day/'        },
+    { slug:'st-patricks',      name:"St. Patrick's Day",       cat:'Holidays',      url:'/countdown/st-patricks/'      },
+    { slug:'dia-de-los-muertos',name:'Dia de los Muertos',     cat:'Holidays',      url:'/countdown/dia-de-los-muertos/'},
+    { slug:'cinco-de-mayo',    name:'Cinco de Mayo',           cat:'Holidays',      url:'/countdown/cinco-de-mayo/'    },
+    { slug:'fiestas-patrias',  name:'Fiestas Patrias Chile',   cat:'Holidays',      url:'/countdown/fiestas-patrias/'  },
+    { slug:'bastille-day',     name:'Bastille Day',            cat:'Holidays',      url:'/countdown/bastille-day/'     },
+    { slug:'oktoberfest',      name:'Oktoberfest',             cat:'Holidays',      url:'/countdown/oktoberfest/'      },
+    { slug:'dia-del-nino',     name:"Children's Day",          cat:'Holidays',      url:'/countdown/dia-del-nino/'     },
+    { slug:'epiphany',         name:'Epiphany / Three Kings Day',cat:'Holidays',    url:'/countdown/epiphany/'         },
+    { slug:'lunar-new-year',   name:'Lunar New Year',          cat:'Holidays',      url:'/countdown/lunar-new-year/'   },
+    { slug:'holi',             name:'Holi',                    cat:'Holidays',      url:'/countdown/holi/'             },
+    { slug:'mardi-gras',       name:'Mardi Gras',              cat:'Holidays',      url:'/countdown/mardi-gras/'       },
+    { slug:'anzac-day',        name:'ANZAC Day',               cat:'Holidays',      url:'/countdown/anzac-day/'        },
+    { slug:'koningsdag',       name:'Koningsdag',              cat:'Holidays',      url:'/countdown/koningsdag/'       },
+    { slug:'guy-fawkes',       name:"Guy Fawkes Night",        cat:'Holidays',      url:'/countdown/guy-fawkes/'       },
+    { slug:'boxing-day',       name:'Boxing Day',              cat:'Holidays',      url:'/countdown/boxing-day/'       },
+    { slug:'diwali',           name:'Diwali',                  cat:'Holidays',      url:'/countdown/diwali/'           },
+    { slug:'oscars',           name:'Oscars',                  cat:'Entertainment', url:'/countdown/oscars/'           },
+    { slug:'grammys',          name:'Grammy Awards',           cat:'Entertainment', url:'/countdown/grammys/'          },
+    { slug:'met-gala',         name:'Met Gala',                cat:'Entertainment', url:'/countdown/met-gala/'         },
+    { slug:'cannes',           name:'Cannes Film Festival',    cat:'Entertainment', url:'/countdown/cannes/'           },
+    { slug:'emmys',            name:'Emmy Awards',             cat:'Entertainment', url:'/countdown/emmys/'            },
+    { slug:'golden-globes',    name:'Golden Globe Awards',     cat:'Entertainment', url:'/countdown/golden-globes/'    },
+    { slug:'cs2-major',        name:'CS2 Major Championship',  cat:'Entertainment', url:'/countdown/cs2-major/'        },
+    { slug:'lol-worlds',       name:'LoL World Championship',  cat:'Entertainment', url:'/countdown/lol-worlds/'       },
+    { slug:'la-velada-del-ano',name:'La Velada del Año',       cat:'Entertainment', url:'/countdown/la-velada-del-ano/'},
+    { slug:'balon-de-oro',     name:"Ballon d'Or",             cat:'Entertainment', url:'/countdown/balon-de-oro/'     },
+    { slug:'brit-awards',      name:'BRIT Awards',             cat:'Entertainment', url:'/countdown/brit-awards/'      },
+    { slug:'latin-grammys',    name:'Latin Grammy Awards',     cat:'Entertainment', url:'/countdown/latin-grammys/'    },
+    { slug:'mtv-vmas',         name:'MTV VMAs',                cat:'Entertainment', url:'/countdown/mtv-vmas/'         },
+    { slug:'bafta',            name:'BAFTA Awards',            cat:'Entertainment', url:'/countdown/bafta/'            },
+    { slug:'eurovision',       name:'Eurovision',              cat:'Entertainment', url:'/countdown/eurovision/'       },
+    { slug:'coachella',        name:'Coachella',               cat:'Entertainment', url:'/countdown/coachella/'        },
+    { slug:'rio-carnival',     name:'Rio Carnival',            cat:'Entertainment', url:'/countdown/rio-carnival/'     },
+    { slug:'black-friday',     name:'Black Friday',            cat:'Sales',         url:'/countdown/black-friday/'     },
+    { slug:'cyber-monday',     name:'Cyber Monday',            cat:'Sales',         url:'/countdown/cyber-monday/'     },
+    { slug:'hot-sale',         name:'Hot Sale',                cat:'Sales',         url:'/countdown/hot-sale/'         },
+    { slug:'full-moon',        name:'Next Full Moon',          cat:'Nature',        url:'/countdown/full-moon/'        },
+    { slug:'eclipse',          name:'Solar Eclipse',           cat:'Nature',        url:'/countdown/eclipse/'          },
+    { slug:'lollapalooza-ar',  name:'Lollapalooza Argentina',  cat:'Music',         url:'/countdown/lollapalooza-ar/'  },
+    { slug:'lollapalooza-cl',  name:'Lollapalooza Chile',      cat:'Music',         url:'/countdown/lollapalooza-cl/'  },
+    { slug:'cosquin-rock',     name:'Cosquin Rock',            cat:'Music',         url:'/countdown/cosquin-rock/'     },
+    { slug:'rock-in-rio',      name:'Rock in Rio',             cat:'Music',         url:'/countdown/rock-in-rio/'      },
+    { slug:'lollapalooza-us',  name:'Lollapalooza Chicago',    cat:'Music',         url:'/countdown/lollapalooza-us/'  },
+    { slug:'lollapalooza-de',  name:'Lollapalooza Berlin',     cat:'Music',         url:'/countdown/lollapalooza-de/'  },
+    { slug:'lollapalooza-fr',  name:'Lollapalooza Paris',      cat:'Music',         url:'/countdown/lollapalooza-fr/'  },
+    { slug:'primavera-sound-es',name:'Primavera Sound Barcelona',cat:'Music',       url:'/countdown/primavera-sound-es/'},
+    { slug:'primavera-sound-ar',name:'Primavera Sound Buenos Aires',cat:'Music',    url:'/countdown/primavera-sound-ar/'},
+    { slug:'primavera-sound-br',name:'Primavera Sound Sao Paulo',cat:'Music',       url:'/countdown/primavera-sound-br/'},
+    { slug:'glastonbury',      name:'Glastonbury Festival',    cat:'Music',         url:'/countdown/glastonbury/'      },
+    { slug:'bonnaroo',         name:'Bonnaroo',                cat:'Music',         url:'/countdown/bonnaroo/'         },
+    { slug:'tomorrowland',     name:'Tomorrowland',            cat:'Music',         url:'/countdown/tomorrowland/'     },
+    { slug:'nyfw',             name:'New York Fashion Week',   cat:'Fashion',       url:'/countdown/nyfw/'             },
+    { slug:'paris-fw',         name:'Paris Fashion Week',      cat:'Fashion',       url:'/countdown/paris-fw/'         },
+    { slug:'milan-fw',         name:'Milan Fashion Week',      cat:'Fashion',       url:'/countdown/milan-fw/'         },
+    { slug:'bafweek',          name:'Buenos Aires Fashion Week',cat:'Fashion',      url:'/countdown/bafweek/'          },
+    { slug:'ces',              name:'CES Las Vegas',           cat:'Technology',    url:'/countdown/ces/'              },
+    { slug:'messi-birthday',        name:"Messi's Birthday",        cat:'Birthdays', url:'/countdown/messi-birthday/'        },
+    { slug:'ronaldo-birthday',      name:"Ronaldo's Birthday",       cat:'Birthdays', url:'/countdown/ronaldo-birthday/'      },
+    { slug:'taylor-swift-birthday', name:"Taylor Swift's Birthday",  cat:'Birthdays', url:'/countdown/taylor-swift-birthday/' },
+    { slug:'bad-bunny-birthday',    name:"Bad Bunny's Birthday",     cat:'Birthdays', url:'/countdown/bad-bunny-birthday/'    },
+    { slug:'lebron-james-birthday', name:"LeBron James's Birthday",  cat:'Birthdays', url:'/countdown/lebron-james-birthday/' },
+    { slug:'shakira-birthday',      name:"Shakira's Birthday",       cat:'Birthdays', url:'/countdown/shakira-birthday/'      },
+    { slug:'drake-birthday',        name:"Drake's Birthday",         cat:'Birthdays', url:'/countdown/drake-birthday/'        },
+    { slug:'neymar-birthday',       name:"Neymar's Birthday",        cat:'Birthdays', url:'/countdown/neymar-birthday/'       },
+    { slug:'mbappe-birthday',       name:"Mbappé's Birthday",        cat:'Birthdays', url:'/countdown/mbappe-birthday/'       },
+    { slug:'billie-eilish-birthday',name:"Billie Eilish's Birthday", cat:'Birthdays', url:'/countdown/billie-eilish-birthday/'},
+    { slug:'ariana-grande-birthday',name:"Ariana Grande's Birthday", cat:'Birthdays', url:'/countdown/ariana-grande-birthday/'},
+    { slug:'justin-bieber-birthday',name:"Justin Bieber's Birthday", cat:'Birthdays', url:'/countdown/justin-bieber-birthday/'},
+    { slug:'beyonce-birthday',      name:"Beyoncé's Birthday",       cat:'Birthdays', url:'/countdown/beyonce-birthday/'      },
+    { slug:'rihanna-birthday',      name:"Rihanna's Birthday",       cat:'Birthdays', url:'/countdown/rihanna-birthday/'      },
+    { slug:'weeknd-birthday',       name:"The Weeknd's Birthday",    cat:'Birthdays', url:'/countdown/weeknd-birthday/'       },
+    { slug:'dua-lipa-birthday',     name:"Dua Lipa's Birthday",      cat:'Birthdays', url:'/countdown/dua-lipa-birthday/'     },
+    { slug:'selena-gomez-birthday', name:"Selena Gomez's Birthday",  cat:'Birthdays', url:'/countdown/selena-gomez-birthday/' },
+    { slug:'ed-sheeran-birthday',   name:"Ed Sheeran's Birthday",    cat:'Birthdays', url:'/countdown/ed-sheeran-birthday/'   },
+    { slug:'vinicius-birthday',     name:"Vinicius Jr's Birthday",   cat:'Birthdays', url:'/countdown/vinicius-birthday/'     },
+    { slug:'lamine-yamal-birthday', name:"Lamine Yamal's Birthday",  cat:'Birthdays', url:'/countdown/lamine-yamal-birthday/' },
+    { slug:'haaland-birthday',      name:"Erling Haaland's Birthday",cat:'Birthdays', url:'/countdown/haaland-birthday/'      },
+    { slug:'donald-trump-birthday', name:"Donald Trump's Birthday",  cat:'Birthdays', url:'/countdown/donald-trump-birthday/' },
+    { slug:'elon-musk-birthday',    name:"Elon Musk's Birthday",     cat:'Birthdays', url:'/countdown/elon-musk-birthday/'    },
+    { slug:'virat-kohli-birthday',  name:"Virat Kohli's Birthday",   cat:'Birthdays', url:'/countdown/virat-kohli-birthday/'  },
+    { slug:'mrbeast-birthday',      name:"MrBeast's Birthday",       cat:'Birthdays', url:'/countdown/mrbeast-birthday/'      },
+    { slug:'ksi-birthday',          name:"KSI's Birthday",           cat:'Birthdays', url:'/countdown/ksi-birthday/'          },
+    { slug:'dicaprio-birthday',     name:"Leonardo DiCaprio's Birthday",cat:'Birthdays',url:'/countdown/dicaprio-birthday/'   },
+    { slug:'brad-pitt-birthday',    name:"Brad Pitt's Birthday",     cat:'Birthdays', url:'/countdown/brad-pitt-birthday/'    },
+    { slug:'dwayne-johnson-birthday',name:"Dwayne Johnson's Birthday",cat:'Birthdays',url:'/countdown/dwayne-johnson-birthday/'},
+    { slug:'tom-cruise-birthday',   name:"Tom Cruise's Birthday",    cat:'Birthdays', url:'/countdown/tom-cruise-birthday/'   },
+    { slug:'ryan-reynolds-birthday',name:"Ryan Reynolds's Birthday", cat:'Birthdays', url:'/countdown/ryan-reynolds-birthday/'},
+    { slug:'robert-downey-jr-birthday',name:"Robert Downey Jr's Birthday",cat:'Birthdays',url:'/countdown/robert-downey-jr-birthday/'},
+    { slug:'will-smith-birthday',   name:"Will Smith's Birthday",    cat:'Birthdays', url:'/countdown/will-smith-birthday/'   },
+    { slug:'zendaya-birthday',      name:"Zendaya's Birthday",       cat:'Birthdays', url:'/countdown/zendaya-birthday/'      },
+    { slug:'angelina-jolie-birthday',name:"Angelina Jolie's Birthday",cat:'Birthdays',url:'/countdown/angelina-jolie-birthday/'},
+    { slug:'scarlett-johansson-birthday',name:"Scarlett Johansson's Birthday",cat:'Birthdays',url:'/countdown/scarlett-johansson-birthday/'},
+    { slug:'independence',     name:'Independence Day',        cat:'National Days', url:'/countdown/independence/'     },
+    { slug:'canada-day',       name:'Canada Day',              cat:'National Days', url:'/countdown/canada-day/'       },
+    { slug:'australia-day',    name:'Australia Day',           cat:'National Days', url:'/countdown/australia-day/'    },
+    { slug:'waitangi-day',     name:'Waitangi Day',            cat:'National Days', url:'/countdown/waitangi-day/'     },
+    { slug:'syttende-mai',     name:'Norwegian Constitution Day',cat:'National Days',url:'/countdown/syttende-mai/'   },
+    { slug:'german-unity-day', name:'German Unity Day',        cat:'National Days', url:'/countdown/german-unity-day/' },
+    { slug:'festa-della-repubblica',name:'Italian Republic Day',cat:'National Days',url:'/countdown/festa-della-repubblica/'},
+    { slug:'national-day-sg',  name:'Singapore National Day',  cat:'National Days', url:'/countdown/national-day-sg/' },
+    { slug:'freedom-day-za',   name:'South Africa Freedom Day',cat:'National Days', url:'/countdown/freedom-day-za/'  },
+    { slug:'dia-de-la-hispanidad',name:'Dia de la Hispanidad', cat:'National Days', url:'/countdown/dia-de-la-hispanidad/'},
+    { slug:'dia-de-la-raza',   name:'Dia de la Raza',          cat:'National Days', url:'/countdown/dia-de-la-raza/'  },
+    { slug:'dia-de-la-bandera',name:'Dia de la Bandera',       cat:'National Days', url:'/countdown/dia-de-la-bandera/'},
+    { slug:'proclamacion-independencia-ar',name:'Revolución de Mayo',cat:'National Days',url:'/countdown/proclamacion-independencia-ar/'},
+    { slug:'dia-de-la-revolucion',name:'Dia de la Revolucion', cat:'National Days', url:'/countdown/dia-de-la-revolucion/'},
+    { slug:'dia-de-la-constitucion',name:'Dia de la Constitucion',cat:'National Days',url:'/countdown/dia-de-la-constitucion/'},
+    { slug:'proclamacao-da-republica',name:'Proclamacao da Republica',cat:'National Days',url:'/countdown/proclamacao-da-republica/'},
+    { slug:'tiradentes',       name:'Tiradentes',              cat:'National Days', url:'/countdown/tiradentes/'       },
+    { slug:'rosh-hashana',     name:'Rosh Hashanah',           cat:'Jewish Holidays',url:'/countdown/rosh-hashana/'   },
+    { slug:'yom-kipur',        name:'Yom Kippur',              cat:'Jewish Holidays',url:'/countdown/yom-kipur/'      },
+    { slug:'januca',           name:'Hanukkah',                cat:'Jewish Holidays',url:'/countdown/januca/'         },
+    { slug:'purim',            name:'Purim',                   cat:'Jewish Holidays',url:'/countdown/purim/'          },
+    { slug:'pesaj',            name:'Passover',                cat:'Jewish Holidays',url:'/countdown/pesaj/'          },
+    { slug:'shavuot',          name:'Shavuot',                 cat:'Jewish Holidays',url:'/countdown/shavuot/'        },
+    { slug:'elecciones-ar',    name:'Argentine Elections',     cat:'Politics',      url:'/countdown/elecciones-ar/'   },
+    { slug:'elecciones-colombia',name:'Colombia Presidential Election',cat:'Politics',url:'/countdown/elecciones-colombia/'},
+    { slug:'elecciones-brasil',name:'Brazil General Election', cat:'Politics',      url:'/countdown/elecciones-brasil/'},
+    { slug:'elecciones-usa-midterms',name:'US Midterm Elections 2026',cat:'Politics',url:'/countdown/elecciones-usa-midterms/'},
+    { slug:'elecciones-france',name:'French Presidential 2027',cat:'Politics',      url:'/countdown/elecciones-france/'},
+    { slug:'elecciones-mexico',name:'Mexican Midterms 2027',   cat:'Politics',      url:'/countdown/elecciones-mexico/'},
+    { slug:'january',   name:'January',   cat:'Months', url:'/countdown/january/'   },
+    { slug:'february',  name:'February',  cat:'Months', url:'/countdown/february/'  },
+    { slug:'march',     name:'March',     cat:'Months', url:'/countdown/march/'     },
+    { slug:'april',     name:'April',     cat:'Months', url:'/countdown/april/'     },
+    { slug:'may-month', name:'May',       cat:'Months', url:'/countdown/may-month/' },
+    { slug:'june-month',name:'June',      cat:'Months', url:'/countdown/june-month/'},
+    { slug:'july-month',name:'July',      cat:'Months', url:'/countdown/july-month/'},
+    { slug:'august',    name:'August',    cat:'Months', url:'/countdown/august/'    },
+    { slug:'september', name:'September', cat:'Months', url:'/countdown/september/' },
+    { slug:'october',   name:'October',   cat:'Months', url:'/countdown/october/'   },
+    { slug:'november',  name:'November',  cat:'Months', url:'/countdown/november/'  },
+    { slug:'december',  name:'December',  cat:'Months', url:'/countdown/december/'  },
+    { slug:'midnight',  name:'Midnight',  cat:'Time',   url:'/countdown/midnight/'  },
+    { slug:'spring',        name:'Spring', cat:'Seasons', url:'/countdown/spring/'        },
+    { slug:'summer',        name:'Summer', cat:'Seasons', url:'/countdown/summer/'        },
+    { slug:'autumn',        name:'Autumn', cat:'Seasons', url:'/countdown/autumn/'        },
+    { slug:'winter-season', name:'Winter', cat:'Seasons', url:'/countdown/winter-season/' },
+    { slug:'back-to-school',  name:'Back to School',  cat:'School', url:'/countdown/back-to-school/'  },
+    { slug:'summer-vacation', name:'Summer Vacation', cat:'School', url:'/countdown/summer-vacation/' },
+    { slug:'winter-vacation', name:'Winter Vacation', cat:'School', url:'/countdown/winter-vacation/' },
+  ];
+  var EVENTS_BY_SLUG = {};
+  EVENTS.forEach(function(e){ EVENTS_BY_SLUG[e.slug] = e; });
+
+  function buildCompact(ev, data) {
+    var c = cc(ev.cat);
+    var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
+    var pill = data.state === 'today'   ? '<span class="hub-cc-pill hub-cc-pill--today">Today</span>'
+             : data.state === 'unknown' ? '<span class="hub-cc-pill hub-cc-pill--tba">TBA</span>'
+             : data.state === 'past'    ? ''
+             : '<span class="hub-cc-pill">' + data.days + '</span>';
+    var dateStr = data.date ? CountdownEngine.fmtDate(data.date, 'en')
+                : data.state === 'unknown' ? 'Date TBA' : '';
+    var cls = 'hub-cc' + (data.state === 'past' ? ' hub-cc--past' : '');
+    return '<a href="' + ev.url + '" class="' + cls + '" ' + style + '>' +
+      '<button class="hub-fav-btn active" data-slug="' + ev.slug + '" title="Remove from favorites">★</button>' +
+      '<div><div class="hub-cc-top"><span class="hub-cc-cat">' + ev.cat + '</span>' + pill + '</div>' +
+      '<div class="hub-cc-name">' + ev.name + '</div></div>' +
+      '<div class="hub-cc-bottom"><span class="hub-cc-date">' + dateStr + '</span><span class="hub-cc-arrow">→</span></div>' +
+    '</a>';
+  }
+
+  function renderFavorites() {
+    var container = document.getElementById('hub-content');
+    var favs = getFavs();
+    var clearBtn = document.getElementById('hub-clear-btn');
+    updateFavBadge();
+
+    if (favs.length === 0) {
+      if (clearBtn) clearBtn.style.display = 'none';
+      container.innerHTML = '<div class="hub-empty">' +
+        '<div class="hub-empty-icon">☆</div>' +
+        '<div class="hub-empty-title">No favorites yet</div>' +
+        '<div class="hub-empty-sub">Click ☆ on any countdown to save it here.</div>' +
+        '<a href="/" class="hub-empty-btn">Browse countdowns</a>' +
+      '</div>';
+      return;
+    }
+
+    if (clearBtn) clearBtn.style.display = 'inline-flex';
+
+    var slugsToLoad = favs.filter(function(s){ return EVENTS_BY_SLUG[s]; });
+    if (slugsToLoad.length === 0) {
+      container.innerHTML = '<div class="hub-empty"><div class="hub-empty-icon">☆</div><div class="hub-empty-title">No favorites found</div><div class="hub-empty-sub">The saved countdowns could not be found.</div><a href="/" class="hub-empty-btn">Browse countdowns</a></div>';
+      return;
+    }
+
+    // Show skeleton while loading
+    var skel = '';
+    for (var s = 0; s < slugsToLoad.length; s++) skel += '<div class="hub-cc hub-cc--skeleton"></div>';
+    container.innerHTML = '<div class="hub-bucket-hdr">Your favorites · ' + slugsToLoad.length + ' saved</div><div class="hub-compact-grid">' + skel + '</div>';
+
+    var results = new Array(slugsToLoad.length);
+    var loaded = 0;
+    slugsToLoad.forEach(function(slug, i) {
+      var ev = EVENTS_BY_SLUG[slug];
+      CountdownEngine.getCardData({ slug: ev.slug, type: 'variable' }, function(data) {
+        results[i] = { ev: ev, data: data };
+        loaded++;
+        if (loaded === slugsToLoad.length) {
+          results.sort(function(a,b){
+            function rank(r){ return r.data.state==='today'?-1:r.data.state==='future'?r.data.days:r.data.state==='unknown'?99999:99998; }
+            return rank(a)-rank(b);
+          });
+          var html = '<div class="hub-bucket-hdr">Your favorites · ' + results.length + ' saved</div><div class="hub-compact-grid">';
+          results.forEach(function(r){ html += buildCompact(r.ev, r.data); });
+          html += '</div>';
+          container.innerHTML = html;
+          updateFavBadge();
+        }
+      });
+    });
+  }
+
+  // Fav button click — remove from favorites and re-render
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest ? e.target.closest('.hub-fav-btn') : null;
+    if (!btn) return;
+    e.preventDefault(); e.stopPropagation();
+    var slug = btn.dataset.slug;
+    toggleFav(slug); // always removes on this page (all are already favorited)
+    renderFavorites();
+  });
+
+  // Clear all
+  var clearBtn = document.getElementById('hub-clear-btn');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function() {
+      if (confirm('Remove all favorites?')) {
+        setFavs([]);
+        renderFavorites();
+      }
+    });
+  }
+
+  renderFavorites();
+
+  // Theme toggle
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    var saved = localStorage.getItem('cd_theme');
+    if (saved === 'light') { document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }
+    btn.addEventListener('click', function () {
+      var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('cd_theme', 'dark');
+        btn.textContent = 'Light';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('cd_theme', 'light');
+        btn.textContent = 'Dark';
+      }
+    });
+  })();
+
+  // Country flag button (restore saved flag)
+  (function(){
+    var fb = document.getElementById('country-flag-btn');
+    var savedC = typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null;
+    if (savedC && fb && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[savedC] || '🌍';
+    if (fb) {
+      fb.addEventListener('click', function(){
+        CountdownEngine.openCountryPicker(function(code){
+          localStorage.setItem('cd_country', code);
+          if (fb && CountdownEngine.FLAG_MAP) fb.textContent = CountdownEngine.FLAG_MAP[code] || '🌍';
+        });
+      });
+    }
+  })();
+
+})();
+</script>
+</body>
+</html>
