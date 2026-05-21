@@ -268,8 +268,8 @@ TEMPLATES = {
 # Tweet type weights: 40% countdown (with URL/image), 35% text (no image), 25% question
 TWEET_TYPE_WEIGHTS = [("countdown", 40), ("text", 35), ("question", 25)]
 
-# ── Language weights (60% EN, 25% ES, 10% PT, 5% FR) ─────────────────────────
-LANG_WEIGHTS = [("en", 60), ("es", 25), ("pt", 10), ("fr", 5)]
+# ── Language weights — English only, Twitter handles translation ──────────────
+LANG_WEIGHTS = [("en", 100)]
 
 # ── Load real countdown data ──────────────────────────────────────────────────
 def load_events():
