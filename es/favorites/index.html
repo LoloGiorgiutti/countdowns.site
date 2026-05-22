@@ -737,8 +737,15 @@
 
     if (clearBtn) clearBtn.style.display = 'inline-flex';
 
+    // Build custom countdowns section
+    var customSection = '';
+    if (customFavs.length > 0) {
+      var customCards = customFavs.map(function(f){ return buildCustomCard(f, 'Quitar de favoritos'); }).join('');
+      customSection = '<div class="hub-bucket-hdr">Tus countdowns personalizados · ' + customFavs.length + ' guardados</div><div class="hub-compact-grid">' + customCards + '</div>';
+    }
 
-      container.innerHTML = '<div class="hub-empty"><div class="hub-empty-icon">☆</div><div class="hub-empty-title">No se encontraron favoritos</div><div class="hub-empty-sub">Los countdowns guardados no se pudieron encontrar.</div><a href="/" class="hub-empty-btn">Ver todos los countdowns</a></div>';
+    if (slugsToLoad.length === 0) {
+      container.innerHTML = customSection;
       return;
     }
 

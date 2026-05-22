@@ -728,8 +728,15 @@
 
     if (clearBtn) clearBtn.style.display = 'inline-flex';
 
+    // Build custom countdowns section
+    var customSection = '';
+    if (customFavs.length > 0) {
+      var customCards = customFavs.map(function(f){ return buildCustomCard(f, 'Retirer des favoris'); }).join('');
+      customSection = '<div class="hub-bucket-hdr">Vos comptes à rebours personnalisés · ' + customFavs.length + ' sauvegardés</div><div class="hub-compact-grid">' + customCards + '</div>';
+    }
 
-      container.innerHTML = '<div class="hub-empty"><div class="hub-empty-icon">☆</div><div class="hub-empty-title">Aucun favori trouvé</div><div class="hub-empty-sub">Les comptes à rebours sauvegardés sont introuvables.</div><a href="/" class="hub-empty-btn">Voir tous les comptes à rebours</a></div>';
+    if (slugsToLoad.length === 0) {
+      container.innerHTML = customSection;
       return;
     }
 
