@@ -1136,6 +1136,12 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
         loadData(function (data) {
           var ev   = ((data || {}).events || {})[config.slug] || {};
           var date = ev.date ? new Date(ev.date) : null;
+          // Fallback: if no JSON data found, try AUTO getter (handles recurring events)
+          if (!date && AUTO[config.slug]) {
+            var res = AUTO[config.slug]();
+            resolve(res.date, false);
+            return;
+          }
           resolve(date, config.type === 'one-time' && date && date < new Date());
         });
       }
