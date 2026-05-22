@@ -73,6 +73,7 @@
 .hub-cc .hub-fav-btn { top:auto !important; bottom:12px; right:14px; opacity:1; }
 .hub-cc .hub-cc-arrow { transition:transform .14s, color .14s, opacity .14s; }
 .hub-cc:hover .hub-cc-arrow { opacity:0; }
+.hub-cc:has(.hub-fav-btn.active) .hub-cc-arrow { opacity:0; }
 /* ── FAVORITES HEADER LINK ── */
 .hub-fav-header-link { display:inline-flex; align-items:center; gap:5px; font-size:.78rem; font-weight:600; color:var(--txt,#eeeef8); text-decoration:none; padding:6px 11px; border-radius:99px; border:1px solid rgba(255,255,255,.14); transition:color .15s, border-color .15s; white-space:nowrap; }
 [data-theme="light"] .hub-fav-header-link { border-color:rgba(0,0,0,.16); color:#0d0d18; }
@@ -97,12 +98,12 @@
   <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
   <div class="header-right">
     <a href="/es/favorites/" class="hub-fav-header-link" id="hub-fav-header-link" title="Mis favoritos">★&nbsp;Favoritos <span id="hub-fav-badge" class="hub-fav-badge" style="display:none"></span></a>
-    <button class="theme-btn" id="theme-toggle">Light</button>
+    <button class="theme-btn" id="theme-toggle" title="Toggle theme"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
     <div class="lang-seg" role="group" aria-label="Language">
-      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='/'">EN</button>
-      <button class="lang-btn active" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/'">ES</button>
-      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='/pt/'">PT</button>
-      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='/fr/'">FR</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','en');location.href='/favorites/'">EN</button>
+      <button class="lang-btn active" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/favorites/'">ES</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='/pt/favorites/'">PT</button>
+      <button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='/fr/favorites/'">FR</button>
     </div>
     <button class="country-flag-btn" id="country-flag-btn" title="Select country" aria-label="Select country">🌍</button>
   </div>
@@ -164,10 +165,34 @@
     if (idx >= 0) favs.splice(idx, 1); else favs.push(slug);
     setFavs(favs); return idx < 0;
   }
+  // ── Custom favorites helpers ──────────────────────────────────────────────────
+  function getCustomFavs() {
+    try { return JSON.parse(localStorage.getItem('cd_custom_favs') || '[]'); } catch(e) { return []; }
+  }
+  function setCustomFavs(arr) {
+    try { localStorage.setItem('cd_custom_favs', JSON.stringify(arr)); } catch(e) {}
+  }
+  function buildCustomCard(fav, removeLbl) {
+    var now = new Date();
+    var target = new Date(fav.date + (fav.time ? 'T' + fav.time + ':00' : 'T00:00:00'));
+    var diffMs = target - now;
+    var days = Math.ceil(diffMs / 86400000);
+    var isPast = diffMs <= 0;
+    var pill = isPast ? '' : '<span class="hub-cc-pill">' + days + '</span>';
+    var cls = 'hub-cc' + (isPast ? ' hub-cc--past' : '');
+    var dateStr = target.toLocaleDateString(undefined, {month:'short', day:'numeric', year:'numeric'});
+    return '<a href="' + fav.url + '" class="' + cls + '" style="--cat-color:#818CF8;--cat-glow:rgba(129,140,248,.2)">' +
+      '<button class="hub-fav-btn active hub-custom-fav-remove" data-key="' + fav.key.replace(/"/g,'&quot;') + '" title="' + removeLbl + '">★</button>' +
+      '<div><div class="hub-cc-top"><span class="hub-cc-cat">Custom</span>' + pill + '</div>' +
+      '<div class="hub-cc-name">' + fav.name.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div></div>' +
+      '<div class="hub-cc-bottom"><span class="hub-cc-date">' + dateStr + '</span><span class="hub-cc-arrow">→</span></div>' +
+    '</a>';
+  }
+
   function updateFavBadge() {
     var badge = document.getElementById('hub-fav-badge');
     if (!badge) return;
-    var n = getFavs().length;
+    var n = getFavs().length + getCustomFavs().length;
     badge.textContent = n;
     badge.style.display = n > 0 ? 'inline-flex' : 'none';
   }
@@ -693,10 +718,13 @@
   function renderFavorites() {
     var container = document.getElementById('hub-content');
     var favs = getFavs();
+    var customFavs = getCustomFavs();
     var clearBtn = document.getElementById('hub-clear-btn');
     updateFavBadge();
 
-    if (favs.length === 0) {
+    var slugsToLoad = favs.filter(function(s){ return EVENTS_BY_SLUG[s]; });
+
+    if (slugsToLoad.length === 0 && customFavs.length === 0) {
       if (clearBtn) clearBtn.style.display = 'none';
       container.innerHTML = '<div class="hub-empty">' +
         '<div class="hub-empty-icon">☆</div>' +
@@ -709,8 +737,7 @@
 
     if (clearBtn) clearBtn.style.display = 'inline-flex';
 
-    var slugsToLoad = favs.filter(function(s){ return EVENTS_BY_SLUG[s]; });
-    if (slugsToLoad.length === 0) {
+
       container.innerHTML = '<div class="hub-empty"><div class="hub-empty-icon">☆</div><div class="hub-empty-title">No se encontraron favoritos</div><div class="hub-empty-sub">Los countdowns guardados no se pudieron encontrar.</div><a href="/" class="hub-empty-btn">Ver todos los countdowns</a></div>';
       return;
     }
@@ -718,7 +745,7 @@
     // Show skeleton while loading
     var skel = '';
     for (var s = 0; s < slugsToLoad.length; s++) skel += '<div class="hub-cc hub-cc--skeleton"></div>';
-    container.innerHTML = '<div class="hub-bucket-hdr">Tus favoritos · ' + slugsToLoad.length + ' guardados</div><div class="hub-compact-grid">' + skel + '</div>';
+    container.innerHTML = customSection + '<div class="hub-bucket-hdr">Tus favoritos · ' + slugsToLoad.length + ' guardados</div><div class="hub-compact-grid">' + skel + '</div>';
 
     var results = new Array(slugsToLoad.length);
     var loaded = 0;
@@ -732,7 +759,7 @@
             function rank(r){ return r.data.state==='today'?-1:r.data.state==='future'?r.data.days:r.data.state==='unknown'?99999:99998; }
             return rank(a)-rank(b);
           });
-          var html = '<div class="hub-bucket-hdr">Tus favoritos · ' + results.length + ' guardados</div><div class="hub-compact-grid">';
+          var html = customSection + '<div class="hub-bucket-hdr">Tus favoritos · ' + results.length + ' guardados</div><div class="hub-compact-grid">';
           results.forEach(function(r){ html += buildCompact(r.ev, r.data); });
           html += '</div>';
           container.innerHTML = html;
@@ -758,6 +785,7 @@
     clearBtn.addEventListener('click', function() {
       if (confirm('¿Eliminar todos los favoritos?')) {
         setFavs([]);
+        setCustomFavs([]);
         renderFavorites();
       }
     });
@@ -769,17 +797,19 @@
   (function () {
     var btn = document.getElementById('theme-toggle');
     var saved = localStorage.getItem('cd_theme');
-    if (saved === 'light') { document.documentElement.setAttribute('data-theme', 'light'); btn.textContent = 'Dark'; }
+    var SUN = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    var MOON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    if (saved === 'light') { document.documentElement.setAttribute('data-theme', 'light'); btn.innerHTML = MOON; }
     btn.addEventListener('click', function () {
       var isLight = document.documentElement.getAttribute('data-theme') === 'light';
       if (isLight) {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('cd_theme', 'dark');
-        btn.textContent = 'Light';
+        btn.innerHTML = SUN;
       } else {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('cd_theme', 'light');
-        btn.textContent = 'Dark';
+        btn.innerHTML = MOON;
       }
     });
   })();
