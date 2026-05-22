@@ -21,6 +21,7 @@
 <link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/custom/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
+<script src="/countdown-engine.js"></script>
 <style>:root{--cat-color:#818CF8;--cat-glow:rgba(129,140,248,.2);--cat-soft:rgba(129,140,248,.08);}</style>
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 </head>
@@ -28,6 +29,7 @@
 <header class="site-header">
   <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
   <div class="header-right">
+    <a href="/favorites/" class="hub-fav-header-link" id="hub-fav-header-link" title="My Favorites">☆&nbsp;Favorites <span id="hub-fav-badge" class="hub-fav-badge" style="display:none"></span></a>
     <button class="theme-btn" id="theme-toggle" title="Toggle theme"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
     <div class="lang-seg" role="group" aria-label="Language">
       <button class="lang-btn active">EN</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','es');location.href='/es/custom/'">ES</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','pt');location.href='/pt/custom/'">PT</button><button class="lang-btn" onclick="localStorage.setItem('cd_lang_override','fr');location.href='/fr/custom/'">FR</button>
@@ -46,7 +48,7 @@
 (function(){
 'use strict';
 var LANG="en";
-var UI={"en": {"hero": "Create your countdown", "heroSub": "Pick a date — get a free shareable link. No sign-up needed.", "nameLabel": "Event name", "namePlaceholder": "My wedding, Graduation, Trip to Japan…", "dateLabel": "Date", "timeLabel": "Time", "timePlaceholder": "Optional", "msgLabel": "Note", "msgPlaceholder": "Optional — shown below the timer", "createBtn": "Create countdown →", "editBtn": "← Edit", "copyLink": "Copy link", "copied": "✓ Copied!", "share": "Share", "wa": "WhatsApp", "shareMsg": "Check out this countdown: ", "pastBadge": "This event already happened", "faqTitle": "How it works", "faqs": [["Is it free?", "Yes, 100% free. No account or sign-up needed. Ever."], ["How do I share my countdown?", "After creating it, click “Copy link” and send the URL to anyone. Opening that link shows the countdown directly."], ["Does my link expire?", "No. All the data is encoded in the URL itself, so it works forever without any server."], ["Can I set an exact time?", "Yes — the time field is optional. Leave it blank and the countdown goes to midnight on the chosen date."], ["Can I edit it later?", "Click “Edit” on any countdown page to change the name, date, or note."]]}, "es": {"hero": "Crea tu cuenta regresiva", "heroSub": "Elegí una fecha y compartí el enlace con quien quieras. Gratis, sin registro.", "nameLabel": "Nombre del evento", "namePlaceholder": "Mi boda, Graduación, Viaje a Japón…", "dateLabel": "Fecha", "timeLabel": "Hora", "timePlaceholder": "Opcional", "msgLabel": "Nota", "msgPlaceholder": "Opcional — se muestra bajo el temporizador", "createBtn": "Crear cuenta regresiva →", "editBtn": "← Editar", "copyLink": "Copiar enlace", "copied": "✓ ¡Copiado!", "share": "Compartir", "wa": "WhatsApp", "shareMsg": "Mirá esta cuenta regresiva: ", "pastBadge": "Este evento ya ocurrió", "faqTitle": "Cómo funciona", "faqs": [["¿Es gratis?", "Sí, 100% gratis. Sin cuenta ni registro. Siempre."], ["¿Cómo lo comparto?", "Después de crear tu cuenta regresiva, hacé clic en “Copiar enlace” y mandáselo a quien quieras."], ["¿El enlace caduca?", "No. Todos los datos están en la URL, así que funciona para siempre sin ningún servidor."], ["¿Puedo poner una hora exacta?", "Sí — el campo de hora es opcional. Si lo dejás vacío, cuenta hasta la medianoche de la fecha elegida."], ["¿Puedo editarlo después?", "Hacé clic en “Editar” en cualquier página de cuenta regresiva para cambiar el nombre, fecha o nota."]]}, "pt": {"hero": "Crie sua contagem regressiva", "heroSub": "Escolha uma data e compartilhe o link com quem quiser. Grátis, sem cadastro.", "nameLabel": "Nome do evento", "namePlaceholder": "Meu casamento, Formatura, Viagem ao Japão…", "dateLabel": "Data", "timeLabel": "Hora", "timePlaceholder": "Opcional", "msgLabel": "Nota", "msgPlaceholder": "Opcional — exibida abaixo do timer", "createBtn": "Criar contagem regressiva →", "editBtn": "← Editar", "copyLink": "Copiar link", "copied": "✓ Copiado!", "share": "Compartilhar", "wa": "WhatsApp", "shareMsg": "Veja esta contagem regressiva: ", "pastBadge": "Este evento já aconteceu", "faqTitle": "Como funciona", "faqs": [["É gratuito?", "Sim, 100% gratuito. Sem cadastro ou conta. Sempre."], ["Como compartilho?", "Após criar sua contagem, clique em “Copiar link” e envie para quem quiser."], ["O link expira?", "Não. Todos os dados ficam na URL, então funciona para sempre sem servidor."], ["Posso definir um horário exato?", "Sim — o campo de hora é opcional. Se deixar em branco, conta até a meia-noite da data escolhida."], ["Posso editar depois?", "Clique em “Editar” em qualquer página para mudar o nome, data ou nota."]]}, "fr": {"hero": "Créez votre compte à rebours", "heroSub": "Choisissez une date et partagez le lien avec qui vous voulez. Gratuit, sans inscription.", "nameLabel": "Événement", "namePlaceholder": "Mon mariage, Diplôme, Voyage au Japon…", "dateLabel": "Date", "timeLabel": "Heure", "timePlaceholder": "Optionnel", "msgLabel": "Note", "msgPlaceholder": "Optionnel — affichée sous le minuteur", "createBtn": "Créer le compte à rebours →", "editBtn": "← Modifier", "copyLink": "Copier le lien", "copied": "✓ Copié !", "share": "Partager", "wa": "WhatsApp", "shareMsg": "Regardez ce compte à rebours : ", "pastBadge": "Cet événement a déjà eu lieu", "faqTitle": "Comment ça marche", "faqs": [["C’est gratuit ?", "Oui, 100 % gratuit. Sans inscription ni compte. Toujours."], ["Comment le partager ?", "Après avoir créé votre compte à rebours, cliquez sur “Copier le lien” et envoyez-le à qui vous voulez."], ["Le lien expire-t-il ?", "Non. Toutes les données sont dans l’URL, donc il fonctionne indéfiniment sans serveur."], ["Puis-je définir une heure précise ?", "Oui — le champ heure est optionnel. Si vous le laissez vide, le compte à rebours va jusqu’à minuit à la date choisie."], ["Puis-je modifier après ?", "Cliquez sur “Modifier” sur n’importe quelle page pour changer le nom, la date ou la note."]]}};
+var UI={"en": {"hero": "Create your countdown", "heroSub": "Pick a date — get a free shareable link. No sign-up needed.", "nameLabel": "Event name", "namePlaceholder": "My wedding, Graduation, Trip to Japan…", "dateLabel": "Date", "timeLabel": "Time", "timePlaceholder": "Optional", "msgLabel": "Note", "msgPlaceholder": "Optional — shown below the timer", "createBtn": "Create countdown →", "editBtn": "← Edit", "saveFav": "Save to favorites", "savedFav": "Saved", "copyLink": "Copy link", "copied": "✓ Copied!", "share": "Share", "wa": "WhatsApp", "shareMsg": "Check out this countdown: ", "pastBadge": "This event already happened", "faqTitle": "How it works", "faqs": [["Is it free?", "Yes, 100% free. No account or sign-up needed. Ever."], ["How do I share my countdown?", "After creating it, click “Copy link” and send the URL to anyone. Opening that link shows the countdown directly."], ["Does my link expire?", "No. All the data is encoded in the URL itself, so it works forever without any server."], ["Can I set an exact time?", "Yes — the time field is optional. Leave it blank and the countdown goes to midnight on the chosen date."], ["Can I edit it later?", "Click “Edit” on any countdown page to change the name, date, or note."]]}, "es": {"hero": "Crea tu cuenta regresiva", "heroSub": "Elegí una fecha y compartí el enlace con quien quieras. Gratis, sin registro.", "nameLabel": "Nombre del evento", "namePlaceholder": "Mi boda, Graduación, Viaje a Japón…", "dateLabel": "Fecha", "timeLabel": "Hora", "timePlaceholder": "Opcional", "msgLabel": "Nota", "msgPlaceholder": "Opcional — se muestra bajo el temporizador", "createBtn": "Crear cuenta regresiva →", "editBtn": "← Editar", "saveFav": "Guardar en favoritos", "savedFav": "Guardado", "copyLink": "Copiar enlace", "copied": "✓ ¡Copiado!", "share": "Compartir", "wa": "WhatsApp", "shareMsg": "Mirá esta cuenta regresiva: ", "pastBadge": "Este evento ya ocurrió", "faqTitle": "Cómo funciona", "faqs": [["¿Es gratis?", "Sí, 100% gratis. Sin cuenta ni registro. Siempre."], ["¿Cómo lo comparto?", "Después de crear tu cuenta regresiva, hacé clic en “Copiar enlace” y mandáselo a quien quieras."], ["¿El enlace caduca?", "No. Todos los datos están en la URL, así que funciona para siempre sin ningún servidor."], ["¿Puedo poner una hora exacta?", "Sí — el campo de hora es opcional. Si lo dejás vacío, cuenta hasta la medianoche de la fecha elegida."], ["¿Puedo editarlo después?", "Hacé clic en “Editar” en cualquier página de cuenta regresiva para cambiar el nombre, fecha o nota."]]}, "pt": {"hero": "Crie sua contagem regressiva", "heroSub": "Escolha uma data e compartilhe o link com quem quiser. Grátis, sem cadastro.", "nameLabel": "Nome do evento", "namePlaceholder": "Meu casamento, Formatura, Viagem ao Japão…", "dateLabel": "Data", "timeLabel": "Hora", "timePlaceholder": "Opcional", "msgLabel": "Nota", "msgPlaceholder": "Opcional — exibida abaixo do timer", "createBtn": "Criar contagem regressiva →", "editBtn": "← Editar", "saveFav": "Salvar nos favoritos", "savedFav": "Salvo", "copyLink": "Copiar link", "copied": "✓ Copiado!", "share": "Compartilhar", "wa": "WhatsApp", "shareMsg": "Veja esta contagem regressiva: ", "pastBadge": "Este evento já aconteceu", "faqTitle": "Como funciona", "faqs": [["É gratuito?", "Sim, 100% gratuito. Sem cadastro ou conta. Sempre."], ["Como compartilho?", "Após criar sua contagem, clique em “Copiar link” e envie para quem quiser."], ["O link expira?", "Não. Todos os dados ficam na URL, então funciona para sempre sem servidor."], ["Posso definir um horário exato?", "Sim — o campo de hora é opcional. Se deixar em branco, conta até a meia-noite da data escolhida."], ["Posso editar depois?", "Clique em “Editar” em qualquer página para mudar o nome, data ou nota."]]}, "fr": {"hero": "Créez votre compte à rebours", "heroSub": "Choisissez une date et partagez le lien avec qui vous voulez. Gratuit, sans inscription.", "nameLabel": "Événement", "namePlaceholder": "Mon mariage, Diplôme, Voyage au Japon…", "dateLabel": "Date", "timeLabel": "Heure", "timePlaceholder": "Optionnel", "msgLabel": "Note", "msgPlaceholder": "Optionnel — affichée sous le minuteur", "createBtn": "Créer le compte à rebours →", "editBtn": "← Modifier", "saveFav": "Sauvegarder en favoris", "savedFav": "Sauvegardé", "copyLink": "Copier le lien", "copied": "✓ Copié !", "share": "Partager", "wa": "WhatsApp", "shareMsg": "Regardez ce compte à rebours : ", "pastBadge": "Cet événement a déjà eu lieu", "faqTitle": "Comment ça marche", "faqs": [["C’est gratuit ?", "Oui, 100 % gratuit. Sans inscription ni compte. Toujours."], ["Comment le partager ?", "Après avoir créé votre compte à rebours, cliquez sur “Copier le lien” et envoyez-le à qui vous voulez."], ["Le lien expire-t-il ?", "Non. Toutes les données sont dans l’URL, donc il fonctionne indéfiniment sans serveur."], ["Puis-je définir une heure précise ?", "Oui — le champ heure est optionnel. Si vous le laissez vide, le compte à rebours va jusqu’à minuit à la date choisie."], ["Puis-je modifier après ?", "Cliquez sur “Modifier” sur n’importe quelle page pour changer le nom, la date ou la note."]]}};
 var T=UI[LANG]||UI.en;
 var root=document.getElementById('cc-root');
 var _ticker=null;
@@ -137,6 +139,14 @@ function buildForm(prefill){
   '</div>';
 }
 
+// ── Custom favorites helpers ──────────────────────────────────────────────────
+function getCustomFavs(){try{return JSON.parse(localStorage.getItem('cd_custom_favs')||'[]');}catch(e){return [];}}
+function setCustomFavs(arr){try{localStorage.setItem('cd_custom_favs',JSON.stringify(arr));}catch(e){}}
+function customFavKey(p){return (p.n||'')+'|'+(p.d||'')+'|'+(p.t||'');}
+function isCustomFav(p){var key=customFavKey(p);return getCustomFavs().some(function(f){return f.key===key;});}
+function addCustomFav(p){var key=customFavKey(p);var favs=getCustomFavs().filter(function(f){return f.key!==key;});favs.unshift({key:key,name:p.n,date:p.d,time:p.t||'',note:p.m||'',url:location.href,savedAt:Date.now()});setCustomFavs(favs);}
+function removeCustomFav(p){var key=customFavKey(p);setCustomFavs(getCustomFavs().filter(function(f){return f.key!==key;}));}
+
 function buildCountdown(p){
   var target=new Date(p.d+(p.t?'T'+p.t+':00':'T00:00:00'));
   var now=new Date();
@@ -178,9 +188,9 @@ function buildCountdown(p){
         'X'+
       '</a>'+
     '</div>';
-  var isSaved = isCustomFav(p);
-  var favBtnLabel = isSaved ? '★ Saved' : '☆ Save to favorites';
-  var favBtnStyle = isSaved ? 'color:#FBBF24' : '';
+  var isSaved=isCustomFav(p);
+  var favBtnLabel=isSaved?'★ '+T.savedFav:'☆ '+T.saveFav;
+  var favBtnStyle=isSaved?'color:#FBBF24':'';
   return '<div class="cc-countdown-wrap">'+
     '<div class="cc-edit-row">'+
       '<button class="cc-edit-btn" id="cc-edit">'+
@@ -197,9 +207,6 @@ function buildCountdown(p){
     '<div class="cd-below">'+
       noteHtml+
       shareBar+
-    '</div>'+
-    '<div style="text-align:center;padding:8px 0 32px">'+
-      '<a href="mailto:info@countdowns.site?subject=Feedback - countdowns.site&body=Hi! I wanted to share some feedback about the custom countdown page." style="font-size:.78rem;color:var(--txt-dim,#aaa);text-decoration:none;opacity:.7">Leave feedback ✉</a>'+
     '</div>'+
     buildFaq()+
   '</div>';
@@ -239,11 +246,11 @@ function bindCountdown(p){
   if(favBtn)favBtn.addEventListener('click',function(){
     if(isCustomFav(p)){
       removeCustomFav(p);
-      favBtn.textContent='☆ Save to favorites';
+      favBtn.textContent='☆ '+T.saveFav;
       favBtn.style.color='';
     }else{
       addCustomFav(p);
-      favBtn.textContent='★ Saved';
+      favBtn.textContent='★ '+T.savedFav;
       favBtn.style.color='#FBBF24';
     }
   });
@@ -264,29 +271,6 @@ function bindCountdown(p){
   if(nativeBtn)nativeBtn.addEventListener('click',function(){
     navigator.share({title:p.n,url:location.href}).catch(function(){});
   });
-}
-
-// ── Custom favorites helpers ──────────────────────────────────────────────────
-function getCustomFavs(){
-  try{return JSON.parse(localStorage.getItem('cd_custom_favs')||'[]');}catch(e){return [];}
-}
-function setCustomFavs(arr){
-  try{localStorage.setItem('cd_custom_favs',JSON.stringify(arr));}catch(e){}
-}
-function customFavKey(p){return (p.n||'')+'|'+(p.d||'')+'|'+(p.t||'');}
-function isCustomFav(p){
-  var key=customFavKey(p);
-  return getCustomFavs().some(function(f){return f.key===key;});
-}
-function addCustomFav(p){
-  var key=customFavKey(p);
-  var favs=getCustomFavs().filter(function(f){return f.key!==key;});
-  favs.unshift({key:key,name:p.n,date:p.d,time:p.t||'',note:p.m||'',url:location.href,savedAt:Date.now()});
-  setCustomFavs(favs);
-}
-function removeCustomFav(p){
-  var key=customFavKey(p);
-  setCustomFavs(getCustomFavs().filter(function(f){return f.key!==key;}));
 }
 
 function render(){

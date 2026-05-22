@@ -2030,6 +2030,7 @@ def generate_page(ev, lang="en"):
 <header class="site-header">
   <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
   <div class="header-right">
+    <a href="/favorites/" class="hub-fav-header-link" id="hub-fav-header-link" title="My Favorites">☆&nbsp;Favorites <span id="hub-fav-badge" class="hub-fav-badge" style="display:none"></span></a>
     <button class="theme-btn" id="theme-toggle">Light</button>
     <div class="lang-seg" role="group" aria-label="Language">
       {lang_buttons}
@@ -2214,6 +2215,7 @@ def generate_custom_page(lang="en"):
             "dateLabel": "Date", "timeLabel": "Time", "timePlaceholder": "Optional",
             "msgLabel": "Note", "msgPlaceholder": "Optional — shown below the timer",
             "createBtn": "Create countdown →", "editBtn": "← Edit",
+            "saveFav": "Save to favorites", "savedFav": "Saved",
             "copyLink": "Copy link", "copied": "✓ Copied!", "share": "Share", "wa": "WhatsApp",
             "shareMsg": "Check out this countdown: ",
             "pastBadge": "This event already happened",
@@ -2233,6 +2235,7 @@ def generate_custom_page(lang="en"):
             "dateLabel": "Fecha", "timeLabel": "Hora", "timePlaceholder": "Opcional",
             "msgLabel": "Nota", "msgPlaceholder": "Opcional — se muestra bajo el temporizador",
             "createBtn": "Crear cuenta regresiva →", "editBtn": "← Editar",
+            "saveFav": "Guardar en favoritos", "savedFav": "Guardado",
             "copyLink": "Copiar enlace", "copied": "✓ ¡Copiado!", "share": "Compartir", "wa": "WhatsApp",
             "shareMsg": "Mirá esta cuenta regresiva: ",
             "pastBadge": "Este evento ya ocurrió",
@@ -2252,6 +2255,7 @@ def generate_custom_page(lang="en"):
             "dateLabel": "Data", "timeLabel": "Hora", "timePlaceholder": "Opcional",
             "msgLabel": "Nota", "msgPlaceholder": "Opcional — exibida abaixo do timer",
             "createBtn": "Criar contagem regressiva →", "editBtn": "← Editar",
+            "saveFav": "Salvar nos favoritos", "savedFav": "Salvo",
             "copyLink": "Copiar link", "copied": "✓ Copiado!", "share": "Compartilhar", "wa": "WhatsApp",
             "shareMsg": "Veja esta contagem regressiva: ",
             "pastBadge": "Este evento já aconteceu",
@@ -2271,6 +2275,7 @@ def generate_custom_page(lang="en"):
             "dateLabel": "Date", "timeLabel": "Heure", "timePlaceholder": "Optionnel",
             "msgLabel": "Note", "msgPlaceholder": "Optionnel — affichée sous le minuteur",
             "createBtn": "Créer le compte à rebours →", "editBtn": "← Modifier",
+            "saveFav": "Sauvegarder en favoris", "savedFav": "Sauvegardé",
             "copyLink": "Copier le lien", "copied": "✓ Copié !", "share": "Partager", "wa": "WhatsApp",
             "shareMsg": "Regardez ce compte à rebours : ",
             "pastBadge": "Cet événement a déjà eu lieu",
@@ -2303,6 +2308,7 @@ def generate_custom_page(lang="en"):
 <meta property="og:description" content="{meta_desc}">
 {hreflang}<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
+<script src="/countdown-engine.js"></script>
 <style>:root{{--cat-color:#818CF8;--cat-glow:rgba(129,140,248,.2);--cat-soft:rgba(129,140,248,.08);}}</style>
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 </head>
@@ -2310,7 +2316,8 @@ def generate_custom_page(lang="en"):
 <header class="site-header">
   <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>
   <div class="header-right">
-    <button class="theme-btn" id="theme-toggle">Light</button>
+    <a href="/favorites/" class="hub-fav-header-link" id="hub-fav-header-link" title="My Favorites">☆&nbsp;Favorites <span id="hub-fav-badge" class="hub-fav-badge" style="display:none"></span></a>
+    <button class="theme-btn" id="theme-toggle" title="Toggle theme"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
     <div class="lang-seg" role="group" aria-label="Language">
       {lang_buttons}
     </div>
@@ -2419,6 +2426,14 @@ function buildForm(prefill){{
   '</div>';
 }}
 
+// ── Custom favorites helpers ──────────────────────────────────────────────────
+function getCustomFavs(){{try{{return JSON.parse(localStorage.getItem('cd_custom_favs')||'[]');}}catch(e){{return [];}}}}
+function setCustomFavs(arr){{try{{localStorage.setItem('cd_custom_favs',JSON.stringify(arr));}}catch(e){{}}}}
+function customFavKey(p){{return (p.n||'')+'|'+(p.d||'')+'|'+(p.t||'');}}
+function isCustomFav(p){{var key=customFavKey(p);return getCustomFavs().some(function(f){{return f.key===key;}});}}
+function addCustomFav(p){{var key=customFavKey(p);var favs=getCustomFavs().filter(function(f){{return f.key!==key;}});favs.unshift({{key:key,name:p.n,date:p.d,time:p.t||'',note:p.m||'',url:location.href,savedAt:Date.now()}});setCustomFavs(favs);}}
+function removeCustomFav(p){{var key=customFavKey(p);setCustomFavs(getCustomFavs().filter(function(f){{return f.key!==key;}}));}}
+
 function buildCountdown(p){{
   var target=new Date(p.d+(p.t?'T'+p.t+':00':'T00:00:00'));
   var now=new Date();
@@ -2460,12 +2475,16 @@ function buildCountdown(p){{
         'X'+
       '</a>'+
     '</div>';
+  var isSaved=isCustomFav(p);
+  var favBtnLabel=isSaved?'★ '+T.savedFav:'☆ '+T.saveFav;
+  var favBtnStyle=isSaved?'color:#FBBF24':'';
   return '<div class="cc-countdown-wrap">'+
     '<div class="cc-edit-row">'+
       '<button class="cc-edit-btn" id="cc-edit">'+
         '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>'+
         T.editBtn+
       '</button>'+
+      '<button class="cc-edit-btn" id="cc-fav-btn" style="'+favBtnStyle+'">'+favBtnLabel+'</button>'+
     '</div>'+
     '<div class="cd-hero" style="padding-top:32px">'+
       '<div class="cd-category-badge" style="margin-bottom:18px">EVENT</div>'+
@@ -2509,6 +2528,19 @@ function bindCountdown(p){{
   // Edit
   var editBtn=document.getElementById('cc-edit');
   if(editBtn)editBtn.addEventListener('click',function(){{location.hash='';render();}});
+  // Save to favorites
+  var favBtn=document.getElementById('cc-fav-btn');
+  if(favBtn)favBtn.addEventListener('click',function(){{
+    if(isCustomFav(p)){{
+      removeCustomFav(p);
+      favBtn.textContent='☆ '+T.saveFav;
+      favBtn.style.color='';
+    }}else{{
+      addCustomFav(p);
+      favBtn.textContent='★ '+T.savedFav;
+      favBtn.style.color='#FBBF24';
+    }}
+  }});
   // Copy
   var copyBtn=document.getElementById('cc-copy');
   if(copyBtn)copyBtn.addEventListener('click',function(){{
@@ -2546,13 +2578,15 @@ render();
 
 // Theme toggle
 (function(){{
+  var SUN='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+  var MOON='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
   var btn=document.getElementById('theme-toggle');
   var saved=localStorage.getItem('cd_theme');
-  if(saved==='light'){{document.documentElement.setAttribute('data-theme','light');btn.textContent='Dark';}}
+  if(saved==='light'){{document.documentElement.setAttribute('data-theme','light');btn.innerHTML=MOON;}}
   btn.addEventListener('click',function(){{
     var isLight=document.documentElement.getAttribute('data-theme')==='light';
-    if(isLight){{document.documentElement.removeAttribute('data-theme');localStorage.setItem('cd_theme','dark');btn.textContent='Light';}}
-    else{{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('cd_theme','light');btn.textContent='Dark';}}
+    if(isLight){{document.documentElement.removeAttribute('data-theme');localStorage.setItem('cd_theme','dark');btn.innerHTML=SUN;}}
+    else{{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('cd_theme','light');btn.innerHTML=MOON;}}
   }});
 }})();
 // ── Country flag ──────────────────────────────────────────────────────

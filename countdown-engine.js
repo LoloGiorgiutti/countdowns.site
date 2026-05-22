@@ -1316,6 +1316,22 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
     });
   }
 
-  document.addEventListener('DOMContentLoaded', renderFeedback);
+  /* ─── FAVORITES BADGE (header link on all pages) ─────────────── */
+  function updateHeaderFavBadge() {
+    var badge = document.getElementById('hub-fav-badge');
+    if (!badge) return;
+    try {
+      var favs    = JSON.parse(localStorage.getItem('cd_favorites')  || '[]');
+      var customs = JSON.parse(localStorage.getItem('cd_custom_favs') || '[]');
+      var n = favs.length + customs.length;
+      badge.textContent = n;
+      badge.style.display = n > 0 ? 'inline-flex' : 'none';
+    } catch(e) {}
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    renderFeedback();
+    updateHeaderFavBadge();
+  });
 
 })();
