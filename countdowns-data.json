@@ -17,16 +17,16 @@
       "note": "Formula 1 2026 Monaco Grand Prix — Circuit de Monaco."
     },
     "world-cup": {
-      "date": "2026-06-11T20:00:00-05:00",
-      "note": "2026 FIFA World Cup opening match. Hosted jointly by USA, Canada and Mexico."
+      "date": "2026-06-11T19:00:00Z",
+      "note": "2026 FIFA World Cup opening match: Mexico vs South Africa · Estadio Azteca, Mexico City · kickoff 14:00 CDT / 19:00 UTC."
     },
     "ucl-final": {
-      "date": "2026-05-30T21:00:00+02:00",
-      "note": "UEFA Champions League 2025–26 Final · Puskás Aréna, Budapest."
+      "date": "2026-05-30T16:00:00Z",
+      "note": "UEFA Champions League 2025–26 Final · Puskás Aréna, Budapest · kickoff 18:00 CEST / 16:00 UTC. UEFA moved the kickoff earlier than previous years."
     },
     "nba-finals": {
-      "date": "2026-06-04T21:30:00-04:00",
-      "note": "The 2026 NBA Finals date will be confirmed after the conference finals. Usually begins in June."
+      "date": "2026-06-03T20:30:00-04:00",
+      "note": "2026 NBA Finals — Game 1: June 3, 2026 at 8:30 PM ET on ABC."
     },
     "le-mans": {
       "date": "2026-06-13T16:00:00+02:00",
@@ -45,8 +45,8 @@
       "note": "El partido se disputará en el Estadio Centenario de Montevideo, Uruguay, según confirmó la CONMEBOL en mayo de 2026."
     },
     "grammys": {
-      "date": "2027-02-07T20:00:00-08:00",
-      "note": "Grammy Awards 2027 — February 7, 2027 at Crypto.com Arena, Los Angeles.",
+      "date": "2027-02-07T20:00:00-05:00",
+      "note": "Grammy Awards 2027 — February 7, 2027 at Crypto.com Arena, Los Angeles. Ceremony begins at 8pm ET / 5pm PT.",
       "note_es": "Premios Grammy 2027 — 7 de febrero de 2027 en el Crypto.com Arena, Los Ángeles."
     },
     "eurovision": {
@@ -231,13 +231,17 @@
       "date": "2026-11-08T12:00:00",
       "note": "Diwali 2026 — Festival of Lights, November 8, 2026."
     },
+    "oscars": {
+      "date": "2027-03-14T19:00:00-04:00",
+      "note": "99th Academy Awards — Sunday March 14, 2027 at the Dolby Theatre, Hollywood. Ceremony begins at 7pm ET / 4pm PT."
+    },
     "emmys": {
       "date": "2026-09-14T20:00:00-04:00",
       "note": "78th Primetime Emmy Awards, Monday September 14, 2026 at the Peacock Theater, Los Angeles."
     },
     "golden-globes": {
-      "date": "2027-01-10T20:00:00-08:00",
-      "note": "84th Golden Globe Awards, Sunday January 10, 2027, Beverly Hilton, Beverly Hills. Host: Nikki Glaser."
+      "date": "2027-01-10T20:00:00-05:00",
+      "note": "84th Golden Globe Awards, Sunday January 10, 2027, Beverly Hilton, Beverly Hills. Ceremony at 8pm ET / 5pm PT. Host: Nikki Glaser."
     },
     "messi-birthday": {
       "date": "2026-06-24T12:00:00",
