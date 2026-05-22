@@ -1130,6 +1130,7 @@ body {
 .cc-edit-row {
   display: flex;
   justify-content: center;
+  gap: 20px;
   padding: 12px 24px 0;
 }
 .cc-edit-btn {
