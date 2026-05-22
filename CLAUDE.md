@@ -83,6 +83,71 @@ Add a line to the correct category section:
 
 ---
 
+### ══════════════════════════════════════
+### CRITICAL: TIMEZONE TYPE — Determine BEFORE setting any date
+### ══════════════════════════════════════
+
+Every new countdown must be classified into one of two types:
+
+#### TYPE A — "Global moment" event
+The event happens at one specific moment in time worldwide.
+Everyone's countdown hits zero at the same instant.
+
+**Examples:** Champions League Final, FIFA World Cup matches, NBA Finals,
+Oscars ceremony, Grammys, F1 race start, Super Bowl, Copa Libertadores Final,
+Le Mans 24h start, concerts/festivals with a confirmed stage time.
+
+**Rule:** Store the exact local kickoff time WITH its timezone offset.
+The engine converts it to the user's local display, but all users reach zero at the same moment.
+
+```json
+"ucl-final": { "date": "2026-05-30T16:00:00Z" }
+"world-cup":  { "date": "2026-06-11T19:00:00Z" }
+"oscars":     { "date": "2027-03-14T19:00:00-04:00" }
+```
+
+**⚠️ ALWAYS verify the official kickoff time before storing.**
+Confirmed sources: UEFA.com, FIFA.com, NBA.com, official broadcaster press releases.
+Do NOT assume 21:00 CEST because "that's the tradition" — UEFA changed UCL Final to 18:00 CEST for 2026.
+
+#### TYPE B — "Midnight local" event
+The event is a holiday or recurring date that starts at midnight in each country's timezone.
+A user in Tokyo and a user in Buenos Aires both reach zero at midnight their own time.
+
+**Examples:** Christmas, New Year's, Halloween, Valentine's Day, Mother's Day,
+Independence Day, national holidays, birthdays.
+
+**Rule:** These are almost always `type: 'auto'` in countdown-engine.js using
+`midnightInTZ(tz, year, month, day)` or `nthWeekday(...)` formulas.
+Do NOT store a single UTC timestamp for these — use the auto formula.
+
+```javascript
+// ✅ Correct for midnight-local events
+'christmas': function() {
+  return { date: nextOccurrence(function(y) { return midnightInTZ(tz, y, 11, 25); }) };
+}
+// ❌ WRONG — would show countdown ending at wrong time in most countries
+"christmas": { "date": "2026-12-25T00:00:00Z" }
+```
+
+#### Decision flowchart:
+
+```
+New event → Does it happen at the same physical moment for everyone?
+  YES → TYPE A (global moment) → store ISO 8601 with confirmed TZ offset
+  NO  → Does it start at midnight in each local timezone?
+    YES → TYPE B (midnight local) → use auto formula with midnightInTZ()
+    NO  → special case, ask user
+```
+
+#### Common mistakes to avoid:
+- ❌ Storing `T20:00:00-08:00` (LA time) for Grammys when it actually airs at `T20:00:00-05:00` (ET)
+- ❌ Using `T00:00:00Z` (UTC midnight) for Christmas → it would expire at different wall-clock times per country
+- ❌ Using "traditional" time (e.g. 21:00 CEST for UCL) without verifying the actual confirmed time
+- ✅ Always check: `the-official-site.com` or search `"[event] kickoff time UTC 2026"`
+
+---
+
 ### STEP 3a — If `type: 'variable'`, add to `countdowns-data.json`
 
 ```json
@@ -166,8 +231,10 @@ This generates:
 
 ### STEP 6 — Verify before pushing
 
-- [ ] Date is correct for the primary country
-- [ ] Timezone is the LOCAL timezone of the event (not UTC)
+- [ ] **Timezone type confirmed**: TYPE A (global moment) or TYPE B (midnight local)?
+- [ ] **If TYPE A**: official kickoff time verified from primary source (UEFA.com, FIFA.com, NBA.com, etc.)
+- [ ] **If TYPE B**: uses `midnightInTZ()` formula, NOT a fixed UTC timestamp
+- [ ] Date and time are correct for the event's actual location
 - [ ] Countdown page renders correctly in browser
 - [ ] Event appears in hub when that country is selected
 - [ ] Event does NOT appear for unrelated countries
