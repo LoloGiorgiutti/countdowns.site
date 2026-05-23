@@ -2040,6 +2040,9 @@ def generate_page(ev, lang="en"):
             return f"/countdown/{slug}/"
         elif btn_lang in SLUG_LANGS.get(slug, set()):
             return f"/{btn_lang}/countdown/{slug}/"
+        elif slug not in SLUG_LANGS:
+            # Daily countdown page — all 4 languages are always generated
+            return f"/{btn_lang}/countdown/{slug}/"
         else:
             return f"/{btn_lang}/"
 
@@ -3168,13 +3171,7 @@ def generate_days_hub(lang):
       slug = f"{en_month}-{day}"
       url = f"/{lp}countdown/{slug}/"
       is_notable = (month_num, day) in NOTABLE_DATES
-      if is_notable:
-        star = f' <span class="days-hub-star" title="{s["notable_label"]}">&#9733;</span>'
-        cls = 'days-hub-day days-hub-notable'
-      else:
-        star = ''
-        cls = 'days-hub-day'
-      day_links.append(f'<a href="{url}" class="{cls}">{day}{star}</a>')
+      day_links.append(f'<a href="{url}" class="days-hub-day">{day}</a>')
     grid = ''.join(day_links)
     months_parts.append(
       f'<div class="days-hub-month">'
