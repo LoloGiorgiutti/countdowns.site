@@ -1815,6 +1815,83 @@ EVENTS = [
       ("How many days until King's Day?", "Use the live countdown above to see the exact number of days, hours, minutes, and seconds until King's Day 2027."),
     ]
   ),
+
+  # ── Festivals & Awards ────────────────────────────────────────────────────
+  dict(
+    slug="mardi-gras", name="Mardi Gras 2027", type="variable", category="Holidays",
+    regions=["global"],
+    seo_title="Mardi Gras 2027 Countdown — Days Until Fat Tuesday",
+    meta_desc="Live countdown to Mardi Gras 2027 on Tuesday, February 9, 2027 — the legendary Fat Tuesday celebration in New Orleans and around the world.",
+    hero_desc="Countdown to Mardi Gras 2027 — Fat Tuesday, February 9, 2027.",
+    content="Mardi Gras (French for 'Fat Tuesday') is the last day of Carnival season, celebrated on the Tuesday before Ash Wednesday. Known for its vibrant parades, costumes, music, and beads, the biggest celebration takes place in New Orleans, Louisiana. Mardi Gras 2027 falls on Tuesday, February 9 — 47 days before Easter Sunday (March 28, 2027).",
+    faqs=[
+      ("When is Mardi Gras 2027?", "Mardi Gras 2027 falls on Tuesday, February 9, 2027. It is always the Tuesday before Ash Wednesday, 47 days before Easter."),
+      ("Where is Mardi Gras celebrated?", "The most famous celebration takes place in New Orleans, Louisiana. It is also celebrated in Mobile, Alabama, Rio de Janeiro (as Carnaval), Venice, and many cities worldwide."),
+      ("What does 'Mardi Gras' mean?", "'Mardi Gras' means 'Fat Tuesday' in French. It refers to the tradition of eating rich foods before the fasting of Lent begins on Ash Wednesday."),
+      ("Is Mardi Gras a public holiday?", "Mardi Gras is a public holiday in parts of Louisiana, including New Orleans and surrounding parishes."),
+      ("How many days until Mardi Gras?", "Use the live countdown above to see the exact days, hours, minutes and seconds until Mardi Gras 2027."),
+    ]
+  ),
+  dict(
+    slug="bonnaroo", name="Bonnaroo 2026", type="variable", category="Music",
+    regions=["en"],
+    seo_title="Bonnaroo 2026 Countdown — Days Until Bonnaroo Music Festival",
+    meta_desc="Live countdown to Bonnaroo 2026, June 11–14, 2026 at Great Stage Park, Manchester, Tennessee. One of America's premier multi-genre music festivals.",
+    hero_desc="Countdown to Bonnaroo 2026 — June 11–14, Manchester, Tennessee.",
+    content="Bonnaroo Music and Arts Festival is an annual multi-genre music and camping festival held at Great Stage Park in Manchester, Tennessee. Founded in 2002, it features hundreds of artists across multiple stages over four days. Bonnaroo 2026 runs from Thursday, June 11 to Sunday, June 14, 2026.",
+    faqs=[
+      ("When is Bonnaroo 2026?", "Bonnaroo 2026 takes place June 11–14, 2026 at Great Stage Park in Manchester, Tennessee."),
+      ("Where is Bonnaroo held?", "Bonnaroo is held at Great Stage Park in Manchester, Tennessee, about an hour south of Nashville."),
+      ("How many people attend Bonnaroo?", "Bonnaroo typically draws around 65,000–80,000 attendees per year, making it one of the largest music festivals in the United States."),
+      ("Can you camp at Bonnaroo?", "Yes — camping is a core part of the Bonnaroo experience. Attendees can camp on-site for the full four-day festival."),
+      ("How many days until Bonnaroo 2026?", "Use the live countdown above to see the exact days, hours, minutes and seconds until Bonnaroo 2026."),
+    ]
+  ),
+  dict(
+    slug="glastonbury", name="Glastonbury Festival 2027", type="variable", category="Music",
+    regions=["global"],
+    seo_title="Glastonbury Festival 2027 Countdown — Days Until Glastonbury",
+    meta_desc="Live countdown to Glastonbury Festival 2027, June 23–27 at Worthy Farm, Somerset, UK. There is no Glastonbury in 2026 — it is a fallow year.",
+    hero_desc="Countdown to Glastonbury Festival 2027 — June 23–27, Worthy Farm, Somerset.",
+    content="Glastonbury Festival is the world's most iconic outdoor music and arts festival, held at Worthy Farm in Pilton, Somerset, UK. The 2027 festival runs from Wednesday, June 23 to Sunday, June 27. Note: there is no Glastonbury in 2026 — the festival observes a fallow year every few years to allow the farmland to recover.",
+    faqs=[
+      ("When is Glastonbury 2027?", "Glastonbury Festival 2027 runs Wednesday, June 23 to Sunday, June 27, 2027 at Worthy Farm in Pilton, Somerset, UK."),
+      ("Is there a Glastonbury in 2026?", "No — there is no Glastonbury Festival in 2026. The festival observes a fallow year to allow the farmland and cows to recover. The next Glastonbury is in 2027."),
+      ("How do I get Glastonbury tickets?", "Glastonbury tickets are sold through an annual registration and ballot system. Registration is free but demand far exceeds supply."),
+      ("Who has headlined Glastonbury?", "Past headliners include Beyoncé, Paul McCartney, Coldplay, Radiohead, Adele, David Bowie, The Rolling Stones, and Stormzy."),
+      ("How many days until Glastonbury 2027?", "Use the live countdown above to see the exact days, hours, minutes and seconds until Glastonbury Festival 2027."),
+    ]
+  ),
+  dict(
+    slug="mtv-vmas", name="MTV VMAs 2026", type="variable", category="Entertainment",
+    regions=["global"],
+    seo_title="MTV VMAs 2026 Countdown — Days Until the MTV Video Music Awards",
+    meta_desc="Live countdown to the MTV Video Music Awards 2026 on Sunday, September 27, 2026 in Los Angeles, CA. Live on CBS and Paramount+.",
+    hero_desc="Countdown to the MTV VMAs 2026 — September 27, 2026, Los Angeles.",
+    content="The MTV Video Music Awards (VMAs) celebrate the best in music videos and pop culture. The 2026 MTV VMAs take place on Sunday, September 27, 2026 in Los Angeles, California — the event's first return to LA since 2017. The ceremony airs live on CBS and streams on Paramount+, beginning at 8:00 PM ET / 7:00 PM CT.",
+    faqs=[
+      ("When are the MTV VMAs 2026?", "The 2026 MTV VMAs air live on Sunday, September 27, 2026 at 8:00 PM ET in Los Angeles, California."),
+      ("Where are the MTV VMAs 2026 held?", "The 2026 MTV VMAs are held in Los Angeles, California — the first return to LA since 2017."),
+      ("How to watch the MTV VMAs 2026?", "The MTV VMAs 2026 air live on CBS and stream on Paramount+."),
+      ("What is the MTV VMA Moonperson trophy?", "The MTV VMA trophy, known as the Moonperson, depicts an astronaut planting an MTV flag on the moon. It is one of the most recognizable trophies in music."),
+      ("How many days until the MTV VMAs?", "Use the live countdown above to see the exact days, hours, minutes and seconds until the MTV VMAs 2026."),
+    ]
+  ),
+  dict(
+    slug="elecciones-usa-midterms", name="US Midterm Elections 2026", type="variable", category="Politics",
+    regions=["en"],
+    seo_title="US Midterm Elections 2026 Countdown — Days Until Election Day",
+    meta_desc="Live countdown to the 2026 US Midterm Elections on November 3, 2026. All 435 House seats and 34 Senate seats are up for election.",
+    hero_desc="Countdown to the 2026 US Midterm Elections — November 3, 2026.",
+    content="The 2026 United States midterm elections are scheduled for Tuesday, November 3, 2026. All 435 seats in the House of Representatives and 34 of the 100 Senate seats will be contested. Midterm elections are held two years into a presidential term and often serve as a referendum on the sitting president's performance.",
+    faqs=[
+      ("When are the 2026 US Midterm Elections?", "The 2026 US Midterm Elections take place on Tuesday, November 3, 2026."),
+      ("What is decided in the 2026 Midterms?", "All 435 House seats and 34 Senate seats are up for election, along with numerous state governors and local offices."),
+      ("How do US Midterm elections work?", "Every two years, all 435 House seats come up for election. Senate seats are staggered — about a third per cycle. The President is not on the ballot."),
+      ("When can I register to vote for the 2026 Midterms?", "Voter registration deadlines vary by state. Most states require registration 15–30 days before the election. Check requirements at vote.gov."),
+      ("How many days until the 2026 Midterms?", "Use the live countdown above to see the exact days, hours, minutes and seconds until the 2026 US Midterm Elections."),
+    ]
+  ),
 ]
 
 # ─── Category colours ──────────────────────────────────────────────────────────

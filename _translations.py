@@ -419,6 +419,24 @@ TRANSLATIONS = {
         meta_desc='Contador en vivo para el Día del Niño. La fecha varía según el país: México 30 de abril, Argentina 2.° domingo de agosto, Brasil 12 de octubre.',
         hero_desc='Cuenta regresiva al Día del Niño. La fecha varía según el país.',
       ),
+      'mardi-gras': dict(
+        name='Mardi Gras 2027',
+        seo_title='Cuenta Regresiva Mardi Gras 2027 — Días hasta el Martes Gordo',
+        meta_desc='Cuenta regresiva en vivo para Mardi Gras 2027 el martes 9 de febrero de 2027 — la legendaria celebración de Fat Tuesday en Nueva Orleans y el mundo.',
+        hero_desc='Cuenta regresiva para Mardi Gras 2027 — Martes Gordo, 9 de febrero de 2027.',
+      ),
+      'glastonbury': dict(
+        name='Festival de Glastonbury 2027',
+        seo_title='Cuenta Regresiva Glastonbury 2027 — Días hasta el Festival',
+        meta_desc='Cuenta regresiva en vivo para el Festival de Glastonbury 2027, del 23 al 27 de junio en Worthy Farm, Somerset, Reino Unido. No hay Glastonbury en 2026 (año de barbecho).',
+        hero_desc='Cuenta regresiva al Festival de Glastonbury 2027 — 23-27 de junio, Worthy Farm, Somerset.',
+      ),
+      'mtv-vmas': dict(
+        name='MTV VMAs 2026',
+        seo_title='Cuenta Regresiva MTV VMAs 2026 — Días hasta los MTV Video Music Awards',
+        meta_desc='Cuenta regresiva en vivo para los MTV Video Music Awards 2026 el domingo 27 de septiembre de 2026 en Los Ángeles, California. En vivo por CBS y Paramount+.',
+        hero_desc='Cuenta regresiva para los MTV VMAs 2026 — 27 de septiembre de 2026, Los Ángeles.',
+      ),
       'bafta': dict(
         name='Premios BAFTA de Cine 2027',
         seo_title='Cuenta Regresiva Premios BAFTA 2027 — Días hasta los BAFTAs',
@@ -681,6 +699,24 @@ TRANSLATIONS = {
         seo_title='Contagem Regressiva Dia das Crianças 2026 — Quantos dias faltam',
         meta_desc='Contador ao vivo para o Dia das Crianças. No Brasil é em 12 de outubro. A data varia por país.',
         hero_desc='Contagem regressiva para o Dia das Crianças. A data varia por país.',
+      ),
+      'mardi-gras': dict(
+        name='Mardi Gras 2027',
+        seo_title='Contagem Regressiva Mardi Gras 2027 — Dias até a Terça-feira Gorda',
+        meta_desc='Contagem regressiva ao vivo para o Mardi Gras 2027 na terça-feira 9 de fevereiro de 2027 — a lendária celebração em Nova Orleans e ao redor do mundo.',
+        hero_desc='Contagem regressiva para o Mardi Gras 2027 — Terça-feira Gorda, 9 de fevereiro de 2027.',
+      ),
+      'glastonbury': dict(
+        name='Festival de Glastonbury 2027',
+        seo_title='Contagem Regressiva Glastonbury 2027 — Dias até o Festival',
+        meta_desc='Contagem regressiva ao vivo para o Festival de Glastonbury 2027, de 23 a 27 de junho em Worthy Farm, Somerset, Reino Unido. Não há Glastonbury em 2026 (ano de pousio).',
+        hero_desc='Contagem regressiva para o Festival de Glastonbury 2027 — 23-27 de junho, Worthy Farm, Somerset.',
+      ),
+      'mtv-vmas': dict(
+        name='MTV VMAs 2026',
+        seo_title='Contagem Regressiva MTV VMAs 2026 — Dias até o MTV Video Music Awards',
+        meta_desc='Contagem regressiva ao vivo para o MTV Video Music Awards 2026 no domingo 27 de setembro de 2026 em Los Angeles, Califórnia. Ao vivo pela CBS e Paramount+.',
+        hero_desc='Contagem regressiva para o MTV VMAs 2026 — 27 de setembro de 2026, Los Angeles.',
       ),
       'bafta': dict(
         name='Prêmios BAFTA de Cinema 2027',
@@ -957,6 +993,24 @@ TRANSLATIONS = {
         seo_title='Compte à Rebours Finale Copa Libertadores 2026 — Jours jusqu\'à la Finale',
         meta_desc='Compte à rebours en direct pour la Finale de la Copa Libertadores 2026, le plus grand match de football de clubs en Amérique du Sud.',
         hero_desc='Compte à rebours pour la Finale de la Copa Libertadores 2026.',
+      ),
+      'mardi-gras': dict(
+        name='Mardi Gras 2027',
+        seo_title='Compte à Rebours Mardi Gras 2027 — Jours jusqu\'au Mardi Gras',
+        meta_desc='Compte à rebours en direct pour le Mardi Gras 2027, le mardi 9 février 2027 — la légendaire célébration du Fat Tuesday à La Nouvelle-Orléans et dans le monde.',
+        hero_desc='Compte à rebours pour le Mardi Gras 2027 — Mardi Gras, 9 février 2027.',
+      ),
+      'glastonbury': dict(
+        name='Festival de Glastonbury 2027',
+        seo_title='Compte à Rebours Glastonbury 2027 — Jours jusqu\'au Festival',
+        meta_desc='Compte à rebours en direct pour le Festival de Glastonbury 2027, du 23 au 27 juin à Worthy Farm, Somerset, Royaume-Uni. Pas de Glastonbury en 2026 (année en jachère).',
+        hero_desc='Compte à rebours pour le Festival de Glastonbury 2027 — 23-27 juin, Worthy Farm, Somerset.',
+      ),
+      'mtv-vmas': dict(
+        name='MTV VMAs 2026',
+        seo_title='Compte à Rebours MTV VMAs 2026 — Jours jusqu\'aux MTV Video Music Awards',
+        meta_desc='Compte à rebours en direct pour les MTV Video Music Awards 2026, le dimanche 27 septembre 2026 à Los Angeles, Californie. En direct sur CBS et Paramount+.',
+        hero_desc='Compte à rebours pour les MTV VMAs 2026 — 27 septembre 2026, Los Angeles.',
       ),
       'bafta': dict(
         name='Prix BAFTA du Film 2027',
