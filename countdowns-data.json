@@ -1958,6 +1958,98 @@
     "december-31": {
       "date": "2000-12-31T00:00:00",
       "note": "Annual countdown to December 31."
+    },
+    "robert-pattinson-birthday": {
+      "date": "2027-05-13T12:00:00",
+      "note": "Robert Pattinson's Birthday — born May 13th, 1986."
+    },
+    "shawn-mendes-birthday": {
+      "date": "2026-08-08T12:00:00",
+      "note": "Shawn Mendes's Birthday — born August 8th, 1998."
+    },
+    "harry-styles-birthday": {
+      "date": "2027-02-01T12:00:00",
+      "note": "Harry Styles's Birthday — born February 1st, 1994."
+    },
+    "timothee-chalamet-birthday": {
+      "date": "2026-12-27T12:00:00",
+      "note": "Timothée Chalamet's Birthday — born December 27th, 1995."
+    },
+    "tom-holland-birthday": {
+      "date": "2026-06-01T12:00:00",
+      "note": "Tom Holland's Birthday — born June 1st, 1996."
+    },
+    "margot-robbie-birthday": {
+      "date": "2026-07-02T12:00:00",
+      "note": "Margot Robbie's Birthday — born July 2nd, 1990."
+    },
+    "chris-evans-birthday": {
+      "date": "2026-06-13T12:00:00",
+      "note": "Chris Evans's Birthday — born June 13th, 1981."
+    },
+    "chris-hemsworth-birthday": {
+      "date": "2026-08-11T12:00:00",
+      "note": "Chris Hemsworth's Birthday — born August 11th, 1983."
+    },
+    "johnny-depp-birthday": {
+      "date": "2026-06-09T12:00:00",
+      "note": "Johnny Depp's Birthday — born June 9th, 1963."
+    },
+    "pedro-pascal-birthday": {
+      "date": "2027-04-02T12:00:00",
+      "note": "Pedro Pascal's Birthday — born April 2nd, 1975."
+    },
+    "olivia-rodrigo-birthday": {
+      "date": "2027-02-20T12:00:00",
+      "note": "Olivia Rodrigo's Birthday — born February 20th, 2003."
+    },
+    "sabrina-carpenter-birthday": {
+      "date": "2027-05-11T12:00:00",
+      "note": "Sabrina Carpenter's Birthday — born May 11th, 1999."
+    },
+    "bruno-mars-birthday": {
+      "date": "2026-10-08T12:00:00",
+      "note": "Bruno Mars's Birthday — born October 8th, 1985."
+    },
+    "lady-gaga-birthday": {
+      "date": "2027-03-28T12:00:00",
+      "note": "Lady Gaga's Birthday — born March 28th, 1986."
+    },
+    "eminem-birthday": {
+      "date": "2026-10-17T12:00:00",
+      "note": "Eminem's Birthday — born October 17th, 1972."
+    },
+    "karol-g-birthday": {
+      "date": "2027-02-14T12:00:00",
+      "note": "Karol G's Birthday — born February 14th, 1991."
+    },
+    "jungkook-birthday": {
+      "date": "2026-09-01T12:00:00",
+      "note": "Jungkook's Birthday — born September 1st, 1997."
+    },
+    "djokovic-birthday": {
+      "date": "2027-05-22T12:00:00",
+      "note": "Novak Djokovic's Birthday — born May 22nd, 1987."
+    },
+    "stephen-curry-birthday": {
+      "date": "2027-03-14T12:00:00",
+      "note": "Stephen Curry's Birthday — born March 14th, 1988."
+    },
+    "eid-al-fitr": {
+      "date": "2027-03-10T12:00:00",
+      "note": "Eid al-Fitr 2027 — approximate date, subject to moon sighting. Marks end of Ramadan."
+    },
+    "eid-al-adha": {
+      "date": "2027-05-17T12:00:00",
+      "note": "Eid al-Adha 2027 — approximate date, subject to moon sighting."
+    },
+    "motogp": {
+      "date": "2026-05-31T14:00:00+02:00",
+      "note": "MotoGP Italian Grand Prix at Mugello — Race day Sunday May 31, 2026."
+    },
+    "parense-de-manos": {
+      "date": null,
+      "note": "Párense de Manos 2026 — Argentine boxing event organized by Luquita Rodríguez. Date not yet announced."
     }
   }
 }
