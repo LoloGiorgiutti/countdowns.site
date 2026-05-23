@@ -1766,6 +1766,55 @@ EVENTS = [
       ("¿Quiénes pueden votar en Argentina?", "Pueden votar los ciudadanos argentinos nativos o naturalizados mayores de 16 años. El voto es obligatorio para los mayores de 18 y optativo para los de 16 y 17 años."),
     ]
   ),
+
+  # ── Awards / Entertainment ─────────────────────────────────────────────────
+  dict(
+    slug="bafta", name="BAFTA Film Awards 2027", type="variable", category="Entertainment",
+    regions=["global"],
+    seo_title="BAFTA Film Awards 2027 Countdown — Days Until the BAFTAs",
+    meta_desc="Live countdown to the 80th BAFTA Film Awards on Sunday, February 21, 2027 at the Royal Festival Hall, Southbank Centre, London.",
+    hero_desc="Countdown to the 80th BAFTA Film Awards — February 21, 2027, London.",
+    content="The BAFTA Film Awards are presented annually by the British Academy of Film and Television Arts to honor the best in cinema. First held in 1948, the BAFTAs are one of the world's most prestigious film awards and often serve as a strong predictor of Oscar outcomes. The 80th BAFTA Film Awards ceremony takes place on Sunday, February 21, 2027 at the Royal Festival Hall, Southbank Centre, London.",
+    faqs=[
+      ("When are the BAFTA Film Awards 2027?", "The 80th BAFTA Film Awards take place on Sunday, February 21, 2027 at the Royal Festival Hall, Southbank Centre, London."),
+      ("Where are the BAFTAs held?", "The BAFTA Film Awards are held at the Royal Festival Hall, Southbank Centre, London."),
+      ("What does BAFTA stand for?", "BAFTA stands for British Academy of Film and Television Arts."),
+      ("What time do the BAFTA Awards start?", "The BAFTA Film Awards ceremony begins at 7:00 PM GMT at the Royal Festival Hall in London."),
+      ("How many days until the BAFTA Awards?", "Use the live countdown above to see the exact days, hours, minutes and seconds until the BAFTA Film Awards 2027."),
+    ]
+  ),
+
+  # ── Sports – Draft & National Days ────────────────────────────────────────
+  dict(
+    slug="nba-draft", name="NBA Draft 2026", type="variable", category="Sports",
+    regions=["global"],
+    seo_title="NBA Draft 2026 Countdown — Days Until the NBA Draft",
+    meta_desc="Live countdown to the 2026 NBA Draft — Round 1 on June 23, 2026 at the Barclays Center, Brooklyn. The Washington Wizards hold the No. 1 overall pick.",
+    hero_desc="Countdown to the 2026 NBA Draft — Round 1 on June 23 at the Barclays Center, Brooklyn.",
+    content="The NBA Draft is the annual event where the 30 NBA teams select eligible players to join the league. The 2026 NBA Draft takes place on June 23 (Round 1) and June 24 (Round 2) at the Barclays Center in Brooklyn, New York. Round 1 airs live on ABC and ESPN at 8:00 PM ET. The Washington Wizards hold the No. 1 overall pick, with the Utah Jazz at No. 2 and the Memphis Grizzlies at No. 3.",
+    faqs=[
+      ("When is the NBA Draft 2026?", "The 2026 NBA Draft Round 1 is on Tuesday, June 23, 2026. Round 2 follows on Wednesday, June 24, at the Barclays Center in Brooklyn, New York."),
+      ("Where is the NBA Draft 2026 held?", "The 2026 NBA Draft takes place at the Barclays Center in Brooklyn, New York."),
+      ("Who has the No. 1 pick in the 2026 NBA Draft?", "The Washington Wizards hold the No. 1 overall pick in the 2026 NBA Draft."),
+      ("How does the NBA Draft work?", "30 NBA teams select players in 2 rounds (60 picks total). Teams that missed the playoffs enter the Draft Lottery, with the worst records getting the best odds for top picks."),
+      ("What time does the NBA Draft 2026 start?", "The 2026 NBA Draft Round 1 begins at 8:00 PM ET on Tuesday, June 23, 2026, airing on ABC and ESPN."),
+    ]
+  ),
+  dict(
+    slug="koningsdag", name="King's Day (Netherlands)", type="variable", category="National Days",
+    regions=["global"],
+    seo_title="King's Day 2027 Countdown — Days Until Koningsdag Netherlands",
+    meta_desc="Live countdown to King's Day 2027 on April 27 — the Netherlands' largest national celebration, with the whole country turning orange for King Willem-Alexander's birthday.",
+    hero_desc="Countdown to King's Day 2027 (Koningsdag) — April 27 in the Netherlands.",
+    content="King's Day (Koningsdag) is celebrated every April 27 in the Netherlands — or April 26 if April 27 falls on a Sunday. The entire country dresses in orange, takes to the streets, canals, and outdoor markets, and celebrates the birthday of King Willem-Alexander. Amsterdam is completely transformed: its canals fill with boats, free markets (vrijmarkten) pop up everywhere, and live music fills every square.",
+    faqs=[
+      ("When is King's Day 2027?", "King's Day 2027 falls on Tuesday, April 27, 2027. It celebrates the birthday of King Willem-Alexander of the Netherlands."),
+      ("Why do people wear orange on King's Day?", "Orange is the color of the Dutch Royal Family — the House of Orange-Nassau. Wearing orange on King's Day is a national tradition expressing pride and loyalty to the monarchy."),
+      ("What happens on King's Day in Amsterdam?", "Amsterdam hosts the world's largest outdoor flea market (vrijmarkt), canal boat parties, live music on every street, and orange-clad crowds celebrating throughout the city."),
+      ("Is King's Day always on April 27?", "King's Day is celebrated on April 27 every year. If April 27 falls on a Sunday, the celebration moves to April 26."),
+      ("How many days until King's Day?", "Use the live countdown above to see the exact number of days, hours, minutes, and seconds until King's Day 2027."),
+    ]
+  ),
 ]
 
 # ─── Category colours ──────────────────────────────────────────────────────────
