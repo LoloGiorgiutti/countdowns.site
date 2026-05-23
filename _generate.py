@@ -1816,6 +1816,53 @@ EVENTS = [
     ]
   ),
 
+  # ── Gaming Releases ───────────────────────────────────────────────────────
+  dict(
+    slug="ps6", name="PlayStation 6", type="variable", category="Releases",
+    regions=["global"],
+    seo_title="PlayStation 6 (PS6) Release Date Countdown — When Does PS6 Come Out?",
+    meta_desc="Countdown to the PlayStation 6 release date. Sony has not yet announced an official date, but rumors and patents suggest a PS6 launch in 2027–2028. Stay tuned for updates.",
+    hero_desc="Counting down to the PlayStation 6 launch — date not yet confirmed.",
+    content="Sony has not announced an official PlayStation 6 release date. Based on the PS4 and PS5 release cycles, industry analysts and leaks suggest a PS6 launch window of 2027 or 2028. Sony's patent filings and job listings provide some hints about the next-gen hardware, but no official launch date has been set. This page will update automatically once Sony confirms the date.",
+    faqs=[
+      ("When will PlayStation 6 come out?", "Sony has not officially announced a PS6 release date. Analyst estimates and rumors point to a 2027–2028 window, following the PS5's 2020 launch."),
+      ("What do we know about PS6 specs?", "Sony has shared little official information. Leaks and patents suggest major improvements in GPU performance, AI-driven processing, and potentially advanced VR capabilities."),
+      ("Will PS6 be backwards compatible with PS5?", "Sony has not confirmed backwards compatibility, but given the PS5's strong support for PS4 games, backwards compatibility with PS5 titles is widely expected."),
+      ("How much will PS6 cost?", "No pricing has been confirmed. Given the PS5's $499 launch price and inflation, the PS6 is expected to launch at $599–$699."),
+      ("How do I get notified of the PS6 release date?", "Bookmark this page — it will update automatically with a live countdown the moment Sony confirms the PS6 release date."),
+    ]
+  ),
+
+  # ── Calendar Countdowns ───────────────────────────────────────────────────
+  dict(
+    slug="weekend", name="Next Weekend", type="auto", category="Time",
+    regions=["global"],
+    seo_title="Countdown to the Weekend — How Many Days Until the Weekend?",
+    meta_desc="Live countdown to the next weekend. See the exact days, hours, minutes and seconds until Saturday arrives. Auto-updates every week.",
+    hero_desc="Live countdown to the next weekend — Saturday is coming.",
+    content="Whether you're counting down to a well-earned rest, a trip, or just two days away from work, this live countdown shows exactly how long until the weekend starts. The timer counts to the next Saturday at midnight local time and resets automatically every week.",
+    faqs=[
+      ("How many days until the weekend?", "Use the live countdown above to see the exact days, hours, minutes and seconds until Saturday. It updates automatically based on your local time."),
+      ("What day does the weekend start?", "This countdown uses Saturday at midnight (00:00) as the start of the weekend."),
+      ("Does the countdown use my local time?", "Yes — the countdown uses your device's local timezone, so it's accurate wherever you are in the world."),
+      ("How many hours until Friday?", "If you want a countdown specifically to Friday, use the custom countdown feature on this site to set your own target date and time."),
+    ]
+  ),
+  dict(
+    slug="next-year", name="Next Year", type="auto", category="Time",
+    regions=["global"],
+    seo_title="How Many Days Until Next Year? — Live Countdown to 2027",
+    meta_desc="Live countdown to January 1, 2027 — the start of next year. See the exact days, hours, minutes and seconds remaining. Auto-resets each year.",
+    hero_desc="Live countdown to the start of next year.",
+    content="How far away is next year? This live countdown shows the exact time remaining until January 1 of the next year arrives. Whether you're planning for the year ahead, counting down to a fresh start, or just curious, this timer keeps you updated to the second. It resets automatically every year on January 1.",
+    faqs=[
+      ("How many days until next year?", "Use the live countdown above for the exact number of days, hours, minutes and seconds until January 1 of next year."),
+      ("What year is next year?", "Next year is 2027. This countdown targets January 1, 2027 at midnight local time."),
+      ("Is this the same as the New Year countdown?", "Yes — both this and the New Year countdown point to January 1. This page is focused on the 'days until next year' search intent."),
+      ("Does the timer use my local timezone?", "Yes — the countdown uses your device's local time, so it accurately reflects your local New Year midnight."),
+    ]
+  ),
+
   # ── Festivals & Awards ────────────────────────────────────────────────────
   dict(
     slug="mardi-gras", name="Mardi Gras 2027", type="variable", category="Holidays",
@@ -2733,6 +2780,97 @@ render();
 </body>
 </html>'''
 
+# ─── Daily countdown helpers ──────────────────────────────────────────────────
+MONTH_NAMES_DAILY = {
+  'en': ['January','February','March','April','May','June',
+         'July','August','September','October','November','December'],
+  'es': ['enero','febrero','marzo','abril','mayo','junio',
+         'julio','agosto','septiembre','octubre','noviembre','diciembre'],
+  'pt': ['janeiro','fevereiro','março','abril','maio','junho',
+         'julho','agosto','setembro','outubro','novembro','dezembro'],
+  'fr': ['janvier','février','mars','avril','mai','juin',
+         'juillet','août','septembre','octobre','novembre','décembre'],
+}
+MONTH_DAYS_DAILY = [31,28,31,30,31,30,31,31,30,31,30,31]
+
+def day_ord_en(n):
+  s = 'th' if 10 <= n%100 <= 20 else {1:'st',2:'nd',3:'rd'}.get(n%10,'th')
+  return f"{n}{s}"
+
+def get_daily_ev(month, day):
+  month_en = MONTH_NAMES_DAILY['en'][month-1]
+  slug     = f"{month_en.lower()}-{day}"
+  ord_en   = day_ord_en(day)
+  name_en  = f"{month_en} {ord_en}"
+  return dict(
+    slug=slug, name=name_en, type="annual", category="Months",
+    regions=["global"],
+    seo_title=f"How Many Days Until {month_en} {ord_en}? — Live Countdown",
+    meta_desc=f"Live countdown to {month_en} {ord_en}. Exact days, hours, minutes and seconds. Resets automatically every year.",
+    hero_desc=f"Live countdown to {month_en} {ord_en}.",
+    content=f"{month_en} {ord_en} recurs every year. This live countdown shows the exact time remaining until the next {month_en} {day}. The timer resets automatically once the date arrives.",
+    faqs=[
+      (f"How many days until {month_en} {ord_en}?",
+       f"Use the live countdown above to see the exact days, hours, minutes and seconds until {month_en} {ord_en}."),
+      ("Does the countdown reset each year?",
+       f"Yes — once {month_en} {day} arrives, the countdown automatically resets to next year's {month_en} {day}."),
+      (f"Is {month_en} {day} a holiday?",
+       f"It depends on the country. Use the live countdown above to count down to {month_en} {day}, regardless of whether it is a public holiday."),
+    ]
+  )
+
+def inject_daily_translations(slug, month, day):
+  for lang in ['es','pt','fr']:
+    mn = MONTH_NAMES_DAILY[lang][month-1]
+    if lang == 'fr':
+      ds = f"1er {mn}" if day == 1 else f"{day} {mn}"
+      t = dict(
+        name=ds,
+        seo_title=f"Dans combien de jours c'est le {ds} ? — Compte à Rebours",
+        meta_desc=f"Compte à rebours en direct pour le {ds}. Jours, heures, minutes et secondes exactes. Se réinitialise chaque année.",
+        hero_desc=f"Compte à rebours pour le {ds}.",
+        content=f"Le {ds} est une date qui revient chaque année. Ce compteur montre le temps exact jusqu'au prochain {ds}. Le compteur se réinitialise automatiquement.",
+        faqs=[
+          (f"Dans combien de jours est le {ds} ?",
+           f"Utilisez le compte à rebours ci-dessus pour voir les jours, heures, minutes et secondes exacts jusqu'au {ds}."),
+          ("Le compte à rebours se réinitialise-t-il chaque année ?",
+           f"Oui — lorsque le {ds} arrive, le compteur se réinitialise automatiquement pour l'année suivante."),
+        ]
+      )
+    elif lang == 'es':
+      t = dict(
+        name=f"{day} de {mn}",
+        seo_title=f"¿Cuántos días faltan para el {day} de {mn}? — Cuenta Regresiva",
+        meta_desc=f"Cuenta regresiva en vivo para el {day} de {mn}. Días, horas, minutos y segundos exactos. Se reinicia automáticamente cada año.",
+        hero_desc=f"Cuenta regresiva para el {day} de {mn}.",
+        content=f"El {day} de {mn} es una fecha que se repite cada año. Este contador muestra el tiempo exacto restante hasta el próximo {day} de {mn}. Se reinicia automáticamente.",
+        faqs=[
+          (f"¿Cuántos días faltan para el {day} de {mn}?",
+           f"Usa la cuenta regresiva de arriba para ver los días, horas, minutos y segundos exactos hasta el {day} de {mn}."),
+          ("¿El contador se reinicia cada año?",
+           f"Sí — cuando llega el {day} de {mn}, el contador se reinicia automáticamente para el año siguiente."),
+        ]
+      )
+    else:  # pt
+      t = dict(
+        name=f"{day} de {mn}",
+        seo_title=f"Quantos dias faltam para {day} de {mn}? — Contagem Regressiva",
+        meta_desc=f"Contagem regressiva ao vivo para {day} de {mn}. Dias, horas, minutos e segundos exatos. Reinicia automaticamente todo ano.",
+        hero_desc=f"Contagem regressiva para {day} de {mn}.",
+        content=f"{day} de {mn} é uma data que se repete todo ano. Este contador mostra o tempo exato até o próximo {day} de {mn}. Reinicia automaticamente.",
+        faqs=[
+          (f"Quantos dias faltam para {day} de {mn}?",
+           f"Use a contagem regressiva acima para ver os dias, horas, minutos e segundos exatos até {day} de {mn}."),
+          ("A contagem regressiva reinicia todo ano?",
+           f"Sim — quando chega {day} de {mn}, o contador reinicia automaticamente para o ano seguinte."),
+        ]
+      )
+    TRANSLATIONS.setdefault(lang,{}).setdefault('events',{})[slug] = t
+
+def cleanup_daily_translations(slug):
+  for lang in ['es','pt','fr']:
+    TRANSLATIONS.get(lang,{}).get('events',{}).pop(slug,None)
+
 # ─── Generate all pages ────────────────────────────────────────────────────────
 generated = 0
 for ev in EVENTS:
@@ -2776,6 +2914,36 @@ for ev in EVENTS:
             generated += 1
 
 print(f"\nGenerated {generated} pages.")
+
+# ─── Generate 365 daily countdown pages (not shown on hub) ────────────────────
+print("\nGenerating 365 daily countdown pages...")
+daily_count = 0
+for m_idx, days_in_month in enumerate(MONTH_DAYS_DAILY):
+  month = m_idx + 1
+  for day in range(1, days_in_month + 1):
+    month_en = MONTH_NAMES_DAILY['en'][m_idx]
+    slug     = f"{month_en.lower()}-{day}"
+    ev       = get_daily_ev(month, day)
+    inject_daily_translations(slug, month, day)
+
+    # EN page
+    en_dir = os.path.join("countdown", slug)
+    os.makedirs(en_dir, exist_ok=True)
+    with open(os.path.join(en_dir, "index.html"), "w", encoding="utf-8") as f:
+      f.write(generate_page(ev, "en"))
+    daily_count += 1
+
+    # ES / PT / FR pages
+    for lang in ["es", "pt", "fr"]:
+      out_dir = os.path.join(lang, "countdown", slug)
+      os.makedirs(out_dir, exist_ok=True)
+      with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(generate_page(ev, lang))
+      daily_count += 1
+
+    cleanup_daily_translations(slug)
+
+print(f"Generated {daily_count} daily pages ({daily_count//4} dates × 4 languages).")
 
 # ─── Generate custom countdown pages ──────────────────────────────────────────
 os.makedirs("custom", exist_ok=True)

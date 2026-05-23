@@ -357,6 +357,7 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     /* ── Holidays ── */
     'christmas':        function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,11,25); }) }; },
     'new-year':         function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y+1,0,1); }) }; },
+    'next-year':        function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y+1,0,1); }) }; },
     'halloween':        function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,9,31); }) }; },
     'valentines':       function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return midnightInTZ(tz,y,1,14); }) }; },
     'easter':           function () { var tz=getCountryTZ(); return { date: nextOccurrence(function (y) { return tzDay(tz,easterDate(y)); }) }; },

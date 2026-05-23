@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fim de Semana — countdowns.site</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden}
+:root{--cat:#67E8F9;--cat-glow:rgba(103,232,249,.2);--cat-soft:rgba(103,232,249,.08);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="/countdown-engine.js"></script>
+<script>
+CountdownEngine.renderEmbed('root', {
+  slug: "weekend",
+  type: "auto",
+  name: "Fim de Semana",
+  category: "Time",
+  description: "Contagem regressiva para o pr\u00f3ximo fim de semana \u2014 o s\u00e1bado est\u00e1 chegando.",
+  pageUrl: "https://countdowns.site/pt/countdown/weekend/"
+});
+</script>
+</body>
+</html>

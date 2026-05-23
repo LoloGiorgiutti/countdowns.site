@@ -419,6 +419,24 @@ TRANSLATIONS = {
         meta_desc='Contador en vivo para el Día del Niño. La fecha varía según el país: México 30 de abril, Argentina 2.° domingo de agosto, Brasil 12 de octubre.',
         hero_desc='Cuenta regresiva al Día del Niño. La fecha varía según el país.',
       ),
+      'ps6': dict(
+        name='PlayStation 6',
+        seo_title='Cuenta Regresiva PlayStation 6 (PS6) — ¿Cuándo Sale la PS6?',
+        meta_desc='Countdown a la fecha de lanzamiento de PlayStation 6. Sony aún no confirmó fecha oficial, pero se estima un lanzamiento en 2027–2028.',
+        hero_desc='Contando los días para el lanzamiento de la PlayStation 6 — fecha por confirmar.',
+      ),
+      'weekend': dict(
+        name='El Fin de Semana',
+        seo_title='Cuenta Regresiva al Fin de Semana — ¿Cuántos días faltan para el fin de semana?',
+        meta_desc='Cuenta regresiva en vivo hasta el próximo fin de semana. Días, horas, minutos y segundos exactos hasta el sábado. Se actualiza automáticamente.',
+        hero_desc='Cuenta regresiva al próximo fin de semana — el sábado está cerca.',
+      ),
+      'next-year': dict(
+        name='El Año que Viene',
+        seo_title='¿Cuántos días faltan para el año que viene? — Cuenta Regresiva 2027',
+        meta_desc='Cuenta regresiva en vivo hasta el 1 de enero de 2027 — el comienzo del año que viene. Días, horas, minutos y segundos exactos. Se reinicia cada año.',
+        hero_desc='Cuenta regresiva al comienzo del año que viene.',
+      ),
       'mardi-gras': dict(
         name='Mardi Gras 2027',
         seo_title='Cuenta Regresiva Mardi Gras 2027 — Días hasta el Martes Gordo',
@@ -699,6 +717,24 @@ TRANSLATIONS = {
         seo_title='Contagem Regressiva Dia das Crianças 2026 — Quantos dias faltam',
         meta_desc='Contador ao vivo para o Dia das Crianças. No Brasil é em 12 de outubro. A data varia por país.',
         hero_desc='Contagem regressiva para o Dia das Crianças. A data varia por país.',
+      ),
+      'ps6': dict(
+        name='PlayStation 6',
+        seo_title='Contagem Regressiva PlayStation 6 (PS6) — Quando Sai o PS6?',
+        meta_desc='Contagem regressiva para a data de lançamento do PlayStation 6. A Sony ainda não confirmou data oficial, mas estimativas apontam para 2027–2028.',
+        hero_desc='Contando os dias para o lançamento do PlayStation 6 — data ainda não confirmada.',
+      ),
+      'weekend': dict(
+        name='Fim de Semana',
+        seo_title='Contagem Regressiva para o Fim de Semana — Quantos dias faltam para o fim de semana?',
+        meta_desc='Contagem regressiva ao vivo até o próximo fim de semana. Dias, horas, minutos e segundos exatos até o sábado. Atualiza automaticamente.',
+        hero_desc='Contagem regressiva para o próximo fim de semana — o sábado está chegando.',
+      ),
+      'next-year': dict(
+        name='Ano que Vem',
+        seo_title='Quantos dias faltam para o ano que vem? — Contagem Regressiva 2027',
+        meta_desc='Contagem regressiva ao vivo até 1º de janeiro de 2027 — o início do ano que vem. Dias, horas, minutos e segundos exatos. Reinicia todo ano.',
+        hero_desc='Contagem regressiva para o início do ano que vem.',
       ),
       'mardi-gras': dict(
         name='Mardi Gras 2027',
@@ -993,6 +1029,24 @@ TRANSLATIONS = {
         seo_title='Compte à Rebours Finale Copa Libertadores 2026 — Jours jusqu\'à la Finale',
         meta_desc='Compte à rebours en direct pour la Finale de la Copa Libertadores 2026, le plus grand match de football de clubs en Amérique du Sud.',
         hero_desc='Compte à rebours pour la Finale de la Copa Libertadores 2026.',
+      ),
+      'ps6': dict(
+        name='PlayStation 6',
+        seo_title='Compte à Rebours PlayStation 6 (PS6) — Quand Sort la PS6 ?',
+        meta_desc="Compte à rebours pour la date de sortie de la PlayStation 6. Sony n'a pas encore annoncé de date officielle, mais les estimations pointent vers 2027–2028.",
+        hero_desc='Compte à rebours pour le lancement de la PlayStation 6 — date non encore confirmée.',
+      ),
+      'weekend': dict(
+        name='Le Week-end',
+        seo_title='Compte à Rebours Week-end — Dans combien de jours est le week-end ?',
+        meta_desc='Compte à rebours en direct jusqu\'au prochain week-end. Jours, heures, minutes et secondes exacts jusqu\'au samedi. Mise à jour automatique.',
+        hero_desc='Compte à rebours pour le prochain week-end — samedi approche.',
+      ),
+      'next-year': dict(
+        name="L'Année Prochaine",
+        seo_title="Dans combien de jours est l'année prochaine ? — Compte à Rebours 2027",
+        meta_desc="Compte à rebours en direct jusqu'au 1er janvier 2027 — le début de l'année prochaine. Jours, heures, minutes et secondes exacts. Se réinitialise chaque année.",
+        hero_desc="Compte à rebours pour le début de l'année prochaine.",
       ),
       'mardi-gras': dict(
         name='Mardi Gras 2027',

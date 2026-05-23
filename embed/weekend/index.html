@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Weekend — countdowns.site</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden}
+:root{--cat:#67E8F9;--cat-glow:rgba(103,232,249,.2);--cat-soft:rgba(103,232,249,.08);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="/countdown-engine.js"></script>
+<script>
+CountdownEngine.renderEmbed('root', {
+  slug: "weekend",
+  type: "auto",
+  name: "Next Weekend",
+  category: "Time",
+  description: "Live countdown to the next weekend \u2014 Saturday is coming.",
+  pageUrl: "https://countdowns.site/countdown/weekend/"
+});
+</script>
+</body>
+</html>
