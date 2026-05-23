@@ -2793,6 +2793,97 @@ MONTH_NAMES_DAILY = {
 }
 MONTH_DAYS_DAILY = [31,28,31,30,31,30,31,31,30,31,30,31]
 
+# Notable dates with multilingual descriptions
+NOTABLE_DATES = {
+  (1,1):  {'en':("New Year's Day","New Year's Day marks the start of a new calendar year. It is a public holiday in most countries around the world."),
+            'es':("Año Nuevo","El Año Nuevo marca el inicio de un nuevo año calendario. Es festivo en la mayoría de los países del mundo."),
+            'pt':("Ano Novo","O Ano Novo marca o início de um novo ano civil. É feriado na maioria dos países do mundo."),
+            'fr':("Jour de l'An","Le Jour de l'An marque le début d'une nouvelle année civile. C'est un jour férié dans la plupart des pays.")},
+  (2,2):  {'en':("Groundhog Day","Groundhog Day is a traditional North American holiday on February 2, where a groundhog's behavior is said to predict the arrival of spring."),
+            'es':("Día de la Marmota","El Día de la Marmota es una tradición norteamericana del 2 de febrero."),
+            'pt':("Dia da Marmota","O Dia da Marmota é uma tradição norte-americana no dia 2 de fevereiro."),
+            'fr':("Jour de la Marmotte","Le Jour de la Marmotte est une tradition nord-américaine le 2 février.")},
+  (2,14): {'en':("Valentine's Day","Valentine's Day is celebrated on February 14 each year. It is a day dedicated to love and romance, widely celebrated with cards, flowers, and gifts."),
+            'es':("Día de San Valentín","El Día de San Valentín se celebra el 14 de febrero cada año, dedicado al amor y el romance."),
+            'pt':("Dia dos Namorados","O Dia dos Namorados é celebrado em 14 de fevereiro, dedicado ao amor e ao romance."),
+            'fr':("Saint-Valentin","La Saint-Valentin est célébrée le 14 février, journée dédiée à l'amour et au romantisme.")},
+  (3,17): {'en':("St. Patrick's Day","St. Patrick's Day is celebrated on March 17 to honor the patron saint of Ireland. It is widely celebrated with parades, green attire, and festivities."),
+            'es':("Día de San Patricio","El Día de San Patricio se celebra el 17 de marzo en honor al santo patrón de Irlanda."),
+            'pt':("Dia de São Patrício","O Dia de São Patrício é celebrado em 17 de março em homenagem ao padroeiro da Irlanda."),
+            'fr':("La Saint-Patrick","La Saint-Patrick est célébrée le 17 mars en l'honneur du saint patron de l'Irlande.")},
+  (4,1):  {'en':("April Fools' Day","April Fools' Day on April 1 is celebrated with pranks, hoaxes, and jokes in many countries around the world."),
+            'es':("Día de los Inocentes (abril)","El 1 de abril se celebra el April Fools' Day, con bromas y travesuras en muchos países."),
+            'pt':("Dia das Mentiras","O 1º de abril é o Dia das Mentiras, quando se fazem brincadeiras e pegadinhas."),
+            'fr':("Poisson d'Avril","Le 1er avril est le Poisson d'Avril, journée des farces et plaisanteries.")},
+  (4,22): {'en':("Earth Day","Earth Day is observed on April 22 each year to raise awareness about environmental protection and sustainability."),
+            'es':("Día de la Tierra","El Día de la Tierra se celebra el 22 de abril para concienciar sobre la protección del medio ambiente."),
+            'pt':("Dia da Terra","O Dia da Terra é comemorado em 22 de abril para aumentar a consciência ambiental."),
+            'fr':("Jour de la Terre","Le Jour de la Terre est célébré le 22 avril pour sensibiliser à la protection de l'environnement.")},
+  (5,1):  {'en':("International Workers' Day","May 1 is International Workers' Day (Labour Day), a public holiday in over 80 countries celebrating the labor movement."),
+            'es':("Día Internacional del Trabajo","El 1 de mayo es el Día Internacional del Trabajo, festivo en más de 80 países."),
+            'pt':("Dia do Trabalhador","O 1º de maio é o Dia do Trabalhador, feriado em mais de 80 países do mundo."),
+            'fr':("Fête du Travail","Le 1er mai est la Fête du Travail, jour férié dans plus de 80 pays.")},
+  (5,4):  {'en':("Star Wars Day","May 4 is Star Wars Day, celebrated by fans of the franchise worldwide. The date comes from the pun 'May the Fourth be with you.'"),
+            'es':("Día de Star Wars","El 4 de mayo es el Día de Star Wars, celebrado por fans de la saga en todo el mundo."),
+            'pt':("Dia de Star Wars","4 de maio é o Dia de Star Wars, celebrado por fãs da franquia em todo o mundo."),
+            'fr':("Journée Star Wars","Le 4 mai est la Journée Star Wars, célébrée par les fans de la saga dans le monde entier.")},
+  (6,21): {'en':("Summer Solstice","June 21 is approximately the summer solstice in the Northern Hemisphere — the longest day of the year with the most hours of daylight."),
+            'es':("Solsticio de Verano","El 21 de junio es aproximadamente el solsticio de verano en el hemisferio norte, el día más largo del año."),
+            'pt':("Solstício de Verão","21 de junho é aproximadamente o solstício de verão no hemisfério norte, o dia mais longo do ano."),
+            'fr':("Solstice d'Été","Le 21 juin est approximativement le solstice d'été dans l'hémisphère nord, le jour le plus long de l'année.")},
+  (7,4):  {'en':("Independence Day (USA)","July 4 is Independence Day in the United States, celebrating the Declaration of Independence from Great Britain in 1776."),
+            'es':("Día de la Independencia (EE. UU.)","El 4 de julio es el Día de la Independencia de Estados Unidos, celebrando la Declaración de Independencia de 1776."),
+            'pt':("Dia da Independência (EUA)","4 de julho é o Dia da Independência dos Estados Unidos, celebrando a Declaração de Independência de 1776."),
+            'fr':("Fête de l'Indépendance (États-Unis)","Le 4 juillet est la Fête de l'Indépendance américaine, célébrant la Déclaration d'Indépendance de 1776.")},
+  (8,12): {'en':("International Youth Day","August 12 is International Youth Day, designated by the United Nations to celebrate young people and raise awareness of youth issues."),
+            'es':("Día Internacional de la Juventud","El 12 de agosto es el Día Internacional de la Juventud, designado por las Naciones Unidas."),
+            'pt':("Dia Internacional da Juventude","12 de agosto é o Dia Internacional da Juventude, designado pelas Nações Unidas."),
+            'fr':("Journée Internationale de la Jeunesse","Le 12 août est la Journée Internationale de la Jeunesse, désignée par les Nations Unies.")},
+  (9,21): {'en':("International Day of Peace","September 21 is the International Day of Peace, established by the United Nations to promote peace among all nations and peoples."),
+            'es':("Día Internacional de la Paz","El 21 de septiembre es el Día Internacional de la Paz, establecido por las Naciones Unidas."),
+            'pt':("Dia Internacional da Paz","21 de setembro é o Dia Internacional da Paz, estabelecido pelas Nações Unidas."),
+            'fr':("Journée Internationale de la Paix","Le 21 septembre est la Journée Internationale de la Paix, établie par les Nations Unies.")},
+  (10,31):{'en':("Halloween","Halloween on October 31 is celebrated with costumes, trick-or-treating, and decorations. It originated from the ancient Celtic festival of Samhain."),
+            'es':("Halloween","El Halloween del 31 de octubre se celebra con disfraces y dulces o sustos. Tiene origen en el festival celta de Samhain."),
+            'pt':("Halloween","O Halloween em 31 de outubro é celebrado com fantasias e gostosuras ou travessuras. Tem origem no festival celta Samhain."),
+            'fr':("Halloween","Halloween le 31 octobre est célébré avec des costumes et des bonbons ou des blagues. Il trouve son origine dans la fête celtique de Samain.")},
+  (11,1): {'en':("All Saints' Day","November 1 is All Saints' Day, a Christian holiday honoring all saints. It is a public holiday in many countries including France, Spain, and Poland."),
+            'es':("Día de Todos los Santos","El 1 de noviembre es el Día de Todos los Santos, festivo en muchos países como España, Francia y Polonia."),
+            'pt':("Dia de Todos os Santos","1º de novembro é o Dia de Todos os Santos, feriado em muitos países como Portugal, França e Espanha."),
+            'fr':("La Toussaint","Le 1er novembre est la Toussaint, jour férié en France et dans de nombreux pays catholiques.")},
+  (11,11):{'en':("Veterans Day / Remembrance Day","November 11 is Veterans Day in the United States and Remembrance Day in the United Kingdom, Canada, and Australia — honoring military veterans and the armistice of WWI."),
+            'es':("Día de los Veteranos / Día del Armisticio","El 11 de noviembre es el Día de los Veteranos en EE. UU. y el Día del Armisticio en muchos países europeos."),
+            'pt':("Dia dos Veteranos / Dia do Armistício","11 de novembro é o Dia dos Veteranos nos EUA e o Dia do Armistício em muitos países europeus."),
+            'fr':("Jour de l'Armistice","Le 11 novembre est le Jour de l'Armistice en France, jour férié commémorant la fin de la Première Guerre mondiale.")},
+  (12,21):{'en':("Winter Solstice","December 21 is approximately the winter solstice in the Northern Hemisphere — the shortest day of the year with the fewest hours of daylight."),
+            'es':("Solsticio de Invierno","El 21 de diciembre es aproximadamente el solsticio de invierno en el hemisferio norte, el día más corto del año."),
+            'pt':("Solstício de Inverno","21 de dezembro é aproximadamente o solstício de inverno no hemisfério norte, o dia mais curto do ano."),
+            'fr':("Solstice d'Hiver","Le 21 décembre est approximativement le solstice d'hiver dans l'hémisphère nord, le jour le plus court de l'année.")},
+  (12,24):{'en':("Christmas Eve","December 24 is Christmas Eve, the evening before Christmas Day. Many families celebrate with gatherings, gift exchanges, and midnight church services."),
+            'es':("Nochebuena","El 24 de diciembre es la Nochebuena, la víspera de Navidad. Muchas familias la celebran con reuniones y el intercambio de regalos."),
+            'pt':("Véspera de Natal","24 de dezembro é a Véspera de Natal. Muitas famílias celebram com reuniões e troca de presentes."),
+            'fr':("Réveillon de Noël","Le 24 décembre est le Réveillon de Noël, la veille de Noël. Beaucoup de familles se réunissent et échangent des cadeaux.")},
+  (12,25):{'en':("Christmas Day","December 25 is Christmas Day, one of the most celebrated holidays worldwide. It commemorates the birth of Jesus Christ and is celebrated with gifts, family gatherings, and festivities."),
+            'es':("Navidad","El 25 de diciembre es Navidad, una de las festividades más celebradas en el mundo, con regalos y reuniones familiares."),
+            'pt':("Natal","25 de dezembro é o Natal, um dos feriados mais celebrados no mundo, com presentes e reuniões familiares."),
+            'fr':("Noël","Le 25 décembre est Noël, l'une des fêtes les plus célébrées dans le monde, avec des cadeaux et des réunions de famille.")},
+  (12,26):{'en':("Boxing Day","December 26 is Boxing Day, a public holiday in the United Kingdom, Canada, Australia, and other Commonwealth nations."),
+            'es':("Boxing Day","El 26 de diciembre es el Boxing Day, festivo en el Reino Unido, Canadá, Australia y otras naciones de la Commonwealth."),
+            'pt':("Boxing Day","26 de dezembro é o Boxing Day, feriado no Reino Unido, Canadá, Austrália e outras nações da Commonwealth."),
+            'fr':("Boxing Day","Le 26 décembre est le Boxing Day, jour férié au Royaume-Uni, au Canada, en Australie et dans d'autres pays du Commonwealth.")},
+  (12,31):{'en':("New Year's Eve","December 31 is New Year's Eve, the last day of the year. Worldwide, people celebrate with fireworks, parties, and countdowns to midnight."),
+            'es':("Nochevieja","El 31 de diciembre es Nochevieja, el último día del año. Se celebra con fuegos artificiales y cuentas regresivas hasta la medianoche."),
+            'pt':("Véspera de Ano Novo","31 de dezembro é a Véspera de Ano Novo, o último dia do ano. É celebrado com fogos de artifício e contagens regressivas."),
+            'fr':("Réveillon du Nouvel An","Le 31 décembre est le Réveillon du Nouvel An, le dernier jour de l'année, célébré avec des feux d'artifice et des fêtes.")},
+}
+
+def get_day_info(month, day):
+  """Return (day_of_year, week_of_year) using 2025 as reference (non-leap)."""
+  d = date(2025, month, day)
+  doy = d.timetuple().tm_yday
+  woy = d.isocalendar()[1]
+  return doy, woy
+
 def day_ord_en(n):
   s = 'th' if 10 <= n%100 <= 20 else {1:'st',2:'nd',3:'rd'}.get(n%10,'th')
   return f"{n}{s}"
@@ -2802,68 +2893,134 @@ def get_daily_ev(month, day):
   slug     = f"{month_en.lower()}-{day}"
   ord_en   = day_ord_en(day)
   name_en  = f"{month_en} {ord_en}"
+  doy, woy = get_day_info(month, day)
+  notable  = NOTABLE_DATES.get((month, day))
+
+  if notable:
+    notable_name, notable_desc = notable['en']
+    extra_content = f" {notable_name}: {notable_desc}"
+    extra_faqs = [
+      (f"What is special about {month_en} {ord_en}?", notable_desc),
+    ]
+  else:
+    extra_content = ""
+    extra_faqs = [
+      (f"Is {month_en} {day} a holiday?",
+       f"It depends on the country. Use the live countdown above to count down to {month_en} {day}, regardless of whether it is a public holiday."),
+    ]
+
   return dict(
     slug=slug, name=name_en, type="annual", category="Months",
     regions=["global"],
     seo_title=f"How Many Days Until {month_en} {ord_en}? — Live Countdown",
-    meta_desc=f"Live countdown to {month_en} {ord_en}. Exact days, hours, minutes and seconds. Resets automatically every year.",
+    meta_desc=f"Live countdown to {month_en} {ord_en} — day {doy} of the year, week {woy}. Exact days, hours, minutes and seconds. Resets automatically every year.",
     hero_desc=f"Live countdown to {month_en} {ord_en}.",
-    content=f"{month_en} {ord_en} recurs every year. This live countdown shows the exact time remaining until the next {month_en} {day}. The timer resets automatically once the date arrives.",
+    content=(
+      f"{month_en} {ord_en} is day {doy} of the year and falls in week {woy} of the ISO calendar."
+      f"{extra_content} "
+      f"This live countdown shows the exact time remaining until the next {month_en} {day}. The timer resets automatically once the date arrives."
+    ),
     faqs=[
       (f"How many days until {month_en} {ord_en}?",
        f"Use the live countdown above to see the exact days, hours, minutes and seconds until {month_en} {ord_en}."),
+      (f"What day of the year is {month_en} {ord_en}?",
+       f"{month_en} {ord_en} is day number {doy} of the year (in a non-leap year). It falls in week {woy} of the ISO calendar year."),
+      (f"What week of the year is {month_en} {ord_en}?",
+       f"{month_en} {ord_en} falls in ISO week {woy} of the year. It is day {doy} of the calendar year."),
       ("Does the countdown reset each year?",
        f"Yes — once {month_en} {day} arrives, the countdown automatically resets to next year's {month_en} {day}."),
-      (f"Is {month_en} {day} a holiday?",
-       f"It depends on the country. Use the live countdown above to count down to {month_en} {day}, regardless of whether it is a public holiday."),
-    ]
+    ] + extra_faqs
   )
 
 def inject_daily_translations(slug, month, day):
+  doy, woy = get_day_info(month, day)
+  notable  = NOTABLE_DATES.get((month, day))
   for lang in ['es','pt','fr']:
     mn = MONTH_NAMES_DAILY[lang][month-1]
+    nd = notable[lang] if notable else None
     if lang == 'fr':
       ds = f"1er {mn}" if day == 1 else f"{day} {mn}"
+      if nd:
+        nd_name, nd_desc = nd
+        extra_content = f" {nd_name} : {nd_desc}"
+        extra_faqs = [(f"Qu'y a-t-il de spécial le {ds} ?", nd_desc)]
+      else:
+        extra_content = ""
+        extra_faqs = [(f"Le {ds} est-il un jour férié ?",
+                       f"Cela dépend du pays. Utilisez le compte à rebours pour compter jusqu'au {ds}.")]
       t = dict(
         name=ds,
-        seo_title=f"Dans combien de jours c'est le {ds} ? — Compte à Rebours",
-        meta_desc=f"Compte à rebours en direct pour le {ds}. Jours, heures, minutes et secondes exactes. Se réinitialise chaque année.",
+        seo_title=f"Dans combien de jours c'est le {ds} ? — Compte à Rebours",
+        meta_desc=f"Compte à rebours pour le {ds} — jour {doy} de l'année, semaine {woy}. Jours, heures, minutes et secondes exactes. Se réinitialise chaque année.",
         hero_desc=f"Compte à rebours pour le {ds}.",
-        content=f"Le {ds} est une date qui revient chaque année. Ce compteur montre le temps exact jusqu'au prochain {ds}. Le compteur se réinitialise automatiquement.",
+        content=(f"Le {ds} est le jour numéro {doy} de l'année et se situe en semaine {woy} du calendrier ISO.{extra_content} "
+                 f"Ce compteur montre le temps exact jusqu'au prochain {ds}. Le compteur se réinitialise automatiquement."),
         faqs=[
-          (f"Dans combien de jours est le {ds} ?",
+          (f"Dans combien de jours est le {ds} ?",
            f"Utilisez le compte à rebours ci-dessus pour voir les jours, heures, minutes et secondes exacts jusqu'au {ds}."),
-          ("Le compte à rebours se réinitialise-t-il chaque année ?",
+          (f"Quel jour de l'année est le {ds} ?",
+           f"Le {ds} est le jour numéro {doy} de l'année (hors année bissextile). Il tombe en semaine {woy} du calendrier ISO."),
+          (f"En quelle semaine de l'année est le {ds} ?",
+           f"Le {ds} tombe en semaine ISO {woy} de l'année. C'est le {doy}e jour de l'année."),
+          ("Le compte à rebours se réinitialise-t-il chaque année ?",
            f"Oui — lorsque le {ds} arrive, le compteur se réinitialise automatiquement pour l'année suivante."),
-        ]
+        ] + extra_faqs
       )
     elif lang == 'es':
+      ds = f"{day} de {mn}"
+      if nd:
+        nd_name, nd_desc = nd
+        extra_content = f" {nd_name}: {nd_desc}"
+        extra_faqs = [(f"¿Qué tiene de especial el {ds}?", nd_desc)]
+      else:
+        extra_content = ""
+        extra_faqs = [(f"¿El {ds} es un día festivo?",
+                       f"Depende del país. Usa la cuenta regresiva para contar hasta el {ds}.")]
       t = dict(
-        name=f"{day} de {mn}",
-        seo_title=f"¿Cuántos días faltan para el {day} de {mn}? — Cuenta Regresiva",
-        meta_desc=f"Cuenta regresiva en vivo para el {day} de {mn}. Días, horas, minutos y segundos exactos. Se reinicia automáticamente cada año.",
-        hero_desc=f"Cuenta regresiva para el {day} de {mn}.",
-        content=f"El {day} de {mn} es una fecha que se repite cada año. Este contador muestra el tiempo exacto restante hasta el próximo {day} de {mn}. Se reinicia automáticamente.",
+        name=ds,
+        seo_title=f"¿Cuántos días faltan para el {ds}? — Cuenta Regresiva",
+        meta_desc=f"Cuenta regresiva para el {ds} — día {doy} del año, semana {woy}. Días, horas, minutos y segundos exactos. Se reinicia cada año.",
+        hero_desc=f"Cuenta regresiva para el {ds}.",
+        content=(f"El {ds} es el día número {doy} del año y cae en la semana {woy} del calendario ISO.{extra_content} "
+                 f"Este contador muestra el tiempo exacto restante hasta el próximo {ds}. Se reinicia automáticamente."),
         faqs=[
-          (f"¿Cuántos días faltan para el {day} de {mn}?",
-           f"Usa la cuenta regresiva de arriba para ver los días, horas, minutos y segundos exactos hasta el {day} de {mn}."),
+          (f"¿Cuántos días faltan para el {ds}?",
+           f"Usa la cuenta regresiva de arriba para ver los días, horas, minutos y segundos exactos hasta el {ds}."),
+          (f"¿Qué número de día del año es el {ds}?",
+           f"El {ds} es el día número {doy} del año (en un año no bisiesto). Cae en la semana {woy} del calendario ISO."),
+          (f"¿En qué semana del año cae el {ds}?",
+           f"El {ds} cae en la semana ISO {woy} del año. Es el día {doy} del año calendario."),
           ("¿El contador se reinicia cada año?",
-           f"Sí — cuando llega el {day} de {mn}, el contador se reinicia automáticamente para el año siguiente."),
-        ]
+           f"Sí — cuando llega el {ds}, el contador se reinicia automáticamente para el año siguiente."),
+        ] + extra_faqs
       )
     else:  # pt
+      ds = f"{day} de {mn}"
+      if nd:
+        nd_name, nd_desc = nd
+        extra_content = f" {nd_name}: {nd_desc}"
+        extra_faqs = [(f"O que há de especial no {ds}?", nd_desc)]
+      else:
+        extra_content = ""
+        extra_faqs = [(f"O {ds} é um feriado?",
+                       f"Depende do país. Use a contagem regressiva para contar até {ds}.")]
       t = dict(
-        name=f"{day} de {mn}",
-        seo_title=f"Quantos dias faltam para {day} de {mn}? — Contagem Regressiva",
-        meta_desc=f"Contagem regressiva ao vivo para {day} de {mn}. Dias, horas, minutos e segundos exatos. Reinicia automaticamente todo ano.",
-        hero_desc=f"Contagem regressiva para {day} de {mn}.",
-        content=f"{day} de {mn} é uma data que se repete todo ano. Este contador mostra o tempo exato até o próximo {day} de {mn}. Reinicia automaticamente.",
+        name=ds,
+        seo_title=f"Quantos dias faltam para {ds}? — Contagem Regressiva",
+        meta_desc=f"Contagem regressiva para {ds} — dia {doy} do ano, semana {woy}. Dias, horas, minutos e segundos exatos. Reinicia todo ano.",
+        hero_desc=f"Contagem regressiva para {ds}.",
+        content=(f"{ds} é o dia número {doy} do ano e cai na semana {woy} do calendário ISO.{extra_content} "
+                 f"Este contador mostra o tempo exato até o próximo {ds}. Reinicia automaticamente."),
         faqs=[
-          (f"Quantos dias faltam para {day} de {mn}?",
-           f"Use a contagem regressiva acima para ver os dias, horas, minutos e segundos exatos até {day} de {mn}."),
+          (f"Quantos dias faltam para {ds}?",
+           f"Use a contagem regressiva acima para ver os dias, horas, minutos e segundos exatos até {ds}."),
+          (f"Qual o número do dia do ano para {ds}?",
+           f"{ds} é o dia número {doy} do ano (em ano não bissexto). Cai na semana {woy} do calendário ISO."),
+          (f"Em que semana do ano cai {ds}?",
+           f"{ds} cai na semana ISO {woy} do ano. É o dia {doy} do ano."),
           ("A contagem regressiva reinicia todo ano?",
-           f"Sim — quando chega {day} de {mn}, o contador reinicia automaticamente para o ano seguinte."),
-        ]
+           f"Sim — quando chega {ds}, o contador reinicia automaticamente para o ano seguinte."),
+        ] + extra_faqs
       )
     TRANSLATIONS.setdefault(lang,{}).setdefault('events',{})[slug] = t
 
@@ -2944,6 +3101,205 @@ for m_idx, days_in_month in enumerate(MONTH_DAYS_DAILY):
     cleanup_daily_translations(slug)
 
 print(f"Generated {daily_count} daily pages ({daily_count//4} dates × 4 languages).")
+
+# ─── Generate /days/ hub pages ─────────────────────────────────────────────────
+print("\nGenerating /days/ hub pages...")
+
+EN_MONTH_NAMES_LOWER = ['january','february','march','april','may','june',
+                        'july','august','september','october','november','december']
+
+DAYS_HUB_STRINGS = {
+  'en': {
+    'title': 'Countdown to Every Day of the Year',
+    'desc':  'Browse live countdowns to every day of the year. Find out exactly how many days, hours and minutes remain until any date.',
+    'heading': 'Countdown to Every Day of the Year',
+    'sub': 'Click any date to see the live countdown.',
+    'notable_label': 'Notable date',
+    'months': ['January','February','March','April','May','June',
+               'July','August','September','October','November','December'],
+    'lang_path': '',
+    'lang': 'en',
+  },
+  'es': {
+    'title': 'Cuenta Regresiva para Cada Día del Año',
+    'desc':  'Explora cuentas regresivas para cada día del año. Descubre cuántos días, horas y minutos faltan hasta cualquier fecha.',
+    'heading': 'Cuenta Regresiva para Cada Día del Año',
+    'sub': 'Haz clic en cualquier fecha para ver la cuenta regresiva en vivo.',
+    'notable_label': 'Fecha especial',
+    'months': ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+               'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+    'lang_path': 'es/',
+    'lang': 'es',
+  },
+  'pt': {
+    'title': 'Contagem Regressiva para Cada Dia do Ano',
+    'desc':  'Explore contagens regressivas para cada dia do ano. Descubra quantos dias, horas e minutos faltam para qualquer data.',
+    'heading': 'Contagem Regressiva para Cada Dia do Ano',
+    'sub': 'Clique em qualquer data para ver a contagem regressiva ao vivo.',
+    'notable_label': 'Data especial',
+    'months': ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+               'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+    'lang_path': 'pt/',
+    'lang': 'pt',
+  },
+  'fr': {
+    'title': "Compte à Rebours pour Chaque Jour de l'Année",
+    'desc':  "Parcourez les comptes à rebours pour chaque jour de l'année. Découvrez combien de jours, heures et minutes il reste avant n'importe quelle date.",
+    'heading': "Compte à Rebours pour Chaque Jour de l'Année",
+    'sub': 'Cliquez sur une date pour voir le compte à rebours en direct.',
+    'notable_label': 'Date spéciale',
+    'months': ['Janvier','Février','Mars','Avril','Mai','Juin',
+               'Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+    'lang_path': 'fr/',
+    'lang': 'fr',
+  },
+}
+
+def generate_days_hub(lang):
+  s = DAYS_HUB_STRINGS[lang]
+  lp = s['lang_path']
+  months_parts = []
+  for m_idx, month_name in enumerate(s['months']):
+    month_num = m_idx + 1
+    days_in_month = MONTH_DAYS_DAILY[m_idx]
+    day_links = []
+    for day in range(1, days_in_month + 1):
+      en_month = EN_MONTH_NAMES_LOWER[m_idx]
+      slug = f"{en_month}-{day}"
+      url = f"/{lp}countdown/{slug}/"
+      is_notable = (month_num, day) in NOTABLE_DATES
+      if is_notable:
+        star = f' <span class="days-hub-star" title="{s["notable_label"]}">&#9733;</span>'
+        cls = 'days-hub-day days-hub-notable'
+      else:
+        star = ''
+        cls = 'days-hub-day'
+      day_links.append(f'<a href="{url}" class="{cls}">{day}{star}</a>')
+    grid = ''.join(day_links)
+    months_parts.append(
+      f'<div class="days-hub-month">'
+      f'<h2 class="days-hub-month-title">{month_name}</h2>'
+      f'<div class="days-hub-grid">{grid}</div>'
+      f'</div>'
+    )
+  months_html = '\n'.join(months_parts)
+
+  # Language button logic
+  lang_btns = []
+  for lcode, lname in [('en','EN'),('es','ES'),('pt','PT'),('fr','FR')]:
+    active = ' active' if lcode == lang else ''
+    if lcode == 'en':
+      onclick = "onclick=\"location.href='/days/'\"" if lang != 'en' else ''
+    else:
+      onclick = f"onclick=\"localStorage.setItem('cd_lang_override','{lcode}');location.href='/{lcode}/days/'\""
+    lang_btns.append(f'<button class="lang-btn{active}" {onclick}>{lname}</button>')
+  lang_seg = ''.join(lang_btns)
+
+  hreflang = (
+    '<link rel="alternate" hreflang="en" href="https://countdowns.site/days/">\n'
+    '<link rel="alternate" hreflang="x-default" href="https://countdowns.site/days/">\n'
+    '<link rel="alternate" hreflang="es" href="https://countdowns.site/es/days/">\n'
+    '<link rel="alternate" hreflang="pt-BR" href="https://countdowns.site/pt/days/">\n'
+    '<link rel="alternate" hreflang="fr" href="https://countdowns.site/fr/days/">'
+  )
+
+  return (
+    '<!DOCTYPE html>\n'
+    f'<html lang="{lang}">\n'
+    '<head>\n'
+    '<meta charset="UTF-8">\n'
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
+    f'<title>{s["title"]} | countdowns.site</title>\n'
+    f'<meta name="description" content="{s["desc"]}">\n'
+    '<meta name="robots" content="index, follow">\n'
+    f'<link rel="canonical" href="https://countdowns.site/{lp}days/">\n'
+    '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+    '<link rel="icon" href="/favicon.png" type="image/png" sizes="256x256">\n'
+    '<link rel="apple-touch-icon" href="/favicon.png">\n'
+    '<meta property="og:type" content="website">\n'
+    f'<meta property="og:url" content="https://countdowns.site/{lp}days/">\n'
+    f'<meta property="og:title" content="{s["title"]} | countdowns.site">\n'
+    f'<meta property="og:description" content="{s["desc"]}">\n'
+    '<meta property="og:image" content="https://countdowns.site/og-image.png">\n'
+    '<meta name="twitter:card" content="summary_large_image">\n'
+    f'<meta name="twitter:title" content="{s["title"]} | countdowns.site">\n'
+    f'<meta name="twitter:description" content="{s["desc"]}">\n'
+    '<meta name="twitter:image" content="https://countdowns.site/og-image.png">\n'
+    f'{hreflang}\n'
+    '<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">\n'
+    '<link rel="stylesheet" href="/countdown.css">\n'
+    '<style>\n'
+    ':root{--cat-color:#6366F1;--cat-glow:rgba(99,102,241,.25);--cat-soft:rgba(99,102,241,.1);}\n'
+    '.days-hub-wrap{max-width:900px;margin:0 auto;padding:2rem 1rem 4rem;}\n'
+    '.days-hub-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;margin-bottom:.5rem;color:var(--text-primary,#fff);}\n'
+    '.days-hub-sub{color:var(--text-secondary,#94a3b8);margin-bottom:2.5rem;font-size:.95rem;}\n'
+    '.days-hub-month{margin-bottom:2rem;}\n'
+    '.days-hub-month-title{font-size:1.1rem;font-weight:600;color:var(--cat-color,#6366F1);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.05em;}\n'
+    '.days-hub-grid{display:flex;flex-wrap:wrap;gap:.4rem;}\n'
+    '.days-hub-day{display:inline-flex;align-items:center;gap:.2rem;padding:.35rem .6rem;border-radius:.4rem;font-size:.85rem;font-weight:500;text-decoration:none;background:var(--surface,rgba(255,255,255,.06));color:var(--text-primary,#e2e8f0);border:1px solid var(--border,rgba(255,255,255,.08));transition:background .15s,color .15s,border-color .15s;}\n'
+    '.days-hub-day:hover{background:var(--cat-soft);color:var(--cat-color);border-color:var(--cat-color);}\n'
+    '.days-hub-day.days-hub-notable{background:var(--cat-soft);border-color:var(--cat-color);color:var(--cat-color);}\n'
+    '.days-hub-star{font-size:.7rem;line-height:1;}\n'
+    '[data-theme="light"] .days-hub-day{background:#f1f5f9;color:#334155;border-color:#e2e8f0;}\n'
+    '[data-theme="light"] .days-hub-day:hover{background:var(--cat-soft);color:var(--cat-color);border-color:var(--cat-color);}\n'
+    '[data-theme="light"] .days-hub-day.days-hub-notable{background:var(--cat-soft);border-color:var(--cat-color);color:var(--cat-color);}\n'
+    '</style>\n'
+    '<script>if(localStorage.getItem(\'cd_theme\')===\'light\')document.documentElement.setAttribute(\'data-theme\',\'light\');</script>\n'
+    '</head>\n'
+    '<body>\n'
+    '<header class="site-header">\n'
+    '  <a href="/" class="logo">countdowns<span class="logo-tld">.site</span></a>\n'
+    '  <div class="header-right">\n'
+    '    <a href="/favorites/" class="hub-fav-header-link" id="hub-fav-header-link" title="My Favorites">&#9734;&nbsp;Favorites <span id="hub-fav-badge" class="hub-fav-badge" style="display:none"></span></a>\n'
+    '    <button class="theme-btn" id="theme-toggle">Light</button>\n'
+    f'    <div class="lang-seg" role="group" aria-label="Language">{lang_seg}</div>\n'
+    '  </div>\n'
+    '</header>\n'
+    '<div class="days-hub-wrap">\n'
+    f'  <h1 class="days-hub-title">{s["heading"]}</h1>\n'
+    f'  <p class="days-hub-sub">{s["sub"]}</p>\n'
+    f'  {months_html}\n'
+    '</div>\n'
+    '<footer class="site-footer">\n'
+    '  countdowns<span class="logo-tld">.site</span> \xb7 <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>\n'
+    '</footer>\n'
+    '<script src="/countdown-engine.js"></script>\n'
+    '<script>\n'
+    '(function() {\n'
+    '  var btn = document.getElementById(\'theme-toggle\');\n'
+    '  var saved = localStorage.getItem(\'cd_theme\');\n'
+    '  if (saved === \'light\') { document.documentElement.setAttribute(\'data-theme\', \'light\'); btn.textContent = \'Dark\'; }\n'
+    '  btn.addEventListener(\'click\', function() {\n'
+    '    var isLight = document.documentElement.getAttribute(\'data-theme\') === \'light\';\n'
+    '    if (isLight) {\n'
+    '      document.documentElement.removeAttribute(\'data-theme\');\n'
+    '      localStorage.setItem(\'cd_theme\', \'dark\');\n'
+    '      btn.textContent = \'Light\';\n'
+    '    } else {\n'
+    '      document.documentElement.setAttribute(\'data-theme\', \'light\');\n'
+    '      localStorage.setItem(\'cd_theme\', \'light\');\n'
+    '      btn.textContent = \'Dark\';\n'
+    '    }\n'
+    '  });\n'
+    '})();\n'
+    '</script>\n'
+    '</body>\n'
+    '</html>'
+  )
+
+# Generate /days/ hub for all 4 languages
+os.makedirs("days", exist_ok=True)
+with open(os.path.join("days", "index.html"), "w", encoding="utf-8") as f:
+    f.write(generate_days_hub("en"))
+print("  ✓  /days/")
+
+for lang in ["es", "pt", "fr"]:
+    out_dir = os.path.join(lang, "days")
+    os.makedirs(out_dir, exist_ok=True)
+    with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(generate_days_hub(lang))
+    print(f"  ✓  /{lang}/days/")
+
 
 # ─── Generate custom countdown pages ──────────────────────────────────────────
 os.makedirs("custom", exist_ok=True)
