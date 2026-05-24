@@ -1095,6 +1095,41 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
           }
           init(date, { note: _note });
         });
+      } else if (config.type === 'schedule') {
+        loadData(function (data) {
+          var ev = ((data || {}).events || {})[config.slug] || {};
+          var schedule = ev.schedule || [];
+          var _lang = (window.location.pathname.match(/^\/(es|pt|fr)\//) || [])[1] || 'en';
+          function findNext() {
+            var now = new Date();
+            for (var i = 0; i < schedule.length; i++) {
+              if (new Date(schedule[i].date) > now) return schedule[i];
+            }
+            return null;
+          }
+          var race = findNext();
+          if (race) {
+            var _note = race['note_' + _lang] || race.note || '';
+            var targetDate = new Date(race.date);
+            init(targetDate, { note: _note, subtitle: race.raceName || '' });
+            /* Auto-advance: when this race passes, re-init with next */
+            var _advGuard = setInterval(function() {
+              if (new Date() > targetDate) {
+                clearInterval(_advGuard);
+                setTimeout(function() {
+                  var next = findNext();
+                  if (next) {
+                    var n = next['note_' + _lang] || next.note || '';
+                    init(new Date(next.date), { note: n, subtitle: next.raceName || '' });
+                  }
+                }, 3000);
+              }
+            }, 15000);
+          } else {
+            var _note2 = ev['note_' + _lang] || ev.note || '';
+            init(null, { note: _note2 });
+          }
+        });
       } else {
         loadData(function (data) {
           var ev   = ((data || {}).events || {})[config.slug] || {};
@@ -1132,6 +1167,18 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
             date = nextOccurrence(function (y) { return midnightInTZ(tz, y, mo, dy); });
           }
           resolve(date, false);
+        });
+      } else if (config.type === 'schedule') {
+        loadData(function (data) {
+          var ev = ((data || {}).events || {})[config.slug] || {};
+          var schedule = ev.schedule || [];
+          var now = new Date();
+          var nextDate = null;
+          for (var i = 0; i < schedule.length; i++) {
+            var d = new Date(schedule[i].date);
+            if (d > now) { nextDate = d; break; }
+          }
+          resolve(nextDate, false);
         });
       } else {
         loadData(function (data) {
@@ -1179,6 +1226,26 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
             date = nextOccurrence(function (y) { return midnightInTZ(tz, y, mo, dy); });
           }
           initEmbed(date, { note: _note });
+        });
+      } else if (config.type === 'schedule') {
+        loadData(function (data) {
+          var ev = ((data || {}).events || {})[config.slug] || {};
+          var schedule = ev.schedule || [];
+          var _lang2 = (window.location.pathname.match(/^\/(es|pt|fr)\//) || [])[1] || 'en';
+          function findNextEmbed() {
+            var now = new Date();
+            for (var i = 0; i < schedule.length; i++) {
+              if (new Date(schedule[i].date) > now) return schedule[i];
+            }
+            return null;
+          }
+          var race2 = findNextEmbed();
+          if (race2) {
+            var _n2 = race2['note_' + _lang2] || race2.note || '';
+            initEmbed(new Date(race2.date), { note: _n2, subtitle: race2.raceName || '' });
+          } else {
+            initEmbed(null, {});
+          }
         });
       } else {
         loadData(function (data) {
