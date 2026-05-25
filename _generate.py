@@ -2013,12 +2013,16 @@ def generate_page(ev, lang="en"):
     faqs      = t.get("faqs",      ev.get("faqs", []))
 
     # Collect translated event names for multilingual keywords
-    name_by_lang = {}
-    for _lc in ("es", "pt", "fr"):
-        _tname = TRANSLATIONS.get(_lc, {}).get("events", {}).get(slug, {}).get("name")
-        if _tname:
-            name_by_lang[_lc] = _tname
-    meta_keywords = build_meta_keywords(ev["name"], CURRENT_YEAR, name_by_lang)
+    # Annual (date) pages skip meta keywords — no value, signals spam to crawlers
+    if ev_type == "annual":
+        meta_keywords = None
+    else:
+        name_by_lang = {}
+        for _lc in ("es", "pt", "fr"):
+            _tname = TRANSLATIONS.get(_lc, {}).get("events", {}).get(slug, {}).get("name")
+            if _tname:
+                name_by_lang[_lc] = _tname
+        meta_keywords = build_meta_keywords(ev["name"], CURRENT_YEAR, name_by_lang)
 
     # OG image — use event-specific if available, else generic
     _og_jpg = os.path.join("og-images", f"{slug}.jpg")
@@ -2150,7 +2154,7 @@ def generate_page(ev, lang="en"):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{seo_title} | countdowns.site</title>
 <meta name="description" content="{meta_desc}">
-<meta name="keywords" content="{meta_keywords}">
+{f'<meta name="keywords" content="{meta_keywords}">' if meta_keywords else ''}
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{en_url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -2891,13 +2895,60 @@ def day_ord_en(n):
   s = 'th' if 10 <= n%100 <= 20 else {1:'st',2:'nd',3:'rd'}.get(n%10,'th')
   return f"{n}{s}"
 
+# ─── Zodiac signs ──────────────────────────────────────────────────────────────
+_ZODIAC_SIGNS = {
+  'en': ["Capricorn","Aquarius","Pisces","Aries","Taurus","Gemini",
+         "Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius"],
+  'es': ["Capricornio","Acuario","Piscis","Aries","Tauro","Géminis",
+         "Cáncer","Leo","Virgo","Libra","Escorpio","Sagitario"],
+  'pt': ["Capricórnio","Aquário","Peixes","Áries","Touro","Gêmeos",
+         "Câncer","Leão","Virgem","Libra","Escorpião","Sagitário"],
+  'fr': ["Capricorne","Verseau","Poissons","Bélier","Taureau","Gémeaux",
+         "Cancer","Lion","Vierge","Balance","Scorpion","Sagittaire"],
+}
+# (month, last_day) for each sign in order above
+_ZODIAC_CUTOFFS = [(1,19),(2,18),(3,20),(4,19),(5,20),(6,20),
+                   (7,22),(8,22),(9,22),(10,22),(11,21),(12,21)]
+
+def get_zodiac(month, day, lang='en'):
+  for i,(m,d) in enumerate(_ZODIAC_CUTOFFS):
+    if month < m or (month == m and day <= d):
+      return _ZODIAC_SIGNS[lang][i]
+  return _ZODIAC_SIGNS[lang][0]  # Dec 22+ → Capricorn
+
+# ─── Seasons ───────────────────────────────────────────────────────────────────
+_SEASON_NAMES = {
+  'en': {'Spring':'Spring','Summer':'Summer','Autumn':'Autumn','Winter':'Winter'},
+  'es': {'Spring':'Primavera','Summer':'Verano','Autumn':'Otoño','Winter':'Invierno'},
+  'pt': {'Spring':'Primavera','Summer':'Verão','Autumn':'Outono','Winter':'Inverno'},
+  'fr': {'Spring':'Printemps','Summer':'Été','Autumn':'Automne','Winter':'Hiver'},
+}
+_SH_MAP = {'Winter':'Summer','Summer':'Winter','Spring':'Autumn','Autumn':'Spring'}
+
+def _season_nh_key(month, day):
+  if (month==12 and day>=21) or month in [1,2] or (month==3 and day<20): return 'Winter'
+  if (month==3 and day>=20) or month in [4,5] or (month==6 and day<21):  return 'Spring'
+  if (month==6 and day>=21) or month in [7,8] or (month==9 and day<23):  return 'Summer'
+  return 'Autumn'
+
+def get_seasons(month, day, lang='en'):
+  """Return (northern_hemisphere_season, southern_hemisphere_season) in given lang."""
+  nh_key = _season_nh_key(month, day)
+  sh_key = _SH_MAP[nh_key]
+  n = _SEASON_NAMES[lang]
+  return n[nh_key], n[sh_key]
+
 def get_daily_ev(month, day):
-  month_en = MONTH_NAMES_DAILY['en'][month-1]
-  slug     = f"{month_en.lower()}-{day}"
-  ord_en   = day_ord_en(day)
-  name_en  = f"{month_en} {ord_en}"
-  doy, woy = get_day_info(month, day)
-  notable  = NOTABLE_DATES.get((month, day))
+  month_en   = MONTH_NAMES_DAILY['en'][month-1]
+  slug       = f"{month_en.lower()}-{day}"
+  ord_en     = day_ord_en(day)
+  name_en    = f"{month_en} {ord_en}"
+  doy, woy   = get_day_info(month, day)
+  days_left  = 365 - doy          # days remaining in the year after this date
+  days_gone  = doy - 1            # days elapsed before this date
+  zodiac     = get_zodiac(month, day, 'en')
+  season_nh, season_sh = get_seasons(month, day, 'en')
+  notable    = NOTABLE_DATES.get((month, day))
 
   if notable:
     notable_name, notable_desc = notable['en']
@@ -2908,8 +2959,8 @@ def get_daily_ev(month, day):
   else:
     extra_content = ""
     extra_faqs = [
-      (f"Is {month_en} {day} a holiday?",
-       f"It depends on the country. Use the live countdown above to count down to {month_en} {day}, regardless of whether it is a public holiday."),
+      (f"Is {month_en} {day} a public holiday?",
+       f"It depends on the country. Use the live countdown above to count down to {month_en} {day}, regardless of whether it is a public holiday where you live."),
     ]
 
   return dict(
@@ -2919,7 +2970,11 @@ def get_daily_ev(month, day):
     meta_desc=f"Live countdown to {month_en} {ord_en} — day {doy} of the year, week {woy}. Exact days, hours, minutes and seconds. Resets automatically every year.",
     hero_desc=f"Live countdown to {month_en} {ord_en}.",
     content=(
-      f"{month_en} {ord_en} is day {doy} of the year and falls in week {woy} of the ISO calendar."
+      f"{month_en} {ord_en} is day {doy} of the year (out of 365) and falls in week {woy} of the ISO calendar. "
+      f"After this date, {days_left} days remain until the end of the year. "
+      f"People born on {month_en} {day} are born under the sign of {zodiac}. "
+      f"In the Northern Hemisphere, {month_en} {day} falls in {season_nh}; "
+      f"in the Southern Hemisphere it falls in {season_sh}."
       f"{extra_content} "
       f"This live countdown shows the exact time remaining until the next {month_en} {day}. The timer resets automatically once the date arrives."
     ),
@@ -2927,20 +2982,26 @@ def get_daily_ev(month, day):
       (f"How many days until {month_en} {ord_en}?",
        f"Use the live countdown above to see the exact days, hours, minutes and seconds until {month_en} {ord_en}."),
       (f"What day of the year is {month_en} {ord_en}?",
-       f"{month_en} {ord_en} is day number {doy} of the year (in a non-leap year). It falls in week {woy} of the ISO calendar year."),
-      (f"What week of the year is {month_en} {ord_en}?",
-       f"{month_en} {ord_en} falls in ISO week {woy} of the year. It is day {doy} of the calendar year."),
+       f"{month_en} {ord_en} is day number {doy} of the year (in a non-leap year), with {days_left} days remaining after it. It falls in week {woy} of the ISO calendar year."),
+      (f"What zodiac sign is {month_en} {ord_en}?",
+       f"People born on {month_en} {day} are {zodiac}. {zodiac} is their sun sign according to the Western zodiac calendar."),
+      (f"What season is {month_en} {ord_en}?",
+       f"In the Northern Hemisphere, {month_en} {day} falls in {season_nh}. In the Southern Hemisphere, it falls in {season_sh}."),
       ("Does the countdown reset each year?",
        f"Yes — once {month_en} {day} arrives, the countdown automatically resets to next year's {month_en} {day}."),
     ] + extra_faqs
   )
 
 def inject_daily_translations(slug, month, day):
-  doy, woy = get_day_info(month, day)
-  notable  = NOTABLE_DATES.get((month, day))
+  doy, woy   = get_day_info(month, day)
+  days_left  = 365 - doy
+  notable    = NOTABLE_DATES.get((month, day))
   for lang in ['es','pt','fr']:
-    mn = MONTH_NAMES_DAILY[lang][month-1]
-    nd = notable[lang] if notable else None
+    mn       = MONTH_NAMES_DAILY[lang][month-1]
+    nd       = notable[lang] if notable else None
+    zodiac   = get_zodiac(month, day, lang)
+    s_nh, s_sh = get_seasons(month, day, lang)
+
     if lang == 'fr':
       ds = f"1er {mn}" if day == 1 else f"{day} {mn}"
       if nd:
@@ -2950,21 +3011,29 @@ def inject_daily_translations(slug, month, day):
       else:
         extra_content = ""
         extra_faqs = [(f"Le {ds} est-il un jour férié ?",
-                       f"Cela dépend du pays. Utilisez le compte à rebours pour compter jusqu'au {ds}.")]
+                       f"Cela dépend du pays. Utilisez le compte à rebours pour compter jusqu'au {ds}, que ce soit un jour férié ou non.")]
       t = dict(
         name=ds,
         seo_title=f"Dans combien de jours c'est le {ds} ? — Compte à Rebours",
         meta_desc=f"Compte à rebours pour le {ds} — jour {doy} de l'année, semaine {woy}. Jours, heures, minutes et secondes exactes. Se réinitialise chaque année.",
         hero_desc=f"Compte à rebours pour le {ds}.",
-        content=(f"Le {ds} est le jour numéro {doy} de l'année et se situe en semaine {woy} du calendrier ISO.{extra_content} "
-                 f"Ce compteur montre le temps exact jusqu'au prochain {ds}. Le compteur se réinitialise automatiquement."),
+        content=(
+          f"Le {ds} est le jour numéro {doy} de l'année (sur 365) et se situe en semaine {woy} du calendrier ISO. "
+          f"Après cette date, il reste {days_left} jours jusqu'à la fin de l'année. "
+          f"Les personnes nées le {ds} sont du signe {zodiac}. "
+          f"Dans l'hémisphère nord, le {ds} tombe en {s_nh} ; dans l'hémisphère sud, en {s_sh}."
+          f"{extra_content} "
+          f"Ce compteur montre le temps exact jusqu'au prochain {ds}. Le compteur se réinitialise automatiquement."
+        ),
         faqs=[
           (f"Dans combien de jours est le {ds} ?",
            f"Utilisez le compte à rebours ci-dessus pour voir les jours, heures, minutes et secondes exacts jusqu'au {ds}."),
           (f"Quel jour de l'année est le {ds} ?",
-           f"Le {ds} est le jour numéro {doy} de l'année (hors année bissextile). Il tombe en semaine {woy} du calendrier ISO."),
-          (f"En quelle semaine de l'année est le {ds} ?",
-           f"Le {ds} tombe en semaine ISO {woy} de l'année. C'est le {doy}e jour de l'année."),
+           f"Le {ds} est le jour numéro {doy} de l'année (hors année bissextile), avec {days_left} jours restants après cette date. Il tombe en semaine {woy} du calendrier ISO."),
+          (f"Quel signe astrologique est le {ds} ?",
+           f"Les personnes nées le {ds} sont {zodiac}. C'est leur signe solaire selon le zodiaque occidental."),
+          (f"Quelle saison est le {ds} ?",
+           f"Dans l'hémisphère nord, le {ds} tombe en {s_nh}. Dans l'hémisphère sud, il tombe en {s_sh}."),
           ("Le compte à rebours se réinitialise-t-il chaque année ?",
            f"Oui — lorsque le {ds} arrive, le compteur se réinitialise automatiquement pour l'année suivante."),
         ] + extra_faqs
@@ -2978,21 +3047,29 @@ def inject_daily_translations(slug, month, day):
       else:
         extra_content = ""
         extra_faqs = [(f"¿El {ds} es un día festivo?",
-                       f"Depende del país. Usa la cuenta regresiva para contar hasta el {ds}.")]
+                       f"Depende del país. Usa la cuenta regresiva para contar hasta el {ds}, sea o no festivo donde vives.")]
       t = dict(
         name=ds,
         seo_title=f"¿Cuántos días faltan para el {ds}? — Cuenta Regresiva",
         meta_desc=f"Cuenta regresiva para el {ds} — día {doy} del año, semana {woy}. Días, horas, minutos y segundos exactos. Se reinicia cada año.",
         hero_desc=f"Cuenta regresiva para el {ds}.",
-        content=(f"El {ds} es el día número {doy} del año y cae en la semana {woy} del calendario ISO.{extra_content} "
-                 f"Este contador muestra el tiempo exacto restante hasta el próximo {ds}. Se reinicia automáticamente."),
+        content=(
+          f"El {ds} es el día número {doy} del año (de 365) y cae en la semana {woy} del calendario ISO. "
+          f"Después de esta fecha quedan {days_left} días para terminar el año. "
+          f"Las personas nacidas el {ds} son del signo {zodiac}. "
+          f"En el hemisferio norte, el {ds} cae en {s_nh}; en el hemisferio sur, en {s_sh}."
+          f"{extra_content} "
+          f"Este contador muestra el tiempo exacto restante hasta el próximo {ds}. Se reinicia automáticamente."
+        ),
         faqs=[
           (f"¿Cuántos días faltan para el {ds}?",
            f"Usa la cuenta regresiva de arriba para ver los días, horas, minutos y segundos exactos hasta el {ds}."),
           (f"¿Qué número de día del año es el {ds}?",
-           f"El {ds} es el día número {doy} del año (en un año no bisiesto). Cae en la semana {woy} del calendario ISO."),
-          (f"¿En qué semana del año cae el {ds}?",
-           f"El {ds} cae en la semana ISO {woy} del año. Es el día {doy} del año calendario."),
+           f"El {ds} es el día número {doy} del año (en un año no bisiesto), con {days_left} días restantes después de esa fecha. Cae en la semana {woy} del calendario ISO."),
+          (f"¿Qué signo zodiacal es el {ds}?",
+           f"Las personas nacidas el {ds} son {zodiac}. Es su signo solar según el zodiaco occidental."),
+          (f"¿En qué estación cae el {ds}?",
+           f"En el hemisferio norte, el {ds} cae en {s_nh}. En el hemisferio sur, cae en {s_sh}."),
           ("¿El contador se reinicia cada año?",
            f"Sí — cuando llega el {ds}, el contador se reinicia automáticamente para el año siguiente."),
         ] + extra_faqs
@@ -3006,21 +3083,29 @@ def inject_daily_translations(slug, month, day):
       else:
         extra_content = ""
         extra_faqs = [(f"O {ds} é um feriado?",
-                       f"Depende do país. Use a contagem regressiva para contar até {ds}.")]
+                       f"Depende do país. Use a contagem regressiva para contar até {ds}, seja feriado ou não onde você mora.")]
       t = dict(
         name=ds,
         seo_title=f"Quantos dias faltam para {ds}? — Contagem Regressiva",
         meta_desc=f"Contagem regressiva para {ds} — dia {doy} do ano, semana {woy}. Dias, horas, minutos e segundos exatos. Reinicia todo ano.",
         hero_desc=f"Contagem regressiva para {ds}.",
-        content=(f"{ds} é o dia número {doy} do ano e cai na semana {woy} do calendário ISO.{extra_content} "
-                 f"Este contador mostra o tempo exato até o próximo {ds}. Reinicia automaticamente."),
+        content=(
+          f"{ds} é o dia número {doy} do ano (de 365) e cai na semana {woy} do calendário ISO. "
+          f"Após essa data, restam {days_left} dias para o fim do ano. "
+          f"As pessoas nascidas em {ds} são do signo {zodiac}. "
+          f"No hemisfério norte, {ds} cai no {s_nh}; no hemisfério sul, no {s_sh}."
+          f"{extra_content} "
+          f"Este contador mostra o tempo exato até o próximo {ds}. Reinicia automaticamente."
+        ),
         faqs=[
           (f"Quantos dias faltam para {ds}?",
            f"Use a contagem regressiva acima para ver os dias, horas, minutos e segundos exatos até {ds}."),
           (f"Qual o número do dia do ano para {ds}?",
-           f"{ds} é o dia número {doy} do ano (em ano não bissexto). Cai na semana {woy} do calendário ISO."),
-          (f"Em que semana do ano cai {ds}?",
-           f"{ds} cai na semana ISO {woy} do ano. É o dia {doy} do ano."),
+           f"{ds} é o dia número {doy} do ano (em ano não bissexto), com {days_left} dias restantes após essa data. Cai na semana {woy} do calendário ISO."),
+          (f"Qual é o signo de {ds}?",
+           f"As pessoas nascidas em {ds} são do signo {zodiac}. É o seu signo solar segundo o zodíaco ocidental."),
+          (f"Que estação é {ds}?",
+           f"No hemisfério norte, {ds} cai no {s_nh}. No hemisfério sul, cai no {s_sh}."),
           ("A contagem regressiva reinicia todo ano?",
            f"Sim — quando chega {ds}, o contador reinicia automaticamente para o ano seguinte."),
         ] + extra_faqs
