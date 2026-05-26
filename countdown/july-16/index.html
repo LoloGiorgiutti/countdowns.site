@@ -26,7 +26,8 @@
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/july-16/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
-<style>:root{--cat-color:#A78BFA;--cat-glow:rgba(167,139,250,.2);--cat-soft:rgba(167,139,250,.08);}</style>
+<style>:root{--cat-color:#A78BFA;--cat-glow:rgba(167,139,250,.2);--cat-soft:rgba(167,139,250,.08);}
+.cd-weekday-table{{margin:1.5rem 0}}.cd-wt-title{{font-size:.95rem;font-weight:600;margin-bottom:.6rem;opacity:.9}}.cd-wt{{border-collapse:collapse;width:100%;max-width:280px}}.cd-wt td{{padding:.35rem .7rem;font-size:.9rem}}.cd-wt-yr{{opacity:.6}}.cd-wt-target{{font-weight:700}}.cd-wt-target .cd-wt-yr{{opacity:1;color:var(--cat-color)}}.cd-wt-target .cd-wt-day{{color:var(--cat-color)}}.cd-births,.cd-hist{{margin:1.5rem 0}}.cd-births-title,.cd-hist-title{{font-size:.95rem;font-weight:600;margin-bottom:.6rem;opacity:.9}}.cd-births-list,.cd-hist-list{{list-style:none;padding:0;margin:0}}.cd-births-list li,.cd-hist-list li{{padding:.35rem 0;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.06)}}.cd-births-list li:last-child,.cd-hist-list li:last-child{{border-bottom:none}}.cd-birth-name{{font-weight:600;color:var(--cat-color)}}.cd-hist-year{{font-weight:700;color:var(--cat-color);margin-right:.4rem}}</style>
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <script type="application/ld+json">
 {
@@ -83,6 +84,16 @@
       "@type": "Question",
       "name": "Is July 16 a public holiday?",
       "acceptedAnswer": { "@type": "Answer", "text": "It depends on the country. Use the live countdown above to count down to July 16, regardless of whether it is a public holiday where you live." }
+    },
+    {
+      "@type": "Question",
+      "name": "Who was born on July 16th?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Some of the most famous people born on July 16 include: Will Ferrell (Comedian and actor (Elf, Anchorman, Blades of Glory)). Corey Feldman (Actor (The Goonies, Stand by Me)). Ginger Rogers (Actress and dancer (Top Hat))." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happened on July 16th in history?",
+      "acceptedAnswer": { "@type": "Answer", "text": "In 1945, The world's first nuclear bomb was tested at Trinity Site, New Mexico." }
     }
   ]
     }
@@ -106,7 +117,27 @@
 
 <div class="cd-article">
   <p class="cd-article-body">July 16th is day 197 of the year (out of 365) and falls in week 29 of the ISO calendar. After this date, 168 days remain until the end of the year. People born on July 16 are born under the sign of Cancer. In the Northern Hemisphere, July 16 falls in Summer; in the Southern Hemisphere it falls in Winter. This live countdown shows the exact time remaining until the next July 16. The timer resets automatically once the date arrives.</p>
-  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">How many days until July 16th?</h3><p class="cd-faq-a">Use the live countdown above to see the exact days, hours, minutes and seconds until July 16th.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What day of the year is July 16th?</h3><p class="cd-faq-a">July 16th is day number 197 of the year (in a non-leap year), with 168 days remaining after it. It falls in week 29 of the ISO calendar year.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What zodiac sign is July 16th?</h3><p class="cd-faq-a">People born on July 16 are Cancer. Cancer is their sun sign according to the Western zodiac calendar.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What season is July 16th?</h3><p class="cd-faq-a">In the Northern Hemisphere, July 16 falls in Summer. In the Southern Hemisphere, it falls in Winter.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Does the countdown reset each year?</h3><p class="cd-faq-a">Yes — once July 16 arrives, the countdown automatically resets to next year's July 16.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Is July 16 a public holiday?</h3><p class="cd-faq-a">It depends on the country. Use the live countdown above to count down to July 16, regardless of whether it is a public holiday where you live.</p></div></div>
+  <div class="cd-weekday-table" id="cd-weekday-section"></div>
+<script>
+(function(){
+  var m=7,d=16;
+  var DAYS=["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  function dn(y){return DAYS[new Date(y,m-1,d).getDay()];}
+  var now=new Date(),ty=now.getFullYear();
+  if(new Date(ty,m-1,d)<=now)ty++;
+  var py=ty-1,ny=ty+1;
+  document.getElementById('cd-weekday-section').innerHTML=
+    '<h3 class="cd-wt-title">Day of the Week by Year</h3>'+
+    '<table class="cd-wt"><tbody>'+
+    '<tr><td class="cd-wt-yr">'+py+'</td><td class="cd-wt-day">'+dn(py)+'</td></tr>'+
+    '<tr class="cd-wt-target"><td class="cd-wt-yr">'+ty+'</td><td class="cd-wt-day">'+dn(ty)+'</td></tr>'+
+    '<tr><td class="cd-wt-yr">'+ny+'</td><td class="cd-wt-day">'+dn(ny)+'</td></tr>'+
+    '</tbody></table>';
+})();
+</script>
+  <div class="cd-births"><h3 class="cd-births-title">Famous Birthdays</h3><ul class="cd-births-list"><li><span class="cd-birth-name">Will Ferrell</span> — Comedian and actor (Elf, Anchorman, Blades of Glory)</li><li><span class="cd-birth-name">Corey Feldman</span> — Actor (The Goonies, Stand by Me)</li><li><span class="cd-birth-name">Ginger Rogers</span> — Actress and dancer (Top Hat)</li></ul></div>
+  <div class="cd-hist"><h3 class="cd-hist-title">This Day in History</h3><ul class="cd-hist-list"><li><span class="cd-hist-year">1945</span>The world's first nuclear bomb was tested at Trinity Site, New Mexico</li></ul></div>
+  <div class="cd-faq"><h2 class="cd-faq-title">Frequently Asked Questions</h2><div class="cd-faq-item"><h3 class="cd-faq-q">How many days until July 16th?</h3><p class="cd-faq-a">Use the live countdown above to see the exact days, hours, minutes and seconds until July 16th.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What day of the year is July 16th?</h3><p class="cd-faq-a">July 16th is day number 197 of the year (in a non-leap year), with 168 days remaining after it. It falls in week 29 of the ISO calendar year.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What zodiac sign is July 16th?</h3><p class="cd-faq-a">People born on July 16 are Cancer. Cancer is their sun sign according to the Western zodiac calendar.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What season is July 16th?</h3><p class="cd-faq-a">In the Northern Hemisphere, July 16 falls in Summer. In the Southern Hemisphere, it falls in Winter.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Does the countdown reset each year?</h3><p class="cd-faq-a">Yes — once July 16 arrives, the countdown automatically resets to next year's July 16.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Is July 16 a public holiday?</h3><p class="cd-faq-a">It depends on the country. Use the live countdown above to count down to July 16, regardless of whether it is a public holiday where you live.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Who was born on July 16th?</h3><p class="cd-faq-a">Some of the most famous people born on July 16 include: Will Ferrell (Comedian and actor (Elf, Anchorman, Blades of Glory)). Corey Feldman (Actor (The Goonies, Stand by Me)). Ginger Rogers (Actress and dancer (Top Hat)).</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">What happened on July 16th in history?</h3><p class="cd-faq-a">In 1945, The world's first nuclear bomb was tested at Trinity Site, New Mexico.</p></div></div>
 </div>
 <footer class="site-footer">
   countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>

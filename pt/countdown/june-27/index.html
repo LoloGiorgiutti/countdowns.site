@@ -26,7 +26,8 @@
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/june-27/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
-<style>:root{--cat-color:#A78BFA;--cat-glow:rgba(167,139,250,.2);--cat-soft:rgba(167,139,250,.08);}</style>
+<style>:root{--cat-color:#A78BFA;--cat-glow:rgba(167,139,250,.2);--cat-soft:rgba(167,139,250,.08);}
+.cd-weekday-table{{margin:1.5rem 0}}.cd-wt-title{{font-size:.95rem;font-weight:600;margin-bottom:.6rem;opacity:.9}}.cd-wt{{border-collapse:collapse;width:100%;max-width:280px}}.cd-wt td{{padding:.35rem .7rem;font-size:.9rem}}.cd-wt-yr{{opacity:.6}}.cd-wt-target{{font-weight:700}}.cd-wt-target .cd-wt-yr{{opacity:1;color:var(--cat-color)}}.cd-wt-target .cd-wt-day{{color:var(--cat-color)}}.cd-births,.cd-hist{{margin:1.5rem 0}}.cd-births-title,.cd-hist-title{{font-size:.95rem;font-weight:600;margin-bottom:.6rem;opacity:.9}}.cd-births-list,.cd-hist-list{{list-style:none;padding:0;margin:0}}.cd-births-list li,.cd-hist-list li{{padding:.35rem 0;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.06)}}.cd-births-list li:last-child,.cd-hist-list li:last-child{{border-bottom:none}}.cd-birth-name{{font-weight:600;color:var(--cat-color)}}.cd-hist-year{{font-weight:700;color:var(--cat-color);margin-right:.4rem}}</style>
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <script type="application/ld+json">
 {
@@ -83,6 +84,11 @@
       "@type": "Question",
       "name": "O 27 de junho é um feriado?",
       "acceptedAnswer": { "@type": "Answer", "text": "Depende do país. Use a contagem regressiva para contar até 27 de junho, seja feriado ou não onde você mora." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quem nasceu em 27 junho?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Algumas das pessoas mais famosas nascidas em 27 de junho: Isabelle Adjani (French actress). J.J. Abrams (Director (Star Wars: The Force Awakens, Star Trek reboot)). Tobey Maguire (Actor (Spider-Man))." }
     }
   ]
     }
@@ -106,7 +112,27 @@
 
 <div class="cd-article">
   <p class="cd-article-body">27 de junho é o dia número 178 do ano (de 365) e cai na semana 26 do calendário ISO. Após essa data, restam 187 dias para o fim do ano. As pessoas nascidas em 27 de junho são do signo Câncer. No hemisfério norte, 27 de junho cai no Verão; no hemisfério sul, no Inverno. Este contador mostra o tempo exato até o próximo 27 de junho. Reinicia automaticamente.</p>
-  <div class="cd-faq"><h2 class="cd-faq-title">Perguntas Frequentes</h2><div class="cd-faq-item"><h3 class="cd-faq-q">Quantos dias faltam para 27 de junho?</h3><p class="cd-faq-a">Use a contagem regressiva acima para ver os dias, horas, minutos e segundos exatos até 27 de junho.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Qual o número do dia do ano para 27 de junho?</h3><p class="cd-faq-a">27 de junho é o dia número 178 do ano (em ano não bissexto), com 187 dias restantes após essa data. Cai na semana 26 do calendário ISO.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Qual é o signo de 27 de junho?</h3><p class="cd-faq-a">As pessoas nascidas em 27 de junho são do signo Câncer. É o seu signo solar segundo o zodíaco ocidental.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Que estação é 27 de junho?</h3><p class="cd-faq-a">No hemisfério norte, 27 de junho cai no Verão. No hemisfério sul, cai no Inverno.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">A contagem regressiva reinicia todo ano?</h3><p class="cd-faq-a">Sim — quando chega 27 de junho, o contador reinicia automaticamente para o ano seguinte.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">O 27 de junho é um feriado?</h3><p class="cd-faq-a">Depende do país. Use a contagem regressiva para contar até 27 de junho, seja feriado ou não onde você mora.</p></div></div>
+  <div class="cd-weekday-table" id="cd-weekday-section"></div>
+<script>
+(function(){
+  var m=6,d=27;
+  var DAYS=["domingo", "segunda-feira", "ter\u00e7a-feira", "quarta-feira", "quinta-feira", "sexta-feira", "s\u00e1bado"];
+  function dn(y){return DAYS[new Date(y,m-1,d).getDay()];}
+  var now=new Date(),ty=now.getFullYear();
+  if(new Date(ty,m-1,d)<=now)ty++;
+  var py=ty-1,ny=ty+1;
+  document.getElementById('cd-weekday-section').innerHTML=
+    '<h3 class="cd-wt-title">Dia da Semana por Ano</h3>'+
+    '<table class="cd-wt"><tbody>'+
+    '<tr><td class="cd-wt-yr">'+py+'</td><td class="cd-wt-day">'+dn(py)+'</td></tr>'+
+    '<tr class="cd-wt-target"><td class="cd-wt-yr">'+ty+'</td><td class="cd-wt-day">'+dn(ty)+'</td></tr>'+
+    '<tr><td class="cd-wt-yr">'+ny+'</td><td class="cd-wt-day">'+dn(ny)+'</td></tr>'+
+    '</tbody></table>';
+})();
+</script>
+  <div class="cd-births"><h3 class="cd-births-title">Aniversários Famosos</h3><ul class="cd-births-list"><li><span class="cd-birth-name">Isabelle Adjani</span> — French actress</li><li><span class="cd-birth-name">J.J. Abrams</span> — Director (Star Wars: The Force Awakens, Star Trek reboot)</li><li><span class="cd-birth-name">Tobey Maguire</span> — Actor (Spider-Man)</li></ul></div>
+  
+  <div class="cd-faq"><h2 class="cd-faq-title">Perguntas Frequentes</h2><div class="cd-faq-item"><h3 class="cd-faq-q">Quantos dias faltam para 27 de junho?</h3><p class="cd-faq-a">Use a contagem regressiva acima para ver os dias, horas, minutos e segundos exatos até 27 de junho.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Qual o número do dia do ano para 27 de junho?</h3><p class="cd-faq-a">27 de junho é o dia número 178 do ano (em ano não bissexto), com 187 dias restantes após essa data. Cai na semana 26 do calendário ISO.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Qual é o signo de 27 de junho?</h3><p class="cd-faq-a">As pessoas nascidas em 27 de junho são do signo Câncer. É o seu signo solar segundo o zodíaco ocidental.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Que estação é 27 de junho?</h3><p class="cd-faq-a">No hemisfério norte, 27 de junho cai no Verão. No hemisfério sul, cai no Inverno.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">A contagem regressiva reinicia todo ano?</h3><p class="cd-faq-a">Sim — quando chega 27 de junho, o contador reinicia automaticamente para o ano seguinte.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">O 27 de junho é um feriado?</h3><p class="cd-faq-a">Depende do país. Use a contagem regressiva para contar até 27 de junho, seja feriado ou não onde você mora.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Quem nasceu em 27 junho?</h3><p class="cd-faq-a">Algumas das pessoas mais famosas nascidas em 27 de junho: Isabelle Adjani (French actress). J.J. Abrams (Director (Star Wars: The Force Awakens, Star Trek reboot)). Tobey Maguire (Actor (Spider-Man)).</p></div></div>
 </div>
 <footer class="site-footer">
   countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>

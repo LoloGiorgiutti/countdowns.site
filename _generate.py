@@ -7,6 +7,7 @@ Generates /countdown/{slug}/ (EN) + /{lang}/countdown/{slug}/ for translated lan
 import os, json
 from datetime import date
 from _translations import TRANSLATIONS
+from _daily_data import FAMOUS_BIRTHDAYS, HISTORICAL_EVENTS
 
 # ─── SEO: Multilingual keyword system ─────────────────────────────────────────
 # Each phrase uses {name} (event name) and {year} (current/next occurrence year).
@@ -2075,8 +2076,60 @@ def generate_page(ev, lang="en"):
         f'<div class="cd-faq-item"><h3 class="cd-faq-q">{q}</h3><p class="cd-faq-a">{a}</p></div>'
         for q, a in faqs
     )
+    # Day-of-week table for annual (date) pages — evergreen JS
+    if ev_type == "annual" and ev.get("_month") and ev.get("_day"):
+        _m = ev["_month"]
+        _d = ev["_day"]
+        _wdays = json.dumps(WEEKDAY_NAMES.get(lang, WEEKDAY_NAMES["en"]))
+        _wt_title = WEEKDAY_TABLE_TITLE.get(lang, WEEKDAY_TABLE_TITLE["en"])
+        weekday_section = f'''<div class="cd-weekday-table" id="cd-weekday-section"></div>
+<script>
+(function(){{
+  var m={_m},d={_d};
+  var DAYS={_wdays};
+  function dn(y){{return DAYS[new Date(y,m-1,d).getDay()];}}
+  var now=new Date(),ty=now.getFullYear();
+  if(new Date(ty,m-1,d)<=now)ty++;
+  var py=ty-1,ny=ty+1;
+  document.getElementById('cd-weekday-section').innerHTML=
+    '<h3 class="cd-wt-title">{_wt_title}</h3>'+
+    '<table class="cd-wt"><tbody>'+
+    '<tr><td class="cd-wt-yr">'+py+'</td><td class="cd-wt-day">'+dn(py)+'</td></tr>'+
+    '<tr class="cd-wt-target"><td class="cd-wt-yr">'+ty+'</td><td class="cd-wt-day">'+dn(ty)+'</td></tr>'+
+    '<tr><td class="cd-wt-yr">'+ny+'</td><td class="cd-wt-day">'+dn(ny)+'</td></tr>'+
+    '</tbody></table>';
+}})();
+</script>'''
+    else:
+        weekday_section = ""
+
+    # Famous birthdays and historical events sections for annual (date) pages
+    births_section = ""
+    hist_section = ""
+    if ev_type == "annual" and ev.get("_month") and ev.get("_day"):
+        _bday_key = (ev["_month"], ev["_day"])
+        _births = FAMOUS_BIRTHDAYS.get(_bday_key, [])
+        _events = HISTORICAL_EVENTS.get(_bday_key, [])
+        _bt = BIRTHDAYS_TITLE.get(lang, BIRTHDAYS_TITLE["en"])
+        _et = EVENTS_TITLE.get(lang, EVENTS_TITLE["en"])
+        if _births:
+            _li = "".join(
+                f'<li><span class="cd-birth-name">{b["name"]}</span> — {b["known_for"]}</li>'
+                for b in _births
+            )
+            births_section = f'<div class="cd-births"><h3 class="cd-births-title">{_bt}</h3><ul class="cd-births-list">{_li}</ul></div>'
+        if _events:
+            _li = "".join(
+                f'<li><span class="cd-hist-year">{e["year"]}</span>{e["event"]}</li>'
+                for e in _events
+            )
+            hist_section = f'<div class="cd-hist"><h3 class="cd-hist-title">{_et}</h3><ul class="cd-hist-list">{_li}</ul></div>'
+
     faq_section = f'''<div class="cd-article">
   <p class="cd-article-body">{content}</p>
+  {weekday_section}
+  {births_section}
+  {hist_section}
   <div class="cd-faq"><h2 class="cd-faq-title">{faq_title}</h2>{faq_items_html}</div>
 </div>''' if (content or faqs) else ""
 
@@ -2173,7 +2226,8 @@ def generate_page(ev, lang="en"):
 <meta name="twitter:image" content="{og_image_url}">
 {hreflang}<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
-<style>:root{{--cat-color:{cat_color};--cat-glow:{cat_glow};--cat-soft:{cat_soft};}}</style>
+<style>:root{{--cat-color:{cat_color};--cat-glow:{cat_glow};--cat-soft:{cat_soft};}}
+{'''.cd-weekday-table{{margin:1.5rem 0}}.cd-wt-title{{font-size:.95rem;font-weight:600;margin-bottom:.6rem;opacity:.9}}.cd-wt{{border-collapse:collapse;width:100%;max-width:280px}}.cd-wt td{{padding:.35rem .7rem;font-size:.9rem}}.cd-wt-yr{{opacity:.6}}.cd-wt-target{{font-weight:700}}.cd-wt-target .cd-wt-yr{{opacity:1;color:var(--cat-color)}}.cd-wt-target .cd-wt-day{{color:var(--cat-color)}}.cd-births,.cd-hist{{margin:1.5rem 0}}.cd-births-title,.cd-hist-title{{font-size:.95rem;font-weight:600;margin-bottom:.6rem;opacity:.9}}.cd-births-list,.cd-hist-list{{list-style:none;padding:0;margin:0}}.cd-births-list li,.cd-hist-list li{{padding:.35rem 0;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.06)}}.cd-births-list li:last-child,.cd-hist-list li:last-child{{border-bottom:none}}.cd-birth-name{{font-weight:600;color:var(--cat-color)}}.cd-hist-year{{font-weight:700;color:var(--cat-color);margin-right:.4rem}}''' if ev_type=='annual' else ''}</style>
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <script type="application/ld+json">
 {{
@@ -2800,6 +2854,44 @@ MONTH_NAMES_DAILY = {
 }
 MONTH_DAYS_DAILY = [31,28,31,30,31,30,31,31,30,31,30,31]
 
+# ─── Day-of-week table (evergreen JS) ─────────────────────────────────────────
+WEEKDAY_NAMES = {
+  'en': ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+  'es': ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"],
+  'pt': ["domingo","segunda-feira","terça-feira","quarta-feira","quinta-feira","sexta-feira","sábado"],
+  'fr': ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"],
+}
+WEEKDAY_TABLE_TITLE = {
+  'en': "Day of the Week by Year",
+  'es': "Día de la Semana por Año",
+  'pt': "Dia da Semana por Ano",
+  'fr': "Jour de la Semaine par Année",
+}
+BIRTHDAYS_TITLE = {
+  'en': "Famous Birthdays",
+  'es': "Cumpleaños Famosos",
+  'pt': "Aniversários Famosos",
+  'fr': "Anniversaires Célèbres",
+}
+EVENTS_TITLE = {
+  'en': "This Day in History",
+  'es': "Hoy en la Historia",
+  'pt': "Hoje na História",
+  'fr': "Ce Jour dans l'Histoire",
+}
+BIRTHDAYS_FAQ_Q = {
+  'en': "Who was born on {date}?",
+  'es': "¿Quién nació el {date}?",
+  'pt': "Quem nasceu em {date}?",
+  'fr': "Qui est né le {date}?",
+}
+EVENTS_FAQ_Q = {
+  'en': "What happened on {date} in history?",
+  'es': "¿Qué ocurrió históricamente el {date}?",
+  'pt': "O que aconteceu historicamente em {date}?",
+  'fr': "Que s'est-il passé historiquement le {date}?",
+}
+
 # Notable dates with multilingual descriptions
 NOTABLE_DATES = {
   (1,1):  {'en':("New Year's Day","New Year's Day marks the start of a new calendar year. It is a public holiday in most countries around the world."),
@@ -2963,8 +3055,24 @@ def get_daily_ev(month, day):
        f"It depends on the country. Use the live countdown above to count down to {month_en} {day}, regardless of whether it is a public holiday where you live."),
     ]
 
+  # Famous birthdays FAQ
+  _births = FAMOUS_BIRTHDAYS.get((month, day), [])
+  _events = HISTORICAL_EVENTS.get((month, day), [])
+  births_faq = []
+  events_faq = []
+  if _births:
+    names_str = ", ".join(b["name"] for b in _births)
+    details_str = " ".join(f"{b['name']} ({b['known_for']})." for b in _births)
+    births_faq = [(f"Who was born on {month_en} {ord_en}?",
+                   f"Some of the most famous people born on {month_en} {day} include: {details_str}")]
+  if _events:
+    ev_str = " ".join(f"In {e['year']}, {e['event']}." for e in _events)
+    events_faq = [(f"What happened on {month_en} {ord_en} in history?",
+                   ev_str)]
+
   return dict(
     slug=slug, name=name_en, type="annual", category="Months",
+    _month=month, _day=day,
     regions=["global"],
     seo_title=f"How Many Days Until {month_en} {ord_en}? — Live Countdown",
     meta_desc=f"Live countdown to {month_en} {ord_en} — day {doy} of the year, week {woy}. Exact days, hours, minutes and seconds. Resets automatically every year.",
@@ -2989,18 +3097,40 @@ def get_daily_ev(month, day):
        f"In the Northern Hemisphere, {month_en} {day} falls in {season_nh}. In the Southern Hemisphere, it falls in {season_sh}."),
       ("Does the countdown reset each year?",
        f"Yes — once {month_en} {day} arrives, the countdown automatically resets to next year's {month_en} {day}."),
-    ] + extra_faqs
+    ] + extra_faqs + births_faq + events_faq
   )
 
 def inject_daily_translations(slug, month, day):
   doy, woy   = get_day_info(month, day)
   days_left  = 365 - doy
   notable    = NOTABLE_DATES.get((month, day))
+  # Shared birthday/events data (names stay in English)
+  _births = FAMOUS_BIRTHDAYS.get((month, day), [])
+  _events = HISTORICAL_EVENTS.get((month, day), [])
   for lang in ['es','pt','fr']:
     mn       = MONTH_NAMES_DAILY[lang][month-1]
     nd       = notable[lang] if notable else None
     zodiac   = get_zodiac(month, day, lang)
     s_nh, s_sh = get_seasons(month, day, lang)
+
+    # Build per-language birthday & events FAQs (person names stay in English)
+    _lang_births_faq = []
+    _lang_events_faq = []
+    _bq = BIRTHDAYS_FAQ_Q.get(lang, BIRTHDAYS_FAQ_Q['en'])
+    _eq = EVENTS_FAQ_Q.get(lang, EVENTS_FAQ_Q['en'])
+    if _births:
+      details_str = " ".join(f"{b['name']} ({b['known_for']})." for b in _births)
+      if lang == 'fr':
+        _ds_tmp = f"1er {mn}" if day == 1 else f"{day} {mn}"
+        _ba = f"Parmi les personnes les plus célèbres nées le {_ds_tmp} : {details_str}"
+      elif lang == 'es':
+        _ba = f"Algunas de las personas más famosas nacidas el {day} de {mn}: {details_str}"
+      else:  # pt
+        _ba = f"Algumas das pessoas mais famosas nascidas em {day} de {mn}: {details_str}"
+      _lang_births_faq = [(_bq.format(date=f"{day} {mn}"), _ba)]
+    if _events:
+      ev_str = " ".join(f"{e['year']}: {e['event']}." for e in _events)
+      _lang_events_faq = [(_eq.format(date=f"{day} {mn}"), ev_str)]
 
     if lang == 'fr':
       ds = f"1er {mn}" if day == 1 else f"{day} {mn}"
@@ -3036,7 +3166,7 @@ def inject_daily_translations(slug, month, day):
            f"Dans l'hémisphère nord, le {ds} tombe en {s_nh}. Dans l'hémisphère sud, il tombe en {s_sh}."),
           ("Le compte à rebours se réinitialise-t-il chaque année ?",
            f"Oui — lorsque le {ds} arrive, le compteur se réinitialise automatiquement pour l'année suivante."),
-        ] + extra_faqs
+        ] + extra_faqs + _lang_births_faq + _lang_events_faq
       )
     elif lang == 'es':
       ds = f"{day} de {mn}"
@@ -3072,7 +3202,7 @@ def inject_daily_translations(slug, month, day):
            f"En el hemisferio norte, el {ds} cae en {s_nh}. En el hemisferio sur, cae en {s_sh}."),
           ("¿El contador se reinicia cada año?",
            f"Sí — cuando llega el {ds}, el contador se reinicia automáticamente para el año siguiente."),
-        ] + extra_faqs
+        ] + extra_faqs + _lang_births_faq + _lang_events_faq
       )
     else:  # pt
       ds = f"{day} de {mn}"
@@ -3108,7 +3238,7 @@ def inject_daily_translations(slug, month, day):
            f"No hemisfério norte, {ds} cai no {s_nh}. No hemisfério sul, cai no {s_sh}."),
           ("A contagem regressiva reinicia todo ano?",
            f"Sim — quando chega {ds}, o contador reinicia automaticamente para o ano seguinte."),
-        ] + extra_faqs
+        ] + extra_faqs + _lang_births_faq + _lang_events_faq
       )
     TRANSLATIONS.setdefault(lang,{}).setdefault('events',{})[slug] = t
 

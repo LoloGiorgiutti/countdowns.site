@@ -26,7 +26,8 @@
 <link rel="alternate" hreflang="x-default" href="https://countdowns.site/countdown/may-4/">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/countdown.css">
-<style>:root{--cat-color:#A78BFA;--cat-glow:rgba(167,139,250,.2);--cat-soft:rgba(167,139,250,.08);}</style>
+<style>:root{--cat-color:#A78BFA;--cat-glow:rgba(167,139,250,.2);--cat-soft:rgba(167,139,250,.08);}
+.cd-weekday-table{{margin:1.5rem 0}}.cd-wt-title{{font-size:.95rem;font-weight:600;margin-bottom:.6rem;opacity:.9}}.cd-wt{{border-collapse:collapse;width:100%;max-width:280px}}.cd-wt td{{padding:.35rem .7rem;font-size:.9rem}}.cd-wt-yr{{opacity:.6}}.cd-wt-target{{font-weight:700}}.cd-wt-target .cd-wt-yr{{opacity:1;color:var(--cat-color)}}.cd-wt-target .cd-wt-day{{color:var(--cat-color)}}.cd-births,.cd-hist{{margin:1.5rem 0}}.cd-births-title,.cd-hist-title{{font-size:.95rem;font-weight:600;margin-bottom:.6rem;opacity:.9}}.cd-births-list,.cd-hist-list{{list-style:none;padding:0;margin:0}}.cd-births-list li,.cd-hist-list li{{padding:.35rem 0;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.06)}}.cd-births-list li:last-child,.cd-hist-list li:last-child{{border-bottom:none}}.cd-birth-name{{font-weight:600;color:var(--cat-color)}}.cd-hist-year{{font-weight:700;color:var(--cat-color);margin-right:.4rem}}</style>
 <script>if(localStorage.getItem('cd_theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <script type="application/ld+json">
 {
@@ -83,6 +84,11 @@
       "@type": "Question",
       "name": "Qu'y a-t-il de spécial le 4 mai ?",
       "acceptedAnswer": { "@type": "Answer", "text": "Le 4 mai est la Journée Star Wars, célébrée par les fans de la saga dans le monde entier." }
+    },
+    {
+      "@type": "Question",
+      "name": "Qui est né le 4 mai?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Parmi les personnes les plus célèbres nées le 4 mai : Audrey Hepburn (Oscar-winning actress and humanitarian (Breakfast at Tiffany's)). Will Arnett (Actor (Arrested Development, BoJack Horseman)). Erin Andrews (Sports journalist and TV host)." }
     }
   ]
     }
@@ -106,7 +112,27 @@
 
 <div class="cd-article">
   <p class="cd-article-body">Le 4 mai est le jour numéro 124 de l'année (sur 365) et se situe en semaine 18 du calendrier ISO. Après cette date, il reste 241 jours jusqu'à la fin de l'année. Les personnes nées le 4 mai sont du signe Taureau. Dans l'hémisphère nord, le 4 mai tombe en Printemps ; dans l'hémisphère sud, en Automne. Journée Star Wars : Le 4 mai est la Journée Star Wars, célébrée par les fans de la saga dans le monde entier. Ce compteur montre le temps exact jusqu'au prochain 4 mai. Le compteur se réinitialise automatiquement.</p>
-  <div class="cd-faq"><h2 class="cd-faq-title">Questions Fréquentes</h2><div class="cd-faq-item"><h3 class="cd-faq-q">Dans combien de jours est le 4 mai ?</h3><p class="cd-faq-a">Utilisez le compte à rebours ci-dessus pour voir les jours, heures, minutes et secondes exacts jusqu'au 4 mai.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Quel jour de l'année est le 4 mai ?</h3><p class="cd-faq-a">Le 4 mai est le jour numéro 124 de l'année (hors année bissextile), avec 241 jours restants après cette date. Il tombe en semaine 18 du calendrier ISO.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Quel signe astrologique est le 4 mai ?</h3><p class="cd-faq-a">Les personnes nées le 4 mai sont Taureau. C'est leur signe solaire selon le zodiaque occidental.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Quelle saison est le 4 mai ?</h3><p class="cd-faq-a">Dans l'hémisphère nord, le 4 mai tombe en Printemps. Dans l'hémisphère sud, il tombe en Automne.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Le compte à rebours se réinitialise-t-il chaque année ?</h3><p class="cd-faq-a">Oui — lorsque le 4 mai arrive, le compteur se réinitialise automatiquement pour l'année suivante.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Qu'y a-t-il de spécial le 4 mai ?</h3><p class="cd-faq-a">Le 4 mai est la Journée Star Wars, célébrée par les fans de la saga dans le monde entier.</p></div></div>
+  <div class="cd-weekday-table" id="cd-weekday-section"></div>
+<script>
+(function(){
+  var m=5,d=4;
+  var DAYS=["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+  function dn(y){return DAYS[new Date(y,m-1,d).getDay()];}
+  var now=new Date(),ty=now.getFullYear();
+  if(new Date(ty,m-1,d)<=now)ty++;
+  var py=ty-1,ny=ty+1;
+  document.getElementById('cd-weekday-section').innerHTML=
+    '<h3 class="cd-wt-title">Jour de la Semaine par Année</h3>'+
+    '<table class="cd-wt"><tbody>'+
+    '<tr><td class="cd-wt-yr">'+py+'</td><td class="cd-wt-day">'+dn(py)+'</td></tr>'+
+    '<tr class="cd-wt-target"><td class="cd-wt-yr">'+ty+'</td><td class="cd-wt-day">'+dn(ty)+'</td></tr>'+
+    '<tr><td class="cd-wt-yr">'+ny+'</td><td class="cd-wt-day">'+dn(ny)+'</td></tr>'+
+    '</tbody></table>';
+})();
+</script>
+  <div class="cd-births"><h3 class="cd-births-title">Anniversaires Célèbres</h3><ul class="cd-births-list"><li><span class="cd-birth-name">Audrey Hepburn</span> — Oscar-winning actress and humanitarian (Breakfast at Tiffany's)</li><li><span class="cd-birth-name">Will Arnett</span> — Actor (Arrested Development, BoJack Horseman)</li><li><span class="cd-birth-name">Erin Andrews</span> — Sports journalist and TV host</li></ul></div>
+  
+  <div class="cd-faq"><h2 class="cd-faq-title">Questions Fréquentes</h2><div class="cd-faq-item"><h3 class="cd-faq-q">Dans combien de jours est le 4 mai ?</h3><p class="cd-faq-a">Utilisez le compte à rebours ci-dessus pour voir les jours, heures, minutes et secondes exacts jusqu'au 4 mai.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Quel jour de l'année est le 4 mai ?</h3><p class="cd-faq-a">Le 4 mai est le jour numéro 124 de l'année (hors année bissextile), avec 241 jours restants après cette date. Il tombe en semaine 18 du calendrier ISO.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Quel signe astrologique est le 4 mai ?</h3><p class="cd-faq-a">Les personnes nées le 4 mai sont Taureau. C'est leur signe solaire selon le zodiaque occidental.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Quelle saison est le 4 mai ?</h3><p class="cd-faq-a">Dans l'hémisphère nord, le 4 mai tombe en Printemps. Dans l'hémisphère sud, il tombe en Automne.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Le compte à rebours se réinitialise-t-il chaque année ?</h3><p class="cd-faq-a">Oui — lorsque le 4 mai arrive, le compteur se réinitialise automatiquement pour l'année suivante.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Qu'y a-t-il de spécial le 4 mai ?</h3><p class="cd-faq-a">Le 4 mai est la Journée Star Wars, célébrée par les fans de la saga dans le monde entier.</p></div><div class="cd-faq-item"><h3 class="cd-faq-q">Qui est né le 4 mai?</h3><p class="cd-faq-a">Parmi les personnes les plus célèbres nées le 4 mai : Audrey Hepburn (Oscar-winning actress and humanitarian (Breakfast at Tiffany's)). Will Arnett (Actor (Arrested Development, BoJack Horseman)). Erin Andrews (Sports journalist and TV host).</p></div></div>
 </div>
 <footer class="site-footer">
   countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>
