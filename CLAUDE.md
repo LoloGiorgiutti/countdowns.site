@@ -446,6 +446,48 @@ Groups: English (US, GB, CA, AU, IE, NZ, SG, AE) / Spanish LatAm (AR, MX, CL, CO
 
 ---
 
+## Evergreen Philosophy (CORE DESIGN PRINCIPLE)
+
+The site must remain permanently useful at every URL, forever. No page should ever become a dead end.
+
+### How each event type handles the past:
+
+| Type | Behavior after date passes |
+|------|---------------------------|
+| `auto` (recurring) | Resets automatically to next year's occurrence. Already evergreen. |
+| `variable` (one-time) | Flips to **elapsed timer mode**: "How many days since [Event]" |
+| `fixed` (hardcoded) | Same as variable — elapsed timer after date passes |
+
+### Elapsed Timer Mode (variable/fixed events after date)
+
+When a `variable` or `fixed` event's date has passed:
+- The countdown page flips from "How long until X" → **"How many days since X"**
+- Shows a live chronometer counting **up** (days/hours/minutes/seconds elapsed)
+- Headline pattern: **"How many days since [Event Name]?"** (EN) / equivalent in ES/PT/FR
+- The URL remains permanently accessible and always shows accurate elapsed time
+- SEO value: "how many days since [event]" is a real search query with lasting traffic
+
+### Past Events in the Hub
+
+- Past `variable` events are **removed from the main hub grid**
+- They appear in a **collapsible "Past Events" section at the bottom** of the hub
+- Section is collapsed by default — user can expand it
+- This applies to ALL variable events without exception
+
+### Why this matters for SEO & revenue
+
+- Permanent URLs = permanent backlink value, no 404s
+- "How many days since X" queries have long-tail search volume that persists for years
+- Keeps domain authority accumulating rather than losing pages over time
+- More indexed pages = more AdSense impressions surface area
+
+### Implementation status
+- `auto` events: ✅ already implemented
+- Elapsed timer for past variable events: 🔲 **TODO — not yet implemented**
+- Collapsible past events hub section: 🔲 **TODO — not yet implemented**
+
+---
+
 ## Known Limitations / Future TODOs
 
 - International Workers' Day (May 1) not yet a separate event for LatAm/Europe
