@@ -14,6 +14,8 @@
       days: 'days', hours: 'hours', min: 'min', sec: 'sec',
       dateTBC: 'Date to be confirmed',
       alreadyHappened: 'Already happened',
+      elapsed: 'Time elapsed since this event',
+      since: 'Since',
       backLink: '← All countdowns',
       faqTitle: 'Frequently Asked Questions',
 copyLink: 'Copy link', copied: '✓ Copied!',
@@ -27,6 +29,8 @@ copyLink: 'Copy link', copied: '✓ Copied!',
       days: 'días', hours: 'horas', min: 'min', sec: 'seg',
       dateTBC: 'Fecha por confirmar',
       alreadyHappened: 'Ya ocurrió',
+      elapsed: 'Tiempo transcurrido desde este evento',
+      since: 'Desde el',
       backLink: '← Todos los countdowns',
       faqTitle: 'Preguntas Frecuentes',
 copyLink: 'Copiar enlace', copied: '✓ ¡Copiado!',
@@ -40,6 +44,8 @@ copyLink: 'Copiar enlace', copied: '✓ ¡Copiado!',
       days: 'dias', hours: 'horas', min: 'min', sec: 's',
       dateTBC: 'Data a confirmar',
       alreadyHappened: 'Já aconteceu',
+      elapsed: 'Tempo decorrido desde este evento',
+      since: 'Desde',
       backLink: '← Todos os countdowns',
       faqTitle: 'Perguntas Frequentes',
 copyLink: 'Copiar link', copied: '✓ Copiado!',
@@ -53,6 +59,8 @@ copyLink: 'Copiar link', copied: '✓ Copiado!',
       days: 'jours', hours: 'heures', min: 'min', sec: 's',
       dateTBC: 'Date à confirmer',
       alreadyHappened: 'Déjà passé',
+      elapsed: 'Temps écoulé depuis cet événement',
+      since: 'Depuis le',
       backLink: '← Tous les comptes à rebours',
       faqTitle: 'Questions Fréquentes',
 copyLink: 'Copier le lien', copied: '✓ Copié !',
@@ -781,18 +789,47 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
       var diff = targetDate - new Date();
       if (diff <= 0) {
         clearInterval(_tickerHandle); _tickerHandle = null;
+        // Switch to elapsed (counting-up) mode
+        var desc = document.querySelector('.cd-desc');
+        if (desc) desc.textContent = T.elapsed;
         var grid = document.querySelector('.cd-grid');
         if (grid) {
-          grid.parentNode.innerHTML =
-            '<div class="cd-past"><div class="cd-past-badge">' + T.alreadyHappened + '</div>' +
-            '<div class="cd-past-date">' + fmtDate(targetDate, _pageLang) + '</div></div>';
+          grid.classList.add('cd-grid--elapsed');
+          var dateLabel = document.querySelector('.cd-date-label');
+          if (dateLabel) {
+            dateLabel.className = 'cd-elapsed-label';
+            dateLabel.textContent = T.since + ' ' + fmtDate(targetDate, _pageLang);
+          }
         }
+        startElapsedTicker(targetDate);
         return;
       }
       var days  = Math.floor(diff / 86400000);
       var hours = Math.floor((diff % 86400000) / 3600000);
       var mins  = Math.floor((diff % 3600000) / 60000);
       var secs  = Math.floor((diff % 60000) / 1000);
+      var dEl = document.getElementById('cd-d');
+      var hEl = document.getElementById('cd-h');
+      var mEl = document.getElementById('cd-m');
+      var sEl = document.getElementById('cd-s');
+      if (dEl) dEl.textContent = days;
+      if (hEl) hEl.textContent = pad(hours);
+      if (mEl) mEl.textContent = pad(mins);
+      if (sEl) sEl.textContent = pad(secs);
+    }
+    tick();
+    _tickerHandle = setInterval(tick, 1000);
+  }
+
+  /* ─── ELAPSED TICKER (counts up after event) ───────────────── */
+  function startElapsedTicker(targetDate) {
+    if (_tickerHandle) { clearInterval(_tickerHandle); _tickerHandle = null; }
+    function tick() {
+      var elapsed = new Date() - targetDate;
+      var days  = Math.floor(elapsed / 86400000);
+      var hours = Math.floor((elapsed % 86400000) / 3600000);
+      var mins  = Math.floor((elapsed % 3600000) / 60000);
+      var secs  = Math.floor((elapsed % 60000) / 1000);
       var dEl = document.getElementById('cd-d');
       var hEl = document.getElementById('cd-h');
       var mEl = document.getElementById('cd-m');
@@ -933,7 +970,7 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
   }
 
   /* ─── HTML BUILDER (individual pages) ──────────────────────── */
-  function buildCountdownSection(targetDate, isPast, isUnknown, note) {
+  function buildCountdownSection(targetDate, isPast, isUnknown, note, isElapsed) {
     if (isUnknown) {
       return '<div class="cd-unknown"><div class="cd-unknown-text">' + T.dateTBC + '</div>' +
              (note ? '<div class="cd-unknown-sub">' + note + '</div>' : '') + '</div>';
@@ -942,8 +979,12 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
       return '<div class="cd-past"><div class="cd-past-badge">' + T.alreadyHappened + '</div>' +
              '<div class="cd-past-date">' + fmtDate(targetDate, _pageLang) + '</div></div>';
     }
+    var gridClass = isElapsed ? 'cd-grid cd-grid--elapsed' : 'cd-grid';
+    var bottomLabel = isElapsed
+      ? '<div class="cd-elapsed-label">' + T.since + ' ' + fmtDate(targetDate, _pageLang) + '</div>'
+      : '<div class="cd-date-label">' + fmtDate(targetDate, _pageLang, getCountryTZ()) + '</div>';
     return [
-      '<div class="cd-grid">',
+      '<div class="' + gridClass + '">',
       '<div class="cd-box"><div class="cd-num" id="cd-d">—</div><div class="cd-lbl">' + T.days + '</div></div>',
       '<div class="cd-sep">:</div>',
       '<div class="cd-box"><div class="cd-num" id="cd-h">—</div><div class="cd-lbl">' + T.hours + '</div></div>',
@@ -952,15 +993,15 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
       '<div class="cd-sep">:</div>',
       '<div class="cd-box"><div class="cd-num" id="cd-s">—</div><div class="cd-lbl">' + T.sec + '</div></div>',
       '</div>',
-      '<div class="cd-date-label">' + fmtDate(targetDate, _pageLang, getCountryTZ()) + '</div>',
+      bottomLabel,
     ].join('');
   }
 
-  function buildPage(config, targetDate, extra, isPast, isUnknown) {
+  function buildPage(config, targetDate, extra, isPast, isUnknown, isElapsed) {
     var cc = catColors(config.category);
     var note     = (extra && extra.note) || config.note || '';
     var subtitle = (extra && extra.subtitle) || '';
-    var cdSection = buildCountdownSection(targetDate, isPast, isUnknown, note);
+    var cdSection = buildCountdownSection(targetDate, isPast, isUnknown, note, isElapsed);
 
     var articleHTML = '';
     if (config.content || (config.faqs && config.faqs.length)) {
@@ -983,7 +1024,7 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
       '<div class="cd-badge">' + tCat(config.category || '') + '</div>',
       '<h1 class="cd-title">' + config.name + '</h1>',
       subtitle ? '<div class="cd-subtitle">' + subtitle + '</div>' : '',
-      '<p class="cd-desc">' + (config.description || '') + '</p>',
+      '<p class="cd-desc">' + (isElapsed ? T.elapsed : (config.description || '')) + '</p>',
       cdSection,
       '</div>',
       '<div class="cd-below">',
@@ -1065,11 +1106,20 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
       }
 
       function init(targetDate, extra) {
-        var isPast    = config.type === 'one-time' && targetDate && targetDate < new Date();
+        var now       = new Date();
+        var isElapsed = !!(targetDate && targetDate < now &&
+                          config.type !== 'auto' && config.type !== 'annual' && config.type !== 'schedule');
+        var isPast    = false; // legacy static badge — superseded by elapsed ticker
         var isUnknown = !targetDate;
-        root.innerHTML = buildPage(config, targetDate, extra || {}, isPast, isUnknown);
+        root.innerHTML = buildPage(config, targetDate, extra || {}, isPast, isUnknown, isElapsed);
         setupShare(config);
-        if (!isPast && !isUnknown) startTicker(targetDate);
+        if (!isUnknown) {
+          if (isElapsed) {
+            startElapsedTicker(targetDate);
+          } else {
+            startTicker(targetDate);
+          }
+        }
         patchEventSchema(targetDate);
       }
 
