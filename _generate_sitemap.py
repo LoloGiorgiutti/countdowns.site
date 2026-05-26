@@ -2,6 +2,7 @@
 """Generate sitemap.xml from all built HTML pages."""
 
 import os
+import re
 from datetime import date
 
 BASE_URL = "https://countdowns.site"
@@ -10,6 +11,14 @@ TODAY = date.today().isoformat()
 
 EXCLUDE = {"/admin", "/custom", "/es/custom", "/pt/custom", "/fr/custom",
            "/embed", "/es/embed", "/pt/embed", "/fr/embed", "/countdowns-src"}
+
+# Daily date pages (noindex) — exclude from sitemap
+# Matches /countdown/month-day and language variants
+_DAILY_RE = re.compile(
+    r'^(?:/(?:es|pt|fr))?/countdown/'
+    r'(?:january|february|march|april|may|june|july|august|september|october|november|december)'
+    r'-\d{1,2}$'
+)
 
 def get_priority(path):
     if path == "":
@@ -34,6 +43,8 @@ for dirpath, _, files in os.walk(ROOT):
         continue
     if any(rel == excl or rel.startswith(excl + "/") for excl in EXCLUDE):
         continue
+    if _DAILY_RE.match(rel):
+        continue  # noindex daily pages — keep out of sitemap
     urls.append(rel)
 
 urls.sort()
