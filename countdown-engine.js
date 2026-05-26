@@ -1240,7 +1240,8 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
             resolve(res.date, false);
             return;
           }
-          resolve(date, config.type === 'one-time' && date && date < new Date());
+          var _isPastType = config.type === 'one-time' || config.type === 'variable' || config.type === 'fixed';
+          resolve(date, !!(_isPastType && date && date < new Date()));
         });
       }
     },

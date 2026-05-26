@@ -34,6 +34,7 @@ LANGS = [
     bucket_year="Later this year",
     bucket_future="Next year +",
     bucket_tba="Date TBA",
+    bucket_past="Past Events",
     card_tba="Date TBA",
     card_today="Today",
     card_days="days",
@@ -63,6 +64,7 @@ LANGS = [
     bucket_year="Este año",
     bucket_future="Año próximo +",
     bucket_tba="Fecha por confirmar",
+    bucket_past="Eventos pasados",
     card_tba="Fecha TBA",
     card_today="Hoy",
     card_days="días",
@@ -189,6 +191,7 @@ LANGS = [
     bucket_year="Este ano",
     bucket_future="Próximo ano +",
     bucket_tba="Data a confirmar",
+    bucket_past="Eventos passados",
     card_tba="Data TBA",
     card_today="Hoje",
     card_days="dias",
@@ -315,6 +318,7 @@ LANGS = [
     bucket_year="Plus tard cette année",
     bucket_future="L'année prochaine +",
     bucket_tba="Date à confirmer",
+    bucket_past="Événements passés",
     card_tba="Date TBA",
     card_today="Aujourd'hui",
     card_days="jours",
@@ -754,6 +758,13 @@ def generate_hub(lang):
     return '<a href="' + cardUrl + '" class="cd-card" ' + style + '>' + inner + '</a>';
   }}
 
+  function buildPastSection(items, label) {{
+    var inner = '<div class="cards-grid">';
+    items.forEach(function(r) {{ inner += cardHTML(r.ev, r.data); }});
+    inner += '</div>';
+    return '<details class="hub-past-details"><summary>' + label + ' (' + items.length + ')</summary>' + inner + '</details>';
+  }}
+
   function renderHub(results) {{
     var container = document.getElementById('hub-content');
     if (!container) return;
@@ -793,6 +804,8 @@ def generate_hub(lang):
         tba.forEach(function (r) {{ html += cardHTML(r.ev, r.data); }});
         html += '</div>';
       }}
+      var past = results.filter(function (r) {{ return r.data.state === 'past'; }});
+      if (past.length) {{ html += buildPastSection(past, '{lang["bucket_past"]}'); }}
     }} else {{
       var grouped = {{}}, catOrder = [];
       results.forEach(function (r) {{
@@ -800,15 +813,22 @@ def generate_hub(lang):
         if (!grouped[cat]) {{ grouped[cat] = []; catOrder.push(cat); }}
         grouped[cat].push(r);
       }});
+      var pastAll = [];
       catOrder.forEach(function (cat) {{
-        var c = cc(cat);
-        html += '<div class="hub-section">';
-        html += '<div class="section-hdr" style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '">';
-        html += '<span class="section-hdr-label">' + cat + '</span></div>';
-        html += '<div class="cards-grid">';
-        grouped[cat].forEach(function (r) {{ html += cardHTML(r.ev, r.data); }});
-        html += '</div></div>';
+        var active = grouped[cat].filter(function(r) {{ return r.data.state !== 'past'; }});
+        var pastCat = grouped[cat].filter(function(r) {{ return r.data.state === 'past'; }});
+        pastAll = pastAll.concat(pastCat);
+        if (active.length) {{
+          var c = cc(cat);
+          html += '<div class="hub-section">';
+          html += '<div class="section-hdr" style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '">';
+          html += '<span class="section-hdr-label">' + cat + '</span></div>';
+          html += '<div class="cards-grid">';
+          active.forEach(function (r) {{ html += cardHTML(r.ev, r.data); }});
+          html += '</div></div>';
+        }}
       }});
+      if (pastAll.length) {{ html += buildPastSection(pastAll, '{lang["bucket_past"]}'); }}
     }}
 
     container.innerHTML = html;
