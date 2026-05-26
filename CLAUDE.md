@@ -7,6 +7,21 @@
 
 ---
 
+## Owner & Goals
+
+- **Developer**: Lorenzo Giorgiutti (solo developer, no team)
+- **Primary goal for 2026**: Reach **$1,000/month** in revenue — ideally by Q4 2026, at latest by end of year
+- **Monetization model**: Google AdSense display ads (currently pending approval as of May 2026)
+- **Current traffic**: ~100–1,000 visits/month (early indexing phase)
+- **SEO approach**: Adaptive — prioritize whatever strategy has the best ROI at each stage (long-tail date keywords, trending event pages, on-page SEO improvements)
+- **Expansion priority**: On-page SEO improvements first, then new events and content
+
+## Sister Site
+
+- **calculate.website** (formerly calculadora.live) — same owner, same concept: a globally-targeted multi-language calculator/tool site. Being developed in parallel. Treat as a separate project; do not conflate with countdowns.site.
+
+---
+
 ## Stack & Deployment
 
 - **Frontend**: Pure static HTML/CSS/JS — no framework, no build step
@@ -409,9 +424,33 @@ Groups: English (US, GB, CA, AU, IE, NZ, SG, AE) / Spanish LatAm (AR, MX, CL, CO
 
 ---
 
+## Content — Daily Date Pages
+
+- **1,460 daily pages** exist at `/countdown/month-day/` and language variants (`/es/`, `/pt/`, `/fr/`)
+- Each page has: zodiac sign, season, day-of-year, week number, Famous Birthdays section, This Day in History section, FAQ section
+- **Famous Birthdays data**: `_daily_data.py` — 3 people per date, globally famous criterion
+- **Historical events data**: also in `_daily_data.py`
+- **Translation of `known_for` descriptions**: phrase-substitution via `_KF_TRANS` dict in `_generate.py` (ES/PT/FR)
+- Daily pages are tagged `noindex` (too many, low individual authority) — excluded from sitemap
+- To regenerate all daily pages: `python3 _generate.py`
+- To regenerate sitemap: `python3 _generate_sitemap.py`
+
+---
+
+## Audience & Geography
+
+- Content is geo-targeted: each event shows only for its relevant countries
+- Language follows country by default but is independently overridable
+- Target markets by volume: English-speaking (US, GB, CA, AU) + Spanish LatAm (AR, MX, CO, CL) + Brazilian Portuguese (BR) + French (FR)
+- Hub pages exist for EN, ES, PT, FR — other languages (DE, IT, etc.) fall back to EN
+
+---
+
 ## Known Limitations / Future TODOs
 
 - International Workers' Day (May 1) not yet a separate event for LatAm/Europe
 - Hub pages for DE, AT, SE, NO, DK, FI, NL, IT, GR fall back to English (no `/de/` etc.)
 - `sitemap.xml` must be manually regenerated when adding events
 - `cd_lang` explicit choice persists until next country change
+- AdSense `ads.txt` present at root and serving correctly — awaiting Google approval (as of May 2026)
+- calculate.website is a separate sister project — do not mix files or deployments
