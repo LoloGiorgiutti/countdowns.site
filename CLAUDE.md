@@ -483,8 +483,8 @@ When a `variable` or `fixed` event's date has passed:
 
 ### Implementation status
 - `auto` events: ✅ already implemented
-- Elapsed timer for past variable events: 🔲 **TODO — not yet implemented**
-- Collapsible past events hub section: 🔲 **TODO — not yet implemented**
+- Elapsed timer for past variable events: ✅ implemented (countdown-engine.js)
+- Collapsible past events hub section: ✅ implemented (index.html + _generate_hubs.py)
 
 ---
 
