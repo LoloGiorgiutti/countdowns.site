@@ -2208,7 +2208,7 @@ def generate_page(ev, lang="en"):
 <title>{seo_title} | countdowns.site</title>
 <meta name="description" content="{meta_desc}">
 {f'<meta name="keywords" content="{meta_keywords}">' if meta_keywords else ''}
-<meta name="robots" content="index, follow">
+<meta name="robots" content="{'noindex, follow' if ev_type == 'annual' else 'index, follow'}">
 <link rel="canonical" href="{en_url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.png" type="image/png" sizes="256x256">
