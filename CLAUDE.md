@@ -7,14 +7,68 @@
 
 ---
 
+## 🚨 SEO CRISIS HISTORY — READ BEFORE TOUCHING ANYTHING SEO-RELATED
+
+**Context (May 2026):** The site suffered a major SEO drop due to a sequence of structural mistakes. This section documents what happened and what must NEVER be repeated. Claude's limited memory across sessions caused real damage. Every future session must read this first.
+
+### What happened:
+
+1. **1,460 thin date pages were created** (`/countdown/january-01`, `/countdown/may-27`, etc.) all at once. These pages were near-identical in structure and appeared suddenly on a relatively new domain.
+2. **Google interpreted this as content spam / bot behavior** and dropped the entire domain's impressions from ~4,000/day to ~100/day — affecting ALL pages including the good event countdowns.
+3. **The correct fix** was to mark all 1,460 date pages with `noindex, follow` and remove them from the sitemap. This was applied and is the current state.
+4. **In a subsequent session, Claude (without memory of the above) incorrectly reversed this fix**, briefly re-indexing all 1,460 date pages. This was immediately reverted, but the damage from that momentary change is unknown.
+
+### Current SEO state (May 2026):
+- ~100–200 impressions/day (down from ~4,000) — recovery in progress, estimated weeks
+- Date pages: **noindex, follow** — DO NOT CHANGE THIS
+- Sitemap: **846 URLs** (event countdowns only, no date pages) — DO NOT ADD DATE PAGES
+- The domain is in a recovery phase — stability is more important than any new optimization
+
+### HARD RULES — never override without explicit user confirmation:
+
+| Rule | Reason |
+|------|--------|
+| ❌ NEVER re-index the date pages (`/countdown/january-01` etc.) | They caused the SEO crisis. They stay noindex until the domain fully recovers AND the user explicitly decides otherwise. |
+| ❌ NEVER add date pages back to sitemap.xml | Same reason. Sitemap stays at ~846 event URLs. |
+| ❌ NEVER make bulk structural changes (adding/removing hundreds of URLs at once) | This is what triggered the Google penalty. Any bulk change needs the user's explicit sign-off. |
+| ❌ NEVER submit or recommend submitting the sitemap to Search Console | User already did this. Doing it again repeatedly has no benefit and may signal instability. |
+| ❌ NEVER recommend "re-indexing" or "adding more pages to sitemap" as a fix for low impressions | The low impressions are a recovery phase — time is the fix, not more pages. |
+| ✅ DO wait for organic recovery | Google re-evaluates penalized domains over weeks. Stability + no new errors is the best action. |
+| ✅ DO focus on content quality of the ~846 indexed event pages | Better titles, descriptions, structured data on existing pages. |
+| ✅ DO ask the user before any change that affects robots meta tags or sitemap | These are high-risk SEO levers. |
+
+### What actually helps recovery (confirmed):
+- **Time + stability** — no new crawl signals of instability
+- **Improving meta titles/descriptions** on the 846 indexed event pages
+- **Building backlinks** to event pages (if user does outreach)
+- **GA4 + Search Console** are now set up — monitor but don't panic
+
+### What does NOT help (and may hurt):
+- Re-submitting the sitemap repeatedly
+- Toggling noindex on/off
+- Adding hundreds of new pages at once
+- Any "quick SEO fix" that touches robots meta or sitemap in bulk
+
+---
+
 ## Owner & Goals
 
 - **Developer**: Lorenzo Giorgiutti (solo developer, no team)
 - **Primary goal for 2026**: Reach **$1,000/month** in revenue — ideally by Q4 2026, at latest by end of year
 - **Monetization model**: Google AdSense display ads (currently pending approval as of May 2026)
-- **Current traffic**: ~100–1,000 visits/month (early indexing phase)
-- **SEO approach**: Adaptive — prioritize whatever strategy has the best ROI at each stage (long-tail date keywords, trending event pages, on-page SEO improvements)
-- **Expansion priority**: On-page SEO improvements first, then new events and content
+- **Current traffic**: ~100–200 impressions/day in Search Console (SEO recovery phase as of May 2026 — was ~4,000/day before the date-pages incident)
+- **SEO approach**: Stability first. Do not make bulk changes. Improve existing indexed pages. Wait for recovery.
+- **Expansion priority**: Quality over quantity — improve the ~846 indexed event pages before adding new ones
+
+### Path to $1,000/month — realistic breakdown:
+To earn $1,000/month with AdSense at ~$3–5 RPM (typical for this content type):
+- Need ~200,000–330,000 pageviews/month (~6,500–11,000/day)
+- Current state: well below that — recovery is step 1
+- Step 1 (now): Recover from SEO penalty → get back to 4,000 impressions/day → ~100 clicks/day
+- Step 2: Grow indexed event pages with high search intent (e.g. "countdown to Christmas 2026", "how many days until Black Friday")
+- Step 3: AdSense approval → monetize existing traffic
+- Step 4: Scale with new high-traffic events, backlinks, social
+- **Do not rush any step** — instability hurts more than it helps at this stage
 
 ## Sister Site
 
