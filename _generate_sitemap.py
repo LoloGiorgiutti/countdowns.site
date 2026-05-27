@@ -12,10 +12,16 @@ TODAY = date.today().isoformat()
 EXCLUDE = {"/admin", "/custom", "/es/custom", "/pt/custom", "/fr/custom",
            "/embed", "/es/embed", "/pt/embed", "/fr/embed", "/countdowns-src"}
 
-# Daily date pages (noindex) — exclude from sitemap
-# Matches /countdown/month-day and language variants
-_DAILY_RE = re.compile(
-    r'^(?:/(?:es|pt|fr))?/countdown/'
+# Language variants of date pages — only EN gets sitemap priority
+# ES/PT/FR date pages are discoverable via hreflang, no need to duplicate in sitemap
+_DAILY_LANG_RE = re.compile(
+    r'^/(?:es|pt|fr)/countdown/'
+    r'(?:january|february|march|april|may|june|july|august|september|october|november|december)'
+    r'-\d{1,2}$'
+)
+
+_DAILY_EN_RE = re.compile(
+    r'^/countdown/'
     r'(?:january|february|march|april|may|june|july|august|september|october|november|december)'
     r'-\d{1,2}$'
 )
@@ -25,6 +31,8 @@ def get_priority(path):
         return "1.0"
     if path in ("/es", "/pt", "/fr"):
         return "0.9"
+    if _DAILY_EN_RE.match(path):
+        return "0.7"
     if not path.startswith(("/es/", "/pt/", "/fr/")):
         return "0.8"
     return "0.6"
@@ -43,8 +51,8 @@ for dirpath, _, files in os.walk(ROOT):
         continue
     if any(rel == excl or rel.startswith(excl + "/") for excl in EXCLUDE):
         continue
-    if _DAILY_RE.match(rel):
-        continue  # noindex daily pages — keep out of sitemap
+    if _DAILY_LANG_RE.match(rel):
+        continue  # ES/PT/FR date pages covered by hreflang — keep EN only in sitemap
     urls.append(rel)
 
 urls.sort()
