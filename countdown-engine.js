@@ -1006,7 +1006,15 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
   }
 
   /* ─── HTML BUILDER (individual pages) ──────────────────────── */
-  function buildCountdownSection(targetDate, isPast, isUnknown, note, isElapsed) {
+  function fmtTime(d, lang) {
+    var locale = lang === 'es' ? 'es' : lang === 'pt' ? 'pt-BR' : lang === 'fr' ? 'fr' : 'en-US';
+    var tz = getCountryTZ();
+    var opts = { hour: '2-digit', minute: '2-digit' };
+    if (tz) { try { opts.timeZone = tz; } catch(e) {} }
+    return d.toLocaleTimeString(locale, opts);
+  }
+
+  function buildCountdownSection(targetDate, isPast, isUnknown, note, isElapsed, showTime) {
     if (isUnknown) {
       return '<div class="cd-unknown"><div class="cd-unknown-text">' + T.dateTBC + '</div>' +
              (note ? '<div class="cd-unknown-sub">' + note + '</div>' : '') + '</div>';
@@ -1016,9 +1024,11 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
              '<div class="cd-past-date">' + fmtDate(targetDate, _pageLang) + '</div></div>';
     }
     var gridClass = isElapsed ? 'cd-grid cd-grid--elapsed' : 'cd-grid';
+    var dateStr = fmtDate(targetDate, _pageLang, getCountryTZ());
+    var timeStr = (showTime && !isElapsed) ? ' · ' + fmtTime(targetDate, _pageLang) : '';
     var bottomLabel = isElapsed
       ? '<div class="cd-elapsed-label">' + T.since + ' ' + fmtDate(targetDate, _pageLang) + '</div>'
-      : '<div class="cd-date-label">' + fmtDate(targetDate, _pageLang, getCountryTZ()) + '</div>';
+      : '<div class="cd-date-label">' + dateStr + timeStr + '</div>';
     return [
       '<div class="' + gridClass + '">',
       '<div class="cd-box"><div class="cd-num" id="cd-d">—</div><div class="cd-lbl">' + T.days + '</div></div>',
@@ -1037,7 +1047,8 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     var cc = catColors(config.category);
     var note     = (extra && extra.note) || config.note || '';
     var subtitle = (extra && extra.subtitle) || '';
-    var cdSection = buildCountdownSection(targetDate, isPast, isUnknown, note, isElapsed);
+    var showTime = !!(extra && extra.showTime);
+    var cdSection = buildCountdownSection(targetDate, isPast, isUnknown, note, isElapsed, showTime);
 
     var articleHTML = '';
     if (config.content || (config.faqs && config.faqs.length)) {
@@ -1160,7 +1171,9 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
       }
 
       if (config.type === 'fixed') {
-        init(config.date || null, {});
+        var _fd = config.date ? new Date(config.date) : null;
+        var _fst = !!(config.date && config.date.length > 10 && _fd && (_fd.getUTCHours() !== 0 || _fd.getUTCMinutes() !== 0));
+        init(config.date || null, { showTime: _fst });
       } else if (config.type === 'auto') {
         var getter = AUTO[config.slug];
         if (!getter) { root.textContent = '[Engine] No auto getter for: ' + config.slug; return; }
@@ -1197,7 +1210,7 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
           if (race) {
             var _note = race['note_' + _lang] || race.note || '';
             var targetDate = new Date(race.date);
-            init(targetDate, { note: _note, subtitle: race.raceName || '' });
+            init(targetDate, { note: _note, subtitle: race.raceName || '', showTime: true });
             /* Auto-advance: when this race passes, re-init with next */
             var _advGuard = setInterval(function() {
               if (new Date() > targetDate) {
@@ -1206,7 +1219,7 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
                   var next = findNext();
                   if (next) {
                     var n = next['note_' + _lang] || next.note || '';
-                    init(new Date(next.date), { note: n, subtitle: next.raceName || '' });
+                    init(new Date(next.date), { note: n, subtitle: next.raceName || '', showTime: true });
                   }
                 }, 3000);
               }
@@ -1222,7 +1235,8 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
           var date = ev.date ? new Date(ev.date) : null;
           var _lang = (window.location.pathname.match(/^\/(es|pt|fr)\//) || [])[1] || 'en';
           var _note = (_lang !== 'en' && ev['note_' + _lang]) || ev.note || '';
-          init(date, { note: _note, subtitle: ev.raceName || '' });
+          var _showTime = !!(date && (date.getUTCHours() !== 0 || date.getUTCMinutes() !== 0));
+          init(date, { note: _note, subtitle: ev.raceName || '', showTime: _showTime });
         });
       }
     },
