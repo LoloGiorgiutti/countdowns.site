@@ -593,6 +593,23 @@ If you ever see `index.html` at < 800 lines, something was lost — stop and inv
 - ❌ Never copy the structure from `es/index.html` into `index.html` (different templates)
 - ✅ Always `wc -l index.html` before committing — should be > 1000 lines
 
+### ⚠️ MANDATORY: Sync ES/PT/FR after any index.html change
+
+`es/index.html`, `pt/index.html`, and `fr/index.html` are **generated from `index.html`** as their template.  
+If `index.html` is modified (new feature, new section, UI change), you **MUST** regenerate all language hubs immediately:
+
+```bash
+python3 _generate_hubs.py
+```
+
+Then verify all four files are in sync:
+```bash
+wc -l index.html es/index.html pt/index.html fr/index.html
+# es/pt/fr should be within ~30 lines of index.html
+```
+
+**This is non-negotiable.** In May 2026, the ES/PT/FR hubs were left at ~730 lines (old design) while EN was at 1073 lines (new design) — users on those languages saw a completely different, degraded homepage. This must never happen again.
+
 ---
 
 ## Known Limitations / Future TODOs

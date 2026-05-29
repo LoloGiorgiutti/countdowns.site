@@ -558,19 +558,280 @@ EVENTS_JS = """    /* ── Releases ── */
 """
 
 
-def generate_hub(lang):
-    c = lang["code"]
-    names_js = "{\n" + "".join(
-        f"      '{k}': \"{v}\",\n" for k, v in lang["names"].items()
-    ) + "    }"
-    # Build LANG_URLS: slug -> /{lang}/countdown/{slug}/ for slugs with translated pages
-    # For EN (code="en"), the canonical pages live at /countdown/{slug}/ (no prefix)
-    lang_urls_items = ""
+def build_lang_urls_js(c):
+    items = ""
     for slug, langs in SLUG_LANGS.items():
         if c in langs:
             prefix = "" if c == "en" else f"/{c}"
-            lang_urls_items += f"      '{slug}': '{prefix}/countdown/{slug}/',\n"
-    lang_urls_js = "{\n" + lang_urls_items + "    }"
+            items += f"      '{slug}': '{prefix}/countdown/{slug}/',\n"
+    return "{\n" + items + "    }"
+
+def build_names_js(names):
+    return "{\n" + "".join(f"      '{k}': \"{v}\",\n" for k, v in names.items()) + "    }"
+
+# ── UI string translations for the new hub design ──────────────────────────
+LANG_UI = {
+    'es': dict(
+        html_lang='es', og_locale='es_ES',
+        hero_label='En vivo · actualizado en tiempo real',
+        h1='Cada cuenta regresiva<br>que <em>importa</em>',
+        sort_chrono='Más próximos', sort_cat='Por categoría',
+        create_btn='✦ Crear tu cuenta regresiva',
+        browse_btn='📅 Ver todos los días del año',
+        search_placeholder='Buscar cuentas regresivas…',
+        fav_label='☆ Favoritos',
+        featured_label='Muy pronto',
+        bucket_today='Hoy', bucket_week='Próximos 7 días',
+        bucket_month='Próximos 30 días', bucket_soon='Próximos 3 meses',
+        bucket_year='Próximos 12 meses', bucket_future='Más de un año',
+        bucket_tba='Fecha por confirmar', bucket_past='Eventos pasados',
+        days_to_go='días para', card_today='Hoy', card_tba='TBA',
+        card_date_tba='Fecha TBA',
+        no_results='No se encontraron resultados para "',
+        save_fav='Guardar en favoritos', remove_fav='Quitar de favoritos',
+        geo_toast='Mostrando resultados para ',
+    ),
+    'pt': dict(
+        html_lang='pt-BR', og_locale='pt_BR',
+        hero_label='Ao vivo · atualizado em tempo real',
+        h1='Cada contagem regressiva<br>que <em>importa</em>',
+        sort_chrono='Mais próximos', sort_cat='Por categoria',
+        create_btn='✦ Criar sua contagem regressiva',
+        browse_btn='📅 Ver todos os dias do ano',
+        search_placeholder='Buscar contagens regressivas…',
+        fav_label='☆ Favoritos',
+        featured_label='Em breve',
+        bucket_today='Hoje', bucket_week='Próximos 7 dias',
+        bucket_month='Próximos 30 dias', bucket_soon='Próximos 3 meses',
+        bucket_year='Próximos 12 meses', bucket_future='Mais de um ano',
+        bucket_tba='Data a confirmar', bucket_past='Eventos passados',
+        days_to_go='dias para', card_today='Hoje', card_tba='TBA',
+        card_date_tba='Data TBA',
+        no_results='Nenhum resultado para "',
+        save_fav='Salvar nos favoritos', remove_fav='Remover dos favoritos',
+        geo_toast='Mostrando resultados para ',
+    ),
+    'fr': dict(
+        html_lang='fr', og_locale='fr_FR',
+        hero_label='En direct · mis à jour en temps réel',
+        h1='Chaque compte à rebours<br>qui <em>compte</em>',
+        sort_chrono='Les plus proches', sort_cat='Par catégorie',
+        create_btn='✦ Créer votre compte à rebours',
+        browse_btn="📅 Voir tous les jours de l'année",
+        search_placeholder='Rechercher des comptes à rebours…',
+        fav_label='☆ Favoris',
+        featured_label='Très bientôt',
+        bucket_today="Aujourd'hui", bucket_week='7 prochains jours',
+        bucket_month='30 prochains jours', bucket_soon='3 prochains mois',
+        bucket_year='12 prochains mois', bucket_future="Plus d'un an",
+        bucket_tba='Date à confirmer', bucket_past='Événements passés',
+        days_to_go='jours restants', card_today="Aujourd'hui", card_tba='TBA',
+        card_date_tba='Date TBA',
+        no_results='Aucun résultat pour "',
+        save_fav='Sauvegarder en favoris', remove_fav='Retirer des favoris',
+        geo_toast='Affichage pour ',
+    ),
+}
+
+def generate_from_en_hub(lang):
+    """Generate ES/PT/FR hub by adapting index.html (EN) with translations.
+    index.html is NEVER written — it is the source of truth."""
+    import re, json as _json
+
+    c    = lang['code']          # 'es' | 'pt' | 'fr'
+    ui   = LANG_UI[c]
+    cfg  = lang                  # the LANGS dict entry
+
+    with open('index.html', 'r', encoding='utf-8') as f:
+        html = f.read()
+
+    # ── 1. HTML lang attr ──────────────────────────────────────────────────
+    html = html.replace('<html lang="en">', f'<html lang="{ui["html_lang"]}">')
+
+    # ── 2. <title> ────────────────────────────────────────────────────────
+    html = re.sub(r'<title>[^<]+</title>', f'<title>{cfg["title"]}</title>', html, count=1)
+
+    # ── 3. Meta description ───────────────────────────────────────────────
+    html = re.sub(
+        r'(<meta name="description" content=")[^"]+(")',
+        rf'\g<1>{cfg["meta_desc"]}\g<2>', html, count=1)
+
+    # ── 4. OG tags ────────────────────────────────────────────────────────
+    html = re.sub(r'(<meta property="og:title" content=")[^"]+(")',
+                  rf'\g<1>{cfg["og_title"]}\g<2>', html, count=1)
+    html = re.sub(r'(<meta property="og:description" content=")[^"]+(")',
+                  rf'\g<1>{cfg["og_desc"]}\g<2>', html, count=1)
+    html = re.sub(r'(<meta property="og:locale" content=")[^"]+(")',
+                  rf'\g<1>{ui["og_locale"]}\g<2>', html, count=1)
+    html = re.sub(r'(<meta property="og:url" content=")[^"]+(")',
+                  rf'\g<1>{cfg["canonical"]}\g<2>', html, count=1)
+    html = re.sub(r'(<meta property="og:url" content=")[^"]+(")',
+                  rf'\g<1>{cfg["canonical"]}\g<2>', html)
+    html = re.sub(r'(<meta name="twitter:title" content=")[^"]+(")',
+                  rf'\g<1>{cfg["og_title"]}\g<2>', html, count=1)
+    html = re.sub(r'(<meta name="twitter:description" content=")[^"]+(")',
+                  rf'\g<1>{cfg["og_desc"]}\g<2>', html, count=1)
+
+    # ── 5. Canonical ──────────────────────────────────────────────────────
+    html = re.sub(r'(<link rel="canonical" href=")[^"]+(")',
+                  rf'\g<1>{cfg["canonical"]}\g<2>', html, count=1)
+
+    # ── 6. JSON-LD ────────────────────────────────────────────────────────
+    html = html.replace(
+        '"url": "https://countdowns.site/",\n  "name": "Countdowns",\n  "description": "Real-time countdowns for every event that matters",\n  "inLanguage": "en"',
+        f'"url": "{cfg["canonical"]}",\n  "name": "{cfg["json_ld_name"]}",\n  "description": "{cfg["json_ld_desc"]}",\n  "inLanguage": "{c}"'
+    )
+    html = html.replace(
+        '"@id": "https://countdowns.site/#website"',
+        f'"@id": "{cfg["canonical"]}#website"'
+    )
+
+    # ── 7. Hero label ─────────────────────────────────────────────────────
+    html = html.replace(
+        '<span></span>Live · updated in real time',
+        f'<span></span>{ui["hero_label"]}'
+    )
+
+    # ── 8. H1 ─────────────────────────────────────────────────────────────
+    html = html.replace(
+        '<h1>Every countdown<br>that <em>matters</em></h1>',
+        f'<h1>{ui["h1"]}</h1>'
+    )
+
+    # ── 9. Sort buttons ───────────────────────────────────────────────────
+    html = html.replace(
+        '>Soonest first<', f'>{ui["sort_chrono"]}<', 1
+    ).replace(
+        '>By category<', f'>{ui["sort_cat"]}<', 1
+    )
+
+    # ── 10. Create & Browse buttons ───────────────────────────────────────
+    html = html.replace(
+        'href="/custom/" class="hub-create-btn">✦ Create your own countdown',
+        f'href="/{c}/custom/" class="hub-create-btn">{ui["create_btn"]}'
+    )
+    html = html.replace(
+        '>📅 Browse every day of the year<',
+        f'>{ui["browse_btn"]}<', 1
+    )
+
+    # ── 11. Search placeholder ────────────────────────────────────────────
+    html = html.replace(
+        'placeholder="Search countdowns…"',
+        f'placeholder="{ui["search_placeholder"]}"'
+    )
+
+    # ── 12. Favorites header link text ────────────────────────────────────
+    html = html.replace('☆ Favorites ', f'{ui["fav_label"]} ')
+
+    # ── 13. Featured section label ────────────────────────────────────────
+    html = html.replace(
+        '>Very soon<',
+        f'>{ui["featured_label"]}<', 1
+    )
+
+    # ── 14. Active lang button ────────────────────────────────────────────
+    # No button has 'active' in EN; add it to correct lang button
+    html = html.replace(
+        f'class="lang-btn" onclick="localStorage.setItem(\'cd_lang_override\',\'{c}\');',
+        f'class="lang-btn active" onclick="localStorage.setItem(\'cd_lang_override\',\'{c}\');',
+        1
+    )
+
+    # ── 15. var currentLang ───────────────────────────────────────────────
+    html = html.replace("var currentLang = 'en';", f"var currentLang = '{c}';", 1)
+
+    # ── 16. NAMES dict ────────────────────────────────────────────────────
+    names_js = build_names_js(cfg['names'])
+    html = re.sub(
+        r'var NAMES = \{[^}]*(?:\{[^}]*\}[^}]*)?\};',
+        f'var NAMES = {names_js};',
+        html, count=1, flags=re.DOTALL
+    )
+
+    # ── 17. LANG_URLS dict ────────────────────────────────────────────────
+    lang_urls_js = build_lang_urls_js(c)
+    html = re.sub(
+        r'var LANG_URLS = \{[^;]+\};',
+        f'var LANG_URLS = {lang_urls_js};',
+        html, count=1, flags=re.DOTALL
+    )
+
+    # ── 18. BUCKETS labels ────────────────────────────────────────────────
+    buckets_en = [
+        ('Today',                 ui['bucket_today']),
+        ('Next 7 days',           ui['bucket_week']),
+        ('Next 30 days',          ui['bucket_month']),
+        ('Next 3 months',         ui['bucket_soon']),
+        ('Next 12 months',        ui['bucket_year']),
+        ('More than a year away', ui['bucket_future']),
+    ]
+    for en_label, tr_label in buckets_en:
+        html = html.replace(f'label:"{en_label}"', f'label:"{tr_label}"', 1)
+
+    # ── 19. JS UI strings ─────────────────────────────────────────────────
+    # Pre-compute to avoid backslash-in-f-string (Python < 3.12)
+    _card_today  = ui['card_today']
+    _days_to_go  = ui['days_to_go']
+    _card_tba    = ui['card_tba']
+    _date_tba    = ui['card_date_tba']
+    _bucket_tba  = ui['bucket_tba']
+    _bucket_past = ui['bucket_past']
+    _no_results  = ui['no_results']
+    _save_fav    = ui['save_fav']
+    _remove_fav  = ui['remove_fav']
+    _geo_toast   = ui['geo_toast']
+
+    # buildFeatured
+    html = html.replace(
+        '>Today</div>\'\n      : \'<div class="hub-fc-days-num">\'',
+        f'>{_card_today}</div>\'\n      : \'<div class="hub-fc-days-num">\''
+    )
+    html = html.replace(
+        "'<div class=\"hub-fc-days-lbl\">days to go</div>'",
+        f'\'<div class="hub-fc-days-lbl">{_days_to_go}</div>\''
+    )
+    # buildCompact
+    html = html.replace(
+        "'<span class=\"hub-cc-pill hub-cc-pill--today\">Today</span>'",
+        f'\'<span class="hub-cc-pill hub-cc-pill--today">{_card_today}</span>\''
+    )
+    html = html.replace(
+        "'<span class=\"hub-cc-pill hub-cc-pill--tba\">TBA</span>'",
+        f'\'<span class="hub-cc-pill hub-cc-pill--tba">{_card_tba}</span>\''
+    )
+    html = html.replace(
+        "data.state === 'unknown' ? 'Date TBA' : ''",
+        f"data.state === 'unknown' ? '{_date_tba}' : ''"
+    )
+    # renderHub bucket headers
+    html = html.replace(
+        "'<div class=\"hub-bucket-hdr\">Date TBA</div>",
+        f'\'<div class="hub-bucket-hdr">{_bucket_tba}</div>'
+    )
+    # Past Events (multiple occurrences)
+    html = html.replace("'Past Events'", f"'{_bucket_past}'")
+    # renderSearch no-results
+    html = html.replace(
+        "'<div class=\"hub-no-results\">No countdowns found for \"' + q + '\"</div>'",
+        f'\'<div class="hub-no-results">{_no_results}\' + q + \'\"</div>\''
+    )
+    # Fav button titles
+    html = html.replace("'Save to favorites'", f"'{_save_fav}'")
+    html = html.replace("'Remove from favorites'", f"'{_remove_fav}'")
+    # Geo toast
+    html = html.replace(
+        "'Showing countdowns for '",
+        f"'{_geo_toast}'"
+    )
+
+    return html
+
+def generate_hub(lang):
+    c = lang["code"]
+    names_js = build_names_js(lang["names"])
+    lang_urls_js = build_lang_urls_js(c)
+
 
     return f'''<!DOCTYPE html>
 <html lang="{lang['html_lang']}">
@@ -968,13 +1229,17 @@ def generate_hub(lang):
 </html>'''
 
 
+generated = 0
 for lang in LANGS:
     out_dir = lang["dir"]
-    if out_dir:
-        os.makedirs(out_dir, exist_ok=True)
-    out_path = os.path.join(out_dir, "index.html") if out_dir else "index.html"
+    if not out_dir:
+        print("  ⏭  /  (skipped — index.html is hand-crafted, never overwritten)")
+        continue
+    os.makedirs(out_dir, exist_ok=True)
+    out_path = os.path.join(out_dir, "index.html")
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(generate_hub(lang))
-    print(f"  ✓  /{out_dir}/" if out_dir else "  ✓  /")
+        f.write(generate_from_en_hub(lang))
+    print(f"  ✓  /{out_dir}/")
+    generated += 1
 
-print(f"\nGenerated {len(LANGS)} hub pages.")
+print(f"\nGenerated {generated} hub pages (EN skipped — hand-crafted).")
