@@ -713,10 +713,11 @@
       btn.title = on ? 'Remove from favorites' : 'Save to favorites';
     });
   }
+  function getCustomFavs() { try { return JSON.parse(localStorage.getItem('cd_custom_favs') || '[]'); } catch(e) { return []; } }
   function updateFavBadge() {
     var badge = document.getElementById('hub-fav-badge');
     if (!badge) return;
-    var n = getFavs().length;
+    var n = getFavs().length + getCustomFavs().length;
     badge.textContent = n;
     badge.style.display = n > 0 ? 'inline-flex' : 'none';
   }
