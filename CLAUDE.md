@@ -542,6 +542,36 @@ When a `variable` or `fixed` event's date has passed:
 
 ---
 
+## 🔒 Homepage Design — LOCKED STRUCTURE (do not overwrite)
+
+The English homepage (`index.html`) has a specific multi-layer design that must be preserved exactly. It is **NOT generated** by any script — it is hand-crafted. Never replace it with a simplified or auto-generated version.
+
+### Current design layers (all must coexist):
+1. **Featured section** — top 3 soonest events as large `hub-fc` cards with gradient + glow
+2. **Search bar** — real-time filtering via `.hub-search-input`
+3. **Compact grid** — remaining events as `hub-cc` cards with category color
+4. **Favorites system** — star button on every card (`hub-fav-btn`), localStorage key `cd_favorites`, badge counter in header, link to `/favorites/`
+5. **Past Events collapsible** — `<details class="hub-past-details">` at the bottom of both chrono and category views
+6. **Sort toggle** — "Soonest first" / "By category"
+
+### Key classes that must exist in index.html:
+- `.hub-fc`, `.hub-fc-name`, `.hub-fc-days-num` — featured cards
+- `.hub-cc`, `.hub-compact-grid` — compact cards grid
+- `.hub-search-input`, `.hub-search-wrap` — search bar
+- `.hub-fav-btn`, `.hub-fav-header-link`, `.hub-fav-badge` — favorites
+- `.hub-past-details` — collapsible past events
+
+### Current line count: ~1070 lines
+If you ever see `index.html` at < 800 lines, something was lost — stop and investigate before committing.
+
+### What NOT to do:
+- ❌ Never run `_generate_hubs.py` output into `index.html` (that script generates es/pt/fr only)
+- ❌ Never replace `index.html` with a simplified version "to add one feature"
+- ❌ Never copy the structure from `es/index.html` into `index.html` (different templates)
+- ✅ Always `wc -l index.html` before committing — should be > 1000 lines
+
+---
+
 ## Known Limitations / Future TODOs
 
 - International Workers' Day (May 1) not yet a separate event for LatAm/Europe
