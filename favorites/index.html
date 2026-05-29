@@ -433,6 +433,15 @@
     if (clearBtn) clearBtn.style.display = 'inline-flex';
 
     // Render custom favs section immediately (no async needed)
+    // Sort chronologically: soonest first (past dates go to the end)
+    customFavs.sort(function(a, b) {
+      var now = Date.now();
+      var da = new Date(a.date + (a.time ? 'T' + a.time + ':00' : 'T00:00:00')).getTime();
+      var db = new Date(b.date + (b.time ? 'T' + b.time + ':00' : 'T00:00:00')).getTime();
+      var fa = da >= now ? da : da + 1e15;  // past dates sink to bottom
+      var fb = db >= now ? db : db + 1e15;
+      return fa - fb;
+    });
     var customSection = '';
     if (customFavs.length > 0) {
       var customCards = customFavs.map(buildCustomCard).join('');
