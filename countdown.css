@@ -625,6 +625,22 @@ body {
 }
 .cd-share-btn svg { flex-shrink: 0; }
 
+/* ── Favourite button (individual countdown page) ── */
+.cd-fav-btn {
+  border-color: rgba(251,191,36,.35) !important;
+  color: var(--ink-muted) !important;
+}
+.cd-fav-btn:hover {
+  border-color: #FBBF24 !important;
+  color: #FBBF24 !important;
+  background: rgba(251,191,36,.08) !important;
+}
+.cd-fav-btn.active {
+  border-color: #FBBF24 !important;
+  color: #FBBF24 !important;
+  background: rgba(251,191,36,.1) !important;
+}
+
 /* ── Embed modal ── */
 .cd-embed-modal {
   position: fixed;

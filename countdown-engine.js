@@ -31,6 +31,7 @@
       alreadyHappened: 'Already happened',
       elapsed: 'Time elapsed since this event',
       since: 'Since',
+      saveFav: 'Save', savedFav: '★ Saved',
       backLink: '← All countdowns',
       faqTitle: 'Frequently Asked Questions',
 copyLink: 'Copy link', copied: '✓ Copied!',
@@ -46,6 +47,7 @@ copyLink: 'Copy link', copied: '✓ Copied!',
       alreadyHappened: 'Ya ocurrió',
       elapsed: 'Tiempo transcurrido desde este evento',
       since: 'Desde el',
+      saveFav: 'Guardar', savedFav: '★ Guardado',
       backLink: '← Todos los countdowns',
       faqTitle: 'Preguntas Frecuentes',
 copyLink: 'Copiar enlace', copied: '✓ ¡Copiado!',
@@ -61,6 +63,7 @@ copyLink: 'Copiar enlace', copied: '✓ ¡Copiado!',
       alreadyHappened: 'Já aconteceu',
       elapsed: 'Tempo decorrido desde este evento',
       since: 'Desde',
+      saveFav: 'Salvar', savedFav: '★ Salvo',
       backLink: '← Todos os countdowns',
       faqTitle: 'Perguntas Frequentes',
 copyLink: 'Copiar link', copied: '✓ Copiado!',
@@ -76,6 +79,7 @@ copyLink: 'Copiar link', copied: '✓ Copiado!',
       alreadyHappened: 'Déjà passé',
       elapsed: 'Temps écoulé depuis cet événement',
       since: 'Depuis le',
+      saveFav: 'Sauvegarder', savedFav: '★ Sauvegardé',
       backLink: '← Tous les comptes à rebours',
       faqTitle: 'Questions Fréquentes',
 copyLink: 'Copier le lien', copied: '✓ Copié !',
@@ -894,8 +898,10 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     var embedSrc = embedBase + '/embed/' + slug + '/';
     var pageLink = 'https://countdowns.site' + (_pageLang !== 'en' ? '/' + _pageLang : '') + '/countdown/' + slug + '/';
     var iframeCode = '<iframe src="' + embedSrc + '" width="320" height="200" frameborder="0" style="border-radius:16px;overflow:hidden" allowtransparency="true"></iframe>\n<p style="font-size:11px;text-align:center;margin:4px 0;font-family:sans-serif"><a href="' + pageLink + '" style="color:#888;text-decoration:none" target="_blank">countdowns.site</a></p>';
+    var favActive = _cdIsFav(slug);
     return [
       '<div class="cd-share-bar">',
+      '<button class="cd-fav-btn cd-share-btn' + (favActive ? ' active' : '') + '" id="cd-fav-btn" data-slug="' + slug + '" onclick="window._cdToggleFav(this)">' + (favActive ? T.savedFav : '☆ ' + T.saveFav) + '</button>',
       '<button class="cd-share-btn" id="cd-copy-btn" onclick="window._cdCopy()">' + ICON_COPY + T.copyLink + '</button>',
       '<button class="cd-share-btn cd-share-native" onclick="window._cdNativeShare()">' + ICON_SHARE + T.shareBtn + '</button>',
       '<a class="cd-share-btn" href="' + waHref + '" target="_blank" rel="noopener">' + ICON_WA + T.whatsapp + '</a>',
@@ -914,6 +920,20 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
       '</div></div>',
     ].join('');
   }
+
+  /* ─── FAVOURITES (individual countdown pages) ──────────────── */
+  function _cdGetFavs() { try { return JSON.parse(localStorage.getItem('cd_favorites') || '[]'); } catch(e) { return []; } }
+  function _cdIsFav(slug) { return _cdGetFavs().indexOf(slug) >= 0; }
+  window._cdToggleFav = function(btn) {
+    var slug = btn.dataset.slug;
+    var favs = _cdGetFavs();
+    var idx  = favs.indexOf(slug);
+    var nowFav = idx < 0;
+    if (nowFav) favs.push(slug); else favs.splice(idx, 1);
+    try { localStorage.setItem('cd_favorites', JSON.stringify(favs)); } catch(e) {}
+    btn.classList.toggle('active', nowFav);
+    btn.textContent = nowFav ? T.savedFav : '☆ ' + T.saveFav;
+  };
 
   function setupShare(config) {
     var pageUrl = window.location.href.split('?')[0].split('#')[0];
