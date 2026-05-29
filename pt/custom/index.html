@@ -144,6 +144,7 @@ function getCustomFavs(){try{return JSON.parse(localStorage.getItem('cd_custom_f
 function setCustomFavs(arr){try{localStorage.setItem('cd_custom_favs',JSON.stringify(arr));}catch(e){}}
 function customFavKey(p){return (p.n||'')+'|'+(p.d||'')+'|'+(p.t||'');}
 function isCustomFav(p){var key=customFavKey(p);return getCustomFavs().some(function(f){return f.key===key;});}
+function getCustomFavSavedAt(p){var key=customFavKey(p);var f=getCustomFavs().find(function(f){return f.key===key;});return f?f.savedAt:null;}
 function addCustomFav(p){var key=customFavKey(p);var favs=getCustomFavs().filter(function(f){return f.key!==key;});favs.unshift({key:key,name:p.n,date:p.d,time:p.t||'',note:p.m||'',url:location.href,savedAt:Date.now()});setCustomFavs(favs);}
 function removeCustomFav(p){var key=customFavKey(p);setCustomFavs(getCustomFavs().filter(function(f){return f.key!==key;}));}
 
@@ -167,6 +168,8 @@ function buildCountdown(p){
       '</div>'+
       '<p class="cd-date-label">'+formatDate(p.d,p.t||'')+'</p>');
   var noteHtml=p.m?'<div class="cd-note-card">'+esc(p.m)+'</div>':'';
+  var savedAt=getCustomFavSavedAt(p);
+  var createdHtml=savedAt?'<p class="cc-created-date">Criado em '+new Date(savedAt).toLocaleDateString('pt-BR',{month:'long',day:'numeric',year:'numeric'})+'</p>':'';
   var shareUrl=location.href;
   var waUrl='https://wa.me/?text='+encodeURIComponent((T.shareMsg)+shareUrl);
   var xUrl='https://twitter.com/intent/tweet?text='+encodeURIComponent((T.shareMsg)+shareUrl);
@@ -207,6 +210,7 @@ function buildCountdown(p){
     '<div class="cd-below">'+
       noteHtml+
       shareBar+
+      createdHtml+
     '</div>'+
     buildFaq()+
   '</div>';
@@ -248,10 +252,23 @@ function bindCountdown(p){
       removeCustomFav(p);
       favBtn.textContent='☆ '+T.saveFav;
       favBtn.style.color='';
+      var cd=document.querySelector('.cc-created-date');
+      if(cd)cd.remove();
     }else{
       addCustomFav(p);
       favBtn.textContent='★ '+T.savedFav;
       favBtn.style.color='#FBBF24';
+      var savedAt=getCustomFavSavedAt(p);
+      if(savedAt){
+        var cd=document.querySelector('.cc-created-date');
+        if(!cd){
+          cd=document.createElement('p');
+          cd.className='cc-created-date';
+          var below=document.querySelector('.cd-below');
+          if(below)below.appendChild(cd);
+        }
+        cd.textContent='Criado em '+new Date(savedAt).toLocaleDateString('pt-BR',{month:'long',day:'numeric',year:'numeric'});
+      }
     }
     if(typeof CountdownEngine!=='undefined'&&CountdownEngine.updateHeaderFavBadge){
       CountdownEngine.updateHeaderFavBadge();
