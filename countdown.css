@@ -1324,7 +1324,7 @@ body {
 .hub-past-details .hub-compact-grid { margin-top:14px; }
 .hub-cc-created { font-size:.68rem; color:var(--txt-dim,#3d3d52); margin-top:4px; opacity:.7; }
 [data-theme="light"] .hub-cc-created { color:#a0a0b8; }
-.cc-created-date { font-size:.82rem; color:var(--ink-muted,#8888aa); text-align:center; margin:18px 0 0; letter-spacing:.02em; }
+.cc-created-date { font-size:.82rem; color:var(--ink-muted,#8888aa); text-align:center; margin:0 0 18px; letter-spacing:.02em; }
 [data-theme="light"] .cc-created-date { color:#7070a0; }
 
 /* ═══════════════════════════════════════════════════════════════
