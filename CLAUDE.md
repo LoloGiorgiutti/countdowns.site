@@ -7,6 +7,29 @@
 
 ---
 
+## ⚠️ EVENT DATA ACCURACY — MANDATORY RULE
+
+**Every time an event date or time is added or edited**, Claude must verify the information carefully before writing it. Wrong times directly affect users trusting the countdown.
+
+### Rules:
+| Rule | Detail |
+|------|--------|
+| ❌ NEVER assume a time is correct without verifying | A 1-hour error in a UTC offset causes wrong countdowns for millions of users |
+| ✅ ALWAYS verify UTC offset for each race/event location | e.g. CEST = UTC+2, BST = UTC+1, EDT = UTC-4, JST = UTC+9 |
+| ✅ ALWAYS cross-check with official sources or known race history | Standard F1/MotoGP race starts = 15:00 local time |
+| ✅ When in doubt, ASK the user — don't guess | Especially for new events or events with non-standard times |
+
+### Known timezone rules for recurring events:
+- **F1 European races (CEST, UTC+2)**: race at 15:00 local → `T13:00:00Z`
+- **F1 British GP (BST, UTC+1)**: race at 15:00 local → `T14:00:00Z`
+- **F1 night races** (Singapore, Las Vegas, Abu Dhabi): confirm separately — non-standard times
+- **Argentina time = UTC-3** year-round (no daylight saving) — use to sanity-check: 13:00 UTC = 10:00 AR, 14:00 UTC = 11:00 AR
+
+### Past corrections (track record):
+- May 2026: All European F1 races had `T14:00:00Z` (wrong) → corrected to `T13:00:00Z`. British GP had `T15:00:00Z` → corrected to `T14:00:00Z`. User had to catch this error.
+
+---
+
 ## 🚨 SEO CRISIS HISTORY — READ BEFORE TOUCHING ANYTHING SEO-RELATED
 
 **Context (May 2026):** The site suffered a major SEO drop due to a sequence of structural mistakes. This section documents what happened and what must NEVER be repeated. Claude's limited memory across sessions caused real damage. Every future session must read this first.

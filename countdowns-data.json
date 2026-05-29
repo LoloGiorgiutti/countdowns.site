@@ -1,1 +1,2462 @@
-{"updated":"2026-05-20","_policy":"Only confirmed official dates. If unconfirmed → date: null. No estimated dates shown as real countdowns.","events":{"gta6":{"date":"2026-11-19T12:00:00","note":"Rockstar Games has not announced an official release date. Stay tuned for updates."},"iphone":{"date":null,"note":"Apple has not announced iPhone 2026 dates. Usually unveiled in September — check back closer to the date."},"f1":{"note":"Formula 1 World Championship — counts down to the next scheduled race.","note_es":"Campeonato Mundial de Fórmula 1 — cuenta regresiva para la próxima carrera.","note_pt":"Campeonato Mundial de Fórmula 1 — contagem para a próxima corrida.","note_fr":"Championnat du Monde de Formule 1 — compte à rebours vers la prochaine course.","schedule":[{"date":"2026-03-08T04:00:00Z","raceName":"Australian Grand Prix","circuit":"Albert Park, Melbourne, Australia","note":"Formula 1 2026 — Australian Grand Prix. Albert Park, Melbourne, Australia.","note_es":"Fórmula 1 2026 — Australian Grand Prix. Albert Park, Melbourne, Australia.","note_pt":"Fórmula 1 2026 — Australian Grand Prix. Albert Park, Melbourne, Australia.","note_fr":"Formule 1 2026 — Australian Grand Prix. Albert Park, Melbourne, Australia."},{"date":"2026-03-15T07:00:00Z","raceName":"Chinese Grand Prix","circuit":"Shanghai International Circuit, China","sprint":true,"note":"Formula 1 2026 — Chinese Grand Prix. Shanghai International Circuit, China. (Sprint Weekend)","note_es":"Fórmula 1 2026 — Chinese Grand Prix. Shanghai International Circuit, China. (Sprint Weekend)","note_pt":"Fórmula 1 2026 — Chinese Grand Prix. Shanghai International Circuit, China. (Sprint Weekend)","note_fr":"Formule 1 2026 — Chinese Grand Prix. Shanghai International Circuit, China. (Sprint Weekend)"},{"date":"2026-03-29T06:00:00Z","raceName":"Japanese Grand Prix","circuit":"Suzuka International Racing Course, Japan","note":"Formula 1 2026 — Japanese Grand Prix. Suzuka International Racing Course, Japan.","note_es":"Fórmula 1 2026 — Japanese Grand Prix. Suzuka International Racing Course, Japan.","note_pt":"Fórmula 1 2026 — Japanese Grand Prix. Suzuka International Racing Course, Japan.","note_fr":"Formule 1 2026 — Japanese Grand Prix. Suzuka International Racing Course, Japan."},{"date":"2026-05-03T18:00:00Z","raceName":"Miami Grand Prix","circuit":"Miami International Autodrome, USA","sprint":true,"note":"Formula 1 2026 — Miami Grand Prix. Miami International Autodrome, USA. (Sprint Weekend)","note_es":"Fórmula 1 2026 — Miami Grand Prix. Miami International Autodrome, USA. (Sprint Weekend)","note_pt":"Fórmula 1 2026 — Miami Grand Prix. Miami International Autodrome, USA. (Sprint Weekend)","note_fr":"Formule 1 2026 — Miami Grand Prix. Miami International Autodrome, USA. (Sprint Weekend)"},{"date":"2026-05-24T20:00:00Z","raceName":"Canadian Grand Prix","circuit":"Circuit Gilles Villeneuve, Montreal, Canada","sprint":true,"note":"Formula 1 2026 — Canadian Grand Prix. Circuit Gilles Villeneuve, Montreal, Canada. (Sprint Weekend)","note_es":"Fórmula 1 2026 — Canadian Grand Prix. Circuit Gilles Villeneuve, Montreal, Canada. (Sprint Weekend)","note_pt":"Fórmula 1 2026 — Canadian Grand Prix. Circuit Gilles Villeneuve, Montreal, Canada. (Sprint Weekend)","note_fr":"Formule 1 2026 — Canadian Grand Prix. Circuit Gilles Villeneuve, Montreal, Canada. (Sprint Weekend)"},{"date":"2026-06-07T14:00:00Z","raceName":"Monaco Grand Prix","circuit":"Circuit de Monaco, Monte Carlo","note":"Formula 1 2026 — Monaco Grand Prix. Circuit de Monaco, Monte Carlo.","note_es":"Fórmula 1 2026 — Monaco Grand Prix. Circuit de Monaco, Monte Carlo.","note_pt":"Fórmula 1 2026 — Monaco Grand Prix. Circuit de Monaco, Monte Carlo.","note_fr":"Formule 1 2026 — Monaco Grand Prix. Circuit de Monaco, Monte Carlo."},{"date":"2026-06-14T14:00:00Z","raceName":"Barcelona-Catalunya Grand Prix","circuit":"Circuit de Barcelona-Catalunya, Spain","note":"Formula 1 2026 — Barcelona-Catalunya Grand Prix. Circuit de Barcelona-Catalunya, Spain.","note_es":"Fórmula 1 2026 — Barcelona-Catalunya Grand Prix. Circuit de Barcelona-Catalunya, Spain.","note_pt":"Fórmula 1 2026 — Barcelona-Catalunya Grand Prix. Circuit de Barcelona-Catalunya, Spain.","note_fr":"Formule 1 2026 — Barcelona-Catalunya Grand Prix. Circuit de Barcelona-Catalunya, Spain."},{"date":"2026-06-28T14:00:00Z","raceName":"Austrian Grand Prix","circuit":"Red Bull Ring, Spielberg, Austria","note":"Formula 1 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.","note_es":"Fórmula 1 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.","note_pt":"Fórmula 1 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.","note_fr":"Formule 1 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria."},{"date":"2026-07-05T15:00:00Z","raceName":"British Grand Prix","circuit":"Silverstone Circuit, United Kingdom","sprint":true,"note":"Formula 1 2026 — British Grand Prix. Silverstone Circuit, United Kingdom. (Sprint Weekend)","note_es":"Fórmula 1 2026 — British Grand Prix. Silverstone Circuit, United Kingdom. (Sprint Weekend)","note_pt":"Fórmula 1 2026 — British Grand Prix. Silverstone Circuit, United Kingdom. (Sprint Weekend)","note_fr":"Formule 1 2026 — British Grand Prix. Silverstone Circuit, United Kingdom. (Sprint Weekend)"},{"date":"2026-07-19T14:00:00Z","raceName":"Belgian Grand Prix","circuit":"Circuit de Spa-Francorchamps, Belgium","note":"Formula 1 2026 — Belgian Grand Prix. Circuit de Spa-Francorchamps, Belgium.","note_es":"Fórmula 1 2026 — Belgian Grand Prix. Circuit de Spa-Francorchamps, Belgium.","note_pt":"Fórmula 1 2026 — Belgian Grand Prix. Circuit de Spa-Francorchamps, Belgium.","note_fr":"Formule 1 2026 — Belgian Grand Prix. Circuit de Spa-Francorchamps, Belgium."},{"date":"2026-07-26T14:00:00Z","raceName":"Hungarian Grand Prix","circuit":"Hungaroring, Budapest, Hungary","note":"Formula 1 2026 — Hungarian Grand Prix. Hungaroring, Budapest, Hungary.","note_es":"Fórmula 1 2026 — Hungarian Grand Prix. Hungaroring, Budapest, Hungary.","note_pt":"Fórmula 1 2026 — Hungarian Grand Prix. Hungaroring, Budapest, Hungary.","note_fr":"Formule 1 2026 — Hungarian Grand Prix. Hungaroring, Budapest, Hungary."},{"date":"2026-08-23T14:00:00Z","raceName":"Dutch Grand Prix","circuit":"Circuit Zandvoort, Netherlands","note":"Formula 1 2026 — Dutch Grand Prix. Circuit Zandvoort, Netherlands.","note_es":"Fórmula 1 2026 — Dutch Grand Prix. Circuit Zandvoort, Netherlands.","note_pt":"Fórmula 1 2026 — Dutch Grand Prix. Circuit Zandvoort, Netherlands.","note_fr":"Formule 1 2026 — Dutch Grand Prix. Circuit Zandvoort, Netherlands."},{"date":"2026-09-06T14:00:00Z","raceName":"Italian Grand Prix","circuit":"Autodromo Nazionale Monza, Italy","note":"Formula 1 2026 — Italian Grand Prix. Autodromo Nazionale Monza, Italy.","note_es":"Fórmula 1 2026 — Italian Grand Prix. Autodromo Nazionale Monza, Italy.","note_pt":"Fórmula 1 2026 — Italian Grand Prix. Autodromo Nazionale Monza, Italy.","note_fr":"Formule 1 2026 — Italian Grand Prix. Autodromo Nazionale Monza, Italy."},{"date":"2026-09-13T14:00:00Z","raceName":"Spanish Grand Prix","circuit":"IFEMA Madrid Circuit, Spain","note":"Formula 1 2026 — Spanish Grand Prix. IFEMA Madrid Circuit, Spain.","note_es":"Fórmula 1 2026 — Spanish Grand Prix. IFEMA Madrid Circuit, Spain.","note_pt":"Fórmula 1 2026 — Spanish Grand Prix. IFEMA Madrid Circuit, Spain.","note_fr":"Formule 1 2026 — Spanish Grand Prix. IFEMA Madrid Circuit, Spain."},{"date":"2026-09-26T12:00:00Z","raceName":"Azerbaijan Grand Prix","circuit":"Baku City Circuit, Azerbaijan","note":"Formula 1 2026 — Azerbaijan Grand Prix. Baku City Circuit, Azerbaijan.","note_es":"Fórmula 1 2026 — Azerbaijan Grand Prix. Baku City Circuit, Azerbaijan.","note_pt":"Fórmula 1 2026 — Azerbaijan Grand Prix. Baku City Circuit, Azerbaijan.","note_fr":"Formule 1 2026 — Azerbaijan Grand Prix. Baku City Circuit, Azerbaijan."},{"date":"2026-10-11T13:00:00Z","raceName":"Singapore Grand Prix","circuit":"Marina Bay Street Circuit, Singapore","sprint":true,"note":"Formula 1 2026 — Singapore Grand Prix. Marina Bay Street Circuit, Singapore. (Sprint Weekend)","note_es":"Fórmula 1 2026 — Singapore Grand Prix. Marina Bay Street Circuit, Singapore. (Sprint Weekend)","note_pt":"Fórmula 1 2026 — Singapore Grand Prix. Marina Bay Street Circuit, Singapore. (Sprint Weekend)","note_fr":"Formule 1 2026 — Singapore Grand Prix. Marina Bay Street Circuit, Singapore. (Sprint Weekend)"},{"date":"2026-10-25T20:00:00Z","raceName":"United States Grand Prix","circuit":"Circuit of the Americas, Austin, TX","note":"Formula 1 2026 — United States Grand Prix. Circuit of the Americas, Austin, TX.","note_es":"Fórmula 1 2026 — United States Grand Prix. Circuit of the Americas, Austin, TX.","note_pt":"Fórmula 1 2026 — United States Grand Prix. Circuit of the Americas, Austin, TX.","note_fr":"Formule 1 2026 — United States Grand Prix. Circuit of the Americas, Austin, TX."},{"date":"2026-11-01T20:00:00Z","raceName":"Mexico City Grand Prix","circuit":"Autodromo Hermanos Rodriguez, Mexico City","note":"Formula 1 2026 — Mexico City Grand Prix. Autodromo Hermanos Rodriguez, Mexico City.","note_es":"Fórmula 1 2026 — Mexico City Grand Prix. Autodromo Hermanos Rodriguez, Mexico City.","note_pt":"Fórmula 1 2026 — Mexico City Grand Prix. Autodromo Hermanos Rodriguez, Mexico City.","note_fr":"Formule 1 2026 — Mexico City Grand Prix. Autodromo Hermanos Rodriguez, Mexico City."},{"date":"2026-11-08T17:00:00Z","raceName":"Sao Paulo Grand Prix","circuit":"Autodromo Jose Carlos Pace, Interlagos, Brazil","note":"Formula 1 2026 — Sao Paulo Grand Prix. Autodromo Jose Carlos Pace, Interlagos, Brazil.","note_es":"Fórmula 1 2026 — Sao Paulo Grand Prix. Autodromo Jose Carlos Pace, Interlagos, Brazil.","note_pt":"Fórmula 1 2026 — Sao Paulo Grand Prix. Autodromo Jose Carlos Pace, Interlagos, Brazil.","note_fr":"Formule 1 2026 — Sao Paulo Grand Prix. Autodromo Jose Carlos Pace, Interlagos, Brazil."},{"date":"2026-11-22T04:00:00Z","raceName":"Las Vegas Grand Prix","circuit":"Las Vegas Strip Circuit, Nevada, USA","note":"Formula 1 2026 — Las Vegas Grand Prix. Las Vegas Strip Circuit, Nevada, USA.","note_es":"Fórmula 1 2026 — Las Vegas Grand Prix. Las Vegas Strip Circuit, Nevada, USA.","note_pt":"Fórmula 1 2026 — Las Vegas Grand Prix. Las Vegas Strip Circuit, Nevada, USA.","note_fr":"Formule 1 2026 — Las Vegas Grand Prix. Las Vegas Strip Circuit, Nevada, USA."},{"date":"2026-11-29T16:00:00Z","raceName":"Qatar Grand Prix","circuit":"Lusail International Circuit, Qatar","note":"Formula 1 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.","note_es":"Fórmula 1 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.","note_pt":"Fórmula 1 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.","note_fr":"Formule 1 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar."},{"date":"2026-12-06T13:00:00Z","raceName":"Abu Dhabi Grand Prix","circuit":"Yas Marina Circuit, Abu Dhabi","note":"Formula 1 2026 — Abu Dhabi Grand Prix. Yas Marina Circuit, Abu Dhabi.","note_es":"Fórmula 1 2026 — Abu Dhabi Grand Prix. Yas Marina Circuit, Abu Dhabi.","note_pt":"Fórmula 1 2026 — Abu Dhabi Grand Prix. Yas Marina Circuit, Abu Dhabi.","note_fr":"Formule 1 2026 — Abu Dhabi Grand Prix. Yas Marina Circuit, Abu Dhabi."}]},"world-cup":{"date":"2026-06-11T19:00:00Z","note":"2026 FIFA World Cup opening match: Mexico vs South Africa · Estadio Azteca, Mexico City · kickoff 14:00 CDT / 19:00 UTC."},"ucl-final":{"date":"2026-05-30T16:00:00Z","note":"UEFA Champions League 2025–26 Final · Puskás Aréna, Budapest · kickoff 18:00 CEST / 16:00 UTC. UEFA moved the kickoff earlier than previous years."},"nba-finals":{"date":"2026-06-03T20:30:00-04:00","note":"2026 NBA Finals — Game 1: June 3, 2026 at 8:30 PM ET on ABC."},"le-mans":{"date":"2026-06-13T16:00:00+02:00","note":"24 Hours of Le Mans 2026 — start: Saturday June 13 at 16:00 local time."},"wimbledon":{"date":"2026-06-29T11:00:00+01:00","note":"The Championships, Wimbledon 2026 — first day of play."},"tour-de-france":{"date":"2026-06-27T12:00:00+02:00","note":"Tour de France 2026 — Grand Départ."},"copa-libertadores":{"date":"2026-11-28T20:00:00-03:00","note":"El partido se disputará en el Estadio Centenario de Montevideo, Uruguay, según confirmó la CONMEBOL en mayo de 2026."},"grammys":{"date":"2027-02-07T20:00:00-05:00","note":"Grammy Awards 2027 — February 7, 2027 at Crypto.com Arena, Los Angeles. Ceremony begins at 8pm ET / 5pm PT.","note_es":"Premios Grammy 2027 — 7 de febrero de 2027 en el Crypto.com Arena, Los Ángeles."},"eurovision":{"date":null,"note":"Eurovision Song Contest 2027 — host country and dates not yet confirmed."},"coachella":{"date":"2027-04-09T12:00:00-07:00","note":"Coachella 2027 — April 9–11 & 16–18, Empire Polo Club, Indio, California.","note_es":"Coachella 2027 — 9–11 y 16–18 de abril, Empire Polo Club, Indio, California."},"cannes":{"date":"2026-05-12T19:00:00+02:00","note":"Cannes Film Festival 2026 — Opening Ceremony.","note_es":null,"note_pt":null,"note_fr":null},"eclipse":{"date":"2026-08-12T19:29:00+02:00","note":"Total solar eclipse — visible from southern Spain, northern Africa, and parts of South America. Astronomically confirmed."},"hot-sale":{"date":null,"note":"Hot Sale Argentina 2027 dates have not been announced. Usually held in May."},"lollapalooza-ar":{"date":"2027-03-12T18:00:00-03:00","note":"Lollapalooza Argentina 2027 — March 12, 13 & 14 at Hipódromo de San Isidro, Buenos Aires.","note_es":"Lollapalooza Argentina 2027 — 12, 13 y 14 de marzo en el Hipódromo de San Isidro, Buenos Aires."},"lollapalooza-cl":{"date":"2027-03-12T18:00:00-03:00","note":"Lollapalooza Chile 2027 — March 12, 13 & 14 at Parque O'Higgins, Santiago de Chile.","note_es":"Lollapalooza Chile 2027 — 12, 13 y 14 de marzo en el Parque O'Higgins, Santiago de Chile."},"cosquin-rock":{"date":null,"note":"Cosquín Rock 2027 dates have not been announced. Usually held in February in Santa María de Punilla, Córdoba."},"rock-in-rio":{"date":"2026-09-18T16:00:00+01:00","note":"Rock in Rio Lisboa 2026 — first day. Parque da Bela Vista, Lisbon."},"nyfw":{"date":"2026-09-08T09:00:00-05:00","note":"New York Fashion Week — Spring/Summer 2027 edition (September 2026 shows)."},"milan-fw":{"date":"2026-09-16T09:00:00+02:00","note":"Milan Fashion Week — Spring/Summer 2027 edition."},"paris-fw":{"date":"2026-09-28T09:00:00+02:00","note":"Paris Fashion Week — Spring/Summer 2027 edition."},"bafweek":{"date":"2026-10-13T10:00:00-03:00","note":"Buenos Aires Fashion Week — Spring/Summer 2026 edition."},"world-cup-final":{"date":"2026-07-19T15:00:00-04:00","note":"2026 FIFA World Cup Final — MetLife Stadium, East Rutherford, NJ."},"copa-america-2028":{"date":"2028-06-01T12:00:00","note":"Estimated start date. 2028 Copa América — host country TBD."},"copa-america-2028-final":{"date":"2028-07-01T12:00:00","note":"Estimated date. 2028 Copa América Final — host country and venue TBD."},"euro-2028":{"date":"2028-06-09T21:00:00+01:00","note":"UEFA Euro 2028 Opening Match — UK & Republic of Ireland. Dates confirmed by UEFA."},"euro-2028-final":{"date":"2028-07-09T21:00:00+01:00","note":"UEFA Euro 2028 Final — Wembley Stadium, London. Date confirmed by UEFA."},"lollapalooza-us":{"date":"2026-07-30T12:00:00-05:00","note":"Lollapalooza 2026 — Grant Park, Chicago, IL. July 30 – August 2, 2026."},"lollapalooza-de":{"date":"2026-07-18T12:00:00+02:00","note":"Lollapalooza Berlin 2026 — Tempelhof Field, Berlin. July 18–19, 2026."},"lollapalooza-fr":{"date":"2027-07-17T12:00:00+02:00","note":"Lollapalooza Paris — 2026 edition was cancelled. Estimated date for 2027 based on prior years."},"primavera-sound-es":{"date":"2026-06-04T16:00:00+02:00","note":"Primavera Sound Barcelona 2026 — Parc del Fòrum. June 4–6, 2026."},"primavera-sound-ar":{"date":"2026-11-28T16:00:00-03:00","note":"Primavera Sound Buenos Aires 2026 — Hipódromo de Palermo. November 28–29, 2026."},"primavera-sound-br":{"date":"2026-12-05T16:00:00-03:00","note":"Primavera Sound São Paulo 2026 — Autódromo de Interlagos. December 5–6, 2026."},"tomorrowland":{"date":"2026-07-17T12:00:00+02:00","note":"Tomorrowland 2026 — De Schorre, Boom, Belgium. July 17–19 and July 24–26, 2026."},"balon-de-oro-2026":{"date":"2026-10-26T20:00:00+02:00","note":"Balón de Oro 2026 ceremony — Paris. Date confirmed."},"mr-olympia-2026":{"date":"2026-09-24T09:00:00-07:00","note":"Mr. Olympia 2026 — Palms Casino Resort, Las Vegas. September 24–27, 2026."},"roland-garros":{"date":"2026-05-25T10:00:00+02:00","note":"Roland Garros 2026 runs May 25 – June 8 at Stade Roland Garros, Paris."},"pga-championship":{"date":"2026-05-21T08:00:00-04:00","note":"PGA Championship 2026 runs May 21–24 at Quail Hollow Club, Charlotte, NC."},"us-open-golf":{"date":"2026-06-18T07:00:00-04:00","note":"US Open Golf 2026 runs June 18–21 at Oakmont Country Club, Pennsylvania."},"the-open":{"date":"2026-07-16T06:30:00+01:00","note":"The Open Championship 2026 runs July 16–19 at Royal Portrush, Northern Ireland."},"glastonbury":{"date":"2027-06-23T12:00:00+01:00","note":"Glastonbury Festival 2027 runs June 23–27 at Worthy Farm, Pilton, Somerset. No festival in 2026 (fallow year)."},"us-open-tennis":{"date":"2026-08-31T11:00:00-04:00","note":"US Open Tennis 2026 runs August 31 – September 13 at USTA Billie Jean King National Tennis Center, New York."},"bonnaroo":{"date":"2026-06-11T12:00:00-05:00","note":"Bonnaroo 2026 runs June 11–14 at Great Stage Park, Manchester, Tennessee."},"guy-fawkes":{"date":"2026-11-05T19:00:00+00:00","note":"Guy Fawkes Night / Bonfire Night, celebrated annually on November 5 in the UK."},"boxing-day":{"date":"2026-12-26T12:00:00","note":"Boxing Day 2026 falls on December 26."},"mardi-gras":{"date":"2027-02-09T00:00:00-06:00","note":"Mardi Gras 2027 is February 9 — 47 days before Easter Sunday March 28, 2027."},"holi":{"date":"2027-03-14T06:00:00+05:30","note":"Holi 2027 falls on March 14, the full moon of Phalgun."},"lunar-new-year":{"date":"2027-02-06T00:00:00+08:00","note":"Lunar New Year 2027 is February 6 — Year of the Goat."},"anzac-day":{"date":"2027-04-25T06:00:00+10:00","note":"ANZAC Day is observed every April 25 in Australia and New Zealand."},"melbourne-cup":{"date":"2026-11-03T15:00:00+11:00","note":"Melbourne Cup 2026 is November 3 — first Tuesday of November at Flemington Racecourse."},"koningsdag":{"date":"2027-04-27T10:00:00+02:00","note":"King's Day (Koningsdag) 2027 is April 27 — King Willem-Alexander's birthday."},"royal-ascot":{"date":"2026-06-16T14:30:00+01:00","note":"Royal Ascot 2026 runs June 16–20 at Ascot Racecourse, Berkshire."},"diwali":{"date":"2026-11-08T12:00:00","note":"Diwali 2026 — Festival of Lights, November 8, 2026."},"oscars":{"date":"2027-03-14T19:00:00-04:00","note":"99th Academy Awards — Sunday March 14, 2027 at the Dolby Theatre, Hollywood. Ceremony begins at 7pm ET / 4pm PT."},"emmys":{"date":"2026-09-14T20:00:00-04:00","note":"78th Primetime Emmy Awards, Monday September 14, 2026 at the Peacock Theater, Los Angeles."},"golden-globes":{"date":"2027-01-10T20:00:00-05:00","note":"84th Golden Globe Awards, Sunday January 10, 2027, Beverly Hilton, Beverly Hills. Ceremony at 8pm ET / 5pm PT. Host: Nikki Glaser."},"messi-birthday":{"date":"2026-06-24T12:00:00","note":"Lionel Messi's birthday — born June 24, 1987 in Rosario, Argentina."},"ronaldo-birthday":{"date":"2027-02-05T12:00:00","note":"Cristiano Ronaldo's birthday — born February 5, 1985."},"taylor-swift-birthday":{"date":"2026-12-13T12:00:00","note":"Taylor Swift's birthday — born December 13, 1989."},"bad-bunny-birthday":{"date":"2027-03-10T12:00:00","note":"Bad Bunny's birthday — born March 10, 1994."},"lebron-james-birthday":{"date":"2026-12-30T12:00:00","note":"LeBron James's birthday — born December 30, 1984."},"brit-awards":{"date":null,"note":"BRIT Awards 2027 date not yet announced. Typically held in February or March at The O2 Arena, London."},"latin-grammys":{"date":"2026-11-19T20:00:00-05:00","note":"Latin Grammy Awards 2026 — confirmed November 19, 2026."},"mtv-vmas":{"date":"2026-09-27T20:00:00-04:00","note":"MTV VMAs 2026 — Sunday, September 27, 2026, 8 PM ET. Los Angeles, CA. Airs on CBS and Paramount+."},"bafta":{"date":"2027-02-21T19:00:00+00:00","note":"80th BAFTA Film Awards, Sunday February 21, 2027, Royal Festival Hall, London."},"nfl-season":{"date":"2026-09-10T20:20:00-04:00","note":"NFL 2026 Season Kickoff — Thursday, September 10, 2026."},"stanley-cup":{"date":"2026-06-04T20:00:00-04:00","note":"2026 Stanley Cup Finals begin June 4, 2026, best-of-seven series through June 24."},"masters-golf":{"date":"2027-04-08T12:00:00","note":"The Masters 2027 — Augusta National Golf Club, April 8–13, 2027."},"wwe-summerslam":{"date":"2026-08-01T19:00:00-04:00","note":"WWE SummerSlam 2026 — August 1–2, 2026."},"wwe-royal-rumble":{"date":"2027-01-30T20:00:00-05:00","note":"WWE Royal Rumble 2027, January 30, 2027, returning to a domestic US stadium."},"wwe-survivor-series":{"date":null,"note":"WWE Survivor Series 2026 date not yet announced. Typically held in November."},"cs2-major":{"date":"2026-06-02T12:00:00","note":"IEM Cologne CS2 Major 2026, June 2–21, 2026, at Lanxess Arena, Cologne, Germany."},"lol-worlds":{"date":"2026-11-01T17:00:00-05:00","note":"LoL Worlds 2026 runs October 1 – November 1, 2026. Grand Final at Barclays Center, Brooklyn, NY."},"elecciones-colombia":{"date":"2026-05-31T12:00:00","note":"Colombian Presidential Election 2026 — first round confirmed May 31, 2026."},"elecciones-brasil":{"date":"2026-10-04T12:00:00","note":"Brazilian General Election 2026 — first round October 4, 2026. Potential runoff October 25, 2026."},"oktoberfest":{"date":"2026-09-19T12:00:00","note":"Oktoberfest 2026 — Munich, September 19 – October 4, 2026."},"elecciones-usa-midterms":{"date":"2026-11-03T12:00:00","note":"US Midterm Elections 2026 — November 3, 2026."},"elecciones-france":{"date":null,"note":"French Presidential Election 2027 — April 2027 (exact date TBA). First round typically in April."},"elecciones-mexico":{"date":"2027-06-01T12:00:00","note":"Elecciones intermedias México 2027 — 1 de junio de 2027."},"copa-del-rey":{"date":null,"note":"Copa del Rey Final 2026 — date TBA, typically late April or May."},"fa-cup-final":{"date":"2027-05-15T15:00:00+01:00","note":"FA Cup Final 2027 at Wembley Stadium, London, Saturday May 15, 2027."},"nba-draft":{"date":"2026-06-23T20:00:00-04:00","note":"NBA Draft 2026 — Round 1: June 23, Round 2: June 24, 2026. Barclays Center, Brooklyn, NY."},"cricket-world-cup":{"date":"2026-06-12T12:00:00","note":"ICC Women's T20 World Cup 2026, June 12 – July 5, 2026, hosted by England."},"rugby-world-cup":{"date":"2027-09-04T12:00:00","note":"Rugby World Cup 2027 — Australia, September 4 – October 23, 2027."},"six-nations":{"date":"2027-02-06T12:00:00","note":"Six Nations Championship 2027 — starts February 6, 2027."},"la-velada-del-ano":{"date":"2026-07-25T22:00:00+02:00","note":"La Velada del Año VI se celebra el sábado 25 de julio de 2026 en el Estadio de La Cartuja de Sevilla."},"world-series":{"date":null,"note":"MLB World Series 2026 — typically late October. Date TBA (depends on playoff results)."},"shakira-birthday":{"date":"2027-02-02T12:00:00","note":"Shakira's birthday — born February 2, 1977."},"drake-birthday":{"date":"2026-10-24T12:00:00","note":"Drake's birthday — born October 24, 1986."},"neymar-birthday":{"date":"2027-02-05T12:00:00","note":"Neymar Jr's birthday — born February 5, 1992."},"mbappe-birthday":{"date":"2026-12-20T12:00:00","note":"Kylian Mbappé's birthday — born December 20, 1998."},"billie-eilish-birthday":{"date":"2026-12-18T12:00:00","note":"Billie Eilish's birthday — born December 18, 2001."},"ariana-grande-birthday":{"date":"2026-06-26T12:00:00","note":"Ariana Grande's birthday — born June 26, 1993."},"canada-day":{"date":"2026-07-01T12:00:00","note":"Canada Day 2026 — July 1, 2026. Canada's 159th birthday."},"justin-bieber-birthday":{"date":"2027-03-01T12:00:00","note":"Justin Bieber's birthday — born March 1, 1994 in London, Ontario, Canada."},"beyonce-birthday":{"date":"2026-09-04T12:00:00","note":"Beyoncé's birthday — born September 4, 1981 in Houston, Texas, USA."},"rihanna-birthday":{"date":"2027-02-20T12:00:00","note":"Rihanna's birthday — born February 20, 1988 in Saint Michael, Barbados."},"weeknd-birthday":{"date":"2027-02-16T12:00:00","note":"The Weeknd's birthday — born February 16, 1990 in Toronto, Ontario, Canada."},"dua-lipa-birthday":{"date":"2026-08-22T12:00:00","note":"Dua Lipa's birthday — born August 22, 1995 in London, UK."},"selena-gomez-birthday":{"date":"2026-07-22T12:00:00","note":"Selena Gomez's birthday — born July 22, 1992 in Grand Prairie, Texas, USA."},"ed-sheeran-birthday":{"date":"2027-02-17T12:00:00","note":"Ed Sheeran's birthday — born February 17, 1991 in Halifax, West Yorkshire, UK."},"vinicius-birthday":{"date":"2026-07-12T12:00:00","note":"Vinicius Jr's birthday — born July 12, 2000 in São Gonçalo, Rio de Janeiro, Brazil."},"lamine-yamal-birthday":{"date":"2026-07-16T12:00:00","note":"Lamine Yamal's birthday — born July 16, 2007 in Esplugues de Llobregat, Barcelona, Spain."},"haaland-birthday":{"date":"2026-07-21T12:00:00","note":"Erling Haaland's birthday — born July 21, 2000 in Leeds, UK (Norwegian)."},"donald-trump-birthday":{"date":"2026-06-14T12:00:00","note":"Donald Trump's birthday — born June 14, 1946 in Queens, New York, USA."},"elon-musk-birthday":{"date":"2026-06-28T12:00:00","note":"Elon Musk's birthday — born June 28, 1971 in Pretoria, South Africa."},"virat-kohli-birthday":{"date":"2026-11-05T12:00:00","note":"Virat Kohli's birthday — born November 5, 1988 in Delhi, India."},"mrbeast-birthday":{"date":"2027-05-07T12:00:00","note":"MrBeast's birthday — born May 7, 1998 in Greenville, North Carolina, USA. Real name: Jimmy Donaldson."},"ksi-birthday":{"date":"2026-06-19T12:00:00","note":"KSI's birthday — born June 19, 1993 in Watford, Hertfordshire, UK. Real name: Olajide Olatunji."},"dicaprio-birthday":{"date":"2026-11-11T12:00:00","note":"Leonardo DiCaprio's birthday — born November 11, 1974 in Los Angeles, California, USA."},"brad-pitt-birthday":{"date":"2026-12-18T12:00:00","note":"Brad Pitt's birthday — born December 18, 1963 in Shawnee, Oklahoma, USA."},"dwayne-johnson-birthday":{"date":"2027-05-02T12:00:00","note":"Dwayne Johnson's birthday — born May 2, 1972 in Hayward, California, USA."},"tom-cruise-birthday":{"date":"2026-07-03T12:00:00","note":"Tom Cruise's birthday — born July 3, 1962 in Syracuse, New York, USA."},"ryan-reynolds-birthday":{"date":"2026-10-23T12:00:00","note":"Ryan Reynolds's birthday — born October 23, 1976 in Vancouver, British Columbia, Canada."},"robert-downey-jr-birthday":{"date":"2027-04-04T12:00:00","note":"Robert Downey Jr's birthday — born April 4, 1965 in Manhattan, New York, USA."},"will-smith-birthday":{"date":"2026-09-25T12:00:00","note":"Will Smith's birthday — born September 25, 1968 in Philadelphia, Pennsylvania, USA."},"zendaya-birthday":{"date":"2026-09-01T12:00:00","note":"Zendaya's birthday — born September 1, 1996 in Oakland, California, USA."},"angelina-jolie-birthday":{"date":"2026-06-04T12:00:00","note":"Angelina Jolie's birthday — born June 4, 1975 in Los Angeles, California, USA."},"scarlett-johansson-birthday":{"date":"2026-11-22T12:00:00","note":"Scarlett Johansson's birthday — born November 22, 1984 in New York City, USA."},"ps6":{"date":null,"note":"PlayStation 6 release date not yet announced by Sony. Expected 2027-2028."},"january-1":{"date":"2000-01-01T00:00:00","note":"Annual countdown to January 1."},"january-2":{"date":"2000-01-02T00:00:00","note":"Annual countdown to January 2."},"january-3":{"date":"2000-01-03T00:00:00","note":"Annual countdown to January 3."},"january-4":{"date":"2000-01-04T00:00:00","note":"Annual countdown to January 4."},"january-5":{"date":"2000-01-05T00:00:00","note":"Annual countdown to January 5."},"january-6":{"date":"2000-01-06T00:00:00","note":"Annual countdown to January 6."},"january-7":{"date":"2000-01-07T00:00:00","note":"Annual countdown to January 7."},"january-8":{"date":"2000-01-08T00:00:00","note":"Annual countdown to January 8."},"january-9":{"date":"2000-01-09T00:00:00","note":"Annual countdown to January 9."},"january-10":{"date":"2000-01-10T00:00:00","note":"Annual countdown to January 10."},"january-11":{"date":"2000-01-11T00:00:00","note":"Annual countdown to January 11."},"january-12":{"date":"2000-01-12T00:00:00","note":"Annual countdown to January 12."},"january-13":{"date":"2000-01-13T00:00:00","note":"Annual countdown to January 13."},"january-14":{"date":"2000-01-14T00:00:00","note":"Annual countdown to January 14."},"january-15":{"date":"2000-01-15T00:00:00","note":"Annual countdown to January 15."},"january-16":{"date":"2000-01-16T00:00:00","note":"Annual countdown to January 16."},"january-17":{"date":"2000-01-17T00:00:00","note":"Annual countdown to January 17."},"january-18":{"date":"2000-01-18T00:00:00","note":"Annual countdown to January 18."},"january-19":{"date":"2000-01-19T00:00:00","note":"Annual countdown to January 19."},"january-20":{"date":"2000-01-20T00:00:00","note":"Annual countdown to January 20."},"january-21":{"date":"2000-01-21T00:00:00","note":"Annual countdown to January 21."},"january-22":{"date":"2000-01-22T00:00:00","note":"Annual countdown to January 22."},"january-23":{"date":"2000-01-23T00:00:00","note":"Annual countdown to January 23."},"january-24":{"date":"2000-01-24T00:00:00","note":"Annual countdown to January 24."},"january-25":{"date":"2000-01-25T00:00:00","note":"Annual countdown to January 25."},"january-26":{"date":"2000-01-26T00:00:00","note":"Annual countdown to January 26."},"january-27":{"date":"2000-01-27T00:00:00","note":"Annual countdown to January 27."},"january-28":{"date":"2000-01-28T00:00:00","note":"Annual countdown to January 28."},"january-29":{"date":"2000-01-29T00:00:00","note":"Annual countdown to January 29."},"january-30":{"date":"2000-01-30T00:00:00","note":"Annual countdown to January 30."},"january-31":{"date":"2000-01-31T00:00:00","note":"Annual countdown to January 31."},"february-1":{"date":"2000-02-01T00:00:00","note":"Annual countdown to February 1."},"february-2":{"date":"2000-02-02T00:00:00","note":"Annual countdown to February 2."},"february-3":{"date":"2000-02-03T00:00:00","note":"Annual countdown to February 3."},"february-4":{"date":"2000-02-04T00:00:00","note":"Annual countdown to February 4."},"february-5":{"date":"2000-02-05T00:00:00","note":"Annual countdown to February 5."},"february-6":{"date":"2000-02-06T00:00:00","note":"Annual countdown to February 6."},"february-7":{"date":"2000-02-07T00:00:00","note":"Annual countdown to February 7."},"february-8":{"date":"2000-02-08T00:00:00","note":"Annual countdown to February 8."},"february-9":{"date":"2000-02-09T00:00:00","note":"Annual countdown to February 9."},"february-10":{"date":"2000-02-10T00:00:00","note":"Annual countdown to February 10."},"february-11":{"date":"2000-02-11T00:00:00","note":"Annual countdown to February 11."},"february-12":{"date":"2000-02-12T00:00:00","note":"Annual countdown to February 12."},"february-13":{"date":"2000-02-13T00:00:00","note":"Annual countdown to February 13."},"february-14":{"date":"2000-02-14T00:00:00","note":"Annual countdown to February 14."},"february-15":{"date":"2000-02-15T00:00:00","note":"Annual countdown to February 15."},"february-16":{"date":"2000-02-16T00:00:00","note":"Annual countdown to February 16."},"february-17":{"date":"2000-02-17T00:00:00","note":"Annual countdown to February 17."},"february-18":{"date":"2000-02-18T00:00:00","note":"Annual countdown to February 18."},"february-19":{"date":"2000-02-19T00:00:00","note":"Annual countdown to February 19."},"february-20":{"date":"2000-02-20T00:00:00","note":"Annual countdown to February 20."},"february-21":{"date":"2000-02-21T00:00:00","note":"Annual countdown to February 21."},"february-22":{"date":"2000-02-22T00:00:00","note":"Annual countdown to February 22."},"february-23":{"date":"2000-02-23T00:00:00","note":"Annual countdown to February 23."},"february-24":{"date":"2000-02-24T00:00:00","note":"Annual countdown to February 24."},"february-25":{"date":"2000-02-25T00:00:00","note":"Annual countdown to February 25."},"february-26":{"date":"2000-02-26T00:00:00","note":"Annual countdown to February 26."},"february-27":{"date":"2000-02-27T00:00:00","note":"Annual countdown to February 27."},"february-28":{"date":"2000-02-28T00:00:00","note":"Annual countdown to February 28."},"march-1":{"date":"2000-03-01T00:00:00","note":"Annual countdown to March 1."},"march-2":{"date":"2000-03-02T00:00:00","note":"Annual countdown to March 2."},"march-3":{"date":"2000-03-03T00:00:00","note":"Annual countdown to March 3."},"march-4":{"date":"2000-03-04T00:00:00","note":"Annual countdown to March 4."},"march-5":{"date":"2000-03-05T00:00:00","note":"Annual countdown to March 5."},"march-6":{"date":"2000-03-06T00:00:00","note":"Annual countdown to March 6."},"march-7":{"date":"2000-03-07T00:00:00","note":"Annual countdown to March 7."},"march-8":{"date":"2000-03-08T00:00:00","note":"Annual countdown to March 8."},"march-9":{"date":"2000-03-09T00:00:00","note":"Annual countdown to March 9."},"march-10":{"date":"2000-03-10T00:00:00","note":"Annual countdown to March 10."},"march-11":{"date":"2000-03-11T00:00:00","note":"Annual countdown to March 11."},"march-12":{"date":"2000-03-12T00:00:00","note":"Annual countdown to March 12."},"march-13":{"date":"2000-03-13T00:00:00","note":"Annual countdown to March 13."},"march-14":{"date":"2000-03-14T00:00:00","note":"Annual countdown to March 14."},"march-15":{"date":"2000-03-15T00:00:00","note":"Annual countdown to March 15."},"march-16":{"date":"2000-03-16T00:00:00","note":"Annual countdown to March 16."},"march-17":{"date":"2000-03-17T00:00:00","note":"Annual countdown to March 17."},"march-18":{"date":"2000-03-18T00:00:00","note":"Annual countdown to March 18."},"march-19":{"date":"2000-03-19T00:00:00","note":"Annual countdown to March 19."},"march-20":{"date":"2000-03-20T00:00:00","note":"Annual countdown to March 20."},"march-21":{"date":"2000-03-21T00:00:00","note":"Annual countdown to March 21."},"march-22":{"date":"2000-03-22T00:00:00","note":"Annual countdown to March 22."},"march-23":{"date":"2000-03-23T00:00:00","note":"Annual countdown to March 23."},"march-24":{"date":"2000-03-24T00:00:00","note":"Annual countdown to March 24."},"march-25":{"date":"2000-03-25T00:00:00","note":"Annual countdown to March 25."},"march-26":{"date":"2000-03-26T00:00:00","note":"Annual countdown to March 26."},"march-27":{"date":"2000-03-27T00:00:00","note":"Annual countdown to March 27."},"march-28":{"date":"2000-03-28T00:00:00","note":"Annual countdown to March 28."},"march-29":{"date":"2000-03-29T00:00:00","note":"Annual countdown to March 29."},"march-30":{"date":"2000-03-30T00:00:00","note":"Annual countdown to March 30."},"march-31":{"date":"2000-03-31T00:00:00","note":"Annual countdown to March 31."},"april-1":{"date":"2000-04-01T00:00:00","note":"Annual countdown to April 1."},"april-2":{"date":"2000-04-02T00:00:00","note":"Annual countdown to April 2."},"april-3":{"date":"2000-04-03T00:00:00","note":"Annual countdown to April 3."},"april-4":{"date":"2000-04-04T00:00:00","note":"Annual countdown to April 4."},"april-5":{"date":"2000-04-05T00:00:00","note":"Annual countdown to April 5."},"april-6":{"date":"2000-04-06T00:00:00","note":"Annual countdown to April 6."},"april-7":{"date":"2000-04-07T00:00:00","note":"Annual countdown to April 7."},"april-8":{"date":"2000-04-08T00:00:00","note":"Annual countdown to April 8."},"april-9":{"date":"2000-04-09T00:00:00","note":"Annual countdown to April 9."},"april-10":{"date":"2000-04-10T00:00:00","note":"Annual countdown to April 10."},"april-11":{"date":"2000-04-11T00:00:00","note":"Annual countdown to April 11."},"april-12":{"date":"2000-04-12T00:00:00","note":"Annual countdown to April 12."},"april-13":{"date":"2000-04-13T00:00:00","note":"Annual countdown to April 13."},"april-14":{"date":"2000-04-14T00:00:00","note":"Annual countdown to April 14."},"april-15":{"date":"2000-04-15T00:00:00","note":"Annual countdown to April 15."},"april-16":{"date":"2000-04-16T00:00:00","note":"Annual countdown to April 16."},"april-17":{"date":"2000-04-17T00:00:00","note":"Annual countdown to April 17."},"april-18":{"date":"2000-04-18T00:00:00","note":"Annual countdown to April 18."},"april-19":{"date":"2000-04-19T00:00:00","note":"Annual countdown to April 19."},"april-20":{"date":"2000-04-20T00:00:00","note":"Annual countdown to April 20."},"april-21":{"date":"2000-04-21T00:00:00","note":"Annual countdown to April 21."},"april-22":{"date":"2000-04-22T00:00:00","note":"Annual countdown to April 22."},"april-23":{"date":"2000-04-23T00:00:00","note":"Annual countdown to April 23."},"april-24":{"date":"2000-04-24T00:00:00","note":"Annual countdown to April 24."},"april-25":{"date":"2000-04-25T00:00:00","note":"Annual countdown to April 25."},"april-26":{"date":"2000-04-26T00:00:00","note":"Annual countdown to April 26."},"april-27":{"date":"2000-04-27T00:00:00","note":"Annual countdown to April 27."},"april-28":{"date":"2000-04-28T00:00:00","note":"Annual countdown to April 28."},"april-29":{"date":"2000-04-29T00:00:00","note":"Annual countdown to April 29."},"april-30":{"date":"2000-04-30T00:00:00","note":"Annual countdown to April 30."},"may-1":{"date":"2000-05-01T00:00:00","note":"Annual countdown to May 1."},"may-2":{"date":"2000-05-02T00:00:00","note":"Annual countdown to May 2."},"may-3":{"date":"2000-05-03T00:00:00","note":"Annual countdown to May 3."},"may-4":{"date":"2000-05-04T00:00:00","note":"Annual countdown to May 4."},"may-5":{"date":"2000-05-05T00:00:00","note":"Annual countdown to May 5."},"may-6":{"date":"2000-05-06T00:00:00","note":"Annual countdown to May 6."},"may-7":{"date":"2000-05-07T00:00:00","note":"Annual countdown to May 7."},"may-8":{"date":"2000-05-08T00:00:00","note":"Annual countdown to May 8."},"may-9":{"date":"2000-05-09T00:00:00","note":"Annual countdown to May 9."},"may-10":{"date":"2000-05-10T00:00:00","note":"Annual countdown to May 10."},"may-11":{"date":"2000-05-11T00:00:00","note":"Annual countdown to May 11."},"may-12":{"date":"2000-05-12T00:00:00","note":"Annual countdown to May 12."},"may-13":{"date":"2000-05-13T00:00:00","note":"Annual countdown to May 13."},"may-14":{"date":"2000-05-14T00:00:00","note":"Annual countdown to May 14."},"may-15":{"date":"2000-05-15T00:00:00","note":"Annual countdown to May 15."},"may-16":{"date":"2000-05-16T00:00:00","note":"Annual countdown to May 16."},"may-17":{"date":"2000-05-17T00:00:00","note":"Annual countdown to May 17."},"may-18":{"date":"2000-05-18T00:00:00","note":"Annual countdown to May 18."},"may-19":{"date":"2000-05-19T00:00:00","note":"Annual countdown to May 19."},"may-20":{"date":"2000-05-20T00:00:00","note":"Annual countdown to May 20."},"may-21":{"date":"2000-05-21T00:00:00","note":"Annual countdown to May 21."},"may-22":{"date":"2000-05-22T00:00:00","note":"Annual countdown to May 22."},"may-23":{"date":"2000-05-23T00:00:00","note":"Annual countdown to May 23."},"may-24":{"date":"2000-05-24T00:00:00","note":"Annual countdown to May 24."},"may-25":{"date":"2000-05-25T00:00:00","note":"Annual countdown to May 25."},"may-26":{"date":"2000-05-26T00:00:00","note":"Annual countdown to May 26."},"may-27":{"date":"2000-05-27T00:00:00","note":"Annual countdown to May 27."},"may-28":{"date":"2000-05-28T00:00:00","note":"Annual countdown to May 28."},"may-29":{"date":"2000-05-29T00:00:00","note":"Annual countdown to May 29."},"may-30":{"date":"2000-05-30T00:00:00","note":"Annual countdown to May 30."},"may-31":{"date":"2000-05-31T00:00:00","note":"Annual countdown to May 31."},"june-1":{"date":"2000-06-01T00:00:00","note":"Annual countdown to June 1."},"june-2":{"date":"2000-06-02T00:00:00","note":"Annual countdown to June 2."},"june-3":{"date":"2000-06-03T00:00:00","note":"Annual countdown to June 3."},"june-4":{"date":"2000-06-04T00:00:00","note":"Annual countdown to June 4."},"june-5":{"date":"2000-06-05T00:00:00","note":"Annual countdown to June 5."},"june-6":{"date":"2000-06-06T00:00:00","note":"Annual countdown to June 6."},"june-7":{"date":"2000-06-07T00:00:00","note":"Annual countdown to June 7."},"june-8":{"date":"2000-06-08T00:00:00","note":"Annual countdown to June 8."},"june-9":{"date":"2000-06-09T00:00:00","note":"Annual countdown to June 9."},"june-10":{"date":"2000-06-10T00:00:00","note":"Annual countdown to June 10."},"june-11":{"date":"2000-06-11T00:00:00","note":"Annual countdown to June 11."},"june-12":{"date":"2000-06-12T00:00:00","note":"Annual countdown to June 12."},"june-13":{"date":"2000-06-13T00:00:00","note":"Annual countdown to June 13."},"june-14":{"date":"2000-06-14T00:00:00","note":"Annual countdown to June 14."},"june-15":{"date":"2000-06-15T00:00:00","note":"Annual countdown to June 15."},"june-16":{"date":"2000-06-16T00:00:00","note":"Annual countdown to June 16."},"june-17":{"date":"2000-06-17T00:00:00","note":"Annual countdown to June 17."},"june-18":{"date":"2000-06-18T00:00:00","note":"Annual countdown to June 18."},"june-19":{"date":"2000-06-19T00:00:00","note":"Annual countdown to June 19."},"june-20":{"date":"2000-06-20T00:00:00","note":"Annual countdown to June 20."},"june-21":{"date":"2000-06-21T00:00:00","note":"Annual countdown to June 21."},"june-22":{"date":"2000-06-22T00:00:00","note":"Annual countdown to June 22."},"june-23":{"date":"2000-06-23T00:00:00","note":"Annual countdown to June 23."},"june-24":{"date":"2000-06-24T00:00:00","note":"Annual countdown to June 24."},"june-25":{"date":"2000-06-25T00:00:00","note":"Annual countdown to June 25."},"june-26":{"date":"2000-06-26T00:00:00","note":"Annual countdown to June 26."},"june-27":{"date":"2000-06-27T00:00:00","note":"Annual countdown to June 27."},"june-28":{"date":"2000-06-28T00:00:00","note":"Annual countdown to June 28."},"june-29":{"date":"2000-06-29T00:00:00","note":"Annual countdown to June 29."},"june-30":{"date":"2000-06-30T00:00:00","note":"Annual countdown to June 30."},"july-1":{"date":"2000-07-01T00:00:00","note":"Annual countdown to July 1."},"july-2":{"date":"2000-07-02T00:00:00","note":"Annual countdown to July 2."},"july-3":{"date":"2000-07-03T00:00:00","note":"Annual countdown to July 3."},"july-4":{"date":"2000-07-04T00:00:00","note":"Annual countdown to July 4."},"july-5":{"date":"2000-07-05T00:00:00","note":"Annual countdown to July 5."},"july-6":{"date":"2000-07-06T00:00:00","note":"Annual countdown to July 6."},"july-7":{"date":"2000-07-07T00:00:00","note":"Annual countdown to July 7."},"july-8":{"date":"2000-07-08T00:00:00","note":"Annual countdown to July 8."},"july-9":{"date":"2000-07-09T00:00:00","note":"Annual countdown to July 9."},"july-10":{"date":"2000-07-10T00:00:00","note":"Annual countdown to July 10."},"july-11":{"date":"2000-07-11T00:00:00","note":"Annual countdown to July 11."},"july-12":{"date":"2000-07-12T00:00:00","note":"Annual countdown to July 12."},"july-13":{"date":"2000-07-13T00:00:00","note":"Annual countdown to July 13."},"july-14":{"date":"2000-07-14T00:00:00","note":"Annual countdown to July 14."},"july-15":{"date":"2000-07-15T00:00:00","note":"Annual countdown to July 15."},"july-16":{"date":"2000-07-16T00:00:00","note":"Annual countdown to July 16."},"july-17":{"date":"2000-07-17T00:00:00","note":"Annual countdown to July 17."},"july-18":{"date":"2000-07-18T00:00:00","note":"Annual countdown to July 18."},"july-19":{"date":"2000-07-19T00:00:00","note":"Annual countdown to July 19."},"july-20":{"date":"2000-07-20T00:00:00","note":"Annual countdown to July 20."},"july-21":{"date":"2000-07-21T00:00:00","note":"Annual countdown to July 21."},"july-22":{"date":"2000-07-22T00:00:00","note":"Annual countdown to July 22."},"july-23":{"date":"2000-07-23T00:00:00","note":"Annual countdown to July 23."},"july-24":{"date":"2000-07-24T00:00:00","note":"Annual countdown to July 24."},"july-25":{"date":"2000-07-25T00:00:00","note":"Annual countdown to July 25."},"july-26":{"date":"2000-07-26T00:00:00","note":"Annual countdown to July 26."},"july-27":{"date":"2000-07-27T00:00:00","note":"Annual countdown to July 27."},"july-28":{"date":"2000-07-28T00:00:00","note":"Annual countdown to July 28."},"july-29":{"date":"2000-07-29T00:00:00","note":"Annual countdown to July 29."},"july-30":{"date":"2000-07-30T00:00:00","note":"Annual countdown to July 30."},"july-31":{"date":"2000-07-31T00:00:00","note":"Annual countdown to July 31."},"august-1":{"date":"2000-08-01T00:00:00","note":"Annual countdown to August 1."},"august-2":{"date":"2000-08-02T00:00:00","note":"Annual countdown to August 2."},"august-3":{"date":"2000-08-03T00:00:00","note":"Annual countdown to August 3."},"august-4":{"date":"2000-08-04T00:00:00","note":"Annual countdown to August 4."},"august-5":{"date":"2000-08-05T00:00:00","note":"Annual countdown to August 5."},"august-6":{"date":"2000-08-06T00:00:00","note":"Annual countdown to August 6."},"august-7":{"date":"2000-08-07T00:00:00","note":"Annual countdown to August 7."},"august-8":{"date":"2000-08-08T00:00:00","note":"Annual countdown to August 8."},"august-9":{"date":"2000-08-09T00:00:00","note":"Annual countdown to August 9."},"august-10":{"date":"2000-08-10T00:00:00","note":"Annual countdown to August 10."},"august-11":{"date":"2000-08-11T00:00:00","note":"Annual countdown to August 11."},"august-12":{"date":"2000-08-12T00:00:00","note":"Annual countdown to August 12."},"august-13":{"date":"2000-08-13T00:00:00","note":"Annual countdown to August 13."},"august-14":{"date":"2000-08-14T00:00:00","note":"Annual countdown to August 14."},"august-15":{"date":"2000-08-15T00:00:00","note":"Annual countdown to August 15."},"august-16":{"date":"2000-08-16T00:00:00","note":"Annual countdown to August 16."},"august-17":{"date":"2000-08-17T00:00:00","note":"Annual countdown to August 17."},"august-18":{"date":"2000-08-18T00:00:00","note":"Annual countdown to August 18."},"august-19":{"date":"2000-08-19T00:00:00","note":"Annual countdown to August 19."},"august-20":{"date":"2000-08-20T00:00:00","note":"Annual countdown to August 20."},"august-21":{"date":"2000-08-21T00:00:00","note":"Annual countdown to August 21."},"august-22":{"date":"2000-08-22T00:00:00","note":"Annual countdown to August 22."},"august-23":{"date":"2000-08-23T00:00:00","note":"Annual countdown to August 23."},"august-24":{"date":"2000-08-24T00:00:00","note":"Annual countdown to August 24."},"august-25":{"date":"2000-08-25T00:00:00","note":"Annual countdown to August 25."},"august-26":{"date":"2000-08-26T00:00:00","note":"Annual countdown to August 26."},"august-27":{"date":"2000-08-27T00:00:00","note":"Annual countdown to August 27."},"august-28":{"date":"2000-08-28T00:00:00","note":"Annual countdown to August 28."},"august-29":{"date":"2000-08-29T00:00:00","note":"Annual countdown to August 29."},"august-30":{"date":"2000-08-30T00:00:00","note":"Annual countdown to August 30."},"august-31":{"date":"2000-08-31T00:00:00","note":"Annual countdown to August 31."},"september-1":{"date":"2000-09-01T00:00:00","note":"Annual countdown to September 1."},"september-2":{"date":"2000-09-02T00:00:00","note":"Annual countdown to September 2."},"september-3":{"date":"2000-09-03T00:00:00","note":"Annual countdown to September 3."},"september-4":{"date":"2000-09-04T00:00:00","note":"Annual countdown to September 4."},"september-5":{"date":"2000-09-05T00:00:00","note":"Annual countdown to September 5."},"september-6":{"date":"2000-09-06T00:00:00","note":"Annual countdown to September 6."},"september-7":{"date":"2000-09-07T00:00:00","note":"Annual countdown to September 7."},"september-8":{"date":"2000-09-08T00:00:00","note":"Annual countdown to September 8."},"september-9":{"date":"2000-09-09T00:00:00","note":"Annual countdown to September 9."},"september-10":{"date":"2000-09-10T00:00:00","note":"Annual countdown to September 10."},"september-11":{"date":"2000-09-11T00:00:00","note":"Annual countdown to September 11."},"september-12":{"date":"2000-09-12T00:00:00","note":"Annual countdown to September 12."},"september-13":{"date":"2000-09-13T00:00:00","note":"Annual countdown to September 13."},"september-14":{"date":"2000-09-14T00:00:00","note":"Annual countdown to September 14."},"september-15":{"date":"2000-09-15T00:00:00","note":"Annual countdown to September 15."},"september-16":{"date":"2000-09-16T00:00:00","note":"Annual countdown to September 16."},"september-17":{"date":"2000-09-17T00:00:00","note":"Annual countdown to September 17."},"september-18":{"date":"2000-09-18T00:00:00","note":"Annual countdown to September 18."},"september-19":{"date":"2000-09-19T00:00:00","note":"Annual countdown to September 19."},"september-20":{"date":"2000-09-20T00:00:00","note":"Annual countdown to September 20."},"september-21":{"date":"2000-09-21T00:00:00","note":"Annual countdown to September 21."},"september-22":{"date":"2000-09-22T00:00:00","note":"Annual countdown to September 22."},"september-23":{"date":"2000-09-23T00:00:00","note":"Annual countdown to September 23."},"september-24":{"date":"2000-09-24T00:00:00","note":"Annual countdown to September 24."},"september-25":{"date":"2000-09-25T00:00:00","note":"Annual countdown to September 25."},"september-26":{"date":"2000-09-26T00:00:00","note":"Annual countdown to September 26."},"september-27":{"date":"2000-09-27T00:00:00","note":"Annual countdown to September 27."},"september-28":{"date":"2000-09-28T00:00:00","note":"Annual countdown to September 28."},"september-29":{"date":"2000-09-29T00:00:00","note":"Annual countdown to September 29."},"september-30":{"date":"2000-09-30T00:00:00","note":"Annual countdown to September 30."},"october-1":{"date":"2000-10-01T00:00:00","note":"Annual countdown to October 1."},"october-2":{"date":"2000-10-02T00:00:00","note":"Annual countdown to October 2."},"october-3":{"date":"2000-10-03T00:00:00","note":"Annual countdown to October 3."},"october-4":{"date":"2000-10-04T00:00:00","note":"Annual countdown to October 4."},"october-5":{"date":"2000-10-05T00:00:00","note":"Annual countdown to October 5."},"october-6":{"date":"2000-10-06T00:00:00","note":"Annual countdown to October 6."},"october-7":{"date":"2000-10-07T00:00:00","note":"Annual countdown to October 7."},"october-8":{"date":"2000-10-08T00:00:00","note":"Annual countdown to October 8."},"october-9":{"date":"2000-10-09T00:00:00","note":"Annual countdown to October 9."},"october-10":{"date":"2000-10-10T00:00:00","note":"Annual countdown to October 10."},"october-11":{"date":"2000-10-11T00:00:00","note":"Annual countdown to October 11."},"october-12":{"date":"2000-10-12T00:00:00","note":"Annual countdown to October 12."},"october-13":{"date":"2000-10-13T00:00:00","note":"Annual countdown to October 13."},"october-14":{"date":"2000-10-14T00:00:00","note":"Annual countdown to October 14."},"october-15":{"date":"2000-10-15T00:00:00","note":"Annual countdown to October 15."},"october-16":{"date":"2000-10-16T00:00:00","note":"Annual countdown to October 16."},"october-17":{"date":"2000-10-17T00:00:00","note":"Annual countdown to October 17."},"october-18":{"date":"2000-10-18T00:00:00","note":"Annual countdown to October 18."},"october-19":{"date":"2000-10-19T00:00:00","note":"Annual countdown to October 19."},"october-20":{"date":"2000-10-20T00:00:00","note":"Annual countdown to October 20."},"october-21":{"date":"2000-10-21T00:00:00","note":"Annual countdown to October 21."},"october-22":{"date":"2000-10-22T00:00:00","note":"Annual countdown to October 22."},"october-23":{"date":"2000-10-23T00:00:00","note":"Annual countdown to October 23."},"october-24":{"date":"2000-10-24T00:00:00","note":"Annual countdown to October 24."},"october-25":{"date":"2000-10-25T00:00:00","note":"Annual countdown to October 25."},"october-26":{"date":"2000-10-26T00:00:00","note":"Annual countdown to October 26."},"october-27":{"date":"2000-10-27T00:00:00","note":"Annual countdown to October 27."},"october-28":{"date":"2000-10-28T00:00:00","note":"Annual countdown to October 28."},"october-29":{"date":"2000-10-29T00:00:00","note":"Annual countdown to October 29."},"october-30":{"date":"2000-10-30T00:00:00","note":"Annual countdown to October 30."},"october-31":{"date":"2000-10-31T00:00:00","note":"Annual countdown to October 31."},"november-1":{"date":"2000-11-01T00:00:00","note":"Annual countdown to November 1."},"november-2":{"date":"2000-11-02T00:00:00","note":"Annual countdown to November 2."},"november-3":{"date":"2000-11-03T00:00:00","note":"Annual countdown to November 3."},"november-4":{"date":"2000-11-04T00:00:00","note":"Annual countdown to November 4."},"november-5":{"date":"2000-11-05T00:00:00","note":"Annual countdown to November 5."},"november-6":{"date":"2000-11-06T00:00:00","note":"Annual countdown to November 6."},"november-7":{"date":"2000-11-07T00:00:00","note":"Annual countdown to November 7."},"november-8":{"date":"2000-11-08T00:00:00","note":"Annual countdown to November 8."},"november-9":{"date":"2000-11-09T00:00:00","note":"Annual countdown to November 9."},"november-10":{"date":"2000-11-10T00:00:00","note":"Annual countdown to November 10."},"november-11":{"date":"2000-11-11T00:00:00","note":"Annual countdown to November 11."},"november-12":{"date":"2000-11-12T00:00:00","note":"Annual countdown to November 12."},"november-13":{"date":"2000-11-13T00:00:00","note":"Annual countdown to November 13."},"november-14":{"date":"2000-11-14T00:00:00","note":"Annual countdown to November 14."},"november-15":{"date":"2000-11-15T00:00:00","note":"Annual countdown to November 15."},"november-16":{"date":"2000-11-16T00:00:00","note":"Annual countdown to November 16."},"november-17":{"date":"2000-11-17T00:00:00","note":"Annual countdown to November 17."},"november-18":{"date":"2000-11-18T00:00:00","note":"Annual countdown to November 18."},"november-19":{"date":"2000-11-19T00:00:00","note":"Annual countdown to November 19."},"november-20":{"date":"2000-11-20T00:00:00","note":"Annual countdown to November 20."},"november-21":{"date":"2000-11-21T00:00:00","note":"Annual countdown to November 21."},"november-22":{"date":"2000-11-22T00:00:00","note":"Annual countdown to November 22."},"november-23":{"date":"2000-11-23T00:00:00","note":"Annual countdown to November 23."},"november-24":{"date":"2000-11-24T00:00:00","note":"Annual countdown to November 24."},"november-25":{"date":"2000-11-25T00:00:00","note":"Annual countdown to November 25."},"november-26":{"date":"2000-11-26T00:00:00","note":"Annual countdown to November 26."},"november-27":{"date":"2000-11-27T00:00:00","note":"Annual countdown to November 27."},"november-28":{"date":"2000-11-28T00:00:00","note":"Annual countdown to November 28."},"november-29":{"date":"2000-11-29T00:00:00","note":"Annual countdown to November 29."},"november-30":{"date":"2000-11-30T00:00:00","note":"Annual countdown to November 30."},"december-1":{"date":"2000-12-01T00:00:00","note":"Annual countdown to December 1."},"december-2":{"date":"2000-12-02T00:00:00","note":"Annual countdown to December 2."},"december-3":{"date":"2000-12-03T00:00:00","note":"Annual countdown to December 3."},"december-4":{"date":"2000-12-04T00:00:00","note":"Annual countdown to December 4."},"december-5":{"date":"2000-12-05T00:00:00","note":"Annual countdown to December 5."},"december-6":{"date":"2000-12-06T00:00:00","note":"Annual countdown to December 6."},"december-7":{"date":"2000-12-07T00:00:00","note":"Annual countdown to December 7."},"december-8":{"date":"2000-12-08T00:00:00","note":"Annual countdown to December 8."},"december-9":{"date":"2000-12-09T00:00:00","note":"Annual countdown to December 9."},"december-10":{"date":"2000-12-10T00:00:00","note":"Annual countdown to December 10."},"december-11":{"date":"2000-12-11T00:00:00","note":"Annual countdown to December 11."},"december-12":{"date":"2000-12-12T00:00:00","note":"Annual countdown to December 12."},"december-13":{"date":"2000-12-13T00:00:00","note":"Annual countdown to December 13."},"december-14":{"date":"2000-12-14T00:00:00","note":"Annual countdown to December 14."},"december-15":{"date":"2000-12-15T00:00:00","note":"Annual countdown to December 15."},"december-16":{"date":"2000-12-16T00:00:00","note":"Annual countdown to December 16."},"december-17":{"date":"2000-12-17T00:00:00","note":"Annual countdown to December 17."},"december-18":{"date":"2000-12-18T00:00:00","note":"Annual countdown to December 18."},"december-19":{"date":"2000-12-19T00:00:00","note":"Annual countdown to December 19."},"december-20":{"date":"2000-12-20T00:00:00","note":"Annual countdown to December 20."},"december-21":{"date":"2000-12-21T00:00:00","note":"Annual countdown to December 21."},"december-22":{"date":"2000-12-22T00:00:00","note":"Annual countdown to December 22."},"december-23":{"date":"2000-12-23T00:00:00","note":"Annual countdown to December 23."},"december-24":{"date":"2000-12-24T00:00:00","note":"Annual countdown to December 24."},"december-25":{"date":"2000-12-25T00:00:00","note":"Annual countdown to December 25."},"december-26":{"date":"2000-12-26T00:00:00","note":"Annual countdown to December 26."},"december-27":{"date":"2000-12-27T00:00:00","note":"Annual countdown to December 27."},"december-28":{"date":"2000-12-28T00:00:00","note":"Annual countdown to December 28."},"december-29":{"date":"2000-12-29T00:00:00","note":"Annual countdown to December 29."},"december-30":{"date":"2000-12-30T00:00:00","note":"Annual countdown to December 30."},"december-31":{"date":"2000-12-31T00:00:00","note":"Annual countdown to December 31."},"robert-pattinson-birthday":{"date":"2027-05-13T12:00:00","note":"Robert Pattinson's Birthday — born May 13th, 1986."},"shawn-mendes-birthday":{"date":"2026-08-08T12:00:00","note":"Shawn Mendes's Birthday — born August 8th, 1998."},"harry-styles-birthday":{"date":"2027-02-01T12:00:00","note":"Harry Styles's Birthday — born February 1st, 1994."},"timothee-chalamet-birthday":{"date":"2026-12-27T12:00:00","note":"Timothée Chalamet's Birthday — born December 27th, 1995."},"tom-holland-birthday":{"date":"2026-06-01T12:00:00","note":"Tom Holland's Birthday — born June 1st, 1996."},"margot-robbie-birthday":{"date":"2026-07-02T12:00:00","note":"Margot Robbie's Birthday — born July 2nd, 1990."},"chris-evans-birthday":{"date":"2026-06-13T12:00:00","note":"Chris Evans's Birthday — born June 13th, 1981."},"chris-hemsworth-birthday":{"date":"2026-08-11T12:00:00","note":"Chris Hemsworth's Birthday — born August 11th, 1983."},"johnny-depp-birthday":{"date":"2026-06-09T12:00:00","note":"Johnny Depp's Birthday — born June 9th, 1963."},"pedro-pascal-birthday":{"date":"2027-04-02T12:00:00","note":"Pedro Pascal's Birthday — born April 2nd, 1975."},"olivia-rodrigo-birthday":{"date":"2027-02-20T12:00:00","note":"Olivia Rodrigo's Birthday — born February 20th, 2003."},"sabrina-carpenter-birthday":{"date":"2027-05-11T12:00:00","note":"Sabrina Carpenter's Birthday — born May 11th, 1999."},"bruno-mars-birthday":{"date":"2026-10-08T12:00:00","note":"Bruno Mars's Birthday — born October 8th, 1985."},"lady-gaga-birthday":{"date":"2027-03-28T12:00:00","note":"Lady Gaga's Birthday — born March 28th, 1986."},"eminem-birthday":{"date":"2026-10-17T12:00:00","note":"Eminem's Birthday — born October 17th, 1972."},"karol-g-birthday":{"date":"2027-02-14T12:00:00","note":"Karol G's Birthday — born February 14th, 1991."},"jungkook-birthday":{"date":"2026-09-01T12:00:00","note":"Jungkook's Birthday — born September 1st, 1997."},"djokovic-birthday":{"date":"2027-05-22T12:00:00","note":"Novak Djokovic's Birthday — born May 22nd, 1987."},"stephen-curry-birthday":{"date":"2027-03-14T12:00:00","note":"Stephen Curry's Birthday — born March 14th, 1988."},"eid-al-fitr":{"date":"2027-03-10T12:00:00","note":"Eid al-Fitr 2027 — approximate date, subject to moon sighting. Marks end of Ramadan."},"eid-al-adha":{"date":"2027-05-17T12:00:00","note":"Eid al-Adha 2027 — approximate date, subject to moon sighting."},"motogp":{"note":"MotoGP World Championship — counts down to the next scheduled race.","note_es":"Campeonato Mundial de MotoGP — cuenta regresiva para la próxima carrera.","note_pt":"Campeonato Mundial de MotoGP — contagem para a próxima corrida.","note_fr":"Championnat du Monde MotoGP — compte à rebours vers la prochaine course.","schedule":[{"date":"2026-03-01T08:00:00Z","raceName":"Thai Grand Prix","circuit":"Chang International Circuit, Buriram, Thailand","note":"MotoGP 2026 — Thai Grand Prix. Chang International Circuit, Buriram, Thailand.","note_es":"MotoGP 2026 — Thai Grand Prix. Chang International Circuit, Buriram, Thailand.","note_pt":"MotoGP 2026 — Thai Grand Prix. Chang International Circuit, Buriram, Thailand.","note_fr":"MotoGP 2026 — Thai Grand Prix. Chang International Circuit, Buriram, Thailand."},{"date":"2026-03-22T18:00:00Z","raceName":"Brazilian Grand Prix","circuit":"Autodromo Internacional Ayrton Senna, Goiania, Brazil","note":"MotoGP 2026 — Brazilian Grand Prix. Autodromo Internacional Ayrton Senna, Goiania, Brazil.","note_es":"MotoGP 2026 — Brazilian Grand Prix. Autodromo Internacional Ayrton Senna, Goiania, Brazil.","note_pt":"MotoGP 2026 — Brazilian Grand Prix. Autodromo Internacional Ayrton Senna, Goiania, Brazil.","note_fr":"MotoGP 2026 — Brazilian Grand Prix. Autodromo Internacional Ayrton Senna, Goiania, Brazil."},{"date":"2026-03-29T21:00:00Z","raceName":"Americas Grand Prix","circuit":"Circuit of the Americas, Austin, TX, USA","note":"MotoGP 2026 — Americas Grand Prix. Circuit of the Americas, Austin, TX, USA.","note_es":"MotoGP 2026 — Americas Grand Prix. Circuit of the Americas, Austin, TX, USA.","note_pt":"MotoGP 2026 — Americas Grand Prix. Circuit of the Americas, Austin, TX, USA.","note_fr":"MotoGP 2026 — Americas Grand Prix. Circuit of the Americas, Austin, TX, USA."},{"date":"2026-04-26T13:00:00Z","raceName":"Spanish Grand Prix","circuit":"Circuito de Jerez - Angel Nieto, Spain","note":"MotoGP 2026 — Spanish Grand Prix. Circuito de Jerez - Angel Nieto, Spain.","note_es":"MotoGP 2026 — Spanish Grand Prix. Circuito de Jerez - Angel Nieto, Spain.","note_pt":"MotoGP 2026 — Spanish Grand Prix. Circuito de Jerez - Angel Nieto, Spain.","note_fr":"MotoGP 2026 — Spanish Grand Prix. Circuito de Jerez - Angel Nieto, Spain."},{"date":"2026-05-10T13:00:00Z","raceName":"French Grand Prix","circuit":"Bugatti Circuit, Le Mans, France","note":"MotoGP 2026 — French Grand Prix. Bugatti Circuit, Le Mans, France.","note_es":"MotoGP 2026 — French Grand Prix. Bugatti Circuit, Le Mans, France.","note_pt":"MotoGP 2026 — French Grand Prix. Bugatti Circuit, Le Mans, France.","note_fr":"MotoGP 2026 — French Grand Prix. Bugatti Circuit, Le Mans, France."},{"date":"2026-05-17T13:00:00Z","raceName":"Catalan Grand Prix","circuit":"Circuit de Barcelona-Catalunya, Spain","note":"MotoGP 2026 — Catalan Grand Prix. Circuit de Barcelona-Catalunya, Spain.","note_es":"MotoGP 2026 — Catalan Grand Prix. Circuit de Barcelona-Catalunya, Spain.","note_pt":"MotoGP 2026 — Catalan Grand Prix. Circuit de Barcelona-Catalunya, Spain.","note_fr":"MotoGP 2026 — Catalan Grand Prix. Circuit de Barcelona-Catalunya, Spain."},{"date":"2026-05-31T13:00:00Z","raceName":"Italian Grand Prix","circuit":"Autodromo Internazionale del Mugello, Italy","note":"MotoGP 2026 — Italian Grand Prix. Autodromo Internazionale del Mugello, Italy.","note_es":"MotoGP 2026 — Italian Grand Prix. Autodromo Internazionale del Mugello, Italy.","note_pt":"MotoGP 2026 — Italian Grand Prix. Autodromo Internazionale del Mugello, Italy.","note_fr":"MotoGP 2026 — Italian Grand Prix. Autodromo Internazionale del Mugello, Italy."},{"date":"2026-06-07T13:00:00Z","raceName":"Hungarian Grand Prix","circuit":"Balaton Park Circuit, Hungary","note":"MotoGP 2026 — Hungarian Grand Prix. Balaton Park Circuit, Hungary.","note_es":"MotoGP 2026 — Hungarian Grand Prix. Balaton Park Circuit, Hungary.","note_pt":"MotoGP 2026 — Hungarian Grand Prix. Balaton Park Circuit, Hungary.","note_fr":"MotoGP 2026 — Hungarian Grand Prix. Balaton Park Circuit, Hungary."},{"date":"2026-06-21T13:00:00Z","raceName":"Czech Grand Prix","circuit":"Automotodrom Brno, Czech Republic","note":"MotoGP 2026 — Czech Grand Prix. Automotodrom Brno, Czech Republic.","note_es":"MotoGP 2026 — Czech Grand Prix. Automotodrom Brno, Czech Republic.","note_pt":"MotoGP 2026 — Czech Grand Prix. Automotodrom Brno, Czech Republic.","note_fr":"MotoGP 2026 — Czech Grand Prix. Automotodrom Brno, Czech Republic."},{"date":"2026-06-28T13:00:00Z","raceName":"Dutch TT","circuit":"TT Circuit Assen, Netherlands","note":"MotoGP 2026 — Dutch TT. TT Circuit Assen, Netherlands.","note_es":"MotoGP 2026 — Dutch TT. TT Circuit Assen, Netherlands.","note_pt":"MotoGP 2026 — Dutch TT. TT Circuit Assen, Netherlands.","note_fr":"MotoGP 2026 — Dutch TT. TT Circuit Assen, Netherlands."},{"date":"2026-07-12T13:00:00Z","raceName":"German Grand Prix","circuit":"Sachsenring, Germany","note":"MotoGP 2026 — German Grand Prix. Sachsenring, Germany.","note_es":"MotoGP 2026 — German Grand Prix. Sachsenring, Germany.","note_pt":"MotoGP 2026 — German Grand Prix. Sachsenring, Germany.","note_fr":"MotoGP 2026 — German Grand Prix. Sachsenring, Germany."},{"date":"2026-08-09T13:00:00Z","raceName":"British Grand Prix","circuit":"Silverstone Circuit, United Kingdom","note":"MotoGP 2026 — British Grand Prix. Silverstone Circuit, United Kingdom.","note_es":"MotoGP 2026 — British Grand Prix. Silverstone Circuit, United Kingdom.","note_pt":"MotoGP 2026 — British Grand Prix. Silverstone Circuit, United Kingdom.","note_fr":"MotoGP 2026 — British Grand Prix. Silverstone Circuit, United Kingdom."},{"date":"2026-08-30T13:00:00Z","raceName":"Aragon Grand Prix","circuit":"MotorLand Aragon, Spain","note":"MotoGP 2026 — Aragon Grand Prix. MotorLand Aragon, Spain.","note_es":"MotoGP 2026 — Aragon Grand Prix. MotorLand Aragon, Spain.","note_pt":"MotoGP 2026 — Aragon Grand Prix. MotorLand Aragon, Spain.","note_fr":"MotoGP 2026 — Aragon Grand Prix. MotorLand Aragon, Spain."},{"date":"2026-09-13T13:00:00Z","raceName":"San Marino Grand Prix","circuit":"Misano World Circuit Marco Simoncelli, Italy","note":"MotoGP 2026 — San Marino Grand Prix. Misano World Circuit Marco Simoncelli, Italy.","note_es":"MotoGP 2026 — San Marino Grand Prix. Misano World Circuit Marco Simoncelli, Italy.","note_pt":"MotoGP 2026 — San Marino Grand Prix. Misano World Circuit Marco Simoncelli, Italy.","note_fr":"MotoGP 2026 — San Marino Grand Prix. Misano World Circuit Marco Simoncelli, Italy."},{"date":"2026-09-20T13:00:00Z","raceName":"Austrian Grand Prix","circuit":"Red Bull Ring, Spielberg, Austria","note":"MotoGP 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.","note_es":"MotoGP 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.","note_pt":"MotoGP 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.","note_fr":"MotoGP 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria."},{"date":"2026-10-04T06:00:00Z","raceName":"Japanese Grand Prix","circuit":"Mobility Resort Motegi, Japan","note":"MotoGP 2026 — Japanese Grand Prix. Mobility Resort Motegi, Japan.","note_es":"MotoGP 2026 — Japanese Grand Prix. Mobility Resort Motegi, Japan.","note_pt":"MotoGP 2026 — Japanese Grand Prix. Mobility Resort Motegi, Japan.","note_fr":"MotoGP 2026 — Japanese Grand Prix. Mobility Resort Motegi, Japan."},{"date":"2026-10-11T07:00:00Z","raceName":"Indonesian Grand Prix","circuit":"Pertamina Mandalika Circuit, Indonesia","note":"MotoGP 2026 — Indonesian Grand Prix. Pertamina Mandalika Circuit, Indonesia.","note_es":"MotoGP 2026 — Indonesian Grand Prix. Pertamina Mandalika Circuit, Indonesia.","note_pt":"MotoGP 2026 — Indonesian Grand Prix. Pertamina Mandalika Circuit, Indonesia.","note_fr":"MotoGP 2026 — Indonesian Grand Prix. Pertamina Mandalika Circuit, Indonesia."},{"date":"2026-10-25T03:00:00Z","raceName":"Australian Grand Prix","circuit":"Phillip Island Grand Prix Circuit, Australia","note":"MotoGP 2026 — Australian Grand Prix. Phillip Island Grand Prix Circuit, Australia.","note_es":"MotoGP 2026 — Australian Grand Prix. Phillip Island Grand Prix Circuit, Australia.","note_pt":"MotoGP 2026 — Australian Grand Prix. Phillip Island Grand Prix Circuit, Australia.","note_fr":"MotoGP 2026 — Australian Grand Prix. Phillip Island Grand Prix Circuit, Australia."},{"date":"2026-11-01T07:00:00Z","raceName":"Malaysian Grand Prix","circuit":"Sepang International Circuit, Malaysia","note":"MotoGP 2026 — Malaysian Grand Prix. Sepang International Circuit, Malaysia.","note_es":"MotoGP 2026 — Malaysian Grand Prix. Sepang International Circuit, Malaysia.","note_pt":"MotoGP 2026 — Malaysian Grand Prix. Sepang International Circuit, Malaysia.","note_fr":"MotoGP 2026 — Malaysian Grand Prix. Sepang International Circuit, Malaysia."},{"date":"2026-11-08T17:00:00Z","raceName":"Qatar Grand Prix","circuit":"Lusail International Circuit, Qatar","note":"MotoGP 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.","note_es":"MotoGP 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.","note_pt":"MotoGP 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.","note_fr":"MotoGP 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar."},{"date":"2026-11-22T13:00:00Z","raceName":"Portuguese Grand Prix","circuit":"Autodromo Internacional do Algarve, Portimao, Portugal","note":"MotoGP 2026 — Portuguese Grand Prix. Autodromo Internacional do Algarve, Portimao, Portugal.","note_es":"MotoGP 2026 — Portuguese Grand Prix. Autodromo Internacional do Algarve, Portimao, Portugal.","note_pt":"MotoGP 2026 — Portuguese Grand Prix. Autodromo Internacional do Algarve, Portimao, Portugal.","note_fr":"MotoGP 2026 — Portuguese Grand Prix. Autodromo Internacional do Algarve, Portimao, Portugal."},{"date":"2026-11-29T13:00:00Z","raceName":"Valencia Grand Prix","circuit":"Circuit Ricardo Tormo, Cheste, Spain","note":"MotoGP 2026 — Valencia Grand Prix. Circuit Ricardo Tormo, Cheste, Spain.","note_es":"MotoGP 2026 — Valencia Grand Prix. Circuit Ricardo Tormo, Cheste, Spain.","note_pt":"MotoGP 2026 — Valencia Grand Prix. Circuit Ricardo Tormo, Cheste, Spain.","note_fr":"MotoGP 2026 — Valencia Grand Prix. Circuit Ricardo Tormo, Cheste, Spain."}]},"parense-de-manos":{"date":null,"note":"Párense de Manos 2026 — Argentine boxing event organized by Luquita Rodríguez. Date not yet announced."}}}
+{
+  "updated": "2026-05-20",
+  "_policy": "Only confirmed official dates. If unconfirmed → date: null. No estimated dates shown as real countdowns.",
+  "events": {
+    "gta6": {
+      "date": "2026-11-19T12:00:00",
+      "note": "Rockstar Games has not announced an official release date. Stay tuned for updates."
+    },
+    "iphone": {
+      "date": null,
+      "note": "Apple has not announced iPhone 2026 dates. Usually unveiled in September — check back closer to the date."
+    },
+    "f1": {
+      "note": "Formula 1 World Championship — counts down to the next scheduled race.",
+      "note_es": "Campeonato Mundial de Fórmula 1 — cuenta regresiva para la próxima carrera.",
+      "note_pt": "Campeonato Mundial de Fórmula 1 — contagem para a próxima corrida.",
+      "note_fr": "Championnat du Monde de Formule 1 — compte à rebours vers la prochaine course.",
+      "schedule": [
+        {
+          "date": "2026-03-08T04:00:00Z",
+          "raceName": "Australian Grand Prix",
+          "circuit": "Albert Park, Melbourne, Australia",
+          "note": "Formula 1 2026 — Australian Grand Prix. Albert Park, Melbourne, Australia.",
+          "note_es": "Fórmula 1 2026 — Australian Grand Prix. Albert Park, Melbourne, Australia.",
+          "note_pt": "Fórmula 1 2026 — Australian Grand Prix. Albert Park, Melbourne, Australia.",
+          "note_fr": "Formule 1 2026 — Australian Grand Prix. Albert Park, Melbourne, Australia."
+        },
+        {
+          "date": "2026-03-15T07:00:00Z",
+          "raceName": "Chinese Grand Prix",
+          "circuit": "Shanghai International Circuit, China",
+          "sprint": true,
+          "note": "Formula 1 2026 — Chinese Grand Prix. Shanghai International Circuit, China. (Sprint Weekend)",
+          "note_es": "Fórmula 1 2026 — Chinese Grand Prix. Shanghai International Circuit, China. (Sprint Weekend)",
+          "note_pt": "Fórmula 1 2026 — Chinese Grand Prix. Shanghai International Circuit, China. (Sprint Weekend)",
+          "note_fr": "Formule 1 2026 — Chinese Grand Prix. Shanghai International Circuit, China. (Sprint Weekend)"
+        },
+        {
+          "date": "2026-03-29T06:00:00Z",
+          "raceName": "Japanese Grand Prix",
+          "circuit": "Suzuka International Racing Course, Japan",
+          "note": "Formula 1 2026 — Japanese Grand Prix. Suzuka International Racing Course, Japan.",
+          "note_es": "Fórmula 1 2026 — Japanese Grand Prix. Suzuka International Racing Course, Japan.",
+          "note_pt": "Fórmula 1 2026 — Japanese Grand Prix. Suzuka International Racing Course, Japan.",
+          "note_fr": "Formule 1 2026 — Japanese Grand Prix. Suzuka International Racing Course, Japan."
+        },
+        {
+          "date": "2026-05-03T18:00:00Z",
+          "raceName": "Miami Grand Prix",
+          "circuit": "Miami International Autodrome, USA",
+          "sprint": true,
+          "note": "Formula 1 2026 — Miami Grand Prix. Miami International Autodrome, USA. (Sprint Weekend)",
+          "note_es": "Fórmula 1 2026 — Miami Grand Prix. Miami International Autodrome, USA. (Sprint Weekend)",
+          "note_pt": "Fórmula 1 2026 — Miami Grand Prix. Miami International Autodrome, USA. (Sprint Weekend)",
+          "note_fr": "Formule 1 2026 — Miami Grand Prix. Miami International Autodrome, USA. (Sprint Weekend)"
+        },
+        {
+          "date": "2026-05-24T20:00:00Z",
+          "raceName": "Canadian Grand Prix",
+          "circuit": "Circuit Gilles Villeneuve, Montreal, Canada",
+          "sprint": true,
+          "note": "Formula 1 2026 — Canadian Grand Prix. Circuit Gilles Villeneuve, Montreal, Canada. (Sprint Weekend)",
+          "note_es": "Fórmula 1 2026 — Canadian Grand Prix. Circuit Gilles Villeneuve, Montreal, Canada. (Sprint Weekend)",
+          "note_pt": "Fórmula 1 2026 — Canadian Grand Prix. Circuit Gilles Villeneuve, Montreal, Canada. (Sprint Weekend)",
+          "note_fr": "Formule 1 2026 — Canadian Grand Prix. Circuit Gilles Villeneuve, Montreal, Canada. (Sprint Weekend)"
+        },
+        {
+          "date": "2026-06-07T13:00:00Z",
+          "raceName": "Monaco Grand Prix",
+          "circuit": "Circuit de Monaco, Monte Carlo",
+          "note": "Formula 1 2026 — Monaco Grand Prix. Circuit de Monaco, Monte Carlo.",
+          "note_es": "Fórmula 1 2026 — Monaco Grand Prix. Circuit de Monaco, Monte Carlo.",
+          "note_pt": "Fórmula 1 2026 — Monaco Grand Prix. Circuit de Monaco, Monte Carlo.",
+          "note_fr": "Formule 1 2026 — Monaco Grand Prix. Circuit de Monaco, Monte Carlo."
+        },
+        {
+          "date": "2026-06-14T13:00:00Z",
+          "raceName": "Barcelona-Catalunya Grand Prix",
+          "circuit": "Circuit de Barcelona-Catalunya, Spain",
+          "note": "Formula 1 2026 — Barcelona-Catalunya Grand Prix. Circuit de Barcelona-Catalunya, Spain.",
+          "note_es": "Fórmula 1 2026 — Barcelona-Catalunya Grand Prix. Circuit de Barcelona-Catalunya, Spain.",
+          "note_pt": "Fórmula 1 2026 — Barcelona-Catalunya Grand Prix. Circuit de Barcelona-Catalunya, Spain.",
+          "note_fr": "Formule 1 2026 — Barcelona-Catalunya Grand Prix. Circuit de Barcelona-Catalunya, Spain."
+        },
+        {
+          "date": "2026-06-28T13:00:00Z",
+          "raceName": "Austrian Grand Prix",
+          "circuit": "Red Bull Ring, Spielberg, Austria",
+          "note": "Formula 1 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.",
+          "note_es": "Fórmula 1 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.",
+          "note_pt": "Fórmula 1 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.",
+          "note_fr": "Formule 1 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria."
+        },
+        {
+          "date": "2026-07-05T14:00:00Z",
+          "raceName": "British Grand Prix",
+          "circuit": "Silverstone Circuit, United Kingdom",
+          "sprint": true,
+          "note": "Formula 1 2026 — British Grand Prix. Silverstone Circuit, United Kingdom. (Sprint Weekend)",
+          "note_es": "Fórmula 1 2026 — British Grand Prix. Silverstone Circuit, United Kingdom. (Sprint Weekend)",
+          "note_pt": "Fórmula 1 2026 — British Grand Prix. Silverstone Circuit, United Kingdom. (Sprint Weekend)",
+          "note_fr": "Formule 1 2026 — British Grand Prix. Silverstone Circuit, United Kingdom. (Sprint Weekend)"
+        },
+        {
+          "date": "2026-07-19T13:00:00Z",
+          "raceName": "Belgian Grand Prix",
+          "circuit": "Circuit de Spa-Francorchamps, Belgium",
+          "note": "Formula 1 2026 — Belgian Grand Prix. Circuit de Spa-Francorchamps, Belgium.",
+          "note_es": "Fórmula 1 2026 — Belgian Grand Prix. Circuit de Spa-Francorchamps, Belgium.",
+          "note_pt": "Fórmula 1 2026 — Belgian Grand Prix. Circuit de Spa-Francorchamps, Belgium.",
+          "note_fr": "Formule 1 2026 — Belgian Grand Prix. Circuit de Spa-Francorchamps, Belgium."
+        },
+        {
+          "date": "2026-07-26T13:00:00Z",
+          "raceName": "Hungarian Grand Prix",
+          "circuit": "Hungaroring, Budapest, Hungary",
+          "note": "Formula 1 2026 — Hungarian Grand Prix. Hungaroring, Budapest, Hungary.",
+          "note_es": "Fórmula 1 2026 — Hungarian Grand Prix. Hungaroring, Budapest, Hungary.",
+          "note_pt": "Fórmula 1 2026 — Hungarian Grand Prix. Hungaroring, Budapest, Hungary.",
+          "note_fr": "Formule 1 2026 — Hungarian Grand Prix. Hungaroring, Budapest, Hungary."
+        },
+        {
+          "date": "2026-08-23T13:00:00Z",
+          "raceName": "Dutch Grand Prix",
+          "circuit": "Circuit Zandvoort, Netherlands",
+          "note": "Formula 1 2026 — Dutch Grand Prix. Circuit Zandvoort, Netherlands.",
+          "note_es": "Fórmula 1 2026 — Dutch Grand Prix. Circuit Zandvoort, Netherlands.",
+          "note_pt": "Fórmula 1 2026 — Dutch Grand Prix. Circuit Zandvoort, Netherlands.",
+          "note_fr": "Formule 1 2026 — Dutch Grand Prix. Circuit Zandvoort, Netherlands."
+        },
+        {
+          "date": "2026-09-06T13:00:00Z",
+          "raceName": "Italian Grand Prix",
+          "circuit": "Autodromo Nazionale Monza, Italy",
+          "note": "Formula 1 2026 — Italian Grand Prix. Autodromo Nazionale Monza, Italy.",
+          "note_es": "Fórmula 1 2026 — Italian Grand Prix. Autodromo Nazionale Monza, Italy.",
+          "note_pt": "Fórmula 1 2026 — Italian Grand Prix. Autodromo Nazionale Monza, Italy.",
+          "note_fr": "Formule 1 2026 — Italian Grand Prix. Autodromo Nazionale Monza, Italy."
+        },
+        {
+          "date": "2026-09-13T13:00:00Z",
+          "raceName": "Spanish Grand Prix",
+          "circuit": "IFEMA Madrid Circuit, Spain",
+          "note": "Formula 1 2026 — Spanish Grand Prix. IFEMA Madrid Circuit, Spain.",
+          "note_es": "Fórmula 1 2026 — Spanish Grand Prix. IFEMA Madrid Circuit, Spain.",
+          "note_pt": "Fórmula 1 2026 — Spanish Grand Prix. IFEMA Madrid Circuit, Spain.",
+          "note_fr": "Formule 1 2026 — Spanish Grand Prix. IFEMA Madrid Circuit, Spain."
+        },
+        {
+          "date": "2026-09-26T12:00:00Z",
+          "raceName": "Azerbaijan Grand Prix",
+          "circuit": "Baku City Circuit, Azerbaijan",
+          "note": "Formula 1 2026 — Azerbaijan Grand Prix. Baku City Circuit, Azerbaijan.",
+          "note_es": "Fórmula 1 2026 — Azerbaijan Grand Prix. Baku City Circuit, Azerbaijan.",
+          "note_pt": "Fórmula 1 2026 — Azerbaijan Grand Prix. Baku City Circuit, Azerbaijan.",
+          "note_fr": "Formule 1 2026 — Azerbaijan Grand Prix. Baku City Circuit, Azerbaijan."
+        },
+        {
+          "date": "2026-10-11T13:00:00Z",
+          "raceName": "Singapore Grand Prix",
+          "circuit": "Marina Bay Street Circuit, Singapore",
+          "sprint": true,
+          "note": "Formula 1 2026 — Singapore Grand Prix. Marina Bay Street Circuit, Singapore. (Sprint Weekend)",
+          "note_es": "Fórmula 1 2026 — Singapore Grand Prix. Marina Bay Street Circuit, Singapore. (Sprint Weekend)",
+          "note_pt": "Fórmula 1 2026 — Singapore Grand Prix. Marina Bay Street Circuit, Singapore. (Sprint Weekend)",
+          "note_fr": "Formule 1 2026 — Singapore Grand Prix. Marina Bay Street Circuit, Singapore. (Sprint Weekend)"
+        },
+        {
+          "date": "2026-10-25T20:00:00Z",
+          "raceName": "United States Grand Prix",
+          "circuit": "Circuit of the Americas, Austin, TX",
+          "note": "Formula 1 2026 — United States Grand Prix. Circuit of the Americas, Austin, TX.",
+          "note_es": "Fórmula 1 2026 — United States Grand Prix. Circuit of the Americas, Austin, TX.",
+          "note_pt": "Fórmula 1 2026 — United States Grand Prix. Circuit of the Americas, Austin, TX.",
+          "note_fr": "Formule 1 2026 — United States Grand Prix. Circuit of the Americas, Austin, TX."
+        },
+        {
+          "date": "2026-11-01T20:00:00Z",
+          "raceName": "Mexico City Grand Prix",
+          "circuit": "Autodromo Hermanos Rodriguez, Mexico City",
+          "note": "Formula 1 2026 — Mexico City Grand Prix. Autodromo Hermanos Rodriguez, Mexico City.",
+          "note_es": "Fórmula 1 2026 — Mexico City Grand Prix. Autodromo Hermanos Rodriguez, Mexico City.",
+          "note_pt": "Fórmula 1 2026 — Mexico City Grand Prix. Autodromo Hermanos Rodriguez, Mexico City.",
+          "note_fr": "Formule 1 2026 — Mexico City Grand Prix. Autodromo Hermanos Rodriguez, Mexico City."
+        },
+        {
+          "date": "2026-11-08T17:00:00Z",
+          "raceName": "Sao Paulo Grand Prix",
+          "circuit": "Autodromo Jose Carlos Pace, Interlagos, Brazil",
+          "note": "Formula 1 2026 — Sao Paulo Grand Prix. Autodromo Jose Carlos Pace, Interlagos, Brazil.",
+          "note_es": "Fórmula 1 2026 — Sao Paulo Grand Prix. Autodromo Jose Carlos Pace, Interlagos, Brazil.",
+          "note_pt": "Fórmula 1 2026 — Sao Paulo Grand Prix. Autodromo Jose Carlos Pace, Interlagos, Brazil.",
+          "note_fr": "Formule 1 2026 — Sao Paulo Grand Prix. Autodromo Jose Carlos Pace, Interlagos, Brazil."
+        },
+        {
+          "date": "2026-11-22T04:00:00Z",
+          "raceName": "Las Vegas Grand Prix",
+          "circuit": "Las Vegas Strip Circuit, Nevada, USA",
+          "note": "Formula 1 2026 — Las Vegas Grand Prix. Las Vegas Strip Circuit, Nevada, USA.",
+          "note_es": "Fórmula 1 2026 — Las Vegas Grand Prix. Las Vegas Strip Circuit, Nevada, USA.",
+          "note_pt": "Fórmula 1 2026 — Las Vegas Grand Prix. Las Vegas Strip Circuit, Nevada, USA.",
+          "note_fr": "Formule 1 2026 — Las Vegas Grand Prix. Las Vegas Strip Circuit, Nevada, USA."
+        },
+        {
+          "date": "2026-11-29T16:00:00Z",
+          "raceName": "Qatar Grand Prix",
+          "circuit": "Lusail International Circuit, Qatar",
+          "note": "Formula 1 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.",
+          "note_es": "Fórmula 1 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.",
+          "note_pt": "Fórmula 1 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.",
+          "note_fr": "Formule 1 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar."
+        },
+        {
+          "date": "2026-12-06T13:00:00Z",
+          "raceName": "Abu Dhabi Grand Prix",
+          "circuit": "Yas Marina Circuit, Abu Dhabi",
+          "note": "Formula 1 2026 — Abu Dhabi Grand Prix. Yas Marina Circuit, Abu Dhabi.",
+          "note_es": "Fórmula 1 2026 — Abu Dhabi Grand Prix. Yas Marina Circuit, Abu Dhabi.",
+          "note_pt": "Fórmula 1 2026 — Abu Dhabi Grand Prix. Yas Marina Circuit, Abu Dhabi.",
+          "note_fr": "Formule 1 2026 — Abu Dhabi Grand Prix. Yas Marina Circuit, Abu Dhabi."
+        }
+      ]
+    },
+    "world-cup": {
+      "date": "2026-06-11T19:00:00Z",
+      "note": "2026 FIFA World Cup opening match: Mexico vs South Africa · Estadio Azteca, Mexico City · kickoff 14:00 CDT / 19:00 UTC."
+    },
+    "ucl-final": {
+      "date": "2026-05-30T16:00:00Z",
+      "note": "UEFA Champions League 2025–26 Final · Puskás Aréna, Budapest · kickoff 18:00 CEST / 16:00 UTC. UEFA moved the kickoff earlier than previous years."
+    },
+    "nba-finals": {
+      "date": "2026-06-03T20:30:00-04:00",
+      "note": "2026 NBA Finals — Game 1: June 3, 2026 at 8:30 PM ET on ABC."
+    },
+    "le-mans": {
+      "date": "2026-06-13T16:00:00+02:00",
+      "note": "24 Hours of Le Mans 2026 — start: Saturday June 13 at 16:00 local time."
+    },
+    "wimbledon": {
+      "date": "2026-06-29T11:00:00+01:00",
+      "note": "The Championships, Wimbledon 2026 — first day of play."
+    },
+    "tour-de-france": {
+      "date": "2026-06-27T12:00:00+02:00",
+      "note": "Tour de France 2026 — Grand Départ."
+    },
+    "copa-libertadores": {
+      "date": "2026-11-28T20:00:00-03:00",
+      "note": "El partido se disputará en el Estadio Centenario de Montevideo, Uruguay, según confirmó la CONMEBOL en mayo de 2026."
+    },
+    "grammys": {
+      "date": "2027-02-07T20:00:00-05:00",
+      "note": "Grammy Awards 2027 — February 7, 2027 at Crypto.com Arena, Los Angeles. Ceremony begins at 8pm ET / 5pm PT.",
+      "note_es": "Premios Grammy 2027 — 7 de febrero de 2027 en el Crypto.com Arena, Los Ángeles."
+    },
+    "eurovision": {
+      "date": null,
+      "note": "Eurovision Song Contest 2027 — host country and dates not yet confirmed."
+    },
+    "coachella": {
+      "date": "2027-04-09T12:00:00-07:00",
+      "note": "Coachella 2027 — April 9–11 & 16–18, Empire Polo Club, Indio, California.",
+      "note_es": "Coachella 2027 — 9–11 y 16–18 de abril, Empire Polo Club, Indio, California."
+    },
+    "cannes": {
+      "date": "2026-05-12T19:00:00+02:00",
+      "note": "Cannes Film Festival 2026 — Opening Ceremony.",
+      "note_es": null,
+      "note_pt": null,
+      "note_fr": null
+    },
+    "eclipse": {
+      "date": "2026-08-12T19:29:00+02:00",
+      "note": "Total solar eclipse — visible from southern Spain, northern Africa, and parts of South America. Astronomically confirmed."
+    },
+    "hot-sale": {
+      "date": null,
+      "note": "Hot Sale Argentina 2027 dates have not been announced. Usually held in May."
+    },
+    "lollapalooza-ar": {
+      "date": "2027-03-12T18:00:00-03:00",
+      "note": "Lollapalooza Argentina 2027 — March 12, 13 & 14 at Hipódromo de San Isidro, Buenos Aires.",
+      "note_es": "Lollapalooza Argentina 2027 — 12, 13 y 14 de marzo en el Hipódromo de San Isidro, Buenos Aires."
+    },
+    "lollapalooza-cl": {
+      "date": "2027-03-12T18:00:00-03:00",
+      "note": "Lollapalooza Chile 2027 — March 12, 13 & 14 at Parque O'Higgins, Santiago de Chile.",
+      "note_es": "Lollapalooza Chile 2027 — 12, 13 y 14 de marzo en el Parque O'Higgins, Santiago de Chile."
+    },
+    "cosquin-rock": {
+      "date": null,
+      "note": "Cosquín Rock 2027 dates have not been announced. Usually held in February in Santa María de Punilla, Córdoba."
+    },
+    "rock-in-rio": {
+      "date": "2026-09-18T16:00:00+01:00",
+      "note": "Rock in Rio Lisboa 2026 — first day. Parque da Bela Vista, Lisbon."
+    },
+    "nyfw": {
+      "date": "2026-09-08T09:00:00-05:00",
+      "note": "New York Fashion Week — Spring/Summer 2027 edition (September 2026 shows)."
+    },
+    "milan-fw": {
+      "date": "2026-09-16T09:00:00+02:00",
+      "note": "Milan Fashion Week — Spring/Summer 2027 edition."
+    },
+    "paris-fw": {
+      "date": "2026-09-28T09:00:00+02:00",
+      "note": "Paris Fashion Week — Spring/Summer 2027 edition."
+    },
+    "bafweek": {
+      "date": "2026-10-13T10:00:00-03:00",
+      "note": "Buenos Aires Fashion Week — Spring/Summer 2026 edition."
+    },
+    "world-cup-final": {
+      "date": "2026-07-19T15:00:00-04:00",
+      "note": "2026 FIFA World Cup Final — MetLife Stadium, East Rutherford, NJ."
+    },
+    "copa-america-2028": {
+      "date": "2028-06-01T12:00:00",
+      "note": "Estimated start date. 2028 Copa América — host country TBD."
+    },
+    "copa-america-2028-final": {
+      "date": "2028-07-01T12:00:00",
+      "note": "Estimated date. 2028 Copa América Final — host country and venue TBD."
+    },
+    "euro-2028": {
+      "date": "2028-06-09T21:00:00+01:00",
+      "note": "UEFA Euro 2028 Opening Match — UK & Republic of Ireland. Dates confirmed by UEFA."
+    },
+    "euro-2028-final": {
+      "date": "2028-07-09T21:00:00+01:00",
+      "note": "UEFA Euro 2028 Final — Wembley Stadium, London. Date confirmed by UEFA."
+    },
+    "lollapalooza-us": {
+      "date": "2026-07-30T12:00:00-05:00",
+      "note": "Lollapalooza 2026 — Grant Park, Chicago, IL. July 30 – August 2, 2026."
+    },
+    "lollapalooza-de": {
+      "date": "2026-07-18T12:00:00+02:00",
+      "note": "Lollapalooza Berlin 2026 — Tempelhof Field, Berlin. July 18–19, 2026."
+    },
+    "lollapalooza-fr": {
+      "date": "2027-07-17T12:00:00+02:00",
+      "note": "Lollapalooza Paris — 2026 edition was cancelled. Estimated date for 2027 based on prior years."
+    },
+    "primavera-sound-es": {
+      "date": "2026-06-04T16:00:00+02:00",
+      "note": "Primavera Sound Barcelona 2026 — Parc del Fòrum. June 4–6, 2026."
+    },
+    "primavera-sound-ar": {
+      "date": "2026-11-28T16:00:00-03:00",
+      "note": "Primavera Sound Buenos Aires 2026 — Hipódromo de Palermo. November 28–29, 2026."
+    },
+    "primavera-sound-br": {
+      "date": "2026-12-05T16:00:00-03:00",
+      "note": "Primavera Sound São Paulo 2026 — Autódromo de Interlagos. December 5–6, 2026."
+    },
+    "tomorrowland": {
+      "date": "2026-07-17T12:00:00+02:00",
+      "note": "Tomorrowland 2026 — De Schorre, Boom, Belgium. July 17–19 and July 24–26, 2026."
+    },
+    "balon-de-oro-2026": {
+      "date": "2026-10-26T20:00:00+02:00",
+      "note": "Balón de Oro 2026 ceremony — Paris. Date confirmed."
+    },
+    "mr-olympia-2026": {
+      "date": "2026-09-24T09:00:00-07:00",
+      "note": "Mr. Olympia 2026 — Palms Casino Resort, Las Vegas. September 24–27, 2026."
+    },
+    "roland-garros": {
+      "date": "2026-05-25T10:00:00+02:00",
+      "note": "Roland Garros 2026 runs May 25 – June 8 at Stade Roland Garros, Paris."
+    },
+    "pga-championship": {
+      "date": "2026-05-21T08:00:00-04:00",
+      "note": "PGA Championship 2026 runs May 21–24 at Quail Hollow Club, Charlotte, NC."
+    },
+    "us-open-golf": {
+      "date": "2026-06-18T07:00:00-04:00",
+      "note": "US Open Golf 2026 runs June 18–21 at Oakmont Country Club, Pennsylvania."
+    },
+    "the-open": {
+      "date": "2026-07-16T06:30:00+01:00",
+      "note": "The Open Championship 2026 runs July 16–19 at Royal Portrush, Northern Ireland."
+    },
+    "glastonbury": {
+      "date": "2027-06-23T12:00:00+01:00",
+      "note": "Glastonbury Festival 2027 runs June 23–27 at Worthy Farm, Pilton, Somerset. No festival in 2026 (fallow year)."
+    },
+    "us-open-tennis": {
+      "date": "2026-08-31T11:00:00-04:00",
+      "note": "US Open Tennis 2026 runs August 31 – September 13 at USTA Billie Jean King National Tennis Center, New York."
+    },
+    "bonnaroo": {
+      "date": "2026-06-11T12:00:00-05:00",
+      "note": "Bonnaroo 2026 runs June 11–14 at Great Stage Park, Manchester, Tennessee."
+    },
+    "guy-fawkes": {
+      "date": "2026-11-05T19:00:00+00:00",
+      "note": "Guy Fawkes Night / Bonfire Night, celebrated annually on November 5 in the UK."
+    },
+    "boxing-day": {
+      "date": "2026-12-26T12:00:00",
+      "note": "Boxing Day 2026 falls on December 26."
+    },
+    "mardi-gras": {
+      "date": "2027-02-09T00:00:00-06:00",
+      "note": "Mardi Gras 2027 is February 9 — 47 days before Easter Sunday March 28, 2027."
+    },
+    "holi": {
+      "date": "2027-03-14T06:00:00+05:30",
+      "note": "Holi 2027 falls on March 14, the full moon of Phalgun."
+    },
+    "lunar-new-year": {
+      "date": "2027-02-06T00:00:00+08:00",
+      "note": "Lunar New Year 2027 is February 6 — Year of the Goat."
+    },
+    "anzac-day": {
+      "date": "2027-04-25T06:00:00+10:00",
+      "note": "ANZAC Day is observed every April 25 in Australia and New Zealand."
+    },
+    "melbourne-cup": {
+      "date": "2026-11-03T15:00:00+11:00",
+      "note": "Melbourne Cup 2026 is November 3 — first Tuesday of November at Flemington Racecourse."
+    },
+    "koningsdag": {
+      "date": "2027-04-27T10:00:00+02:00",
+      "note": "King's Day (Koningsdag) 2027 is April 27 — King Willem-Alexander's birthday."
+    },
+    "royal-ascot": {
+      "date": "2026-06-16T14:30:00+01:00",
+      "note": "Royal Ascot 2026 runs June 16–20 at Ascot Racecourse, Berkshire."
+    },
+    "diwali": {
+      "date": "2026-11-08T12:00:00",
+      "note": "Diwali 2026 — Festival of Lights, November 8, 2026."
+    },
+    "oscars": {
+      "date": "2027-03-14T19:00:00-04:00",
+      "note": "99th Academy Awards — Sunday March 14, 2027 at the Dolby Theatre, Hollywood. Ceremony begins at 7pm ET / 4pm PT."
+    },
+    "emmys": {
+      "date": "2026-09-14T20:00:00-04:00",
+      "note": "78th Primetime Emmy Awards, Monday September 14, 2026 at the Peacock Theater, Los Angeles."
+    },
+    "golden-globes": {
+      "date": "2027-01-10T20:00:00-05:00",
+      "note": "84th Golden Globe Awards, Sunday January 10, 2027, Beverly Hilton, Beverly Hills. Ceremony at 8pm ET / 5pm PT. Host: Nikki Glaser."
+    },
+    "messi-birthday": {
+      "date": "2026-06-24T12:00:00",
+      "note": "Lionel Messi's birthday — born June 24, 1987 in Rosario, Argentina."
+    },
+    "ronaldo-birthday": {
+      "date": "2027-02-05T12:00:00",
+      "note": "Cristiano Ronaldo's birthday — born February 5, 1985."
+    },
+    "taylor-swift-birthday": {
+      "date": "2026-12-13T12:00:00",
+      "note": "Taylor Swift's birthday — born December 13, 1989."
+    },
+    "bad-bunny-birthday": {
+      "date": "2027-03-10T12:00:00",
+      "note": "Bad Bunny's birthday — born March 10, 1994."
+    },
+    "lebron-james-birthday": {
+      "date": "2026-12-30T12:00:00",
+      "note": "LeBron James's birthday — born December 30, 1984."
+    },
+    "brit-awards": {
+      "date": null,
+      "note": "BRIT Awards 2027 date not yet announced. Typically held in February or March at The O2 Arena, London."
+    },
+    "latin-grammys": {
+      "date": "2026-11-19T20:00:00-05:00",
+      "note": "Latin Grammy Awards 2026 — confirmed November 19, 2026."
+    },
+    "mtv-vmas": {
+      "date": "2026-09-27T20:00:00-04:00",
+      "note": "MTV VMAs 2026 — Sunday, September 27, 2026, 8 PM ET. Los Angeles, CA. Airs on CBS and Paramount+."
+    },
+    "bafta": {
+      "date": "2027-02-21T19:00:00+00:00",
+      "note": "80th BAFTA Film Awards, Sunday February 21, 2027, Royal Festival Hall, London."
+    },
+    "nfl-season": {
+      "date": "2026-09-10T20:20:00-04:00",
+      "note": "NFL 2026 Season Kickoff — Thursday, September 10, 2026."
+    },
+    "stanley-cup": {
+      "date": "2026-06-04T20:00:00-04:00",
+      "note": "2026 Stanley Cup Finals begin June 4, 2026, best-of-seven series through June 24."
+    },
+    "masters-golf": {
+      "date": "2027-04-08T12:00:00",
+      "note": "The Masters 2027 — Augusta National Golf Club, April 8–13, 2027."
+    },
+    "wwe-summerslam": {
+      "date": "2026-08-01T19:00:00-04:00",
+      "note": "WWE SummerSlam 2026 — August 1–2, 2026."
+    },
+    "wwe-royal-rumble": {
+      "date": "2027-01-30T20:00:00-05:00",
+      "note": "WWE Royal Rumble 2027, January 30, 2027, returning to a domestic US stadium."
+    },
+    "wwe-survivor-series": {
+      "date": null,
+      "note": "WWE Survivor Series 2026 date not yet announced. Typically held in November."
+    },
+    "cs2-major": {
+      "date": "2026-06-02T12:00:00",
+      "note": "IEM Cologne CS2 Major 2026, June 2–21, 2026, at Lanxess Arena, Cologne, Germany."
+    },
+    "lol-worlds": {
+      "date": "2026-11-01T17:00:00-05:00",
+      "note": "LoL Worlds 2026 runs October 1 – November 1, 2026. Grand Final at Barclays Center, Brooklyn, NY."
+    },
+    "elecciones-colombia": {
+      "date": "2026-05-31T12:00:00",
+      "note": "Colombian Presidential Election 2026 — first round confirmed May 31, 2026."
+    },
+    "elecciones-brasil": {
+      "date": "2026-10-04T12:00:00",
+      "note": "Brazilian General Election 2026 — first round October 4, 2026. Potential runoff October 25, 2026."
+    },
+    "oktoberfest": {
+      "date": "2026-09-19T12:00:00",
+      "note": "Oktoberfest 2026 — Munich, September 19 – October 4, 2026."
+    },
+    "elecciones-usa-midterms": {
+      "date": "2026-11-03T12:00:00",
+      "note": "US Midterm Elections 2026 — November 3, 2026."
+    },
+    "elecciones-france": {
+      "date": null,
+      "note": "French Presidential Election 2027 — April 2027 (exact date TBA). First round typically in April."
+    },
+    "elecciones-mexico": {
+      "date": "2027-06-01T12:00:00",
+      "note": "Elecciones intermedias México 2027 — 1 de junio de 2027."
+    },
+    "copa-del-rey": {
+      "date": null,
+      "note": "Copa del Rey Final 2026 — date TBA, typically late April or May."
+    },
+    "fa-cup-final": {
+      "date": "2027-05-15T15:00:00+01:00",
+      "note": "FA Cup Final 2027 at Wembley Stadium, London, Saturday May 15, 2027."
+    },
+    "nba-draft": {
+      "date": "2026-06-23T20:00:00-04:00",
+      "note": "NBA Draft 2026 — Round 1: June 23, Round 2: June 24, 2026. Barclays Center, Brooklyn, NY."
+    },
+    "cricket-world-cup": {
+      "date": "2026-06-12T12:00:00",
+      "note": "ICC Women's T20 World Cup 2026, June 12 – July 5, 2026, hosted by England."
+    },
+    "rugby-world-cup": {
+      "date": "2027-09-04T12:00:00",
+      "note": "Rugby World Cup 2027 — Australia, September 4 – October 23, 2027."
+    },
+    "six-nations": {
+      "date": "2027-02-06T12:00:00",
+      "note": "Six Nations Championship 2027 — starts February 6, 2027."
+    },
+    "la-velada-del-ano": {
+      "date": "2026-07-25T22:00:00+02:00",
+      "note": "La Velada del Año VI se celebra el sábado 25 de julio de 2026 en el Estadio de La Cartuja de Sevilla."
+    },
+    "world-series": {
+      "date": null,
+      "note": "MLB World Series 2026 — typically late October. Date TBA (depends on playoff results)."
+    },
+    "shakira-birthday": {
+      "date": "2027-02-02T12:00:00",
+      "note": "Shakira's birthday — born February 2, 1977."
+    },
+    "drake-birthday": {
+      "date": "2026-10-24T12:00:00",
+      "note": "Drake's birthday — born October 24, 1986."
+    },
+    "neymar-birthday": {
+      "date": "2027-02-05T12:00:00",
+      "note": "Neymar Jr's birthday — born February 5, 1992."
+    },
+    "mbappe-birthday": {
+      "date": "2026-12-20T12:00:00",
+      "note": "Kylian Mbappé's birthday — born December 20, 1998."
+    },
+    "billie-eilish-birthday": {
+      "date": "2026-12-18T12:00:00",
+      "note": "Billie Eilish's birthday — born December 18, 2001."
+    },
+    "ariana-grande-birthday": {
+      "date": "2026-06-26T12:00:00",
+      "note": "Ariana Grande's birthday — born June 26, 1993."
+    },
+    "canada-day": {
+      "date": "2026-07-01T12:00:00",
+      "note": "Canada Day 2026 — July 1, 2026. Canada's 159th birthday."
+    },
+    "justin-bieber-birthday": {
+      "date": "2027-03-01T12:00:00",
+      "note": "Justin Bieber's birthday — born March 1, 1994 in London, Ontario, Canada."
+    },
+    "beyonce-birthday": {
+      "date": "2026-09-04T12:00:00",
+      "note": "Beyoncé's birthday — born September 4, 1981 in Houston, Texas, USA."
+    },
+    "rihanna-birthday": {
+      "date": "2027-02-20T12:00:00",
+      "note": "Rihanna's birthday — born February 20, 1988 in Saint Michael, Barbados."
+    },
+    "weeknd-birthday": {
+      "date": "2027-02-16T12:00:00",
+      "note": "The Weeknd's birthday — born February 16, 1990 in Toronto, Ontario, Canada."
+    },
+    "dua-lipa-birthday": {
+      "date": "2026-08-22T12:00:00",
+      "note": "Dua Lipa's birthday — born August 22, 1995 in London, UK."
+    },
+    "selena-gomez-birthday": {
+      "date": "2026-07-22T12:00:00",
+      "note": "Selena Gomez's birthday — born July 22, 1992 in Grand Prairie, Texas, USA."
+    },
+    "ed-sheeran-birthday": {
+      "date": "2027-02-17T12:00:00",
+      "note": "Ed Sheeran's birthday — born February 17, 1991 in Halifax, West Yorkshire, UK."
+    },
+    "vinicius-birthday": {
+      "date": "2026-07-12T12:00:00",
+      "note": "Vinicius Jr's birthday — born July 12, 2000 in São Gonçalo, Rio de Janeiro, Brazil."
+    },
+    "lamine-yamal-birthday": {
+      "date": "2026-07-16T12:00:00",
+      "note": "Lamine Yamal's birthday — born July 16, 2007 in Esplugues de Llobregat, Barcelona, Spain."
+    },
+    "haaland-birthday": {
+      "date": "2026-07-21T12:00:00",
+      "note": "Erling Haaland's birthday — born July 21, 2000 in Leeds, UK (Norwegian)."
+    },
+    "donald-trump-birthday": {
+      "date": "2026-06-14T12:00:00",
+      "note": "Donald Trump's birthday — born June 14, 1946 in Queens, New York, USA."
+    },
+    "elon-musk-birthday": {
+      "date": "2026-06-28T12:00:00",
+      "note": "Elon Musk's birthday — born June 28, 1971 in Pretoria, South Africa."
+    },
+    "virat-kohli-birthday": {
+      "date": "2026-11-05T12:00:00",
+      "note": "Virat Kohli's birthday — born November 5, 1988 in Delhi, India."
+    },
+    "mrbeast-birthday": {
+      "date": "2027-05-07T12:00:00",
+      "note": "MrBeast's birthday — born May 7, 1998 in Greenville, North Carolina, USA. Real name: Jimmy Donaldson."
+    },
+    "ksi-birthday": {
+      "date": "2026-06-19T12:00:00",
+      "note": "KSI's birthday — born June 19, 1993 in Watford, Hertfordshire, UK. Real name: Olajide Olatunji."
+    },
+    "dicaprio-birthday": {
+      "date": "2026-11-11T12:00:00",
+      "note": "Leonardo DiCaprio's birthday — born November 11, 1974 in Los Angeles, California, USA."
+    },
+    "brad-pitt-birthday": {
+      "date": "2026-12-18T12:00:00",
+      "note": "Brad Pitt's birthday — born December 18, 1963 in Shawnee, Oklahoma, USA."
+    },
+    "dwayne-johnson-birthday": {
+      "date": "2027-05-02T12:00:00",
+      "note": "Dwayne Johnson's birthday — born May 2, 1972 in Hayward, California, USA."
+    },
+    "tom-cruise-birthday": {
+      "date": "2026-07-03T12:00:00",
+      "note": "Tom Cruise's birthday — born July 3, 1962 in Syracuse, New York, USA."
+    },
+    "ryan-reynolds-birthday": {
+      "date": "2026-10-23T12:00:00",
+      "note": "Ryan Reynolds's birthday — born October 23, 1976 in Vancouver, British Columbia, Canada."
+    },
+    "robert-downey-jr-birthday": {
+      "date": "2027-04-04T12:00:00",
+      "note": "Robert Downey Jr's birthday — born April 4, 1965 in Manhattan, New York, USA."
+    },
+    "will-smith-birthday": {
+      "date": "2026-09-25T12:00:00",
+      "note": "Will Smith's birthday — born September 25, 1968 in Philadelphia, Pennsylvania, USA."
+    },
+    "zendaya-birthday": {
+      "date": "2026-09-01T12:00:00",
+      "note": "Zendaya's birthday — born September 1, 1996 in Oakland, California, USA."
+    },
+    "angelina-jolie-birthday": {
+      "date": "2026-06-04T12:00:00",
+      "note": "Angelina Jolie's birthday — born June 4, 1975 in Los Angeles, California, USA."
+    },
+    "scarlett-johansson-birthday": {
+      "date": "2026-11-22T12:00:00",
+      "note": "Scarlett Johansson's birthday — born November 22, 1984 in New York City, USA."
+    },
+    "ps6": {
+      "date": null,
+      "note": "PlayStation 6 release date not yet announced by Sony. Expected 2027-2028."
+    },
+    "january-1": {
+      "date": "2000-01-01T00:00:00",
+      "note": "Annual countdown to January 1."
+    },
+    "january-2": {
+      "date": "2000-01-02T00:00:00",
+      "note": "Annual countdown to January 2."
+    },
+    "january-3": {
+      "date": "2000-01-03T00:00:00",
+      "note": "Annual countdown to January 3."
+    },
+    "january-4": {
+      "date": "2000-01-04T00:00:00",
+      "note": "Annual countdown to January 4."
+    },
+    "january-5": {
+      "date": "2000-01-05T00:00:00",
+      "note": "Annual countdown to January 5."
+    },
+    "january-6": {
+      "date": "2000-01-06T00:00:00",
+      "note": "Annual countdown to January 6."
+    },
+    "january-7": {
+      "date": "2000-01-07T00:00:00",
+      "note": "Annual countdown to January 7."
+    },
+    "january-8": {
+      "date": "2000-01-08T00:00:00",
+      "note": "Annual countdown to January 8."
+    },
+    "january-9": {
+      "date": "2000-01-09T00:00:00",
+      "note": "Annual countdown to January 9."
+    },
+    "january-10": {
+      "date": "2000-01-10T00:00:00",
+      "note": "Annual countdown to January 10."
+    },
+    "january-11": {
+      "date": "2000-01-11T00:00:00",
+      "note": "Annual countdown to January 11."
+    },
+    "january-12": {
+      "date": "2000-01-12T00:00:00",
+      "note": "Annual countdown to January 12."
+    },
+    "january-13": {
+      "date": "2000-01-13T00:00:00",
+      "note": "Annual countdown to January 13."
+    },
+    "january-14": {
+      "date": "2000-01-14T00:00:00",
+      "note": "Annual countdown to January 14."
+    },
+    "january-15": {
+      "date": "2000-01-15T00:00:00",
+      "note": "Annual countdown to January 15."
+    },
+    "january-16": {
+      "date": "2000-01-16T00:00:00",
+      "note": "Annual countdown to January 16."
+    },
+    "january-17": {
+      "date": "2000-01-17T00:00:00",
+      "note": "Annual countdown to January 17."
+    },
+    "january-18": {
+      "date": "2000-01-18T00:00:00",
+      "note": "Annual countdown to January 18."
+    },
+    "january-19": {
+      "date": "2000-01-19T00:00:00",
+      "note": "Annual countdown to January 19."
+    },
+    "january-20": {
+      "date": "2000-01-20T00:00:00",
+      "note": "Annual countdown to January 20."
+    },
+    "january-21": {
+      "date": "2000-01-21T00:00:00",
+      "note": "Annual countdown to January 21."
+    },
+    "january-22": {
+      "date": "2000-01-22T00:00:00",
+      "note": "Annual countdown to January 22."
+    },
+    "january-23": {
+      "date": "2000-01-23T00:00:00",
+      "note": "Annual countdown to January 23."
+    },
+    "january-24": {
+      "date": "2000-01-24T00:00:00",
+      "note": "Annual countdown to January 24."
+    },
+    "january-25": {
+      "date": "2000-01-25T00:00:00",
+      "note": "Annual countdown to January 25."
+    },
+    "january-26": {
+      "date": "2000-01-26T00:00:00",
+      "note": "Annual countdown to January 26."
+    },
+    "january-27": {
+      "date": "2000-01-27T00:00:00",
+      "note": "Annual countdown to January 27."
+    },
+    "january-28": {
+      "date": "2000-01-28T00:00:00",
+      "note": "Annual countdown to January 28."
+    },
+    "january-29": {
+      "date": "2000-01-29T00:00:00",
+      "note": "Annual countdown to January 29."
+    },
+    "january-30": {
+      "date": "2000-01-30T00:00:00",
+      "note": "Annual countdown to January 30."
+    },
+    "january-31": {
+      "date": "2000-01-31T00:00:00",
+      "note": "Annual countdown to January 31."
+    },
+    "february-1": {
+      "date": "2000-02-01T00:00:00",
+      "note": "Annual countdown to February 1."
+    },
+    "february-2": {
+      "date": "2000-02-02T00:00:00",
+      "note": "Annual countdown to February 2."
+    },
+    "february-3": {
+      "date": "2000-02-03T00:00:00",
+      "note": "Annual countdown to February 3."
+    },
+    "february-4": {
+      "date": "2000-02-04T00:00:00",
+      "note": "Annual countdown to February 4."
+    },
+    "february-5": {
+      "date": "2000-02-05T00:00:00",
+      "note": "Annual countdown to February 5."
+    },
+    "february-6": {
+      "date": "2000-02-06T00:00:00",
+      "note": "Annual countdown to February 6."
+    },
+    "february-7": {
+      "date": "2000-02-07T00:00:00",
+      "note": "Annual countdown to February 7."
+    },
+    "february-8": {
+      "date": "2000-02-08T00:00:00",
+      "note": "Annual countdown to February 8."
+    },
+    "february-9": {
+      "date": "2000-02-09T00:00:00",
+      "note": "Annual countdown to February 9."
+    },
+    "february-10": {
+      "date": "2000-02-10T00:00:00",
+      "note": "Annual countdown to February 10."
+    },
+    "february-11": {
+      "date": "2000-02-11T00:00:00",
+      "note": "Annual countdown to February 11."
+    },
+    "february-12": {
+      "date": "2000-02-12T00:00:00",
+      "note": "Annual countdown to February 12."
+    },
+    "february-13": {
+      "date": "2000-02-13T00:00:00",
+      "note": "Annual countdown to February 13."
+    },
+    "february-14": {
+      "date": "2000-02-14T00:00:00",
+      "note": "Annual countdown to February 14."
+    },
+    "february-15": {
+      "date": "2000-02-15T00:00:00",
+      "note": "Annual countdown to February 15."
+    },
+    "february-16": {
+      "date": "2000-02-16T00:00:00",
+      "note": "Annual countdown to February 16."
+    },
+    "february-17": {
+      "date": "2000-02-17T00:00:00",
+      "note": "Annual countdown to February 17."
+    },
+    "february-18": {
+      "date": "2000-02-18T00:00:00",
+      "note": "Annual countdown to February 18."
+    },
+    "february-19": {
+      "date": "2000-02-19T00:00:00",
+      "note": "Annual countdown to February 19."
+    },
+    "february-20": {
+      "date": "2000-02-20T00:00:00",
+      "note": "Annual countdown to February 20."
+    },
+    "february-21": {
+      "date": "2000-02-21T00:00:00",
+      "note": "Annual countdown to February 21."
+    },
+    "february-22": {
+      "date": "2000-02-22T00:00:00",
+      "note": "Annual countdown to February 22."
+    },
+    "february-23": {
+      "date": "2000-02-23T00:00:00",
+      "note": "Annual countdown to February 23."
+    },
+    "february-24": {
+      "date": "2000-02-24T00:00:00",
+      "note": "Annual countdown to February 24."
+    },
+    "february-25": {
+      "date": "2000-02-25T00:00:00",
+      "note": "Annual countdown to February 25."
+    },
+    "february-26": {
+      "date": "2000-02-26T00:00:00",
+      "note": "Annual countdown to February 26."
+    },
+    "february-27": {
+      "date": "2000-02-27T00:00:00",
+      "note": "Annual countdown to February 27."
+    },
+    "february-28": {
+      "date": "2000-02-28T00:00:00",
+      "note": "Annual countdown to February 28."
+    },
+    "march-1": {
+      "date": "2000-03-01T00:00:00",
+      "note": "Annual countdown to March 1."
+    },
+    "march-2": {
+      "date": "2000-03-02T00:00:00",
+      "note": "Annual countdown to March 2."
+    },
+    "march-3": {
+      "date": "2000-03-03T00:00:00",
+      "note": "Annual countdown to March 3."
+    },
+    "march-4": {
+      "date": "2000-03-04T00:00:00",
+      "note": "Annual countdown to March 4."
+    },
+    "march-5": {
+      "date": "2000-03-05T00:00:00",
+      "note": "Annual countdown to March 5."
+    },
+    "march-6": {
+      "date": "2000-03-06T00:00:00",
+      "note": "Annual countdown to March 6."
+    },
+    "march-7": {
+      "date": "2000-03-07T00:00:00",
+      "note": "Annual countdown to March 7."
+    },
+    "march-8": {
+      "date": "2000-03-08T00:00:00",
+      "note": "Annual countdown to March 8."
+    },
+    "march-9": {
+      "date": "2000-03-09T00:00:00",
+      "note": "Annual countdown to March 9."
+    },
+    "march-10": {
+      "date": "2000-03-10T00:00:00",
+      "note": "Annual countdown to March 10."
+    },
+    "march-11": {
+      "date": "2000-03-11T00:00:00",
+      "note": "Annual countdown to March 11."
+    },
+    "march-12": {
+      "date": "2000-03-12T00:00:00",
+      "note": "Annual countdown to March 12."
+    },
+    "march-13": {
+      "date": "2000-03-13T00:00:00",
+      "note": "Annual countdown to March 13."
+    },
+    "march-14": {
+      "date": "2000-03-14T00:00:00",
+      "note": "Annual countdown to March 14."
+    },
+    "march-15": {
+      "date": "2000-03-15T00:00:00",
+      "note": "Annual countdown to March 15."
+    },
+    "march-16": {
+      "date": "2000-03-16T00:00:00",
+      "note": "Annual countdown to March 16."
+    },
+    "march-17": {
+      "date": "2000-03-17T00:00:00",
+      "note": "Annual countdown to March 17."
+    },
+    "march-18": {
+      "date": "2000-03-18T00:00:00",
+      "note": "Annual countdown to March 18."
+    },
+    "march-19": {
+      "date": "2000-03-19T00:00:00",
+      "note": "Annual countdown to March 19."
+    },
+    "march-20": {
+      "date": "2000-03-20T00:00:00",
+      "note": "Annual countdown to March 20."
+    },
+    "march-21": {
+      "date": "2000-03-21T00:00:00",
+      "note": "Annual countdown to March 21."
+    },
+    "march-22": {
+      "date": "2000-03-22T00:00:00",
+      "note": "Annual countdown to March 22."
+    },
+    "march-23": {
+      "date": "2000-03-23T00:00:00",
+      "note": "Annual countdown to March 23."
+    },
+    "march-24": {
+      "date": "2000-03-24T00:00:00",
+      "note": "Annual countdown to March 24."
+    },
+    "march-25": {
+      "date": "2000-03-25T00:00:00",
+      "note": "Annual countdown to March 25."
+    },
+    "march-26": {
+      "date": "2000-03-26T00:00:00",
+      "note": "Annual countdown to March 26."
+    },
+    "march-27": {
+      "date": "2000-03-27T00:00:00",
+      "note": "Annual countdown to March 27."
+    },
+    "march-28": {
+      "date": "2000-03-28T00:00:00",
+      "note": "Annual countdown to March 28."
+    },
+    "march-29": {
+      "date": "2000-03-29T00:00:00",
+      "note": "Annual countdown to March 29."
+    },
+    "march-30": {
+      "date": "2000-03-30T00:00:00",
+      "note": "Annual countdown to March 30."
+    },
+    "march-31": {
+      "date": "2000-03-31T00:00:00",
+      "note": "Annual countdown to March 31."
+    },
+    "april-1": {
+      "date": "2000-04-01T00:00:00",
+      "note": "Annual countdown to April 1."
+    },
+    "april-2": {
+      "date": "2000-04-02T00:00:00",
+      "note": "Annual countdown to April 2."
+    },
+    "april-3": {
+      "date": "2000-04-03T00:00:00",
+      "note": "Annual countdown to April 3."
+    },
+    "april-4": {
+      "date": "2000-04-04T00:00:00",
+      "note": "Annual countdown to April 4."
+    },
+    "april-5": {
+      "date": "2000-04-05T00:00:00",
+      "note": "Annual countdown to April 5."
+    },
+    "april-6": {
+      "date": "2000-04-06T00:00:00",
+      "note": "Annual countdown to April 6."
+    },
+    "april-7": {
+      "date": "2000-04-07T00:00:00",
+      "note": "Annual countdown to April 7."
+    },
+    "april-8": {
+      "date": "2000-04-08T00:00:00",
+      "note": "Annual countdown to April 8."
+    },
+    "april-9": {
+      "date": "2000-04-09T00:00:00",
+      "note": "Annual countdown to April 9."
+    },
+    "april-10": {
+      "date": "2000-04-10T00:00:00",
+      "note": "Annual countdown to April 10."
+    },
+    "april-11": {
+      "date": "2000-04-11T00:00:00",
+      "note": "Annual countdown to April 11."
+    },
+    "april-12": {
+      "date": "2000-04-12T00:00:00",
+      "note": "Annual countdown to April 12."
+    },
+    "april-13": {
+      "date": "2000-04-13T00:00:00",
+      "note": "Annual countdown to April 13."
+    },
+    "april-14": {
+      "date": "2000-04-14T00:00:00",
+      "note": "Annual countdown to April 14."
+    },
+    "april-15": {
+      "date": "2000-04-15T00:00:00",
+      "note": "Annual countdown to April 15."
+    },
+    "april-16": {
+      "date": "2000-04-16T00:00:00",
+      "note": "Annual countdown to April 16."
+    },
+    "april-17": {
+      "date": "2000-04-17T00:00:00",
+      "note": "Annual countdown to April 17."
+    },
+    "april-18": {
+      "date": "2000-04-18T00:00:00",
+      "note": "Annual countdown to April 18."
+    },
+    "april-19": {
+      "date": "2000-04-19T00:00:00",
+      "note": "Annual countdown to April 19."
+    },
+    "april-20": {
+      "date": "2000-04-20T00:00:00",
+      "note": "Annual countdown to April 20."
+    },
+    "april-21": {
+      "date": "2000-04-21T00:00:00",
+      "note": "Annual countdown to April 21."
+    },
+    "april-22": {
+      "date": "2000-04-22T00:00:00",
+      "note": "Annual countdown to April 22."
+    },
+    "april-23": {
+      "date": "2000-04-23T00:00:00",
+      "note": "Annual countdown to April 23."
+    },
+    "april-24": {
+      "date": "2000-04-24T00:00:00",
+      "note": "Annual countdown to April 24."
+    },
+    "april-25": {
+      "date": "2000-04-25T00:00:00",
+      "note": "Annual countdown to April 25."
+    },
+    "april-26": {
+      "date": "2000-04-26T00:00:00",
+      "note": "Annual countdown to April 26."
+    },
+    "april-27": {
+      "date": "2000-04-27T00:00:00",
+      "note": "Annual countdown to April 27."
+    },
+    "april-28": {
+      "date": "2000-04-28T00:00:00",
+      "note": "Annual countdown to April 28."
+    },
+    "april-29": {
+      "date": "2000-04-29T00:00:00",
+      "note": "Annual countdown to April 29."
+    },
+    "april-30": {
+      "date": "2000-04-30T00:00:00",
+      "note": "Annual countdown to April 30."
+    },
+    "may-1": {
+      "date": "2000-05-01T00:00:00",
+      "note": "Annual countdown to May 1."
+    },
+    "may-2": {
+      "date": "2000-05-02T00:00:00",
+      "note": "Annual countdown to May 2."
+    },
+    "may-3": {
+      "date": "2000-05-03T00:00:00",
+      "note": "Annual countdown to May 3."
+    },
+    "may-4": {
+      "date": "2000-05-04T00:00:00",
+      "note": "Annual countdown to May 4."
+    },
+    "may-5": {
+      "date": "2000-05-05T00:00:00",
+      "note": "Annual countdown to May 5."
+    },
+    "may-6": {
+      "date": "2000-05-06T00:00:00",
+      "note": "Annual countdown to May 6."
+    },
+    "may-7": {
+      "date": "2000-05-07T00:00:00",
+      "note": "Annual countdown to May 7."
+    },
+    "may-8": {
+      "date": "2000-05-08T00:00:00",
+      "note": "Annual countdown to May 8."
+    },
+    "may-9": {
+      "date": "2000-05-09T00:00:00",
+      "note": "Annual countdown to May 9."
+    },
+    "may-10": {
+      "date": "2000-05-10T00:00:00",
+      "note": "Annual countdown to May 10."
+    },
+    "may-11": {
+      "date": "2000-05-11T00:00:00",
+      "note": "Annual countdown to May 11."
+    },
+    "may-12": {
+      "date": "2000-05-12T00:00:00",
+      "note": "Annual countdown to May 12."
+    },
+    "may-13": {
+      "date": "2000-05-13T00:00:00",
+      "note": "Annual countdown to May 13."
+    },
+    "may-14": {
+      "date": "2000-05-14T00:00:00",
+      "note": "Annual countdown to May 14."
+    },
+    "may-15": {
+      "date": "2000-05-15T00:00:00",
+      "note": "Annual countdown to May 15."
+    },
+    "may-16": {
+      "date": "2000-05-16T00:00:00",
+      "note": "Annual countdown to May 16."
+    },
+    "may-17": {
+      "date": "2000-05-17T00:00:00",
+      "note": "Annual countdown to May 17."
+    },
+    "may-18": {
+      "date": "2000-05-18T00:00:00",
+      "note": "Annual countdown to May 18."
+    },
+    "may-19": {
+      "date": "2000-05-19T00:00:00",
+      "note": "Annual countdown to May 19."
+    },
+    "may-20": {
+      "date": "2000-05-20T00:00:00",
+      "note": "Annual countdown to May 20."
+    },
+    "may-21": {
+      "date": "2000-05-21T00:00:00",
+      "note": "Annual countdown to May 21."
+    },
+    "may-22": {
+      "date": "2000-05-22T00:00:00",
+      "note": "Annual countdown to May 22."
+    },
+    "may-23": {
+      "date": "2000-05-23T00:00:00",
+      "note": "Annual countdown to May 23."
+    },
+    "may-24": {
+      "date": "2000-05-24T00:00:00",
+      "note": "Annual countdown to May 24."
+    },
+    "may-25": {
+      "date": "2000-05-25T00:00:00",
+      "note": "Annual countdown to May 25."
+    },
+    "may-26": {
+      "date": "2000-05-26T00:00:00",
+      "note": "Annual countdown to May 26."
+    },
+    "may-27": {
+      "date": "2000-05-27T00:00:00",
+      "note": "Annual countdown to May 27."
+    },
+    "may-28": {
+      "date": "2000-05-28T00:00:00",
+      "note": "Annual countdown to May 28."
+    },
+    "may-29": {
+      "date": "2000-05-29T00:00:00",
+      "note": "Annual countdown to May 29."
+    },
+    "may-30": {
+      "date": "2000-05-30T00:00:00",
+      "note": "Annual countdown to May 30."
+    },
+    "may-31": {
+      "date": "2000-05-31T00:00:00",
+      "note": "Annual countdown to May 31."
+    },
+    "june-1": {
+      "date": "2000-06-01T00:00:00",
+      "note": "Annual countdown to June 1."
+    },
+    "june-2": {
+      "date": "2000-06-02T00:00:00",
+      "note": "Annual countdown to June 2."
+    },
+    "june-3": {
+      "date": "2000-06-03T00:00:00",
+      "note": "Annual countdown to June 3."
+    },
+    "june-4": {
+      "date": "2000-06-04T00:00:00",
+      "note": "Annual countdown to June 4."
+    },
+    "june-5": {
+      "date": "2000-06-05T00:00:00",
+      "note": "Annual countdown to June 5."
+    },
+    "june-6": {
+      "date": "2000-06-06T00:00:00",
+      "note": "Annual countdown to June 6."
+    },
+    "june-7": {
+      "date": "2000-06-07T00:00:00",
+      "note": "Annual countdown to June 7."
+    },
+    "june-8": {
+      "date": "2000-06-08T00:00:00",
+      "note": "Annual countdown to June 8."
+    },
+    "june-9": {
+      "date": "2000-06-09T00:00:00",
+      "note": "Annual countdown to June 9."
+    },
+    "june-10": {
+      "date": "2000-06-10T00:00:00",
+      "note": "Annual countdown to June 10."
+    },
+    "june-11": {
+      "date": "2000-06-11T00:00:00",
+      "note": "Annual countdown to June 11."
+    },
+    "june-12": {
+      "date": "2000-06-12T00:00:00",
+      "note": "Annual countdown to June 12."
+    },
+    "june-13": {
+      "date": "2000-06-13T00:00:00",
+      "note": "Annual countdown to June 13."
+    },
+    "june-14": {
+      "date": "2000-06-14T00:00:00",
+      "note": "Annual countdown to June 14."
+    },
+    "june-15": {
+      "date": "2000-06-15T00:00:00",
+      "note": "Annual countdown to June 15."
+    },
+    "june-16": {
+      "date": "2000-06-16T00:00:00",
+      "note": "Annual countdown to June 16."
+    },
+    "june-17": {
+      "date": "2000-06-17T00:00:00",
+      "note": "Annual countdown to June 17."
+    },
+    "june-18": {
+      "date": "2000-06-18T00:00:00",
+      "note": "Annual countdown to June 18."
+    },
+    "june-19": {
+      "date": "2000-06-19T00:00:00",
+      "note": "Annual countdown to June 19."
+    },
+    "june-20": {
+      "date": "2000-06-20T00:00:00",
+      "note": "Annual countdown to June 20."
+    },
+    "june-21": {
+      "date": "2000-06-21T00:00:00",
+      "note": "Annual countdown to June 21."
+    },
+    "june-22": {
+      "date": "2000-06-22T00:00:00",
+      "note": "Annual countdown to June 22."
+    },
+    "june-23": {
+      "date": "2000-06-23T00:00:00",
+      "note": "Annual countdown to June 23."
+    },
+    "june-24": {
+      "date": "2000-06-24T00:00:00",
+      "note": "Annual countdown to June 24."
+    },
+    "june-25": {
+      "date": "2000-06-25T00:00:00",
+      "note": "Annual countdown to June 25."
+    },
+    "june-26": {
+      "date": "2000-06-26T00:00:00",
+      "note": "Annual countdown to June 26."
+    },
+    "june-27": {
+      "date": "2000-06-27T00:00:00",
+      "note": "Annual countdown to June 27."
+    },
+    "june-28": {
+      "date": "2000-06-28T00:00:00",
+      "note": "Annual countdown to June 28."
+    },
+    "june-29": {
+      "date": "2000-06-29T00:00:00",
+      "note": "Annual countdown to June 29."
+    },
+    "june-30": {
+      "date": "2000-06-30T00:00:00",
+      "note": "Annual countdown to June 30."
+    },
+    "july-1": {
+      "date": "2000-07-01T00:00:00",
+      "note": "Annual countdown to July 1."
+    },
+    "july-2": {
+      "date": "2000-07-02T00:00:00",
+      "note": "Annual countdown to July 2."
+    },
+    "july-3": {
+      "date": "2000-07-03T00:00:00",
+      "note": "Annual countdown to July 3."
+    },
+    "july-4": {
+      "date": "2000-07-04T00:00:00",
+      "note": "Annual countdown to July 4."
+    },
+    "july-5": {
+      "date": "2000-07-05T00:00:00",
+      "note": "Annual countdown to July 5."
+    },
+    "july-6": {
+      "date": "2000-07-06T00:00:00",
+      "note": "Annual countdown to July 6."
+    },
+    "july-7": {
+      "date": "2000-07-07T00:00:00",
+      "note": "Annual countdown to July 7."
+    },
+    "july-8": {
+      "date": "2000-07-08T00:00:00",
+      "note": "Annual countdown to July 8."
+    },
+    "july-9": {
+      "date": "2000-07-09T00:00:00",
+      "note": "Annual countdown to July 9."
+    },
+    "july-10": {
+      "date": "2000-07-10T00:00:00",
+      "note": "Annual countdown to July 10."
+    },
+    "july-11": {
+      "date": "2000-07-11T00:00:00",
+      "note": "Annual countdown to July 11."
+    },
+    "july-12": {
+      "date": "2000-07-12T00:00:00",
+      "note": "Annual countdown to July 12."
+    },
+    "july-13": {
+      "date": "2000-07-13T00:00:00",
+      "note": "Annual countdown to July 13."
+    },
+    "july-14": {
+      "date": "2000-07-14T00:00:00",
+      "note": "Annual countdown to July 14."
+    },
+    "july-15": {
+      "date": "2000-07-15T00:00:00",
+      "note": "Annual countdown to July 15."
+    },
+    "july-16": {
+      "date": "2000-07-16T00:00:00",
+      "note": "Annual countdown to July 16."
+    },
+    "july-17": {
+      "date": "2000-07-17T00:00:00",
+      "note": "Annual countdown to July 17."
+    },
+    "july-18": {
+      "date": "2000-07-18T00:00:00",
+      "note": "Annual countdown to July 18."
+    },
+    "july-19": {
+      "date": "2000-07-19T00:00:00",
+      "note": "Annual countdown to July 19."
+    },
+    "july-20": {
+      "date": "2000-07-20T00:00:00",
+      "note": "Annual countdown to July 20."
+    },
+    "july-21": {
+      "date": "2000-07-21T00:00:00",
+      "note": "Annual countdown to July 21."
+    },
+    "july-22": {
+      "date": "2000-07-22T00:00:00",
+      "note": "Annual countdown to July 22."
+    },
+    "july-23": {
+      "date": "2000-07-23T00:00:00",
+      "note": "Annual countdown to July 23."
+    },
+    "july-24": {
+      "date": "2000-07-24T00:00:00",
+      "note": "Annual countdown to July 24."
+    },
+    "july-25": {
+      "date": "2000-07-25T00:00:00",
+      "note": "Annual countdown to July 25."
+    },
+    "july-26": {
+      "date": "2000-07-26T00:00:00",
+      "note": "Annual countdown to July 26."
+    },
+    "july-27": {
+      "date": "2000-07-27T00:00:00",
+      "note": "Annual countdown to July 27."
+    },
+    "july-28": {
+      "date": "2000-07-28T00:00:00",
+      "note": "Annual countdown to July 28."
+    },
+    "july-29": {
+      "date": "2000-07-29T00:00:00",
+      "note": "Annual countdown to July 29."
+    },
+    "july-30": {
+      "date": "2000-07-30T00:00:00",
+      "note": "Annual countdown to July 30."
+    },
+    "july-31": {
+      "date": "2000-07-31T00:00:00",
+      "note": "Annual countdown to July 31."
+    },
+    "august-1": {
+      "date": "2000-08-01T00:00:00",
+      "note": "Annual countdown to August 1."
+    },
+    "august-2": {
+      "date": "2000-08-02T00:00:00",
+      "note": "Annual countdown to August 2."
+    },
+    "august-3": {
+      "date": "2000-08-03T00:00:00",
+      "note": "Annual countdown to August 3."
+    },
+    "august-4": {
+      "date": "2000-08-04T00:00:00",
+      "note": "Annual countdown to August 4."
+    },
+    "august-5": {
+      "date": "2000-08-05T00:00:00",
+      "note": "Annual countdown to August 5."
+    },
+    "august-6": {
+      "date": "2000-08-06T00:00:00",
+      "note": "Annual countdown to August 6."
+    },
+    "august-7": {
+      "date": "2000-08-07T00:00:00",
+      "note": "Annual countdown to August 7."
+    },
+    "august-8": {
+      "date": "2000-08-08T00:00:00",
+      "note": "Annual countdown to August 8."
+    },
+    "august-9": {
+      "date": "2000-08-09T00:00:00",
+      "note": "Annual countdown to August 9."
+    },
+    "august-10": {
+      "date": "2000-08-10T00:00:00",
+      "note": "Annual countdown to August 10."
+    },
+    "august-11": {
+      "date": "2000-08-11T00:00:00",
+      "note": "Annual countdown to August 11."
+    },
+    "august-12": {
+      "date": "2000-08-12T00:00:00",
+      "note": "Annual countdown to August 12."
+    },
+    "august-13": {
+      "date": "2000-08-13T00:00:00",
+      "note": "Annual countdown to August 13."
+    },
+    "august-14": {
+      "date": "2000-08-14T00:00:00",
+      "note": "Annual countdown to August 14."
+    },
+    "august-15": {
+      "date": "2000-08-15T00:00:00",
+      "note": "Annual countdown to August 15."
+    },
+    "august-16": {
+      "date": "2000-08-16T00:00:00",
+      "note": "Annual countdown to August 16."
+    },
+    "august-17": {
+      "date": "2000-08-17T00:00:00",
+      "note": "Annual countdown to August 17."
+    },
+    "august-18": {
+      "date": "2000-08-18T00:00:00",
+      "note": "Annual countdown to August 18."
+    },
+    "august-19": {
+      "date": "2000-08-19T00:00:00",
+      "note": "Annual countdown to August 19."
+    },
+    "august-20": {
+      "date": "2000-08-20T00:00:00",
+      "note": "Annual countdown to August 20."
+    },
+    "august-21": {
+      "date": "2000-08-21T00:00:00",
+      "note": "Annual countdown to August 21."
+    },
+    "august-22": {
+      "date": "2000-08-22T00:00:00",
+      "note": "Annual countdown to August 22."
+    },
+    "august-23": {
+      "date": "2000-08-23T00:00:00",
+      "note": "Annual countdown to August 23."
+    },
+    "august-24": {
+      "date": "2000-08-24T00:00:00",
+      "note": "Annual countdown to August 24."
+    },
+    "august-25": {
+      "date": "2000-08-25T00:00:00",
+      "note": "Annual countdown to August 25."
+    },
+    "august-26": {
+      "date": "2000-08-26T00:00:00",
+      "note": "Annual countdown to August 26."
+    },
+    "august-27": {
+      "date": "2000-08-27T00:00:00",
+      "note": "Annual countdown to August 27."
+    },
+    "august-28": {
+      "date": "2000-08-28T00:00:00",
+      "note": "Annual countdown to August 28."
+    },
+    "august-29": {
+      "date": "2000-08-29T00:00:00",
+      "note": "Annual countdown to August 29."
+    },
+    "august-30": {
+      "date": "2000-08-30T00:00:00",
+      "note": "Annual countdown to August 30."
+    },
+    "august-31": {
+      "date": "2000-08-31T00:00:00",
+      "note": "Annual countdown to August 31."
+    },
+    "september-1": {
+      "date": "2000-09-01T00:00:00",
+      "note": "Annual countdown to September 1."
+    },
+    "september-2": {
+      "date": "2000-09-02T00:00:00",
+      "note": "Annual countdown to September 2."
+    },
+    "september-3": {
+      "date": "2000-09-03T00:00:00",
+      "note": "Annual countdown to September 3."
+    },
+    "september-4": {
+      "date": "2000-09-04T00:00:00",
+      "note": "Annual countdown to September 4."
+    },
+    "september-5": {
+      "date": "2000-09-05T00:00:00",
+      "note": "Annual countdown to September 5."
+    },
+    "september-6": {
+      "date": "2000-09-06T00:00:00",
+      "note": "Annual countdown to September 6."
+    },
+    "september-7": {
+      "date": "2000-09-07T00:00:00",
+      "note": "Annual countdown to September 7."
+    },
+    "september-8": {
+      "date": "2000-09-08T00:00:00",
+      "note": "Annual countdown to September 8."
+    },
+    "september-9": {
+      "date": "2000-09-09T00:00:00",
+      "note": "Annual countdown to September 9."
+    },
+    "september-10": {
+      "date": "2000-09-10T00:00:00",
+      "note": "Annual countdown to September 10."
+    },
+    "september-11": {
+      "date": "2000-09-11T00:00:00",
+      "note": "Annual countdown to September 11."
+    },
+    "september-12": {
+      "date": "2000-09-12T00:00:00",
+      "note": "Annual countdown to September 12."
+    },
+    "september-13": {
+      "date": "2000-09-13T00:00:00",
+      "note": "Annual countdown to September 13."
+    },
+    "september-14": {
+      "date": "2000-09-14T00:00:00",
+      "note": "Annual countdown to September 14."
+    },
+    "september-15": {
+      "date": "2000-09-15T00:00:00",
+      "note": "Annual countdown to September 15."
+    },
+    "september-16": {
+      "date": "2000-09-16T00:00:00",
+      "note": "Annual countdown to September 16."
+    },
+    "september-17": {
+      "date": "2000-09-17T00:00:00",
+      "note": "Annual countdown to September 17."
+    },
+    "september-18": {
+      "date": "2000-09-18T00:00:00",
+      "note": "Annual countdown to September 18."
+    },
+    "september-19": {
+      "date": "2000-09-19T00:00:00",
+      "note": "Annual countdown to September 19."
+    },
+    "september-20": {
+      "date": "2000-09-20T00:00:00",
+      "note": "Annual countdown to September 20."
+    },
+    "september-21": {
+      "date": "2000-09-21T00:00:00",
+      "note": "Annual countdown to September 21."
+    },
+    "september-22": {
+      "date": "2000-09-22T00:00:00",
+      "note": "Annual countdown to September 22."
+    },
+    "september-23": {
+      "date": "2000-09-23T00:00:00",
+      "note": "Annual countdown to September 23."
+    },
+    "september-24": {
+      "date": "2000-09-24T00:00:00",
+      "note": "Annual countdown to September 24."
+    },
+    "september-25": {
+      "date": "2000-09-25T00:00:00",
+      "note": "Annual countdown to September 25."
+    },
+    "september-26": {
+      "date": "2000-09-26T00:00:00",
+      "note": "Annual countdown to September 26."
+    },
+    "september-27": {
+      "date": "2000-09-27T00:00:00",
+      "note": "Annual countdown to September 27."
+    },
+    "september-28": {
+      "date": "2000-09-28T00:00:00",
+      "note": "Annual countdown to September 28."
+    },
+    "september-29": {
+      "date": "2000-09-29T00:00:00",
+      "note": "Annual countdown to September 29."
+    },
+    "september-30": {
+      "date": "2000-09-30T00:00:00",
+      "note": "Annual countdown to September 30."
+    },
+    "october-1": {
+      "date": "2000-10-01T00:00:00",
+      "note": "Annual countdown to October 1."
+    },
+    "october-2": {
+      "date": "2000-10-02T00:00:00",
+      "note": "Annual countdown to October 2."
+    },
+    "october-3": {
+      "date": "2000-10-03T00:00:00",
+      "note": "Annual countdown to October 3."
+    },
+    "october-4": {
+      "date": "2000-10-04T00:00:00",
+      "note": "Annual countdown to October 4."
+    },
+    "october-5": {
+      "date": "2000-10-05T00:00:00",
+      "note": "Annual countdown to October 5."
+    },
+    "october-6": {
+      "date": "2000-10-06T00:00:00",
+      "note": "Annual countdown to October 6."
+    },
+    "october-7": {
+      "date": "2000-10-07T00:00:00",
+      "note": "Annual countdown to October 7."
+    },
+    "october-8": {
+      "date": "2000-10-08T00:00:00",
+      "note": "Annual countdown to October 8."
+    },
+    "october-9": {
+      "date": "2000-10-09T00:00:00",
+      "note": "Annual countdown to October 9."
+    },
+    "october-10": {
+      "date": "2000-10-10T00:00:00",
+      "note": "Annual countdown to October 10."
+    },
+    "october-11": {
+      "date": "2000-10-11T00:00:00",
+      "note": "Annual countdown to October 11."
+    },
+    "october-12": {
+      "date": "2000-10-12T00:00:00",
+      "note": "Annual countdown to October 12."
+    },
+    "october-13": {
+      "date": "2000-10-13T00:00:00",
+      "note": "Annual countdown to October 13."
+    },
+    "october-14": {
+      "date": "2000-10-14T00:00:00",
+      "note": "Annual countdown to October 14."
+    },
+    "october-15": {
+      "date": "2000-10-15T00:00:00",
+      "note": "Annual countdown to October 15."
+    },
+    "october-16": {
+      "date": "2000-10-16T00:00:00",
+      "note": "Annual countdown to October 16."
+    },
+    "october-17": {
+      "date": "2000-10-17T00:00:00",
+      "note": "Annual countdown to October 17."
+    },
+    "october-18": {
+      "date": "2000-10-18T00:00:00",
+      "note": "Annual countdown to October 18."
+    },
+    "october-19": {
+      "date": "2000-10-19T00:00:00",
+      "note": "Annual countdown to October 19."
+    },
+    "october-20": {
+      "date": "2000-10-20T00:00:00",
+      "note": "Annual countdown to October 20."
+    },
+    "october-21": {
+      "date": "2000-10-21T00:00:00",
+      "note": "Annual countdown to October 21."
+    },
+    "october-22": {
+      "date": "2000-10-22T00:00:00",
+      "note": "Annual countdown to October 22."
+    },
+    "october-23": {
+      "date": "2000-10-23T00:00:00",
+      "note": "Annual countdown to October 23."
+    },
+    "october-24": {
+      "date": "2000-10-24T00:00:00",
+      "note": "Annual countdown to October 24."
+    },
+    "october-25": {
+      "date": "2000-10-25T00:00:00",
+      "note": "Annual countdown to October 25."
+    },
+    "october-26": {
+      "date": "2000-10-26T00:00:00",
+      "note": "Annual countdown to October 26."
+    },
+    "october-27": {
+      "date": "2000-10-27T00:00:00",
+      "note": "Annual countdown to October 27."
+    },
+    "october-28": {
+      "date": "2000-10-28T00:00:00",
+      "note": "Annual countdown to October 28."
+    },
+    "october-29": {
+      "date": "2000-10-29T00:00:00",
+      "note": "Annual countdown to October 29."
+    },
+    "october-30": {
+      "date": "2000-10-30T00:00:00",
+      "note": "Annual countdown to October 30."
+    },
+    "october-31": {
+      "date": "2000-10-31T00:00:00",
+      "note": "Annual countdown to October 31."
+    },
+    "november-1": {
+      "date": "2000-11-01T00:00:00",
+      "note": "Annual countdown to November 1."
+    },
+    "november-2": {
+      "date": "2000-11-02T00:00:00",
+      "note": "Annual countdown to November 2."
+    },
+    "november-3": {
+      "date": "2000-11-03T00:00:00",
+      "note": "Annual countdown to November 3."
+    },
+    "november-4": {
+      "date": "2000-11-04T00:00:00",
+      "note": "Annual countdown to November 4."
+    },
+    "november-5": {
+      "date": "2000-11-05T00:00:00",
+      "note": "Annual countdown to November 5."
+    },
+    "november-6": {
+      "date": "2000-11-06T00:00:00",
+      "note": "Annual countdown to November 6."
+    },
+    "november-7": {
+      "date": "2000-11-07T00:00:00",
+      "note": "Annual countdown to November 7."
+    },
+    "november-8": {
+      "date": "2000-11-08T00:00:00",
+      "note": "Annual countdown to November 8."
+    },
+    "november-9": {
+      "date": "2000-11-09T00:00:00",
+      "note": "Annual countdown to November 9."
+    },
+    "november-10": {
+      "date": "2000-11-10T00:00:00",
+      "note": "Annual countdown to November 10."
+    },
+    "november-11": {
+      "date": "2000-11-11T00:00:00",
+      "note": "Annual countdown to November 11."
+    },
+    "november-12": {
+      "date": "2000-11-12T00:00:00",
+      "note": "Annual countdown to November 12."
+    },
+    "november-13": {
+      "date": "2000-11-13T00:00:00",
+      "note": "Annual countdown to November 13."
+    },
+    "november-14": {
+      "date": "2000-11-14T00:00:00",
+      "note": "Annual countdown to November 14."
+    },
+    "november-15": {
+      "date": "2000-11-15T00:00:00",
+      "note": "Annual countdown to November 15."
+    },
+    "november-16": {
+      "date": "2000-11-16T00:00:00",
+      "note": "Annual countdown to November 16."
+    },
+    "november-17": {
+      "date": "2000-11-17T00:00:00",
+      "note": "Annual countdown to November 17."
+    },
+    "november-18": {
+      "date": "2000-11-18T00:00:00",
+      "note": "Annual countdown to November 18."
+    },
+    "november-19": {
+      "date": "2000-11-19T00:00:00",
+      "note": "Annual countdown to November 19."
+    },
+    "november-20": {
+      "date": "2000-11-20T00:00:00",
+      "note": "Annual countdown to November 20."
+    },
+    "november-21": {
+      "date": "2000-11-21T00:00:00",
+      "note": "Annual countdown to November 21."
+    },
+    "november-22": {
+      "date": "2000-11-22T00:00:00",
+      "note": "Annual countdown to November 22."
+    },
+    "november-23": {
+      "date": "2000-11-23T00:00:00",
+      "note": "Annual countdown to November 23."
+    },
+    "november-24": {
+      "date": "2000-11-24T00:00:00",
+      "note": "Annual countdown to November 24."
+    },
+    "november-25": {
+      "date": "2000-11-25T00:00:00",
+      "note": "Annual countdown to November 25."
+    },
+    "november-26": {
+      "date": "2000-11-26T00:00:00",
+      "note": "Annual countdown to November 26."
+    },
+    "november-27": {
+      "date": "2000-11-27T00:00:00",
+      "note": "Annual countdown to November 27."
+    },
+    "november-28": {
+      "date": "2000-11-28T00:00:00",
+      "note": "Annual countdown to November 28."
+    },
+    "november-29": {
+      "date": "2000-11-29T00:00:00",
+      "note": "Annual countdown to November 29."
+    },
+    "november-30": {
+      "date": "2000-11-30T00:00:00",
+      "note": "Annual countdown to November 30."
+    },
+    "december-1": {
+      "date": "2000-12-01T00:00:00",
+      "note": "Annual countdown to December 1."
+    },
+    "december-2": {
+      "date": "2000-12-02T00:00:00",
+      "note": "Annual countdown to December 2."
+    },
+    "december-3": {
+      "date": "2000-12-03T00:00:00",
+      "note": "Annual countdown to December 3."
+    },
+    "december-4": {
+      "date": "2000-12-04T00:00:00",
+      "note": "Annual countdown to December 4."
+    },
+    "december-5": {
+      "date": "2000-12-05T00:00:00",
+      "note": "Annual countdown to December 5."
+    },
+    "december-6": {
+      "date": "2000-12-06T00:00:00",
+      "note": "Annual countdown to December 6."
+    },
+    "december-7": {
+      "date": "2000-12-07T00:00:00",
+      "note": "Annual countdown to December 7."
+    },
+    "december-8": {
+      "date": "2000-12-08T00:00:00",
+      "note": "Annual countdown to December 8."
+    },
+    "december-9": {
+      "date": "2000-12-09T00:00:00",
+      "note": "Annual countdown to December 9."
+    },
+    "december-10": {
+      "date": "2000-12-10T00:00:00",
+      "note": "Annual countdown to December 10."
+    },
+    "december-11": {
+      "date": "2000-12-11T00:00:00",
+      "note": "Annual countdown to December 11."
+    },
+    "december-12": {
+      "date": "2000-12-12T00:00:00",
+      "note": "Annual countdown to December 12."
+    },
+    "december-13": {
+      "date": "2000-12-13T00:00:00",
+      "note": "Annual countdown to December 13."
+    },
+    "december-14": {
+      "date": "2000-12-14T00:00:00",
+      "note": "Annual countdown to December 14."
+    },
+    "december-15": {
+      "date": "2000-12-15T00:00:00",
+      "note": "Annual countdown to December 15."
+    },
+    "december-16": {
+      "date": "2000-12-16T00:00:00",
+      "note": "Annual countdown to December 16."
+    },
+    "december-17": {
+      "date": "2000-12-17T00:00:00",
+      "note": "Annual countdown to December 17."
+    },
+    "december-18": {
+      "date": "2000-12-18T00:00:00",
+      "note": "Annual countdown to December 18."
+    },
+    "december-19": {
+      "date": "2000-12-19T00:00:00",
+      "note": "Annual countdown to December 19."
+    },
+    "december-20": {
+      "date": "2000-12-20T00:00:00",
+      "note": "Annual countdown to December 20."
+    },
+    "december-21": {
+      "date": "2000-12-21T00:00:00",
+      "note": "Annual countdown to December 21."
+    },
+    "december-22": {
+      "date": "2000-12-22T00:00:00",
+      "note": "Annual countdown to December 22."
+    },
+    "december-23": {
+      "date": "2000-12-23T00:00:00",
+      "note": "Annual countdown to December 23."
+    },
+    "december-24": {
+      "date": "2000-12-24T00:00:00",
+      "note": "Annual countdown to December 24."
+    },
+    "december-25": {
+      "date": "2000-12-25T00:00:00",
+      "note": "Annual countdown to December 25."
+    },
+    "december-26": {
+      "date": "2000-12-26T00:00:00",
+      "note": "Annual countdown to December 26."
+    },
+    "december-27": {
+      "date": "2000-12-27T00:00:00",
+      "note": "Annual countdown to December 27."
+    },
+    "december-28": {
+      "date": "2000-12-28T00:00:00",
+      "note": "Annual countdown to December 28."
+    },
+    "december-29": {
+      "date": "2000-12-29T00:00:00",
+      "note": "Annual countdown to December 29."
+    },
+    "december-30": {
+      "date": "2000-12-30T00:00:00",
+      "note": "Annual countdown to December 30."
+    },
+    "december-31": {
+      "date": "2000-12-31T00:00:00",
+      "note": "Annual countdown to December 31."
+    },
+    "robert-pattinson-birthday": {
+      "date": "2027-05-13T12:00:00",
+      "note": "Robert Pattinson's Birthday — born May 13th, 1986."
+    },
+    "shawn-mendes-birthday": {
+      "date": "2026-08-08T12:00:00",
+      "note": "Shawn Mendes's Birthday — born August 8th, 1998."
+    },
+    "harry-styles-birthday": {
+      "date": "2027-02-01T12:00:00",
+      "note": "Harry Styles's Birthday — born February 1st, 1994."
+    },
+    "timothee-chalamet-birthday": {
+      "date": "2026-12-27T12:00:00",
+      "note": "Timothée Chalamet's Birthday — born December 27th, 1995."
+    },
+    "tom-holland-birthday": {
+      "date": "2026-06-01T12:00:00",
+      "note": "Tom Holland's Birthday — born June 1st, 1996."
+    },
+    "margot-robbie-birthday": {
+      "date": "2026-07-02T12:00:00",
+      "note": "Margot Robbie's Birthday — born July 2nd, 1990."
+    },
+    "chris-evans-birthday": {
+      "date": "2026-06-13T12:00:00",
+      "note": "Chris Evans's Birthday — born June 13th, 1981."
+    },
+    "chris-hemsworth-birthday": {
+      "date": "2026-08-11T12:00:00",
+      "note": "Chris Hemsworth's Birthday — born August 11th, 1983."
+    },
+    "johnny-depp-birthday": {
+      "date": "2026-06-09T12:00:00",
+      "note": "Johnny Depp's Birthday — born June 9th, 1963."
+    },
+    "pedro-pascal-birthday": {
+      "date": "2027-04-02T12:00:00",
+      "note": "Pedro Pascal's Birthday — born April 2nd, 1975."
+    },
+    "olivia-rodrigo-birthday": {
+      "date": "2027-02-20T12:00:00",
+      "note": "Olivia Rodrigo's Birthday — born February 20th, 2003."
+    },
+    "sabrina-carpenter-birthday": {
+      "date": "2027-05-11T12:00:00",
+      "note": "Sabrina Carpenter's Birthday — born May 11th, 1999."
+    },
+    "bruno-mars-birthday": {
+      "date": "2026-10-08T12:00:00",
+      "note": "Bruno Mars's Birthday — born October 8th, 1985."
+    },
+    "lady-gaga-birthday": {
+      "date": "2027-03-28T12:00:00",
+      "note": "Lady Gaga's Birthday — born March 28th, 1986."
+    },
+    "eminem-birthday": {
+      "date": "2026-10-17T12:00:00",
+      "note": "Eminem's Birthday — born October 17th, 1972."
+    },
+    "karol-g-birthday": {
+      "date": "2027-02-14T12:00:00",
+      "note": "Karol G's Birthday — born February 14th, 1991."
+    },
+    "jungkook-birthday": {
+      "date": "2026-09-01T12:00:00",
+      "note": "Jungkook's Birthday — born September 1st, 1997."
+    },
+    "djokovic-birthday": {
+      "date": "2027-05-22T12:00:00",
+      "note": "Novak Djokovic's Birthday — born May 22nd, 1987."
+    },
+    "stephen-curry-birthday": {
+      "date": "2027-03-14T12:00:00",
+      "note": "Stephen Curry's Birthday — born March 14th, 1988."
+    },
+    "eid-al-fitr": {
+      "date": "2027-03-10T12:00:00",
+      "note": "Eid al-Fitr 2027 — approximate date, subject to moon sighting. Marks end of Ramadan."
+    },
+    "eid-al-adha": {
+      "date": "2027-05-17T12:00:00",
+      "note": "Eid al-Adha 2027 — approximate date, subject to moon sighting."
+    },
+    "motogp": {
+      "note": "MotoGP World Championship — counts down to the next scheduled race.",
+      "note_es": "Campeonato Mundial de MotoGP — cuenta regresiva para la próxima carrera.",
+      "note_pt": "Campeonato Mundial de MotoGP — contagem para a próxima corrida.",
+      "note_fr": "Championnat du Monde MotoGP — compte à rebours vers la prochaine course.",
+      "schedule": [
+        {
+          "date": "2026-03-01T08:00:00Z",
+          "raceName": "Thai Grand Prix",
+          "circuit": "Chang International Circuit, Buriram, Thailand",
+          "note": "MotoGP 2026 — Thai Grand Prix. Chang International Circuit, Buriram, Thailand.",
+          "note_es": "MotoGP 2026 — Thai Grand Prix. Chang International Circuit, Buriram, Thailand.",
+          "note_pt": "MotoGP 2026 — Thai Grand Prix. Chang International Circuit, Buriram, Thailand.",
+          "note_fr": "MotoGP 2026 — Thai Grand Prix. Chang International Circuit, Buriram, Thailand."
+        },
+        {
+          "date": "2026-03-22T18:00:00Z",
+          "raceName": "Brazilian Grand Prix",
+          "circuit": "Autodromo Internacional Ayrton Senna, Goiania, Brazil",
+          "note": "MotoGP 2026 — Brazilian Grand Prix. Autodromo Internacional Ayrton Senna, Goiania, Brazil.",
+          "note_es": "MotoGP 2026 — Brazilian Grand Prix. Autodromo Internacional Ayrton Senna, Goiania, Brazil.",
+          "note_pt": "MotoGP 2026 — Brazilian Grand Prix. Autodromo Internacional Ayrton Senna, Goiania, Brazil.",
+          "note_fr": "MotoGP 2026 — Brazilian Grand Prix. Autodromo Internacional Ayrton Senna, Goiania, Brazil."
+        },
+        {
+          "date": "2026-03-29T21:00:00Z",
+          "raceName": "Americas Grand Prix",
+          "circuit": "Circuit of the Americas, Austin, TX, USA",
+          "note": "MotoGP 2026 — Americas Grand Prix. Circuit of the Americas, Austin, TX, USA.",
+          "note_es": "MotoGP 2026 — Americas Grand Prix. Circuit of the Americas, Austin, TX, USA.",
+          "note_pt": "MotoGP 2026 — Americas Grand Prix. Circuit of the Americas, Austin, TX, USA.",
+          "note_fr": "MotoGP 2026 — Americas Grand Prix. Circuit of the Americas, Austin, TX, USA."
+        },
+        {
+          "date": "2026-04-26T13:00:00Z",
+          "raceName": "Spanish Grand Prix",
+          "circuit": "Circuito de Jerez - Angel Nieto, Spain",
+          "note": "MotoGP 2026 — Spanish Grand Prix. Circuito de Jerez - Angel Nieto, Spain.",
+          "note_es": "MotoGP 2026 — Spanish Grand Prix. Circuito de Jerez - Angel Nieto, Spain.",
+          "note_pt": "MotoGP 2026 — Spanish Grand Prix. Circuito de Jerez - Angel Nieto, Spain.",
+          "note_fr": "MotoGP 2026 — Spanish Grand Prix. Circuito de Jerez - Angel Nieto, Spain."
+        },
+        {
+          "date": "2026-05-10T13:00:00Z",
+          "raceName": "French Grand Prix",
+          "circuit": "Bugatti Circuit, Le Mans, France",
+          "note": "MotoGP 2026 — French Grand Prix. Bugatti Circuit, Le Mans, France.",
+          "note_es": "MotoGP 2026 — French Grand Prix. Bugatti Circuit, Le Mans, France.",
+          "note_pt": "MotoGP 2026 — French Grand Prix. Bugatti Circuit, Le Mans, France.",
+          "note_fr": "MotoGP 2026 — French Grand Prix. Bugatti Circuit, Le Mans, France."
+        },
+        {
+          "date": "2026-05-17T13:00:00Z",
+          "raceName": "Catalan Grand Prix",
+          "circuit": "Circuit de Barcelona-Catalunya, Spain",
+          "note": "MotoGP 2026 — Catalan Grand Prix. Circuit de Barcelona-Catalunya, Spain.",
+          "note_es": "MotoGP 2026 — Catalan Grand Prix. Circuit de Barcelona-Catalunya, Spain.",
+          "note_pt": "MotoGP 2026 — Catalan Grand Prix. Circuit de Barcelona-Catalunya, Spain.",
+          "note_fr": "MotoGP 2026 — Catalan Grand Prix. Circuit de Barcelona-Catalunya, Spain."
+        },
+        {
+          "date": "2026-05-31T13:00:00Z",
+          "raceName": "Italian Grand Prix",
+          "circuit": "Autodromo Internazionale del Mugello, Italy",
+          "note": "MotoGP 2026 — Italian Grand Prix. Autodromo Internazionale del Mugello, Italy.",
+          "note_es": "MotoGP 2026 — Italian Grand Prix. Autodromo Internazionale del Mugello, Italy.",
+          "note_pt": "MotoGP 2026 — Italian Grand Prix. Autodromo Internazionale del Mugello, Italy.",
+          "note_fr": "MotoGP 2026 — Italian Grand Prix. Autodromo Internazionale del Mugello, Italy."
+        },
+        {
+          "date": "2026-06-07T13:00:00Z",
+          "raceName": "Hungarian Grand Prix",
+          "circuit": "Balaton Park Circuit, Hungary",
+          "note": "MotoGP 2026 — Hungarian Grand Prix. Balaton Park Circuit, Hungary.",
+          "note_es": "MotoGP 2026 — Hungarian Grand Prix. Balaton Park Circuit, Hungary.",
+          "note_pt": "MotoGP 2026 — Hungarian Grand Prix. Balaton Park Circuit, Hungary.",
+          "note_fr": "MotoGP 2026 — Hungarian Grand Prix. Balaton Park Circuit, Hungary."
+        },
+        {
+          "date": "2026-06-21T13:00:00Z",
+          "raceName": "Czech Grand Prix",
+          "circuit": "Automotodrom Brno, Czech Republic",
+          "note": "MotoGP 2026 — Czech Grand Prix. Automotodrom Brno, Czech Republic.",
+          "note_es": "MotoGP 2026 — Czech Grand Prix. Automotodrom Brno, Czech Republic.",
+          "note_pt": "MotoGP 2026 — Czech Grand Prix. Automotodrom Brno, Czech Republic.",
+          "note_fr": "MotoGP 2026 — Czech Grand Prix. Automotodrom Brno, Czech Republic."
+        },
+        {
+          "date": "2026-06-28T13:00:00Z",
+          "raceName": "Dutch TT",
+          "circuit": "TT Circuit Assen, Netherlands",
+          "note": "MotoGP 2026 — Dutch TT. TT Circuit Assen, Netherlands.",
+          "note_es": "MotoGP 2026 — Dutch TT. TT Circuit Assen, Netherlands.",
+          "note_pt": "MotoGP 2026 — Dutch TT. TT Circuit Assen, Netherlands.",
+          "note_fr": "MotoGP 2026 — Dutch TT. TT Circuit Assen, Netherlands."
+        },
+        {
+          "date": "2026-07-12T13:00:00Z",
+          "raceName": "German Grand Prix",
+          "circuit": "Sachsenring, Germany",
+          "note": "MotoGP 2026 — German Grand Prix. Sachsenring, Germany.",
+          "note_es": "MotoGP 2026 — German Grand Prix. Sachsenring, Germany.",
+          "note_pt": "MotoGP 2026 — German Grand Prix. Sachsenring, Germany.",
+          "note_fr": "MotoGP 2026 — German Grand Prix. Sachsenring, Germany."
+        },
+        {
+          "date": "2026-08-09T13:00:00Z",
+          "raceName": "British Grand Prix",
+          "circuit": "Silverstone Circuit, United Kingdom",
+          "note": "MotoGP 2026 — British Grand Prix. Silverstone Circuit, United Kingdom.",
+          "note_es": "MotoGP 2026 — British Grand Prix. Silverstone Circuit, United Kingdom.",
+          "note_pt": "MotoGP 2026 — British Grand Prix. Silverstone Circuit, United Kingdom.",
+          "note_fr": "MotoGP 2026 — British Grand Prix. Silverstone Circuit, United Kingdom."
+        },
+        {
+          "date": "2026-08-30T13:00:00Z",
+          "raceName": "Aragon Grand Prix",
+          "circuit": "MotorLand Aragon, Spain",
+          "note": "MotoGP 2026 — Aragon Grand Prix. MotorLand Aragon, Spain.",
+          "note_es": "MotoGP 2026 — Aragon Grand Prix. MotorLand Aragon, Spain.",
+          "note_pt": "MotoGP 2026 — Aragon Grand Prix. MotorLand Aragon, Spain.",
+          "note_fr": "MotoGP 2026 — Aragon Grand Prix. MotorLand Aragon, Spain."
+        },
+        {
+          "date": "2026-09-13T13:00:00Z",
+          "raceName": "San Marino Grand Prix",
+          "circuit": "Misano World Circuit Marco Simoncelli, Italy",
+          "note": "MotoGP 2026 — San Marino Grand Prix. Misano World Circuit Marco Simoncelli, Italy.",
+          "note_es": "MotoGP 2026 — San Marino Grand Prix. Misano World Circuit Marco Simoncelli, Italy.",
+          "note_pt": "MotoGP 2026 — San Marino Grand Prix. Misano World Circuit Marco Simoncelli, Italy.",
+          "note_fr": "MotoGP 2026 — San Marino Grand Prix. Misano World Circuit Marco Simoncelli, Italy."
+        },
+        {
+          "date": "2026-09-20T13:00:00Z",
+          "raceName": "Austrian Grand Prix",
+          "circuit": "Red Bull Ring, Spielberg, Austria",
+          "note": "MotoGP 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.",
+          "note_es": "MotoGP 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.",
+          "note_pt": "MotoGP 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria.",
+          "note_fr": "MotoGP 2026 — Austrian Grand Prix. Red Bull Ring, Spielberg, Austria."
+        },
+        {
+          "date": "2026-10-04T06:00:00Z",
+          "raceName": "Japanese Grand Prix",
+          "circuit": "Mobility Resort Motegi, Japan",
+          "note": "MotoGP 2026 — Japanese Grand Prix. Mobility Resort Motegi, Japan.",
+          "note_es": "MotoGP 2026 — Japanese Grand Prix. Mobility Resort Motegi, Japan.",
+          "note_pt": "MotoGP 2026 — Japanese Grand Prix. Mobility Resort Motegi, Japan.",
+          "note_fr": "MotoGP 2026 — Japanese Grand Prix. Mobility Resort Motegi, Japan."
+        },
+        {
+          "date": "2026-10-11T07:00:00Z",
+          "raceName": "Indonesian Grand Prix",
+          "circuit": "Pertamina Mandalika Circuit, Indonesia",
+          "note": "MotoGP 2026 — Indonesian Grand Prix. Pertamina Mandalika Circuit, Indonesia.",
+          "note_es": "MotoGP 2026 — Indonesian Grand Prix. Pertamina Mandalika Circuit, Indonesia.",
+          "note_pt": "MotoGP 2026 — Indonesian Grand Prix. Pertamina Mandalika Circuit, Indonesia.",
+          "note_fr": "MotoGP 2026 — Indonesian Grand Prix. Pertamina Mandalika Circuit, Indonesia."
+        },
+        {
+          "date": "2026-10-25T03:00:00Z",
+          "raceName": "Australian Grand Prix",
+          "circuit": "Phillip Island Grand Prix Circuit, Australia",
+          "note": "MotoGP 2026 — Australian Grand Prix. Phillip Island Grand Prix Circuit, Australia.",
+          "note_es": "MotoGP 2026 — Australian Grand Prix. Phillip Island Grand Prix Circuit, Australia.",
+          "note_pt": "MotoGP 2026 — Australian Grand Prix. Phillip Island Grand Prix Circuit, Australia.",
+          "note_fr": "MotoGP 2026 — Australian Grand Prix. Phillip Island Grand Prix Circuit, Australia."
+        },
+        {
+          "date": "2026-11-01T07:00:00Z",
+          "raceName": "Malaysian Grand Prix",
+          "circuit": "Sepang International Circuit, Malaysia",
+          "note": "MotoGP 2026 — Malaysian Grand Prix. Sepang International Circuit, Malaysia.",
+          "note_es": "MotoGP 2026 — Malaysian Grand Prix. Sepang International Circuit, Malaysia.",
+          "note_pt": "MotoGP 2026 — Malaysian Grand Prix. Sepang International Circuit, Malaysia.",
+          "note_fr": "MotoGP 2026 — Malaysian Grand Prix. Sepang International Circuit, Malaysia."
+        },
+        {
+          "date": "2026-11-08T17:00:00Z",
+          "raceName": "Qatar Grand Prix",
+          "circuit": "Lusail International Circuit, Qatar",
+          "note": "MotoGP 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.",
+          "note_es": "MotoGP 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.",
+          "note_pt": "MotoGP 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar.",
+          "note_fr": "MotoGP 2026 — Qatar Grand Prix. Lusail International Circuit, Qatar."
+        },
+        {
+          "date": "2026-11-22T13:00:00Z",
+          "raceName": "Portuguese Grand Prix",
+          "circuit": "Autodromo Internacional do Algarve, Portimao, Portugal",
+          "note": "MotoGP 2026 — Portuguese Grand Prix. Autodromo Internacional do Algarve, Portimao, Portugal.",
+          "note_es": "MotoGP 2026 — Portuguese Grand Prix. Autodromo Internacional do Algarve, Portimao, Portugal.",
+          "note_pt": "MotoGP 2026 — Portuguese Grand Prix. Autodromo Internacional do Algarve, Portimao, Portugal.",
+          "note_fr": "MotoGP 2026 — Portuguese Grand Prix. Autodromo Internacional do Algarve, Portimao, Portugal."
+        },
+        {
+          "date": "2026-11-29T13:00:00Z",
+          "raceName": "Valencia Grand Prix",
+          "circuit": "Circuit Ricardo Tormo, Cheste, Spain",
+          "note": "MotoGP 2026 — Valencia Grand Prix. Circuit Ricardo Tormo, Cheste, Spain.",
+          "note_es": "MotoGP 2026 — Valencia Grand Prix. Circuit Ricardo Tormo, Cheste, Spain.",
+          "note_pt": "MotoGP 2026 — Valencia Grand Prix. Circuit Ricardo Tormo, Cheste, Spain.",
+          "note_fr": "MotoGP 2026 — Valencia Grand Prix. Circuit Ricardo Tormo, Cheste, Spain."
+        }
+      ]
+    },
+    "parense-de-manos": {
+      "date": null,
+      "note": "Párense de Manos 2026 — Argentine boxing event organized by Luquita Rodríguez. Date not yet announced."
+    }
+  }
+}
