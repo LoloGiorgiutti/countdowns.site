@@ -253,6 +253,9 @@ function bindCountdown(p){
       favBtn.textContent='★ '+T.savedFav;
       favBtn.style.color='#FBBF24';
     }
+    if(typeof CountdownEngine!=='undefined'&&CountdownEngine.updateHeaderFavBadge){
+      CountdownEngine.updateHeaderFavBadge();
+    }
   });
   // Copy
   var copyBtn=document.getElementById('cc-copy');

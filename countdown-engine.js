@@ -1354,6 +1354,8 @@ buildShareBar(config),      '<a href="/" class="cd-back-link">' + T.backLink + '
       var code = (typeof localStorage !== 'undefined' ? localStorage.getItem('cd_country') : null) || 'global';
       return FLAG_MAP[code] || '🌍';
     },
+
+    updateHeaderFavBadge: function () { updateHeaderFavBadge(); },
   };
 
   /* ─── THEME TOGGLE (sun/moon icons) ────────────────────────────── */
