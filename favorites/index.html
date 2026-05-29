@@ -384,10 +384,13 @@
     var pill = isPast ? '' : '<span class="hub-cc-pill">' + days + '</span>';
     var cls = 'hub-cc' + (isPast ? ' hub-cc--past' : '');
     var dateStr = target.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+    var createdStr = fav.savedAt ? 'Created ' + new Date(fav.savedAt).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) : '';
     return '<a href="' + fav.url + '" class="' + cls + '" style="--cat-color:#818CF8;--cat-glow:rgba(129,140,248,.2)">' +
       '<button class="hub-fav-btn active hub-custom-fav-remove" data-key="' + fav.key.replace(/"/g,'&quot;') + '" title="Remove from favorites">★</button>' +
       '<div><div class="hub-cc-top"><span class="hub-cc-cat">Custom</span>' + pill + '</div>' +
-      '<div class="hub-cc-name">' + fav.name.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div></div>' +
+      '<div class="hub-cc-name">' + fav.name.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>' +
+      (createdStr ? '<div class="hub-cc-created">' + createdStr + '</div>' : '') +
+      '</div>' +
       '<div class="hub-cc-bottom"><span class="hub-cc-date">' + dateStr + '</span><span class="hub-cc-arrow">→</span></div>' +
     '</a>';
   }

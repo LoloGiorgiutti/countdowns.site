@@ -1322,6 +1322,8 @@ body {
 .hub-past-details > summary::after { content:''; flex:1; height:1px; background:var(--card-border,rgba(255,255,255,.065)); }
 .hub-past-details .cards-grid { margin-top:14px; }
 .hub-past-details .hub-compact-grid { margin-top:14px; }
+.hub-cc-created { font-size:.68rem; color:var(--txt-dim,#3d3d52); margin-top:4px; opacity:.7; }
+[data-theme="light"] .hub-cc-created { color:#a0a0b8; }
 
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
