@@ -795,7 +795,7 @@
     var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
     var n = displayName(ev);
     var daysBlock = data.state === 'today'
-      ? '<div class="hub-fc-days-num" style="font-size:1.4rem">Aujourd'hui</div>'
+      ? '<div class="hub-fc-days-num" style="font-size:1.4rem">Aujourd\'hui</div>'
       : '<div class="hub-fc-days-num">' + data.days + '</div><div class="hub-fc-days-lbl">days to go</div>';
     var dateStr = data.date ? CountdownEngine.fmtDate(data.date, currentLang) : '';
     var cardUrl = LANG_URLS[ev.slug] || ev.url;
@@ -813,7 +813,7 @@
     var c = cc(ev.cat);
     var style = 'style="--cat-color:' + c.color + ';--cat-glow:' + c.glow + '"';
     var n = displayName(ev);
-    var pill = data.state === 'today'   ? '<span class="hub-cc-pill hub-cc-pill--today">Aujourd'hui</span>'
+    var pill = data.state === 'today'   ? '<span class="hub-cc-pill hub-cc-pill--today">Aujourd\'hui</span>'
              : data.state === 'unknown' ? '<span class="hub-cc-pill hub-cc-pill--tba">TBA</span>'
              : data.state === 'past'    ? ''
              : '<span class="hub-cc-pill">' + data.days + '<span class="hub-cc-unit"> days</span></span>';

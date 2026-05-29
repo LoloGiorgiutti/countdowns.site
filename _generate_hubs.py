@@ -781,20 +781,28 @@ def generate_from_en_hub(lang):
     _save_fav    = ui['save_fav']
     _remove_fav  = ui['remove_fav']
     _geo_toast   = ui['geo_toast']
+    # JS-safe versions: escape apostrophes for use inside single-quoted JS strings
+    _card_today_js  = _card_today.replace("'", "\\'")
+    _days_to_go_js  = _days_to_go.replace("'", "\\'")
+    _bucket_past_js = _bucket_past.replace("'", "\\'")
+    _bucket_tba_js  = _bucket_tba.replace("'", "\\'")
+    _save_fav_js    = _save_fav.replace("'", "\\'")
+    _remove_fav_js  = _remove_fav.replace("'", "\\'")
+    _geo_toast_js   = _geo_toast.replace("'", "\\'")
 
     # buildFeatured
     html = html.replace(
         '>Today</div>\'\n      : \'<div class="hub-fc-days-num">\'',
-        f'>{_card_today}</div>\'\n      : \'<div class="hub-fc-days-num">\''
+        f'>{_card_today_js}</div>\'\n      : \'<div class="hub-fc-days-num">\''
     )
     html = html.replace(
         "'<div class=\"hub-fc-days-lbl\">days to go</div>'",
-        f'\'<div class="hub-fc-days-lbl">{_days_to_go}</div>\''
+        f'\'<div class="hub-fc-days-lbl">{_days_to_go_js}</div>\''
     )
     # buildCompact
     html = html.replace(
         "'<span class=\"hub-cc-pill hub-cc-pill--today\">Today</span>'",
-        f'\'<span class="hub-cc-pill hub-cc-pill--today">{_card_today}</span>\''
+        f'\'<span class="hub-cc-pill hub-cc-pill--today">{_card_today_js}</span>\''
     )
     html = html.replace(
         "'<span class=\"hub-cc-pill hub-cc-pill--tba\">TBA</span>'",
@@ -807,22 +815,22 @@ def generate_from_en_hub(lang):
     # renderHub bucket headers
     html = html.replace(
         "'<div class=\"hub-bucket-hdr\">Date TBA</div>",
-        f'\'<div class="hub-bucket-hdr">{_bucket_tba}</div>'
+        f'\'<div class="hub-bucket-hdr">{_bucket_tba_js}</div>'
     )
     # Past Events (multiple occurrences)
-    html = html.replace("'Past Events'", f"'{_bucket_past}'")
+    html = html.replace("'Past Events'", f"'{_bucket_past_js}'")
     # renderSearch no-results
     html = html.replace(
         "'<div class=\"hub-no-results\">No countdowns found for \"' + q + '\"</div>'",
         f'\'<div class="hub-no-results">{_no_results}\' + q + \'\"</div>\''
     )
     # Fav button titles
-    html = html.replace("'Save to favorites'", f"'{_save_fav}'")
-    html = html.replace("'Remove from favorites'", f"'{_remove_fav}'")
+    html = html.replace("'Save to favorites'", f"'{_save_fav_js}'")
+    html = html.replace("'Remove from favorites'", f"'{_remove_fav_js}'")
     # Geo toast
     html = html.replace(
         "'Showing countdowns for '",
-        f"'{_geo_toast}'"
+        f"'{_geo_toast_js}'"
     )
 
     return html
