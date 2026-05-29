@@ -933,6 +933,7 @@ copyLink: 'Copier le lien', copied: '✓ Copié !',
     try { localStorage.setItem('cd_favorites', JSON.stringify(favs)); } catch(e) {}
     btn.classList.toggle('active', nowFav);
     btn.textContent = nowFav ? T.savedFav : '☆ ' + T.saveFav;
+    updateHeaderFavBadge();
   };
 
   function setupShare(config) {
