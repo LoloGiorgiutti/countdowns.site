@@ -168,7 +168,15 @@
   "url": "https://countdowns.site/es/",
   "name": "Countdowns en Español",
   "description": "Contadores en tiempo real para cada evento que importa",
-  "inLanguage": "es"
+  "inLanguage": "es",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://countdowns.site/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
 }
 </script>
 </head>

@@ -168,7 +168,15 @@
   "url": "https://countdowns.site/pt/",
   "name": "Countdowns em Português",
   "description": "Contagens regressivas em tempo real para cada evento que importa",
-  "inLanguage": "pt"
+  "inLanguage": "pt",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://countdowns.site/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
 }
 </script>
 </head>

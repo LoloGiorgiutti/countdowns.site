@@ -2447,6 +2447,14 @@ def generate_page(ev, lang="en"):
     {{
       "@type": "FAQPage",
       "mainEntity": {faq_json}
+    }},
+    {{
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {{"@type":"ListItem","position":1,"name":"Countdowns","item":"https://countdowns.site/"}},
+        {{"@type":"ListItem","position":2,"name":"{category}","item":"https://countdowns.site/category/?cat={category}"}},
+        {{"@type":"ListItem","position":3,"name":"{name}","item":"{page_url}"}}
+      ]
     }}
   ]
 }}
@@ -2465,6 +2473,7 @@ def generate_page(ev, lang="en"):
   </div>
 </header>
 <div id="root"><div style="min-height:100vh;background:#080812"></div></div>
+<noscript><h1 style="text-align:center;padding:2rem 1rem;font-family:sans-serif">{name}</h1></noscript>
 {country_picker_html}
 {faq_section}
 <footer class="site-footer">
