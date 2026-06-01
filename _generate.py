@@ -5,9 +5,152 @@ Run from repo root: python3 _generate.py
 Generates /countdown/{slug}/ (EN) + /{lang}/countdown/{slug}/ for translated langs.
 """
 import os, json
-from datetime import date
+from datetime import date, timedelta
 from _translations import TRANSLATIONS
 from _daily_data import FAMOUS_BIRTHDAYS, HISTORICAL_EVENTS
+
+# ─── Structured data: event dates for JSON-LD startDate ───────────────────────
+_CD_JSON = {}
+try:
+    with open('countdowns-data.json', 'r', encoding='utf-8') as _f:
+        _CD_JSON = json.load(_f).get('events', {})
+except Exception:
+    pass
+
+def _next_fixed(month, day):
+    """Next occurrence of a fixed MM-DD annual date."""
+    today = date.today()
+    try:
+        d = date(today.year, month, day)
+    except ValueError:
+        return None
+    if d <= today:
+        d = date(today.year + 1, month, day)
+    return d.isoformat()
+
+def _nth_weekday(year, month, n, weekday):
+    """nth weekday (0=Mon…6=Sun) of month (1-indexed)."""
+    from calendar import monthrange
+    first = date(year, month, 1)
+    offset = (weekday - first.weekday()) % 7
+    d = first + timedelta(days=offset + (n-1)*7)
+    return d if d.month == month else None
+
+# Approximate startDates for auto/annual events — used only for JSON-LD structured data
+_today = date.today()
+_y = _today.year
+
+def _next_year_jan1():
+    return date(_y + 1, 1, 1).isoformat()
+
+def _black_friday(y):
+    # 4th Friday of November
+    first_nov = date(y, 11, 1)
+    offset = (4 - first_nov.weekday()) % 7  # days to first Friday
+    return (first_nov + timedelta(days=offset + 21)).isoformat()
+
+def _easter(y):
+    # Computus (Anonymous Gregorian algorithm)
+    a = y % 19
+    b, c = divmod(y, 100)
+    d, e = divmod(b, 4)
+    f = (b + 8) // 25
+    g = (b - f + 1) // 3
+    h = (19*a + b - d - g + 15) % 30
+    i, k = divmod(c, 4)
+    l = (32 + 2*e + 2*i - h - k) % 7
+    m = (a + 11*h + 22*l) // 451
+    month = (h + l - 7*m + 114) // 31
+    day = ((h + l - 7*m + 114) % 31) + 1
+    d = date(y, month, day)
+    if d < _today:
+        d = date(_y + 1, *_easter(_y + 1)[5:7].split('-')[1:])
+        # just recurse properly:
+        return _easter(_y + 1)
+    return d.isoformat()
+
+# Build the lookup — None means "skip startDate for this slug"
+_AUTO_START_DATES = {
+    'christmas':        _next_fixed(12, 25),
+    'halloween':        _next_fixed(10, 31),
+    'valentines':       _next_fixed(2, 14),
+    'new-year':         _next_year_jan1(),
+    'bastille-day':     _next_fixed(7, 14),
+    'cinco-de-mayo':    _next_fixed(5, 5),
+    '25-de-mayo':       _next_fixed(5, 25),
+    'dia-de-la-hispanidad':    _next_fixed(10, 12),
+    'dia-de-la-raza':          _next_fixed(10, 12),
+    'dia-de-la-bandera':       _next_fixed(6, 20),
+    'dia-de-la-revolucion':    _next_fixed(11, 20),
+    'dia-de-la-constitucion':  _next_fixed(2, 5),
+    'canada-day':       _next_fixed(7, 1),
+    'australia-day':    _next_fixed(1, 26),
+    'waitangi-day':     _next_fixed(2, 6),
+    'syttende-mai':     _next_fixed(5, 17),
+    'german-unity-day': _next_fixed(10, 3),
+    'festa-della-repubblica': _next_fixed(6, 2),
+    'koningsdag':       _next_fixed(4, 27),
+    'tiradentes':       _next_fixed(4, 21),
+    'proclamacao-da-republica': _next_fixed(11, 15),
+    'independence':     _next_fixed(7, 4),
+    'proclamacion-independencia-ar': _next_fixed(5, 25),
+    'fiestas-patrias':  _next_fixed(9, 18),
+    'epiphany':         _next_fixed(1, 6),
+    'mardi-gras':       None,  # variable
+    'black-friday':     _black_friday(_y) if date.fromisoformat(_black_friday(_y)) > _today else _black_friday(_y + 1),
+    'cyber-monday':     (date.fromisoformat(_black_friday(_y)) + timedelta(days=3)).isoformat() if date.fromisoformat(_black_friday(_y)) + timedelta(days=3) > _today else (date.fromisoformat(_black_friday(_y + 1)) + timedelta(days=3)).isoformat(),
+    'memorial-day':     (_nth_weekday(_y, 5, 5, 0) or _nth_weekday(_y, 5, 4, 0)).isoformat() if (_nth_weekday(_y, 5, 5, 0) or _nth_weekday(_y, 5, 4, 0)) > _today else (_nth_weekday(_y+1, 5, 5, 0) or _nth_weekday(_y+1, 5, 4, 0)).isoformat(),
+    'labor-day':        _next_fixed(9, 1),
+    'thanksgiving':     (lambda d: d.isoformat())(_nth_weekday(_y, 11, 4, 3) if _nth_weekday(_y, 11, 4, 3) and _nth_weekday(_y, 11, 4, 3) > _today else _nth_weekday(_y+1, 11, 4, 3)),
+    'easter':           _next_fixed(4, 5),   # approximate; varies year to year
+    'st-patricks':      _next_fixed(3, 17),
+    'dia-del-nino':     _next_fixed(11, 20),  # UN Universal Children's Day
+    'dia-de-los-muertos': _next_fixed(11, 2),
+    'mothers-day':      None,  # varies too much per country
+    'fathers-day':      None,  # varies too much per country
+    'super-bowl':       _next_fixed(2, 8),    # approximate 2nd Sunday Feb
+    'met-gala':         _next_fixed(5, 4),    # approximate 1st Monday May
+    'independence-day': _next_fixed(7, 4),
+    'oktoberfest':      _next_fixed(9, 19),
+    'rio-carnival':     _next_fixed(2, 28),   # approximate
+    'rosh-hashana':     None,  # Hebrew calendar
+    'yom-kipur':        None,
+    'januca':           None,
+    'purim':            None,
+    'pesaj':            None,
+    'shavuot':          None,
+    'eid-al-fitr':      None,
+    'eid-al-adha':      None,
+    'freedom-day-za':   _next_fixed(4, 27),
+    'national-day-sg':  _next_fixed(8, 9),
+    'olympics-2028':    '2028-07-14',
+    'iphone':           _next_fixed(9, 9),   # approximate Sep Apple event
+    'weekend':          None,  # dynamic
+    'world-series':     _next_fixed(10, 22), # approximate
+    # Months/seasons — next 1st of that month
+    'january':   _next_fixed(1, 1),
+    'february':  _next_fixed(2, 1),
+    'march':     _next_fixed(3, 1),
+    'april':     _next_fixed(4, 1),
+    'may-month': _next_fixed(5, 1),
+    'june-month':_next_fixed(6, 1),
+    'july-month':_next_fixed(7, 1),
+    'august':    _next_fixed(8, 1),
+    'september': _next_fixed(9, 1),
+    'october':   _next_fixed(10, 1),
+    'november':  _next_fixed(11, 1),
+    'december':  _next_fixed(12, 1),
+    'midnight':  date.today().isoformat(),  # tonight
+    'spring':    _next_fixed(3, 20),
+    'summer':    _next_fixed(6, 21),
+    'autumn':    _next_fixed(9, 22),
+    'winter-season': _next_fixed(12, 21),
+    'back-to-school': _next_fixed(9, 1),
+    'summer-vacation': _next_fixed(6, 21),
+    'winter-vacation': _next_fixed(12, 21),
+    'weekend':   None,  # dynamic
+    'next-year': _next_year_jan1(),
+}
 
 # ─── SEO: Multilingual keyword system ─────────────────────────────────────────
 # Each phrase uses {name} (event name) and {year} (current/next occurrence year).
@@ -2135,6 +2278,54 @@ def generate_page(ev, lang="en"):
 
     faq_json = faq_json_ld(slug, name, faqs) if faqs else "[]"
 
+    # ── Structured data: startDate for Event JSON-LD ──────────────────────────
+    _sd = None
+    _cd_entry = _CD_JSON.get(slug, {})
+    # 1. Try main date field (works for variable, fixed, and auto events with stored dates)
+    _raw = _cd_entry.get('date')
+    if _raw:
+        _sd = str(_raw).split('T')[0]
+    # 2. Try schedule array (for F1, MotoGP type events stored with schedules)
+    if not _sd:
+        _sched = _cd_entry.get('schedule', [])
+        _today_iso = date.today().isoformat()
+        for _item in _sched:
+            _item_date = str(_item.get('date', '')).split('T')[0]
+            if _item_date >= _today_iso:
+                _sd = _item_date
+                break
+    # 3. Annual date pages — compute from month/day
+    if not _sd and ev_type == 'annual' and ev.get('_month') and ev.get('_day'):
+        try:
+            _ann = date(date.today().year, ev['_month'], ev['_day'])
+            if _ann <= date.today():
+                _ann = date(date.today().year + 1, ev['_month'], ev['_day'])
+            _sd = _ann.isoformat()
+        except ValueError:
+            pass
+    # 4. Auto events with known fixed dates
+    if not _sd:
+        _sd = _AUTO_START_DATES.get(slug)
+    # Build startDate JSON fragment (empty string if unknown)
+    if _sd:
+        _is_future = _sd >= date.today().isoformat()
+        _status = '"eventStatus":"https://schema.org/EventScheduled",' if _is_future else '"eventStatus":"https://schema.org/EventScheduled",'
+        _start_date_frag = (
+            f'"startDate":"{_sd}",'
+            f'"endDate":"{_sd}",'
+            f'{_status}'
+            f'"eventAttendanceMode":"https://schema.org/MixedEventAttendanceMode",'
+            f'"location":{{"@type":"VirtualLocation","url":"{page_url}"}},'
+            f'"image":"{og_image_url}",'
+        )
+    else:
+        _start_date_frag = (
+            f'"eventStatus":"https://schema.org/EventScheduled",'
+            f'"eventAttendanceMode":"https://schema.org/MixedEventAttendanceMode",'
+            f'"location":{{"@type":"VirtualLocation","url":"{page_url}"}},'
+            f'"image":"{og_image_url}",'
+        )
+
     # Country picker
     country_variants = ev.get("country_variants", [])
     default_variant_by_lang = ev.get("default_variant_by_lang", {})
@@ -2246,6 +2437,7 @@ def generate_page(ev, lang="en"):
       "name": "{name}",
       "description": "{meta_desc}",
       "url": "{page_url}",
+      {_start_date_frag}
       "organizer": {{
         "@type": "Organization",
         "name": "countdowns.site",
