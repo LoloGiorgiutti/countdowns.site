@@ -665,8 +665,6 @@ def generate_from_en_hub(lang):
                   rf'\g<1>{ui["og_locale"]}\g<2>', html, count=1)
     html = re.sub(r'(<meta property="og:url" content=")[^"]+(")',
                   rf'\g<1>{cfg["canonical"]}\g<2>', html, count=1)
-    html = re.sub(r'(<meta property="og:url" content=")[^"]+(")',
-                  rf'\g<1>{cfg["canonical"]}\g<2>', html)
     html = re.sub(r'(<meta name="twitter:title" content=")[^"]+(")',
                   rf'\g<1>{cfg["og_title"]}\g<2>', html, count=1)
     html = re.sub(r'(<meta name="twitter:description" content=")[^"]+(")',

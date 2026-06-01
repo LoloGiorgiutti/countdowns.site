@@ -64,8 +64,6 @@ def _easter(y):
     day = ((h + l - 7*m + 114) % 31) + 1
     d = date(y, month, day)
     if d < _today:
-        d = date(_y + 1, *_easter(_y + 1)[5:7].split('-')[1:])
-        # just recurse properly:
         return _easter(_y + 1)
     return d.isoformat()
 
@@ -148,7 +146,6 @@ _AUTO_START_DATES = {
     'back-to-school': _next_fixed(9, 1),
     'summer-vacation': _next_fixed(6, 21),
     'winter-vacation': _next_fixed(12, 21),
-    'weekend':   None,  # dynamic
     'next-year': _next_year_jan1(),
 }
 
@@ -352,7 +349,7 @@ EVENTS = [
 
   # ── Sports – Global ────────────────────────────────────────────────────────
   dict(
-    slug="f1", name="F1 Next Race", type="variable", category="Sports",
+    slug="f1", name="F1 Next Race", type="schedule", category="Sports",
     regions=["global"],
     seo_title="F1 Countdown — Days Until the Next Formula 1 Race",
     meta_desc="Real-time countdown to the next Formula 1 Grand Prix. See exactly how many days, hours and minutes until the next F1 race weekend.",
