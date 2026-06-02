@@ -2474,7 +2474,7 @@ def generate_page(ev, lang="en"):
 {country_picker_html}
 {faq_section}
 <footer class="site-footer">
-  countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>
+  countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a> · <a href="/about/" style="color:inherit;opacity:.6;font-size:.85rem">About</a>
 </footer>
 <script src="/countdown-engine.js"></script>
 <script>
@@ -2760,7 +2760,7 @@ def generate_custom_page(lang="en"):
 <div id="cc-root"></div>
 
 <footer class="site-footer">
-  countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a>
+  countdowns<span class="logo-tld">.site</span> · <a href="/privacy/" style="color:inherit;opacity:.6;font-size:.85rem">Privacy Policy</a> · <a href="/about/" style="color:inherit;opacity:.6;font-size:.85rem">About</a>
 </footer>
 
 <script>
