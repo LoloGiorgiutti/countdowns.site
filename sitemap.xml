@@ -1332,6 +1332,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://countdowns.site/es/about/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://countdowns.site/pt/about/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://countdowns.site/fr/about/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://countdowns.site/es/</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>daily</changefreq>
