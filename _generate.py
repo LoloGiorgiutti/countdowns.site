@@ -2312,14 +2312,14 @@ def generate_page(ev, lang="en"):
             f'"endDate":"{_sd}",'
             f'{_status}'
             f'"eventAttendanceMode":"https://schema.org/MixedEventAttendanceMode",'
-            f'"location":{{"@type":"VirtualLocation","url":"{page_url}"}},'
+            f'"location":{{"@type":"Place","name":"Worldwide","url":"{page_url}"}},'
             f'"image":"{og_image_url}",'
         )
     else:
         _start_date_frag = (
             f'"eventStatus":"https://schema.org/EventScheduled",'
             f'"eventAttendanceMode":"https://schema.org/MixedEventAttendanceMode",'
-            f'"location":{{"@type":"VirtualLocation","url":"{page_url}"}},'
+            f'"location":{{"@type":"Place","name":"Worldwide","url":"{page_url}"}},'
             f'"image":"{og_image_url}",'
         )
 
