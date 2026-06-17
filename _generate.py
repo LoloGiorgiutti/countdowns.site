@@ -8,6 +8,7 @@ import os, json
 from datetime import date, timedelta
 from _translations import TRANSLATIONS
 from _daily_data import FAMOUS_BIRTHDAYS, HISTORICAL_EVENTS
+from _event_content import RICH_CONTENT
 
 # ─── Structured data: event dates for JSON-LD startDate ───────────────────────
 _CD_JSON = {}
@@ -2265,7 +2266,48 @@ def generate_page(ev, lang="en"):
             )
             hist_section = f'<div class="cd-hist"><h3 class="cd-hist-title">{_et}</h3><ul class="cd-hist-list">{_li}</ul></div>'
 
-    faq_section = f'''<div class="cd-article">
+    # ── Premium content injection (EN only) ────────────────────────────────────
+    _rc = RICH_CONTENT.get(slug) if lang == 'en' else None
+    if _rc:
+        _overview_html = "".join(f'<p class="cd-overview-p">{p}</p>' for p in _rc.get("overview", []))
+        _ki_items = "".join(
+            f'<div class="cd-ki-item"><span class="cd-ki-label">{lbl}</span><span class="cd-ki-value">{val}</span></div>'
+            for lbl, val in _rc.get("key_info", [])
+        )
+        _ki_html = f'<div class="cd-key-info"><h2 class="cd-section-title">Key Facts</h2><div class="cd-ki-grid">{_ki_items}</div></div>' if _ki_items else ""
+        _tl_items = "".join(
+            f'<div class="cd-tl-item"><span class="cd-tl-year">{yr}</span><span class="cd-tl-desc">{desc}</span></div>'
+            for yr, desc in _rc.get("timeline", [])
+        )
+        _tl_html = f'<div class="cd-timeline"><h2 class="cd-section-title">Timeline</h2>{_tl_items}</div>' if _tl_items else ""
+        _fact_items = "".join(f'<li class="cd-fact-item">{f}</li>' for f in _rc.get("facts", []))
+        _facts_html = f'<div class="cd-facts"><h2 class="cd-section-title">Did You Know?</h2><ul class="cd-facts-list">{_fact_items}</ul></div>' if _fact_items else ""
+        _rc_faqs = _rc.get("faqs", faqs)
+        _rc_faq_html = "".join(
+            f'<div class="cd-faq-item"><p class="cd-faq-q">{q}</p><p class="cd-faq-a">{a}</p></div>'
+            for q, a in _rc_faqs
+        )
+        _rc_faq_section = f'<div class="cd-faq"><h2 class="cd-faq-title">{faq_title}</h2>{_rc_faq_html}</div>' if _rc_faqs else ""
+        _related_slugs = _rc.get("related", [])
+        if _related_slugs:
+            _rel_links = "".join(
+                f'<a class="cd-related-link" href="/countdown/{s}/">{s.replace("-", " ").title()}</a>'
+                for s in _related_slugs
+            )
+            _related_html = f'<div class="cd-related"><h2 class="cd-section-title">Related Countdowns</h2><div class="cd-related-grid">{_rel_links}</div></div>'
+        else:
+            _related_html = ""
+        faq_section = f'''<div class="cd-article cd-premium">
+  <div class="cd-overview">{_overview_html}</div>
+  {_ki_html}
+  {_tl_html}
+  {_facts_html}
+  {_rc_faq_section}
+  {_related_html}
+</div>'''
+        faqs = _rc_faqs
+    else:
+        faq_section = f'''<div class="cd-article">
   <p class="cd-article-body">{content}</p>
   {weekday_section}
   {births_section}
